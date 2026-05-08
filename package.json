@@ -6,21 +6,48 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:migrate": "tsx --env-file=.env.local scripts/db-migrate.ts",
+    "db:seed": "tsx --env-file=.env.local scripts/db-seed.ts",
+    "pipeline:run": "tsx --env-file=.env.local scripts/pipeline-run.ts",
+    "pipeline:research": "tsx --env-file=.env.local scripts/skill-research.ts",
+    "pipeline:content": "tsx --env-file=.env.local scripts/skill-content.ts",
+    "pipeline:qa": "tsx --env-file=.env.local scripts/skill-qa.ts",
+    "pipeline:seo": "tsx --env-file=.env.local scripts/skill-seo.ts",
+    "pipeline:publish": "tsx --env-file=.env.local scripts/skill-publish.ts",
+    "pipeline:publish:dry": "tsx --env-file=.env.local scripts/skill-publish.ts --dry-run",
+    "pipeline:analytics": "tsx --env-file=.env.local scripts/skill-analytics.ts",
+    "pipeline:analytics:weekly": "tsx --env-file=.env.local scripts/skill-analytics.ts --mode=weekly",
+    "pipeline:analytics:monthly": "tsx --env-file=.env.local scripts/skill-analytics.ts --mode=monthly",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.95.1",
+    "@supabase/supabase-js": "^2.105.3",
+    "gray-matter": "^4.0.3",
     "next": "16.2.6",
+    "next-mdx-remote": "^6.0.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "remark-gfm": "^4.0.1",
+    "resend": "^6.12.3",
+    "simple-git": "^3.36.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^4.1.5",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "tsx": "^4.21.0",
+    "typescript": "^5",
+    "vitest": "^4.1.5"
   }
 }

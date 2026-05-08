@@ -1,0 +1,16 @@
+{
+  "siteName": "PymesTools",
+  "displayName": "PymesTools",
+  "domain": "pymestools.com",
+  "siteUrl": "https://pymestools.com",
+  "authorName": "Equipo PymesTools",
+  "twitterHandle": "@pymestools",
+  "locale": "es_ES",
+  "language": "es",
+  "defaultTitle": "PymesTools — Comparativas y reviews de software para pymes en España",
+  "defaultDescription": "Comparativas honestas de herramientas de email marketing, CRM y automatización para pymes españolas. Reviews verificadas, precios reales y programas de afiliado activos.",
+  "ogImageDefault": "https://pymestools.com/api/og",
+  "googleVerification": "",
+  "resendFrom": "noreply@pymestools.com",
+  "notificationEmail": ""
+}
