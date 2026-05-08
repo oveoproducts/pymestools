@@ -4,6 +4,7 @@ import { Header } from '@/app/components/Header'
 import { Footer } from '@/app/components/Footer'
 import { SchemaOrgWebsite } from '@/app/components/SchemaOrg'
 import { NewsletterBanner } from '@/app/components/NewsletterBanner'
+import { GoogleAnalytics } from '@/app/components/GoogleAnalytics'
 import brand from '@/data/brand.json'
 
 export const metadata: Metadata = {
@@ -21,6 +22,9 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   alternates: { canonical: brand.siteUrl },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION ?? '',
+  },
   twitter: {
     card: 'summary_large_image',
     site: brand.twitterHandle,
@@ -33,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang={brand.language}>
       <body className="min-h-full flex flex-col antialiased">
+        <GoogleAnalytics />
         <SchemaOrgWebsite />
         <Header />
         <main className="flex-1">{children}</main>

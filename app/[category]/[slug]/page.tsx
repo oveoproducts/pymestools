@@ -21,6 +21,7 @@ import {
   PriceTable,
   ProsCons,
 } from '@/app/components/mdx'
+import { AffiliateLink } from '@/app/components/mdx/AffiliateLink'
 
 const VALID_CATEGORIES = [
   'email-marketing',
@@ -44,6 +45,7 @@ const MDX_COMPONENTS = {
   ScoreCard,
   PriceTable,
   ProsCons,
+  AffiliateLink,
 }
 
 interface PageProps {
@@ -54,8 +56,8 @@ export async function generateStaticParams() {
   const articles = await getPublishedArticles()
 
   return articles
-    .filter((a) => VALID_CATEGORIES.includes(a.category as ValidCategory))
-    .map((a) => ({ category: a.category, slug: a.slug }))
+    .filter((a) => VALID_CATEGORIES.includes(normaliseCategory(a.category) as ValidCategory))
+    .map((a) => ({ category: normaliseCategory(a.category), slug: a.slug }))
 }
 
 export async function generateMetadata({
@@ -127,15 +129,29 @@ type ArticleType =
 const TYPE_LABELS: Record<string, string> = {
   review: 'Review',
   comparativa: 'Comparativa',
+  comparison: 'Comparativa',
+  'top-list': 'Top Lista',
+  alternatives: 'Alternativas',
+  alternativas: 'Alternativas',
   guia: 'Guía',
   tutorial: 'Tutorial',
+  'how-to': 'Guía',
 }
 
 const TYPE_COLORS: Record<string, string> = {
   review: 'bg-blue-100 text-blue-800',
   comparativa: 'bg-purple-100 text-purple-800',
+  comparison: 'bg-purple-100 text-purple-800',
+  'top-list': 'bg-amber-100 text-amber-800',
+  alternatives: 'bg-teal-100 text-teal-800',
+  alternativas: 'bg-teal-100 text-teal-800',
   guia: 'bg-green-100 text-green-800',
+  'how-to': 'bg-green-100 text-green-800',
   tutorial: 'bg-orange-100 text-orange-800',
+}
+
+function normaliseCategory(cat: string): string {
+  return cat.replace(/_/g, '-')
 }
 
 export default async function ArticlePage({ params }: PageProps) {
@@ -147,7 +163,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const article = await getArticleBySlug(slug)
 
-  if (!article || article.category !== category) {
+  if (!article || normaliseCategory(article.category) !== category) {
     notFound()
   }
 
