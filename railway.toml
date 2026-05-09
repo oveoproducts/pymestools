@@ -2,6 +2,9 @@
 builder = "nixpacks"
 buildCommand = "npm install"
 
-[deploy]
-startCommand = "echo 'PymesTools pipeline worker ready'"
-restartPolicyType = "never"
+[[services]]
+name = "pipeline-daily"
+
+[services.deploy]
+startCommand = "npm run pipeline:run"
+cronSchedule = "0 8 * * *"
