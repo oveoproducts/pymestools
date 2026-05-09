@@ -98,37 +98,55 @@ function estimateReadingTime(markdown: string): number {
 }
 
 async function loadSystemPrompt(): Promise<string> {
-  const systemPath = path.join(process.cwd(), 'docs', 'content-system.md')
+  const systemPath = path.join(process.cwd(), 'lib', 'prompts', 'content-system.md')
+  return fs.readFile(systemPath, 'utf-8')
+}
+
+async function loadTemplate(articleType: string): Promise<string> {
+  const templateMap: Record<string, string> = {
+    comparison: 'comparison.md',
+    review: 'review.md',
+    'top-list': 'top-list.md',
+    'how-to': 'how-to.md',
+    alternatives: 'alternatives.md',
+  }
+  const file = templateMap[articleType] ?? 'review.md'
+  const templatePath = path.join(process.cwd(), 'lib', 'prompts', 'templates', file)
   try {
-    return await fs.readFile(systemPath, 'utf-8')
+    return await fs.readFile(templatePath, 'utf-8')
   } catch {
-    // Fallback if file doesn't exist yet
-    return `Eres un experto en marketing digital para pymes españolas.
-Escribes artículos SEO en español, detallados, prácticos y con tono profesional cercano.
-Siempre incluyes: introducción con hook, secciones H2/H3, tabla comparativa si aplica,
-ventajas/desventajas, precios, conclusión con CTA y enlaces de afiliado apropiados.`
+    return ''
   }
 }
 
 async function buildUserPrompt(keyword: Keyword): Promise<string> {
   const affiliateNames = await fetchAffiliateNames(keyword.affiliate_program_ids ?? [])
+  const articleType = inferArticleType(keyword.keyword, keyword.search_intent)
+  const template = await loadTemplate(articleType)
+  const slug = keywordToSlug(keyword.keyword)
 
-  return `Escribe un artículo SEO completo en español para la keyword: "${keyword.keyword}"
+  return `Escribe un artículo MDX completo para la keyword: "${keyword.keyword}"
 
 Categoría: ${keyword.category ?? 'herramientas-pymes'}
+Slug: ${slug}
+Tipo: ${articleType}
 Intención de búsqueda: ${keyword.search_intent ?? 'commercial'}
-Herramientas afiliadas a mencionar: ${affiliateNames.join(', ')}
+Herramientas afiliadas: ${affiliateNames.length > 0 ? affiliateNames.join(', ') : 'ninguna específica'}
 
-Formato requerido:
-- Frontmatter MDX con: title, description, date, category, type, tools[], keywords_primary
-- Estructura H1 → H2 → H3 apropiada
-- Mínimo 1500 palabras
-- Incluir tabla comparativa si aplica
-- CTA con enlace de afiliado (placeholder: {{AFFILIATE_URL}})
-- Sección de FAQ con mínimo 3 preguntas
-- Divulgación de afiliado al final
+FRONTMATTER OBLIGATORIO (incluye todos estos campos):
+- title, slug ("${slug}"), description, category, type, tools[], keywords_primary
+- status: "draft", author: "Equipo PymesTools", readingTime, publishedAt: null, updatedAt: "[hoy ISO]"
 
-Devuelve SOLO el contenido MDX, sin explicaciones adicionales.`
+REGLAS DE FORMATO:
+- Párrafos máx 3 líneas (~55 palabras). Si se alarga, rómpelo.
+- H2/H3 con emoji donde ayude (💶 precios, ✅ ventajas, ❌ pegas, ⚠️ advertencias, 🇪🇸 España)
+- Usa <Callout type="warning|tip|info"> para info crítica (permanencia, trampas de precio, consejos)
+- Usa <AffiliateLink programSlug="[slug]" articleSlug="${slug}" label="Probar [Herramienta] gratis" /> para CTAs — NUNCA pongas URLs de afiliado directamente
+- Añade {/* TODO: captura del dashboard */} donde irían imágenes clave
+
+${template ? `PLANTILLA DE ESTRUCTURA A SEGUIR:\n${template}` : ''}
+
+Devuelve SOLO el bloque MDX completo. Sin texto fuera del MDX.`
 }
 
 async function fetchAffiliateNames(ids: string[]): Promise<string[]> {
@@ -178,7 +196,7 @@ async function generateArticle(keyword: Keyword): Promise<string> {
   console.log(`  Calling Anthropic API for keyword: "${keyword.keyword}"`)
 
   const message = await anthropic.messages.create({
-    model: 'claude-sonnet-4-5',
+    model: 'claude-sonnet-4-6',
     max_tokens: 8192,
     system: systemPrompt,
     messages: [
