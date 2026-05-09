@@ -6,10 +6,18 @@ Leer este archivo al inicio de cada sesión nueva.
 
 ## Estado actual del proyecto
 
-- **Dominio:** pymestools.com
-- **Stack:** Next.js 15 App Router + Supabase + Anthropic API (claude-sonnet-4-5)
-- **Hosting:** Vercel (site) + Railway (pipeline continuo)
-- **Fase actual:** Setup inicial — pendiente conectar Supabase y GitHub
+- **Dominio:** pymestools.com (pendiente registrar)
+- **Stack:** Next.js 15 App Router + Supabase + Anthropic API (claude-sonnet-4-6)
+- **Hosting:** Vercel (site) + Railway (pipeline continuo, pendiente)
+- **Fase actual:** Operativo — Supabase conectado, 8 artículos publicados, Vercel con vars de entorno reales
+
+### Setup completado (2026-05-09)
+- [x] Tablas Supabase creadas (migrate + seed)
+- [x] 7 programas de afiliado en `affiliate_programs`
+- [x] 8 artículos sincronizados en `articles` (status: published)
+- [x] Variables de entorno Vercel actualizadas con valores reales
+- [x] IndexNow key generada: `b6f845bebd1c4834bc7b2fb08f6496b5903d786d`
+- [x] GA4 y GSC verification wired en layout.tsx
 
 ---
 
@@ -87,11 +95,11 @@ _(vacío)_
 
 - [ ] Registrar dominio pymestools.com (y .es)
 - [ ] NIF / razón social para páginas legales (LSSI obligatorio)
-- [ ] Conectar Google Search Console
-- [ ] Configurar Google Analytics 4
-- [ ] Configurar Resend para notificaciones del pipeline
+- [x] Conectar Google Search Console (verification tag en layout.tsx)
+- [x] Configurar Google Analytics 4 (G-ZB4ZZFMM6T en layout.tsx)
+- [ ] Configurar Resend para notificaciones del pipeline (falta clave real)
 - [ ] Aplicar a programas de afiliado (NO antes de tener tráfico)
-- [ ] Configurar Railway para pipeline continuo (después del primer artículo)
+- [ ] Configurar Railway para pipeline continuo (falta API token)
 
 ---
 
