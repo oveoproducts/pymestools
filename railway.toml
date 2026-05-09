@@ -2,9 +2,6 @@
 builder = "nixpacks"
 buildCommand = "npm install"
 
-[[services]]
-name = "pipeline-daily"
-
-[services.deploy]
-startCommand = "npm run pipeline:run"
+[deploy]
+startCommand = "npx tsx scripts/pipeline-run.ts"
 cronSchedule = "0 8 * * *"
