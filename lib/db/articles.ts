@@ -67,11 +67,12 @@ export async function getArticlesByCategory(
   category: string,
   limit?: number,
 ): Promise<Article[]> {
+  const dbCategory = category.replace(/-/g, '_')
   let query = supabase
     .from('articles')
     .select('*')
     .eq('status', 'published')
-    .eq('category', category)
+    .eq('category', dbCategory)
     .order('published_at', { ascending: false })
 
   if (limit !== undefined) {
@@ -91,7 +92,7 @@ function normalise(row: any): Article {
     id: row.id,
     title: row.title,
     slug: row.slug,
-    category: row.category,
+    category: (row.category as string).replace(/_/g, '-'),
     type: row.type,
     meta_title: row.meta_title ?? null,
     meta_description: row.meta_description ?? null,

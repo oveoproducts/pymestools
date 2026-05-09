@@ -66,11 +66,13 @@ export async function generateMetadata({
   const { category, slug } = await params
   const article = await getArticleBySlug(slug)
 
-  if (!article || article.category !== category) {
+  if (!article || normaliseCategory(article.category) !== category) {
     return { title: 'Artículo no encontrado' }
   }
 
-  const title = article.meta_title ?? article.title
+  // Strip trailing "| PymesTools" suffix if present — layout template adds it automatically
+  const rawTitle = article.meta_title ?? article.title
+  const title = rawTitle.replace(/\s*\|\s*PymesTools\s*$/i, '')
   const description = article.meta_description ?? article.description ?? ''
   const canonicalUrl = `${brand.siteUrl}/${category}/${slug}`
   const ogImageUrl = `${brand.siteUrl}/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&type=${encodeURIComponent(article.type)}`
