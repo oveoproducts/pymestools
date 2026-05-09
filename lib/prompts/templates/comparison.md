@@ -1,7 +1,7 @@
 # Plantilla: Comparativa de herramientas
 
 **Tipo de artículo:** `comparison`
-**Objetivo de palabras:** 1500–2500 palabras
+**Objetivo de palabras:** 1500–2200 palabras (menos es más — cada párrafo tiene que ganarse su sitio)
 **Uso:** Comparativa directa entre dos herramientas (Herramienta A vs Herramienta B)
 
 ---
@@ -37,15 +37,18 @@ qualityScore: null
 
 ### Hook (sin H2 — primeras frases del artículo)
 
-**Longitud:** 2–3 frases.
+**Longitud:** 2–4 frases cortas. Cada frase en su propio párrafo si ayuda al ritmo.
 **Función:** Describir la situación concreta en que alguien tiene que elegir entre estas dos herramientas. No presentar las herramientas — presentar el dilema.
 
 **Instrucciones:**
 - El hook no es `"Hoy comparamos [A] y [B]"`. Es la situación de Carlos en la que necesita elegir.
 - Nombra por qué la elección es difícil — qué hace parecidas a las dos herramientas, qué hace que no sea obvio cuál elegir.
+- Párrafos de 1–2 frases. Sin rollos de introducción.
 
 **Ejemplo correcto:**
-> [Herramienta A] y [Herramienta B] hacen cosas muy parecidas a precios parecidos, y por eso la decisión se complica. Si tu empresa está en el rango de 10–100 contactos activos y quieres empezar a automatizar seguimientos, esta comparativa te ahorra las 3 semanas de pruebas que nosotros ya hemos hecho.
+> Llevas semanas dando vueltas entre [Herramienta A] y [Herramienta B]. Hacen cosas muy parecidas, cuestan parecido, y los dos tienen buenas reseñas en Google.
+>
+> Esta comparativa te ahorra las 3 semanas de pruebas que nosotros ya hemos hecho.
 
 ---
 
@@ -282,7 +285,7 @@ Cada dimensión lleva un H3. Las dimensiones siguientes son todas obligatorias.
 
 ## Checklist antes de enviar a QA
 
-- [ ] Hook describe el dilema de elección, no las herramientas
+- [ ] Hook describe el dilema de elección, no las herramientas — párrafos cortos
 - [ ] Tabla de Veredicto rápido con todos los campos (precio, trial, soporte, perfil)
 - [ ] Sección `¿Cuándo elegir A?` — mínimo 3 perfiles
 - [ ] Sección `¿Cuándo elegir B?` — mínimo 3 perfiles
@@ -295,4 +298,8 @@ Cada dimensión lleva un H3. Las dimensiones siguientes son todas obligatorias.
 - [ ] Disclosure al final
 - [ ] Sin frases prohibidas (verificar contra `data/forbidden-phrases.json`)
 - [ ] Test de Carlos superado
-- [ ] Entre 1.500 y 2.500 palabras
+- [ ] Entre 1.500 y 2.200 palabras
+- [ ] Ningún párrafo supera 3 líneas / ~55 palabras
+- [ ] H2/H3 llevan emoji donde aporta claridad visual
+- [ ] Al menos 1 `<Callout>` con información crítica (precio, permanencia, limitación importante)
+- [ ] Placeholder de imagen en al menos 1 sección (dashboard o precios)

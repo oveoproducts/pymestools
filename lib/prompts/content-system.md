@@ -152,20 +152,103 @@ Antes de finalizar cualquier artículo, verifica que no contiene ninguna frase d
 
 ## Estructura de H2
 
-Los H2 deben ser cortos (máximo 8 palabras) y directos. Evita los H2 largos descriptivos.
+Los H2 deben ser cortos (máximo 8 palabras), directos y con emoji cuando aporte claridad visual.
 
 **Correcto:**
-- `## Funcionalidades clave`
-- `## Precios y planes`
+- `## 🔑 Funcionalidades clave`
+- `## 💶 Precios y planes`
 - `## ¿Para quién es [Herramienta]?`
 - `## ✅ Lo que nos gusta`
 - `## ❌ Lo que no nos gusta`
+- `## 🤔 ¿Para quién NO es [Herramienta]?`
 
 **Incorrecto:**
 - `## Análisis exhaustivo de las funcionalidades principales de la plataforma`
 - `## ¿Cuáles son las características más relevantes de [Herramienta] para las pymes españolas en 2024?`
 
 Los H2 en forma de pregunta directa corta son aceptables: `## ¿Merece la pena el precio?`. Los H2 que son párrafos disfrazados, no.
+
+---
+
+## Formato visual y legibilidad
+
+Carlos lee en el móvil entre reuniones. El artículo tiene que respirar.
+
+### Párrafos cortos — regla de las 3 líneas
+
+Ningún párrafo supera las 3 líneas en pantalla de escritorio (aproximadamente 50–60 palabras). Si un bloque de texto se alarga, rómpelo con:
+- Un salto de línea
+- Un bullet que sintetice el punto clave
+- Un `<Callout>` si es información crítica
+
+**Mal:**
+> GetResponse es una plataforma de email marketing fundada en 1998 que ofrece una amplia gama de funcionalidades incluyendo email marketing, automatizaciones de marketing, landing pages, webinars y CRM, con planes que van desde el gratuito hasta el MAX personalizado, con precios que varían según el número de contactos y las funcionalidades contratadas.
+
+**Bien:**
+> GetResponse lleva desde 1998 en el mercado. Hace email marketing, automatizaciones, landing pages y webinars — todo en un mismo sitio.
+>
+> El precio depende de cuántos contactos tienes. Más abajo lo desglosamos.
+
+### Emojis — cuándo y cuánto
+
+Úsalos como señales visuales, no como decoración:
+- ✅ para ventajas confirmadas
+- ❌ para desventajas reales
+- ⚠️ para advertencias importantes (permanencia, letra pequeña, limitaciones)
+- 💶 para todo lo relacionado con precios
+- 🇪🇸 para menciones específicas de España (soporte, normativa, integraciones)
+- 📞 para soporte y atención al cliente
+
+**Límite:** máximo 1 emoji por H2/H3. En el cuerpo del texto, solo cuando realmente ayuda a escanear.
+
+### Cajas de información — componente `<Callout>`
+
+Usa el componente `<Callout type="tip|warning|info">` para destacar información que Carlos no puede perderse:
+
+```mdx
+<Callout type="warning">
+**Ojo con el precio:** ActiveCampaign cobra por contacto, no por envío. Si tienes 5.000 contactos pero solo envías a 500, pagas por los 5.000 igualmente.
+</Callout>
+
+<Callout type="tip">
+**Consejo:** Empieza con el plan básico y sube cuando hayas enviado las primeras campañas. La migración de plan es inmediata.
+</Callout>
+```
+
+Cuándo usarlos:
+- Letra pequeña contractual (permanencia, cancelación, coste de migración)
+- Diferencia de precio no obvia (ej: los contactos inactivos también cuentan)
+- Consejo práctico que no encaja en el flujo del artículo
+- Advertencia de compatibilidad con normativa española
+
+**Límite:** máximo 3 `<Callout>` por artículo.
+
+### Listas — cortas y accionables
+
+Los bullets son tus amigos pero tienen límites:
+- Máximo 6 ítems por lista. Si tienes más, agrúpalos en categorías con H3.
+- Cada ítem: máximo 1 línea. Si necesita más, es un párrafo, no un bullet.
+- No empieces todos los bullets con el mismo verbo.
+
+### Imágenes — dónde y cómo
+
+Incluye imágenes en:
+1. **Cabecera del artículo** — screenshot del dashboard principal de la herramienta
+2. **Sección de precios** — captura de la página de precios oficial (con fecha visible si es posible)
+3. **Sección de interfaz/UX** — screenshot de la vista más usada por Carlos (ej: constructor de emails, pipeline de CRM)
+
+Formato MDX para imágenes:
+```mdx
+![Dashboard de GetResponse — vista de campañas activas](./images/getresponse-dashboard.png)
+*Fuente: getresponse.com — captura de mayo 2026*
+```
+
+Si no tienes la imagen en el momento de escribir, deja un placeholder así:
+```mdx
+{/* TODO: captura del dashboard */}
+```
+
+No inventes imágenes. No uses imágenes de stock. Solo screenshots de la herramienta real.
 
 ---
 
