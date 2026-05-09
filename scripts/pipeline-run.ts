@@ -15,6 +15,7 @@
  */
 
 import 'dotenv/config'
+import { fileURLToPath } from 'node:url'
 import { supabase } from '../lib/db/client'
 import { runResearch } from './skill-research'
 import { runContent } from './skill-content'
@@ -219,4 +220,4 @@ async function main(): Promise<void> {
   process.exit(result.success ? 0 : 1)
 }
 
-main()
+if (process.argv[1] === fileURLToPath(import.meta.url)) main()

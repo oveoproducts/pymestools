@@ -15,6 +15,7 @@
  */
 
 import 'dotenv/config'
+import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import Anthropic from '@anthropic-ai/sdk'
@@ -397,4 +398,4 @@ async function main(): Promise<void> {
   process.exit(result.success ? 0 : 1)
 }
 
-main()
+if (process.argv[1] === fileURLToPath(import.meta.url)) main()

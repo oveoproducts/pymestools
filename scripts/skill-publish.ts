@@ -17,6 +17,7 @@
  */
 
 import 'dotenv/config'
+import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import simpleGit, { type SimpleGit } from 'simple-git'
@@ -165,8 +166,8 @@ async function pollVercelDeploy(): Promise<string> {
 // Step 4 — Live URL verification
 // ---------------------------------------------------------------------------
 
-async function verifyLiveUrl(slug: string): Promise<boolean> {
-  const liveUrl = `${SITE_URL}/blog/${slug}`
+async function verifyLiveUrl(slug: string, category: string): Promise<boolean> {
+  const liveUrl = `${SITE_URL}/${category.replace(/_/g, '-')}/${slug}`
   console.log(`  Verifying live URL: ${liveUrl}`)
 
   try {
@@ -190,7 +191,7 @@ async function pingIndexNow(slug: string): Promise<void> {
     return
   }
 
-  const url = `${SITE_URL}/blog/${slug}`
+  const url = `${SITE_URL}/${slug}`
   const endpoint = `https://api.indexnow.org/indexnow?url=${encodeURIComponent(url)}&key=${INDEXNOW_KEY}`
 
   try {
@@ -265,7 +266,8 @@ export async function runPublish(options: PublishOptions): Promise<PublishResult
     }
     console.log('    ✅ Validation passed')
 
-    let liveUrl = `${SITE_URL}/blog/${article.slug}`
+    const categorySlug = article.category.replace(/_/g, '-')
+    let liveUrl = `${SITE_URL}/${categorySlug}/${article.slug}`
 
     if (!dryRun) {
       // Step 2 — Git commit + push
@@ -278,7 +280,7 @@ export async function runPublish(options: PublishOptions): Promise<PublishResult
 
       // Step 4 — Live URL verification
       console.log('\n  Step 4/8 — Live URL verification')
-      const isLive = await verifyLiveUrl(article.slug)
+      const isLive = await verifyLiveUrl(article.slug, article.category)
       if (!isLive) {
         console.warn('    ⚠️  Live URL not yet available — proceeding anyway (CDN propagation delay)')
       }
@@ -361,4 +363,4 @@ async function main(): Promise<void> {
   process.exit(result.success ? 0 : 1)
 }
 
-main()
+if (process.argv[1] === fileURLToPath(import.meta.url)) main()

@@ -19,6 +19,7 @@
  */
 
 import 'dotenv/config'
+import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import Anthropic from '@anthropic-ai/sdk'
@@ -236,7 +237,9 @@ ${mdx.slice(0, 4000)}${mdx.length > 4000 ? '\n[...truncado para revisión...]' :
   const text = message.content[0].type === 'text' ? message.content[0].text : '{}'
 
   try {
-    const parsed = JSON.parse(text) as Tier2Result
+    // Strip markdown code fences if present
+    const clean = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim()
+    const parsed = JSON.parse(clean) as Tier2Result
     return {
       score: parsed.score ?? 5,
       feedback: parsed.feedback ?? '',
@@ -369,4 +372,4 @@ async function main(): Promise<void> {
   process.exit(result.success ? 0 : 1)
 }
 
-main()
+if (process.argv[1] === fileURLToPath(import.meta.url)) main()

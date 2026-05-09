@@ -10,6 +10,7 @@
  */
 
 import 'dotenv/config'
+import { fileURLToPath } from 'node:url'
 import { supabase } from '../lib/db/client'
 
 // ---------------------------------------------------------------------------
@@ -288,4 +289,4 @@ async function main(): Promise<void> {
   process.exit(result.success ? 0 : 1)
 }
 
-main()
+if (process.argv[1] === fileURLToPath(import.meta.url)) main()
