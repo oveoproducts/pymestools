@@ -163,16 +163,17 @@ Extracto:
 ${mdx.slice(0, 800)}`
 
   const message = await anthropic.messages.create({
-    model: 'claude-sonnet-4-5',
+    model: 'claude-sonnet-4-6',
     max_tokens: 256,
     system: systemPrompt,
     messages: [{ role: 'user', content: userPrompt }],
   })
 
   const text = message.content[0].type === 'text' ? message.content[0].text : '{}'
+  const clean = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim()
 
   try {
-    const parsed = JSON.parse(text) as MetaResult
+    const parsed = JSON.parse(clean) as MetaResult
     return {
       metaTitle: (parsed.metaTitle ?? article.title).slice(0, 60),
       metaDescription: (parsed.metaDescription ?? '').slice(0, 160),
