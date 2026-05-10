@@ -14,6 +14,21 @@ import { supabase } from '../lib/db/client'
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 const ARTICLES_DIR = path.join(process.cwd(), 'content', 'articles')
 
+// Must match VALID_CATEGORIES in app/[category]/page.tsx and app/[category]/[slug]/page.tsx
+const VALID_CATEGORIES = new Set([
+  'email_marketing', 'crm', 'automatizacion', 'comparativas', 'facturacion', 'recursos-humanos',
+])
+
+function validateArticles() {
+  const invalid = NEW_ARTICLES.filter((a) => !VALID_CATEGORIES.has(a.category))
+  if (invalid.length > 0) {
+    console.error('\n❌  Categorías no registradas en las rutas de Next.js:')
+    for (const a of invalid) console.error(`   - ${a.slug}: "${a.category}"`)
+    console.error('\n   Añádelas primero en app/[category]/page.tsx y app/[category]/[slug]/page.tsx\n')
+    process.exit(1)
+  }
+}
+
 const NEW_ARTICLES = [
   // Email marketing — completar nicho
   { slug: 'review-mailchimp',                    keyword: 'mailchimp review español pymes',               category: 'email_marketing', type: 'review',       tools: ['mailchimp'] },
@@ -99,6 +114,7 @@ async function upsertToSupabase(slug: string, mdx: string) {
 }
 
 async function main() {
+  validateArticles()
   console.log(`\n✍️   Generando ${NEW_ARTICLES.length} artículos nuevos\n`)
   const systemPrompt = await loadSystemPrompt()
 
