@@ -9,6 +9,8 @@ const VALID_CATEGORIES = [
   'crm',
   'automatizacion',
   'comparativas',
+  'facturacion',
+  'recursos-humanos',
 ] as const
 
 type ValidCategory = (typeof VALID_CATEGORIES)[number]
@@ -18,6 +20,8 @@ const CATEGORY_LABELS: Record<ValidCategory, string> = {
   crm: 'CRM',
   automatizacion: 'Automatización',
   comparativas: 'Comparativas',
+  facturacion: 'Facturación',
+  'recursos-humanos': 'Recursos Humanos',
 }
 
 const CATEGORY_DESCRIPTIONS: Record<ValidCategory, string> = {
@@ -28,6 +32,10 @@ const CATEGORY_DESCRIPTIONS: Record<ValidCategory, string> = {
     'Las mejores herramientas de automatización de marketing para pymes.',
   comparativas:
     'Comparativas detalladas de software de marketing y ventas para pymes.',
+  facturacion:
+    'Reviews y comparativas del mejor software de facturación para pymes españolas.',
+  'recursos-humanos':
+    'Herramientas de gestión de recursos humanos y RRHH para pymes en España.',
 }
 
 interface PageProps {

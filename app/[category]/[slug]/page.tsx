@@ -28,6 +28,8 @@ const VALID_CATEGORIES = [
   'crm',
   'automatizacion',
   'comparativas',
+  'facturacion',
+  'recursos-humanos',
 ] as const
 
 type ValidCategory = (typeof VALID_CATEGORIES)[number]
@@ -37,6 +39,8 @@ const CATEGORY_LABELS: Record<ValidCategory, string> = {
   crm: 'CRM',
   automatizacion: 'Automatización',
   comparativas: 'Comparativas',
+  facturacion: 'Facturación',
+  'recursos-humanos': 'Recursos Humanos',
 }
 
 const MDX_COMPONENTS = {
