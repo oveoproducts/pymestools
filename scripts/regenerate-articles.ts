@@ -63,8 +63,9 @@ Devuelve SOLO el bloque MDX completo.`
     messages: [{ role: 'user', content: userPrompt }],
   })
 
-  const text = msg.content[0].type === 'text' ? msg.content[0].text : ''
+  let text = msg.content[0].type === 'text' ? msg.content[0].text : ''
   console.log(`    tokens — in: ${msg.usage.input_tokens}, out: ${msg.usage.output_tokens}`)
+  text = text.replace(/<(\d)/g, '&lt;$1')
   return text
 }
 

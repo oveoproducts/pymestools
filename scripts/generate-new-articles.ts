@@ -89,8 +89,10 @@ Devuelve SOLO el bloque MDX completo. Sin texto fuera del MDX.`
     messages: [{ role: 'user', content: userPrompt }],
   })
 
-  const text = msg.content[0].type === 'text' ? msg.content[0].text : ''
+  let text = msg.content[0].type === 'text' ? msg.content[0].text : ''
   console.log(`    tokens — in: ${msg.usage.input_tokens}, out: ${msg.usage.output_tokens}`)
+  // Fix MDX parse error: < before numbers must be escaped (e.g. <2.000 → menos de 2.000)
+  text = text.replace(/<(\d)/g, '&lt;$1')
   return text
 }
 
