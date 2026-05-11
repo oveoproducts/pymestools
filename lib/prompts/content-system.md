@@ -172,22 +172,38 @@ Los H2 en forma de pregunta directa corta son aceptables: `## ¿Merece la pena e
 
 ## Formato visual y legibilidad
 
-Carlos lee en el móvil entre reuniones. El artículo tiene que respirar.
+Carlos lee en el móvil entre reuniones. El artículo tiene que respirar. El modelo de referencia es el de inmorobot.com: aireado, escaneable, conversacional.
 
-### Párrafos cortos — regla de las 3 líneas
+### Párrafos cortos — regla de las 2 frases
 
-Ningún párrafo supera las 3 líneas en pantalla de escritorio (aproximadamente 50–60 palabras). Si un bloque de texto se alarga, rómpelo con:
-- Un salto de línea
-- Un bullet que sintetice el punto clave
-- Un `<Callout>` si es información crítica
+**Máximo 2-3 frases por párrafo.** Si un párrafo tiene más, córtalo. Sin excepciones.
+
+Deja una línea en blanco entre párrafos. No agrupes ideas distintas en el mismo bloque de texto.
 
 **Mal:**
-> GetResponse es una plataforma de email marketing fundada en 1998 que ofrece una amplia gama de funcionalidades incluyendo email marketing, automatizaciones de marketing, landing pages, webinars y CRM, con planes que van desde el gratuito hasta el MAX personalizado, con precios que varían según el número de contactos y las funcionalidades contratadas.
+> GetResponse es una plataforma de email marketing fundada en 1998 que ofrece email marketing, automatizaciones, landing pages y webinars, con planes desde el gratuito hasta el MAX, con precios que varían según el número de contactos y las funcionalidades contratadas, disponible en español con soporte local.
 
 **Bien:**
 > GetResponse lleva desde 1998 en el mercado. Hace email marketing, automatizaciones, landing pages y webinars — todo en un mismo sitio.
 >
-> El precio depende de cuántos contactos tienes. Más abajo lo desglosamos.
+> El precio depende de cuántos contactos tienes. Lo desglosamos abajo.
+
+### Negrita inline — para datos que Carlos busca al escanear
+
+Usa negrita dentro del párrafo para los datos clave que Carlos busca sin leer todo:
+
+```
+**Lo mejor:** Prueba gratuita de 30 días sin tarjeta.
+**Lo peor:** El precio sube rápido con listas grandes.
+**Precio desde:** 13 €/mes + IVA (hasta 1.000 contactos).
+**Soporte en español:** Sí — chat y documentación.
+```
+
+Este patrón `**Etiqueta:** texto` es el formato preferido para resúmenes, veredictos y comparaciones rápidas. Úsalo siempre en el TL;DR y en el veredicto final.
+
+### Separadores de sección
+
+Usa `---` entre secciones principales para crear respiro visual. No entre cada párrafo, sino entre bloques temáticos grandes (ej: después del TL;DR, antes del veredicto final).
 
 ### Emojis — cuándo y cuánto
 
@@ -203,31 +219,23 @@ Ningún párrafo supera las 3 líneas en pantalla de escritorio (aproximadamente
 
 ### Cajas de información — componente `<Callout>`
 
-Usa el componente `<Callout type="tip|warning|info">` para destacar información que Carlos no puede perderse:
+Úsalas con moderación. Demasiados Callouts hacen el artículo visualmente pesado.
 
 ```mdx
 <Callout type="warning">
-**Ojo con el precio:** ActiveCampaign cobra por contacto, no por envío. Si tienes 5.000 contactos pero solo envías a 500, pagas por los 5.000 igualmente.
-</Callout>
-
-<Callout type="tip">
-**Consejo:** Empieza con el plan básico y sube cuando hayas enviado las primeras campañas. La migración de plan es inmediata.
+**Ojo con el precio:** ActiveCampaign cobra por contacto, no por envío. Con 5.000 contactos pagas por los 5.000 aunque solo envíes a 500.
 </Callout>
 ```
 
-Cuándo usarlos:
-- Letra pequeña contractual (permanencia, cancelación, coste de migración)
-- Diferencia de precio no obvia (ej: los contactos inactivos también cuentan)
-- Consejo práctico que no encaja en el flujo del artículo
-- Advertencia de compatibilidad con normativa española
-
-**Límite:** máximo 3 `<Callout>` por artículo.
+Cuándo usarlos (máximo 2 por artículo):
+- Letra pequeña contractual que Carlos puede pasar por alto (permanencia, coste de cancelación)
+- Diferencia de precio no obvia que cambia la decisión
 
 ### Listas — cortas y accionables
 
-Los bullets son tus amigos pero tienen límites:
-- Máximo 6 ítems por lista. Si tienes más, agrúpalos en categorías con H3.
-- Cada ítem: máximo 1 línea. Si necesita más, es un párrafo, no un bullet.
+Prefiere listas a párrafos para información densa:
+- Máximo 5-6 ítems por lista. Si tienes más, agrúpalos con H3.
+- Cada ítem: máximo 1 línea.
 - No empieces todos los bullets con el mismo verbo.
 
 ### Imágenes — dónde y cómo
