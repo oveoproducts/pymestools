@@ -24,10 +24,22 @@ const CATEGORIES = [
     icon: '🤝',
   },
   {
+    slug: 'facturacion',
+    label: 'Facturación',
+    description: 'Software de facturación y contabilidad para pymes',
+    icon: '🧾',
+  },
+  {
     slug: 'automatizacion',
     label: 'Automatización',
     description: 'Conecta tus herramientas y elimina tareas manuales',
     icon: '⚙️',
+  },
+  {
+    slug: 'recursos-humanos',
+    label: 'RRHH',
+    description: 'Gestión de nóminas, vacaciones y equipos',
+    icon: '👥',
   },
   {
     slug: 'comparativas',
@@ -68,10 +80,16 @@ export default async function HomePage() {
               CRM para pymes
             </Link>
             <Link
-              href="/comparativas"
+              href="/facturacion"
               className="inline-flex items-center px-5 py-2.5 border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold rounded-lg transition-colors text-sm"
             >
-              Comparativas
+              Facturación
+            </Link>
+            <Link
+              href="/automatizacion"
+              className="inline-flex items-center px-5 py-2.5 border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold rounded-lg transition-colors text-sm"
+            >
+              Automatización
             </Link>
           </div>
         </div>
@@ -80,7 +98,7 @@ export default async function HomePage() {
       {/* Categories */}
       <section className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {CATEGORIES.map((cat) => (
               <Link
                 key={cat.slug}
@@ -106,6 +124,12 @@ export default async function HomePage() {
           <h2 className="text-2xl font-bold text-gray-900">
             Últimos análisis
           </h2>
+          <Link
+            href="/email-marketing"
+            className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+          >
+            Ver todos →
+          </Link>
         </div>
 
         {recent.length === 0 ? (

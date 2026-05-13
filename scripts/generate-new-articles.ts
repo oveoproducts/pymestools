@@ -101,7 +101,7 @@ async function upsertToSupabase(slug: string, mdx: string) {
   await supabase.from('articles').upsert({
     title: fm.title ?? slug,
     slug,
-    category: fm.category,
+    category: (fm.category as string).replace(/-/g, '_'),
     type: fm.type,
     meta_title: fm.meta_title ?? null,
     meta_description: fm.meta_description ?? fm.description ?? null,
