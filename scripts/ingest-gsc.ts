@@ -107,10 +107,16 @@ async function upsertMetrics(rows: Array<{
   avg_position: number
 }>): Promise<void> {
   if (rows.length === 0) return
-  const { error } = await supabase
-    .from('content_metrics')
-    .upsert(rows, { onConflict: 'article_id,recorded_at' })
-  if (error) throw new Error(`Upsert error: ${error.message}`)
+  // Delete existing rows for same article+date before inserting to avoid duplicates
+  for (const row of rows) {
+    await supabase
+      .from('content_metrics')
+      .delete()
+      .eq('article_id', row.article_id)
+      .eq('recorded_at', row.recorded_at)
+  }
+  const { error } = await supabase.from('content_metrics').insert(rows)
+  if (error) throw new Error(`Insert error: ${error.message}`)
 }
 
 // ---------------------------------------------------------------------------
