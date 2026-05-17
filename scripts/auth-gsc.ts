@@ -5,6 +5,11 @@
  *
  * Usage: npx tsx scripts/auth-gsc.ts
  */
+import { config } from 'dotenv'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+config({ path: path.join(__dirname, '..', '.env.local') })
 import { createServer } from 'node:http'
 import { exec } from 'node:child_process'
 import fs from 'node:fs/promises'
@@ -19,8 +24,11 @@ if (!CLIENT_ID || !CLIENT_SECRET) {
   console.error('❌  Set GSC_CLIENT_ID and GSC_CLIENT_SECRET in .env.local before running this script.')
   process.exit(1)
 }
-const SCOPES = ['https://www.googleapis.com/auth/webmasters.readonly']
-const ENV_FILE = path.join(process.cwd(), '.env.local')
+const SCOPES = [
+  'https://www.googleapis.com/auth/webmasters.readonly',
+  'https://www.googleapis.com/auth/indexing',
+]
+const ENV_FILE = path.join(__dirname, '..', '.env.local')
 
 const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI)
 
@@ -78,8 +86,9 @@ const server = createServer(async (req, res) => {
     server.close()
     process.exit(0)
   } catch (err) {
-    console.error('❌ Error:', err)
-    res.end('Error al obtener el token.')
+    const msg = err instanceof Error ? err.message : JSON.stringify(err)
+    console.error('❌ Error completo:', err)
+    res.end(`<pre>Error: ${msg}</pre>`)
     server.close()
     process.exit(1)
   }

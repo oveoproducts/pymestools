@@ -163,10 +163,21 @@ async function sendDailySummary(result: RunResult): Promise<void> {
 // Main runner
 // ---------------------------------------------------------------------------
 
+async function pingSitemap(): Promise<void> {
+  const sitemapUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pymestools.com'}/sitemap.xml`
+  try {
+    await fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`)
+    console.log('  🗺️  Sitemap pinged to Google')
+  } catch {
+    console.warn('  ⚠️  Sitemap ping failed (non-fatal)')
+  }
+}
+
 export async function runPipeline(): Promise<RunResult> {
   const startedAt = Date.now()
   console.log('\n🚀  PymesTools — Pipeline Run\n')
   await logAgent('pipeline-run', 'started')
+  await pingSitemap()
 
   let itemsProcessed = 0
 
