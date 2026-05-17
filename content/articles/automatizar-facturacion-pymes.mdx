@@ -1,0 +1,201 @@
+---
+title: "Cómo automatizar la facturación en tu pyme con Holded y Zapier"
+slug: "automatizar-facturacion-pymes"
+category: "automatizacion"
+description: "Guía paso a paso para automatizar la emisión y seguimiento de facturas en tu pyme española. Conecta Holded con tus herramientas usando Zapier — sin código, en menos de una hora."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-05-17T20:25:58.279Z"
+tools: ["zapier", "holded"]
+keywords:
+  primary: "cómo automatizar la facturación en tu pyme españa"
+  secondary:
+    - "automatizar facturas holded zapier"
+    - "facturación automática pymes españa"
+    - "integración holded zapier"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás tus facturas emitidas automáticamente cada vez que un cliente te hace un pedido en tu web o app. También recibirás recordatorios automáticos si el pago se retrasa. El proceso completo lleva menos de una hora, y no necesitas tocar ningún código.
+
+## Lo que necesitas
+
+- **Cuenta en Holded:** Plan Professional o superior. El plan gratuito no incluye API. Puedes usar el trial de 15 días para probar todo esto.
+- **Cuenta en Zapier:** Plan gratis es suficiente para empezar, pero necesitas activar al menos una "Zap" conectada. El plan gratuito permite 100 tareas/mes.
+- **Acceso a tu herramienta de pedidos:** Puede ser WooCommerce (si vendes online), Typeform (si usas un formulario), o cualquier otra que Zapier integre. Aquí usamos **WooCommerce** como ejemplo.
+- **Un cliente o producto de prueba en Holded:** Para testar que la factura se crea correctamente.
+- **Nivel técnico necesario:** Cero. Si sabes copiar y pegar URLs y activar/desactivar interruptores, es suficiente.
+
+## Pasos
+
+### Paso 1: Conecta Holded a Zapier
+
+**Qué hacer:** 
+Abre Zapier en tu navegador (zapier.com). Haz clic en "Create" en la esquina superior derecha. En el buscador que aparece, escribe "Holded" y seleccionalo de la lista. Elige la acción "Create Invoice" (crear factura).
+
+**Por qué:** 
+Zapier actúa como intermediario entre tus herramientas. Necesita permiso para conectarse a tu Holded y crear facturas en tu nombre.
+
+**Qué verás:** 
+Te aparecerá un botón azul "Sign in to Holded". Haz clic, escribe tu email y contraseña de Holded, y autoriza el acceso. Zapier confirmará que la conexión funciona.
+
+---
+
+### Paso 2: Configura el activador (trigger)
+
+**Qué hacer:** 
+Ahora Zapier te preguntará "When this happens" (cuando ocurra esto). En el primer desplegable, busca "WooCommerce" y seleccionalo. En el segundo, elige "New Order" (nuevo pedido).
+
+Si tu herramienta no es WooCommerce: busca la tuya (Gmail, Typeform, Airtable, lo que uses para recibir pedidos). El proceso es idéntico.
+
+**Por qué:** 
+El activador es el evento que hace saltar la automatización. En tu caso: cada vez que alguien realiza un pedido, Zapier detecta ese pedido y ejecuta la siguiente acción (crear la factura).
+
+**Qué verás:** 
+Te aparecerá un segundo desplegable pidiendo que autorices WooCommerce. Haz clic, escribe tus credenciales de WooCommerce (usuario y contraseña, o token si lo tienes), y confirma.
+
+---
+
+### Paso 3: Mapea los datos del pedido con los campos de la factura
+
+**Qué hacer:** 
+Aquí es donde "conectas los puntos". Zapier te muestra los campos que puede extraer del pedido (nombre del cliente, email, monto, productos, etc.) y los campos que necesita rellenar en Holded (cliente, concepto, precio, cantidad).
+
+Para cada campo obligatorio en Holded, selecciona el campo equivalente de WooCommerce:
+
+- **Customer name** (nombre cliente en Holded) ← **Billing First Name + Billing Last Name** (del pedido)
+- **Customer email** ← **Billing Email** 
+- **Items / Description** (concepto) ← **Order Line Items** (nombres de los productos del pedido)
+- **Amount / Price** ← **Order Total** o **Item Price** según cómo factures
+
+Si un campo no existe en WooCommerce (ej: tu número de cliente interno), puedes escribir un valor fijo o dejarlo vacío si no es obligatorio.
+
+**Por qué:** 
+Si no mapeas esto correctamente, Holded recibirá datos vacíos o incorrectos y la factura quedará incompleta.
+
+**Qué verás:** 
+Cada campo de Holded tendrá un icono de "insertar campo" — son cuadrados con símbolos de datos. Haz clic en ellos y selecciona el campo equivalente del pedido. Los campos rellenados aparecerán con un fondo gris claro.
+
+<Callout type="warning">
+**Ojo:** Si en WooCommerce tienes impuestos (IVA), asegúrate de que Holded recibe el desglose correcto. Si dejas los impuestos en WooCommerce sin pasar a Holded, la factura saldrá con un total distinto al del pedido. Mapea "Order Tax" explícitamente si la tienes.
+</Callout>
+
+---
+
+### Paso 4: Configura quién es el cliente en Holded
+
+**Qué hacer:** 
+En Zapier, hay un campo que dice "Match existing customer" o "Create new customer". Selecciona **"Match existing customer"** si los clientes ya están dados de alta en Holded. Si quieres que Zapier cree automáticamente un cliente nuevo cuando recibe un pedido de alguien que no existe en Holded, selecciona **"Create new customer"**.
+
+Si eliges "Match existing": Zapier buscará en tu base de clientes de Holded por email o por número de cliente.
+
+**Por qué:** 
+Evitas duplicar clientes en Holded. Si ya tienes a "Juan García" registrado y un pedido llega de juan@empresa.es, Holded lo asociará al Juan García existente en lugar de crear un duplicado.
+
+**Qué verás:** 
+Un campo con opciones de búsqueda. Si eliges "Match", te preguntará "by email" o "by customer ID". Elige por email — es lo más seguro.
+
+---
+
+### Paso 5: Prueba la automatización
+
+**Qué hacer:** 
+En la parte superior derecha de Zapier, hay un botón "Test" o "Send test". Haz clic. Zapier buscará un pedido reciente de tu WooCommerce y simulará el envío a Holded.
+
+**Por qué:** 
+No queremos meter la gata al agua sin verla. Es mejor probar con datos reales antes de activar la automatización para todos los pedidos.
+
+**Qué verás:** 
+Si todo va bien, verás un mensaje verde: "Success". Abre Holded en otra pestaña y navega a "Facturas" — debería estar allí la factura que acaba de crear Zapier. Si no aparece, revisar los campos mapeados (Paso 3).
+
+Si aparece un error rojo: anota el mensaje exacto. Casi siempre significa que falta un campo obligatorio o está mapeado incorrectamente.
+
+---
+
+### Paso 6: Activa la Zap
+
+**Qué hacer:** 
+Una vez el test ha ido bien, haz clic en el botón azul grande "Turn on Zap" o "Publish". Zapier te pedirá confirmación. Acepta.
+
+**Por qué:** 
+Hasta este momento, la automatización es un borrador. Al activarla, Zapier empezará a monitorizar nuevos pedidos en WooCommerce y creará facturas automáticamente en Holded.
+
+**Qué verás:** 
+El botón cambia de color (normalmente a naranja o verde, según el tema de Zapier) y aparece un aviso: "Zap is on". A partir de ahora, cada nuevo pedido en WooCommerce dispara esta automatización.
+
+---
+
+### Paso 7: (Opcional) Configura un recordatorio de pago
+
+**Qué hacer:** 
+Si quieres que Zapier te envíe un email recordando facturas sin pagar pasados X días, crea una segunda Zap. Vuelve al inicio de Zapier, haz clic en "Create", busca Holded de nuevo. Esta vez, en lugar de "Create Invoice", elige "Find Invoices" (buscar facturas) y filtra por "Status = unpaid" (no pagadas) y "Due date is past" (vencidas hace más de X días).
+
+La acción siguiente puede ser "Send email" (enviar email a ti) o conectar con otra herramienta como Slack.
+
+**Por qué:** 
+Automatizan el seguimiento de facturas pendientes. Sin esto, es fácil perder la pista de quién debe dinero.
+
+**Qué verás:** 
+Un flujo similar al anterior, pero esta vez Zapier busca facturas según criterios, no crea nuevas.
+
+## Errores comunes
+
+**"Error: Customer not found"**
+*Síntoma:* La Zap falla cuando intenta crear la factura. En Zapier aparece un mensaje rojo diciendo que no encuentra el cliente.
+
+*Causa:* Elegiste "Match existing customer" en el Paso 4, pero el cliente del pedido (por su email) no existe aún en Holded.
+
+*Solución:* En Holded, ve a "Contactos" y añade manualmente el cliente primero. O cambia la Zap a "Create new customer" para que Zapier lo cree automáticamente.
+
+---
+
+**"Factura creada pero sin productos"**
+*Síntoma:* La factura aparece en Holded, pero el campo de concepto o descripción está vacío, o los productos no aparecen.
+
+*Causa:* El mapeo del Paso 3 no incluye los productos, o WooCommerce devuelve los datos en un formato que Zapier no reconoce.
+
+*Solución:* Abre la Zap, ve al mapeo (Paso 3), y verifica que "Items / Description" está conectado a "Order Line Items". Si aún no funciona, prueba mapear manualmente el nombre del producto escribiendo texto fijo (ej: "Consultoría") mientras depuras el problema.
+
+---
+
+**"Zapier dice 'Debes activar el plan de pago'"**
+*Síntoma:* Cuando intentas activar la Zap, aparece un aviso diciendo que necesitas un plan de pago.
+
+*Causa:* Zapier tiene un límite de tareas/mes en el plan gratuito. Si creas varias Zaps o si tienes muchos pedidos/mes, alcanzarás el límite.
+
+*Solución:* Calcula cuántos pedidos haces al mes. Si son menos de 100, el plan gratuito te sobra. Si son más, contrata el plan "Starter" de Zapier (aproximadamente 30 €/mes). Si es puntual, solo para esta prueba, puedes eliminar Zaps que no uses.
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Facturas automáticas:** Cada vez que alguien compra en WooCommerce, una factura se crea automáticamente en Holded con los datos del cliente y los productos.
+- **Cero trabajo manual:** Ya no necesitas pasar pedidos a facturas a mano. Zapier lo hace mientras duermes.
+- **Datos sincronizados:** El cliente, el concepto, el importe y la fecha están correctos en Holded desde el primer momento.
+
+**Siguiente paso:** Si quieres ir más allá, configura una segunda Zap para que Holded envíe automáticamente la factura por email al cliente tan pronto como se crea. O configura el recordatorio de pagos pendientes (Paso 7).
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Holded, aquí tienes el acceso directo:
+
+<AffiliateLink programSlug="holded" articleSlug="automatizar-facturacion-pymes" label="Probar Holded gratis 15 días" />
+
+Y si necesitas conectar más herramientas a tu flujo de facturación (por ejemplo, un formulario de presupuestos que dispare automáticamente una factura), Zapier es la solución que lo hace posible:
+
+<AffiliateLink programSlug="zapier" articleSlug="automatizar-facturacion-pymes" label="Ver planes de Zapier" />
+
+---
+
+## 📖 También te puede interesar
+
+- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
+- [Cómo automatizar la atención al cliente en pymes: guía práctica con Zapier y Make](https://pymestools.com/automatizacion/automatizar-atencion-cliente-pymes)
+- [Cómo automatizar tu pyme sin programar: guía completa](https://pymestools.com/automatizacion/como-automatizar-tu-pyme)
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*
