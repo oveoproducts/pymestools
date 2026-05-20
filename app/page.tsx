@@ -42,6 +42,12 @@ const CATEGORIES = [
     icon: '👥',
   },
   {
+    slug: 'gestion-proyectos',
+    label: 'Gestión Proyectos',
+    description: 'Organiza equipos y proyectos sin depender de hojas de cálculo',
+    icon: '📋',
+  },
+  {
     slug: 'comparativas',
     label: 'Comparativas',
     description: 'Elige entre las opciones más populares del mercado',

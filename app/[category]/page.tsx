@@ -11,6 +11,7 @@ const VALID_CATEGORIES = [
   'comparativas',
   'facturacion',
   'recursos-humanos',
+  'gestion-proyectos',
 ] as const
 
 type ValidCategory = (typeof VALID_CATEGORIES)[number]
@@ -22,6 +23,7 @@ const CATEGORY_LABELS: Record<ValidCategory, string> = {
   comparativas: 'Comparativas',
   facturacion: 'Facturación',
   'recursos-humanos': 'Recursos Humanos',
+  'gestion-proyectos': 'Gestión de Proyectos',
 }
 
 const CATEGORY_DESCRIPTIONS: Record<ValidCategory, string> = {
@@ -36,6 +38,8 @@ const CATEGORY_DESCRIPTIONS: Record<ValidCategory, string> = {
     'Reviews y comparativas del mejor software de facturación para pymes españolas.',
   'recursos-humanos':
     'Herramientas de gestión de recursos humanos y RRHH para pymes en España.',
+  'gestion-proyectos':
+    'Reviews y comparativas de herramientas de gestión de proyectos para pymes españolas.',
 }
 
 interface PageProps {

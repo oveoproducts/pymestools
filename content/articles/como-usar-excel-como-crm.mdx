@@ -1,0 +1,225 @@
+---
+title: "Cómo usar Excel como CRM para pymes y cuándo dejar de hacerlo"
+slug: "como-usar-excel-como-crm"
+category: "crm"
+description: "Guía práctica para gestionar contactos y ventas con Excel sin perder datos. Incluye plantillas, errores a evitar y cuándo cambiar a un CRM real."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-05-17T20:48:08.333Z"
+tools: ["hubspot", "pipedrive"]
+keywords:
+  primary: "cómo usar excel como crm para pymes"
+  secondary:
+    - "gestionar contactos en excel"
+    - "crm excel gratis"
+    - "plantilla crm excel"
+    - "alternativas a excel para gestionar ventas"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "8 min"
+qualityScore: null
+---
+
+Muchas pymes españolas usan Excel para llevar sus contactos y oportunidades de venta. No es lo ideal, pero funciona si lo haces bien. En esta guía te mostramos cómo hacerlo sin perder datos, cuáles son los riesgos reales, y cuándo necesitas cambiar a una herramienta de verdad.
+
+## Lo que necesitas
+
+- **Excel o equivalente:** Microsoft Excel, Google Sheets o Calc de LibreOffice. Todos sirven.
+- **Una estructura clara antes de empezar:** Si improvisas según avanzas, perderás datos. Necesitas saber qué columnas vas a usar desde el principio.
+- **Disciplina de actualización:** Excel no te avisa automáticamente de nada. Tú tienes que recordar revisar la hoja.
+- **Acceso a internet si usas Google Sheets:** Si trabajas offline frecuentemente, Excel de escritorio es más fiable que Sheets.
+- **Nivel técnico necesario:** No necesitas saber fórmulas complejas. Con copiar, pegar y ordenar, es suficiente. Las fórmulas básicas (BUSCARV, CONTAR.SI) son opcionales pero útiles.
+
+---
+
+## Paso 1: Diseña la estructura de columnas
+
+**Qué hacer:** Abre una hoja nueva en Excel o Sheets. Crea una fila de encabezados con las columnas que necesitas. Los encabezados son los títulos de las columnas — cada uno representa un dato diferente sobre tus contactos.
+
+Las columnas mínimas que cualquier pyme necesita son:
+
+- **Nombre/Empresa:** El nombre de la empresa o persona de contacto.
+- **Sector/Tipo:** Qué hace la empresa o a qué se dedica (ej: "Distribución alimentaria", "Abogada autónoma").
+- **Email:** Dirección de correo principal.
+- **Teléfono:** Teléfono de contacto directo.
+- **Contacto:** Nombre de la persona con la que hablas (si es una empresa).
+- **Última interacción:** Fecha del último email, llamada o reunión.
+- **Estado:** En qué fase está el cliente (prospecto, en negociación, cliente, perdido).
+- **Valor estimado:** Importe que esperas facturar si cierra la venta.
+- **Fecha de seguimiento:** Cuándo tienes que contactar de nuevo con este cliente.
+- **Notas:** Información adicional que no cabe en otras columnas.
+
+**Por qué:** Si defines la estructura desde el principio, será consistente. Si la cambias a mitad de camino, tendrás problemas al buscar datos o hacer cálculos.
+
+**Qué verás:** Una fila con 10 celdas rellenas, cada una con el nombre de una columna. Debajo, filas vacías esperando a que rellenes los datos de tus contactos.
+
+{/* TODO: captura de estructura Excel básica */}
+
+---
+
+## Paso 2: Importa o copia tus contactos actuales
+
+**Qué hacer:** Copia todos tus contactos actuales a esta hoja. Si los tienes en Outlook, Sage, o incluso en otra hoja de Excel desordenada, cópialos aquí.
+
+Si tienes muchos contactos (más de 100), no los copies a mano. Usa copiar y pegar en bloque: selecciona todas las filas en el archivo anterior, cópia con Ctrl+C, haz clic en la primera celda disponible en tu nueva hoja, y pega con Ctrl+V.
+
+Si los datos llegan desordenados o mal alineados después de pegar, usa la opción "Pegado especial" (Ctrl+Shift+V) y elige "Solo valores" — esto elimina formatos que pueden complicar las cosas.
+
+**Por qué:** Tener tus contactos en un único sitio es el punto de partida. Si están esparcidos en 5 hojas diferentes, no tienes realmente un CRM.
+
+**Qué verás:** Tus contactos empiezan a aparecer en las filas, rellenando las columnas que creaste en el paso anterior. Si hay huecos (contactos sin email, por ejemplo), déjalos vacíos — los completarás después.
+
+---
+
+## Paso 3: Ordena y filtra para encontrar contactos rápido
+
+**Qué hacer:** Excel y Sheets tienen una función llamada "Autofilter" que te permite filtrar datos sin borrar nada.
+
+Selecciona la fila de encabezados (la primera fila con los títulos de las columnas). En Excel, ve a la pestaña "Datos" y haz clic en "Autofilter". En Google Sheets, haz clic en "Datos" > "Crear un filtro".
+
+Aparecerán pequeñas flechas en cada encabezado. Haz clic en una flecha para ordenar alfabéticamente, por fecha, o para mostrar solo los contactos que coincidan con ciertos criterios.
+
+**Por qué:** Sin filtros, una hoja con 500 contactos es imposible de navegar. Los filtros te dejan ver solo lo que necesitas en cada momento.
+
+**Qué verás:** Pequeñas flechas desplegables en cada encabezado. Si haces clic en "Estado" y seleccionas solo "prospecto", verás solo los prospectos. Si haces clic en "Última interacción" y ordenas de más reciente a más antigua, ves con quiénes has hablado últimamente.
+
+{/* TODO: captura de autofilter activado */}
+
+---
+
+## Paso 4: Crea una columna de "Días desde última interacción"
+
+**Qué hacer:** Esto requiere una fórmula, pero es simple. En una columna nueva (pongamos que es la columna L), escribe este encabezado: "Días desde última interacción".
+
+En la primera celda de datos (L2), escribe esta fórmula:
+
+```
+=HOY()-J2
+```
+
+(Sustituye J2 por la columna donde tengas la "Última interacción".)
+
+Copia esta fórmula hacia abajo para todas las filas de contactos. Ahora Excel calcula automáticamente cuántos días hace que no hablas con cada cliente.
+
+Si no sabes copiar fórmulas: haz clic en la celda con la fórmula, cópiala (Ctrl+C), luego selecciona todas las celdas de abajo (desde L3 hasta el último contacto) y pega (Ctrl+V).
+
+**Por qué:** Esta columna te muestra de un vistazo quién se ha quedado sin contacto hace demasiado tiempo. Ordena por ella y verás inmediatamente con quién necesitas contactar hoy.
+
+**Qué verás:** Una columna con números. Si dice "45", significa que hace 45 días que no hablas con ese cliente. Si dice "2", hace 2 días.
+
+---
+
+## Paso 5: Congela la fila de encabezados
+
+**Qué hacer:** Cuando tienes una hoja grande, los encabezados desaparecen cuando bajas. Para evitar esto, selecciona la primera fila y congélala.
+
+En Excel: ve a "Vista" > "Congelar paneles" > "Congelar la primera fila".
+
+En Google Sheets: ve a "Vista" > "Congelar" > "1 fila".
+
+**Por qué:** Si congelas los encabezados, siempre verás qué columna estás mirando, aunque bajes 200 filas. Sin esto, perderás la orientación.
+
+**Qué verás:** Aparece una línea gruesa debajo de la fila de encabezados. Cuando bajes, los encabezados se quedan fijos en la parte superior.
+
+---
+
+## Paso 6: Haz copias de seguridad cada semana
+
+**Qué hacer:** Guarda tu hoja de Excel o Sheets cada vez que haya cambios importantes. Si usas Excel de escritorio, guarda el archivo (Ctrl+S). Si usas Google Sheets, está guardado automáticamente en la nube.
+
+Haz una copia de seguridad descargando la hoja cada viernes. En Google Sheets: haz clic en "Archivo" > "Descargar" > "Microsoft Excel (.xlsx)". Guarda el archivo en tu ordenador o en un pendrive. Así, si algo falla, tienes una copia de la semana anterior.
+
+**Por qué:** Los datos de los clientes son críticos. Si pierdes la hoja, pierdes leads, oportunidades y dinero. Una copia semanal toma 30 segundos y te ahorra dolores de cabeza.
+
+**Qué verás:** Un archivo Excel con el mismo nombre que tu hoja Sheets, descargado en tu carpeta de descargas.
+
+---
+
+## ❌ Errores comunes — y cómo evitarlos
+
+**Usar filas en lugar de columnas para nuevas categorías**
+*Síntoma:* Tu hoja tiene 50 columnas, cada una para un dato diferente. Es imposible de navegar.
+*Causa:* Has ido añadiendo columnas sin pensar en la estructura. Esto ocurre cuando improvisas sin un plan.
+*Solución:* Diseña desde el principio solo las columnas que realmente necesitas. Si necesitas información adicional, úsala en la columna "Notas", no crees una columna nueva. Menos columnas = menos confusión.
+
+---
+
+**Editar la misma hoja varias personas sin control**
+*Síntoma:* Tu equipo edita la hoja, pero cada uno por su lado. Los datos se duplican, se contradicen o desaparecen.
+*Causa:* Excel no está pensado para trabajo colaborativo en tiempo real sin conflictos. Google Sheets es mejor, pero incluso ahí necesitas reglas.
+*Solución:* Si eres la única persona que toca la hoja, no hay problema. Si trabaja tu equipo: usa Google Sheets (más seguro que Excel para colaboración), y establece una regla: solo una persona puede editar a la vez, o asigna a cada persona una sección diferente de la hoja.
+
+---
+
+**No actualizar "Última interacción" y dejar la hoja obsoleta**
+*Síntoma:* Llevas 6 meses sin tocar la hoja. Los datos son inútiles porque no sabes si seguir a un cliente o no.
+*Causa:* Excel no te avisa de nada. Si no tienes disciplina, la hoja muere de abandono.
+*Solución:* Dedica 15 minutos cada mañana a revisar tu hoja. Actualiza la columna "Última interacción" después de cada llamada, email o reunión. Si no lo haces, la hoja pierde valor rápido.
+
+---
+
+## ⚠️ Cuándo dejar de usar Excel y cambiar a un CRM real
+
+Excel es gratis, pero tiene costes ocultos. A partir de cierto punto, Excel te cuesta más tiempo que lo que te ahorra.
+
+**Cambia a un CRM si:**
+
+- **Tienes más de 300 contactos:** Excel sigue funcionando, pero la velocidad baja. Las búsquedas y filtros se ralentizan. Un CRM como Pipedrive maneja 1.000 contactos sin pestañear.
+
+- **Tu equipo crece a 3 o más personas:** Con 2 personas aún puedes compartir responsabilidades. Con 3+, es caos. Los datos se solapan, se pierden, y no hay forma de saber quién actualizó qué última vez.
+
+- **Necesitas automatizaciones:** ¿Quieres que se envíe automáticamente un email de seguimiento 7 días después del último contacto? ¿Que te recuerde llamar a clientes con 60 días sin interacción? Excel no puede hacer esto. Un CRM sí.
+
+- **Necesitas reportes y métricas:** "¿Cuánto valor tengo en oportunidades abiertas?" o "¿Cuál es mi tasa de cierre este mes?" son preguntas que tardas 20 minutos en responder con Excel. En un CRM, son un click.
+
+- **Necesitas integración con tu facturación:** Si usas Sage, Anfix o Holded, quieres que tus clientes de Excel sincronicen automáticamente. Excel no se conecta con nada. Un CRM sí.
+
+- **Pierdes datos regularmente:** Si has perdido leads porque se olvidó alguien de actualizar la hoja, o porque se corrompió el archivo, es hora de cambiar.
+
+Si ninguno de estos puntos te toca, Excel sigue siendo válido. Pero si reconoces 2 o más, necesitas un CRM.
+
+---
+
+## Las mejores alternativas a Excel — sin perder tu presupuesto
+
+Si decides cambiar, estas herramientas son accesibles para pymes españolas:
+
+**Pipedrive — el favorito de las pymes de ventas**
+
+Pipedrive es un CRM que está diseñado específicamente para equipos de ventas pequeños. Es visual (ves tus oportunidades en columnas tipo Kanban), fácil de usar, y cuesta 39 € al mes para el plan Professional.
+
+<AffiliateLink programSlug="pipedrive" articleSlug="como-usar-excel-como-crm" label="Probar Pipedrive gratis" />
+
+---
+
+**HubSpot — mejor opción si crecerás mucho**
+
+HubSpot tiene un plan gratuito que es sorprendentemente completo: hasta 1.000 contactos, emails, tareas, y reportes básicos. Si creces, los planes de pago empiezan en 50 € al mes. Es más robusto que Pipedrive si necesitarás email marketing y automatizaciones en el futuro.
+
+<AffiliateLink programSlug="hubspot" articleSlug="como-usar-excel-como-crm" label="Probar HubSpot gratis" />
+
+---
+
+## Resultado final
+
+Si has seguido esta guía, ahora tienes:
+
+- Una hoja de contactos estructurada, no caótica.
+- Filtros que te dejan buscar contactos por estado, sector, o últimas interacciones en segundos.
+- Una columna que te muestra automáticamente quién necesita seguimiento.
+- Un sistema de copias de seguridad que protege tus datos.
+- Claridad sobre cuándo cambiar a un CRM real.
+
+Excel no es un CRM, pero puede funcionar como uno mientras tu pyme es pequeña. La clave es disciplina: actualiza la hoja cada día, haz copias de seguridad cada semana, y cuando veas que te frena (no si, cuándo), cambia a una herramienta hecha para esto.
+
+---
+
+## 📖 También te puede interesar
+
+- [5 alternativas a HubSpot CRM para pymes en España](https://pymestools.com/crm/alternativas-hubspot-crm)
+- [5 alternativas a Pipedrive para pymes en España](https://pymestools.com/crm/alternativas-pipedrive)
+- [7 alternativas a Salesforce para pymes en España 2026](https://pymestools.com/crm/alternativas-salesforce)
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*
