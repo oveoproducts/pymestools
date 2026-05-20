@@ -6,13 +6,17 @@
  * Usage: npx tsx --env-file=.env.local scripts/generate-articles-batch4.ts
  */
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import matter from 'gray-matter'
 import Anthropic from '@anthropic-ai/sdk'
 import { supabase } from '../lib/db/client'
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const PROJECT_ROOT = path.join(__dirname, '..')
+
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-const ARTICLES_DIR = path.join(process.cwd(), 'content', 'articles')
+const ARTICLES_DIR = path.join(PROJECT_ROOT, 'content', 'articles')
 
 const VALID_CATEGORIES = new Set([
   'email_marketing', 'crm', 'automatizacion', 'comparativas',
@@ -64,7 +68,7 @@ function validateArticles() {
 }
 
 async function loadSystemPrompt(): Promise<string> {
-  return fs.readFile(path.join(process.cwd(), 'lib', 'prompts', 'content-system.md'), 'utf-8')
+  return fs.readFile(path.join(PROJECT_ROOT, 'lib', 'prompts', 'content-system.md'), 'utf-8')
 }
 
 async function loadTemplate(type: string): Promise<string> {
@@ -73,7 +77,7 @@ async function loadTemplate(type: string): Promise<string> {
     'how-to': 'how-to.md', alternatives: 'alternatives.md',
   }
   try {
-    return await fs.readFile(path.join(process.cwd(), 'lib', 'prompts', 'templates', map[type] ?? 'review.md'), 'utf-8')
+    return await fs.readFile(path.join(PROJECT_ROOT, 'lib', 'prompts', 'templates', map[type] ?? 'review.md'), 'utf-8')
   } catch { return '' }
 }
 

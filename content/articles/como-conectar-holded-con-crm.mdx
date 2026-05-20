@@ -1,0 +1,197 @@
+---
+title: "Cómo conectar Holded con HubSpot y Pipedrive: guía paso a paso"
+slug: "como-conectar-holded-con-crm"
+category: "automatizacion"
+description: "Conecta Holded con tu CRM (HubSpot o Pipedrive) sin código. Sincroniza clientes, facturas y presupuestos automáticamente. Guía completa para pymes españolas."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-05-20T18:27:29.462Z"
+tools: ["holded", "zapier"]
+keywords:
+  primary: "cómo conectar holded con hubspot pipedrive pymes"
+  secondary:
+    - "integración holded crm automática"
+    - "sincronizar holded con pipedrive"
+    - "conectar holded hubspot zapier"
+    - "automatización facturación crm holded"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "8 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Holded conectado con tu CRM y los datos de clientes, facturas y presupuestos sincronizados automáticamente. Sin código, sin exportar Excel cada semana. El proceso completo lleva menos de 30 minutos.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Holded:** Plan Professional o superior (incluye API). El plan gratuito no tiene acceso a integraciones.
+- **Cuenta en HubSpot o Pipedrive:** Acceso como administrador para conectar aplicaciones.
+- **Cuenta en Zapier:** Plan Starter mínimo (es gratuito con limitaciones, pero para esta integración necesitas el plan de pago de 19 €/mes si usas más de 100 tareas/mes).
+- **Datos de acceso a ambas plataformas:** Ten a mano usuario y contraseña, o tokens de API si prefieres autenticación avanzada.
+- **Nivel técnico necesario:** Cero código. Solo tienes que hacer clic en botones y seleccionar campos — como un formulario.
+
+<Callout type="warning">
+**Importante:** Si usas el plan Free o Starter de Holded, no tienes acceso a la API. La integración solo funciona desde Professional en adelante.
+</Callout>
+
+---
+
+## Pasos
+
+### Paso 1: Prepara tus credenciales en Holded
+
+**Qué hacer:** Entra en Holded con tu usuario y contraseña. Ve a `Configuración` (engranaje abajo a la izquierda) → `Integraciones` → `API y webhooks`. Aquí verás tu `API Key` (clave de acceso). Cópiala completa — la vas a necesitar en 5 minutos.
+
+**Por qué:** Zapier necesita permiso para acceder a tus datos de Holded. La API Key es la llave que le das.
+
+**Qué verás:** Una larga cadena de números y letras. Es normal que parezca aleatoria — es tu clave de seguridad. No la compartas en redes sociales ni chats públicos.
+
+---
+
+### Paso 2: Crea una conexión nueva en Zapier
+
+**Qué hacer:** Ve a zapier.com, inicia sesión (crea cuenta si no la tienes). En el panel principal, haz clic en `Create` (Crear) → `Zap` (nueva automatización). Se abrirá un editor en blanco. En el primer paso, donde dice `Choose app`, busca y selecciona `Holded`.
+
+**Por qué:** Zapier es el "traductor" entre Holded y tu CRM. Zapier entiende ambos idiomas.
+
+**Qué verás:** Una pantalla que te pide autenticar. Pega la API Key que copiaste en el paso anterior. Haz clic en `Test connection` — si sale "✓ Connected", vas bien.
+
+---
+
+### Paso 3: Elige el disparador (qué evento de Holded activa la automatización)
+
+**Qué hacer:** Después de conectar Holded, Zapier te pregunta qué quieres que suceda. Tienes varias opciones:
+
+- **"New customer"** → Se dispara cada vez que creas un cliente nuevo en Holded.
+- **"New invoice"** → Se dispara cuando emites una factura.
+- **"New quote"** → Se dispara cuando creas un presupuesto.
+
+Elige la que tenga sentido para tu negocio. Para empezar, selecciona `"New customer"`.
+
+**Por qué:** El disparador es lo que decide cuándo la automatización se ejecuta. Si esperas a que se cree un cliente, el flujo se activa solo en ese momento.
+
+**Qué verás:** Zapier te muestra un formulario donde puedes elegir si quieres filtros adicionales (ej: solo clientes de una zona geográfica). Por ahora, déjalo sin filtros.
+
+---
+
+### Paso 4: Conecta tu CRM (HubSpot o Pipedrive)
+
+**Qué hacer:** Ahora haz clic en `Add action` (Añadir acción). Zapier te pregunta: "¿Qué quieres que ocurra?". Busca tu CRM:
+- Si usas **HubSpot**, busca `HubSpot` → selecciona `"Create contact"` (crear contacto).
+- Si usas **Pipedrive**, busca `Pipedrive` → selecciona `"Create person"` (crear persona).
+
+A continuación, Zapier te pedirá que inicies sesión en tu CRM. Usa tus credenciales de administrador.
+
+**Por qué:** Aquí le dices a Zapier qué debe hacer cuando detecte un cliente nuevo en Holded. En este caso, crear automáticamente ese cliente en tu CRM.
+
+**Qué verás:** Después de autenticar, Zapier te muestra un formulario con campos vacíos (nombre, email, teléfono, etc.).
+
+---
+
+### Paso 5: Mapea los campos (conecta datos entre plataformas)
+
+**Qué hacer:** En el formulario que ves, tienes campos como `Email`, `Phone`, `Company`. A la derecha de cada campo hay un botón gris con un símbolo `+`. Haz clic ahí.
+
+Zapier te mostrará una lista desplegable con todos los datos que puede traer de Holded (nombre del cliente, email, teléfono, dirección, etc.). Selecciona el que corresponda:
+
+- Campo `Email` en Pipedrive/HubSpot → `Email` de Holded.
+- Campo `Phone` → `Phone` de Holded.
+- Campo `Company` → `Company name` de Holded.
+
+Rellena solo los campos que sean relevantes. No necesitas rellenar todos.
+
+**Por qué:** Estás diciendo a Zapier: "Cuando se cree un cliente en Holded con email X, crea en Pipedrive/HubSpot un contacto con ese mismo email".
+
+**Qué verás:** Los campos pasan de estar vacíos a mostrar `Email (Holded)`, `Phone (Holded)`, etc. Eso significa que está mapeado correctamente.
+
+---
+
+### Paso 6: Prueba la automatización antes de activarla
+
+**Qué hacer:** Antes de darle a `Save`, Zapier tiene un botón `Test this step` (Probar este paso). Haz clic. Zapier buscará un cliente real en Holded (el más reciente) e intentará crear un contacto de prueba en tu CRM.
+
+**Por qué:** Es como hacer una prueba de fuego. Si algo está mal, aquí lo descubriremos sin activar la automatización oficial.
+
+**Qué verás:** Si todo va bien, sale `✓ Test successful`. Si hay error, te mostrará el mensaje exacto del fallo (ej: "Email field required" — falta el email). En ese caso, vuelve al paso anterior y mapea correctamente.
+
+---
+
+### Paso 7: Activa el Zap y monitoriza
+
+**Qué hacer:** Una vez probado, haz clic en `Turn on Zap` (Activar automatización). A partir de este momento, cada cliente nuevo en Holded se creará automáticamente en tu CRM.
+
+Ve a la sección `History` en Zapier para ver las ejecuciones en tiempo real. Cada vez que se cree un cliente en Holded, verás una línea nueva en el historial diciendo si se sincronizó correctamente o si hubo error.
+
+**Por qué:** La supervisión evita que fallos silenciosos pasen desapercibidos. Si falla una sincronización, quieres saberlo.
+
+**Qué verás:** Un log detallado con timestamps. Ej: "5/20/2026 14:32 — Client 'Acme Corp' synced to Pipedrive ✓".
+
+---
+
+## Errores comunes
+
+**El Zap está activo pero no sincroniza nada**
+
+*Síntoma:* Has creado clientes nuevos en Holded, pero no aparecen en el CRM.
+
+*Causa:* La API Key de Holded ha expirado o no tiene permisos suficientes.
+
+*Solución:* Ve a Holded → `Configuración` → `Integraciones` → `API y webhooks`. Genera una nueva clave y actualízala en Zapier: haz clic en tu usuario (arriba a la derecha) → `Connected apps` → Holded → `Reconnect`. Pega la nueva clave.
+
+---
+
+**Zapier dice "Email field required" pero he mapeado el email**
+
+*Síntoma:* El test falla con error de email ausente.
+
+*Causa:* El cliente en Holded que usaste para la prueba no tiene email, o el campo está vacío.
+
+*Solución:* Vuelve al paso 6 y prueba de nuevo, pero esta vez elige un cliente que tenga email completo. Alternativamente, en el paso 5, marca algunos campos como `Requeridos` para asegurar que Zapier solo sincroniza contactos con esos datos.
+
+---
+
+**Duplicados: un cliente en Holded se sincroniza dos veces al CRM**
+
+*Síntoma:* El mismo cliente aparece dos veces en Pipedrive/HubSpot.
+
+*Causa:* Zapier se ejecutó dos veces (esto puede ocurrir si hubo una reconexión), o el disparador no está configurado correctamente.
+
+*Solución:* En el paso 3, añade un filtro al disparador. En HubSpot/Pipedrive, existe una opción para "evitar duplicados". Si usas el CRM, consulta su documentación. En Zapier, puedes añadir un filtro: "Solo crear contacto si el email no existe ya en Pipedrive/HubSpot". Esto requiere un paso extra — pídelo en el chat de Zapier si no lo encuentras.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Sincronización automática de clientes:** Cada cliente nuevo en Holded aparece automáticamente en HubSpot o Pipedrive sin que hagas nada manualmente.
+- **Datos actualizados en ambos sistemas:** El nombre, email, teléfono y otros datos están siempre sincronizados (en dirección Holded → CRM).
+- **Historial de ejecuciones en Zapier:** Puedes verificar en cualquier momento que la automatización está funcionando.
+
+El siguiente paso lógico es crear un segundo Zap para sincronizar también las **facturas** de Holded a tu CRM como `Deals` o `Transacciones`, para que el equipo de ventas tenga contexto completo de cada cliente.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Zapier, aquí tienes acceso directo:
+
+<AffiliateLink programSlug="zapier" articleSlug="como-conectar-holded-con-crm" label="Probar Zapier gratis" />
+
+Para que esta integración funcione sin problemas, asegúrate de tener Holded con plan Professional o superior:
+
+<AffiliateLink programSlug="holded" articleSlug="como-conectar-holded-con-crm" label="Contratar Holded Professional" />
+
+---
+
+## 📖 También te puede interesar
+
+- [Cómo automatizar la facturación en tu pyme con Holded y Zapier](https://pymestools.com/automatizacion/automatizar-facturacion-pymes)
+- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
+- [Cómo automatizar la atención al cliente en pymes: guía práctica con Zapier y Make](https://pymestools.com/automatizacion/automatizar-atencion-cliente-pymes)
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*

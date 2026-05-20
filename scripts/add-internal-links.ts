@@ -7,10 +7,12 @@
  * Usage: npx tsx --env-file=.env.local scripts/add-internal-links.ts
  */
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import matter from 'gray-matter'
 
-const ARTICLES_DIR = path.join(process.cwd(), 'content', 'articles')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const ARTICLES_DIR = path.join(__dirname, '..', 'content', 'articles')
 const SITE_URL = 'https://pymestools.com'
 
 interface ArticleMeta {
