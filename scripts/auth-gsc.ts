@@ -8,13 +8,13 @@
 import { config } from 'dotenv'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-config({ path: path.join(__dirname, '..', '.env.local') })
 import { createServer } from 'node:http'
 import { exec } from 'node:child_process'
 import fs from 'node:fs/promises'
-import path from 'node:path'
 import { google } from 'googleapis'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+config({ path: path.join(__dirname, '..', '.env.local') })
 
 const CLIENT_ID = process.env.GSC_CLIENT_ID ?? ''
 const CLIENT_SECRET = process.env.GSC_CLIENT_SECRET ?? ''
