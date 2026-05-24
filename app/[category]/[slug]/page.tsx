@@ -212,6 +212,43 @@ export default async function ArticlePage({ params }: PageProps) {
     image: `${brand.siteUrl}/api/og?title=${encodeURIComponent(article.title)}&type=${encodeURIComponent(article.type)}`,
   }
 
+  // Extract FAQ items from headings ending with "?"
+  function extractFAQs(content: string | null) {
+    if (!content) return []
+    const lines = content.split('\n')
+    const faqs: Array<{ question: string; answer: string }> = []
+    for (let i = 0; i < lines.length; i++) {
+      const match = lines[i].match(/^#{2,3}\s+(.+\?)/)
+      if (!match) continue
+      const question = match[1].replace(/[*_`]/g, '').trim()
+      const answerLines: string[] = []
+      let j = i + 1
+      while (j < lines.length && !lines[j].match(/^#{1,3}\s/)) {
+        const l = lines[j].trim()
+        if (l && !l.startsWith('|') && !l.startsWith('<') && !l.startsWith('{') && !l.startsWith('!')) {
+          answerLines.push(l.replace(/\*\*/g, '').replace(/\*/g, ''))
+        }
+        if (answerLines.length >= 2) break
+        j++
+      }
+      const answer = answerLines.join(' ').trim()
+      if (answer.length > 30) faqs.push({ question, answer })
+      if (faqs.length >= 5) break
+    }
+    return faqs
+  }
+
+  const faqs = extractFAQs(mdxContent)
+  const jsonLdFAQ = faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
+  } : null
+
   const jsonLdBreadcrumb = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -247,6 +284,12 @@ export default async function ArticlePage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }}
       />
+      {jsonLdFAQ && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFAQ) }}
+        />
+      )}
 
       <ScrollDepthTracker
         pageSlug={slug}
