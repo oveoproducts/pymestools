@@ -1,198 +1,230 @@
 ---
 title: "Cómo gestionar nóminas en una pyme española sin errores: guía con Factorial"
 slug: "como-gestionar-nominas-pymes"
+description: "Guía paso a paso para gestionar nóminas en una pyme española con Factorial: desde la configuración inicial hasta el cierre mensual, sin errores ni sustos con la Seguridad Social."
 category: "recursos_humanos"
-description: "Guía paso a paso para gestionar nóminas en tu pyme sin errores. Cumple con la normativa española, automatiza cálculos y evita sanciones de la Seguridad Social."
 type: "how-to"
 publishedAt: null
-updatedAt: "2026-05-17T20:22:55.353Z"
+updatedAt: "2026-05-24T16:24:20.843Z"
 tools: ["factorial"]
 keywords:
-  primary: "cómo gestionar nóminas en una pyme española sin errores"
+  primary: "cómo gestionar nóminas pymes españolas"
   secondary:
-    - "gestionar nóminas pyme españa"
-    - "software nóminas pyme"
-    - "cómo hacer nóminas correctamente españa"
-    - "automatizar nóminas pyme"
+    - "software nóminas pymes España"
+    - "factorial nóminas guía"
+    - "errores nóminas pymes"
+    - "gestión nóminas sin gestoría"
+    - "nóminas automatizadas España"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "8 min"
+readingTime: "9 min"
 qualityScore: null
 ---
 
-Al terminar esta guía, tendrás tus nóminas configuradas correctamente en Factorial, cumplirás con la normativa de la Seguridad Social española, y evitarás errores que pueden costarte multas. El proceso completo lleva menos de una hora la primera vez.
+Al terminar esta guía, tendrás Factorial configurado para procesar las nóminas de tu equipo cada mes sin depender de que tu gestoría te envíe un Excel a última hora. El proceso completo —desde configurar la empresa hasta validar la primera nómina— lleva entre 2 y 4 horas la primera vez. Las siguientes: menos de 30 minutos.
+
+Esto está disponible desde el plan Professional de Factorial. Si aún no tienes cuenta, puedes usar el periodo de prueba gratuito para seguir todos los pasos.
+
+---
 
 ## Lo que necesitas
 
-- **Cuenta en Factorial:** El plan Recursos Humanos (desde 35 €/mes) incluye gestión de nóminas. Puedes probar gratis durante 14 días sin tarjeta.
-- **Datos de tus empleados:** Nombres, DNI, fecha de contratación, categoría profesional y salario bruto.
-- **Número de afiliación a la Seguridad Social:** Lo encuentras en tus documentos de empresa o en la web de la Seguridad Social.
-- **Acceso como administrador de la empresa:** Necesitas permisos de configuración, no funciona desde cuenta de empleado.
-- **Nivel técnico necesario:** No necesitas conocimientos contables. Si sabes rellenar un PDF, es suficiente.
+- **Cuenta en Factorial:** Plan Professional como mínimo — la gestión de nóminas no está disponible en el plan Basic. Puedes usar el trial gratuito para configurarlo todo antes de pagar.
+- **Datos de la empresa:** CIF, número de cuenta bancaria de la empresa, código de cuenta de cotización (CCC) de la Seguridad Social, y convenio colectivo aplicable.
+- **Datos de cada trabajador:** DNI/NIE, número de afiliación a la Seguridad Social, categoría profesional según convenio, salario bruto anual y modelo de IRPF (o los datos para calcularlo).
+- **Historial del año en curso:** Si estás a mitad de año, necesitarás las nóminas ya pagadas para que Factorial calcule bien las retenciones de IRPF acumuladas.
+- **Nivel técnico necesario:** No necesitas saber contabilidad ni derecho laboral para configurar Factorial. Sí necesitas tener a mano los documentos anteriores — sin ellos, no hay software que haga magia.
+
+<Callout type="warning">
+**Si tienes gestoría ahora mismo:** Antes de migrar, pide a tu gestoría un fichero de traspaso con los datos de cotización acumulados del año. Factorial los puede importar. Si cambias de herramienta a mitad de año sin ese historial, las retenciones de IRPF pueden calcularse mal y tendrás que corregirlo en diciembre.
+</Callout>
+
+---
 
 ## Pasos
 
-### Paso 1: Configura los datos de tu empresa en Factorial
+### Paso 1: Configura los datos de tu empresa
 
-**Qué hacer:** Accede a Factorial con tu usuario. En el menú lateral, selecciona `"Configuración"` → `"Datos de la empresa"`. Rellena los campos obligatorios:
+**Qué hacer:** Entra en Factorial y ve a `"Configuración"` → `"Empresa"` → `"Datos laborales"`. Rellena el CIF, el nombre legal, el código de cuenta de cotización (CCC) y el convenio colectivo que aplica a tu empresa. Si tienes trabajadores en distintas provincias, puedes añadir varios centros de trabajo desde `"Centros de trabajo"` en el mismo menú.
 
-- Nombre legal de la empresa
-- CIF / NIF
-- Número de afiliación a la Seguridad Social
-- Código de cuenta cotización
-- Domicilio fiscal
-- Fecha de alta
+**Por qué:** Factorial usa estos datos para generar los ficheros de cotización a la Seguridad Social (Sistema RED) y para aplicar automáticamente las tablas salariales del convenio correcto. Si el convenio está mal, los cálculos de antigüedad y categorías profesionales serán incorrectos.
 
-Guarda los cambios con `"Guardar cambios"`.
-
-**Por qué:** Estos datos aparecerán en todas las nóminas y documentos oficiales que generes. Si son incorrectos, la Seguridad Social rechazará los envíos electrónicos.
-
-**Qué verás:** Una confirmación de `"Configuración guardada correctamente"` en verde en la parte superior de la pantalla.
+**Qué verás:** Una pantalla con el resumen de los datos de la empresa. Si el CCC tiene el formato correcto (11 dígitos), aparecerá validado con un icono verde. Si no, Factorial te avisará antes de continuar.
 
 ---
 
-### Paso 2: Crea los empleados y asigna sus datos de nómina
+### Paso 2: Da de alta a cada trabajador con su contrato
 
-**Qué hacer:** En el menú lateral, ve a `"RRHH"` → `"Empleados"` → `"Nuevo empleado"`. Rellena la ficha de cada trabajador:
+**Qué hacer:** Ve a `"Equipo"` → `"Añadir empleado"`. Para cada persona necesitas: nombre y apellidos, DNI/NIE, fecha de nacimiento, número de afiliación a la Seguridad Social, fecha de alta en la empresa, tipo de contrato (indefinido, temporal, parcial), jornada laboral y categoría profesional según convenio.
 
-- Datos personales: nombre completo, DNI, fecha de nacimiento
-- Datos laborales: categoría profesional, fecha de contratación, tipo de contrato
-- Datos de nómina: salario bruto mensual, cuenta bancaria (IBAN) para domiciliación
+Después de crear el perfil, ve a la pestaña `"Nómina"` dentro de ese empleado y configura: salario bruto anual, forma de pago (transferencia bancaria con el IBAN del empleado), y si tiene prorrateo de pagas extraordinarias o las cobra en junio y diciembre.
 
-Haz esto para cada empleado. Si tienes muchos, Factorial permite importar desde CSV — pregunta al soporte si necesitas ayuda con el formato.
+**Por qué:** Factorial genera el contrato y vincula automáticamente la categoría del convenio con las tablas salariales. Esto afecta directamente al cálculo del salario mínimo aplicable, complementos y horas extra.
 
-**Por qué:** Factorial calcula automáticamente retenciones de IRPF, cotización a la Seguridad Social, y descuentos según los datos que introduces aquí. Un error en el salario base o en el tipo de contrato afecta toda la nómina.
-
-**Qué verás:** Cada empleado aparecerá en la lista con su foto de perfil (si la añadiste) y un resumen de sus datos principales.
-
-<Callout type="warning">
-**Ojo con la categoría profesional:** En Factorial, la categoría debe coincidir exactamente con la de tu contrato de trabajo. Si en el contrato pone "Técnico de ventas" pero en Factorial pones "Comercial", puede haber discrepancias en cotizaciones. Comprueba tu contrato antes de crear el empleado.
-</Callout>
-
----
-
-### Paso 3: Configura la estructura salarial (retenciones y cotizaciones)
-
-**Qué hacer:** Ve a `"Configuración"` → `"Nóminas"` → `"Estructura salarial"`. Factorial te mostrará un resumen de cómo calcula:
-
-- Retención de IRPF (en porcentaje según datos fiscales del empleado)
-- Cotización a la Seguridad Social (empresa y empleado)
-- Descuentos por Seguro de Desempleo
-
-Revisa que los porcentajes coincidan con los de tu última nómina de un empleado existente. Si tienes empleados con condiciones especiales (ej: contrato en prácticas, media jornada), avisa a Factorial — ellos ajustarán los cálculos.
-
-**Por qué:** Estos porcentajes cambian cada año. Factorial los actualiza automáticamente en enero, pero es tu responsabilidad verificar que son correctos en tu empresa específica.
-
-**Qué verás:** Una tabla con las retenciones aplicadas a un ejemplo de nómina de 1.200 € bruto. Debería mostrar algo como: IRPF ~180 €, cotización SS empleado ~120 €, etc.
-
----
-
-### Paso 4: Genera la primera nómina (mes de prueba)
-
-**Qué hacer:** Ve a `"Nóminas"` → `"Generar nóminas"`. Selecciona:
-
-- Mes y año (ej: mayo 2026)
-- Empleados incluidos (por defecto todos)
-- Tipo de nómina: `"Ordinaria"` (si todos trabajan el mes completo)
-
-Haz clic en `"Generar nóminas"`. Factorial procesará los cálculos en segundos.
-
-**Por qué:** La primera nómina es siempre un test. Tienes que verificar que los números son correctos antes de enviarla a la Seguridad Social.
-
-**Qué verás:** Un resumen por empleado con: salario bruto, descuentos (IRPF y SS), neto a pagar. Debería ser similar a nóminas anteriores de esos empleados, si las tienes.
+**Qué verás:** La ficha del empleado con todas las pestañas: `"Datos personales"`, `"Contrato"`, `"Nómina"`, `"Documentos"` y `"Historial"`. La pestaña `"Nómina"` mostrará una previsión del bruto mensual basada en los datos introducidos.
 
 <Callout type="tip">
-Si esta es tu primera nómina en Factorial (viniendo de Excel u otro sistema), genera un borrador, descargalo en PDF, y compáralo línea por línea con la última nómina que hiciste manualmente. Así detectarás errores antes de enviar.
+**Si tienes el fichero de traspaso de tu gestoría:** En el menú `"Importar"` de la sección de empleados puedes cargar un CSV con todos los datos de golpe. Factorial tiene una plantilla descargable con las columnas que necesita. Esto te ahorra 40 minutos si tienes más de 4 personas en el equipo.
 </Callout>
 
 ---
 
-### Paso 5: Verifica los datos antes de finalizar
+### Paso 3: Configura el IRPF de cada empleado
 
-**Qué hacer:** Abre cada nómina generada (en la lista, haz clic en el nombre del empleado). Comprueba:
+**Qué hacer:** Dentro de la pestaña `"Nómina"` de cada empleado, busca el apartado `"Retención IRPF"`. Tienes dos opciones: dejarlo en `"Automático"` (Factorial calcula la retención según los datos personales del trabajador) o introducir un porcentaje fijo si el empleado te ha entregado un modelo 145 con circunstancias especiales.
 
-- Salario bruto correcto
-- Retenciones coherentes con el salario
-- Neto a pagar (bruto menos retenciones)
-- IBAN correcto para la domiciliación
-- Días trabajados (si es una nómina prorrateada o hay ausencias, verifica que Factorial lo ha calculado bien)
+Si el empleado ha entregado el modelo 145 —situación familiar, discapacidad, préstamo hipotecario anterior a 2013—, activa la opción `"Personalizado"` e introduce el porcentaje resultante.
 
-Si hay un error, edita los campos directamente. Factorial te permite corregir nóminas generadas.
+**Por qué:** El IRPF mal calculado es el error más habitual en nóminas de pymes. Si Factorial no tiene los datos correctos del modelo 145, puede que el trabajador pague de más o de menos a Hacienda durante el año, y eso acaba siendo un problema tuyo en caso de inspección.
 
-**Por qué:** Una vez que envíes la nómina a la Seguridad Social, cambiarla es más complicado. Estos 5 minutos de verificación evitan horas de trámites después.
-
-**Qué verás:** La ficha completa de la nómina, con opciones para editar, descargar en PDF, y enviar por email al empleado.
+**Qué verás:** Un porcentaje de retención estimado que Factorial calcula en tiempo real mientras introduces los datos. Si el porcentaje se mueve por debajo del 2% o por encima del 45%, la plataforma te muestra un aviso para que lo revises.
 
 ---
 
-### Paso 6: Domicilia las nóminas en las cuentas bancarias
+### Paso 4: Revisa las incidencias del mes antes de cerrar nóminas
 
-**Qué hacer:** Una vez verificadas todas las nóminas, selecciona todas (checkbox `"Seleccionar todo"`) y haz clic en `"Crear domiciliación"` o `"Preparar pago"` (el nombre varía según la versión).
+**Qué hacer:** Antes de procesar las nóminas cada mes, ve a `"Nóminas"` → `"Período actual"` → `"Incidencias"`. Aquí Factorial agrupa todo lo que puede afectar al cálculo de ese mes: ausencias aprobadas, bajas médicas notificadas, horas extra validadas, vacaciones disfrutadas y cambios de jornada.
 
-Factorial generará un fichero de domiciliación que necesitas descargar y enviar a tu banco para que procese los pagos.
+Revisa cada incidencia y confirma que está correctamente categorizada. Una baja IT (incapacidad temporal por enfermedad común) tiene un tratamiento diferente a una baja por accidente laboral — si están mal categorizadas, el importe que paga la empresa y el que adelanta la Seguridad Social se calcularán al revés.
 
-**Por qué:** La domiciliación es obligatoria en España para nóminas. No puedes pagar manualmente a cada empleado — tienen que ser transferencias de tu cuenta.
+**Por qué:** Factorial puede importar automáticamente las ausencias si tus empleados las registran en la aplicación. Pero la validación final siempre es tuya. Nadie mejor que tú sabe si esa `"ausencia justificada"` es en realidad una baja médica pendiente de partes.
 
-**Qué verás:** Un fichero descargado (generalmente en formato `.txt` o `.ods`). Tu banco te pedirá este archivo para procesar los pagos.
-
----
-
-### Paso 7: Envía las nóminas a la Seguridad Social (si aplica)
-
-**Qué hacer:** Antes de enviar, verifica que tu empresa tiene habilitada la presentación telemática a la Seguridad Social:
-
-- Entra en `"Configuración"` → `"Integraciones"` → `"Seguridad Social"`
-- Si ves `"Certificado digital"` o `"Credenciales"`, la integración está activa
-- Si no, Factorial mostrará un aviso: `"Necesitas autorizar el envío telemático"` — pulsa el botón `"Conectar"` y sigue el wizard
-
-Una vez conectado, selecciona todas las nóminas del mes y haz clic en `"Enviar a SS"`. Factorial enviará automáticamente.
-
-**Por qué:** La presentación a la SS debe hacerse antes del día 15 del mes siguiente. Si lo haces desde Factorial, te ahorras ir al Centro de Atención al Contribuyente o usar otros trámites.
-
-**Qué verás:** Un mensaje de confirmación: `"Nóminas enviadas correctamente a la Seguridad Social el [fecha y hora]"`. Recibirás un email de recepción de la SS en 24 horas.
-
-<Callout type="warning">
-**Ojo con la fecha de envío:** Si envías las nóminas a la SS después del día 15 del mes siguiente, la SS puede rechazarlas o cobrarte una sanción. En Factorial, establece un recordatorio automático para el día 12 de cada mes.
-</Callout>
+**Qué verás:** Una tabla con una fila por cada incidencia del mes: empleado, tipo, fechas y estado (`"Pendiente de validar"`, `"Validada"`, `"Rechazada"`). Puedes aprobar o rechazar directamente desde esta pantalla sin salir de ella.
 
 ---
 
-### Paso 8: Descarga los documentos para archivar
+### Paso 5: Genera y valida las nóminas del mes
 
-**Qué hacer:** Después de que todo esté correcto, descarga:
+**Qué hacer:** Con todas las incidencias validadas, ve a `"Nóminas"` → `"Generar nóminas"`. Factorial te pedirá confirmar el período (mes y año) y mostrará un resumen con el coste total de nóminas, la cotización a la Seguridad Social y las retenciones de IRPF del período.
 
-- Nóminas en PDF (opción `"Descargar PDF"` o `"Generar archivo PDF"` en la nómina individual)
-- Recibos de pago (resumen de lo que cobra cada empleado)
-- Justificantes de envío a SS (desde `"Historial de envíos"`)
+Antes de confirmar, descarga la nómina de uno o dos empleados en PDF desde `"Vista previa"` y comprueba que los importes cuadran con lo esperado. Si ves algo raro —un complemento que no debería estar, una retención que no encaja—, cancela la generación, corrige el dato en la ficha del empleado y repite.
 
-Guarda todo en una carpeta con el nombre del mes: `"Nóminas_mayo_2026"`. Archiva estos PDFs durante 4 años — es obligatorio por ley en caso de auditoría de Hacienda o una reclamación de un empleado.
+**Por qué:** Una vez que confirmas la generación, Factorial marca el período como cerrado. Puedes hacer correcciones posteriores, pero generan una nómina complementaria que complica el historial. Es mucho más limpio revisarlo antes.
 
-**Por qué:** La conservación de documentos laborales es obligatoria. Si Hacienda te audita y no tienes las nóminas archivadas, es una infracción grave.
+**Qué verás:** Un resumen en pantalla con tres columnas: `"Bruto total"`, `"Coste empresa"` y `"Líquido a pagar"`. Si los números te parecen raros comparados con el mes anterior, la columna `"Variación"` te indica en rojo o verde qué ha cambiado y en qué empleado.
 
-**Qué verás:** PDFs descargados a tu carpeta local, con nombres como `"Nómina_Carlos_García_mayo_2026.pdf"`.
+{/* TODO: captura de la pantalla de generación de nóminas con el resumen de período */}
+
+---
+
+### Paso 6: Envía las nóminas a tus empleados y gestiona el pago
+
+**Qué hacer:** Tras confirmar la generación, ve a `"Nóminas"` → `"Distribución"`. Desde aquí puedes enviar las nóminas a cada empleado por email directamente desde Factorial, o descargarlas todas en un ZIP para distribuirlas tú manualmente.
+
+Para el pago, Factorial genera un fichero SEPA XML que puedes subir directamente a tu banco para procesar la transferencia masiva. Descárgalo desde `"Exportar"` → `"Fichero SEPA"`. La mayoría de bancos españoles —BBVA, Santander, CaixaBank, Sabadell— lo aceptan directamente en su banca online de empresas.
+
+**Por qué:** El fichero SEPA elimina el proceso de hacer transferencias manuales una a una. Con 8 empleados no parece mucho, pero el margen de error al teclear IBANs manualmente es real. Un cero de más en el importe o un dígito equivocado en el IBAN puede costarte un día de gestiones con el banco.
+
+**Qué verás:** Un botón `"Descargar SEPA"` que genera el fichero al momento. El nombre del fichero incluye el período y la fecha de generación para que no lo confundas con el del mes anterior.
+
+---
+
+### Paso 7: Presenta los seguros sociales a la Seguridad Social
+
+**Qué hacer:** Factorial genera automáticamente el fichero CRA (Cotización Relación Articulada) compatible con el Sistema RED de la Seguridad Social. Ve a `"Nóminas"` → `"Seguridad Social"` → `"Exportar CRA"`.
+
+Si gestionas tú mismo el Sistema RED (tienes el certificado de empresa autorizado), sube el fichero directamente. Si lo gestiona tu gestoría, envíales el CRA — en muchos casos esto permite que tu gestoría se encargue solo de la presentación, reduciendo su tarifa mensual porque ya no tienen que calcular las cotizaciones desde cero.
+
+**Por qué:** El plazo de presentación de seguros sociales en España es hasta el último día natural del mes siguiente. Si se presenta fuera de plazo, hay recargo automático. Factorial puede enviarte un recordatorio configurado en `"Alertas"` → `"Fechas límite laborales"`.
+
+**Qué verás:** El fichero CRA descargado en tu equipo. Tiene extensión `.cra` y solo lo entiende el Sistema RED o tu gestoría — no intentes abrirlo con Excel.
+
+{/* TODO: captura del menú de exportación de Seguridad Social con el fichero CRA */}
 
 ---
 
 ## Errores comunes
 
-**Las retenciones de IRPF no coinciden con nóminas anteriores**
-*Síntoma:* El neto que calcula Factorial es diferente al de nóminas que hiciste antes.
-*Causa:* El porcentaje de IRPF es individual por empleado — depende de sus datos fiscales (estado civil, número de hijos, discapacidad, etc.). Si un empleado cambió de situación personal, la retención cambia.
-*Solución:* Accede a la ficha del empleado en `"RRHH"` → `"Empleados"`, abre su perfil, ve a `"Datos fiscales"` y verifica que el estado civil y el número de hijos sean correctos. Si algo está mal, corrígelo y regenera la nómina.
+**La retención de IRPF sale más baja de lo esperado en el primer mes**
+
+*Síntoma:* El porcentaje de retención calculado por Factorial es claramente inferior al que venía aplicando la gestoría anterior.
+
+*Causa:* Factorial no tiene el historial de retenciones acumuladas del año en curso. Si estás migrando a mitad de año, calcula la retención como si el empleado llevara todo el año con ese salario, pero sin los meses anteriores ya cobrados como base.
+
+*Solución:* En la ficha de cada empleado, pestaña `"Nómina"` → `"Historial de retenciones"`, introduce manualmente las bases y retenciones acumuladas desde enero. Factorial recalculará el porcentaje correcto para el resto del año.
 
 ---
 
-**Error: "Certificado digital caducado" al enviar a la Seguridad Social**
-*Síntoma:* Cuando intentas enviar las nóminas, aparece un aviso rojo: `"Certificado digital no válido"` o `"Conexión rechazada por SS"`.
-*Causa:* El certificado digital de tu empresa ha expirado. Los certificados digitales de Hacienda tienen validez limitada (generalmente 3 años).
-*Solución:* Ve a `"Configuración"` → `"Integraciones"` → `"Seguridad Social"` y pulsa `"Renovar certificado"`. Factorial te pedirá descargarlo nuevamente desde la sede electrónica de la Agencia Tributaria. Si no sabes hacerlo, tu gestoría puede ayudarte.
+**El fichero SEPA es rechazado por el banco**
+
+*Síntoma:* Al subir el fichero SEPA al portal de tu banco, aparece un error de formato o el banco lo rechaza sin procesar.
+
+*Causa:* Algunos bancos españoles exigen el estándar SEPA Pain.001.001.03, y otros el Pain.001.003.03. Factorial genera por defecto el 001.003.03, que es el más habitual, pero hay bancos —especialmente algunos locales y cajas— que solo aceptan el 001.001.03.
+
+*Solución:* Ve a `"Configuración"` → `"Pagos"` → `"Formato SEPA"` y cambia la versión del estándar. Si no sabes cuál usa tu banco, llama a su línea de banca de empresas — te lo dicen en dos minutos.
 
 ---
 
-**Un empleado falta a 5 días en el mes — la nómina es incorrecta**
-*Síntoma:* Factorial calcula la nómina de un empleado que ha faltado 5 días como si fuera un mes completo.
-*Causa:* No has registrado las ausencias en Factorial. El sistema calcula en base a días trabajados, no a días calendario.
-*Solución:* En la ficha del empleado, ve a `"Calendario"` o `"Ausencias"` y marca esos 5 días como `"Ausencia no justificada"` (u otro tipo si aplica). Factorial recalculará la nómina prorrateada automáticamente.
+**Un empleado no aparece en la nómina del mes**
+
+*Síntoma:* Al generar nóminas, uno de tus trabajadores no aparece en el listado o aparece con importe 0 €.
+
+*Causa:* El empleado tiene la fecha de alta posterior al primer día del período, o tiene el estado `"Inactivo"` por error en su ficha.
+
+*Solución:* Ve a la ficha del empleado, pestaña `"Contrato"`, y verifica la fecha de inicio y el estado. Si el estado es `"Inactivo"`, cámbialo a `"Activo"` y vuelve a generar la nómina. Si el alta es posterior al inicio del período, la nómina se generará con los días proporcionales — es correcto.
+
+---
+
+## 💶 Precios de Factorial
+
+<Callout type="warning">
+**Precios no verificables directamente:** Factorial no publica sus tarifas de forma estándar en su web — el precio final depende del número de empleados y los módulos contratados. La información que sigue es orientativa basada en lo publicado en su página a mayo de 2026. **Solicita siempre un presupuesto personalizado antes de comprometerte.**
+</Callout>
+
+Según la información publicada en su web a mayo de 2026, Factorial trabaja con precios por empleado al mes:
+
+- **Plan Basic:** Incluye control horario y ausencias. **No incluye gestión de nóminas.**
+- **Plan Professional:** Incluye nóminas, contratos y gestión documental. El precio por empleado varía según el tamaño del equipo — para una pyme de 8 personas, el coste orientativo está en el rango de **4–7 €/empleado/mes + IVA**, pero el precio real depende de la negociación comercial.
+- **Plan Enterprise:** Para equipos grandes con necesidades específicas. Precio bajo consulta.
+
+No publican el precio exacto de forma abierta — hay que solicitar demo o presupuesto.
+
+**Precios consultados en mayo 2026. Verifica siempre en la web del proveedor antes de contratar.**
+
+<Callout type="warning">
+**Contrato y permanencia:** Factorial trabaja habitualmente con facturación anual. Si contratas el plan anual y cancelas antes de tiempo, perderás el importe restante. Confirma las condiciones de cancelación antes de firmar.
+</Callout>
+
+---
+
+## 🇪🇸 Factorial y la normativa española
+
+Factorial es una empresa fundada en Barcelona, lo que tiene implicaciones concretas para ti:
+
+- **Interfaz en español:** Sí, completamente. Sin necesidad de cambiar ningún idioma.
+- **Soporte en español:** Sí — chat, email y teléfono en español en horario laboral español.
+- **Documentación oficial:** En español, y actualizada con los cambios normativos del mercado laboral español.
+- **GDPR / LOPDGDD:** Factorial firma DPA bajo GDPR. Los datos se almacenan en servidores europeos. Compatible con las obligaciones de la LOPDGDD para la gestión de datos laborales de tus empleados.
+- **Verifactu:** Factorial es un software de RRHH y nóminas, no de facturación. Verifactu no aplica aquí — para facturación, necesitas una herramienta diferente (Holded, Anfix, Quipu).
+- **Sistema RED:** Compatible con la presentación de seguros sociales a través del Sistema RED de la Seguridad Social.
+- **TicketBAI:** No aplica — es específico de facturación en el País Vasco y Navarra.
+
+---
+
+## ✅ Lo que nos gusta
+
+- **El cálculo automático de IRPF** es fiable y se actualiza cuando cambia la normativa — no tienes que acordarte de actualizar tablas cada año.
+- **La integración nativa con el control de ausencias y el control horario** elimina el doble trabajo de pasar datos de una herramienta a otra.
+- **El soporte en español con conocimiento del mercado laboral español** es notablemente mejor que el de herramientas internacionales que llegan con soporte solo en inglés.
+- **El fichero SEPA y el CRA** te permiten gestionar el pago y la presentación a la Seguridad Social desde un solo sitio.
+
+---
+
+## ❌ Lo que no nos gusta
+
+- **El precio no es transparente.** Que no publiquen tarifas claras en su web obliga a pasar por una demo de ventas antes de saber cuánto vas a pagar. Para Carlos, que quiere tomar decisiones rápidas, esto es una fricción innecesaria.
+- **La gestión de nóminas en casos complejos requiere ayuda.** Si tienes trabajadores con reducciones de jornada por guarda legal, excedencias parciales o contratos de relevo, Factorial puede gestionarlos, pero vas a necesitar configurarlos manualmente con ayuda del soporte o de un asesor laboral. No es tan automático como promete la landing.
+- **El módulo de nóminas no sustituye a un asesor laboral.** Factorial gestiona el cálculo y los trámites, pero si hay una duda sobre si un despido está bien hecho o qué convenio aplica exactamente, necesitas hablar con alguien. Algunos usuarios confunden "gestión automatizada de nóminas" con "asesoría laboral" — son cosas distintas.
+- **Las notificaciones de cambios normativos son reactivas.** Factorial actualiza sus tablas cuando hay cambios legales, pero no siempre avisa con suficiente antelación. En enero de 2025, varios usuarios reportaron que la actualización del SMI tardó unos días en reflejarse.
+
+---
+
+## 🤔 ¿Para quién NO es Factorial?
+
+- **Si tienes menos de 3 empleados y ya tienes gestoría:** El coste de Factorial probablemente no justifica lo que ahorras delegando las nóminas. Con 2 empleados, la gestoría suele ser más barata y más rápida.
+- **Si tu empresa tiene una casuística laboral muy compleja:** Empresas con muchos trabajadores a tiempo parcial, varios convenios colectivos simultáneos, o sectores con muchos pluses variables (hostelería, construcción) necesitarán mucha configuración manual o directamente un ERP de RRHH más potente.
+- **Si buscas solo software de facturación:** Factorial es RRHH y nóminas. Para facturación, mira Holded, Anfix o Quipu.
+- **Si tu gestoría ya usa un sistema propio y la integración es fluida:** Cambiar por cambiar tiene un coste de tiempo real. Si lo que tienes funciona, no toques lo que no está roto.
 
 ---
 
@@ -200,46 +232,46 @@ Guarda todo en una carpeta con el nombre del mes: `"Nóminas_mayo_2026"`. Archiv
 
 Si has seguido todos los pasos, ahora tienes:
 
-- Tus empleados registrados en Factorial con todos sus datos laborales y bancarios
-- Nóminas generadas correctamente según la normativa española
-- Cálculos automáticos de IRPF y cotización a la Seguridad Social sin errores manuales
-- Domiciliaciones bancarias listas para que tu banco procese los pagos
-- Envíos automáticos a la Seguridad Social antes de la fecha límite
-- PDFs archivados para 4 años de auditorías futuras
+- **La configuración inicial completada:** datos de empresa, contratos de empleados e IRPF configurados en Factorial.
+- **Un proceso mensual de nóminas de menos de 30 minutos:** revisar incidencias → generar nóminas → validar → enviar SEPA → exportar CRA.
+- **Trazabilidad completa:** cada nómina queda archivada en la ficha del empleado, con historial accesible en cualquier momento para auditorías o inspecciones.
+- **El siguiente paso lógico** es configurar las alertas de fechas límite en `"Configuración"` → `"Alertas laborales"` para que Factorial te recuerde los plazos de presentación de seguros sociales y el IRPF trimestral (modelo 111).
 
-Mensualmente, el proceso se reduce a: registrar ausencias (si las hay) → generar nóminas (3 clics) → verificar → domiciliar → enviar a SS. Tardas 15 minutos.
-
-Si tienes 5 empleados y antes gastabas 2 horas mensuales en Excel haciendo nóminas manualmente, eso es 24 horas anuales que recuperas. Ese es el beneficio real.
+---
 
 ## Herramientas que facilitan esto
 
-Si aún no usas Factorial, aquí tienes el acceso directo para probar el módulo de nóminas:
+Si aún no tienes cuenta en Factorial, aquí tienes el acceso directo con periodo de prueba:
 
-<AffiliateLink programSlug="factorial" articleSlug="como-gestionar-nominas-pymes" label="Probar Factorial gratis 14 días" />
+<AffiliateLink programSlug="factorial" articleSlug="como-gestionar-nominas-pymes" label="Probar Factorial gratis" />
 
----
+Si además de nóminas necesitas gestionar la facturación de tu empresa desde un mismo entorno, Holded combina facturación, contabilidad y RRHH básico. No sustituye a Factorial en gestión de nóminas, pero si empiezas desde cero puede interesarte valorar si un ERP integrado te cubre mejor:
 
-## 📖 También te puede interesar
-
-- [5 alternativas a Factorial RRHH para pymes en España](https://pymestools.com/recursos-humanos/alternativas-factorial)
-- [Los mejores softwares de control horario para pymes españolas en 2026](https://pymestools.com/recursos-humanos/control-horario-pymes)
-- [Los 2 mejores software de RRHH para pymes en España 2026](https://pymestools.com/recursos-humanos/mejores-software-rrhh-pymes-espana)
+<AffiliateLink programSlug="holded" articleSlug="como-gestionar-nominas-pymes" label="Ver Holded" />
 
 ---
 
-## 📖 También te puede interesar
+## ¿Preguntas frecuentes?
 
-- [5 alternativas a Factorial RRHH para pymes en España](https://pymestools.com/recursos-humanos/alternativas-factorial)
-- [Los mejores softwares de control horario para pymes españolas en 2026](https://pymestools.com/recursos-humanos/control-horario-pymes)
-- [Los 2 mejores software de RRHH para pymes en España 2026](https://pymestools.com/recursos-humanos/mejores-software-rrhh-pymes-espana)
+### ¿Factorial puede sustituir completamente a mi gestoría laboral?
 
----
+Depende de lo que te haga la gestoría. Factorial gestiona el cálculo de nóminas, los ficheros para la Seguridad Social y los contratos estándar. Lo que no hace es asesorarte sobre si un despido es procedente, qué convenio aplica en un caso dudoso, o cómo gestionar una inspección de trabajo. Si tu gestoría solo "procesa nóminas", Factorial puede sustituirla. Si también te asesora en temas laborales, necesitarás seguir contando con un asesor aunque uses Factorial.
 
-## 📖 También te puede interesar
+### ¿Qué pasa si me equivoco en una nómina ya cerrada?
 
-- [5 alternativas a Factorial RRHH para pymes en España](https://pymestools.com/recursos-humanos/alternativas-factorial)
-- [Los mejores softwares de control horario para pymes españolas en 2026](https://pymestools.com/recursos-humanos/control-horario-pymes)
-- [Los 2 mejores software de RRHH para pymes en España 2026](https://pymestools.com/recursos-humanos/mejores-software-rrhh-pymes-espana)
+Factorial permite generar una nómina complementaria para el período corregido. No se puede editar una nómina ya cerrada directamente — se añade la diferencia como nómina adicional en el mes en curso. Esto es lo estándar en la gestión de nóminas en España y la Seguridad Social lo acepta, pero deja un rastro en el historial que tienes que documentar bien si alguna vez hay una inspección.
+
+### ¿Factorial funciona con todos los convenios colectivos españoles?
+
+Según Factorial, cubren la gran mayoría de convenios colectivos españoles. Convenios sectoriales nacionales (comercio, hostelería, construcción, oficinas y despachos) están incluidos. Convenios provinciales muy específicos o acuerdos de empresa propios pueden requerir configuración manual con ayuda del soporte. Antes de contratar, merece la pena confirmar explícitamente con su equipo comercial que tu convenio está cubierto.
+
+### ¿Puedo importar las nóminas anteriores de otro software?
+
+Factorial permite importar datos de empleados en CSV. El historial de nóminas de sistemas anteriores no se importa directamente como PDF ni como datos estructurados — lo que puedes hacer es introducir manualmente los acumulados del año (base de cotización y retenciones IRPF) para que los cálculos del resto del año sean correctos. Para el historial completo anterior, tendrás que mantener el archivo de tu sistema o gestoría anterior.
+
+### ¿Es legal usar software de nóminas sin gestoría en España?
+
+Sí. La ley no obliga a las empresas a contratar una gestoría para gestionar las nóminas. Puedes gestionar tus propias nóminas siempre que cumplan con la normativa laboral y de Seguridad Social. Lo que Factorial no puede hacer por ti es garantizarte que estás aplicando correctamente el convenio colectivo o que una cláusula contractual específica es legalmente válida — eso sigue siendo responsabilidad tuya o de un asesor laboral.
 
 ---
 

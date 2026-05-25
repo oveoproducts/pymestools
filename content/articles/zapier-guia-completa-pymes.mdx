@@ -1,255 +1,309 @@
 ---
-title: "Zapier: guía completa para pymes en español desde cero"
+title: "Zapier para pymes: guía completa desde cero en español"
 slug: "zapier-guia-completa-pymes"
 category: "automatizacion"
-description: "Guía paso a paso para configurar tu primera automatización en Zapier. Conecta tus aplicaciones favoritas sin código y ahorra horas de trabajo manual cada mes."
+description: "Guía paso a paso para empezar con Zapier desde cero. Automatiza tareas repetitivas en tu pyme española sin saber programar. Casos de uso reales, precios actualizados y errores comunes resueltos."
 type: "how-to"
 publishedAt: null
-updatedAt: "2026-05-18T04:49:58.220Z"
+updatedAt: "2026-05-25T12:24:15.566Z"
 tools: ["zapier"]
 keywords:
-  primary: "zapier guía completa para pymes en español desde cero"
+  primary: "zapier guia completa pymes español"
   secondary:
-    - "cómo usar zapier"
-    - "automatizaciones zapier para pymes"
-    - "integraciones zapier español"
-    - "primeros pasos zapier"
+    - "zapier desde cero español"
+    - "zapier que es como funciona"
+    - "zapier pymes españa"
+    - "automatizaciones zapier sin programar"
+    - "zapier precio euros"
 status: "draft"
 author: "Equipo PymesTools"
 readingTime: "12 min"
 qualityScore: null
 ---
 
-Al terminar esta guía, tendrás tu primera "Zap" (automatización) funcionando y conectada entre dos aplicaciones. Sin escribir ni una línea de código. El tiempo total ronda los 20 minutos si tienes claro qué aplicaciones quieres conectar.
-
-Zapier es la herramienta que necesitabas para dejar de copiar datos de un lado a otro del ordenador. Conecta prácticamente cualquier aplicación con cualquier otra — desde tu facturador hasta tu email, desde tu CRM hasta tus hojas de cálculo.
+Al terminar esta guía tendrás tu primera automatización de Zapier funcionando: cada vez que un cliente rellene un formulario de tu web, sus datos entrarán solos en tu CRM, te llegará un aviso en tu canal de comunicación y quedará registrado en una hoja de cálculo. Sin tocar nada manualmente. El proceso completo lleva entre 30 y 45 minutos la primera vez.
 
 ---
 
-## Lo que necesitas
+## 🤔 ¿Qué es Zapier y para qué sirve en una pyme?
 
-- **Cuenta en Zapier:** Puedes empezar con el plan gratuito, que incluye 2 Zaps activos y 100 tareas al mes. Suficiente para probar. Si necesitas más, el plan más básico de pago cuesta 28,99 $/mes (aproximadamente 26 €/mes + IVA).
-- **Las dos aplicaciones que quieres conectar:** Por ejemplo, un formulario web y tu email, o tu CRM y una hoja de cálculo. Ambas tienen que estar ya dadas de alta. Si usas aplicaciones locales (como un ERP instalado en tu ordenador), necesitarás el plan de pago.
-- **Acceso al navegador y 20 minutos:** No necesitas conocimientos técnicos ni de programación.
-- **Nivel técnico requerido:** Cero. Si sabes rellenar un formulario web y hacer clic en botones, estás listo.
+Zapier conecta aplicaciones entre sí para que hagan cosas automáticamente cuando ocurre algo en alguna de ellas.
+
+La lógica siempre es la misma: **si pasa X en la aplicación A, haz Y en la aplicación B.** Eso es un "Zap".
+
+Un ejemplo concreto para una empresa de servicios como la tuya: cuando un contacto rellena el formulario de tu web (HubSpot, Typeform, Tally...), Zapier coge esos datos y los mete en tu CRM (Holded, Pipedrive, Salesforce), envía un email de bienvenida automático y avisa a tu comercial por WhatsApp o Slack. Todo sin que nadie haga nada.
+
+Lo que antes le llevaba 10 minutos a alguien de tu equipo por cada nuevo contacto, con Zapier ocurre en segundos y de madrugada si hace falta.
+
+---
+
+## 🧰 Lo que necesitas
+
+- **Cuenta en Zapier:** El plan gratuito sirve para hacer esta guía. Incluye hasta 100 tareas al mes y 5 Zaps activos. Para uso real en una pyme, necesitarás el plan de pago — lo vemos en la sección de precios.
+- **Al menos dos aplicaciones conectadas:** Por ejemplo, Tally o Google Forms como origen, y Holded o una hoja de Google Sheets como destino. Usa las que ya tengas.
+- **Acceso desde navegador de escritorio:** La configuración de Zaps se hace desde `zapier.com`. La app móvil sirve para monitorizar, pero no para configurar.
+- **Nivel técnico necesario:** Ninguno. Si sabes usar el correo electrónico y copiar y pegar, tienes lo suficiente. Zapier no requiere código en los casos de uso habituales.
 
 <Callout type="info">
-**Consejo:** Para tu primer Zap, elige dos aplicaciones que ya estés usando. Si usas Holded para facturación y Mailrelay para email, conecta estos dos — no empieces con herramientas nuevas.
+Zapier funciona con más de 7.000 aplicaciones. Antes de empezar, comprueba que las tuyas están en la lista: busca el nombre en [zapier.com/apps](https://zapier.com/apps). La mayoría de herramientas conocidas están — Holded, Factorial, Google Workspace, Mailchimp, HubSpot, Typeform, Slack, WhatsApp Business (vía Twilio), Notion y muchas más.
 </Callout>
 
 ---
 
-## Los 5 conceptos clave de Zapier (sin jerga técnica)
+## 📋 Pasos
 
-Antes de los pasos, entiende estos 5 términos. Sin ellos, la interfaz de Zapier te va a parecer confusa.
+### Paso 1: Crea tu cuenta en Zapier
 
-**Zap:** Es tu automatización. Una regla que dice "cuando ocurra X en la aplicación A, haz Y en la aplicación B". Cada Zap es una automatización independiente.
+Ve a `zapier.com` y haz clic en **"Sign up"** (en inglés — la interfaz de Zapier no está completamente en español, aunque muchos textos aparecen traducidos). Puedes registrarte con tu cuenta de Google o con email y contraseña.
 
-**Trigger (disparador):** Lo que inicia la automatización. Es el "cuándo" de la regla. Ejemplo: "cuando alguien rellena el formulario de contacto". Zapier espera ese evento.
+**Por qué:** Necesitas una cuenta para guardar tus Zaps y que sigan ejecutándose aunque cierres el navegador.
 
-**Action (acción):** Lo que Zapier hace automáticamente cuando ocurre el trigger. Es el "entonces" de la regla. Ejemplo: "entonces crea ese contacto en el CRM". Una Zap puede tener varias acciones en cadena.
-
-**Task (tarea):** Cada vez que tu Zap se ejecuta, consume una tarea. Con el plan gratuito tienes 100 tareas al mes. Cada envío de datos de una app a otra es 1 tarea.
-
-**Connection (conexión):** La autorización que das a Zapier para que acceda a tus aplicaciones. Cuando conectas Zapier con Holded, por ejemplo, le permites leer y escribir datos — pero sin revelar tu contraseña.
+**Qué verás:** Tras registrarte, aterrizas en el dashboard principal. En la columna izquierda verás el menú con "Home", "Zaps", "Apps" y "History". En el centro aparece un botón grande naranja: **"+ Create"**. Eso es lo que usarás para crear tu primer Zap.
 
 ---
 
-## Pasos
+### Paso 2: Empieza a crear un Zap nuevo
 
-### Paso 1: Crear una cuenta en Zapier e iniciar sesión
+Haz clic en **"+ Create"** y selecciona **"Zap"** en el menú desplegable. Esto abre el editor de Zaps.
 
-**Qué hacer:** Ve a www.zapier.com y haz clic en "Sign up". Rellena tu email, crea una contraseña y completa el registro. Verifica tu email si Zapier te lo solicita. Luego inicia sesión.
+**Por qué:** Cada automatización es un Zap independiente. El editor te guía paso a paso: primero configuras el activador (trigger) y luego la acción (action).
 
-**Por qué:** Necesitas una cuenta para crear Zaps. Zapier es gratuito para empezar — no te pedirá tarjeta de crédito si te mantienes dentro de los 100 tareas mensuales.
-
-**Qué verás:** Tras iniciar sesión, llegarás a un dashboard vacío con el botón grande "Create Zap" (Crear Zap) en el centro. Si no lo ves, haz clic en el logo de Zapier en la esquina superior izquierda.
+**Qué verás:** El editor se abre en dos columnas. A la izquierda, un lienzo con bloques vacíos: el primero dice **"Trigger"** y el segundo dice **"Action"**. A la derecha aparece un panel de configuración que irá cambiando según lo que hagas. En la parte superior hay un campo de texto para poner el nombre del Zap — cámbialo ahora por algo descriptivo como "Formulario web → Holded + Sheets".
 
 ---
 
-### Paso 2: Elige la aplicación que dispara la automatización (el trigger)
+### Paso 3: Configura el activador (qué lo pone en marcha)
 
-**Qué hacer:** En el dashboard, haz clic en "Create Zap". Se abrirá un panel a la izquierda. Verás un cuadro grande que dice "Choose app" (Elige aplicación). Escribe el nombre de tu primera aplicación — por ejemplo, "Google Forms", "Holded", "Mailrelay" o lo que sea.
+Haz clic en el bloque **"Trigger"**. En el panel derecho, busca la aplicación que quieres usar como origen — por ejemplo, **"Tally"**, **"Typeform"** o **"Google Forms"**. Escribe el nombre en la barra de búsqueda.
 
-Zapier te mostrará una lista de aplicaciones que coinciden con tu búsqueda. Si buscas "Google Forms" y aparece en la lista, haz clic en ella. La aplicación se seleccionará.
+Selecciona la aplicación. Zapier te pedirá que elijas un **"Trigger event"** (evento activador). Para un formulario, el evento será algo como **"New Response"** o **"New Submission"**. Selecciónalo.
 
-**Por qué:** El trigger es el evento que inicia todo. Si quieres que algo ocurra cada vez que alguien rellena un formulario, la aplicación del formulario es tu trigger.
+Después te pedirá que **conectes tu cuenta** de esa aplicación. Haz clic en **"Sign in to [nombre de la app]"** y sigue el proceso de autorización en la ventana emergente.
 
-**Qué verás:** Tras seleccionar la aplicación, aparecerá un menú desplegable que te pregunta qué tipo de evento de esa aplicación quieres que dispare la Zap. Por ejemplo, para Google Forms dirá "New Response" (Nueva respuesta). Elige el que corresponda a lo que quieres monitorizar.
+**Por qué:** Zapier necesita permiso para leer los datos de tu aplicación. Esta autorización es estándar OAuth — no le das tu contraseña a Zapier, solo le das permiso de acceso.
+
+**Qué verás:** Una vez conectada la cuenta, aparece un botón **"Test trigger"**. Haz clic en él. Zapier buscará la última respuesta real de tu formulario para usarla como ejemplo. Si el formulario está vacío, envía tú mismo una respuesta de prueba antes de este paso.
+
+**Nota:** Si usas Google Forms, la integración nativa de Zapier con Google Forms es limitada — se recomienda usar Google Sheets como intermediario: configura tu formulario de Google para que guarde respuestas en una hoja, y usa Google Sheets como trigger en Zapier con el evento **"New Spreadsheet Row"**.
+
+---
+
+### Paso 4: Añade la primera acción (qué pasa después)
+
+Con el trigger configurado, haz clic en el bloque **"Action"** debajo del trigger. Aquí eliges qué aplicación recibe los datos.
+
+Supongamos que quieres que cada nuevo contacto entre en Holded. Busca **"Holded"** en la barra de búsqueda. Selecciona el evento **"Create Contact"**. Conecta tu cuenta de Holded cuando te lo pida (necesitarás tu API key de Holded — la encuentras en Holded → Configuración → Integraciones → API).
+
+**Por qué:** Esta es la acción que Zapier ejecutará automáticamente cada vez que se active el trigger.
+
+**Qué verás:** Aparece un formulario de configuración con los campos del contacto en Holded: nombre, email, teléfono, empresa... Cada campo tiene un selector que te permite elegir qué dato del formulario va en cada campo. Por ejemplo: en el campo "Email" de Holded seleccionas el campo "Email" que vino del formulario. Esto se llama **mapear campos** y es la parte más importante de la configuración.
+
+{/* TODO: captura del editor de Zapier mostrando el mapeo de campos entre Typeform y Holded */}
+
+---
+
+### Paso 5: Añade más acciones si las necesitas
+
+Un Zap puede tener múltiples acciones en cadena. Debajo del primer bloque de acción hay un botón **"+"** para añadir otra.
+
+Si quieres también guardar el contacto en Google Sheets: haz clic en **"+"**, busca **"Google Sheets"**, elige **"Create Spreadsheet Row"**, conecta tu cuenta y mapea los campos igual que antes.
+
+Si quieres que llegue una notificación a Slack: añade otra acción con **"Slack"** → **"Send Channel Message"** o **"Send Direct Message"**, conecta tu workspace y escribe el mensaje usando los datos del formulario.
+
+**Por qué:** Las acciones se ejecutan en orden, una tras otra. Si una falla, Zapier lo registra y puedes ver qué salió mal en el historial.
+
+**Qué verás:** El lienzo de la izquierda crece hacia abajo con cada bloque nuevo. Cada bloque tiene un indicador verde cuando está correctamente configurado.
+
+---
+
+### Paso 6: Prueba el Zap completo antes de activarlo
+
+Antes de activar el Zap, prueba cada acción individualmente. En cada bloque de acción hay un botón **"Test step"**. Haz clic en él — Zapier ejecutará esa acción con los datos de prueba que cargó en el paso 3.
+
+Comprueba en las aplicaciones de destino que los datos llegaron correctamente: entra en Holded y busca el contacto de prueba, abre la hoja de Google Sheets y verifica que se añadió la fila.
+
+**Por qué:** Probar antes de activar evita que datos reales de clientes entren con campos mal mapeados o en el lugar equivocado.
+
+**Qué verás:** Si la prueba tiene éxito, el bloque muestra un mensaje en verde: **"Test was successful"**. Si falla, aparece en rojo con un mensaje de error — generalmente un problema de permisos o un campo obligatorio vacío.
+
+---
+
+### Paso 7: Activa el Zap
+
+Cuando todos los bloques estén en verde, ve a la esquina superior derecha y activa el interruptor que pone **"Off"**. Cambiará a **"On"** en azul.
+
+**Por qué:** Un Zap desactivado no hace nada aunque lo tengas configurado. El interruptor es el que le dice a Zapier que empiece a vigilar el trigger.
+
+**Qué verás:** El Zap aparece en tu lista de Zaps con estado **"On"** y un indicador de la última vez que se ejecutó. Desde ese momento, cada vez que alguien rellene el formulario, la automatización se ejecutará sola.
+
+---
+
+## ⚠️ Errores comunes
+
+**El Zap se activa pero los campos llegan vacíos en el destino**
+
+*Síntoma:* Se crea el contacto en Holded o la fila en Sheets, pero los campos están vacíos o con texto como `"undefined"`.
+
+*Causa:* Los campos no están bien mapeados. Es habitual cuando el formulario tiene campos con nombres poco claros o cuando se añadieron nuevas preguntas al formulario después de configurar el Zap.
+
+*Solución:* Vuelve al editor del Zap, entra en el bloque de acción correspondiente y revisa el mapeo de campos uno a uno. Si añadiste preguntas nuevas al formulario, vuelve al paso de trigger y haz clic en **"Load more"** para que Zapier recargue la estructura del formulario actualizada.
+
+---
+
+**El Zap deja de funcionar después de unos días**
+
+*Síntoma:* El Zap estaba funcionando bien y de repente para. En el historial aparece el error **"Authentication error"** o **"App disconnected"**.
+
+*Causa:* La conexión con una de las aplicaciones ha caducado o se ha revocado el acceso (puede ocurrir si cambiaste la contraseña o los permisos de la app).
+
+*Solución:* Ve a **"Apps"** en el menú lateral de Zapier. Busca la aplicación desconectada — aparecerá con un icono de advertencia. Haz clic en ella y vuelve a hacer el proceso de autorización. El Zap se reactivará automáticamente.
+
+---
+
+**El Zap se ejecuta pero no aparece en el historial**
+
+*Síntoma:* Sabes que el formulario recibió respuestas pero en Zapier no hay registros de ejecuciones recientes.
+
+*Causa:* El Zap está desactivado, o el trigger está configurado para buscar datos nuevos a partir del momento de activación — no recupera datos anteriores.
+
+*Solución:* Comprueba que el interruptor del Zap está en **"On"**. Recuerda que Zapier solo procesa eventos que ocurren después de que el Zap se activa. Las respuestas enviadas mientras el Zap estaba desactivado no se recuperan.
+
+---
+
+## 💶 Precios y planes
 
 <Callout type="warning">
-**Atención:** Si no ves la aplicación que buscas, escribe bien el nombre. Si seguirá sin aparecer, es posible que Zapier no tenga integración nativa con ella — en ese caso, el plan gratuito no te permitirá conectarla directamente. Necesitarías el plan Professional o un workaround (ej: webhook).
+**Precios consultados en mayo 2026. Verifica siempre en [zapier.com/pricing](https://zapier.com/pricing) antes de contratar — Zapier actualiza sus planes con frecuencia.**
 </Callout>
 
----
+Zapier cobra en dólares. Los precios en euros son aproximados según el cambio de mayo 2026 (1 USD ≈ 0,92 €).
 
-### Paso 3: Conecta tu cuenta de la aplicación a Zapier
+| Plan | Precio | Tareas/mes | Zaps activos | Para quién |
+|---|---|---|---|---|
+| **Free** | 0 $/mes | 100 | 5 | Probar Zapier o uso muy puntual |
+| **Professional** | 19,99 $/mes (≈ 18 €/mes) + IVA | 750 | Ilimitados | Autónomos con pocas automatizaciones |
+| **Team** | 69 $/mes (≈ 63 €/mes) + IVA | 2.000 | Ilimitados | Pymes con varios usuarios y flujos |
+| **Enterprise** | No publican precio — hay que solicitar presupuesto | Personalizado | Ilimitados | Grandes empresas |
 
-**Qué hacer:** Tras elegir el tipo de evento, Zapier te pedirá que autorices el acceso a tu cuenta en esa aplicación. Verás un botón grande "Connect Account" (Conectar cuenta) o "Sign in with [Nombre app]".
+**Lo que debes saber antes de contratar:**
 
-Haz clic en él. Se abrirá una ventana nueva donde tienes que iniciar sesión en esa aplicación (ej: Google) o simplemente autorizar a Zapier a acceder. Luego, cierra la ventana o vuelve a Zapier — el sistema te confirmará que la conexión se ha hecho.
-
-**Por qué:** Zapier necesita permiso para leer los datos de tu aplicación. Sin esta conexión, no puede acceder a tus formularios, contactos o lo que sea.
-
-**Qué verás:** Tras conectar, el botón cambiará de color o desaparecerá, y verás una pantalla donde Zapier te pregunta los detalles específicos del trigger. Por ejemplo: "¿De cuál de tus formularios de Google Forms quieres recibir nuevas respuestas?" Elige el formulario concreto.
-
----
-
-### Paso 4: Configura los detalles del trigger
-
-**Qué hacer:** Zapier te mostrará un formulario con preguntas específicas sobre el evento que quieres monitorizar. Rellena estas preguntas. Ejemplos:
-
-- Si el trigger es "nueva respuesta en Google Forms": elige qué formulario quieres monitorizar.
-- Si es "nuevo contacto en Holded": elige si quieres que se dispare para todos los contactos nuevos o solo los que cumplan una condición.
-
-Cuando termines de configurar, haz clic en "Continue" (Continuar).
-
-**Por qué:** Estos detalles concretan exactamente qué evento iniciará la automatización. Sin ellos, Zapier no sabría cuál de tus 10 formularios debe monitorizar.
-
-**Qué verás:** Zapier te mostrará un ejemplo de datos que va a capturar del trigger. Por ejemplo, si el trigger es "nueva respuesta en formulario", te mostrará un JSON con los campos de ejemplo que recibirá (nombre, email, mensaje, etc.). Esto es útil para el siguiente paso — necesitas conocer qué datos vienen, porque luego los usarás en la acción.
-
-<Callout type="tip">
-**Tip:** Guarda una captura de los campos de ejemplo que Zapier te muestra. Los necesitarás en el paso siguiente para indicarle a qué campos de la aplicación destino enviar cada dato.
-</Callout>
-
----
-
-### Paso 5: Elige la aplicación que realiza la acción
-
-**Qué hacer:** Tras configurar el trigger, Zapier te mostrará la siguiente sección: "Choose an app" para la acción. Es el mismo proceso que el paso 2. Escribe el nombre de la aplicación donde quieres que se envíen los datos — por ejemplo, "Mailrelay", "Holded", "Google Sheets" o lo que sea.
-
-Busca la aplicación en la lista y selecciónala.
-
-**Por qué:** La acción es lo que ocurre automáticamente cuando el trigger se dispara. Si el trigger es "nuevo formulario rellenado", la acción podría ser "añadir ese contacto al CRM" o "enviar un email de bienvenida".
-
-**Qué verás:** Tras elegir la aplicación de acción, Zapier te mostrará un menú desplegable con los tipos de acciones disponibles en esa app. Por ejemplo, en Mailrelay verás: "Create Subscriber" (Crear suscriptor), "Remove Subscriber" (Eliminar suscriptor), etc. Elige la acción que quieres que ocurra.
-
----
-
-### Paso 6: Conecta tu cuenta de la aplicación de acción
-
-**Qué hacer:** Igual que en el paso 3, pero ahora para la aplicación de destino. Haz clic en "Connect Account" y autoriza a Zapier a acceder. Cierra la ventana.
-
-**Por qué:** Zapier necesita permiso para escribir datos en esa aplicación. Sin la conexión, no podrá crear registros, enviar emails, añadir contactos, etc.
-
-**Qué verás:** Tras conectar, aparecerá un formulario donde configuras los detalles específicos de la acción. Por ejemplo: si la acción es "Crear suscriptor en Mailrelay", te preguntará a qué lista de contactos quieres añadirlo.
-
----
-
-### Paso 7: Mapea los datos del trigger a los campos de la acción
-
-**Qué hacer:** Esta es la parte más importante y la que asusta a la gente — pero no es complicada.
-
-Zapier te mostrará un formulario con campos que necesita rellenar en la aplicación de destino. Por ejemplo, si la acción es "Crear contacto en Holded", verá campos como "Nombre", "Email", "Teléfono", "Empresa", etc.
-
-Para cada campo, tienes que indicar de dónde viene ese dato. Haz clic en el campo "Nombre" — se abrirá un menú desplegable con los datos que capturaste del trigger. Por ejemplo, si tu formulario de Google Forms tiene una pregunta "¿Cuál es tu nombre?", ese dato aparecerá en la lista. Selecciónalo.
-
-Repite esto para cada campo que necesite información. Email va al campo Email, Nombre al campo Nombre, etc.
-
-**Por qué:** Sin este mapeo, Zapier no sabría qué nombre poner en el campo "Nombre" de Holded, o qué email poner en el campo "Email".
-
-**Qué verás:** Cuando selecciones un dato del trigger para un campo, verá que la línea se rellena con el nombre del campo de origen. Por ejemplo: "Nombre (Google Forms - Nombre)". Si no ves ese dato en la lista desplegable, es que el trigger no lo captura — tendrás que volver al paso 4 para revisar qué datos estabas capturando.
+- **El precio sube con las tareas, no con el número de Zaps.** Una tarea es cada acción que ejecuta un Zap. Si un Zap tiene 3 acciones y se ejecuta 100 veces, consume 300 tareas.
+- **El plan Professional requiere contrato anual** para obtener el precio indicado arriba. Si pagas mes a mes, el precio sube aproximadamente un 40%.
 
 <Callout type="warning">
-**Importante:** No todas las integraciones permiten mapeo automático. Si la aplicación de acción no tiene integración nativa con Zapier (ej: un ERP local), es posible que necesites el plan de pago o usar "webhooks" — un método más técnico que sale de esta guía.
+**Ojo con el contrato anual:** Si contratas el plan Professional anual y cancelas antes de los 12 meses, perderás el importe restante. Empieza siempre con el plan mensual hasta que sepas que Zapier encaja en tu flujo de trabajo.
 </Callout>
 
----
-
-### Paso 8: Prueba la Zap antes de activarla
-
-**Qué hacer:** Tras mapear todos los datos, Zapier te ofrecerá un botón "Test Zap" (Probar Zap) o "Test & Continue" (Probar y continuar). Haz clic en él.
-
-Zapier intentará ejecutar la automatización con datos de prueba. Si todo funciona, te mostrará un mensaje verde: "Looks good!".
-
-Si hay un error, Zapier te dirá qué ha ido mal — por ejemplo, "El email es inválido" o "No encontramos ese campo en Google Forms".
-
-**Por qué:** Prefiere descubrir un error ahora, en prueba, que cuando la Zap esté activa y empiece a generar datos incorrectos en tu aplicación de destino.
-
-**Qué verás:** Tras hacer clic en "Test", aparecerá un cuadro de progreso. Zapier ejecutará el trigger de prueba y la acción. Si todo funciona:
-
-- Verás un cuadro con el título "Test successful" (Prueba exitosa).
-- Verás los datos que fueron desde el trigger hasta la acción — útil para confirmar que el mapeo es correcto.
-
-Si falla:
-- Verás un error en rojo explicando qué salió mal.
-- Regresa al paso anterior y revisa tu configuración.
+- Todos los precios son **sin IVA**. En España se aplica el 21% de IVA.
+- Zapier no tiene soporte en español. La documentación está en inglés. El chat de soporte atiende en inglés.
 
 ---
 
-### Paso 9: Activa la Zap
+## 🇪🇸 Zapier en España: lo que necesitas saber
 
-**Qué hacer:** Si la prueba fue exitosa, verás un botón azul grande: "Turn on Zap" (Activar Zap). Haz clic en él. Zapier te pedirá que le des un nombre a tu automatización — algo como "Nuevo formulario → Mailrelay" o "Google Forms a Holded". Pon un nombre que te ayude a recordar qué hace esta Zap.
+**Interfaz en español:** Parcialmente. Algunos textos aparecen traducidos, pero la interfaz principal está en inglés. No es un obstáculo real si sigues esta guía.
 
-Haz clic en "Turn on" nuevamente. Tu Zap está ahora activa.
+**Soporte en español:** No. El soporte es por email y chat, exclusivamente en inglés.
 
-**Por qué:** Una vez activa, Zapier monitoriza continuamente tu aplicación de trigger. Cada vez que ocurra el evento que configuraste, la acción se ejecutará automáticamente.
+**GDPR y LOPDGDD:** Zapier firma un DPA (Data Processing Agreement) disponible en su web. Los datos procesados por Zapier pueden pasar por servidores de EE.UU. — esto es relevante si los datos que automatizas incluyen datos personales de clientes. Consulta el DPA de Zapier y valídalo con tu asesor de protección de datos antes de automatizar flujos con datos de terceros.
 
-**Qué verás:** Tras activar la Zap, volverás a tu dashboard. Tu nueva Zap aparecerá en la lista principal con un icono verde de "on" (activada). El contador de tareas mensuales también comenzará a aumentar — cada ejecución consume una tarea.
-
----
-
-## Errores comunes
-
-**La Zap se activa, pero los datos no llegan a la aplicación de destino**
-
-*Síntoma:* Tu trigger se ejecuta (por ejemplo, alguien rellena el formulario), pero el registro no aparece en la aplicación de destino.
-
-*Causa:* Lo más frecuente es que el mapeo de datos sea incorrecto. Por ejemplo, acabas de mapear "Nombre" a un campo que espera un número, o mapeaste un campo vacío.
-
-*Solución:* Ve a tu Zap activada (en el dashboard, haz clic en su nombre). En la sección de acciones, revisa cada campo y asegúrate de que está mapeado a un dato del trigger. Si ves un campo con el símbolo "?" o gris, significa que no está mapeado o el dato es inválido. Haz clic en él y selecciona el dato correcto.
+**Facturación:** Zapier emite facturas en dólares. Si necesitas facturas en euros para tu contabilidad, esto puede ser un inconveniente. Algunas empresas prefieren alternativas europeas como Make (antes Integromat) o n8n precisamente por esto.
 
 ---
 
-**"The app is not connected" — Zapier dice que la conexión falló**
+## 📊 Casos de uso reales para pymes españolas
 
-*Síntoma:* Cuando intentas crear o editar una Zap, Zapier muestra un error diciendo que la aplicación no está conectada.
+Estos son los Zaps más útiles para empresas de servicios B2B de 5 a 20 personas:
 
-*Causa:* La autorización que diste a Zapier ha expirado (algunos servicios, como Google, expiran los permisos tras 6 meses de inactividad), o cambiaste tu contraseña en la aplicación y Zapier no puede acceder.
+**1. Formulario web → CRM + aviso al comercial**
+Cada nuevo lead que entra por la web aparece en Holded o Pipedrive y le llega un email o mensaje de Slack al comercial responsable. Tiempo de configuración: 20 minutos.
 
-*Solución:* En el dashboard de Zapier, ve a "Connected Accounts" (Cuentas conectadas) en el menú superior. Busca la aplicación problemática. Si aparece, haz clic en el botón de revisión (ojo o circunflejo). Si eso no funciona, elimina la conexión ("Disconnect") y crea una nueva — vuelve a autorizar a Zapier.
+**2. Firma de contrato → carpeta en Google Drive + email de bienvenida**
+Cuando un cliente firma un contrato en DocuSign o PandaDoc, Zapier crea automáticamente su carpeta en Drive y le envía el email de bienvenida que has preparado en Gmail.
 
----
+**3. Factura pagada en Holded → notificación al equipo**
+Cada vez que se marca una factura como cobrada en Holded, el equipo recibe un aviso en Slack. Simple pero muy valorado por equipos de 5-10 personas.
 
-**"You've hit the task limit" — He usado todas mis tareas mensuales**
+**4. Nueva reseña en Google → aviso interno**
+Cuando alguien deja una reseña en Google Business Profile, te llega un email o mensaje inmediato para poder responder rápido.
 
-*Síntoma:* Zapier te muestra un aviso diciendo que has alcanzado tu límite de tareas mensuales (100 en el plan gratuito).
-
-*Causa:* Cada vez que tu Zap se ejecuta, consume 1 tarea. Si tienes varias Zaps activas y ocurren muchos triggers en un mes, el contador sube rápido.
-
-*Solución:* Si es la primera vez, el límite se resetea automáticamente el primer día del mes. Para los meses siguientes, necesitarás actualizar tu plan de pago. Antes de eso, revisa cuáles de tus Zaps generan más tareas — a veces, es más eficiente ejecutar una Zap en lote (una vez al día a una hora fija) que dispararla en tiempo real cada vez que ocurra el evento. También puedes desactivar Zaps que no uses — no consumen tareas si están desactivadas.
-
----
-
-## Resultado final
-
-Si has seguido todos los pasos, ahora tienes:
-
-- **Tu primera Zap en funcionamiento:** Dos aplicaciones conectadas, intercambiando datos automáticamente sin que tengas que hacer nada manualmente.
-- **Una base para construir más automatizaciones:** Ahora que conoces cómo funcionan los triggers, las acciones y el mapeo de datos, puedes crear Zaps más complejas. Por ejemplo, una que haga 3 acciones en cadena: nuevo contacto en formulario → crear en CRM → enviar email de bienvenida → añadir a Mailrelay.
-- **Tiempo ahorrado:** Dependiendo de cuántas veces se repita el evento que configuraste, estarás ahorrando varias horas de trabajo manual cada mes.
-
-**Siguiente paso:** Explora la sección de "Zap Templates" (Plantillas de Zap) en Zapier. Verás Zaps preconfiguradas que otras pymes ya están usando — puedes duplicar cualquiera y adaptarla a tus aplicaciones. Esto es mucho más rápido que crear una Zap desde cero.
+**5. Tarea completada en Asana/Trello → registro en Sheets**
+Para equipos que hacen seguimiento de productividad sin un ERP completo.
 
 ---
 
-## Herramientas que facilitan esto
+## 🤔 ¿Para quién NO es Zapier?
 
-Si aún no tienes cuenta en Zapier, aquí tienes el acceso directo:
+- **Si todas tus herramientas son del ecosistema de Microsoft** (Office 365, Teams, Dynamics): Power Automate cubre los mismos casos de uso a mejor precio y con soporte en español.
+- **Si necesitas automatizaciones muy complejas con lógica condicional avanzada:** Make (antes Integromat) tiene un editor visual más potente para flujos complejos.
+- **Si la facturación en dólares te crea problemas de contabilidad:** Make tiene precios en euros y es de origen europeo (empresa checa).
+- **Si necesitas soporte en español:** Zapier no lo ofrece. Si no te manejas bien en inglés o prefieres poder llamar a alguien, busca una alternativa con soporte local.
+- **Si tu presupuesto es muy ajustado y solo necesitas 1-2 automatizaciones:** El plan gratuito puede ser suficiente, pero si necesitas más de 100 tareas mensuales, Make tiene un plan gratuito más generoso (1.000 operaciones/mes).
+
+---
+
+## ✅ Lo que nos gusta
+
+- ✅ La biblioteca de 7.000+ integraciones es imbatible. Si una herramienta existe, probablemente está en Zapier.
+- ✅ El editor paso a paso es el más fácil del mercado para quien no ha automatizado nada nunca.
+- ✅ El historial de ejecuciones es muy claro — ves exactamente qué se ejecutó, cuándo y si falló algo.
+- ✅ El plan gratuito sirve para aprender sin comprometerse.
+- ✅ Integración directa con Holded, la herramienta de gestión más usada por pymes españolas.
+
+---
+
+## ❌ Lo que no nos gusta
+
+- ❌ **No hay soporte en español.** Para una pyme española sin equipo técnico, encontrarse con un error en inglés y tener que resolver el soporte también en inglés es un freno real.
+- ❌ **El precio sube rápido.** Con 8-10 Zaps activos y flujos que se ejecutan varias veces al día, es fácil superar las 2.000 tareas mensuales del plan Team (63 €/mes + IVA). Hay que monitorizar el consumo de tareas o la factura puede sorprender.
+- ❌ **Las automatizaciones multi-paso complejas se vuelven difíciles de mantener.** Zapier es excelente para flujos lineales simples. Cuando necesitas lógica condicional ("si el cliente es de Madrid, haz X; si es de Barcelona, haz Y"), la experiencia se complica y Make resulta más cómodo.
+- ❌ **Factura en dólares.** Sin opción de pagar en euros ni de recibir facturas en euros con IVA español desglosado. Esto complica la gestión contable para muchas pymes.
+
+---
+
+## 🏁 Resultado final
+
+Si has seguido todos los pasos, tienes ahora:
+
+- Un Zap activo que conecta al menos dos de tus aplicaciones y ejecuta una acción automáticamente cuando ocurre algo.
+- Los datos de prueba verificados en las aplicaciones de destino — confirmaste que el mapeo de campos funciona.
+- Una base para construir más Zaps usando la misma lógica: trigger → acción(es).
+
+El siguiente paso lógico es automatizar el flujo completo de entrada de un nuevo cliente: formulario → CRM → email de bienvenida → aviso interno. Con lo que ya sabes, son tres acciones en el mismo Zap.
+
+---
+
+## ❓ Preguntas frecuentes
+
+### ¿Zapier funciona con Holded?
+
+Sí. Holded tiene integración nativa con Zapier. Puedes crear contactos, facturas, proyectos y tareas en Holded desde cualquier otra aplicación conectada. La integración es directa — no necesitas código ni ningún intermediario.
+
+### ¿Cuánto tarda en ejecutarse un Zap cuando ocurre el trigger?
+
+En los planes de pago, casi en tiempo real (menos de 2 minutos en la mayoría de casos). En el plan gratuito, Zapier revisa si hay triggers nuevos cada 15 minutos — hay un retraso. Para un flujo de notificación de leads, 15 minutos pueden ser demasiado. Es uno de los motivos por los que el plan de pago merece la pena en uso real.
+
+### ¿Puedo usar Zapier con WhatsApp?
+
+No directamente con WhatsApp personal. Sí con **WhatsApp Business API** a través de integraciones como Twilio o 360dialog. Requiere configuración adicional y tiene costes propios de esas plataformas. No es plug-and-play como Slack o email.
+
+### ¿Es seguro pasar datos de clientes por Zapier?
+
+Zapier tiene certificación SOC 2 Type II y firma DPA bajo GDPR. Pero los datos pasan por sus servidores (mayoritariamente en EE.UU.) durante el proceso de automatización. Si automatizas datos personales de clientes europeos, debes revisar el DPA de Zapier y asegurarte de que cumple con los requisitos de tu empresa bajo la LOPDGDD. Consulta con tu asesor de protección de datos si tienes dudas.
+
+### ¿Qué diferencia hay entre Zapier y Make (Integromat)?
+
+Zapier es más fácil de configurar para flujos simples. Make es más potente para flujos complejos con condiciones, bucles y transformaciones de datos. Make tiene precios en euros, factura como empresa europea y tiene un plan gratuito más generoso. Para una pyme que empieza, Zapier es más accesible. Para una pyme con automatizaciones más complejas o que prioriza el control del gasto, Make merece la pena evaluar.
+
+---
+
+## Herramientas para empezar
 
 <AffiliateLink programSlug="zapier" articleSlug="zapier-guia-completa-pymes" label="Probar Zapier gratis" />
 
-Zapier funciona con prácticamente cualquier aplicación, pero si usas Holded para facturación en tu pyme española, te interesa saber que la integración es nativa y sin complicaciones:
+Si después de leer esta guía prefieres explorar una alternativa europea con precios en euros:
 
-Para gestionar contactos, si trabajas con Mailrelay (plataforma española de email), la integración con Zapier es especialmente fluida — ambas plataformas están optimizadas para pymes españolas.
-
----
-
-## 📖 También te puede interesar
-
-- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
-- [Cómo automatizar la atención al cliente en pymes: guía práctica con Zapier y Make](https://pymestools.com/automatizacion/automatizar-atencion-cliente-pymes)
-- [Cómo automatizar la facturación en tu pyme con Holded y Zapier](https://pymestools.com/automatizacion/automatizar-facturacion-pymes)
+<AffiliateLink programSlug="make" articleSlug="zapier-guia-completa-pymes" label="Ver Make (alternativa europea)" />
 
 ---
 
@@ -257,15 +311,7 @@ Para gestionar contactos, si trabajas con Mailrelay (plataforma española de ema
 
 - [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
 - [Cómo automatizar la atención al cliente en pymes: guía práctica con Zapier y Make](https://pymestools.com/automatizacion/automatizar-atencion-cliente-pymes)
-- [Cómo automatizar la facturación en tu pyme con Holded y Zapier](https://pymestools.com/automatizacion/automatizar-facturacion-pymes)
-
----
-
-## 📖 También te puede interesar
-
-- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
-- [Cómo automatizar la atención al cliente en pymes: guía práctica con Zapier y Make](https://pymestools.com/automatizacion/automatizar-atencion-cliente-pymes)
-- [Cómo automatizar la facturación en tu pyme con Holded y Zapier](https://pymestools.com/automatizacion/automatizar-facturacion-pymes)
+- [Cómo automatizar la facturación en tu pyme con Holded y Zapier: guía paso a paso](https://pymestools.com/automatizacion/automatizar-facturacion-pymes)
 
 ---
 

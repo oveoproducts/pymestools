@@ -1,254 +1,348 @@
 ---
 title: "Cómo automatizar tu pyme sin programar: guía completa"
 slug: "como-automatizar-tu-pyme"
-description: "Guía paso a paso para automatizar procesos repetitivos en tu pyme con Zapier y Make. Sin código. Resultado en menos de una hora."
 category: "automatizacion"
+description: "Guía práctica para automatizar tareas repetitivas en tu pyme sin saber programar. Casos de uso reales con Zapier y Make, precios actualizados a 2026 y pasos concretos desde cero."
 type: "how-to"
 publishedAt: null
-updatedAt: "2026-05-13T08:09:52.363Z"
+updatedAt: "2026-05-24T16:13:54.062Z"
 tools: ["zapier", "make"]
 keywords:
-  primary: "cómo automatizar tu pyme sin programar guía completa"
+  primary: "como automatizar tu pyme sin programar"
   secondary:
-    - "automatizar procesos pyme sin código"
-    - "zapier make español tutorial"
-    - "automatizaciones empresariales herramientas gratis"
+    - "automatización pymes españa"
+    - "zapier para pymes"
+    - "make automatizacion españa"
+    - "automatizar tareas repetitivas empresa"
+    - "no-code automatización pyme"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "8 min"
+readingTime: "9 min"
 qualityScore: null
 ---
 
-Al terminar esta guía, tendrás tu primer flujo de automatización funcionando — conectando dos herramientas que ya usas sin tocar ni una línea de código. El proceso completo lleva menos de una hora, y el resultado es que tareas repetitivas que hoy haces manualmente (copiar datos, enviar emails, crear registros) se hacen solas.
+Al terminar esta guía, tendrás al menos una automatización funcionando entre dos herramientas que ya usas en tu empresa: sin tocar código, sin contratar a nadie de IT y sin semanas de implantación.
 
-Si tienes 8 empleados y usas Excel, Sage y email, hay al menos 5 procesos en tu empresa que pueden automatizarse ahora mismo.
+El tiempo real para la primera automatización: entre 20 y 40 minutos.
 
 ---
 
 ## Lo que necesitas
 
-- **Cuenta en Zapier o Make:** Ambas tienen versiones gratuitas que permiten hasta 5–10 automatizaciones simples. El plan gratuito es suficiente para empezar.
-- **Dos herramientas conectables:** Necesitas identificar qué dos aplicaciones quieres conectar. Ejemplos: tu CRM + email, tu formulario web + hoja de cálculo, tu facturación + Slack.
-- **Acceso administrativo:** Necesitas poder generar "tokens" o "claves de conexión" en ambas herramientas. Si usas cuentas de equipo, asegúrate de tener permisos para eso.
-- **Nivel técnico necesario:** Ninguno. No necesitas saber programación. Si sabes usar Excel, capaz de entender cómo funcionan estas herramientas. La interfaz es de "arrastra y suelta" (drag-and-drop).
-- **Tiempo estimado:** 30 minutos si ya tienes identificados los datos que quieres automatizar.
+- **Una cuenta en Zapier o Make:** ambas tienen plan gratuito para empezar. Te explicamos cuál encaja mejor según tu caso más abajo.
+- **Dos herramientas que ya usas** y que quieres conectar — por ejemplo, tu formulario web y tu hoja de cálculo, o tu email y tu CRM.
+- **Nivel técnico necesario:** si sabes copiar y pegar, es suficiente. No necesitas saber qué es una API. Los pasos usan interfaces visuales de arrastrar y soltar.
+- **Acceso de administrador** a las herramientas que vayas a conectar — algunas integraciones requieren permisos de admin para autorizar la conexión.
 
 ---
 
-## ¿Zapier o Make? Cuál usar
+## 🤔 ¿Por qué automatizar si ya "funciona" todo?
 
-Antes de empezar, elige cuál usarás. Ambas hacen exactamente lo mismo, pero tienen diferencias:
+Carlos lleva años haciendo lo mismo: cuando alguien rellena el formulario de contacto de la web, copia los datos a mano en Excel, manda un email de bienvenida, y avisa al comercial por WhatsApp.
 
-**Zapier** es la más popular en España. Interfaz en español completa, soporte en español por email, y más integraciones disponibles (6.000+). El plan gratuito permite 100 acciones/mes.
+Eso son entre 5 y 15 minutos por contacto. Con 20 contactos al mes: hasta 5 horas al mes haciendo lo mismo.
 
-**Make** (antes Integromat) es más barata en planes de pago y permite automatizaciones más complejas en el plan gratuito. Interfaz en español, pero el soporte es principalmente por chat (en inglés, aunque responden rápido). Permite hasta 1.000 operaciones/mes en gratuito.
-
-**Recomendación para Carlos:** Si acabas de empezar, **Zapier**. Su interfaz es más intuitiva y el soporte en español te ahorra frustraciones. Si ya has usado Make o necesitas hacer algo más complejo después de tu primer automatización, entonces Make.
-
-Para esta guía usaremos **Zapier** porque es más común en españa.
+La automatización no es tecnología de grandes empresas. Es copiar ese proceso manual y dejarlo en piloto automático.
 
 ---
 
-## Paso a paso: Tu primera automatización
+## 🔁 Cómo funciona una automatización (sin tecnicismos)
 
-### Paso 1: Identifica el proceso a automatizar
+Toda automatización tiene la misma lógica: **si pasa X, haz Y**.
 
-Antes de tocar ningún botón en Zapier, necesitas tener claro qué quieres automatizar. Piensa en una tarea que hagas (o que tu equipo haga) más de 5 veces a la semana, que sea siempre igual.
+- *Si* alguien rellena mi formulario web → *crea* una fila en Excel y *envía* un email de bienvenida
+- *Si* llega una factura por email → *guárdala* en Google Drive y *avisa* al equipo por Slack
+- *Si* un cliente nuevo se da de alta en Holded → *añádelo* a la lista de Mailrelay
 
-**Ejemplos concretos que hemos visto en pymes españolas:**
+Eso es todo. No hay más magia.
 
-- Cuando llega un email con "NUEVO CLIENTE" en el asunto, crear un registro en tu CRM (Holded, por ejemplo) automáticamente.
-- Cada vez que alguien rellena tu formulario de contacto en la web, guardar el nombre y email en Excel.
-- Cuando cierras una factura en Sage, enviar un email de confirmación al cliente.
-- Si un cliente cancela un pedido en tu e-commerce, crear una nota en Slack para que tu equipo lo vea.
-
-**Qué hacer:** Abre un documento y describe en 3 líneas el proceso que quieres automatizar. No necesita ser perfecto — solo aclarar dónde comienza y dónde termina.
-
-**Por qué:** Si no lo tienes claro, Zapier va a darte 100 opciones de configuración y te vas a perder. Con el proceso identificado, sabrás qué botones necesitas.
-
-**Qué verás:** Nada aún. Solo un apunte tuyo. Pero es el paso más importante.
+Las plataformas como Zapier y Make son el puente entre herramientas que de otra forma no se hablan entre sí.
 
 ---
 
-### Paso 2: Crea la cuenta en Zapier y conecta tus herramientas
+## 🛠️ Zapier vs Make: cuál elegir
 
-Ve a zapier.com y regístrate con tu email. La interfaz te pedirá que crees tu primera "Zap" (así se llama el flujo de automatización en Zapier).
+{/* TODO: captura de la comparativa visual de interfaces de Zapier y Make */}
 
-**Qué hacer:**
+Antes de entrar en los pasos, necesitas saber con cuál empezar. No son iguales.
 
-En la pantalla principal de Zapier, haz clic en "Crear un Zap". Te aparecerá una interfaz de 3 pasos: **Trigger** (disparador), **Action** (acción), **Test** (prueba).
+| | **Zapier** | **Make** |
+|---|---|---|
+| **Curva de aprendizaje** | Muy baja — para Carlos de día uno | Media — requiere 1-2 horas de adaptación |
+| **Interfaz** | Lineal, paso a paso | Visual en canvas (como un diagrama) |
+| **Plan gratuito** | 100 tareas/mes, 5 automatizaciones | 1.000 operaciones/mes, automatizaciones ilimitadas |
+| **Precio de entrada (2026)** | Desde 21,99 $/mes + IVA (aprox. 20 €/mes) | Desde 9 $/mes + IVA (aprox. 8 €/mes) |
+| **Integraciones** | +7.000 apps | +1.800 apps |
+| **Para casos complejos** | Limitado sin plan alto | Muy potente — lógica avanzada sin código |
+| **Soporte en español** | No — solo inglés | No — solo inglés |
+| **Documentación en español** | No | No — aunque hay comunidad hispanohablante activa |
+| **GDPR** | Sí — DPA disponible, servidores en EEUU con cláusulas SCCs | Sí — DPA disponible, servidores en EEUU/UE según plan |
 
-Bajo "Trigger", busca la primera herramienta que quieres conectar. Por ejemplo, si tu formulario web está hecho con Typeform, escribe "Typeform" en la barra de búsqueda. Si usas Google Forms, busca "Google Forms". Zapier tiene más de 6.000 integraciones — probablemente esté la tuya.
+<Callout type="warning">
+**Ojo con el soporte en español:** ni Zapier ni Make ofrecen soporte en español. La documentación oficial es en inglés. Si eso es un freno para ti, considera **Albato** (tiene soporte en español) o usa Make con la comunidad hispana activa en Facebook y YouTube.
+</Callout>
 
-Una vez selecciones la herramienta, haz clic en "Conectar" o "Connect your account". Zapier te pedirá que abras sesión en esa herramienta (por ejemplo, en Typeform). Hazlo — es seguro. Zapier solo obtiene permiso para leer tus datos y crear nuevos registros, nada más.
+**La regla rápida:**
 
-**Por qué:** El Trigger es el evento que inicia la automatización. "Cada vez que alguien rellena mi formulario Typeform, quiero que ocurra algo."
+- Si eres nuevo en automatización → empieza con **Zapier**. Más fácil, más integraciones, resultados en 20 minutos.
+- Si tienes automatizaciones complejas o quieres pagar menos → **Make**.
 
-**Qué verás:** Después de conectar, Zapier te mostrará las opciones de "trigger event" de esa herramienta. Ej: "New Response" (nueva respuesta en Typeform), "New Entry" (nueva entrada en Google Forms). Selecciona la que corresponda.
-
----
-
-### Paso 3: Configura el disparador (Trigger)
-
-Una vez hayas elegido el evento, Zapier te pedirá detalles específicos. Por ejemplo, si elegiste Typeform, te preguntará: "¿De cuál de tus formularios Typeform?".
-
-**Qué hacer:** Selecciona el formulario o la fuente de datos exacta de la que quieres captar eventos. Si tienes múltiples formularios, asegúrate de elegir el correcto.
-
-Zapier te mostrará un campo "Test the trigger" (probar el disparador). Haz clic ahí. Zapier buscará un evento reciente (una respuesta nueva, un nuevo registro, etc.) de tu cuenta. Si encuentra uno, lo usará como ejemplo para el siguiente paso.
-
-Si no encuentra nada, puedes crear un registro de prueba manualmente en tu herramienta, esperar 10 segundos, y volver a Zapier a hacer clic en "Test".
-
-**Por qué:** Necesitamos datos reales para que Zapier sepa qué información captar.
-
-**Qué verás:** Una tabla con los datos que Zapier encontró. Si tu formulario pregunta "Nombre", "Email" y "Empresa", verás tres columnas con datos reales de una respuesta anterior.
-
----
-
-### Paso 4: Añade la acción (Action)
-
-Ahora Zapier sabe dónde empieza tu automatización. Necesita saber dónde termina.
-
-**Qué hacer:** En la sección "Action", busca la segunda herramienta que quieres conectar. Por ejemplo, si quieres guardar los datos en Excel (Google Sheets), escribe "Google Sheets". Si quieres crear un contacto en tu CRM (Holded), busca "Holded".
-
-Al igual que antes, haz clic en "Conectar" y autoriza a Zapier a acceder a esa herramienta.
-
-**Por qué:** La acción es lo que ocurre automáticamente después del evento. Si el trigger es "alguien rellena un formulario", la acción podría ser "añadir ese nombre y email a mi lista de Excel".
-
-**Qué verás:** Después de conectar, Zapier te mostrará opciones de qué tipo de acción quieres realizar. Si elegiste Google Sheets, te preguntará: "¿Crear una fila nueva?", "¿Actualizar una fila existente?", etc. Elige "Crear una fila nueva".
+<Callout type="info">
+**Precios consultados en mayo 2026.** Zapier y Make cobran en dólares. Las cifras en euros son conversiones aproximadas. Verifica siempre en zapier.com y make.com antes de contratar. Ambos precios son sin IVA.
+</Callout>
 
 ---
 
-### Paso 5: Mapea los campos de datos
+## ⚙️ Pasos: tu primera automatización con Zapier
 
-Este es el paso más importante visualmente, pero es más simple de lo que suena.
+Vamos a construir un caso de uso real: **cuando alguien rellena un formulario de Typeform, se añade automáticamente una fila en Google Sheets y se envía un email de aviso al comercial**.
 
-**Qué hacer:** Zapier te mostrará dos columnas. En la izquierda, están los datos que capturó del trigger (Nombre, Email, Empresa). En la derecha, están los campos de tu acción (Fila en Excel, Contacto en CRM, etc.).
-
-Tu trabajo es decirle a Zapier: "El 'Nombre' del formulario va aquí (a la columna Nombre de Excel)", "El 'Email' va aquí", etc.
-
-Para cada campo de tu acción (por ejemplo, la columna A de tu Excel), hay un desplegable. Haz clic en él y selecciona de dónde viene ese dato. Ej: A la columna "Nombre" de tu Excel, asígna el campo "Nombre" de tu formulario.
-
-Si tu formulario no tiene ese dato, déjalo en blanco — Zapier lo permite.
-
-**Por qué:** Zapier necesita saber qué información de la fuente (Typeform) va a qué lugar del destino (Excel). Sin este mapeo, sabría que hay datos, pero no dónde ponerlos.
-
-**Qué verás:** Un formulario con todos los campos de tu acción (Google Sheets, CRM, etc.) rellenados con los datos que Zapier encontró. Debería parecerse a tus datos reales: si tu formulario pregunta por un nombre real, verás ese nombre asignado al campo "Nombre".
+Si usas otros formularios o CRM, el proceso es el mismo — solo cambia la app de origen.
 
 ---
 
-### Paso 6: Prueba y activa el Zap
+### Paso 1: Crea una cuenta gratuita en Zapier
 
-**Qué hacer:** Zapier te mostrará un botón "Test the action" (probar la acción). Haz clic. Zapier intentará crear un registro en tu destino (Excel, CRM, etc.) usando los datos que capturó en el paso 3.
+Ve a zapier.com y regístrate. El plan gratuito incluye 5 automatizaciones ("Zaps") y 100 tareas al mes — suficiente para empezar.
 
-Si todo va bien, verás un mensaje verde: "Success". Si algo falla, Zapier te mostrará un error específico (ej: "No tienes permisos de escritura en esa hoja de Excel").
-
-Una vez el test sea correcto, haz clic en "Turn on Zap" (activar el Zap). El símbolo que ves a la izquierda del nombre de tu Zap cambiará de gris a azul, indicando que está activo.
-
-**Por qué:** El test es tu seguro. No quieres que la automatización se active y descubrir que crea datos incorrectos, o que deja datos vacíos.
-
-**Qué verás:** Un checkmark verde confirmando que el test funcionó. Si algo falla, verás el error específico (ej: "Campo requerido no puede estar vacío").
+**Qué verás:** tras el registro, Zapier te lleva a un dashboard con un botón grande: `"Create Zap"`. Haz clic ahí.
 
 ---
 
-### Paso 7: Monitorea las primeras automatizaciones
+### Paso 2: Elige el activador (Trigger)
 
-Después de activar el Zap, deja que funcione durante unos días. Zapier tiene una sección "Zap History" donde ves cada vez que se ejecutó tu automatización, y si funcionó o falló.
+El activador es "lo que tiene que pasar para que todo lo demás se ponga en marcha".
 
-**Qué hacer:** En el panel principal de Zapier, busca tu Zap y haz clic en él. Te mostrará un histórico: "3 de mayo, 14:23 — Ejecución exitosa", "3 de mayo, 09:15 — Ejecución exitosa", etc.
+Busca `"Typeform"` en el buscador de apps. Selecciona el evento `"New Entry"` (nueva respuesta recibida). Zapier te pedirá que conectes tu cuenta de Typeform — haz clic en `"Sign in to Typeform"` y autoriza el acceso.
 
-Si ves errores, haz clic en el error para ver qué salió mal. A veces es algo simple (un campo que no debería estar vacío, una herramienta que se desconectó).
+**Por qué:** Zapier necesita permiso para leer tus formularios. Sin esto no puede detectar cuándo llega una nueva respuesta.
 
-**Por qué:** Los primeros días necesitas confirmar que funciona como esperabas. A veces un Zap se ejecuta correctamente, pero los datos no van donde creías que irían.
+**Qué verás:** aparece un desplegable para seleccionar qué formulario concreto quieres monitorizar. Elige el tuyo. Haz clic en `"Test trigger"` — Zapier intentará leer la última respuesta real para confirmar que la conexión funciona.
 
-**Qué verás:** Un listado de cada ejecución (cada vez que el evento ocurrió). Verde = funcionó. Rojo = algo falló. Al hacer clic en cada una ves los datos exactos que se transfirieron.
-
----
-
-## Errores comunes
-
-**Mi Zap está activado pero no se ejecuta**
-
-*Síntoma:* Han pasado 2 días, han ocurrido eventos en la herramienta origen (ej: se han rellenado formularios), pero el Zap no se ha ejecutado ni una sola vez. El histórico dice "0 executions" (0 ejecuciones).
-
-*Causa:* Zapier no está recibiendo los eventos porque la conexión con tu herramienta de origen está rota. A veces ocurre si cambias la contraseña de esa herramienta, o si esa herramienta revoca los permisos.
-
-*Solución:* En el panel de tu Zap, busca el botón "Reconnect" (reconectar) junto al nombre de tu herramienta de origen. Haz clic y vuelve a iniciar sesión en esa herramienta. Eso debería resolver el problema en 90% de los casos.
+**Nota:** si no tienes ninguna respuesta todavía en el formulario, el test fallará. Envía una respuesta de prueba antes de continuar.
 
 ---
 
-**Los datos llegan, pero en el orden incorrecto o con información que falta**
+### Paso 3: Añade la primera acción — crear fila en Google Sheets
 
-*Síntoma:* Tu Excel recibe datos, pero "Nombre" y "Email" están al revés, o la columna "Empresa" siempre está vacía aunque el formulario pregunta por eso.
+Haz clic en `"+"` para añadir la primera acción. Busca `"Google Sheets"` y selecciona el evento `"Create Spreadsheet Row"`.
 
-*Causa:* El mapeo de campos (paso 5) no está hecho correctamente. O bien seleccionaste el campo incorrecto, o bien olvidaste mapear algunos campos.
+Conecta tu cuenta de Google. Selecciona el archivo de Sheets y la hoja (pestaña) donde quieres que aparezcan los datos. Después, mapea los campos: en cada columna de tu hoja, selecciona qué dato del formulario quieres que aparezca.
 
-*Solución:* Abre tu Zap, ve a la sección "Action", y vuelve a revisar el mapeo de campos. Asegúrate de que cada campo de tu destino está asignado al campo correcto de tu origen. Si vuelves a cambiar algo, haz un nuevo test antes de guardar.
+**Por qué:** esto es lo que convierte la respuesta del formulario en una fila de datos estructurada en tu Excel/Sheets — sin copiar a mano.
 
----
-
-**"No tengo soporte" o "Zapier no integra mi herramienta"**
-
-*Síntoma:* Buscas tu herramienta en Zapier (ej: tu software de facturación local) y no aparece en los resultados. O aparece, pero al intentar conectar, Zapier dice "Esta integración no está disponible en tu plan".
-
-*Causa:* Tu herramienta específica no tiene integración disponible en Zapier (es menos común de lo que piensas), o esa integración requiere un plan de pago superior al tuyo.
-
-*Solución:* Antes de rendirte, intenta dos cosas: 1) Busca "Webhook" o "API" en la barra de búsqueda de Zapier — Zapier permite conexiones genéricas a casi cualquier herramienta si tiene API (aunque es más técnico). 2) Considera cambiar a Make, que a veces tiene integraciones que Zapier no tiene, o comprueba si esa herramienta tiene su propia automatización integrada (muchos CRMs españoles como Holded tienen automatizaciones sin necesidad de Zapier).
+**Qué verás:** Zapier muestra una previsualización de cómo quedará la fila con los datos reales de la respuesta de prueba. Si los campos están bien mapeados, los verás rellenos. Haz clic en `"Continue"`.
 
 ---
 
-## Resultado final
+### Paso 4: Añade la segunda acción — enviar email de aviso
 
-Si has seguido todos los pasos, ahora tienes:
+Haz clic en `"+"` de nuevo. Busca `"Email by Zapier"` (o `"Gmail"` si prefieres usar tu cuenta). Selecciona `"Send Email"`.
 
-- Un Zap funcionando 24/7 que conecta dos de tus herramientas sin que tengas que hacer nada manualmente.
-- Un histórico en Zapier que te muestra cada vez que se ejecutó y si tuvo éxito — eso es tu prueba de que funciona.
-- La confianza de que tu siguiente automatización será más rápida, porque ya entiendes cómo funcionan los triggers y las acciones.
+Rellena los campos:
+- **To:** el email del comercial o de quien deba recibir el aviso
+- **Subject:** algo como `"Nuevo contacto: [Nombre del formulario]"` — usa el dato dinámico del formulario haciendo clic en el campo y seleccionando `"Name"` del desplegable
+- **Body:** redacta el mensaje incluyendo los datos del contacto como variables dinámicas
 
-El siguiente paso lógico es preguntarte: ¿Qué otra tarea repetitiva puedo automatizar? Muchas pymes después de su primer Zap crean entre 3 y 5 más en las siguientes 2 semanas. Cada una ahorra entre 30 minutos y 2 horas de trabajo manual por semana.
-
----
-
-## Herramientas que facilitan esto
-
-Si aún no tienes cuenta en Zapier, aquí tienes el acceso directo:
-
-<AffiliateLink programSlug="zapier" articleSlug="como-automatizar-tu-pyme" label="Probar Zapier gratis — 5 Zaps" />
-
-Si después de probar Zapier quieres explorar automatizaciones más complejas (por ejemplo, pasos condicionales: "si el email contiene X, haz Y, si no, haz Z"), Make permite esto en su plan gratuito de forma más flexible:
-
-<AffiliateLink programSlug="make" articleSlug="como-automatizar-tu-pyme" label="Probar Make gratis — 1.000 operaciones/mes" />
+**Qué verás:** Zapier muestra un preview del email con los datos reales de la respuesta de prueba. Revisa que los datos salen bien.
 
 ---
 
-## 📖 También te puede interesar
+### Paso 5: Activa el Zap
 
-- [Las 2 mejores herramientas de automatización para pymes en España (2026)](https://pymestools.com/automatizacion/mejores-herramientas-automatizacion-pymes)
-- [Zapier vs Make: ¿Cuál elegir para tu pyme en 2025?](https://pymestools.com/automatizacion/zapier-vs-make)
-- [Make (Integromat): ¿Vale la pena para automatizar tu pyme?](https://pymestools.com/automatizacion/review-make)
+Haz clic en `"Publish"` arriba a la derecha. El Zap pasa de `"Off"` a `"On"`.
 
----
+**Qué verás:** el botón cambia a verde con el texto `"On"`. A partir de ahora, cada vez que llegue una nueva respuesta al formulario, Zapier ejecutará las dos acciones automáticamente.
 
-## 📖 También te puede interesar
-
-- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
-- [Cómo automatizar la atención al cliente en pymes: guía práctica con Zapier y Make](https://pymestools.com/automatizacion/automatizar-atencion-cliente-pymes)
-- [Cómo integrar CRM con email marketing en pymes sin programar](https://pymestools.com/automatizacion/integrar-crm-email-marketing)
+Pruébalo: envía una respuesta de prueba al formulario y espera un minuto. Comprueba que aparece la fila en Sheets y llega el email.
 
 ---
 
-## 📖 También te puede interesar
+## 🔄 Pasos: automatización avanzada con Make
 
-- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
-- [Cómo automatizar la atención al cliente en pymes: guía práctica con Zapier y Make](https://pymestools.com/automatizacion/automatizar-atencion-cliente-pymes)
-- [Cómo automatizar redes sociales para pymes: guía con Zapier y Make](https://pymestools.com/automatizacion/automatizar-redes-sociales-pymes)
+Make es más potente para casos donde hay lógica condicional: "si el contacto es de Madrid, haz X; si es de fuera, haz Y". También es mejor si necesitas transformar datos antes de enviarlos.
+
+{/* TODO: captura del canvas de Make con un escenario activo */}
 
 ---
 
-## 📖 También te puede interesar
+### Paso 1: Crea tu cuenta y entra al "canvas"
 
-- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
-- [Cómo automatizar la atención al cliente en pymes: guía práctica con Zapier y Make](https://pymestools.com/automatizacion/automatizar-atencion-cliente-pymes)
-- [Cómo automatizar redes sociales para pymes: guía con Zapier y Make](https://pymestools.com/automatizacion/automatizar-redes-sociales-pymes)
+Ve a make.com y regístrate. Haz clic en `"Create a new scenario"`. Verás una pantalla en blanco con un círculo en el centro — eso es el canvas donde vas a construir la automatización visualmente.
+
+**Qué verás:** un círculo con un signo `"+"`. Haz clic ahí para añadir el primer módulo.
+
+---
+
+### Paso 2: Elige el módulo de origen (Watch)
+
+Busca la app de origen (por ejemplo, `"Google Forms"` o `"Typeform"`). Selecciona el módulo de tipo `"Watch"` — eso significa "vigilar y activar cuando hay algo nuevo".
+
+Conecta tu cuenta y configura qué formulario o evento vigilar.
+
+**Por qué:** en Make, los módulos `"Watch"` son equivalentes a los "Triggers" de Zapier — son el punto de partida del flujo.
+
+**Qué verás:** el módulo aparece en el canvas con el logo de la app. A su derecha hay un pequeño engranaje — haz clic para configurar con qué frecuencia Make comprueba si hay datos nuevos. En el plan gratuito, el mínimo es cada 15 minutos.
+
+---
+
+### Paso 3: Añade módulos de acción
+
+Haz clic en el borde derecho del módulo para conectar el siguiente. Busca la app de destino (Google Sheets, Holded, Mailrelay...) y elige la acción.
+
+Si quieres añadir lógica condicional, busca el módulo `"Router"` — te permite crear ramas distintas según el valor de un campo.
+
+**Qué verás:** el canvas se va llenando de módulos conectados por flechas. Cada módulo muestra el logo de la app y el nombre de la acción.
+
+---
+
+### Paso 4: Mapea los datos entre módulos
+
+Haz clic en cada módulo de acción. En los campos de configuración, verás un panel a la derecha con los datos disponibles del módulo anterior — arrastra o selecciona el dato que quieres en cada campo.
+
+**Por qué:** Make te permite transformar datos antes de enviarlos. Por ejemplo, combinar nombre y apellido en un solo campo, o convertir una fecha a otro formato.
+
+---
+
+### Paso 5: Activa el escenario
+
+Haz clic en el botón `"Scheduling"` abajo a la izquierda y ponlo en `"On"`. Haz clic en `"Run once"` primero para probar con datos reales antes de activarlo de forma permanente.
+
+**Qué verás:** Make ejecuta el flujo y muestra en cada módulo cuántos registros procesó y si hubo errores. Si todo es verde, activa el scheduling definitivo.
+
+---
+
+## 📋 Casos de uso reales para pymes españolas
+
+Estos son los que más tiempo ahorran y más rápido se configuran:
+
+**Captación y CRM**
+- Formulario web → añadir contacto a Holded o Salesforce → enviar email de bienvenida
+- Nuevo lead en LinkedIn → crear tarea en Asana o Trello → avisar al comercial
+
+**Facturación y administración**
+- Presupuesto aceptado en Holded → crear proyecto en ClickUp → enviar email al cliente con próximos pasos
+- Email con adjunto PDF recibido → guardar automáticamente en carpeta de Google Drive → notificar a contabilidad
+
+**RRHH y equipo**
+- Nuevo empleado en Factorial → crear usuario en Google Workspace → enviar email de bienvenida con accesos
+- Solicitud de vacaciones aprobada en Sesame → actualizar calendario del equipo → notificar al manager
+
+**Marketing**
+- Nuevo suscriptor en Mailrelay → añadir a Google Sheets de seguimiento → enviar notificación interna
+- Formulario de descarga de contenido → añadir a lista segmentada en Acumbamail → iniciar secuencia de emails
+
+<Callout type="tip">
+**Por dónde empezar:** elige el proceso que haces más veces a la semana y que consiste en copiar datos de un sitio a otro. Ese es tu primer candidato. Las automatizaciones de "copiar datos entre herramientas" son las más fáciles de configurar y las que dan resultado más rápido.
+</Callout>
+
+---
+
+## ❌ Lo que no nos gusta
+
+**De Zapier:**
+- El plan gratuito es muy limitado: 100 tareas y 5 Zaps. Con un equipo de 8 personas, te quedas corto en semanas. El salto al plan de pago (21,99 $/mes) es brusco para lo que ofrece.
+- Los Zaps con más de 2 pasos solo están disponibles en planes de pago. Si quieres encadenar 3 o más acciones — algo habitual en cualquier proceso real — tienes que pagar desde el primer día.
+- Sin soporte en español. Si tienes un problema con una integración compleja, la documentación es íntegramente en inglés.
+
+**De Make:**
+- La interfaz en canvas es más potente, pero la curva de aprendizaje es real. Carlos tardará más en su primera automatización.
+- Los errores de ejecución no siempre son fáciles de entender. Cuando falla un escenario, el mensaje de error es técnico y requiere experiencia para interpretarlo.
+- También cobra en dólares. El precio parece bajo (desde 9 $/mes), pero sube rápido si necesitas muchas operaciones al mes o múltiples usuarios.
+
+---
+
+## 🤔 ¿Para quién NO es esto?
+
+**No empieces con Zapier o Make si:**
+- Tu empresa usa software a medida o un ERP muy específico que no tiene integración con estas plataformas. Antes de pagar, comprueba en zapier.com/apps o make.com/en/integrations que tus herramientas están en el catálogo.
+- Necesitas que alguien en español te configure y soporte las automatizaciones. Ni Zapier ni Make ofrecen soporte en español. Para eso, busca un partner local o considera herramientas con soporte nativo en español.
+- Tus procesos tienen muchas excepciones y casos especiales. Las automatizaciones funcionan bien con flujos predecibles. Si cada caso es diferente, la automatización puede crear más trabajo que ahorra.
+- Buscas automatizar la facturación o la contabilidad. Eso requiere herramientas específicas compatibles con Verifactu y la normativa española — Zapier y Make no son la solución para eso.
+
+---
+
+## ⚠️ Errores comunes
+
+**El Zap se activa pero no crea la fila en Sheets**
+
+*Síntoma:* Zapier muestra la ejecución como correcta, pero la fila no aparece en Google Sheets.
+
+*Causa:* El problema más habitual es que los permisos de la hoja de cálculo no permiten edición a la cuenta de Google conectada, o la hoja está en una cuenta de Google distinta a la que autorizaste.
+
+*Solución:* Ve a `"My Apps"` en Zapier, desconecta y vuelve a conectar tu cuenta de Google. Asegúrate de conectar exactamente la cuenta que tiene acceso de edición a esa hoja.
+
+---
+
+**El email de aviso llega con campos vacíos**
+
+*Síntoma:* El email llega, pero donde debería poner el nombre del contacto aparece en blanco o con texto como `"undefined"`.
+
+*Causa:* El mapeo de campos no está bien hecho — el campo del email está apuntando a una variable vacía o al campo equivocado del formulario.
+
+*Solución:* Edita el Zap y vuelve al paso del email. Haz clic en cada campo del cuerpo del mensaje y comprueba que las variables dinámicas (en azul) corresponden a los campos correctos del formulario. Usa `"Test trigger"` para ver exactamente cómo se llaman los campos en los datos reales.
+
+---
+
+**Make no detecta las nuevas entradas del formulario**
+
+*Síntoma:* Envías una respuesta al formulario pero el escenario de Make no se ejecuta.
+
+*Causa:* En el plan gratuito de Make, el intervalo mínimo de comprobación es de 15 minutos. Puede parecer que no funciona cuando en realidad está esperando.
+
+*Solución:* Espera al menos 15 minutos o haz clic en `"Run once"` manualmente para forzar una ejecución de prueba. Si aun así no detecta nada, revisa que el módulo `"Watch"` está bien configurado y que la conexión con la app de origen sigue activa.
+
+---
+
+## ✅ Resultado final
+
+Si has seguido los pasos de este artículo, ahora tienes:
+
+- **Una automatización activa** que conecta al menos dos herramientas de tu empresa sin intervención manual.
+- **Un proceso repetitivo eliminado** de tu lista de tareas diarias. A partir de ahora, cuando llegue un nuevo contacto, se registra solo.
+- **Una base para escalar.** Una vez que la primera funciona, la segunda tarda la mitad. En un mes puedes tener 4 o 5 procesos automatizados sin ningún coste adicional de tiempo.
+
+El siguiente paso lógico es mapear qué otros procesos de tu empresa son "copia datos de A a B" — esos son los candidatos más rápidos para tu próxima automatización.
+
+---
+
+## 🔗 Herramientas para empezar
+
+<AffiliateLink programSlug="zapier" articleSlug="como-automatizar-tu-pyme" label="Probar Zapier gratis" />
+
+<AffiliateLink programSlug="make" articleSlug="como-automatizar-tu-pyme" label="Probar Make gratis" />
+
+---
+
+## ❓ Preguntas frecuentes
+
+### ¿Necesito saber inglés para usar Zapier o Make?
+
+La interfaz de ambas plataformas está en inglés. Los menús principales son sencillos y con los términos clave — `"Trigger"`, `"Action"`, `"Zap"`, `"Scenario"` — aprendes a moverte en una tarde. La documentación oficial también es en inglés, pero hay comunidades activas en español en YouTube y Facebook si necesitas ayuda.
+
+Si el inglés es un freno real, hay herramientas de automatización con interfaz y soporte en español, como **Albato**, aunque tienen menos integraciones.
+
+### ¿Qué pasa con mis datos? ¿Cumplen GDPR?
+
+Tanto Zapier como Make ofrecen un DPA (Data Processing Agreement) que puedes firmar para cumplir con el GDPR. Ambas plataformas procesan datos en servidores principalmente en Estados Unidos, aunque con cláusulas de transferencia internacional (SCCs) que cubren el marco legal europeo.
+
+Si tu empresa maneja datos personales de clientes (nombres, emails, teléfonos) que pasan por estas plataformas, necesitas reflejar a Zapier o Make como encargado del tratamiento en tu registro de actividades de tratamiento conforme a la LOPDGDD. Consulta con tu asesor de protección de datos si tienes dudas.
+
+### ¿El plan gratuito de Zapier es suficiente para empezar?
+
+Para probar y aprender, sí. Para un uso real en una empresa con 8 empleados, probablemente no. Con 100 tareas al mes y 5 Zaps, llegarás al límite antes de lo que esperas si tienes volumen.
+
+Make tiene un plan gratuito más generoso: 1.000 operaciones al mes y escenarios ilimitados. Si buscas experimentar sin comprometerte a pagar, empieza con Make.
+
+### ¿Puedo automatizar tareas de facturación con Zapier?
+
+Parcialmente. Puedes automatizar partes del proceso: por ejemplo, que cuando se cierre una venta en tu CRM se cree automáticamente una factura en Holded o Anfix. Pero la facturación electrónica en España (Verifactu, TicketBAI) requiere que el software de facturación esté certificado — eso es cosa del software de facturación, no de Zapier. Zapier puede conectar herramientas, pero no reemplaza a un software de facturación homologado.
+
+### ¿Qué pasa si la automatización falla y se pierden datos?
+
+Tanto Zapier como Make guardan un historial de ejecuciones donde puedes ver qué pasó en cada una. Si una tarea falla, queda registrada con el motivo del error y puedes reejecutarla manualmente. En Make, además, puedes configurar rutas de error para que cuando algo falle te llegue un aviso por email.
+
+Dicho esto: antes de automatizar un proceso crítico, pruébalo durante una semana en paralelo (manual + automático) para confirmar que funciona bien antes de eliminar el proceso manual.
 
 ---
 
