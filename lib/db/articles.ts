@@ -86,6 +86,26 @@ export async function getArticlesByCategory(
   return data.map(normalise)
 }
 
+export async function getArticlesByType(
+  type: string,
+  limit?: number,
+): Promise<Article[]> {
+  let query = supabase
+    .from('articles')
+    .select('*')
+    .eq('status', 'published')
+    .eq('type', type)
+    .order('published_at', { ascending: false })
+
+  if (limit !== undefined) {
+    query = query.limit(limit)
+  }
+
+  const { data, error } = await query
+  if (error || !data) return []
+  return data.map(normalise)
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function normalise(row: any): Article {
   return {

@@ -24,9 +24,10 @@ export function Footer() {
           <div>
             <p className="font-semibold text-gray-900 text-sm mb-2">Popular</p>
             <ul className="space-y-1 text-xs text-gray-500">
-              <li><Link href="/email-marketing/getresponse-review" className="hover:text-gray-700">Review GetResponse</Link></li>
-              <li><Link href="/crm/hubspot-review-espanol" className="hover:text-gray-700">Review HubSpot</Link></li>
-              <li><Link href="/comparativas/alternativas-mailchimp-espanol" className="hover:text-gray-700">Alternativas a Mailchimp</Link></li>
+              <li><Link href="/email-marketing/review-getresponse" className="hover:text-gray-700">Review GetResponse</Link></li>
+              <li><Link href="/crm/review-hubspot-crm" className="hover:text-gray-700">Review HubSpot CRM</Link></li>
+              <li><Link href="/email-marketing/alternativas-mailchimp" className="hover:text-gray-700">Alternativas a Mailchimp</Link></li>
+              <li><Link href="/facturacion/review-holded" className="hover:text-gray-700">Review Holded</Link></li>
             </ul>
           </div>
           <div>

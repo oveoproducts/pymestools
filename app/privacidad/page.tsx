@@ -9,9 +9,18 @@ export const metadata: Metadata = {
 export default function PrivacidadPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 py-12">
-      <h1 className="text-2xl font-bold text-gray-900 mb-8">Política de Privacidad</h1>
+      <header className="mb-10">
+        <p className="text-xs font-medium text-blue-600 uppercase tracking-wide mb-2">Legal</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-3">Política de Privacidad</h1>
+        <p className="text-sm text-gray-400">Última actualización: mayo 2026</p>
+      </header>
 
-      <div className="prose prose-gray max-w-none text-sm">
+      <div className="prose prose-gray max-w-none
+        prose-headings:font-bold prose-headings:text-gray-900
+        prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-3 prose-h2:pb-2 prose-h2:border-b prose-h2:border-gray-100
+        prose-p:text-gray-700 prose-p:leading-relaxed prose-p:my-3
+        prose-li:text-gray-700 prose-li:my-1
+        prose-strong:text-gray-900">
         <p>
           En cumplimiento del Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica
           3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD),
@@ -19,10 +28,12 @@ export default function PrivacidadPage() {
         </p>
 
         <h2>Responsable del tratamiento</h2>
+        <p>
+          El responsable del tratamiento de tus datos personales es el titular de este sitio web,
+          con domicilio en España.
+        </p>
         <ul>
-          <li><strong>Responsable:</strong> [COMPLETAR — Nombre/Razón social]</li>
-          <li><strong>NIF/CIF:</strong> [COMPLETAR]</li>
-          <li><strong>Email:</strong> privacidad@{brand.domain}</li>
+          <li><strong>Email de contacto:</strong> privacidad@{brand.domain}</li>
         </ul>
 
         <h2>Datos que recogemos</h2>
@@ -66,7 +77,6 @@ export default function PrivacidadPage() {
           Europea).
         </p>
 
-        <p className="text-gray-400 text-xs mt-8">Última actualización: mayo 2026</p>
       </div>
     </div>
   )

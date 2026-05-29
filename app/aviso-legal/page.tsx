@@ -9,19 +9,25 @@ export const metadata: Metadata = {
 export default function AvisoLegalPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 py-12">
-      <h1 className="text-2xl font-bold text-gray-900 mb-8">Aviso Legal</h1>
+      <header className="mb-10">
+        <p className="text-xs font-medium text-blue-600 uppercase tracking-wide mb-2">Legal</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-3">Aviso Legal</h1>
+        <p className="text-sm text-gray-400">Última actualización: mayo 2026</p>
+      </header>
 
-      <div className="prose prose-gray max-w-none text-sm">
+      <div className="prose prose-gray max-w-none
+        prose-headings:font-bold prose-headings:text-gray-900
+        prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-3 prose-h2:pb-2 prose-h2:border-b prose-h2:border-gray-100
+        prose-p:text-gray-700 prose-p:leading-relaxed prose-p:my-3
+        prose-li:text-gray-700 prose-li:my-1
+        prose-strong:text-gray-900">
         <h2>Datos del titular</h2>
         <p>
           En cumplimiento con el artículo 10 de la Ley 34/2002 de Servicios de la Sociedad de la
-          Información y Comercio Electrónico (LSSI-CE), se informa de los datos del titular de este
-          sitio web:
+          Información y Comercio Electrónico (LSSI-CE), se informa que el titular de este sitio web
+          tiene domicilio en España.
         </p>
         <ul>
-          <li><strong>Denominación:</strong> [COMPLETAR — Nombre completo o razón social]</li>
-          <li><strong>NIF/CIF:</strong> [COMPLETAR]</li>
-          <li><strong>Domicilio:</strong> [COMPLETAR]</li>
           <li><strong>Email de contacto:</strong> hola@{brand.domain}</li>
           <li><strong>Sitio web:</strong> {brand.siteUrl}</li>
         </ul>
@@ -57,7 +63,6 @@ export default function AvisoLegalPage() {
           competentes los juzgados del domicilio del titular.
         </p>
 
-        <p className="text-gray-400 text-xs mt-8">Última actualización: mayo 2026</p>
       </div>
     </div>
   )

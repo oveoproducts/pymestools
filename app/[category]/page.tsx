@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import brand from '@/data/brand.json'
-import { getArticlesByCategory } from '@/lib/db/articles'
+import { getArticlesByCategory, getArticlesByType } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
 
 const VALID_CATEGORIES = [
@@ -95,7 +95,9 @@ export default async function CategoryPage({ params }: PageProps) {
   const label = CATEGORY_LABELS[cat]
   const description = CATEGORY_DESCRIPTIONS[cat]
 
-  const articles = await getArticlesByCategory(category)
+  const articles = category === 'comparativas'
+    ? await getArticlesByType('comparison')
+    : await getArticlesByCategory(category)
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
