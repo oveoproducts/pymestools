@@ -368,8 +368,9 @@ export default async function ArticlePage({ params }: PageProps) {
             prose-headings:font-bold prose-headings:text-gray-900
             prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-3 prose-h2:pb-2 prose-h2:border-b prose-h2:border-gray-100
             prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-2
-            prose-p:text-gray-700 prose-p:leading-relaxed prose-p:my-3
-            prose-li:text-gray-700 prose-li:my-1
+            prose-p:text-gray-700 prose-p:leading-relaxed prose-p:my-4
+            prose-ul:my-5 prose-ol:my-5
+            prose-li:text-gray-700 prose-li:my-2
             prose-strong:text-gray-900
             prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
             prose-blockquote:border-blue-400 prose-blockquote:bg-blue-50 prose-blockquote:rounded-r-lg prose-blockquote:py-1
