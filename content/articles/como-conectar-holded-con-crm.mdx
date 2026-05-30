@@ -25,8 +25,6 @@ Al terminar esta guía, tendrás Holded y tu CRM — HubSpot o Pipedrive — int
 
 El proceso completo lleva entre 30 y 45 minutos. No necesitas saber programar.
 
----
-
 ## 🧰 Lo que necesitas
 
 - **Cuenta en Holded:** Cualquier plan de pago — el plan gratuito no incluye acceso a la API que usa Zapier. Si estás en prueba, el trial de 14 días es suficiente para configurar todo.
@@ -38,8 +36,6 @@ El proceso completo lleva entre 30 y 45 minutos. No necesitas saber programar.
 <Callout type="warning">
 **Antes de empezar:** Zapier cobra en dólares. Con 5 Zaps activos y menos de 100 tareas al mes, el plan gratuito aguanta. Pero si tienes un equipo comercial activo con 20-30 tratos al mes, las tareas se consumen rápido. Comprueba tu volumen estimado antes de asumir que el gratuito es suficiente.
 </Callout>
-
----
 
 ## Pasos
 
@@ -53,8 +49,6 @@ El proceso completo lleva entre 30 y 45 minutos. No necesitas saber programar.
 
 {/* TODO: captura de la pantalla de API en Holded — sección Configuración > Integraciones > API */}
 
----
-
 ### Paso 2: 🔗 Crea tu cuenta en Zapier y conecta Holded
 
 **Qué hacer:** Ve a zapier.com y crea una cuenta si no tienes. Una vez dentro, haz clic en `"Create Zap"` (el botón naranja, arriba a la izquierda). En el buscador de aplicaciones, escribe `"Holded"` y selecciónalo. Zapier te pedirá que conectes tu cuenta — elige `"Connect a new account"` y pega la API key que copiaste en el paso anterior. Haz clic en `"Yes, Continue"`.
@@ -64,8 +58,6 @@ El proceso completo lleva entre 30 y 45 minutos. No necesitas saber programar.
 **Qué verás:** Holded aparece con un punto verde y el nombre de tu empresa. Eso confirma que la conexión es correcta.
 
 **Nota:** Si ves un error de autenticación, revisa que copiaste la API key completa sin espacios al principio ni al final.
-
----
 
 ### Paso 3: ⚡ Elige el activador (trigger) de tu Zap
 
@@ -87,8 +79,6 @@ Selecciona el que corresponda a tu caso y haz clic en `"Continue"`.
 
 {/* TODO: captura del selector de triggers de Holded en Zapier */}
 
----
-
 ### Paso 4: 🎯 Conecta HubSpot o Pipedrive como destino (action)
 
 **Qué hacer:** En el siguiente paso del Zap, busca tu CRM en el buscador:
@@ -99,8 +89,6 @@ Selecciona el que corresponda a tu caso y haz clic en `"Continue"`.
 **Por qué:** El action es lo que ocurre en el CRM cuando se dispara el trigger en Holded. Sin configurar bien el action, los datos no llegan.
 
 **Qué verás:** Zapier muestra los campos disponibles del CRM (nombre, email, teléfono, empresa…). Ahora toca mapearlos.
-
----
 
 ### Paso 5: 🗂️ Mapea los campos entre Holded y tu CRM
 
@@ -125,8 +113,6 @@ Si en Holded tienes campos personalizados (como el comercial asignado o la tarif
 **Truco útil:** Si en Holded tienes el campo `"Notas"` con información comercial relevante, mapearlo al campo `"Description"` o `"Notas"` del CRM te ahorra trabajo manual más adelante.
 </Callout>
 
----
-
 ### Paso 6: 🧪 Prueba el Zap antes de activarlo
 
 **Qué hacer:** Haz clic en `"Test action"`. Zapier enviará los datos de ejemplo al CRM. Ve a HubSpot o Pipedrive y comprueba que el contacto de prueba ha aparecido con los campos correctos.
@@ -138,8 +124,6 @@ Si todo está bien, haz clic en `"Publish Zap"`. Dale un nombre descriptivo, por
 **Qué verás:** En Zapier, el Zap aparece con un interruptor verde y el estado `"On"`. En tu CRM, verás el contacto de prueba — puedes borrarlo después.
 
 **Nota:** Si el test falla con un error de permisos en HubSpot, revisa que tu usuario tiene rol de administrador en la cuenta. Las cuentas de usuario estándar a veces no tienen permiso para crear contactos por API.
-
----
 
 ### Paso 7: 🔄 Crea el Zap inverso (del CRM a Holded)
 
@@ -154,8 +138,6 @@ Este es el Zap más valioso para una empresa de servicios: cuando el comercial m
 
 **Qué verás:** Un segundo Zap activo en tu panel de Zapier. Con los dos activos, la sincronización es bidireccional.
 
----
-
 ## ⚠️ Errores comunes
 
 **La API key de Holded da error de autenticación en Zapier**
@@ -163,21 +145,15 @@ Este es el Zap más valioso para una empresa de servicios: cuando el comercial m
 *Causa:* La key se copió incompleta, o el usuario que la generó no es el propietario de la cuenta (solo el propietario puede generar keys válidas para la API).
 *Solución:* Entra en Holded con el usuario propietario (el que tiene el email de facturación), ve a `Configuración > Integraciones > API`, regenera la key y copia el texto completo desde el inicio hasta el final sin espacios.
 
----
-
 **Los contactos se duplican en el CRM**
 *Síntoma:* Cada vez que se activa el Zap, aparece un contacto nuevo en HubSpot o Pipedrive en lugar de actualizar el existente.
 *Causa:* En el action de HubSpot, se eligió `"Create Contact"` en lugar de `"Create or Update Contact"`.
 *Solución:* Edita el Zap, ve al paso del action y cambia el tipo de acción a `"Create or Update Contact"`. HubSpot usa el email como identificador único — asegúrate de que el campo email está mapeado correctamente.
 
----
-
 **El Zap se activa pero no llegan datos al CRM**
 *Síntoma:* El historial de Zapier muestra la tarea como completada, pero el contacto no aparece en el CRM.
 *Causa:* El campo `"Email"` en Holded está vacío en ese contacto. HubSpot y Pipedrive requieren al menos un email para crear un registro.
 *Solución:* Revisa en Holded que los contactos tienen email. Para evitar que el Zap falle en el futuro, añade un filtro en Zapier: en el paso 3, haz clic en `"+"` entre el trigger y el action y añade un `"Filter"` con la condición `"Contact Email exists"`. Así el Zap solo se activa cuando hay email.
-
----
 
 ## ✅ Resultado final
 
@@ -188,8 +164,6 @@ Si has seguido todos los pasos, ahora tienes:
 - **Cero trabajo manual** de copiar datos entre sistemas — el flujo ocurre en segundos desde que se dispara el evento.
 
 El siguiente paso lógico es automatizar también el envío de la factura: cuando Holded genera la factura, que Zapier la marque como tarea completada en el CRM o avise al comercial por Slack. Si te interesa ese flujo, escríbenos y lo documentamos.
-
----
 
 ## 🤔 ¿Preguntas frecuentes?
 
@@ -217,8 +191,6 @@ No. El acceso a la API de Holded requiere un plan de pago. Puedes configurar tod
 
 Sí. En el paso 3, en lugar de elegir `"New Contact"` como trigger, elige `"New Invoice"`. El action en el CRM puede crear una nota en el contacto, actualizar el campo `"Última factura"` o mover el trato a una etapa específica. Es el mismo proceso, con diferentes campos mapeados.
 
----
-
 ## 🛠️ Herramientas que facilitan esto
 
 Si aún no tienes cuenta en Zapier, aquí tienes el acceso:
@@ -228,8 +200,6 @@ Si aún no tienes cuenta en Zapier, aquí tienes el acceso:
 Si estás evaluando si Holded encaja en tu empresa antes de montar estas automatizaciones:
 
 <AffiliateLink programSlug="holded" articleSlug="como-conectar-holded-con-crm" label="Probar Holded gratis 14 días" />
-
----
 
 ## 📖 También te puede interesar
 

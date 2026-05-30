@@ -25,8 +25,6 @@ Al terminar esta guía, tendrás tu primera newsletter diseñada, con una lista 
 
 Las herramientas que usamos — **Brevo** y **Mailrelay** — tienen plan gratuito en español y cumplen con el GDPR. Son las dos opciones más razonables para una pyme española que empieza desde cero.
 
----
-
 ## 📋 Lo que necesitas antes de empezar
 
 - **Una cuenta gratuita en Brevo o Mailrelay:** Ambas permiten empezar sin tarjeta. Brevo ofrece hasta 300 emails/día gratis; Mailrelay hasta 80.000 emails/mes con su plan gratuito para pymes. Elige según tu volumen estimado.
@@ -38,8 +36,6 @@ Las herramientas que usamos — **Brevo** y **Mailrelay** — tienen plan gratui
 <Callout type="warning">
 **Antes de importar tu lista:** En España, el envío de newsletters comerciales sin consentimiento explícito infringe la LSSICE y el GDPR. Esto no es letra pequeña — la AEPD ha sancionado a pymes por esto. Si tienes dudas sobre si tus contactos han dado permiso, no importes la lista hasta aclararlo.
 </Callout>
-
----
 
 ## 🛠️ Elige tu herramienta
 
@@ -63,8 +59,6 @@ Antes de los pasos, una decisión que condiciona todo lo demás.
 
 Los pasos siguientes aplican a los dos. Donde hay diferencia, lo indicamos.
 
----
-
 ## Pasos
 
 ### Paso 1: 📥 Crea tu cuenta y verifica tu dominio
@@ -81,8 +75,6 @@ En Mailrelay: el proceso está en `"Mi cuenta"` → `"Configuración DKIM"`.
 
 **Nota:** Si no tienes acceso al panel DNS de tu hosting, pídele a quien te gestiona la web que añada el registro. Es un cambio de 2 minutos para alguien que sabe hacerlo.
 
----
-
 ### Paso 2: 📤 Importa tu lista de contactos
 
 **Qué hacer:** Prepara tu archivo CSV o Excel con al menos dos columnas: `email` y `nombre`. Sin tildes en los encabezados si puedes evitarlo — algunos sistemas las procesan mal.
@@ -96,8 +88,6 @@ Durante la importación, ambas herramientas te pedirán que confirmes que tienes
 **Por qué:** Sin una lista importada, no puedes enviar nada. Este paso también es el momento de organizar tus contactos en listas o grupos si tienes tipos de clientes distintos (clientes actuales, potenciales, proveedores).
 
 **Qué verás:** Un resumen de la importación: cuántos contactos se han añadido, cuántos ya existían y si ha habido errores en alguna fila. Los emails con formato incorrecto se rechazan automáticamente.
-
----
 
 ### Paso 3: ✏️ Crea tu primera campaña
 
@@ -116,8 +106,6 @@ Rellena los campos básicos:
 **Por qué:** El asunto es lo único que lee el destinatario antes de decidir si abre o no el email. Es más importante que el diseño interior.
 
 **Qué verás:** Un resumen con los campos rellenados. Hasta que no confirmes, no has creado nada irreversible.
-
----
 
 ### Paso 4: 🎨 Diseña el contenido del email
 
@@ -140,8 +128,6 @@ Elige una plantilla base (las dos tienen plantillas en español) y modifícala:
 **Contenido que funciona en newsletters de pymes:** Las newsletters con mejor tasa de apertura en B2B español son las que van al grano. Un tema por email, máximo 3 bloques de texto, un solo botón de acción. Nada de PDFs adjuntos — ponlos en tu web y enlaza.
 </Callout>
 
----
-
 ### Paso 5: 🧪 Envía una prueba a ti mismo
 
 **Qué hacer:** Antes de enviar a tu lista real, usa el botón `"Enviar prueba"` o `"Previsualizar y probar"`. Escribe tu propio email y envíatelo.
@@ -156,8 +142,6 @@ Revisa en tu bandeja de entrada:
 
 **Qué verás:** El email en tu bandeja de entrada exactamente como lo recibirán tus contactos. Si hay algo que no se ve bien, vuelve al editor antes de continuar.
 
----
-
 ### Paso 6: 📅 Selecciona la lista y programa el envío
 
 **Qué hacer:** En el paso de `"Destinatarios"` (Brevo) o `"Suscriptores"` (Mailrelay), selecciona la lista que importaste en el paso 2.
@@ -171,8 +155,6 @@ Confirma el envío. En Brevo verás una pantalla de resumen con número de desti
 **Por qué:** Programar el envío permite revisar todo con calma y elegir el momento óptimo sin prisas.
 
 **Qué verás:** Una confirmación en pantalla y un email de notificación cuando el envío esté completado.
-
----
 
 ### Paso 7: 📊 Revisa los resultados al día siguiente
 
@@ -193,8 +175,6 @@ Las métricas que importan al principio:
 
 {/* TODO: captura del panel de estadísticas de Mailrelay */}
 
----
-
 ## ⚠️ Errores comunes
 
 **La newsletter acaba en la carpeta de spam**
@@ -205,8 +185,6 @@ Las métricas que importan al principio:
 
 *Solución:* Vuelve a `"Configuración"` → `"Remitentes y dominios"` y comprueba que el registro DNS tiene el estado `"Verificado"`. Si no es así, contacta con tu proveedor de hosting para que lo active.
 
----
-
 **Los nombres de los contactos no aparecen bien en el email**
 
 *Síntoma:* El email dice `"Hola {{contact.firstname}}"` en lugar del nombre real, o aparece en blanco.
@@ -215,8 +193,6 @@ Las métricas que importan al principio:
 
 *Solución:* Ve a `"Contactos"` y comprueba que los contactos tienen el campo `nombre` relleno. En la plantilla, usa la variable de personalización que la propia herramienta te sugiere al hacer clic en el campo de texto — no escribas las variables a mano.
 
----
-
 **El enlace de baja no aparece en el email**
 
 *Síntoma:* Al previsualizar el email, no ves ningún enlace de `"Darse de baja"` o `"Cancelar suscripción"`.
@@ -224,8 +200,6 @@ Las métricas que importan al principio:
 *Causa:* Has eliminado el bloque de pie de página de la plantilla sin reemplazarlo.
 
 *Solución:* En el editor, añade un bloque de texto al final del email e inserta manualmente el enlace de baja desde el menú de `"Variables"` o `"Contenido dinámico"`. En Brevo se llama `{{unsubscribe}}`. En Mailrelay, el pie de baja es un bloque fijo que no se puede eliminar — si no aparece, es que has usado una plantilla personalizada sin ese bloque.
-
----
 
 ## ✅ Resultado final
 
@@ -238,8 +212,6 @@ Si has seguido todos los pasos, ahora tienes:
 
 El siguiente paso lógico es crear una secuencia de bienvenida automática para los nuevos suscriptores que se apunten desde tu web. Brevo lo permite desde el plan gratuito con su módulo de automatizaciones.
 
----
-
 ## 🔧 Herramientas para empezar
 
 Si aún no tienes cuenta, aquí tienes el acceso directo a las dos herramientas:
@@ -249,8 +221,6 @@ Si aún no tienes cuenta, aquí tienes el acceso directo a las dos herramientas:
 <AffiliateLink programSlug="mailrelay" articleSlug="como-crear-newsletter-pymes" label="Probar Mailrelay gratis" />
 
 Ambas son gratuitas para empezar. No necesitas tarjeta.
-
----
 
 ## ❓ Preguntas frecuentes
 
@@ -275,8 +245,6 @@ Técnicamente sí, pero no deberías. Gmail y Outlook tienen límites de envío 
 ### ¿Brevo y Mailrelay cumplen con el GDPR y la normativa española?
 
 Sí, los dos. **Brevo** firma un DPA bajo GDPR y tiene servidores en la UE. **Mailrelay** es una empresa española con servidores en España — lo cual simplifica mucho cualquier trámite con la AEPD si alguna vez lo necesitas. En los dos casos, puedes solicitar el DPA desde el panel de tu cuenta o contactando con su soporte.
-
----
 
 ## 📖 También te puede interesar
 

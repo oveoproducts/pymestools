@@ -25,8 +25,6 @@ Al terminar esta guía, tendrás un proceso de onboarding digital funcionando pa
 
 Esto funciona con Factorial o Sesame HR, las dos herramientas más usadas por pymes españolas para gestión de personas. Más adelante verás cuál encaja mejor según tu situación.
 
----
-
 ## 🧰 Lo que necesitas
 
 - **Cuenta en Factorial o Sesame HR:** Ambas ofrecen prueba gratuita. Factorial tiene trial de 14 días; Sesame, de 14 días también. El módulo de onboarding está disponible desde sus planes de pago — lo detallamos en la sección de precios.
@@ -34,8 +32,6 @@ Esto funciona con Factorial o Sesame HR, las dos herramientas más usadas por py
 - **Un email del nuevo empleado:** Lo necesitarás para enviarle el acceso al portal del empleado antes de su primer día.
 - **Acceso de administrador:** Asegúrate de que tu usuario tiene permisos de administración en la herramienta. No funciona desde un perfil de empleado estándar.
 - **Nivel técnico necesario:** No necesitas conocimientos técnicos. Si sabes adjuntar un documento a un email y usar formularios web, es suficiente.
-
----
 
 ## 💶 Precios (verificados mayo 2026)
 
@@ -51,8 +47,6 @@ No publican el precio en abierto — hay que solicitar demo/presupuesto. El prec
 
 *Precios consultados en mayo 2026. Verifica siempre en la web del proveedor.*
 
----
-
 ## Pasos
 
 ### Paso 1: 🗂️ Crea el perfil del nuevo empleado antes de su primer día
@@ -65,8 +59,6 @@ En Sesame HR, el proceso es equivalente: accede a `"Empleados"` → `"Nuevo empl
 
 **Qué verás:** Después de guardar, el sistema generará un perfil con estado `"Pendiente de incorporación"` (Factorial) o `"En proceso de alta"` (Sesame). Ese es el indicador de que el onboarding está listo para configurarse.
 
----
-
 ### Paso 2: 📋 Configura la plantilla de onboarding
 
 **Qué hacer:** En Factorial, ve a `"Configuración"` → `"Onboarding"` → `"Plantillas"`. Haz clic en `"Nueva plantilla"`. Asigna un nombre (por ejemplo, `"Incorporación comercial"` o `"Incorporación administración"`).
@@ -76,8 +68,6 @@ En Sesame HR, la ruta es `"Configuración"` → `"Procesos de empleado"` → `"O
 **Por qué:** La plantilla es el esqueleto del proceso. Todo lo que configures aquí se replicará automáticamente cada vez que incorpores a alguien en ese mismo cargo o departamento. Haces el trabajo una vez.
 
 **Qué verás:** Un editor de tareas vacío organizado por fases (pre-incorporación, primer día, primera semana, primer mes). Las fases son editables.
-
----
 
 ### Paso 3: ✅ Añade las tareas de bienvenida
 
@@ -96,8 +86,6 @@ Para cada tarea, asigna: responsable (tú, RRHH o el propio empleado), fecha de 
 
 {/* TODO: captura de la plantilla de onboarding con tareas configuradas en Factorial */}
 
----
-
 ### Paso 4: 📄 Carga los documentos que el empleado debe firmar
 
 **Qué hacer:** En la misma plantilla, busca la sección `"Documentos"` (Factorial) o `"Archivos del proceso"` (Sesame HR). Sube los documentos en PDF: contrato de trabajo, política de privacidad, política de uso de herramientas corporativas, y cualquier LOPD que tu empresa requiera firmar.
@@ -112,8 +100,6 @@ Activa la opción de firma digital si la tienes disponible en tu plan. En Factor
 **🇪🇸 LOPDGDD:** Si el empleado va a firmar documentos con datos personales (contrato, ficha de empleado), asegúrate de que la herramienta tiene DPA firmado contigo como empresa. Tanto Factorial como Sesame HR ofrecen DPA bajo GDPR y cumplen con la LOPDGDD. Solicítalo en el área de configuración de tu cuenta antes de subir documentos reales.
 </Callout>
 
----
-
 ### Paso 5: 📧 Envía el acceso al portal del empleado
 
 **Qué hacer:** Con el perfil creado y la plantilla asignada, busca el botón `"Invitar empleado"` (Factorial) o `"Enviar acceso"` (Sesame HR) dentro del perfil del empleado. El sistema enviará un email automático al trabajador con sus credenciales de acceso al portal.
@@ -123,8 +109,6 @@ Puedes personalizar el texto del email de bienvenida desde `"Configuración"` �
 **Por qué:** El empleado necesita acceso al portal antes de su primer día para firmar documentos y revisar la documentación de bienvenida. Si lo envías el mismo día uno, pierdes tiempo de incorporación.
 
 **Qué verás:** El estado del empleado cambia a `"Invitación enviada"`. Cuando el empleado acceda por primera vez, verás la fecha de primer acceso en su perfil.
-
----
 
 ### Paso 6: 🔍 Haz seguimiento del progreso
 
@@ -138,8 +122,6 @@ Si una tarea lleva más de 2 días de retraso, el sistema envía un recordatorio
 
 {/* TODO: captura del panel de seguimiento de onboarding en Sesame HR */}
 
----
-
 ## ⚠️ Errores comunes
 
 **El empleado no recibe el email de invitación**
@@ -147,21 +129,15 @@ Si una tarea lleva más de 2 días de retraso, el sistema envía un recordatorio
 *Causa:* El email ha caído en la carpeta de spam, o la dirección tiene un typo en el perfil.
 *Solución:* Primero, verifica el email en el perfil del empleado. Si es correcto, pídele que revise spam y la carpeta de `"Promociones"` (Gmail). Si sigue sin aparecer, usa la opción `"Reenviar invitación"` desde el perfil.
 
----
-
 **Los documentos no aparecen en el portal del empleado**
 *Síntoma:* El empleado accede al portal pero no ve ningún documento para firmar.
 *Causa:* Los documentos se subieron a la biblioteca general pero no se asignaron a la plantilla de onboarding activa.
 *Solución:* Ve a la plantilla de onboarding → sección `"Documentos"` → verifica que los archivos aparecen asignados a esa plantilla concreta. Subir un documento a la biblioteca no lo asigna automáticamente a un proceso.
 
----
-
 **Las tareas no se generan automáticamente al crear el empleado**
 *Síntoma:* Creas el perfil del empleado pero en su ficha no aparecen las tareas de onboarding.
 *Causa:* La plantilla no está asignada al departamento o cargo del empleado.
 *Solución:* Ve a la plantilla → `"Asignación"` → verifica que el departamento y cargo del empleado coinciden con los criterios de asignación de la plantilla. Puedes asignar la plantilla manualmente desde el perfil del empleado si la asignación automática no funciona.
-
----
 
 ## 🆚 Factorial vs. Sesame HR para onboarding: ¿cuál elegir?
 
@@ -183,8 +159,6 @@ Si una tarea lleva más de 2 días de retraso, el sistema envía un recordatorio
 
 Si vienes de llevar todo en Excel y es tu primer software de RRHH, cualquiera de los dos funciona. La curva de aprendizaje es similar.
 
----
-
 ## ✅ Lo que nos gusta
 
 - ✅ Las dos herramientas están en español y con soporte en español — no tendrás que buscar en Google cómo se llama el botón en inglés
@@ -193,16 +167,12 @@ Si vienes de llevar todo en Excel y es tu primer software de RRHH, cualquiera de
 - ✅ El portal del empleado funciona bien en móvil — el trabajador puede firmar documentos desde el móvil antes de llegar el primer día
 - ✅ Ambas cumplen GDPR y LOPDGDD, con DPA disponible para firmar
 
----
-
 ## ❌ Lo que no nos gusta
 
 - ❌ **Ninguna publica sus precios en abierto.** Para una pyme que quiere comparar opciones sin hablar con un comercial primero, esto es un freno real. Tienes que pasar por una demo o solicitar presupuesto para saber cuánto vas a pagar.
 - ❌ **El módulo de onboarding no está en el plan más básico.** Si tienes 2-3 empleados y contratas poco, puede no amortizarse. Para menos de 5 empleados con incorporaciones esporádicas, un proceso manual bien documentado en Google Drive puede ser suficiente.
 - ❌ **La personalización de los emails automáticos es limitada** en ambas herramientas. Si quieres un email de bienvenida con el tono de tu empresa, las opciones de edición son básicas — nada de arrastrar y soltar bloques de diseño.
 - ❌ **Sesame HR tiene una curva de configuración inicial algo más larga** que Factorial. La primera vez que montas una plantilla completa, necesitas una o dos horas de exploración para entender cómo están organizados los módulos.
-
----
 
 ## 🤔 ¿Para quién NO es este enfoque?
 
@@ -213,8 +183,6 @@ Si vienes de llevar todo en Excel y es tu primer software de RRHH, cualquiera de
 **No es para ti si** buscas una solución gratuita. Tanto Factorial como Sesame HR requieren plan de pago para el módulo de onboarding.
 
 **No es suficiente si** necesitas gestión avanzada de formación o cursos de incorporación con seguimiento de progreso. Para eso necesitarías complementar con una herramienta de LMS — el módulo de formación de estas herramientas es básico.
-
----
 
 ## 🏁 Resultado final
 
@@ -227,15 +195,11 @@ Si has seguido todos los pasos, ahora tienes:
 
 El siguiente paso lógico es configurar también el **offboarding** — el proceso de salida de un empleado — usando la misma lógica de plantillas. Las dos herramientas lo permiten y te ahorrará el caos habitual cuando alguien se va.
 
----
-
 ## 🛠️ Herramientas que facilitan esto
 
 <AffiliateLink programSlug="factorial" articleSlug="onboarding-digital-empleados-pymes" label="Probar Factorial gratis" />
 
 <AffiliateLink programSlug="sesame" articleSlug="onboarding-digital-empleados-pymes" label="Probar Sesame HR gratis" />
-
----
 
 ## ❓ Preguntas frecuentes
 
@@ -258,8 +222,6 @@ Depende del plan. En general, el módulo de onboarding viene dentro de un plan q
 ### ¿Cuánto tiempo tarda en configurarse el primer proceso de onboarding?
 
 Con la documentación preparada (contrato, manual de empleado, políticas internas), la configuración inicial lleva entre dos y tres horas. A partir del segundo empleado, aplicar la misma plantilla lleva menos de 15 minutos.
-
----
 
 ## 📖 También te puede interesar
 

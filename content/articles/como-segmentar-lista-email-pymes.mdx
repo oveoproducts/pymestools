@@ -27,16 +27,12 @@ Al terminar esta guía tendrás tus contactos divididos en grupos concretos y es
 
 No necesitas una lista enorme. Con 300 contactos bien segmentados vas a vender más que con 3.000 sin orden.
 
----
-
 ## Lo que necesitas
 
 - **Cuenta en ActiveCampaign o Brevo:** La segmentación básica está disponible en los planes de entrada de ambos. El plan gratuito de Brevo permite crear segmentos — es suficiente para empezar. En ActiveCampaign necesitas al menos el plan **Starter** (antes llamado Lite).
 - **Una lista de contactos importada:** Aunque sean 50 contactos reales. Sin datos, no hay segmentación posible.
 - **Algo de información sobre tus contactos:** Puede ser tan básico como de dónde vinieron (formulario web, feria, cliente existente) o qué han comprado. Si no tienes nada, lo construyes desde hoy — te explico cómo.
 - **Nivel técnico necesario:** No hace falta saber programar. Si sabes usar Excel y manejas el correo con soltura, tienes más que suficiente.
-
----
 
 ## Por qué segmentar cambia los resultados
 
@@ -47,8 +43,6 @@ Carlos, el dueño de una gestoría en Valencia, tenía 800 contactos mezclados: 
 Después de segmentar y mandar campañas distintas a cada grupo, la apertura media subió al 34% y cerró 4 contratos nuevos en el siguiente trimestre — dos de ellos de contactos que llevaban 18 meses sin responder a nada.
 
 La segmentación no es magia. Es sentido común aplicado al email.
-
----
 
 ## Paso 1: Define tus segmentos antes de tocar la herramienta
 
@@ -66,8 +60,6 @@ Para la mayoría de pymes españolas, estos 4 segmentos cubren el 80% de los cas
 **Por qué:** Cada grupo tiene un problema distinto y está en un momento distinto. Un cliente activo no necesita que le expliques quién eres. Un prospecto frío no está listo para comprar todavía — si le mandas solo ofertas, se da de baja.
 
 **Qué verás:** De momento solo un papel o un Excel con tus grupos. Bien. El siguiente paso es llevarlos a la herramienta.
-
----
 
 ## Paso 2: Crea las etiquetas o listas en tu herramienta
 
@@ -95,8 +87,6 @@ En Brevo la lógica es de **listas**, no de etiquetas (aunque también tiene atr
 
 {/* TODO: captura — pantalla de creación de etiquetas en ActiveCampaign y pantalla de listas en Brevo, en paralelo */}
 
----
-
 ## Paso 3: Asigna tus contactos a cada segmento
 
 **Qué hacer:** Si tienes los contactos en un Excel o CSV, añade una columna con el nombre del segmento o la etiqueta antes de importar. La mayoría de herramientas permiten mapear esa columna durante la importación.
@@ -114,8 +104,6 @@ Si ya tienes los contactos importados sin segmentar, selecciónalos manualmente 
 <Callout type="warning">
 **Ojo con los duplicados:** Si importas la misma persona en dos listas o con dos etiquetas contradictorias (ej: `cliente-activo` y `ex-cliente`), acabarás enviándole mensajes contradictorios. Antes de importar, limpia el Excel y asegúrate de que cada contacto está en un solo grupo principal.
 </Callout>
-
----
 
 ## Paso 4: Crea un segmento dinámico basado en comportamiento
 
@@ -137,8 +125,6 @@ Guarda el segmento con un nombre claro: `clientes-activos-engagados`.
 
 {/* TODO: captura — pantalla de creación de segmento dinámico en ActiveCampaign con condiciones visibles */}
 
----
-
 ## Paso 5: Envía tu primera campaña segmentada
 
 **Qué hacer:** Al crear una campaña en cualquiera de las dos herramientas, el paso de selección de destinatarios te permite elegir una lista, una etiqueta o un segmento guardado.
@@ -153,8 +139,6 @@ En lugar de seleccionar `"Todos los contactos"`, elige el segmento que has cread
 **Tip para Carlos:** Empieza con una campaña de reactivación a los `ex-clientes`. Es el segmento que más ROI genera en pymes de servicios: ya te conocen, solo necesitan un buen motivo para volver. Un descuento del 10% o una llamada directa suele ser suficiente.
 </Callout>
 
----
-
 ## Errores comunes
 
 **Segmentar demasiado desde el principio**
@@ -162,21 +146,15 @@ En lugar de seleccionar `"Todos los contactos"`, elige el segmento que has cread
 *Causa:* Intentar construir una estructura perfecta antes de tener datos de comportamiento.
 *Solución:* Empieza con 3 o 4 segmentos básicos (clientes, prospectos, inactivos). Añade más cuando tengas datos reales sobre cómo se comporta cada grupo.
 
----
-
 **Los segmentos no se actualizan**
 *Síntoma:* Un cliente nuevo no aparece en el segmento `clientes-activos` aunque ya ha comprado.
 *Causa:* El contacto se importó manualmente pero no se le asignó la etiqueta/lista correspondiente. O la automatización que debería asignarlo no está activa.
 *Solución:* Revisa si tienes una automatización que etiqueta a los contactos al comprar. Si no, tendrás que asignar la etiqueta manualmente o crear la automatización. En ActiveCampaign: `"Automations"` → nueva automatización con trigger `"Deal stage changed"` o `"Tag is added"`. En Brevo: `"Automations"` → `"Create a workflow"`.
 
----
-
 **Enviar la misma campaña a listas que se solapan**
 *Síntoma:* Algunos contactos reciben el mismo email dos veces.
 *Causa:* Un contacto aparece en dos listas o segmentos y la campaña se envió a ambos.
 *Solución:* En Brevo, al seleccionar los destinatarios de la campaña, puedes añadir listas en modo exclusión (`"Exclude list"`). En ActiveCampaign, los segmentos dinámicos bien construidos evitan el solapamiento automáticamente, pero revisa las condiciones.
-
----
 
 ## Resultado final
 
@@ -187,8 +165,6 @@ Si has seguido estos pasos, ahora tienes:
 - **Primera campaña segmentada** enviada al grupo más relevante.
 
 El siguiente paso lógico es **automatizar la asignación de segmentos**: que cuando alguien rellene un formulario de tu web, entre directamente en el segmento correcto sin que tengas que hacer nada. Eso lo cubrimos en el artículo sobre automatizaciones de bienvenida.
-
----
 
 ## 💶 Precios de las herramientas mencionadas
 
@@ -212,8 +188,6 @@ No publican el precio de forma fija en la web europea sin pasar por el formulari
 
 🇪🇸 Brevo tiene interfaz en español, soporte en español y cumple GDPR. Firma DPA disponible en su centro de privacidad. Datos almacenados en servidores europeos. Compatible con LOPDGDD.
 
----
-
 ## 🇪🇸 Cumplimiento en España
 
 Si gestionas datos de contactos de clientes o prospectos españoles, aplica el GDPR y la LOPDGDD.
@@ -221,8 +195,6 @@ Si gestionas datos de contactos de clientes o prospectos españoles, aplica el G
 Ambas herramientas firman DPA (Data Processing Agreement). Guarda siempre el consentimiento explícito del contacto (fecha, formulario, IP) antes de añadirlo a tu lista. Ni ActiveCampaign ni Brevo te eximen de la obligación de tener ese consentimiento documentado — eso es responsabilidad tuya.
 
 Si usas Brevo para enviar emails comerciales en España, el doble opt-in (confirmación de suscripción) no es obligatorio legalmente, pero es la práctica más recomendada por la AEPD.
-
----
 
 ## ¿Preguntas frecuentes?
 
@@ -246,8 +218,6 @@ Para empezar, **Brevo**. El plan gratuito permite crear y usar segmentos sin gas
 
 Si tienes los contactos en un Excel con información básica (de dónde vienen, si son clientes o no), en 2–3 horas tienes la estructura básica montada y la primera campaña enviada. Sin datos previos, la primera semana es de configuración y recopilación — empieza a ver resultados a partir de la segunda o tercera campaña.
 
----
-
 ## Herramientas que facilitan esto
 
 Si aún no tienes cuenta en Brevo, es el punto de partida más rápido para una pyme española. Plan gratuito disponible, sin tarjeta:
@@ -257,8 +227,6 @@ Si aún no tienes cuenta en Brevo, es el punto de partida más rápido para una 
 Si ya tienes cierto volumen y necesitas automatizaciones más avanzadas junto a la segmentación, ActiveCampaign es el salto natural:
 
 <AffiliateLink programSlug="activecampaign" articleSlug="como-segmentar-lista-email-pymes" label="Probar ActiveCampaign gratis" />
-
----
 
 ## 📖 También te puede interesar
 

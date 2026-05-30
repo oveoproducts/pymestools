@@ -25,16 +25,12 @@ Si tu empresa factura desde el País Vasco o Navarra — o si tienes clientes al
 
 Al terminar esta guía sabrás exactamente qué es TicketBAI, si te obliga, cuándo entra en vigor para tu sector, qué pasa si no cumples y qué necesitas cambiar en tu software de facturación. Incluimos cómo adaptarte con Holded, que ya es compatible.
 
----
-
 ## Lo que necesitas
 
 - **Una empresa o actividad económica** con domicilio fiscal en el País Vasco (Álava, Gipuzkoa o Bizkaia) o en Navarra, o que tribute en esas Haciendas Forales.
 - **Tu software de facturación actual:** comprueba si ya es compatible con TicketBAI (ver más abajo).
 - **Nivel técnico necesario:** No necesitas saber programar. Sí necesitas entender cómo funciona tu software de facturación y tener acceso al panel de administración.
 - **Tiempo estimado:** Leer esta guía completa lleva unos 9 minutos. Adaptar tu software puede llevar entre 1 hora y varios días, dependiendo de la herramienta que uses.
-
----
 
 ## 🧾 ¿Qué es TicketBAI?
 
@@ -47,8 +43,6 @@ No es una plataforma online a la que te conectas. Es un **estándar técnico** q
 <Callout type="info">
 **TicketBAI no es lo mismo que Verifactu.** Verifactu es el sistema equivalente para el resto de España (territorio común), gestionado por la AEAT. TicketBAI aplica a quienes tributan ante las Haciendas Forales vascas o ante la Hacienda Foral de Navarra. Si tu empresa está en Madrid, Barcelona o Valencia, te corresponde Verifactu.
 </Callout>
-
----
 
 ## 🗺️ ¿A quién obliga TicketBAI?
 
@@ -69,8 +63,6 @@ Esto incluye:
 **Si tu empresa está en Madrid pero tienes una sucursal o delegación en Bilbao con actividad propia**, consulta con tu asesor fiscal si esa actividad tributa en Bizkaia. Si tributa allí, TicketBAI te afecta para esa parte de la actividad.
 </Callout>
 
----
-
 ## 📅 Plazos de implantación: ¿ya estás obligado?
 
 Los plazos han variado por territorio y por sector. Este es el estado a mayo de 2026:
@@ -89,8 +81,6 @@ Los plazos han variado por territorio y por sector. Este es el estado a mayo de 
 
 Si operas en Gipuzkoa o Álava y aún no usas un software homologado TicketBAI, **ya estás incumpliendo la normativa.**
 
----
-
 ## ⚙️ Cómo funciona técnicamente (sin tecnicismos)
 
 Cuando emites una factura con un software homologado TicketBAI, ocurre lo siguiente de forma automática:
@@ -107,8 +97,6 @@ Tú no haces nada de esto manualmente. Lo hace el software. Tu trabajo es asegur
 
 {/* TODO: captura del QR en una factura de ejemplo generada con Holded */}
 
----
-
 ## 💶 ¿Qué pasa si no cumples?
 
 Las sanciones por incumplimiento de TicketBAI no son menores. Las Haciendas Forales las han establecido con claridad:
@@ -118,8 +106,6 @@ Las sanciones por incumplimiento de TicketBAI no son menores. Las Haciendas Fora
 - **Alteración o manipulación del registro:** se considera infracción grave.
 
 No es un riesgo abstracto. Las inspecciones se apoyan directamente en el sistema: si tu factura no lleva el QR o la firma, Hacienda lo detecta de inmediato.
-
----
 
 ## 🔑 Qué necesita tu software para ser compatible
 
@@ -131,8 +117,6 @@ Para emitir facturas válidas bajo TicketBAI, tu software debe:
 4. Enviar los datos a la Hacienda Foral de forma automática o semiautomática.
 
 Si ahora mismo usas un Excel o un Word para hacer facturas, no puedes adaptarlo a TicketBAI. Necesitas un software de facturación homologado.
-
----
 
 ## 🛠️ Cómo cumplir con Holded
 
@@ -148,8 +132,6 @@ Holded es uno de los softwares de facturación más usados por pymes españolas 
 
 **Qué verás:** Una sección específica con los parámetros de configuración de TicketBAI para tu territorio.
 
----
-
 ### Paso 2: Configura tu territorio foral
 
 **Qué hacer:** Dentro de `"Configuración"` → `"Empresa"`, asegúrate de que el domicilio fiscal de tu empresa está correctamente registrado con la provincia vasca o navarra correspondiente. Holded usa esta información para activar automáticamente el modo TicketBAI.
@@ -157,8 +139,6 @@ Holded es uno de los softwares de facturación más usados por pymes españolas 
 **Por qué:** El sistema aplica las reglas técnicas de Gipuzkoa, Álava, Bizkaia o Navarra según el territorio que hayas indicado. Son estándares con pequeñas diferencias entre sí.
 
 **Qué verás:** Una confirmación de que el territorio foral está asignado a tu perfil de empresa.
-
----
 
 ### Paso 3: Instala o activa el certificado digital
 
@@ -170,8 +150,6 @@ Holded es uno de los softwares de facturación más usados por pymes españolas 
 
 **Nota:** Si no tienes certificado digital de empresa, solicítalo a la FNMT o a tu asesoría. El proceso puede tardar entre 1 y 5 días laborables.
 
----
-
 ### Paso 4: Emite tu primera factura en modo TicketBAI
 
 **Qué hacer:** Crea una factura como lo harías normalmente en Holded: `"Ventas"` → `"Nueva factura"`. Si TicketBAI está correctamente configurado, Holded generará automáticamente el archivo XML firmado, añadirá el código QR a la factura y la enviará a la Hacienda Foral correspondiente.
@@ -182,8 +160,6 @@ Holded es uno de los softwares de facturación más usados por pymes españolas 
 
 {/* TODO: captura de una factura en Holded con el identificador TBAI y QR visible */}
 
----
-
 ## ❌ Errores comunes al implantar TicketBAI
 
 **Usar el software en "modo pruebas" sin darte cuenta**
@@ -191,21 +167,15 @@ Holded es uno de los softwares de facturación más usados por pymes españolas 
 *Causa:* Muchos softwares tienen un entorno de pruebas separado del entorno real. Puede que hayas activado TicketBAI en el entorno de test sin haber activado el real.
 *Solución:* Accede a la configuración de TicketBAI en tu software y confirma que el modo está en `"Producción"`, no en `"Pruebas"` o `"Test"`. En Holded, esta opción aparece en `"Configuración"` → `"TicketBAI"`.
 
----
-
 **Certificado digital caducado o del tipo incorrecto**
 *Síntoma:* Al intentar emitir una factura, el software devuelve un error de firma o no envía los datos a Hacienda.
 *Causa:* El certificado digital tiene fecha de caducidad (normalmente 2-3 años). O has subido el certificado personal en lugar del certificado de empresa.
 *Solución:* Verifica la fecha de caducidad de tu certificado en la plataforma donde lo gestionas (FNMT u otro). Si está caducado, renuévalo antes de intentar emitir facturas.
 
----
-
 **Facturas emitidas antes de activar TicketBAI sin regularizar**
 *Síntoma:* Tienes facturas del trimestre actual que no llevan QR porque las emitiste antes de completar la configuración.
 *Causa:* Empezaste a configurar TicketBAI a mitad de periodo y las facturas previas no se firmaron.
 *Solución:* Consulta con tu asesor fiscal si esas facturas deben rectificarse o si tu Hacienda Foral tiene algún procedimiento de regularización para el periodo de transición. No las modifiques unilateralmente.
-
----
 
 ## ✅ Resultado final
 
@@ -217,15 +187,11 @@ Si has seguido los pasos anteriores, ahora tienes:
 
 El siguiente paso lógico es revisar que tu **serie de facturas sea correcta** desde el inicio del ejercicio y que no haya huecos en la numeración. Las Haciendas Forales pueden auditarlo.
 
----
-
 ## 🤔 ¿Para quién NO es esta guía?
 
 - **Si tu empresa está en territorio común** (Madrid, Cataluña, Comunidad Valenciana, etc.) y no tienes actividad en el País Vasco ni Navarra: esto no te aplica. Lo que te corresponde es Verifactu. Tenemos una guía específica para eso.
 - **Si ya usas un software homologado y está correctamente configurado:** no necesitas hacer nada más, salvo mantenerlo actualizado.
 - **Si tienes dudas sobre en qué Hacienda tributas:** antes de tocar nada, consulta con tu asesor fiscal. Hay casos mixtos (actividades en varios territorios) que requieren análisis específico.
-
----
 
 ## ❓ Preguntas frecuentes
 
@@ -249,8 +215,6 @@ No si estás obligado a TicketBAI. Esas herramientas no pueden generar el XML fi
 
 Solo a las que emites. TicketBAI regula el software con el que emites facturas a tus clientes. No afecta a cómo procesas las facturas de tus proveedores.
 
----
-
 ## Herramientas que facilitan esto
 
 Si aún no tienes una herramienta de facturación homologada para TicketBAI o quieres explorar si Holded encaja con tu empresa:
@@ -258,8 +222,6 @@ Si aún no tienes una herramienta de facturación homologada para TicketBAI o qu
 <AffiliateLink programSlug="holded" articleSlug="ticket-bai-pymes" label="Probar Holded gratis 14 días" />
 
 Holded tiene prueba gratuita de 14 días. Puedes configurar TicketBAI durante ese periodo para verificar que todo funciona antes de comprometerte con el plan de pago.
-
----
 
 ## 📖 También te puede interesar
 

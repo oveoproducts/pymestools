@@ -27,8 +27,6 @@ Al terminar esta guía, sabrás exactamente qué campos tiene que llevar cada fa
 
 Emitir una factura completa lleva menos de 5 minutos cuando tienes el proceso claro. El problema no es el tiempo — es saber qué información es obligatoria y por qué.
 
----
-
 ## Lo que necesitas
 
 - **Tu número de NIF/CIF:** el tuyo y el de tu cliente. Sin él, la factura no es válida.
@@ -36,8 +34,6 @@ Emitir una factura completa lleva menos de 5 minutos cuando tienes el proceso cl
 - **Conocer tu epígrafe de IAE:** determina el tipo de actividad y puede afectar al tipo de IVA aplicable.
 - **Acceso a tu software de facturación o a una plantilla:** te enseñamos los campos en abstracto, pero al final del artículo verás cómo Holded y Anfix lo hacen automáticamente.
 - **Nivel técnico necesario:** ninguno. Si sabes rellenar un formulario, puedes hacer esto.
-
----
 
 ## Pasos
 
@@ -59,8 +55,6 @@ Emitir una factura completa lleva menos de 5 minutos cuando tienes el proceso cl
 
 **Qué verás:** Dos bloques en la parte superior de la factura, claramente separados. En Holded y Anfix, estos datos se rellenan automáticamente desde la ficha del cliente una vez que lo tienes guardado.
 
----
-
 ### Paso 2: 🔢 Asigna un número de factura único y correlativo
 
 **Qué hacer:** Cada factura necesita un número que la identifique de forma única. La numeración debe ser correlativa y sin saltos dentro del mismo año.
@@ -77,8 +71,6 @@ También puedes usar prefijos por serie si facturas a distintos tipos de cliente
 **Ojo con los duplicados:** Si alguna vez anulas una factura, no reutilices ese número. Emite una factura rectificativa con su propio número correlativo y referencia a la original. Dejar huecos en la numeración es preferible a reutilizar números.
 </Callout>
 
----
-
 ### Paso 3: 📅 Incluye las fechas correctas
 
 **Qué hacer:** Añade siempre dos fechas diferenciadas si no coinciden:
@@ -89,8 +81,6 @@ También puedes usar prefijos por serie si facturas a distintos tipos de cliente
 **Por qué:** La fecha de operación determina en qué trimestre se imputa el IVA. Si terminas un trabajo el 28 de marzo pero emites la factura el 3 de abril, el IVA corresponde al primer trimestre, no al segundo.
 
 **Qué verás:** Dos campos de fecha separados. En muchos casos, la herramienta te pregunta la fecha de prestación del servicio al crear la factura.
-
----
 
 ### Paso 4: 💶 Detalla los conceptos facturados
 
@@ -112,8 +102,6 @@ Un ejemplo correcto:
 
 **Qué verás:** Una tabla de líneas de factura donde añades tantos conceptos como necesites. Tanto Holded como Anfix calculan automáticamente los totales.
 
----
-
 ### Paso 5: 🧾 Aplica el IVA correcto
 
 **Qué hacer:** El tipo de IVA depende de tu actividad. Los más habituales para autónomos de servicios en España:
@@ -132,8 +120,6 @@ En la mayoría de actividades de servicios, el tipo es **21 %**.
 <Callout type="tip">
 **Si tienes dudas sobre tu tipo de IVA:** consulta el buscador de actividades del Portal del IVA de la AEAT (aeat.es). El epígrafe de IAE con el que diste de alta tu actividad es el punto de partida para determinarlo.
 </Callout>
-
----
 
 ### Paso 6: ✂️ Aplica la retención de IRPF si corresponde
 
@@ -158,8 +144,6 @@ La retención se aplica sobre la **base imponible** (antes de IVA) y se descuent
 **Las retenciones no aplican siempre:** Si facturas a particulares (no empresarios), no aplicas retención. Tampoco si vendes productos físicos. Y si facturas a clientes de fuera de España, la situación varía — consulta con tu gestor.
 </Callout>
 
----
-
 ### Paso 7: ✅ Verifica los totales y el método de pago
 
 **Qué hacer:** El bloque final de la factura debe mostrar de forma clara:
@@ -180,8 +164,6 @@ Añade también:
 
 {/* TODO: captura — pantalla de resumen de factura en Holded con los totales desglosados */}
 
----
-
 ### Paso 8: 🇪🇸 Cumple con Verifactu si usas software de facturación
 
 **Qué hacer:** Desde 2025, el software de facturación en España debe cumplir con **Verifactu** (Reglamento de requisitos técnicos del software de facturación, aprobado por RD 1007/2023). Esto afecta a los programas que usan los autónomos, no a las facturas manuales en papel.
@@ -194,8 +176,6 @@ Si facturas desde una hoja de Excel o Word, técnicamente no estás sujeto al re
 
 **Qué verás:** En Holded y Anfix, la adaptación a Verifactu es transparente para el usuario — no tienes que hacer nada adicional. El sistema genera internamente los registros necesarios.
 
----
-
 ## ⚠️ Errores comunes
 
 **La factura no tiene número correlativo o empieza desde 001 cada mes**
@@ -206,8 +186,6 @@ Si facturas desde una hoja de Excel o Word, técnicamente no estás sujeto al re
 
 *Solución:* Usa un formato tipo `2026-001` y continúa la secuencia todo el año. Si ya has emitido facturas con otro sistema, consulta a tu gestor si necesitas hacer una factura rectificativa o simplemente continuar la serie correctamente.
 
----
-
 **Has olvidado la retención y el cliente ya ha pagado**
 
 *Síntoma:* Revisas la factura tras el pago y ves que no pusiste retención.
@@ -216,8 +194,6 @@ Si facturas desde una hoja de Excel o Word, técnicamente no estás sujeto al re
 
 *Solución:* Emite una **factura rectificativa** (serie aparte, por ejemplo `R-2026-001`) que referencia la original y corrige el error. El cliente deberá ajustar el pago por la diferencia o compensarlo en la siguiente factura. Nunca modifiques una factura ya emitida y cobrada.
 
----
-
 **El cliente rechaza la factura porque falta su dirección fiscal**
 
 *Síntoma:* El departamento de compras de tu cliente devuelve la factura sin procesar.
@@ -225,8 +201,6 @@ Si facturas desde una hoja de Excel o Word, técnicamente no estás sujeto al re
 *Causa:* Has usado el nombre comercial del cliente pero no su dirección fiscal registrada, o has omitido el CIF.
 
 *Solución:* Pide siempre los datos fiscales completos antes de emitir la primera factura a un cliente nuevo. En Holded y Anfix puedes guardar la ficha completa del cliente para que se rellene automáticamente en futuras facturas.
-
----
 
 ## Resultado final
 
@@ -241,8 +215,6 @@ Si has seguido todos los pasos, cada factura que emitas tendrá:
 - ✅ Totales desglosados y datos de pago claros
 
 El siguiente paso lógico es automatizar la emisión para no tener que revisar estos campos manualmente cada vez. Te lo explicamos abajo.
-
----
 
 ## 🛠️ Herramientas que facilitan esto
 
@@ -272,8 +244,6 @@ Hacer facturas correctas a mano en Word o Excel es viable al principio, pero esc
 **Sobre los precios:** Ni Holded ni Anfix publican sus tarifas actualizadas de forma estable en web pública. Ambos trabajan con presupuesto personalizado según número de usuarios y módulos. Solicita demo directamente — el proceso es rápido y sin compromiso.
 </Callout>
 
----
-
 ## ❓ Preguntas frecuentes
 
 ### ¿Puedo hacer facturas en Word o Excel como autónomo?
@@ -282,15 +252,11 @@ Sí, es legal. No hay obligación de usar un software específico para emitir fa
 
 El problema práctico es el control: sin numeración automática, es fácil cometer errores correlativos. Y sin registro histórico, reconstruir un año fiscal para la renta se convierte en horas de trabajo.
 
----
-
 ### ¿Qué pasa si me olvido de poner el IVA en una factura?
 
 Una factura sin IVA cuando debería llevarlo es una factura incorrecta. Tienes que emitir una factura rectificativa que anule la original y la sustituya por una correcta.
 
 Si ya la has cobrado sin IVA, el IVA sigue siendo exigible — tendrás que liquidarlo igualmente en tu declaración trimestral. La solución es acordar con el cliente la forma de regularizarlo.
-
----
 
 ### ¿Cuándo tengo que aplicar retención del 7 % en vez del 15 %?
 
@@ -298,23 +264,17 @@ Puedes aplicar el 7 % si es el año en que te diste de alta como autónomo o alg
 
 Para acogerte al 7 %, debes indicarlo expresamente en la factura. En la práctica, la mayoría de autónomos aplican el 15 % directamente para simplificar.
 
----
-
 ### ¿Las facturas a clientes de la Unión Europea llevan IVA?
 
 Depende. Si facturas a una empresa (B2B) de otro país de la UE con CIF intracomunitario, la operación puede estar sujeta a la regla de inversión del sujeto pasivo y **no llevar IVA español**. Debes indicar en la factura: `"Operación exenta. Inversión del sujeto pasivo. Art. 69 Ley IVA"`.
 
 Si facturas a un particular europeo, la situación es diferente. Esto es suficientemente complejo como para que vale la pena consultarlo con tu gestor la primera vez.
 
----
-
 ### ¿Cada cuánto tiempo debo presentar el IVA de mis facturas?
 
 Como autónomo, la periodicidad estándar es **trimestral**: modelos 303 (liquidación del IVA) y 130 o 131 (pago fraccionado de IRPF), con plazos en abril, julio, octubre y enero.
 
 Los grandes empresarios (facturación superior a 6 millones de euros) presentan el IVA mensualmente. Para la mayoría de autónomos, el trimestral es suficiente.
-
----
 
 ## 📖 También te puede interesar
 

@@ -28,8 +28,6 @@ A partir de 2026, emitir facturas en PDF por email deja de ser suficiente si fac
 
 No es un trámite técnico menor. Afecta a cómo generas cada factura, qué software usas y cómo lo tienes configurado. Al terminar esta guía sabrás exactamente qué te exige la ley, cuándo entra en vigor para tu empresa y qué tienes que hacer antes de que llegue la fecha límite.
 
----
-
 ## 🗓️ Qué cambia y cuándo
 
 La **Ley Crea y Crece** (Ley 18/2022) obliga a todas las empresas y autónomos españoles a emitir facturas electrónicas estructuradas en sus operaciones B2B.
@@ -47,8 +45,6 @@ Lo que sí está claro es que la obligación llega. Y prepararse con tiempo marc
 **No confundas Verifactu con la factura electrónica B2B.** Son dos obligaciones distintas. Verifactu afecta al software de facturación (registro de facturas ante la AEAT). La facturación electrónica B2B afecta al formato en que emites facturas a tus clientes empresas. Ambas te afectan si tienes una pyme. En esta guía cubrimos las dos.
 </Callout>
 
----
-
 ## 📋 Lo que necesitas
 
 Antes de ponerte a configurar nada, comprueba que tienes esto:
@@ -57,8 +53,6 @@ Antes de ponerte a configurar nada, comprueba que tienes esto:
 - **Certificado digital o Cl@ve:** para firmar electrónicamente las facturas. Si ya presentas el IVA online, probablemente ya lo tienes.
 - **CIF de tus clientes empresariales al día:** la factura electrónica requiere datos correctos. Si tienes fichas de clientes con campos vacíos, es el momento de completarlas.
 - **Nivel técnico necesario:** no necesitas saber programar. Si sabes crear una factura en tu software actual, el proceso es similar. Lo que cambia es que el software hace el trabajo técnico por debajo.
-
----
 
 ## 🔍 Qué exige exactamente la ley
 
@@ -91,8 +85,6 @@ Si tu software actual no tiene el sello "adaptado a Verifactu", **no puedes segu
 **TicketBAI si estás en el País Vasco o Navarra:** estas comunidades tienen su propio sistema de trazabilidad fiscal (TicketBAI), obligatorio desde antes. Si ya cumples con TicketBAI, estás más avanzado que la media — pero revisa igualmente la compatibilidad con Verifactu para el resto de tus obligaciones estatales.
 </Callout>
 
----
-
 ## 🪜 Pasos para adaptarte antes del plazo
 
 ### Paso 1: Comprueba si tu software actual es compatible
@@ -103,8 +95,6 @@ Si tu software actual no tiene el sello "adaptado a Verifactu", **no puedes segu
 
 **Qué verás:** Una respuesta clara con fecha de disponibilidad. Si te dan una respuesta vaga o te dicen "estamos trabajando en ello" sin fecha, tómalo como señal de alerta.
 
----
-
 ### Paso 2: Revisa tus datos de clientes
 
 **Qué hacer:** Exporta tu listado de clientes empresa y verifica que tienes: CIF/NIF correcto, dirección fiscal completa, email de contacto de su departamento de administración. En Holded puedes hacerlo desde `Contactos → Exportar`. En Anfix, desde `Clientes → Listado → Exportar CSV`.
@@ -113,8 +103,6 @@ Si tu software actual no tiene el sello "adaptado a Verifactu", **no puedes segu
 
 **Qué verás:** Un Excel o CSV con todos tus clientes. Revísalo fila a fila. Pon foco en los clientes a los que más facturas emites.
 
----
-
 ### Paso 3: Obtén o renueva tu certificado digital
 
 **Qué hacer:** Ve a la web de la FNMT (fnmt.es) y comprueba la vigencia de tu certificado de persona jurídica o de representante de persona jurídica. Si ha caducado o caduca en los próximos 6 meses, renuévalo ahora. El proceso puede tardar varios días si requiere desplazamiento a una oficina de la AEAT.
@@ -122,8 +110,6 @@ Si tu software actual no tiene el sello "adaptado a Verifactu", **no puedes segu
 **Por qué:** La firma electrónica de facturas requiere un certificado válido. Sin él, el software no puede firmar ni enviar.
 
 **Qué verás:** La fecha de caducidad en el panel de tu certificado instalado en el navegador o en tu almacén de certificados de Windows.
-
----
 
 ### Paso 4: Configura el software para emitir facturas electrónicas
 
@@ -135,8 +121,6 @@ Si tu software actual no tiene el sello "adaptado a Verifactu", **no puedes segu
 
 {/* TODO: captura — pantalla de configuración de Verifactu en Holded o Anfix */}
 
----
-
 ### Paso 5: Emite una factura de prueba y verifica el registro
 
 **Qué hacer:** Crea una factura de prueba a un cliente de confianza (o a tu propia empresa si tienes otra entidad para pruebas). Comprueba que la factura generada incluye el código Verifactu y que en el panel de tu software aparece registrada como "enviada a AEAT" o "pendiente de envío".
@@ -144,8 +128,6 @@ Si tu software actual no tiene el sello "adaptado a Verifactu", **no puedes segu
 **Por qué:** Es mejor descubrir un problema técnico con una factura de prueba que con una factura real de 15.000 €.
 
 **Qué verás:** La factura en formato estructurado (habitualmente con un código QR o un identificador alfanumérico) y el estado de registro en tu panel de control.
-
----
 
 ## 🛠️ Qué software usar: Holded vs Anfix
 
@@ -180,8 +162,6 @@ Si ya usas Sage 50 o A3 ERP, comprueba primero si tu proveedor actual tiene la a
 
 <AffiliateLink programSlug="anfix" articleSlug="facturacion-electronica-pymes" label="Probar Anfix gratis" />
 
----
-
 ## ❌ Errores comunes al adaptarse
 
 **Confundir "compatible" con "activado"**
@@ -189,21 +169,15 @@ Si ya usas Sage 50 o A3 ERP, comprueba primero si tu proveedor actual tiene la a
 *Causa:* La funcionalidad existe en el software pero no la has activado ni configurado.
 *Solución:* Sigue el paso 4 de esta guía. La compatibilidad hay que activarla manualmente.
 
----
-
 **Certificado digital caducado en el momento de la migración**
 *Síntoma:* Al intentar firmar una factura, el software devuelve un error de certificado o no deja completar el proceso.
 *Causa:* El certificado de representante de persona jurídica tiene una validez de 2-4 años y caduca sin aviso visible.
 *Solución:* Renueva el certificado en fnmt.es. El proceso puede tardar entre 2 días y 2 semanas según el método de renovación.
 
----
-
 **Datos fiscales del cliente incorrectos**
 *Síntoma:* La factura electrónica es rechazada automáticamente por el sistema del receptor.
 *Causa:* CIF erróneo, nombre fiscal que no coincide con el registrado en la AEAT, o dirección fiscal desactualizada.
 *Solución:* Consulta los datos correctos en el Registro Mercantil o pide a tu cliente que te confirme sus datos fiscales actuales. Actualiza la ficha en tu software antes de volver a emitir.
-
----
 
 ## ✅ Resultado final
 
@@ -217,8 +191,6 @@ Si has seguido todos los pasos, tienes:
 Cuando entre en vigor la obligación, tu empresa emitirá facturas que cumplen la ley de forma automática, sin pasos adicionales por tu parte.
 
 El siguiente paso lógico es revisar también el proceso de **recepción de facturas electrónicas** de tus proveedores — porque la ley también te obliga a aceptarlas y procesarlas. Ese proceso lo detallamos en nuestra guía sobre gestión de facturas de proveedores.
-
----
 
 ## ❓ Preguntas frecuentes
 
@@ -241,8 +213,6 @@ Tu gestoría puede asesorarte y ayudarte con la configuración inicial, pero la 
 ### ¿Holded y Anfix son los únicos software que cumplen?
 
 No. Sage, A3, Quipu, Contasimple y otros también están trabajando en la adaptación. Holded y Anfix son dos opciones bien posicionadas para el perfil de pyme española de entre 5 y 20 trabajadores, pero la elección depende de tu situación actual. Si ya tienes un software de facturación que funciona bien para tu empresa, comprueba primero si ese proveedor tiene la adaptación antes de migrar.
-
----
 
 ## 📖 También te puede interesar
 

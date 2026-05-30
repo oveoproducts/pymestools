@@ -25,16 +25,12 @@ Al terminar esta guía, tendrás al menos dos flujos automáticos funcionando: u
 
 El tiempo real de configuración es de 45 a 60 minutos si tienes las cuentas creadas.
 
----
-
 ## Lo que necesitas
 
 - **Cuenta en Zapier o Make:** Ambos tienen plan gratuito suficiente para empezar. Zapier Free permite 100 tareas/mes y 5 Zaps activos. Make Free da 1.000 operaciones/mes. Para una pyme con volumen medio de consultas, el plan de pago más básico de cada uno suele ser suficiente — lo detallamos más abajo.
 - **Una herramienta de entrada de consultas:** El canal donde te escriben los clientes. Puede ser un formulario web (Typeform, Tally, Google Forms), un correo de soporte (hola@tuempresa.com) o un chat (Tidio, Crisp). Necesitas que esté integrado con Zapier o Make.
 - **Un canal de notificación interna:** El sitio donde quieres recibir los avisos — email, Slack, WhatsApp Business o un canal de Teams.
 - **Nivel técnico necesario:** No necesitas saber programar. Si sabes usar el correo y arrastrar bloques en pantalla, es suficiente. Make tiene una curva un poco más alta que Zapier porque la interfaz es visual pero más densa — lo indicamos en cada paso.
-
----
 
 ## 💶 Precios antes de empezar
 
@@ -57,8 +53,6 @@ Antes de elegir herramienta, ten claros los números.
 
 🇪🇸 **Para pymes españolas:** ni Zapier ni Make tienen interfaz en español. Si esto es un freno para tu equipo, considera empezar con Make porque su interfaz visual (bloques conectados) es más intuitiva aunque esté en inglés. Respecto a GDPR: ambos tienen DPA disponible para firmar, pero los datos se procesan en servidores estadounidenses. Revisa con tu asesor si esto afecta a tu política de privacidad según la LOPDGDD.
 
----
-
 ## Pasos
 
 ### Paso 1: Define qué consultas quieres automatizar
@@ -75,8 +69,6 @@ Para cada una, decide: ¿puede responderse con un mensaje automático? ¿O neces
 
 **Qué verás:** Una lista de 3 a 6 tipos de consulta, cada una con una etiqueta: "respuesta automática" o "derivar a persona".
 
----
-
 ### Paso 2: Elige y conecta tu canal de entrada
 
 **Qué hacer:** Accede a tu cuenta de Zapier o Make y crea un nuevo flujo (en Zapier se llama "Zap", en Make se llama "Scenario"). Elige el desencadenante ("Trigger") que corresponde a tu canal de entrada:
@@ -91,8 +83,6 @@ Conecta tu cuenta siguiendo las instrucciones en pantalla — ambas herramientas
 **Por qué:** El canal de entrada es el punto donde empieza todo el flujo. Sin él conectado correctamente, el resto no se ejecuta.
 
 **Qué verás:** En Zapier, un botón verde que confirma "Connection successful". En Make, el módulo del canal aparece con un icono verde y te permite hacer clic en "Run once" para probar que recibe datos.
-
----
 
 ### Paso 3: Configura el mensaje de respuesta automática inmediata
 
@@ -115,8 +105,6 @@ En Zapier y Make puedes insertar datos del formulario (nombre, asunto) usando va
 
 **Qué verás:** En el editor, el campo "Body" del email tendrá el texto mezclado con variables, por ejemplo: `Hola {{1.name}}, hemos recibido tu mensaje...`
 
----
-
 ### Paso 4: Añade el paso de enrutamiento según tipo de consulta
 
 **Qué hacer:** Este paso clasifica la consulta y la envía a la persona correcta de tu equipo. En Zapier se llama "Filter" o "Paths". En Make se llama "Router".
@@ -137,8 +125,6 @@ Para cada rama, añade una acción de notificación al responsable:
 
 {/* TODO: captura del módulo Router en Make con dos rutas configuradas */}
 
----
-
 ### Paso 5: Configura el seguimiento si no hay respuesta en X horas
 
 **Qué hacer:** Este paso es opcional pero muy valioso. Crea un segundo flujo (o añade un camino adicional al existente) que se ejecuta si una consulta no ha recibido respuesta en un plazo definido.
@@ -152,8 +138,6 @@ Alternativa sin coste adicional: usa Google Sheets como base de datos intermedia
 **Qué verás:** Un segundo flujo activo en tu panel de Zapier o Make que aparece como "Scheduled" o con un módulo de tipo "Watch" conectado a tu hoja de Google Sheets.
 
 {/* TODO: captura del panel de Make con dos escenarios activos */}
-
----
 
 ### Paso 6: Prueba el flujo completo antes de activarlo
 
@@ -171,8 +155,6 @@ Envía una consulta de prueba desde tu propio formulario o email y verifica que:
 
 **Qué verás:** En Make, cada módulo del escenario mostrará un número verde encima indicando cuántas operaciones ha procesado. En Zapier, verás un checkmark verde junto a cada paso.
 
----
-
 ## ⚠️ Errores comunes
 
 **El email de respuesta automática llega como spam**
@@ -180,27 +162,19 @@ Envía una consulta de prueba desde tu propio formulario o email y verifica que:
 *Causa:* Estás enviando el email desde una dirección de Gmail personal (ej: tunombre@gmail.com) en nombre de tu dominio corporativo. Los filtros antispam lo rechazan.
 *Solución:* Configura el envío desde tu cuenta de correo corporativa (tudominio.com) conectando directamente esa cuenta en Zapier/Make, o usa un servicio de email transaccional como Mailrelay o Brevo con tu dominio verificado.
 
----
-
 **Las variables aparecen vacías en el mensaje**
 *Síntoma:* El cliente recibe "Hola , hemos recibido tu mensaje" — sin nombre.
 *Causa:* El campo del formulario no tiene datos en el momento de la prueba, o el nombre del campo no coincide con la variable que has mapeado.
 *Solución:* En Zapier, haz clic en "Test trigger" para que cargue una respuesta real del formulario antes de mapear las variables. En Make, ejecuta el módulo de entrada ("Run once") para que capture datos reales y luego mapea los campos.
-
----
 
 **El flujo se ejecuta pero no hace nada**
 *Síntoma:* Ves en el historial de Zapier/Make que el flujo se ha ejecutado, pero no llega ningún email ni notificación.
 *Causa:* El paso de "Filter" o "Router" tiene una condición que nunca se cumple — por ejemplo, buscas la palabra "factura" en el asunto pero el cliente escribió "Solicitud de factura".
 *Solución:* Revisa las condiciones del filtro. Usa condiciones más amplias ("Contains" en lugar de "Equals") o añade más alternativas de palabras clave. En Make, el módulo Router tiene una opción "fallback route" — actívala para que las consultas que no encajan en ninguna condición lleguen igualmente a alguien.
 
----
-
 <Callout type="tip">
 **Si usas Holded:** Holded tiene integración nativa con Zapier. Puedes crear automáticamente un contacto o una nota en Holded cada vez que recibes una consulta nueva, sin exportar nada manualmente. Busca "Holded" en el catálogo de integraciones de Zapier.
 </Callout>
-
----
 
 ## Resultado final
 
@@ -214,15 +188,11 @@ El tiempo que esto ahorra en una pyme de 5 a 10 personas es real: entre 1 y 2 ho
 
 El siguiente paso lógico es conectar este sistema con tu CRM — si usas Holded o Salesforce, puedes crear oportunidades o tareas directamente desde cada consulta entrante, sin tocar nada manualmente.
 
----
-
 ## 🤔 ¿Para quién NO es esta automatización?
 
 - **Si tienes menos de 5 consultas al día:** El tiempo de configuración no se amortiza. Con ese volumen, un alias de email compartido y un turno claro de respuesta es suficiente.
 - **Si todas tus consultas son muy específicas y no se repiten:** La automatización funciona bien con patrones. Si cada consulta es completamente distinta, el enrutamiento por palabras clave no aporta gran cosa.
 - **Si tu equipo ya tiene un helpdesk tipo Freshdesk o Zendesk bien configurado:** Esas herramientas ya incluyen respuestas automáticas, enrutamiento y seguimientos. Añadir Zapier o Make por encima sería añadir complejidad innecesaria.
-
----
 
 ## ❓ Preguntas frecuentes
 
@@ -246,15 +216,11 @@ Sí. Zapier y Make soportan cualquier cuenta IMAP/SMTP, además de los conectore
 
 Depende del perfil. **Zapier** es más sencillo de configurar para flujos lineales simples — si tu consulta llega, se responde y se notifica, Zapier lo tienes en 20 minutos. **Make** tiene más potencia para flujos con varias condiciones, bucles y lógica más compleja, y el precio es más bajo. Para empezar desde cero sin experiencia previa: Zapier. Para escalar con lógica más avanzada sin disparar el coste: Make.
 
----
-
 ## Herramientas para empezar
 
 <AffiliateLink programSlug="zapier" articleSlug="automatizar-atencion-cliente-pymes" label="Probar Zapier gratis" />
 
 <AffiliateLink programSlug="make" articleSlug="automatizar-atencion-cliente-pymes" label="Probar Make gratis" />
-
----
 
 ## 📖 También te puede interesar
 

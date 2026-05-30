@@ -25,16 +25,12 @@ Al terminar esta guía, tendrás al menos una automatización funcionando entre 
 
 El tiempo real para la primera automatización: entre 20 y 40 minutos.
 
----
-
 ## Lo que necesitas
 
 - **Una cuenta en Zapier o Make:** ambas tienen plan gratuito para empezar. Te explicamos cuál encaja mejor según tu caso más abajo.
 - **Dos herramientas que ya usas** y que quieres conectar — por ejemplo, tu formulario web y tu hoja de cálculo, o tu email y tu CRM.
 - **Nivel técnico necesario:** si sabes copiar y pegar, es suficiente. No necesitas saber qué es una API. Los pasos usan interfaces visuales de arrastrar y soltar.
 - **Acceso de administrador** a las herramientas que vayas a conectar — algunas integraciones requieren permisos de admin para autorizar la conexión.
-
----
 
 ## 🤔 ¿Por qué automatizar si ya "funciona" todo?
 
@@ -43,8 +39,6 @@ Carlos lleva años haciendo lo mismo: cuando alguien rellena el formulario de co
 Eso son entre 5 y 15 minutos por contacto. Con 20 contactos al mes: hasta 5 horas al mes haciendo lo mismo.
 
 La automatización no es tecnología de grandes empresas. Es copiar ese proceso manual y dejarlo en piloto automático.
-
----
 
 ## 🔁 Cómo funciona una automatización (sin tecnicismos)
 
@@ -57,8 +51,6 @@ Toda automatización tiene la misma lógica: **si pasa X, haz Y**.
 Eso es todo. No hay más magia.
 
 Las plataformas como Zapier y Make son el puente entre herramientas que de otra forma no se hablan entre sí.
-
----
 
 ## 🛠️ Zapier vs Make: cuál elegir
 
@@ -91,23 +83,17 @@ Antes de entrar en los pasos, necesitas saber con cuál empezar. No son iguales.
 **Precios consultados en mayo 2026.** Zapier y Make cobran en dólares. Las cifras en euros son conversiones aproximadas. Verifica siempre en zapier.com y make.com antes de contratar. Ambos precios son sin IVA.
 </Callout>
 
----
-
 ## ⚙️ Pasos: tu primera automatización con Zapier
 
 Vamos a construir un caso de uso real: **cuando alguien rellena un formulario de Typeform, se añade automáticamente una fila en Google Sheets y se envía un email de aviso al comercial**.
 
 Si usas otros formularios o CRM, el proceso es el mismo — solo cambia la app de origen.
 
----
-
 ### Paso 1: Crea una cuenta gratuita en Zapier
 
 Ve a zapier.com y regístrate. El plan gratuito incluye 5 automatizaciones ("Zaps") y 100 tareas al mes — suficiente para empezar.
 
 **Qué verás:** tras el registro, Zapier te lleva a un dashboard con un botón grande: `"Create Zap"`. Haz clic ahí.
-
----
 
 ### Paso 2: Elige el activador (Trigger)
 
@@ -121,8 +107,6 @@ Busca `"Typeform"` en el buscador de apps. Selecciona el evento `"New Entry"` (n
 
 **Nota:** si no tienes ninguna respuesta todavía en el formulario, el test fallará. Envía una respuesta de prueba antes de continuar.
 
----
-
 ### Paso 3: Añade la primera acción — crear fila en Google Sheets
 
 Haz clic en `"+"` para añadir la primera acción. Busca `"Google Sheets"` y selecciona el evento `"Create Spreadsheet Row"`.
@@ -132,8 +116,6 @@ Conecta tu cuenta de Google. Selecciona el archivo de Sheets y la hoja (pestaña
 **Por qué:** esto es lo que convierte la respuesta del formulario en una fila de datos estructurada en tu Excel/Sheets — sin copiar a mano.
 
 **Qué verás:** Zapier muestra una previsualización de cómo quedará la fila con los datos reales de la respuesta de prueba. Si los campos están bien mapeados, los verás rellenos. Haz clic en `"Continue"`.
-
----
 
 ### Paso 4: Añade la segunda acción — enviar email de aviso
 
@@ -146,8 +128,6 @@ Rellena los campos:
 
 **Qué verás:** Zapier muestra un preview del email con los datos reales de la respuesta de prueba. Revisa que los datos salen bien.
 
----
-
 ### Paso 5: Activa el Zap
 
 Haz clic en `"Publish"` arriba a la derecha. El Zap pasa de `"Off"` a `"On"`.
@@ -156,23 +136,17 @@ Haz clic en `"Publish"` arriba a la derecha. El Zap pasa de `"Off"` a `"On"`.
 
 Pruébalo: envía una respuesta de prueba al formulario y espera un minuto. Comprueba que aparece la fila en Sheets y llega el email.
 
----
-
 ## 🔄 Pasos: automatización avanzada con Make
 
 Make es más potente para casos donde hay lógica condicional: "si el contacto es de Madrid, haz X; si es de fuera, haz Y". También es mejor si necesitas transformar datos antes de enviarlos.
 
 {/* TODO: captura del canvas de Make con un escenario activo */}
 
----
-
 ### Paso 1: Crea tu cuenta y entra al "canvas"
 
 Ve a make.com y regístrate. Haz clic en `"Create a new scenario"`. Verás una pantalla en blanco con un círculo en el centro — eso es el canvas donde vas a construir la automatización visualmente.
 
 **Qué verás:** un círculo con un signo `"+"`. Haz clic ahí para añadir el primer módulo.
-
----
 
 ### Paso 2: Elige el módulo de origen (Watch)
 
@@ -184,8 +158,6 @@ Conecta tu cuenta y configura qué formulario o evento vigilar.
 
 **Qué verás:** el módulo aparece en el canvas con el logo de la app. A su derecha hay un pequeño engranaje — haz clic para configurar con qué frecuencia Make comprueba si hay datos nuevos. En el plan gratuito, el mínimo es cada 15 minutos.
 
----
-
 ### Paso 3: Añade módulos de acción
 
 Haz clic en el borde derecho del módulo para conectar el siguiente. Busca la app de destino (Google Sheets, Holded, Mailrelay...) y elige la acción.
@@ -194,23 +166,17 @@ Si quieres añadir lógica condicional, busca el módulo `"Router"` — te permi
 
 **Qué verás:** el canvas se va llenando de módulos conectados por flechas. Cada módulo muestra el logo de la app y el nombre de la acción.
 
----
-
 ### Paso 4: Mapea los datos entre módulos
 
 Haz clic en cada módulo de acción. En los campos de configuración, verás un panel a la derecha con los datos disponibles del módulo anterior — arrastra o selecciona el dato que quieres en cada campo.
 
 **Por qué:** Make te permite transformar datos antes de enviarlos. Por ejemplo, combinar nombre y apellido en un solo campo, o convertir una fecha a otro formato.
 
----
-
 ### Paso 5: Activa el escenario
 
 Haz clic en el botón `"Scheduling"` abajo a la izquierda y ponlo en `"On"`. Haz clic en `"Run once"` primero para probar con datos reales antes de activarlo de forma permanente.
 
 **Qué verás:** Make ejecuta el flujo y muestra en cada módulo cuántos registros procesó y si hubo errores. Si todo es verde, activa el scheduling definitivo.
-
----
 
 ## 📋 Casos de uso reales para pymes españolas
 
@@ -236,8 +202,6 @@ Estos son los que más tiempo ahorran y más rápido se configuran:
 **Por dónde empezar:** elige el proceso que haces más veces a la semana y que consiste en copiar datos de un sitio a otro. Ese es tu primer candidato. Las automatizaciones de "copiar datos entre herramientas" son las más fáciles de configurar y las que dan resultado más rápido.
 </Callout>
 
----
-
 ## ❌ Lo que no nos gusta
 
 **De Zapier:**
@@ -250,8 +214,6 @@ Estos son los que más tiempo ahorran y más rápido se configuran:
 - Los errores de ejecución no siempre son fáciles de entender. Cuando falla un escenario, el mensaje de error es técnico y requiere experiencia para interpretarlo.
 - También cobra en dólares. El precio parece bajo (desde 9 $/mes), pero sube rápido si necesitas muchas operaciones al mes o múltiples usuarios.
 
----
-
 ## 🤔 ¿Para quién NO es esto?
 
 **No empieces con Zapier o Make si:**
@@ -259,8 +221,6 @@ Estos son los que más tiempo ahorran y más rápido se configuran:
 - Necesitas que alguien en español te configure y soporte las automatizaciones. Ni Zapier ni Make ofrecen soporte en español. Para eso, busca un partner local o considera herramientas con soporte nativo en español.
 - Tus procesos tienen muchas excepciones y casos especiales. Las automatizaciones funcionan bien con flujos predecibles. Si cada caso es diferente, la automatización puede crear más trabajo que ahorra.
 - Buscas automatizar la facturación o la contabilidad. Eso requiere herramientas específicas compatibles con Verifactu y la normativa española — Zapier y Make no son la solución para eso.
-
----
 
 ## ⚠️ Errores comunes
 
@@ -272,8 +232,6 @@ Estos son los que más tiempo ahorran y más rápido se configuran:
 
 *Solución:* Ve a `"My Apps"` en Zapier, desconecta y vuelve a conectar tu cuenta de Google. Asegúrate de conectar exactamente la cuenta que tiene acceso de edición a esa hoja.
 
----
-
 **El email de aviso llega con campos vacíos**
 
 *Síntoma:* El email llega, pero donde debería poner el nombre del contacto aparece en blanco o con texto como `"undefined"`.
@@ -282,8 +240,6 @@ Estos son los que más tiempo ahorran y más rápido se configuran:
 
 *Solución:* Edita el Zap y vuelve al paso del email. Haz clic en cada campo del cuerpo del mensaje y comprueba que las variables dinámicas (en azul) corresponden a los campos correctos del formulario. Usa `"Test trigger"` para ver exactamente cómo se llaman los campos en los datos reales.
 
----
-
 **Make no detecta las nuevas entradas del formulario**
 
 *Síntoma:* Envías una respuesta al formulario pero el escenario de Make no se ejecuta.
@@ -291,8 +247,6 @@ Estos son los que más tiempo ahorran y más rápido se configuran:
 *Causa:* En el plan gratuito de Make, el intervalo mínimo de comprobación es de 15 minutos. Puede parecer que no funciona cuando en realidad está esperando.
 
 *Solución:* Espera al menos 15 minutos o haz clic en `"Run once"` manualmente para forzar una ejecución de prueba. Si aun así no detecta nada, revisa que el módulo `"Watch"` está bien configurado y que la conexión con la app de origen sigue activa.
-
----
 
 ## ✅ Resultado final
 
@@ -304,15 +258,11 @@ Si has seguido los pasos de este artículo, ahora tienes:
 
 El siguiente paso lógico es mapear qué otros procesos de tu empresa son "copia datos de A a B" — esos son los candidatos más rápidos para tu próxima automatización.
 
----
-
 ## 🔗 Herramientas para empezar
 
 <AffiliateLink programSlug="zapier" articleSlug="como-automatizar-tu-pyme" label="Probar Zapier gratis" />
 
 <AffiliateLink programSlug="make" articleSlug="como-automatizar-tu-pyme" label="Probar Make gratis" />
-
----
 
 ## ❓ Preguntas frecuentes
 
@@ -343,8 +293,6 @@ Parcialmente. Puedes automatizar partes del proceso: por ejemplo, que cuando se 
 Tanto Zapier como Make guardan un historial de ejecuciones donde puedes ver qué pasó en cada una. Si una tarea falla, queda registrada con el motivo del error y puedes reejecutarla manualmente. En Make, además, puedes configurar rutas de error para que cuando algo falle te llegue un aviso por email.
 
 Dicho esto: antes de automatizar un proceso crítico, pruébalo durante una semana en paralelo (manual + automático) para confirmar que funciona bien antes de eliminar el proceso manual.
-
----
 
 ## 📖 También te puede interesar
 

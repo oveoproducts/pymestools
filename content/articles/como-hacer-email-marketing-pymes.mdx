@@ -25,8 +25,6 @@ Al terminar esta guía, tendrás tu primera campaña de email marketing configur
 
 Todo desde cero. Sin tocar código. En menos de una tarde.
 
----
-
 ## Lo que necesitas antes de empezar
 
 - **Una herramienta de email marketing:** En esta guía usamos [Brevo](https://brevo.com) y [Mailchimp](https://mailchimp.com). Ambas tienen plan gratuito para empezar — te explicamos las diferencias abajo.
@@ -38,8 +36,6 @@ Todo desde cero. Sin tocar código. En menos de una tarde.
 <Callout type="warning">
 **RGPD y LOPDGDD — esto no es opcional en España.** Antes de importar cualquier lista, asegúrate de que tienes constancia del consentimiento de cada contacto. La AEPD puede sancionar por envíos a listas sin consentimiento documentado. Si tu base de datos viene de un formulario web, comprueba que el check de "acepto recibir comunicaciones" estaba desmarcado por defecto.
 </Callout>
-
----
 
 ## 🛠️ Brevo o Mailchimp: cuál elegir
 
@@ -62,8 +58,6 @@ Dicho esto, los pasos de esta guía son válidos para las dos herramientas. Indi
 
 <AffiliateLink programSlug="brevo" articleSlug="como-hacer-email-marketing-pymes" label="Probar Brevo gratis" />
 
----
-
 ## Pasos
 
 ### Paso 1: 📋 Prepara tu lista de contactos
@@ -81,8 +75,6 @@ Dicho esto, los pasos de esta guía son válidos para las dos herramientas. Indi
 
 **Nota sobre consentimiento:** Si vas a importar contactos que te dieron su email en un contexto distinto al email marketing (ej: clientes que te compraron pero no marcaron ningún check), en España necesitas una base legal clara. La relación contractual previa puede servir para comunicaciones directamente relacionadas con la compra. Para boletines o promociones, necesitas consentimiento explícito.
 
----
-
 ### Paso 2: 🏗️ Crea tu cuenta y configura el dominio de envío
 
 **Qué hacer:** Crea tu cuenta en Brevo (o Mailchimp). Durante el registro te pedirán los datos de tu empresa — rellénalo todo con datos reales, afecta a la entregabilidad.
@@ -99,8 +91,6 @@ En Mailchimp, el proceso es similar: `"Account & Billing"` → `"Domains"`.
 **Si no sabes tocar el DNS, pídelo a quien te gestiona el hosting.** Es un proceso de 10 minutos para alguien que lo sabe hacer. No intentes hacerlo a ciegas — un registro mal configurado puede afectar el correo de toda tu empresa.
 </Callout>
 
----
-
 ### Paso 3: 📥 Importa tu lista de contactos
 
 **Qué hacer:** En Brevo, ve a `"Contactos"` → `"Importar contactos"` → `"Importar un archivo CSV"`. Sube el archivo que preparaste en el Paso 1 y mapea las columnas (dile a la herramienta qué columna es el email y qué columna es el nombre).
@@ -112,8 +102,6 @@ En Mailchimp: `"Audience"` → `"Add contacts"` → `"Import contacts"`.
 **Qué verás:** Un resumen de cuántos contactos se han importado correctamente y cuántos han fallado (emails mal formados). Los fallidos se pueden revisar en un informe de errores.
 
 **Nota:** Brevo te preguntará explícitamente si confirmas que tienes el consentimiento de estos contactos. No es un trámite burocrático — es una declaración legal. Confírmalo solo si es cierto.
-
----
 
 ### Paso 4: 🎨 Crea tu primera campaña de email
 
@@ -132,8 +120,6 @@ Después entra el editor de plantillas. Elige `"Editor drag & drop"` — es el m
 - Un botón de llamada a la acción con texto claro: `"Ver oferta"`, `"Leer más"`, `"Reservar cita"`
 - Enlace de baja al pie — es obligatorio por ley y ambas herramientas lo añaden automáticamente
 
----
-
 ### Paso 5: ✅ Configura y envía un email de prueba
 
 **Qué hacer:** Antes de enviar a toda tu lista, usa la función de prueba. En Brevo, en la parte superior del editor encontrarás `"Vista previa y prueba"` → `"Enviar un email de prueba"`. Ponle tu propio email.
@@ -146,8 +132,6 @@ Después entra el editor de plantillas. Elige `"Editor drag & drop"` — es el m
 - El botón de llamada a la acción lleva al enlace correcto
 - Se ve bien en móvil (prueba desde el teléfono)
 
----
-
 ### Paso 6: 🚀 Programa el envío
 
 **Qué hacer:** Cuando estés satisfecho con el email, haz clic en `"Siguiente"` hasta llegar al paso de envío. Puedes enviarlo inmediatamente o programarlo para una fecha y hora concretas.
@@ -155,8 +139,6 @@ Después entra el editor de plantillas. Elige `"Editor drag & drop"` — es el m
 **Por qué:** El momento del envío afecta a las tasas de apertura. Para B2B en España, los martes y miércoles entre las 10:00 y las 11:30 suelen funcionar bien. Evita los lunes por la mañana y los viernes por la tarde.
 
 **Qué verás:** Una pantalla de confirmación con el resumen: a cuántos contactos se enviará, el asunto y el remitente. Revísala antes de confirmar.
-
----
 
 ### Paso 7: 🤖 Activa una automatización de bienvenida
 
@@ -178,8 +160,6 @@ El flujo más básico es:
 
 {/* TODO: captura del editor de automatizaciones de Brevo */}
 
----
-
 ## ❌ Errores comunes
 
 **Enviar desde un dominio sin verificar**
@@ -187,21 +167,15 @@ El flujo más básico es:
 *Causa:* Sin los registros SPF/DKIM configurados, los servidores de correo no pueden verificar que eres quien dices ser.
 *Solución:* Completa el Paso 2 antes de enviar nada. Verifica los registros DNS con la herramienta de diagnóstico que incluye Brevo en `"Configuración"` → `"Dominios"`.
 
----
-
 **Importar una lista sin limpiarla**
 *Síntoma:* Alta tasa de rebotes (bounce rate superior al 5%) en tus primeros envíos.
 *Causa:* Emails inválidos, desactualizados o inexistentes en la lista.
 *Solución:* Antes de importar, pasa la lista por una herramienta de verificación de emails. Si tienes muchos rebotes en los primeros envíos, la herramienta puede suspender tu cuenta temporalmente.
 
----
-
 **Asuntos de email genéricos**
 *Síntoma:* Tasa de apertura por debajo del 15%.
 *Causa:* Asuntos tipo `"Newsletter de mayo"` o `"Novedades de [Empresa]"` no generan ningún incentivo para abrir.
 *Solución:* El asunto tiene que responder implícitamente a `"¿por qué debería abrir esto ahora?"`. Prueba con asuntos concretos: `"Sube el precio del acero un 8% — lo que afecta a tu próximo pedido"`.
-
----
 
 ## 💶 Precios de Brevo y Mailchimp en 2026
 
@@ -235,16 +209,12 @@ El flujo más básico es:
 
 ⚠️ Mailchimp almacena datos principalmente en servidores de EE.UU. Tiene DPA disponible bajo cláusulas contractuales estándar de la UE, pero revisa con tu asesor legal si necesitas cumplimiento estricto de LOPDGDD.
 
----
-
 ## 🤔 ¿Para quién NO es esta guía?
 
 - **Si tienes más de 50.000 contactos:** Necesitas una plataforma con IP dedicada y un consultor de entregabilidad. Brevo y Mailchimp en sus planes básicos no están pensados para ese volumen.
 - **Si vendes por ecommerce con catálogo grande:** Necesitas una herramienta con integración nativa a tu tienda (Klaviyo, Omnisend). Las funciones de producto dinámico de Brevo y Mailchimp son limitadas en planes básicos.
 - **Si buscas sustituir tu CRM:** El email marketing no es un CRM. Para gestionar el pipeline de ventas, mira Holded o HubSpot. El email marketing complementa al CRM, no lo reemplaza.
 - **Si no tienes tiempo para gestionarlo:** Montar el sistema lleva una tarde. Mantenerlo — escribir contenido, revisar métricas, ajustar — requiere al menos 2-3 horas al mes. Si no las tienes, el canal morirá.
-
----
 
 ## Resultado final
 
@@ -257,15 +227,11 @@ Si has seguido todos los pasos, ahora tienes:
 
 El siguiente paso es medir. Abre el informe de tu primera campaña una semana después del envío y fíjate en tres datos: tasa de apertura, tasa de clics y bajas. Con esos tres números ya puedes decidir qué mejorar en el siguiente envío.
 
----
-
 ## 🛠️ Herramientas mencionadas
 
 <AffiliateLink programSlug="brevo" articleSlug="como-hacer-email-marketing-pymes" label="Probar Brevo gratis" />
 
 <AffiliateLink programSlug="mailchimp" articleSlug="como-hacer-email-marketing-pymes" label="Probar Mailchimp gratis" />
-
----
 
 ## ¿Preguntas frecuentes?
 
@@ -288,8 +254,6 @@ Brevo tiene sede en la UE, almacena datos en servidores europeos y ofrece un DPA
 ### ¿Puedo migrar de Mailchimp a Brevo sin perder mis contactos?
 
 Sí. El proceso estándar es exportar tus listas de Mailchimp en CSV e importarlas en Brevo. Las automatizaciones no se migran automáticamente — las tendrás que recrear en Brevo. Las plantillas tampoco son compatibles directamente, pero el editor de Brevo es suficientemente sencillo para rehacerlas en poco tiempo.
-
----
 
 ## 📖 También te puede interesar
 

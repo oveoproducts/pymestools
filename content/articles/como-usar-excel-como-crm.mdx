@@ -24,16 +24,12 @@ Si tienes los clientes en una hoja de Excel, no estás haciendo nada raro. El 70
 
 Esta guía te explica cómo montar un Excel que funcione de verdad como CRM básico. Y al final, los síntomas exactos que te dicen que ha llegado el momento de cambiarlo.
 
----
-
 ## Lo que necesitas
 
 - **Excel o Google Sheets:** Cualquier versión sirve. El método funciona igual con LibreOffice Calc si lo usas en lugar de Excel.
 - **Tu lista de clientes actual:** Da igual en qué formato esté ahora mismo. Un papel, otro Excel desordenado, o solo en tu cabeza.
 - **Unos 45 minutos:** Para montar la estructura desde cero la primera vez.
 - **Nivel técnico necesario:** Cero. Si sabes escribir en celdas y usar filtros básicos, es suficiente. No hay macros ni fórmulas complicadas.
-
----
 
 ## Por qué Excel "casi funciona" como CRM
 
@@ -42,8 +38,6 @@ Excel no es un CRM. Pero hace bien tres cosas que un CRM básico necesita: almac
 El problema es lo que no hace: no te avisa de nada, no registra automáticamente los correos que mandas, y en cuanto trabaja más de una persona sobre el mismo archivo, empieza el caos.
 
 Aun así, para una empresa con menos de 150 clientes activos y un solo comercial, un Excel bien montado aguanta perfectamente.
-
----
 
 ## Pasos
 
@@ -58,8 +52,6 @@ Estas 11 columnas cubren el 90% de lo que necesita un seguimiento comercial bás
 **Por qué:** Cada columna que añades sin usarla es ruido. Un CRM en Excel se muere cuando se llena de columnas vacías que nadie rellena.
 
 **Qué verás:** Una fila de cabeceras limpia. Ponla en negrita y con fondo de color para que destaque visualmente de los datos.
-
----
 
 ### Paso 2: Define los valores posibles para "Estado"
 
@@ -84,8 +76,6 @@ Después, vuelve a la hoja principal. Selecciona toda la columna "Estado", ve a 
 Haz lo mismo con la columna "Origen" (ej: "Referido", "Web", "Feria", "Llamada en frío", "LinkedIn"). En 6 meses sabrás qué canal te trae mejores clientes — sin necesidad de ningún software.
 </Callout>
 
----
-
 ### Paso 3: Activa los filtros y fija la cabecera
 
 **Qué hacer:** Haz clic en la fila 1 (la de cabeceras). Ve a `Vista > Inmovilizar > Inmovilizar fila superior`. Después, con la fila 1 seleccionada, activa `Datos > Filtro`.
@@ -93,8 +83,6 @@ Haz lo mismo con la columna "Origen" (ej: "Referido", "Web", "Feria", "Llamada e
 **Por qué:** Cuando tengas 80 filas de datos, necesitas poder ver solo los prospectos con reunión fijada esta semana, o solo los clientes con una propuesta enviada hace más de 15 días. Sin filtros, el Excel es solo una lista.
 
 **Qué verás:** Cada cabecera tendrá una flecha de desplegable. Al hacer scroll hacia abajo, la fila de cabeceras permanecerá siempre visible.
-
----
 
 ### Paso 4: Añade formato condicional para las fechas vencidas
 
@@ -112,8 +100,6 @@ Ponle fondo rojo claro o texto en rojo.
 
 **Qué verás:** Las filas donde la fecha de próxima acción ya ha pasado se destacarán en rojo. Las fechas futuras no cambian de color.
 
----
-
 ### Paso 5: Crea una vista de "Acciones de esta semana"
 
 **Qué hacer:** Duplica la hoja principal (clic derecho sobre la pestaña > "Mover o copiar" > activa "Crear copia"). Llámala `Esta semana`.
@@ -128,8 +114,6 @@ En esta copia, activa el filtro de la columna "Fecha próxima acción" y filtra 
 **Si trabajáis más de una persona sobre el mismo archivo:** Usa Google Sheets en lugar de Excel. Los archivos de Excel compartidos por correo o por red local generan versiones duplicadas y datos perdidos. Google Sheets permite edición simultánea con historial de cambios — es la diferencia entre que funcione o no funcione.
 </Callout>
 
----
-
 ### Paso 6: Registra cada interacción en la columna "Notas" con fecha
 
 **Qué hacer:** Cada vez que hablas con un cliente o mandas algo, escribe en la columna Notas: `[DD/MM/AAAA] Llamada: interesado, pide presupuesto para junio.`
@@ -139,8 +123,6 @@ Siempre con fecha al inicio. Siempre en la misma celda, añadiendo al final del 
 **Por qué:** Sin este registro, en 3 semanas no recordarás de qué hablaste con ese cliente. Y si te pones enfermo y alguien del equipo tiene que continuar, no hay contexto.
 
 **Qué verás:** La columna Notas irá acumulando el historial de conversaciones. No es elegante, pero funciona.
-
----
 
 ## Errores comunes
 
@@ -152,8 +134,6 @@ Siempre con fecha al inicio. Siempre en la misma celda, añadiendo al final del 
 
 *Solución:* O pasa a Google Sheets con un enlace único compartido, o designa un archivo maestro en una carpeta de red/OneDrive y prohíbe las copias por correo. Sin esto, el sistema se rompe solo.
 
----
-
 **Nadie actualiza el "Estado" ni la "Fecha próxima acción"**
 
 *Síntoma:* El 80% de las filas tienen Estado "Prospecto nuevo" y fechas de hace 4 meses.
@@ -162,8 +142,6 @@ Siempre con fecha al inicio. Siempre en la misma celda, añadiendo al final del 
 
 *Solución:* Reserva 10 minutos cada viernes para revisar y actualizar. Sin ese ritual fijo, el sistema muere en 6 semanas. Si no tienes esos 10 minutos, el Excel no es el problema — la carga de trabajo sí.
 
----
-
 **Los filtros dejan de funcionar porque hay filas en blanco entre los datos**
 
 *Síntoma:* El filtro solo muestra resultados hasta la fila 47, aunque tengas datos hasta la 120.
@@ -171,8 +149,6 @@ Siempre con fecha al inicio. Siempre en la misma celda, añadiendo al final del 
 *Causa:* Excel interrumpe el rango de datos en la primera fila vacía que encuentra.
 
 *Solución:* Nunca dejes filas en blanco entre clientes. Si quieres separar grupos visualmente, usa colores o secciones, pero sin filas vacías.
-
----
 
 ## ⚠️ Cuándo Excel ha dejado de ser suficiente
 
@@ -197,8 +173,6 @@ Un CRM real te da previsión de ventas en tiempo real. Si Carlos no puede respon
 **🔴 Señal 5: El equipo de ventas y el de administración tienen datos distintos**
 
 Si el comercial tiene una versión del Excel y la persona de facturación tiene otra, ya estás pagando el coste de no tener un sistema centralizado — aunque todavía no lo veas en números.
-
----
 
 ## Las alternativas: qué usar cuando dejas el Excel
 
@@ -226,8 +200,6 @@ Ninguno de los dos tiene contrato de permanencia en sus planes mensuales. Si con
 
 {/* TODO: captura comparativa HubSpot vs Pipedrive — vista de pipeline */}
 
----
-
 ## Resultado final
 
 Si has seguido los pasos, ahora tienes:
@@ -241,8 +213,6 @@ El Excel que has montado hoy aguantará hasta que alcances alguna de las señale
 <AffiliateLink programSlug="hubspot" articleSlug="como-usar-excel-como-crm" label="Probar HubSpot CRM gratis" />
 
 <AffiliateLink programSlug="pipedrive" articleSlug="como-usar-excel-como-crm" label="Probar Pipedrive 14 días gratis" />
-
----
 
 ## ¿Preguntas frecuentes?
 
@@ -265,8 +235,6 @@ Sí. Tanto Microsoft (en Office.com) como HubSpot ofrecen plantillas gratuitas d
 ### ¿Merece la pena pagar por un CRM si tengo menos de 5 empleados?
 
 Depende de cuántos clientes activos gestionas, no de cuántos empleados tienes. Con 3 empleados y 50 clientes activos, el Excel aguanta. Con 3 empleados y 200 clientes activos y ciclos de venta largos, pagar 14 €/mes por Pipedrive es de las mejores inversiones que puedes hacer — el tiempo que recuperas en no buscar información entre versiones del Excel lo amortiza en el primer mes.
-
----
 
 ## 📖 También te puede interesar
 
