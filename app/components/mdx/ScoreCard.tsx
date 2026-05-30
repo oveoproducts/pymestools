@@ -3,7 +3,8 @@ interface ScoreCardProps {
   label?: string
 }
 
-export function ScoreCard({ score = 0, label = 'Puntuación PymesTools' }: ScoreCardProps) {
+export function ScoreCard({ score, label = 'Puntuación PymesTools' }: ScoreCardProps) {
+  if (!score || score <= 0) return null
   const color = score >= 7 ? 'text-green-600' : score >= 5 ? 'text-amber-500' : 'text-red-500'
   const bg = score >= 7 ? 'bg-green-50 border-green-200' : score >= 5 ? 'bg-amber-50 border-amber-200' : 'bg-red-50 border-red-200'
   const stars = Math.round((score / 10) * 5)
