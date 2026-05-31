@@ -1,246 +1,109 @@
 ---
-title: "Cómo usar Excel como CRM para pymes y cuándo dejar de hacerlo"
+title: "Cómo usar Excel como CRM para pymes (y cuándo dejarlo)"
 slug: "como-usar-excel-como-crm"
+description: "Guía práctica para organizar clientes en Excel y reconocer cuándo necesitas un CRM de verdad. Con plantilla básica y señales de alarma concretas."
 category: "crm"
-description: "Guía práctica para montar un CRM en Excel que realmente funcione para tu pyme. Y los señales concretas que te dicen cuándo Excel se ha quedado pequeño."
 type: "how-to"
-publishedAt: null
-updatedAt: "2026-05-24T16:33:36.518Z"
 tools: ["hubspot", "pipedrive"]
-keywords:
-  primary: "cómo usar Excel como CRM para pymes"
-  secondary:
-    - "excel crm plantilla pymes españa"
-    - "cuando dejar excel crm"
-    - "alternativas excel crm pequeña empresa"
-    - "crm gratis pymes españa"
+keywords_primary: "excel como crm pymes"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "9 min"
-qualityScore: null
+readingTime: 6
+publishedAt: null
+updatedAt: "2026-05-31T15:44:10.336Z"
 ---
 
-Si tienes los clientes en una hoja de Excel, no estás haciendo nada raro. El 70% de las pymes españolas empieza así. El problema no es usarlo — el problema es seguir usándolo cuando ya no da para más.
+La mayoría de pymes españolas empiezan a gestionar clientes en Excel. No porque sea lo mejor, sino porque ya lo tienen, ya lo conocen y funciona el primer año. El problema viene después.
 
-Esta guía te explica cómo montar un Excel que funcione de verdad como CRM básico. Y al final, los síntomas exactos que te dicen que ha llegado el momento de cambiarlo.
+Esta guía te explica cómo sacarle el máximo partido a Excel como CRM mientras tiene sentido, y cómo detectar el momento exacto en que deja de tenerlo.
 
-## Lo que necesitas
+## Cómo estructurar Excel para que funcione como CRM
 
-- **Excel o Google Sheets:** Cualquier versión sirve. El método funciona igual con LibreOffice Calc si lo usas en lugar de Excel.
-- **Tu lista de clientes actual:** Da igual en qué formato esté ahora mismo. Un papel, otro Excel desordenado, o solo en tu cabeza.
-- **Unos 45 minutos:** Para montar la estructura desde cero la primera vez.
-- **Nivel técnico necesario:** Cero. Si sabes escribir en celdas y usar filtros básicos, es suficiente. No hay macros ni fórmulas complicadas.
+Un Excel de clientes sin estructura es solo una lista de nombres. Con la estructura correcta, puedes gestionar seguimientos, oportunidades abiertas y facturación pendiente sin perderte.
 
-## Por qué Excel "casi funciona" como CRM
+Estas son las columnas mínimas que necesitas:
 
-Excel no es un CRM. Pero hace bien tres cosas que un CRM básico necesita: almacenar información, filtrarla y ordenarla.
+- **Empresa / Contacto** — nombre de la empresa y persona de contacto
+- **Estado** — Lead / Oportunidad / Cliente / Perdido
+- **Valor estimado** — importe potencial del contrato
+- **Próxima acción** — qué toca hacer y cuándo
+- **Última interacción** — fecha del último email, llamada o reunión
 
-El problema es lo que no hace: no te avisa de nada, no registra automáticamente los correos que mandas, y en cuanto trabaja más de una persona sobre el mismo archivo, empieza el caos.
-
-Aun así, para una empresa con menos de 150 clientes activos y un solo comercial, un Excel bien montado aguanta perfectamente.
-
-## Pasos
-
-### Paso 1: Define las columnas — y no pongas más de las que vas a rellenar
-
-**Qué hacer:** Abre una hoja nueva y crea estas columnas en la fila 1:
-
-| Empresa | Contacto | Cargo | Teléfono | Email | Origen | Estado | Próxima acción | Fecha próxima acción | Valor estimado € | Notas |
-
-Estas 11 columnas cubren el 90% de lo que necesita un seguimiento comercial básico. No añadas más hasta que las estés usando todas.
-
-**Por qué:** Cada columna que añades sin usarla es ruido. Un CRM en Excel se muere cuando se llena de columnas vacías que nadie rellena.
-
-**Qué verás:** Una fila de cabeceras limpia. Ponla en negrita y con fondo de color para que destaque visualmente de los datos.
-
-### Paso 2: Define los valores posibles para "Estado"
-
-**Qué hacer:** Crea una segunda hoja llamada `Listas` y escribe en la columna A estos valores, uno por celda:
-
-- Prospecto nuevo
-- Contactado
-- Reunión fijada
-- Propuesta enviada
-- Negociación
-- Cliente activo
-- Perdido
-- Descartado
-
-Después, vuelve a la hoja principal. Selecciona toda la columna "Estado", ve a `Datos > Validación de datos`, elige "Lista" y apunta al rango de la hoja Listas.
-
-**Por qué:** Si cada persona escribe el estado como quiere ("en proceso", "interesado", "hablado con él"), los filtros no funcionan y no puedes ver cuántos prospectos tienes en cada fase.
-
-**Qué verás:** Al hacer clic en cualquier celda de la columna "Estado", aparecerá un desplegable con los valores que has definido. Solo se puede elegir uno de ellos.
+Añade una pestaña separada para el historial de comunicaciones. No mezcles todo en la misma hoja o en dos meses no entenderás nada.
 
 <Callout type="tip">
-Haz lo mismo con la columna "Origen" (ej: "Referido", "Web", "Feria", "Llamada en frío", "LinkedIn"). En 6 meses sabrás qué canal te trae mejores clientes — sin necesidad de ningún software.
+Usa la validación de datos de Excel para el campo "Estado". Así evitas que cada persona del equipo escriba lo mismo de forma distinta ("lead", "Lead", "LEAD", "posible cliente"...). Datos > Validación de datos > Lista.
 </Callout>
 
-### Paso 3: Activa los filtros y fija la cabecera
+## Cuándo el Excel empieza a romperse
 
-**Qué hacer:** Haz clic en la fila 1 (la de cabeceras). Ve a `Vista > Inmovilizar > Inmovilizar fila superior`. Después, con la fila 1 seleccionada, activa `Datos > Filtro`.
+El Excel aguanta bien hasta que el equipo crece o el volumen de clientes supera cierto umbral. A partir de ahí, los problemas aparecen uno tras otro.
 
-**Por qué:** Cuando tengas 80 filas de datos, necesitas poder ver solo los prospectos con reunión fijada esta semana, o solo los clientes con una propuesta enviada hace más de 15 días. Sin filtros, el Excel es solo una lista.
+Señales de que has llegado al límite:
 
-**Qué verás:** Cada cabecera tendrá una flecha de desplegable. Al hacer scroll hacia abajo, la fila de cabeceras permanecerá siempre visible.
+- Dos personas editan el archivo a la vez y los cambios se pierden
+- No sabes quién habló con qué cliente ni qué se le prometió
+- Los seguimientos se caen porque no hay recordatorios automáticos
+- Tardas más de 5 minutos en saber cuántas oportunidades tienes abiertas
 
-### Paso 4: Añade formato condicional para las fechas vencidas
+**Ejemplo concreto:** Ferretería Almería Distribuciones, 6 empleados, llevaba sus 340 clientes en Excel. Cuando llegaron a 3 comerciales trabajando en paralelo, el archivo se corrompió dos veces en un mes. Perdieron el seguimiento de 4 oportunidades activas.
 
-**Qué hacer:** Selecciona toda la columna "Fecha próxima acción". Ve a `Inicio > Formato condicional > Nueva regla`. Elige "Usar una fórmula" y escribe:
+## Lo bueno y lo malo del Excel como CRM
 
-```
-=Y(D2<HOY(),D2<>"")
-```
+<ProsCons
+  pros={[
+    "Coste cero — ya lo tienes contratado con Office o puedes usar Google Sheets",
+    "Cualquier persona del equipo sabe usarlo sin formación",
+    "Personalizable al 100% — organizas los datos como tú quieras",
+    "Funciona sin conexión y sin depender de terceros"
+  ]}
+  cons={[
+    "Sin recordatorios automáticos ni alertas de seguimiento",
+    "Colaboración en tiempo real muy limitada — los conflictos de versiones destrozan datos",
+    "Imposible de escalar: con más de 200 clientes activos se vuelve inmanejable",
+    "No hay historial de comunicaciones integrado ni registro de actividad"
+  ]}
+/>
 
-*(sustituye D2 por la celda de inicio de tu columna de fechas)*
+## Cuándo pasarte a un CRM de verdad
 
-Ponle fondo rojo claro o texto en rojo.
+No hay una cifra mágica, pero hay tres umbrales concretos:
 
-**Por qué:** El mayor problema de gestionar clientes en Excel es que las acciones pendientes se pierden entre los datos. Con este formato, cualquier fecha que ya haya pasado se pone en rojo automáticamente — no puedes ignorarla.
+**Más de 3 personas tocan la base de clientes.** El Excel multiusuario no escala. Las versiones se desincronizas, alguien sobreescribe algo y nadie sabe cuál es la versión buena.
 
-**Qué verás:** Las filas donde la fecha de próxima acción ya ha pasado se destacarán en rojo. Las fechas futuras no cambian de color.
+**Tienes más de 150-200 clientes activos.** A partir de ahí, mantener el Excel requiere más tiempo del que ahorras. Un CRM automatiza los seguimientos y te avisa sin que tengas que acordarte.
 
-### Paso 5: Crea una vista de "Acciones de esta semana"
+**Empiezas a perder oportunidades por despiste.** Si alguna vez has pensado "creo que este cliente me había pedido presupuesto hace semanas y no le contesté", ya estás tardando.
 
-**Qué hacer:** Duplica la hoja principal (clic derecho sobre la pestaña > "Mover o copiar" > activa "Crear copia"). Llámala `Esta semana`.
+## HubSpot y Pipedrive: opciones concretas para pymes
 
-En esta copia, activa el filtro de la columna "Fecha próxima acción" y filtra por "Esta semana" (o manualmente por el rango de fechas de los próximos 7 días). Guarda el archivo con este filtro activo.
+Cuando das el salto, las dos herramientas más razonables para una pyme española de menos de 20 empleados son [HubSpot CRM](/crm/review-hubspot-crm) y [Pipedrive](/crm/review-pipedrive).
 
-**Por qué:** La hoja principal tiene todos los contactos. Esta vista te muestra solo lo que tienes que hacer esta semana. Es lo primero que abres los lunes por la mañana.
+**HubSpot CRM** tiene un plan gratuito funcional que permite gestionar contactos, registrar comunicaciones y hacer seguimiento de oportunidades sin pagar nada. La interfaz está en español y el soporte también. Para muchas pymes, el plan gratuito aguanta años.
 
-**Qué verás:** Una lista corta con solo los clientes que requieren acción en los próximos 7 días. Mucho más manejable que ver 150 filas.
+**Pipedrive** es de pago desde el primer día, pero está diseñado específicamente para equipos de ventas: el pipeline visual es más intuitivo que el de HubSpot y la curva de aprendizaje es menor. El precio del plan Esencial está en torno a los 14 €/usuario/mes + IVA (contrato anual). Verifica el precio actualizado en su web antes de contratar.
 
 <Callout type="warning">
-**Si trabajáis más de una persona sobre el mismo archivo:** Usa Google Sheets en lugar de Excel. Los archivos de Excel compartidos por correo o por red local generan versiones duplicadas y datos perdidos. Google Sheets permite edición simultánea con historial de cambios — es la diferencia entre que funcione o no funcione.
+Ninguno de los dos reemplaza un ERP ni un software de facturación. Si ya usas [Holded](/facturacion/review-holded) o Sage, comprueba si tienen CRM integrado antes de añadir una herramienta más.
 </Callout>
-
-### Paso 6: Registra cada interacción en la columna "Notas" con fecha
-
-**Qué hacer:** Cada vez que hablas con un cliente o mandas algo, escribe en la columna Notas: `[DD/MM/AAAA] Llamada: interesado, pide presupuesto para junio.`
-
-Siempre con fecha al inicio. Siempre en la misma celda, añadiendo al final del texto anterior (usa `Alt + Enter` para hacer salto de línea dentro de la celda).
-
-**Por qué:** Sin este registro, en 3 semanas no recordarás de qué hablaste con ese cliente. Y si te pones enfermo y alguien del equipo tiene que continuar, no hay contexto.
-
-**Qué verás:** La columna Notas irá acumulando el historial de conversaciones. No es elegante, pero funciona.
-
-## Errores comunes
-
-**El archivo tiene 5 versiones diferentes circulando por correo**
-
-*Síntoma:* Hay un `CRM_v3_final_DEFINITIVO_junio.xlsx` en el escritorio de alguien y nadie sabe cuál es el bueno.
-
-*Causa:* Excel no está pensado para trabajo colaborativo. Cada vez que alguien lo manda por correo, se crea una copia nueva.
-
-*Solución:* O pasa a Google Sheets con un enlace único compartido, o designa un archivo maestro en una carpeta de red/OneDrive y prohíbe las copias por correo. Sin esto, el sistema se rompe solo.
-
-**Nadie actualiza el "Estado" ni la "Fecha próxima acción"**
-
-*Síntoma:* El 80% de las filas tienen Estado "Prospecto nuevo" y fechas de hace 4 meses.
-
-*Causa:* Actualizar el Excel requiere disciplina activa. Un CRM real te avisa, el Excel no.
-
-*Solución:* Reserva 10 minutos cada viernes para revisar y actualizar. Sin ese ritual fijo, el sistema muere en 6 semanas. Si no tienes esos 10 minutos, el Excel no es el problema — la carga de trabajo sí.
-
-**Los filtros dejan de funcionar porque hay filas en blanco entre los datos**
-
-*Síntoma:* El filtro solo muestra resultados hasta la fila 47, aunque tengas datos hasta la 120.
-
-*Causa:* Excel interrumpe el rango de datos en la primera fila vacía que encuentra.
-
-*Solución:* Nunca dejes filas en blanco entre clientes. Si quieres separar grupos visualmente, usa colores o secciones, pero sin filas vacías.
-
-## ⚠️ Cuándo Excel ha dejado de ser suficiente
-
-Estas son las señales concretas. No son opiniones — son situaciones en las que Excel genera más problemas de los que resuelve.
-
-**🔴 Señal 1: Trabajáis 3 o más personas sobre los clientes**
-
-Con 2 personas es manejable con disciplina. Con 3 o más, los conflictos de versiones y la falta de visibilidad compartida en tiempo real destrozan la productividad. Un CRM real resuelve esto estructuralmente.
-
-**🔴 Señal 2: Tienes más de 200 contactos activos**
-
-El Excel sigue funcionando técnicamente, pero navegar por 200+ filas con filtros ya es frustrante. Empiezas a dejar de registrar cosas "porque es mucho lío". Ese es el momento.
-
-**🔴 Señal 3: Pierdes oportunidades porque se te olvidan**
-
-Si en los últimos 3 meses has descubierto que un cliente esperaba respuesta tuya y no le habías contestado, o que un presupuesto caducó sin seguimiento: el sistema te está fallando. Excel no tiene alertas automáticas.
-
-**🔴 Señal 4: No sabes cuánto facturarás el próximo trimestre**
-
-Un CRM real te da previsión de ventas en tiempo real. Si Carlos no puede responder a "¿cuánto tienes en pipeline para Q3?" en 2 minutos, eso tiene un coste directo en la gestión del negocio.
-
-**🔴 Señal 5: El equipo de ventas y el de administración tienen datos distintos**
-
-Si el comercial tiene una versión del Excel y la persona de facturación tiene otra, ya estás pagando el coste de no tener un sistema centralizado — aunque todavía no lo veas en números.
-
-## Las alternativas: qué usar cuando dejas el Excel
-
-Cuando das el salto, las dos opciones más usadas por pymes españolas en este rango son HubSpot CRM y Pipedrive.
-
-| | **HubSpot CRM** | **Pipedrive** |
-|---|---|---|
-| **Plan gratuito** | Sí — ilimitado de contactos | No — trial de 14 días |
-| **Precio de entrada** | Gratis (con límites) / desde 15 €/usuario/mes + IVA | Desde 14 €/usuario/mes + IVA |
-| **Interfaz en español** | Sí | Sí |
-| **Soporte en español** | Sí (en planes de pago) | Sí |
-| **Migración desde Excel** | Importación CSV directa | Importación CSV directa |
-| **Ideal para** | Equipos que también hacen marketing | Equipos principalmente comerciales |
-| **GDPR / DPA** | Sí | Sí |
-
-<Callout type="info">
-**Precios consultados en mayo 2026.** Verifica siempre en la web oficial del proveedor antes de contratar. Ambos publican los precios sin IVA — añade el 21% para el coste real.
-</Callout>
-
-**HubSpot** tiene sentido si, además de gestionar clientes, quieres enviar emails de seguimiento automatizados o conectar el CRM con tu web. El plan gratuito cubre perfectamente las necesidades de una pyme de hasta 15 personas.
-
-**Pipedrive** está más orientado a la gestión del pipeline comercial puro. La interfaz de arrastrar tarjetas entre etapas es más intuitiva que HubSpot para equipos que viven en el pipeline, y tiene menos "ruido" para quien solo quiere gestionar ventas.
-
-Ninguno de los dos tiene contrato de permanencia en sus planes mensuales. Si contratas anual, el descuento es de aproximadamente el 20% — pero pierdes el importe restante si cancelas antes de tiempo.
-
-{/* TODO: captura comparativa HubSpot vs Pipedrive — vista de pipeline */}
-
-## Resultado final
-
-Si has seguido los pasos, ahora tienes:
-
-- Un Excel funcional con pipeline de ventas, historial de contactos y alertas visuales por fechas vencidas.
-- Un sistema que una persona puede gestionar en 10 minutos semanales.
-- Criterios claros para saber cuándo el Excel ya no da para más.
-
-El Excel que has montado hoy aguantará hasta que alcances alguna de las señales de la sección anterior. Cuando llegues ahí, tienes dos opciones directas:
 
 <AffiliateLink programSlug="hubspot" articleSlug="como-usar-excel-como-crm" label="Probar HubSpot CRM gratis" />
 
 <AffiliateLink programSlug="pipedrive" articleSlug="como-usar-excel-como-crm" label="Probar Pipedrive 14 días gratis" />
 
-## ¿Preguntas frecuentes?
+## Preguntas frecuentes
 
-### ¿Puedo importar mi Excel directamente a HubSpot o Pipedrive?
+### ¿Puede Google Sheets sustituir a Excel como CRM?
 
-Sí, ambos aceptan importación por CSV. Exporta tu Excel como `.csv` (Archivo > Guardar como > CSV), y en la herramienta busca la opción "Importar contactos" o "Importar desde archivo". El proceso guiado te permite mapear cada columna de tu Excel a los campos del CRM. En menos de 15 minutos tienes todos tus datos migrados.
+Para los mismos usos, sí. Google Sheets resuelve el problema de colaboración en tiempo real mejor que Excel en local. Pero sigue teniendo los mismos límites: sin recordatorios automáticos, sin historial de comunicaciones y sin integración con email. Es mejor que Excel compartido, pero el techo sigue siendo el mismo.
 
-### ¿Google Sheets es mejor que Excel para esto?
+### ¿Merece la pena el CRM de pago si solo soy yo el que lleva las ventas?
 
-Para trabajo en solitario, da igual. Para equipos de 2 o más personas, Google Sheets gana sin discusión: edición simultánea real, historial de cambios, sin versiones duplicadas. El único caso en que Excel es mejor es si ya tienes flujos de trabajo muy establecidos con macros o fórmulas complejas — algo inusual en un CRM básico.
+Probablemente no todavía. Si eres autónomo o llevas tú solo el proceso comercial, HubSpot gratuito o incluso un Excel bien estructurado cubren bien las necesidades. El CRM de pago empieza a rentabilizarse cuando hay más de una persona gestionando clientes o cuando el volumen supera los 150 contactos activos.
 
-### ¿Cuántos contactos aguanta bien un Excel?
+### ¿Cuánto tiempo lleva migrar de Excel a un CRM?
 
-Hasta unos 300-400 filas, el rendimiento es perfectamente aceptable. El problema no es técnico — es de gestión. Por encima de 150-200 contactos activos, la navegación se vuelve engorrosa y la probabilidad de que alguien deje de actualizar el archivo sube mucho. El límite real no lo pone Excel, lo pone la disciplina del equipo.
-
-### ¿Existe alguna plantilla de Excel para CRM ya hecha?
-
-Sí. Tanto Microsoft (en Office.com) como HubSpot ofrecen plantillas gratuitas de CRM en Excel. La de HubSpot incluye un dashboard con gráficas básicas. Búscala como "HubSpot CRM template Excel" en Google — es gratuita y no requiere cuenta. Dicho esto, una plantilla genérica que no está adaptada a tu proceso de ventas suele abandonarse antes que una que hayas montado tú desde cero con solo las columnas que necesitas.
-
-### ¿Merece la pena pagar por un CRM si tengo menos de 5 empleados?
-
-Depende de cuántos clientes activos gestionas, no de cuántos empleados tienes. Con 3 empleados y 50 clientes activos, el Excel aguanta. Con 3 empleados y 200 clientes activos y ciclos de venta largos, pagar 14 €/mes por Pipedrive es de las mejores inversiones que puedes hacer — el tiempo que recuperas en no buscar información entre versiones del Excel lo amortiza en el primer mes.
-
-## 📖 También te puede interesar
-
-- [5 alternativas a HubSpot CRM para pymes en España](https://pymestools.com/crm/alternativas-hubspot-crm)
-- [5 alternativas a Pipedrive para pymes en España](https://pymestools.com/crm/alternativas-pipedrive)
-- [7 alternativas a Salesforce para pymes en España 2026](https://pymestools.com/crm/alternativas-salesforce)
+Depende del estado de tu Excel. Si tienes los datos limpios y bien estructurados, una migración a HubSpot o Pipedrive puede hacerse en una mañana: ambos permiten importar directamente desde CSV. Si el Excel lleva años sin mantenimiento, limpia los datos antes de importar — es el paso que más tiempo lleva.
 
 ---
 

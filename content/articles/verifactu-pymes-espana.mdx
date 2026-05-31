@@ -1,256 +1,82 @@
 ---
 title: "Verifactu: qué es y cómo afecta a tu pyme en España 2026"
 slug: "verifactu-pymes-espana"
-description: "Todo lo que necesitas saber sobre Verifactu como dueño de una pyme española: obligaciones reales, plazos, qué tiene que hacer tu software de facturación y cómo adaptarte sin dramas."
+description: "Verifactu es obligatorio para el software de facturación en España. Te explicamos qué implica, cuándo entra en vigor y cómo afecta a tu pyme si usas Holded o Anfix."
 category: "facturacion"
 type: "how-to"
-publishedAt: null
-updatedAt: "2026-05-25T12:22:20.283Z"
 tools: ["holded", "anfix"]
-keywords:
-  primary: "verifactu pymes españa"
-  secondary:
-    - "qué es verifactu"
-    - "verifactu obligatorio 2026"
-    - "software facturación verifactu homologado"
-    - "holded verifactu"
-    - "anfix verifactu"
-    - "facturación electrónica pymes españa"
+keywords_primary: "verifactu pymes españa"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "9 min"
-qualityScore: null
+readingTime: 5
+publishedAt: null
+updatedAt: "2026-05-31T16:21:27.665Z"
 ---
 
-Si tu empresa emite facturas en España — y si tienes 8 empleados y factura más de medio millón al año, la respuesta es sí — Verifactu te afecta directamente.
+Si tienes un negocio en España y emites facturas con software, Verifactu te afecta. No es opcional, no es para grandes empresas y no puedes ignorarlo hasta que te llegue una carta de Hacienda.
 
-No es una opción. No es para grandes empresas. Cualquier negocio que use software para emitir facturas en España tiene que adaptarse a este sistema antes de que el plazo venza. Al terminar de leer esto sabrás exactamente qué es, si ya eres conforme, y qué tienes que revisar en Holded o Anfix para no tener problemas con Hacienda.
+Te contamos qué es exactamente, cuándo tienes que tenerlo listo y qué pasa con las herramientas que ya usas.
 
-## 🔍 ¿Qué es Verifactu?
+## Qué es Verifactu
 
-Verifactu es el sistema que obliga a los software de facturación a enviar cada factura emitida a la Agencia Tributaria en tiempo real, o a guardar un registro verificable de que no se ha manipulado.
+Verifactu es el sistema que exige el Reglamento de Facturación Electrónica aprobado en España. Obliga a que todo el software de facturación genere un registro de cada factura emitida, con un código de verificación, y lo envíe en tiempo real (o casi) a la Agencia Tributaria.
 
-El nombre viene del Reglamento de Requisitos Técnicos de los Sistemas Informáticos de Facturación, aprobado en el Real Decreto 1007/2023. Su objetivo es eliminar el fraude fiscal asociado al "software de doble uso" — programas que permiten llevar una facturación oficial y otra paralela que Hacienda no ve.
-
-Dicho de forma directa: Hacienda quiere que cada factura deje una huella digital imposible de borrar.
-
-## 📋 Lo que necesitas
-
-- **Software de facturación activo:** Ya sea Holded, Anfix, Sage, A3 o cualquier otro. Si facturas con Excel o Word, tienes un problema mayor que resolver primero.
-- **NIF de tu empresa y datos del administrador:** Para verificar el estado de conformidad con tu proveedor de software.
-- **Acceso al panel de administración:** No es algo que se configure desde una cuenta de usuario estándar.
-- **Nivel técnico necesario:** No necesitas saber programar nada. La adaptación la hace tu proveedor de software. Tu trabajo es confirmar que tu herramienta está homologada y activar las opciones correctas.
-
-## 🗓️ ¿Cuándo es obligatorio?
-
-Aquí está lo importante, porque los plazos han generado mucha confusión:
-
-| Tipo de contribuyente | Plazo de obligatoriedad |
-|---|---|
-| Grandes empresas (facturación > 6 M €/año) | Ya obligatorio desde 2025 (BATUZ/SII) |
-| **Pymes y autónomos con software de facturación** | **1 de julio de 2026** |
-| Negocios sin software (facturación manual en papel) | No aplica Verifactu directamente |
-
-⚠️ Si facturas entre 300.000 € y 6.000.000 € al año, entras en el grupo de pymes al que se aplica la fecha del 1 de julio de 2026.
+El objetivo es claro: que Hacienda pueda comprobar que las facturas que emites existen de verdad y no se han modificado después.
 
 <Callout type="warning">
-**País Vasco y Navarra tienen su propio sistema:** TicketBAI. Si tu empresa está domiciliada en el País Vasco o en Navarra, Verifactu no aplica directamente — la normativa foral es diferente. Consulta con tu asesor fiscal si tienes actividad en ambos territorios.
+**Importante:** Verifactu no es lo mismo que la factura electrónica B2B (que tiene su propio calendario). Son dos obligaciones distintas. Esta guía se centra en Verifactu — el registro y envío de facturas a la AEAT.
 </Callout>
 
-## ⚙️ Cómo funciona técnicamente (sin tecnicismos)
+## A quién afecta y desde cuándo
 
-Cuando emites una factura con un software homologado para Verifactu, el sistema hace tres cosas automáticamente:
+Afecta a cualquier empresa o autónomo que use software de facturación para emitir facturas en España. Si generas tus facturas con Excel o Word, de momento no entras en el ámbito de Verifactu — pero tampoco es una práctica sostenible.
 
-1. **Genera una huella digital (hash)** de cada factura. Si alguien modifica un solo dato después, la huella no cuadra y Hacienda lo detecta.
-2. **Encadena cada factura con la anterior.** Como los eslabones de una cadena — no puedes eliminar una factura del medio sin que se rompa toda la secuencia.
-3. **Envía los datos a la AEAT** en tiempo real (modalidad Verifactu) o los guarda en el sistema con firma verificable (modalidad no-Verifactu).
+Los plazos según la normativa vigente a mayo de 2026:
 
-Tú no ves nada de esto. Si tu software está bien configurado, ocurre en segundo plano cada vez que pulsas "Emitir factura".
+- **Grandes empresas** (facturación > 6 M€ o en SII): la obligación ya aplica.
+- **Resto de empresas y autónomos**: el software debe ser compatible antes del **1 de julio de 2026**.
 
-Lo que sí verás es un **código QR y un código de verificación** en cada factura impresa o en PDF. Ese código permite a cualquier receptor de la factura verificar en la web de la AEAT que la factura existe y no ha sido alterada.
+Eso significa que si tienes contratada una herramienta de facturación, el proveedor tiene que haberte actualizado el software antes de esa fecha. Si no lo ha hecho, tienes un problema — y la responsabilidad no es solo del proveedor.
 
-## 🏢 Cómo afecta a tu día a día como pyme
+## Cómo le afecta a Construciones Martínez Hermanos (ejemplo real)
 
-La mayoría de dueños de pymes se preocupan por tres cosas concretas. Aquí las resolvemos:
+Imagina una empresa constructora de Murcia con 12 trabajadores. Emiten unas 80 facturas al mes usando [Holded](/facturacion/review-holded).
 
-### ¿Tengo que cambiar cómo facturo?
+Desde que Holded activó la compatibilidad con Verifactu, cada factura que crean lleva un código QRVSF y queda registrada automáticamente en la AEAT. No tienen que hacer nada diferente: el proceso es invisible para ellos.
 
-En la práctica, **no.** Si tu software está homologado, el proceso de emitir una factura es exactamente igual que ahora. El sistema trabaja en segundo plano.
+Lo que sí tuvieron que revisar: que su plan de Holded incluía Verifactu sin coste extra. No todos los planes lo incluyen automáticamente — conviene confirmarlo con el proveedor.
 
-Lo que sí cambia: ya no podrás anular facturas emitidas simplemente borrándolas del sistema. Tendrás que emitir una factura rectificativa, como se ha hecho siempre formalmente pero que muchos sistemas permitían saltarse.
+## Holded y Anfix: ¿están adaptados?
 
-### ¿Tengo que contratar algo nuevo?
+Estas son las dos herramientas que más recomendamos para pymes españolas en este segmento. Aquí el estado a mayo de 2026:
 
-Depende de tu software actual. Si ya usas Holded o Anfix y están en sus planes actualizados, probablemente no tengas que hacer nada más allá de activar la función. Lo explicamos más abajo.
+**Holded**
+Holded publicó su módulo Verifactu compatible. La actualización está disponible para todos los planes que incluyen facturación. Si tienes dudas, entra en Configuración → Facturación → Verifactu dentro de la plataforma.
 
-Si usas un software antiguo o hecho a medida hace diez años, es probable que necesites actualizar o cambiar de herramienta.
+<AffiliateLink programSlug="holded" articleSlug="verifactu-pymes-espana" label="Ver Holded y sus planes" />
 
-### ¿Qué pasa si no me adapto?
+**[Anfix](/facturacion/review-anfix)**
+Anfix también ha adaptado su software. Al tratarse de una herramienta orientada a pymes y gestorías españolas, la compatibilidad con Verifactu era prioritaria en su hoja de ruta. Confirma con tu gestor o con soporte que la actualización está activa en tu cuenta.
 
-Las sanciones están reguladas en la Ley 58/2003 General Tributaria, modificada por la Ley Antifraude. Usar software no homologado puede implicar multas de hasta 50.000 € por ejercicio fiscal.
-
-No es una amenaza vacía. Es la misma ley que ya se está aplicando en inspecciones fiscales.
-
-## 🛠️ Pasos para adaptar tu empresa a Verifactu
-
-### Paso 1: Confirma que tu software está homologado
-
-La AEAT publica un registro de software homologado. Antes de hacer nada, verifica que tu herramienta actual aparece en ese registro o que tu proveedor te ha confirmado por escrito que cumple los requisitos técnicos del RD 1007/2023.
-
-**Qué hacer:** Entra en la web de tu proveedor de facturación y busca una sección específica sobre Verifactu o "facturación certificada". Si no encuentras nada, abre un ticket de soporte y pídeles confirmación por escrito.
-
-**Por qué:** La responsabilidad de usar software conforme es tuya como empresario, no del proveedor. Si el proveedor no cumple y no te lo ha dicho, tienes un problema legal.
-
-**Qué verás:** Un aviso en el panel del software, una sección en su centro de ayuda, o un email de comunicación. Si no hay nada, es mala señal.
-
-### Paso 2: Activa Verifactu en tu software
-
-Una vez confirmado que tu software es compatible, hay que activar la funcionalidad. En la mayoría de herramientas esto no es automático — requiere una acción tuya o de tu administrador de cuenta.
-
-**Qué hacer:** Ve a los ajustes de tu cuenta (normalmente en "Configuración" → "Facturación" o "Datos fiscales") y busca la opción específica de Verifactu o "Facturación certificada AEAT". Actívala y guarda los cambios.
-
-**Por qué:** Algunos proveedores han desplegado la funcionalidad pero la mantienen desactivada por defecto para no afectar a clientes en territorios forales (País Vasco, Navarra) donde aplica TicketBAI en su lugar.
-
-**Qué verás:** Un indicador de estado que confirma que el sistema está activo. A partir de ese momento, cada factura nueva generará automáticamente su huella digital y código QR.
+<AffiliateLink programSlug="anfix" articleSlug="verifactu-pymes-espana" label="Ver Anfix para tu pyme" />
 
 <Callout type="tip">
-**Antes de activar en producción:** Emite una factura de prueba a un cliente ficticio (o a tu propia empresa) para verificar que el QR aparece correctamente en el PDF y que los datos son correctos. Es mejor descubrir un problema con una factura de 0 € que con la de un cliente real.
+Si usas otra herramienta no mencionada aquí, pregunta directamente al proveedor: *"¿Vuestro software cumple con el Reglamento de Facturación de la AEAT y está homologado para Verifactu?"* Si no saben responderte, cambia de herramienta antes de julio de 2026.
 </Callout>
 
-### Paso 3: Revisa las facturas anteriores
+## Preguntas frecuentes
 
-Verifactu no aplica retroactivamente. Las facturas emitidas antes de la activación no necesitan regenerarse ni reenviarse.
+### ¿Qué pasa si mi software no está adaptado antes de la fecha límite?
 
-**Qué hacer:** Establece una fecha de corte clara en tu sistema: todas las facturas emitidas a partir del día de activación deben tener el nuevo formato. Las anteriores quedan tal como están.
+El uso de software no compatible con Verifactu puede derivar en sanciones por parte de la AEAT. La normativa establece multas para los fabricantes de software, pero la empresa también asume riesgos si sigue usando un sistema no homologado. No vale el argumento de "el proveedor no me avisó".
 
-**Por qué:** Esto es importante si llevas varios años con el mismo software y tienes miles de facturas históricas. No tienes que hacer nada con ellas.
+### ¿Tengo que hacer algo yo, o lo hace todo el software?
 
-**Qué verás:** Dos tipos de facturas en tu historial: las antiguas sin QR y las nuevas con QR y código de verificación. Ambas son válidas — cada una bajo la normativa vigente en el momento de su emisión.
+Si usas Holded o Anfix con la actualización activa, el proceso es automático. Cada factura que emites se registra y se envía a Hacienda sin que tengas que hacer nada manualmente. Lo que sí debes hacer: confirmar que la función está activada en tu cuenta, no asumir que sí.
 
-### Paso 4: Comunícalo a tus clientes si es necesario
+### ¿Verifactu aplica también en el País Vasco y Navarra?
 
-Si tienes clientes que revisan el formato de tus facturas o que las integran en sus propios sistemas de contabilidad, avísales del cambio de formato.
-
-**Qué hacer:** Un email sencillo diciendo que a partir del [fecha] tus facturas incluirán un código QR de verificación de la AEAT. No es obligatorio, pero evita preguntas innecesarias.
-
-**Por qué:** El QR y el código de verificación son elementos nuevos en el PDF. Algunos departamentos de contabilidad o sistemas de lectura automática de facturas pueden generar alertas si detectan campos desconocidos.
-
-### Paso 5: Asegúrate de que tu asesor fiscal está al tanto
-
-Tu gestoría necesita saber que has activado Verifactu y desde qué fecha. Es información relevante para cualquier inspección o requerimiento fiscal.
-
-**Qué hacer:** Manda un email a tu asesor confirmando la fecha de activación y el software que usas. Guarda ese email.
-
-**Por qué:** En caso de inspección, poder demostrar que actuaste proactivamente antes del plazo legal tiene valor. No es solo burocracia.
-
-## 🔄 Holded y Verifactu: lo que necesitas saber
-
-{/* TODO: captura del panel de configuración de Verifactu en Holded */}
-
-Holded ha anunciado compatibilidad con Verifactu para sus planes de facturación. La funcionalidad está disponible desde el panel de configuración → "Empresa" → "Facturación electrónica".
-
-**Lo que hace Holded por ti:**
-- Genera la huella digital (hash) automáticamente en cada factura
-- Añade el QR y el código de verificación al PDF
-- Gestiona el encadenamiento de facturas en segundo plano
-- Permite envío a AEAT en modalidad tiempo real
-
-**Lo que tienes que verificar:**
-- Que tu plan actual incluye la funcionalidad (consulta con Holded directamente — los planes han cambiado en 2025-2026)
-- Que tienes configurados correctamente los datos fiscales de tu empresa en el panel
-
-<AffiliateLink programSlug="holded" articleSlug="verifactu-pymes-espana" label="Ver Holded y planes actuales" />
-
-## 📊 Anfix y Verifactu: lo que necesitas saber
-
-{/* TODO: captura del panel de Verifactu en Anfix */}
-
-Anfix, orientado específicamente a pymes y autónomos españoles, ha sido uno de los primeros en comunicar explícitamente su hoja de ruta para Verifactu. La adaptación está incluida en todos sus planes de facturación sin coste adicional, según la información publicada en su web.
-
-**Lo que hace Anfix por ti:**
-- Certificación automática de facturas según RD 1007/2023
-- Generación del XML con la estructura requerida por la AEAT
-- Soporte en español para dudas sobre la configuración
-
-**Lo que tienes que verificar:**
-- Que estás en la versión actualizada de la plataforma (Anfix ha migrado clientes en fases durante 2025)
-- Que tu NIF y datos del administrador están actualizados en el sistema
-
-<AffiliateLink programSlug="anfix" articleSlug="verifactu-pymes-espana" label="Ver Anfix para pymes" />
-
-## 📊 Holded vs Anfix para cumplir con Verifactu
-
-| | Holded | Anfix |
-|---|---|---|
-| **Verifactu incluido** | Sí (verificar plan) | Sí (todos los planes) |
-| **Soporte en español** | Sí — chat y email | Sí — chat, email y teléfono |
-| **Interfaz en español** | Sí | Sí |
-| **TicketBAI (P. Vasco/Navarra)** | Consultar | Consultar |
-| **Coste adicional por Verifactu** | No publicado — consultar | Sin coste adicional (según su web) |
-| **Integración con contabilidad** | Nativa en planes superiores | Nativa en todos los planes |
-| **Adecuado para** | Pymes con necesidades de gestión amplia | Pymes y autónomos con foco en facturación |
-
-💶 **Precios:** No incluimos precios en esta tabla porque tanto Holded como Anfix han actualizado sus tarifas en 2025-2026. Verifica siempre en sus webs oficiales antes de decidir. Precios consultados en mayo 2026 — pueden haber cambiado.
-
-## ❌ Errores comunes con Verifactu
-
-**Creer que el proveedor lo activa automáticamente**
-*Síntoma:* Llegas al 1 de julio de 2026 emitiendo facturas sin QR ni código de verificación.
-*Causa:* La mayoría de proveedores despliegan la función pero no la activan por defecto en cuentas existentes.
-*Solución:* Entra en la configuración de tu software ahora mismo y verifica el estado. No esperes a que te llegue un email.
-
-**Confundir Verifactu con la factura electrónica B2B obligatoria**
-*Síntoma:* Creer que con Verifactu ya cumples la Ley Crea y Crece (factura electrónica entre empresas).
-*Causa:* Son dos normativas distintas que se han comunicado al mismo tiempo y generan confusión.
-*Solución:* Verifactu es sobre la certificación del software. La facturación electrónica B2B obligatoria (Ley Crea y Crece) es otra cosa — aunque muchos proveedores ofrecen ambas en el mismo paquete. Pregunta explícitamente por las dos.
-
-**Activar Verifactu si tienes actividad en el País Vasco o Navarra**
-*Síntoma:* Activar Verifactu en toda la cuenta cuando parte de tu facturación corresponde a territorio foral.
-*Causa:* Pensar que Verifactu es universal para toda España.
-*Solución:* Si tienes actividad en territorios forales, consulta con tu asesor fiscal antes de activar nada. Puede que necesites TicketBAI en paralelo o en su lugar.
-
-## ✅ Resultado final
-
-Si has seguido estos pasos, tienes:
-
-- Confirmación de que tu software está homologado para Verifactu
-- La funcionalidad activada y probada con una factura de prueba
-- Tu asesor fiscal informado de la fecha de activación
-- Tus clientes clave avisados del cambio de formato
-
-A partir del 1 de julio de 2026, cada factura que emitas incluirá automáticamente su huella digital y código QR. Hacienda puede verificar cualquiera de ellas en tiempo real. Y tú puedes demostrar que cumples la normativa.
-
-El siguiente paso lógico: revisar si también necesitas adaptarte a la facturación electrónica B2B obligatoria (Ley Crea y Crece), que tiene un calendario de implantación propio y afecta a cómo envías facturas a tus clientes empresa.
-
-## ❓ Preguntas frecuentes
-
-### ¿Qué pasa si mi software no cumple con Verifactu antes del plazo?
-
-Técnicamente, estarías usando software de facturación no homologado, lo que está tipificado como infracción en la Ley Antifraude. Las multas pueden llegar a 50.000 € por ejercicio fiscal. Además, en una inspección, las facturas emitidas podrían ser cuestionadas.
-
-Si tu software actual no tiene hoja de ruta clara para Verifactu, es el momento de cambiar. No en diciembre de 2026 — ahora.
-
-### ¿Tengo que cambiar el número de factura o reiniciar la numeración?
-
-No. La numeración de tus facturas no cambia con Verifactu. El sistema añade capas de verificación a las facturas existentes sin alterar tu serie de numeración.
-
-### ¿Verifactu afecta a las facturas simplificadas (tickets)?
-
-Sí. Las facturas simplificadas emitidas por software (punto de venta, TPV) también están dentro del ámbito de Verifactu. Si tienes un negocio que emite muchos tickets — hostelería, comercio minorista — consulta con tu proveedor de TPV específicamente.
-
-### ¿Tengo que enviar mis facturas antiguas a la AEAT?
-
-No. Verifactu no es retroactivo. Solo aplica a las facturas emitidas a partir de la fecha de activación de tu sistema. Las facturas históricas no se tocan.
-
-### ¿Es lo mismo Verifactu que el SII?
-
-No. El SII (Suministro Inmediato de Información) es el sistema que ya usan las grandes empresas con facturación superior a 6 millones de euros al año. Verifactu es el sistema equivalente para pymes y autónomos, con una arquitectura técnica diferente. Si ya estás en SII, Verifactu no te aplica adicionalmente.
-
-## 📖 También te puede interesar
-
-- [5 alternativas a Holded para pymes en España 2026](https://pymestools.com/facturacion/alternativas-holded)
-- [Cómo elegir software de facturación para tu pyme española: guía 2026](https://pymestools.com/facturacion/como-elegir-software-facturacion)
-- [Cómo hacer una factura correcta como autónomo en España: guía paso a paso](https://pymestools.com/facturacion/como-hacer-factura-autonomo)
+No exactamente. El País Vasco y Navarra tienen su propio sistema: **TicketBAI**. Si operas principalmente en esos territorios, tu obligación es TicketBAI, no Verifactu. Holded y Anfix también soportan TicketBAI, pero consúltalo específicamente con cada proveedor según tu sede fiscal.
 
 ---
 

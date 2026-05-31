@@ -1,190 +1,88 @@
 ---
 title: "n8n: ¿Vale la pena para automatizar sin programar?"
 slug: "review-n8n"
-description: "Análisis honesto de n8n para pymes españolas: precios verificados, qué puedes automatizar de verdad sin saber código, para quién sirve y para quién no."
+description: "Análisis honesto de n8n para pymes españolas: qué automatiza, cuánto cuesta, si de verdad puedes usarlo sin saber programar y para quién no tiene sentido."
 category: "automatizacion"
 type: "review"
-publishedAt: null
-updatedAt: "2026-05-24T17:46:01.273Z"
 tools: ["n8n"]
-keywords:
-  primary: "n8n automatización sin programar"
-  secondary:
-    - "n8n opiniones pymes"
-    - "n8n alternativa Zapier"
-    - "herramientas automatización pymes España"
-    - "n8n precio español"
+keywords_primary: "n8n automatización pymes"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "9 min"
-qualityScore: null
+readingTime: 6
+publishedAt: null
+updatedAt: "2026-05-31T16:13:07.762Z"
 ---
 
-Tienes tareas que se repiten cada semana: exportar datos de un formulario a una hoja de cálculo, avisar al equipo cuando entra un pedido, pasar contactos del correo al CRM. Todo manual. Todo tiempo que no inviertes en lo que importa.
+Llevas meses perdiendo tiempo en tareas repetitivas: pasar datos de un formulario a una hoja de cálculo, enviar avisos por email cuando un cliente firma un contrato, sincronizar pedidos entre tu tienda y tu gestoría. Sabes que eso se puede automatizar. La pregunta es si puedes hacerlo tú, sin pagar a un programador.
 
-La promesa de n8n es que puedes automatizar eso sin contratar a un desarrollador. La pregunta es si eso es verdad para una empresa como la tuya, o si "sin programar" es un eufemismo para "con menos programación de lo habitual".
+n8n promete exactamente eso. Pero hay matices importantes antes de lanzarte.
 
-## Resumen rápido
+<ScoreCard score={7.2} label="Puntuación PymesTools" />
 
-- **Para quién:** Pymes con alguien mínimamente técnico en el equipo que quiere automatizar procesos entre aplicaciones sin depender de un desarrollador externo.
-- **Lo mejor:** Libertad total para construir flujos complejos con cientos de integraciones — sin límite de ejecuciones en el plan cloud de pago.
-- **Lo peor:** La curva de aprendizaje es real. Sin conocimientos básicos de lógica (condicionales, variables, JSON), los flujos que van más allá de lo básico se atragantan.
-- **Precio desde:** No publican precio en euros — cobran en dólares. El plan Starter parte de 20 $/mes (aprox. 18 €/mes según cambio a mayo 2026) + IVA. Existe opción self-hosted gratuita con condiciones.
-- **Permanencia:** Plan mensual disponible. Plan anual con descuento (~17%).
-- **Soporte en español:** Solo interfaz parcial. Soporte y documentación en inglés.
-- **Veredicto:** Potente y flexible, pero no es para quien busca una solución plug-and-play. Si en tu empresa hay alguien que entiende cómo funciona una API aunque sea a medias, n8n puede ahorraros horas cada semana.
+## Lo bueno y lo malo
 
-<AffiliateLink programSlug="n8n" articleSlug="review-n8n" label="Probar n8n gratis" />
+<ProsCons
+  pros={[
+    "Se conecta con más de 400 herramientas — incluyendo [Holded](/facturacion/review-holded), Gmail, WhatsApp Business y Google Sheets",
+    "La versión Cloud tiene plan gratuito con 5 flujos activos — suficiente para empezar",
+    "Código abierto: puedes instalarlo en tu propio servidor si no quieres pagar suscripción mensual",
+    "Los flujos visuales son comprensibles sin saber programar — aunque los más complejos requieren lógica"
+  ]}
+  cons={[
+    "La curva de aprendizaje es real: no es arrastrar y soltar como [Zapier](/automatizacion/review-zapier) — necesitas entender cómo fluyen los datos",
+    "El soporte en español es limitado — la documentación oficial está en inglés y el chat de ayuda también",
+    "Los errores de los flujos pueden ser difíciles de depurar si no tienes perfil técnico"
+  ]}
+/>
 
-## ¿Para quién es n8n?
-
-**Encaja bien si:**
-
-- ✅ Tienes una persona en el equipo — o eres tú mismo — que no tiene miedo de configurar integraciones y entender mensajes de error en inglés.
-- ✅ Quieres automatizar flujos entre herramientas que ya usas (correo, CRM, Slack, Google Sheets, WooCommerce, Holded…) sin pagar por cada automatización.
-- ✅ Buscas una alternativa a Zapier o Make que no limite el número de tareas ejecutadas al mes con el plan básico.
-- ✅ Estás dispuesto a invertir 2–3 horas de configuración inicial a cambio de ahorrarte tareas repetitivas cada semana.
-
-**No es para ti si:**
-
-- ❌ Nadie en tu equipo tiene paciencia para leer documentación técnica en inglés y entender por qué un flujo falla.
-- ❌ Necesitas que funcione en 30 minutos sin tutoriales. n8n no es así.
-- ❌ Tus automatizaciones implican facturación electrónica con Verifactu o firma digital — n8n no cubre eso.
-- ❌ Buscas una herramienta con soporte en castellano para resolver incidencias. Aquí vas a depender de la comunidad y de documentación en inglés.
-
-## 🔑 Funcionalidades clave
-
-### Editor visual de flujos de trabajo
-
-n8n funciona con un editor de nodos. Cada nodo representa una acción: recibir un formulario, buscar un dato en una base de datos, enviar un correo. Los conectas entre sí arrastrando cables.
-
-Visualmente es limpio. La lógica es más parecida a un diagrama de procesos que a código puro. Pero en cuanto añades condiciones ("si el cliente tiene más de 3 facturas impagadas, manda un aviso diferente"), el flujo crece rápido y requiere concentración para no liarlo.
-
-{/* TODO: captura del editor de nodos con un flujo de ejemplo */}
-
-### Más de 400 integraciones incluidas
-
-n8n trae conectores nativos para las herramientas más usadas: Gmail, Google Sheets, Slack, Notion, HubSpot, WooCommerce, Telegram, Airtable, PostgreSQL y muchas más.
-
-Para herramientas sin conector nativo, tiene un nodo HTTP genérico que permite conectarse a cualquier API. Aquí sí necesitas saber algo más sobre cómo funcionan las peticiones web, pero para integraciones con las aplicaciones habituales de una pyme, los conectores nativos cubren la mayoría de los casos.
-
-### Automatizaciones por eventos o por calendario
-
-Los flujos pueden dispararse de dos formas: cuando ocurre algo (llega un email, se crea un contacto en el CRM, se envía un formulario) o a una hora concreta (todos los lunes a las 8:00, el último día del mes).
-
-Esto permite cubrir dos tipos de necesidades: reacciones en tiempo real y tareas programadas recurrentes. Para una pyme, ambas son útiles: notificaciones inmediatas de pedidos y resúmenes semanales automáticos, por ejemplo.
-
-### Lógica condicional e iteraciones
-
-n8n permite añadir bifurcaciones (si X entonces Y, si no Z), bucles para procesar listas de datos y transformaciones de texto o números. Esto es lo que lo diferencia de herramientas más básicas.
-
-También es lo que sube la complejidad. Los flujos que usan estas funciones bien pensadas son muy potentes. Los que están mal configurados fallan en silencio o mandan datos incorrectos sin avisar. No hay validación automática.
-
-### Opción self-hosted (instalación en tu propio servidor)
-
-n8n tiene una versión que puedes instalar en tu propio servidor o en un VPS. Es gratuita para uso interno en empresas bajo la licencia fair-code.
-
-Esto interesa si tienes datos sensibles que no quieres que pasen por servidores de terceros, o si ya tienes infraestructura propia. Requiere conocimientos técnicos para instalar y mantener — no es una opción para quien no ha tocado nunca un servidor.
-
-<Callout type="info">
-**🇪🇸 Nota GDPR/LOPDGDD:** n8n cloud procesa datos en servidores de AWS (región EU disponible). Tienen DPA (Data Processing Agreement) firmable bajo GDPR. Si automatizas flujos con datos personales de clientes, solicita el DPA antes de empezar y consúltalo con tu asesor de protección de datos. La versión self-hosted te da control total sobre dónde se almacenan los datos.
-</Callout>
-
-## 💶 Precios y planes
-
-{/* TODO: captura de la página de precios oficial de n8n.io */}
-
-| Plan | Precio | Qué incluye | Usuarios activos | Trial |
-|------|--------|-------------|-----------------|-------|
-| Community (self-hosted) | Gratuito | Flujos ilimitados, nodos ilimitados, sin soporte oficial | Ilimitados | — |
-| Starter (cloud) | 20 $/mes (aprox. 18 €/mes a mayo 2026) + IVA | 5 flujos activos, 2.500 ejecuciones/mes, soporte por email | 1 usuario | 14 días |
-| Pro (cloud) | 50 $/mes (aprox. 46 €/mes a mayo 2026) + IVA | 15 flujos activos, 10.000 ejecuciones/mes, ejecuciones adicionales disponibles | Hasta 3 usuarios | 14 días |
-| Enterprise (cloud o self-hosted) | No publican el precio — hay que solicitar demo/presupuesto. | Flujos y ejecuciones ilimitadas, SSO, soporte prioritario, SLA | Ilimitados | — |
-
-*Precios consultados en mayo 2026. Los precios están en dólares — n8n no publica precios en euros. Verifica siempre en [n8n.io/pricing](https://n8n.io/pricing) antes de contratar.*
-
-**IVA:** Los precios anteriores no incluyen IVA (21% en España para servicios digitales B2B).
-
-**Facturación anual:** Disponible con aproximadamente un 17% de descuento respecto al plan mensual.
-
-**Permanencia:** Sin contrato de permanencia obligatorio. Puedes cancelar mensualmente.
+## Planes y precios
 
 <Callout type="warning">
-⚠️ **Ojo con el plan Starter:** 2.500 ejecuciones al mes parece mucho hasta que calculas cuántas acciones tiene cada flujo. Un flujo de 5 pasos que se ejecuta 200 veces al mes consume 1.000 ejecuciones. Con 3 flujos activos moderados, el límite se queda pequeño. Si necesitas volumen real, el plan Pro es el mínimo práctico.
+Los precios de n8n Cloud están publicados en dólares. La conversión aproximada que ves aquí corresponde a mayo 2026 — verifica siempre en n8n.io antes de contratar.
 </Callout>
 
-## ✅ Lo que nos gusta
+| Plan | Precio | Flujos activos | Ejecuciones/mes |
+|---|---|---|---|
+| Free | 0 € | 5 | 2.500 |
+| Starter | ~20 $/mes (aprox. 18 €/mes + IVA) | 15 | 5.000 |
+| Pro | ~50 $/mes (aprox. 46 €/mes + IVA) | Ilimitados | 10.000 |
+| Self-hosted | Gratis (tú pones el servidor) | Ilimitados | Sin límite |
 
-**Sin límite de ejecuciones en el plan Pro:** A diferencia de Zapier o Make, que penalizan el volumen en los planes medios, n8n Pro incluye 10.000 ejecuciones mensuales y permite comprar más sin cambiar de plan. Para una pyme con varios flujos activos, esto es relevante: el precio no se dispara si los flujos empiezan a usarse de verdad.
+Precios consultados en mayo 2026. Verifica siempre en [n8n.io](https://n8n.io).
 
-**La opción self-hosted es seria y funcional:** No es un producto de segunda categoría. La versión community instalada en un VPS de 10-15 €/mes da acceso a todo el motor sin límite de flujos ni ejecuciones. Para una pyme con alguien técnico que quiera control total, es una opción que no ofrecen ni Zapier ni Make.
+La opción self-hosted es atractiva sobre el papel. En la práctica, requiere un servidor (un VPS básico en Hetzner cuesta desde 4-6 €/mes) y alguien que lo configure. Si no tienes ese perfil en tu equipo, quédate con el Cloud.
 
-**Comunidad activa y plantillas reales:** n8n tiene un foro y un repositorio de plantillas públicas donde puedes encontrar flujos ya construidos para casos habituales: notificaciones de WooCommerce, sincronización de CRM, alertas por Telegram. No partes de cero para los casos de uso más comunes.
+## Para quién es
 
-## ❌ Lo que no nos gusta
+n8n tiene sentido para una pyme como la de Carlos si ya tiene varias herramientas digitales que no se hablan entre sí. Por ejemplo: un formulario de contacto en la web que llega por email, que alguien copia manualmente a Holded, que luego alguien notifica por WhatsApp al comercial. Ese flujo se puede automatizar en n8n en una tarde.
 
-**La curva de aprendizaje no es pequeña:** El editor visual es más complejo que el de Zapier o Make. Entender cómo fluyen los datos entre nodos, cómo usar expresiones para transformar texto, o cómo depurar un flujo que falla requiere tiempo. Según la documentación oficial, los usuarios nuevos tardan de media entre 2 y 4 horas en montar su primer flujo funcional no trivial. Si en tu empresa nadie tiene ese tiempo ni esa paciencia, n8n va a quedarse sin usar.
+También es buena opción si tienes a alguien en el equipo — o eres tú mismo — con cierta facilidad para la tecnología. No hace falta saber programar, pero sí entender conceptos básicos: qué es un webhook, qué es un JSON, cómo funciona una condición. Si eso te suena a chino, Zapier o [Make](/automatizacion/review-make) son opciones más amigables aunque más caras.
 
-**Soporte y documentación solo en inglés:** No hay soporte en español. La documentación oficial, los mensajes de error, los tutoriales del blog oficial — todo en inglés. Para muchas pymes españolas, eso es un freno real. Si tu equipo no lee inglés técnico con comodidad, vas a necesitar contratar a alguien externo para las configuraciones más allá de lo básico.
+Imagina una empresa de gestión de eventos en Madrid con 6 personas. Usan Typeform para inscripciones, Google Sheets para el registro y [Mailchimp](/email-marketing/review-mailchimp) para confirmaciones. Con n8n pueden conectar los tres sin tocar nada manualmente, por menos de 20 €/mes.
 
-**El plan Starter es insuficiente para uso serio:** 5 flujos activos y 2.500 ejecuciones mensuales es un plan para probar, no para producción. Si n8n te funciona, vas a subir al plan Pro enseguida — y ahí el coste sube de 20 a 50 $/mes. Tenlo en cuenta desde el principio al evaluar el precio real de uso.
+## Para quién NO es n8n
 
-## Comparado con otras opciones
+No es para ti si la única herramienta digital que usas es el email y Excel. n8n solo aporta valor cuando hay herramientas conectables.
 
-Si estás valorando n8n frente a otras herramientas de automatización:
+Tampoco es para ti si necesitas soporte inmediato en español cuando algo falla. La comunidad es activa pero en inglés, y el soporte oficial no atiende en castellano. Si un flujo crítico se rompe el viernes por la tarde, estás solo o buscando en foros.
 
-- **vs Zapier:** Zapier es más fácil de usar para flujos simples y tiene más integraciones listas para usar con un clic. Pero cobra por tarea ejecutada y los planes se quedan pequeños rápido. n8n es más complejo pero más barato a volumen y sin límite de ejecuciones en planes de pago. Si solo necesitas conectar dos aplicaciones de forma simple, Zapier es más rápido de arrancar.
+Y si tu idea de "automatizar sin programar" es hacer clic en un botón y que todo funcione solo, n8n te va a frustrar. Tiene su lógica interna que hay que aprender.
 
-- **vs Make (antes Integromat):** Make es el competidor más directo. Tiene una interfaz visual similar, algo más amigable que n8n, con un plan gratuito generoso. n8n gana en flexibilidad técnica y en la opción self-hosted. Si nadie en tu equipo tiene conocimientos técnicos, Make puede ser más accesible para empezar.
-
-- **vs Zapier para integraciones con Holded o Factorial:** Si usas Holded o Factorial y necesitas automatizaciones sencillas, comprueba primero si esas herramientas tienen automatizaciones nativas en su propio plan. Puede que no necesites ninguna herramienta de automatización externa para los casos más habituales.
-
-## 🤔 ¿Para quién NO es n8n?
-
-Si en tu empresa no hay nadie que pueda dedicar tiempo a configurar, probar y mantener los flujos, n8n no es para ti — al menos sin ayuda externa.
-
-Tampoco es buena opción si necesitas resultados esta semana. La curva de aprendizaje requiere inversión de tiempo que no todas las pymes pueden permitirse en el momento de contratar.
-
-Y si tu presupuesto es ajustado y solo necesitas automatizar 2-3 cosas simples, empieza con Make (plan gratuito) o Zapier (plan básico) antes de comprometerte con una herramienta más compleja.
-
-## Veredicto
-
-n8n es la mejor opción del mercado para pymes que quieren automatizaciones sin límites artificiales de ejecución y con la posibilidad de alojar todo en sus propios servidores. Si tienes a alguien en el equipo que entiende cómo fluyen los datos entre aplicaciones — aunque no sepa programar — puede construir automatizaciones muy útiles en pocos días de práctica.
-
-No es para todos. Si nadie en tu empresa tiene tolerancia a la documentación técnica en inglés o tiempo para configurar y depurar flujos, vas a frustrarte antes de ver resultados. En ese caso, Make o Zapier te dan resultados más rápidos aunque con más limitaciones.
-
-Si crees que encajas en el primer perfil, los 14 días de prueba gratuita del plan cloud son suficientes para montar un flujo real y decidir si vale la pena para tu empresa.
-
-<AffiliateLink programSlug="n8n" articleSlug="review-n8n" label="Probar n8n gratis 14 días" />
-
-## ¿Preguntas frecuentes?
-
-### ¿n8n funciona en español?
-
-La interfaz tiene algunas traducciones parciales al español, pero no es completa. La documentación oficial, los mensajes de error y el soporte son íntegramente en inglés. Si tu equipo no se maneja en inglés técnico, es un freno real que debes considerar antes de contratar.
-
-### ¿Puedo usar n8n gratis?
-
-Sí, con condiciones. La versión community (self-hosted) es gratuita para uso interno en empresas bajo licencia fair-code. Necesitas un servidor propio para instalarlo — un VPS básico de 10-15 €/mes es suficiente para la mayoría de pymes. La versión cloud tiene prueba gratuita de 14 días pero no tiene plan gratuito permanente.
-
-### ¿Cuántas automatizaciones puedo crear?
-
-En la versión self-hosted, ilimitadas. En el plan cloud Starter, 5 flujos activos y 2.500 ejecuciones mensuales. En el plan Pro, 15 flujos activos y 10.000 ejecuciones mensuales. Si superas esos límites, puedes comprar ejecuciones adicionales o escalar de plan.
+## Preguntas frecuentes
 
 ### ¿n8n cumple con el GDPR y la normativa española?
 
-n8n cloud ofrece servidores en la región EU de AWS y tiene DPA (Data Processing Agreement) disponible bajo GDPR. Para flujos que procesen datos personales de clientes españoles, debes solicitar y firmar ese DPA y adaptarlo a tus obligaciones bajo la LOPDGDD. La versión self-hosted te da control total sobre dónde se procesan los datos.
+n8n Cloud almacena datos en servidores de la UE (Frankfurt). Tienen DPA disponible para firmar, lo que te permite cumplir con el GDPR. Para la LOPDGDD española, asegúrate de revisar qué datos de clientes pasan por tus flujos y documentarlo en tu registro de tratamientos. La opción self-hosted te da control total sobre dónde se almacena todo.
 
-### ¿Es mejor n8n o Zapier para una pyme sin equipo técnico?
+### ¿Es mejor n8n que Zapier o Make para una pyme española?
 
-Para una pyme sin perfil técnico, Zapier o Make son más accesibles para empezar. n8n tiene más potencia y menos límites de ejecución, pero requiere más inversión de tiempo en la configuración inicial. Si no hay nadie en tu empresa que pueda dedicar unas horas a aprender la herramienta, empieza con Zapier y cambia a n8n cuando necesites más flexibilidad.
+Depende del perfil. Zapier es más fácil de usar pero mucho más caro en cuanto escala. Make (antes Integromat) está en un punto intermedio. n8n es el más potente y el más barato a largo plazo, pero exige más del usuario. Si tienes alguien con algo de criterio técnico en tu empresa, n8n gana en precio. Si no, Zapier te ahorra dolores de cabeza.
 
-## 📖 También te puede interesar
+### ¿Puedo automatizar facturas o procesos de Sage con n8n?
 
-- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
-- [Las 2 mejores herramientas de automatización para pymes en España (2026)](https://pymestools.com/automatizacion/mejores-herramientas-automatizacion-pymes)
-- [Zapier vs Make: ¿Cuál elegir para tu pyme en 2025?](https://pymestools.com/automatizacion/zapier-vs-make)
+Sage 50 en su versión de escritorio no tiene API directa, así que la integración es complicada. Si usas Holded, [Anfix](/facturacion/review-anfix) o Quipu — que sí tienen API — la conexión con n8n es directa y funciona bien. Para Verifactu o facturación electrónica, n8n no es la herramienta de facturación: es el conector entre tu software de facturación y el resto de tu flujo de trabajo.
+
+<AffiliateLink programSlug="n8n" articleSlug="review-n8n" label="Probar n8n gratis" />
 
 ---
-
 *Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*

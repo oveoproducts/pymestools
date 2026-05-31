@@ -1,224 +1,100 @@
 ---
 title: "Facturación electrónica obligatoria para pymes en 2026: guía completa"
 slug: "facturacion-electronica-pymes"
+description: "La facturación electrónica será obligatoria para pymes y autónomos en España a partir de 2026. Te explicamos qué tienes que hacer, cuándo y con qué herramientas."
 category: "facturacion"
-description: "Todo lo que necesitas saber sobre la facturación electrónica obligatoria para pymes en España en 2026: plazos, requisitos, cómo adaptarte y qué software usar."
 type: "how-to"
-publishedAt: null
-updatedAt: "2026-05-24T16:43:18.171Z"
 tools: ["holded", "anfix"]
-keywords:
-  primary: "facturación electrónica obligatoria pymes 2026"
-  secondary:
-    - "verifactu pymes españa"
-    - "factura electrónica b2b obligatoria"
-    - "software facturación electrónica pyme"
-    - "ley crea y crece facturación"
-    - "holded facturación electrónica"
-    - "anfix verifactu"
+keywords_primary: "facturación electrónica obligatoria pymes 2026"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "9 min"
-qualityScore: null
+readingTime: 6
+publishedAt: null
+updatedAt: "2026-05-31T15:48:27.447Z"
 ---
 
-{/* TODO: captura — imagen de cabecera con una factura electrónica en pantalla, interfaz de Holded o Anfix */}
+Si tienes una pyme o eres autónomo en España, el reloj ya está corriendo. La facturación electrónica obligatoria llega en 2026 y no es opcional — es la Ley Crea y Crece.
 
-A partir de 2026, emitir facturas en PDF por email deja de ser suficiente si facturas a otras empresas. La facturación electrónica B2B pasa a ser **obligatoria por ley** para la mayoría de pymes españolas.
+Si sigues emitiendo facturas en Word o Excel, o con un software que no cumpla Verifactu, vas a tener un problema serio antes de que acabe el año.
 
-No es un trámite técnico menor. Afecta a cómo generas cada factura, qué software usas y cómo lo tienes configurado. Al terminar esta guía sabrás exactamente qué te exige la ley, cuándo entra en vigor para tu empresa y qué tienes que hacer antes de que llegue la fecha límite.
-
-## 🗓️ Qué cambia y cuándo
-
-La **Ley Crea y Crece** (Ley 18/2022) obliga a todas las empresas y autónomos españoles a emitir facturas electrónicas estructuradas en sus operaciones B2B.
-
-Los plazos oficiales según la norma son:
-
-- **Empresas con facturación anual superior a 8 millones de euros:** obligación desde la entrada en vigor del reglamento técnico.
-- **El resto de pymes y autónomos** (la mayoría): **12 meses después** de que el reglamento esté publicado en el BOE.
-
-El reglamento técnico lleva meses en proceso de aprobación. A la fecha de publicación de este artículo (mayo 2026), **la fecha exacta de entrada en vigor definitiva está pendiente de confirmación oficial**. Te recomendamos consultar el BOE y la web de la AEAT para la fecha actualizada.
-
-Lo que sí está claro es que la obligación llega. Y prepararse con tiempo marca la diferencia entre una transición tranquila y un caos de última hora.
+Esta guía te explica qué cambia, cuándo, y cómo adaptarte sin perder una semana entera en el proceso.
 
 <Callout type="warning">
-**No confundas Verifactu con la factura electrónica B2B.** Son dos obligaciones distintas. Verifactu afecta al software de facturación (registro de facturas ante la AEAT). La facturación electrónica B2B afecta al formato en que emites facturas a tus clientes empresas. Ambas te afectan si tienes una pyme. En esta guía cubrimos las dos.
+**Fechas clave:** Las empresas con facturación superior a 8 millones de euros tienen la obligación desde 2024. Para el resto de pymes y autónomos, la entrada en vigor está prevista para 2026 — pendiente de publicación del reglamento definitivo en el BOE. Confirma la fecha exacta en la web de la AEAT antes de actuar.
 </Callout>
 
-## 📋 Lo que necesitas
+## Qué cambia exactamente
 
-Antes de ponerte a configurar nada, comprueba que tienes esto:
+La Ley Crea y Crece obliga a todas las empresas y autónomos que facturen entre sí (B2B) a emitir y recibir facturas en formato electrónico estructurado. No es un PDF por email — eso no cuenta.
 
-- **Un software de facturación compatible:** tiene que generar facturas en formato estructurado (XML/Facturae) y estar adaptado a Verifactu. Un PDF no cumple la norma.
-- **Certificado digital o Cl@ve:** para firmar electrónicamente las facturas. Si ya presentas el IVA online, probablemente ya lo tienes.
-- **CIF de tus clientes empresariales al día:** la factura electrónica requiere datos correctos. Si tienes fichas de clientes con campos vacíos, es el momento de completarlas.
-- **Nivel técnico necesario:** no necesitas saber programar. Si sabes crear una factura en tu software actual, el proceso es similar. Lo que cambia es que el software hace el trabajo técnico por debajo.
+El formato exigido es **Facturae** (XML) o un equivalente validado. Además, el software de facturación deberá cumplir con **Verifactu**: un sistema que registra y remite las facturas a la AEAT en tiempo real para evitar el fraude fiscal.
 
-## 🔍 Qué exige exactamente la ley
+Dos requisitos distintos, pero van de la mano:
 
-### La factura electrónica B2B
+- **Factura electrónica B2B:** emisión y recepción en formato estructurado entre empresas.
+- **Verifactu:** el software debe enviar un registro verificable a Hacienda por cada factura emitida.
 
-No es un PDF con firma digital. Es una factura en **formato estructurado** (estándar Facturae 3.2.x o equivalente) que puede ser leída e interpretada automáticamente por el software del receptor.
+## Qué tienes que hacer tú como pyme
 
-Tus clientes empresa tienen además el derecho a **rechazar facturas** que no cumplan el formato. La ley también les exige a ellos aceptarlas y procesarlas en sus sistemas.
+Tres pasos concretos, sin rodeos.
 
-Qué debe incluir tu software para cumplir:
+**1. Comprueba si tu software actual es compatible.** Pregunta directamente a tu proveedor si su plataforma cumple Verifactu. No asumas que sí. Si no tiene una respuesta clara y por escrito, cambia de herramienta.
 
-- Generación de facturas en formato Facturae o el formato que establezca el reglamento
-- Firma electrónica de cada factura
-- Envío a través de plataformas homologadas o directamente al sistema del receptor
-- Conservación de las facturas durante el período legal (mínimo 4 años para el IVA)
+**2. Asegúrate de que tu equipo puede recibir facturas electrónicas.** Tus proveedores también van a mandarte facturas en formato estructurado. Necesitas un sistema que las procese, no solo un email.
 
-### Verifactu
+**3. Habla con tu gestor o asesoría.** Si externalizas la contabilidad, tu asesor tiene que estar usando una plataforma compatible. Coordínate antes de que llegue la fecha límite.
 
-El sistema **Verifactu** (Verificación de Facturas) es una obligación paralela. Afecta al software de facturación, no al receptor de la factura.
+## Holded y Anfix: las dos opciones más sólidas para pymes españolas
 
-Obliga a que tu software:
+Dos herramientas que ya están trabajando en la compatibilidad con Verifactu y que cubren bien el perfil de una pyme de 5-20 personas.
 
-- Registre cada factura emitida con un código verificable ante la AEAT
-- No permita modificar ni borrar facturas una vez registradas (inmutabilidad)
-- Envíe los registros a la AEAT en tiempo real o en lote
+**[Holded](/facturacion/review-holded)** es la opción más completa si además de facturar quieres gestionar contabilidad, inventario y proyectos desde un mismo sitio. Interfaz en español, soporte en español, y una integración razonablemente buena con bancos españoles.
 
-Si tu software actual no tiene el sello "adaptado a Verifactu", **no puedes seguir usándolo** cuando entre en vigor la obligación.
+**[Anfix](/facturacion/review-anfix)** está más orientado a autónomos y pymes pequeñas que quieren algo más sencillo. Precio más bajo, curva de aprendizaje menor, y con foco claro en facturación y contabilidad básica.
+
+Ninguna de las dos es perfecta. Holded puede ser excesivo (y caro) si solo necesitas facturar. Anfix se queda corto si tienes flujos de trabajo más complejos.
 
 <Callout type="info">
-**TicketBAI si estás en el País Vasco o Navarra:** estas comunidades tienen su propio sistema de trazabilidad fiscal (TicketBAI), obligatorio desde antes. Si ya cumples con TicketBAI, estás más avanzado que la media — pero revisa igualmente la compatibilidad con Verifactu para el resto de tus obligaciones estatales.
+**Verifactu y estas herramientas:** Tanto Holded como Anfix han comunicado que están adaptando sus plataformas a los requisitos de Verifactu. Antes de contratar, pide confirmación explícita y por escrito de que el plan que vas a contratar incluye la compatibilidad. Los plazos de implementación pueden variar.
 </Callout>
 
-## 🪜 Pasos para adaptarte antes del plazo
+## Comparativa rápida: Holded vs Anfix
 
-### Paso 1: Comprueba si tu software actual es compatible
-
-**Qué hacer:** Entra en la web de tu proveedor de software de facturación y busca expresamente las palabras "Verifactu" y "factura electrónica B2B". Si no aparecen en su sección de novedades o en su documentación oficial, llama o escribe al soporte y pregunta directamente: *"¿Estáis adaptados a Verifactu y a la facturación electrónica B2B según la Ley Crea y Crece?"*
-
-**Por qué:** Muchos proveedores han anunciado la adaptación pero no la han completado. La declaración de intención no cumple la ley — la funcionalidad activa sí.
-
-**Qué verás:** Una respuesta clara con fecha de disponibilidad. Si te dan una respuesta vaga o te dicen "estamos trabajando en ello" sin fecha, tómalo como señal de alerta.
-
-### Paso 2: Revisa tus datos de clientes
-
-**Qué hacer:** Exporta tu listado de clientes empresa y verifica que tienes: CIF/NIF correcto, dirección fiscal completa, email de contacto de su departamento de administración. En Holded puedes hacerlo desde `Contactos → Exportar`. En Anfix, desde `Clientes → Listado → Exportar CSV`.
-
-**Por qué:** La factura electrónica se envía con datos estructurados. Un CIF erróneo o una dirección incompleta puede provocar el rechazo automático por parte del sistema del receptor.
-
-**Qué verás:** Un Excel o CSV con todos tus clientes. Revísalo fila a fila. Pon foco en los clientes a los que más facturas emites.
-
-### Paso 3: Obtén o renueva tu certificado digital
-
-**Qué hacer:** Ve a la web de la FNMT (fnmt.es) y comprueba la vigencia de tu certificado de persona jurídica o de representante de persona jurídica. Si ha caducado o caduca en los próximos 6 meses, renuévalo ahora. El proceso puede tardar varios días si requiere desplazamiento a una oficina de la AEAT.
-
-**Por qué:** La firma electrónica de facturas requiere un certificado válido. Sin él, el software no puede firmar ni enviar.
-
-**Qué verás:** La fecha de caducidad en el panel de tu certificado instalado en el navegador o en tu almacén de certificados de Windows.
-
-### Paso 4: Configura el software para emitir facturas electrónicas
-
-**Qué hacer:** Una vez confirmado que tu software es compatible, activa la opción de facturación electrónica. En Holded, ve a `Configuración → Facturación → Factura electrónica` y sigue el asistente de activación. En Anfix, accede a `Configuración → Preferencias de facturación → Activar Verifactu`.
-
-**Por qué:** La compatibilidad técnica del software no se activa sola. Tienes que configurarla y vincular tu certificado digital.
-
-**Qué verás:** Un asistente que te pide subir o vincular tu certificado digital y confirmar tus datos fiscales como emisor. Al terminar, las nuevas facturas que generes llevarán el sello y el código Verifactu automáticamente.
-
-{/* TODO: captura — pantalla de configuración de Verifactu en Holded o Anfix */}
-
-### Paso 5: Emite una factura de prueba y verifica el registro
-
-**Qué hacer:** Crea una factura de prueba a un cliente de confianza (o a tu propia empresa si tienes otra entidad para pruebas). Comprueba que la factura generada incluye el código Verifactu y que en el panel de tu software aparece registrada como "enviada a AEAT" o "pendiente de envío".
-
-**Por qué:** Es mejor descubrir un problema técnico con una factura de prueba que con una factura real de 15.000 €.
-
-**Qué verás:** La factura en formato estructurado (habitualmente con un código QR o un identificador alfanumérico) y el estado de registro en tu panel de control.
-
-## 🛠️ Qué software usar: Holded vs Anfix
-
-Las dos herramientas que más se adaptan al perfil de una pyme española con 5-15 trabajadores son Holded y Anfix. Las dos están adaptando sus plataformas a Verifactu y a la facturación electrónica B2B.
-
-{/* TODO: captura — tabla de precios de Holded y Anfix tomada de sus webs oficiales en mayo 2026 */}
-
-| | **Holded** | **Anfix** |
+| | Holded | Anfix |
 |---|---|---|
-| **Verifactu** | Sí (verificar versión activa en holded.com) | Sí (verificar versión activa en anfix.es) |
-| **Factura electrónica B2B** | Sí | Sí |
-| **Interfaz en español** | ✅ | ✅ |
-| **Soporte en español** | ✅ Chat y email | ✅ Chat y teléfono |
-| **Contabilidad integrada** | Sí | Sí |
-| **Precio** | No publican el precio completo — solicitar demo/presupuesto en holded.com | No publican el precio completo — solicitar demo/presupuesto en anfix.es |
-| **GDPR / DPA** | Sí, disponible en su web | Sí, disponible en su web |
-| **Servidores** | UE | UE |
+| Precio desde | No publican el precio — solicitar presupuesto | No publican el precio — solicitar presupuesto |
+| Interfaz en español | Sí | Sí |
+| Soporte en español | Sí (chat y email) | Sí (chat y email) |
+| Verifactu | En desarrollo — confirmar con el proveedor | En desarrollo — confirmar con el proveedor |
+| Ideal para | Pymes con 5-50 empleados | Autónomos y pymes pequeñas |
 
-<Callout type="warning">
-**Sobre los precios:** A fecha de mayo 2026, tanto Holded como Anfix han ajustado sus tarifas y no publican una lista de precios cerrada sin pasar por un proceso comercial. No incluimos cifras en esta tabla porque los datos de entrenamiento pueden estar desactualizados y darte un precio que ya no es real. Consulta directamente en sus webs o solicita un presupuesto personalizado.
-</Callout>
+*Precios consultados en mayo 2026. Ambas herramientas requieren solicitar presupuesto personalizado. Verifica siempre en la web del proveedor.*
 
-### ¿Cuál elegir?
+<AffiliateLink programSlug="holded" articleSlug="facturacion-electronica-pymes" label="Ver planes de Holded" />
 
-**Holded** encaja mejor si quieres una plataforma todo-en-uno: facturación, contabilidad, CRM, proyectos y RRHH en el mismo sitio. La curva de aprendizaje es algo mayor, pero si ya usas varios software por separado, centralizar puede compensar.
+<AffiliateLink programSlug="anfix" articleSlug="facturacion-electronica-pymes" label="Ver planes de Anfix" />
 
-**Anfix** es una opción más enfocada en la gestión contable y fiscal. Si tu prioridad es cumplir con Hacienda sin complicarte la vida, y ya tienes otras herramientas para el resto de la gestión, Anfix tiene un flujo de trabajo más directo.
+## Un ejemplo concreto
 
-Si ya usas Sage 50 o A3 ERP, comprueba primero si tu proveedor actual tiene la adaptación a Verifactu antes de cambiar de software. Cambiar de sistema de facturación tiene un coste de migración y de tiempo que no debe subestimarse.
+Imagina que llevas **Instalaciones Peral S.L.**, una empresa de instalaciones eléctricas en Murcia con 6 empleados. Emitís unas 80 facturas al mes a otras empresas y recibís materiales de 12 proveedores distintos.
 
-<AffiliateLink programSlug="holded" articleSlug="facturacion-electronica-pymes" label="Probar Holded gratis" />
+Con la nueva obligación, cada una de esas 80 facturas tiene que salir en formato estructurado y quedar registrada en Hacienda a través de Verifactu. Y las facturas que recibes de tus proveedores también llegarán así — tienes que tener un sistema que las procese sin que tengas que introducir los datos a mano.
 
-<AffiliateLink programSlug="anfix" articleSlug="facturacion-electronica-pymes" label="Probar Anfix gratis" />
+Si sigues usando Excel para facturar, en 2026 estarás fuera de la ley.
 
-## ❌ Errores comunes al adaptarse
+## Preguntas frecuentes
 
-**Confundir "compatible" con "activado"**
-*Síntoma:* Sigues emitiendo facturas en PDF aunque tu software dice ser compatible con Verifactu.
-*Causa:* La funcionalidad existe en el software pero no la has activado ni configurado.
-*Solución:* Sigue el paso 4 de esta guía. La compatibilidad hay que activarla manualmente.
+### ¿Un PDF por email sigue siendo válido después de 2026?
 
-**Certificado digital caducado en el momento de la migración**
-*Síntoma:* Al intentar firmar una factura, el software devuelve un error de certificado o no deja completar el proceso.
-*Causa:* El certificado de representante de persona jurídica tiene una validez de 2-4 años y caduca sin aviso visible.
-*Solución:* Renueva el certificado en fnmt.es. El proceso puede tardar entre 2 días y 2 semanas según el método de renovación.
+No para facturas B2B entre empresas españolas. El PDF no cumple con el formato estructurado exigido por la Ley Crea y Crece. Puedes seguir enviando el PDF como copia visual, pero la factura oficial tiene que emitirse en un formato validado (Facturae u equivalente) a través de un software compatible.
 
-**Datos fiscales del cliente incorrectos**
-*Síntoma:* La factura electrónica es rechazada automáticamente por el sistema del receptor.
-*Causa:* CIF erróneo, nombre fiscal que no coincide con el registrado en la AEAT, o dirección fiscal desactualizada.
-*Solución:* Consulta los datos correctos en el Registro Mercantil o pide a tu cliente que te confirme sus datos fiscales actuales. Actualiza la ficha en tu software antes de volver a emitir.
+### ¿Qué pasa si no me adapto a tiempo?
 
-## ✅ Resultado final
+La ley prevé sanciones, aunque el régimen sancionador definitivo depende del reglamento que está pendiente de aprobación. Más allá de la multa, el riesgo real es que tus clientes empresariales dejen de aceptar tus facturas si no cumplen el formato exigido. Es un problema comercial antes que fiscal.
 
-Si has seguido todos los pasos, tienes:
+### ¿Esto afecta también a las facturas con clientes particulares (B2C)?
 
-- Tu software verificado como compatible con Verifactu y la facturación electrónica B2B
-- Los datos de tus clientes empresa revisados y actualizados
-- Tu certificado digital válido y vinculado al software
-- La configuración de facturación electrónica activa y probada
-
-Cuando entre en vigor la obligación, tu empresa emitirá facturas que cumplen la ley de forma automática, sin pasos adicionales por tu parte.
-
-El siguiente paso lógico es revisar también el proceso de **recepción de facturas electrónicas** de tus proveedores — porque la ley también te obliga a aceptarlas y procesarlas. Ese proceso lo detallamos en nuestra guía sobre gestión de facturas de proveedores.
-
-## ❓ Preguntas frecuentes
-
-### ¿Me afecta si solo facturo a particulares (B2C)?
-
-No directamente. La obligación de facturación electrónica de la Ley Crea y Crece aplica a operaciones **entre empresas y autónomos (B2B)**. Si toda tu facturación es a consumidores finales, esta ley no te obliga a cambiar el formato de tus facturas. Verifactu, sin embargo, sí puede afectarte si usas software de facturación para emitir esas facturas — consulta con tu proveedor de software.
-
-### ¿Un PDF firmado digitalmente cumple la ley?
-
-No. Un PDF, aunque esté firmado con firma electrónica, no es una factura electrónica según los requisitos de la Ley Crea y Crece. La ley exige un **formato estructurado y legible por máquina** (como Facturae XML). El PDF puede acompañar a la factura estructurada como visualización, pero no la sustituye.
-
-### ¿Qué pasa si sigo emitiendo facturas en PDF pasada la fecha límite?
-
-La ley establece sanciones económicas para las empresas que no cumplan con la obligación. Además, tus clientes empresa tendrán el derecho (y potencialmente la obligación) de rechazar tus facturas si no llegan en el formato correcto. Eso puede afectar directamente a tus cobros.
-
-### ¿Mi gestoría puede encargarse de todo esto por mí?
-
-Tu gestoría puede asesorarte y ayudarte con la configuración inicial, pero la obligación recae sobre tu empresa como emisora de facturas. El software que uses tiene que estar en tu nombre y bajo tu control. Delega la configuración si quieres, pero asegúrate de entender qué queda activo al final del proceso.
-
-### ¿Holded y Anfix son los únicos software que cumplen?
-
-No. Sage, A3, Quipu, Contasimple y otros también están trabajando en la adaptación. Holded y Anfix son dos opciones bien posicionadas para el perfil de pyme española de entre 5 y 20 trabajadores, pero la elección depende de tu situación actual. Si ya tienes un software de facturación que funciona bien para tu empresa, comprueba primero si ese proveedor tiene la adaptación antes de migrar.
-
-## 📖 También te puede interesar
-
-- [5 alternativas a Holded para pymes en España 2026](https://pymestools.com/facturacion/alternativas-holded)
-- [Cómo elegir software de facturación para tu pyme española: guía 2026](https://pymestools.com/facturacion/como-elegir-software-facturacion)
-- [Cómo hacer una factura correcta como autónomo en España: guía paso a paso](https://pymestools.com/facturacion/como-hacer-factura-autonomo)
+La obligación de facturación electrónica estructurada aplica principalmente a operaciones B2B entre empresas y autónomos. Las facturas a consumidores finales (particulares) siguen otras reglas. Consulta con tu asesor si tienes un modelo mixto con clientes tanto empresas como particulares.
 
 ---
 

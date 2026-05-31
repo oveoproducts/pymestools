@@ -1,286 +1,111 @@
 ---
 title: "Cómo hacer una factura correcta como autónomo en España: guía paso a paso"
 slug: "como-hacer-factura-autonomo"
+description: "Aprende qué campos obligatorios debe llevar una factura como autónomo en España, cómo calcular el IVA y la retención de IRPF, y qué herramientas te ahorran tiempo y errores."
 category: "facturacion"
-description: "Guía paso a paso para emitir facturas correctas como autónomo en España en 2026: campos obligatorios, IVA, retenciones, numeración y herramientas para automatizarlo."
 type: "how-to"
-publishedAt: null
-updatedAt: "2026-05-24T16:28:30.021Z"
 tools: ["holded", "anfix"]
-keywords:
-  primary: "como hacer una factura correcta autonomo españa"
-  secondary:
-    - "factura autonomo campos obligatorios"
-    - "como numerar facturas autonomo"
-    - "iva retencion factura autonomo"
-    - "programa facturacion autonomo españa"
-    - "verifactu autonomo 2025"
+keywords_primary: "cómo hacer una factura como autónomo en España"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "9 min"
-qualityScore: null
+readingTime: 6
+publishedAt: null
+updatedAt: "2026-05-31T15:42:08.771Z"
 ---
 
-{/* TODO: captura — imagen de cabecera con ejemplo de factura correcta emitida desde Holded o Anfix */}
+Hacer una factura mal tiene consecuencias concretas: Hacienda puede rechazarla, tu cliente puede negarse a pagarla, o te puede caer una sanción en una inspección. Y lo peor es que los errores más comunes son siempre los mismos.
 
-Al terminar esta guía, sabrás exactamente qué campos tiene que llevar cada factura que emites como autónomo en España para ser válida ante Hacienda. Sin sorpresas en una inspección, sin rechazos de tus clientes, y sin perder tiempo buscando qué va en cada línea.
+Esta guía te explica exactamente qué tiene que llevar una factura como autónomo en España, cómo calcular los importes y qué herramientas te evitan hacerlo a mano.
 
-Emitir una factura completa lleva menos de 5 minutos cuando tienes el proceso claro. El problema no es el tiempo — es saber qué información es obligatoria y por qué.
+## Los datos obligatorios de toda factura
 
-## Lo que necesitas
+Una factura sin estos campos no es válida ante Hacienda. No hay excepciones.
 
-- **Tu número de NIF/CIF:** el tuyo y el de tu cliente. Sin él, la factura no es válida.
-- **Alta en el Censo de Empresarios (modelo 036 o 037):** debes estar dado de alta como autónomo antes de emitir tu primera factura. Si aún no lo estás, esto va antes.
-- **Conocer tu epígrafe de IAE:** determina el tipo de actividad y puede afectar al tipo de IVA aplicable.
-- **Acceso a tu software de facturación o a una plantilla:** te enseñamos los campos en abstracto, pero al final del artículo verás cómo Holded y Anfix lo hacen automáticamente.
-- **Nivel técnico necesario:** ninguno. Si sabes rellenar un formulario, puedes hacer esto.
+- **Número de factura:** correlativo y sin saltos (no puedes ir del 12 al 15)
+- **Fecha de emisión**
+- **Tus datos:** nombre o razón social, NIF/CIF y dirección fiscal
+- **Datos de tu cliente:** nombre o razón social, NIF/CIF y dirección
+- **Descripción del servicio o producto** con suficiente detalle
+- **Base imponible, tipo de IVA aplicado e importe de IVA**
 
-## Pasos
-
-### Paso 1: 📋 Pon los datos de emisor y receptor
-
-**Qué hacer:** En la cabecera de la factura, incluye dos bloques de datos bien diferenciados.
-
-**Tus datos como emisor:**
-- Nombre completo o razón social
-- NIF
-- Dirección fiscal completa (calle, número, municipio, código postal, provincia)
-
-**Datos de tu cliente (receptor):**
-- Nombre completo o razón social
-- NIF/CIF
-- Dirección fiscal
-
-**Por qué:** Hacienda exige identificar perfectamente a las dos partes. Si el NIF del cliente está mal o falta su dirección fiscal, la factura no es deducible para él — y eso genera conflictos.
-
-**Qué verás:** Dos bloques en la parte superior de la factura, claramente separados. En Holded y Anfix, estos datos se rellenan automáticamente desde la ficha del cliente una vez que lo tienes guardado.
-
-### Paso 2: 🔢 Asigna un número de factura único y correlativo
-
-**Qué hacer:** Cada factura necesita un número que la identifique de forma única. La numeración debe ser correlativa y sin saltos dentro del mismo año.
-
-El formato más habitual es: `YYYY-NNN` → por ejemplo, `2026-001`, `2026-002`, `2026-003`.
-
-También puedes usar prefijos por serie si facturas a distintos tipos de clientes: `A-2026-001` para clientes nacionales, `E-2026-001` para clientes europeos.
-
-**Por qué:** Si tienes un salto en la numeración (pasas de la 2026-003 a la 2026-005 sin la 004), Hacienda puede interpretarlo como una factura omitida en tu declaración.
-
-**Qué verás:** Un campo de número de factura que el software rellena automáticamente siguiendo la secuencia. En ambas herramientas puedes configurar el formato de numeración desde los ajustes de la empresa.
+Si emites a otro autónomo o profesional, también debes incluir la **retención de IRPF**.
 
 <Callout type="warning">
-**Ojo con los duplicados:** Si alguna vez anulas una factura, no reutilices ese número. Emite una factura rectificativa con su propio número correlativo y referencia a la original. Dejar huecos en la numeración es preferible a reutilizar números.
+El número de factura debe ser correlativo dentro de cada serie. Si saltas un número, Hacienda puede interpretarlo como factura no declarada. Usa una serie separada si facturas en distintas divisas o a clientes de fuera de la UE.
 </Callout>
 
-### Paso 3: 📅 Incluye las fechas correctas
+## Cómo calcular el IVA y la retención de IRPF
 
-**Qué hacer:** Añade siempre dos fechas diferenciadas si no coinciden:
+El tipo general de IVA en España es el **21 %**. Hay tipos reducidos del 10 % y superreducido del 4 % para categorías específicas (alimentación, libros, etc.). Si tienes dudas sobre qué tipo aplica a tu actividad, consúltalo en la web de la AEAT.
 
-- **Fecha de emisión:** cuando emites la factura.
-- **Fecha de operación:** cuando se realizó el servicio o entrega. Si es el mismo día que la emisión, no es obligatorio repetirla, pero conviene incluirla.
+**Ejemplo concreto:**
 
-**Por qué:** La fecha de operación determina en qué trimestre se imputa el IVA. Si terminas un trabajo el 28 de marzo pero emites la factura el 3 de abril, el IVA corresponde al primer trimestre, no al segundo.
+Imagina que eres Marta, diseñadora gráfica en Sevilla, y emites una factura de 1.000 € a una empresa:
 
-**Qué verás:** Dos campos de fecha separados. En muchos casos, la herramienta te pregunta la fecha de prestación del servicio al crear la factura.
+- Base imponible: **1.000,00 €**
+- IVA (21 %): **+ 210,00 €**
+- Retención IRPF (15 %): **− 150,00 €**
+- **Total a cobrar: 1.060,00 €**
 
-### Paso 4: 💶 Detalla los conceptos facturados
+La retención del 15 % es la estándar para autónomos con más de dos años de actividad. Si llevas menos de dos años, la retención baja al 7 %.
 
-**Qué hacer:** La descripción de lo que estás facturando no puede ser vaga. Incluye para cada línea:
-
-- **Descripción del servicio o producto:** concreta y comprensible. Nada de `"Servicios varios"`.
-- **Cantidad:** número de unidades, horas, o días.
-- **Precio unitario:** el precio antes de impuestos.
-- **Importe total de la línea** (cantidad × precio unitario).
-
-Un ejemplo correcto:
-
-| Concepto | Cantidad | Precio unitario | Total |
-|---|---|---|---|
-| Diseño de logotipo corporativo | 1 | 850,00 € | 850,00 € |
-| Revisiones adicionales (3 rondas) | 3 | 75,00 € | 225,00 € |
-
-**Por qué:** Una descripción vaga puede hacer que la factura no sea deducible para tu cliente. Además, si alguna vez tienes una discrepancia con el cliente sobre lo entregado, la factura es tu respaldo documental.
-
-**Qué verás:** Una tabla de líneas de factura donde añades tantos conceptos como necesites. Tanto Holded como Anfix calculan automáticamente los totales.
-
-### Paso 5: 🧾 Aplica el IVA correcto
-
-**Qué hacer:** El tipo de IVA depende de tu actividad. Los más habituales para autónomos de servicios en España:
-
-- **21 %:** tipo general — servicios profesionales, consultoría, marketing, IT, diseño.
-- **10 %:** tipo reducido — determinados servicios de hostelería, transporte de personas, obras de rehabilitación de vivienda.
-- **4 %:** tipo superreducido — libros, medicamentos, alimentos básicos.
-- **0 % (exento):** servicios médicos, educación reglada, servicios financieros. Si tu actividad está exenta, debes indicarlo expresamente en la factura con la referencia legal: `"Operación exenta de IVA según artículo 20 de la Ley 37/1992 del IVA"`.
-
-En la mayoría de actividades de servicios, el tipo es **21 %**.
-
-**Por qué:** Aplicar un tipo incorrecto obliga a emitir una factura rectificativa y puede generar recargos en la declaración del IVA.
-
-**Qué verás:** Un desplegable o campo de tipo impositivo en cada línea. Puedes configurar el tipo por defecto en los ajustes del producto/servicio para no tener que cambiarlo manualmente cada vez.
-
-<Callout type="tip">
-**Si tienes dudas sobre tu tipo de IVA:** consulta el buscador de actividades del Portal del IVA de la AEAT (aeat.es). El epígrafe de IAE con el que diste de alta tu actividad es el punto de partida para determinarlo.
+<Callout type="info">
+Si facturas a un **particular** (no empresa), no aplicas retención de IRPF. Solo se aplica en operaciones entre profesionales o empresas.
 </Callout>
 
-### Paso 6: ✂️ Aplica la retención de IRPF si corresponde
+## Factura simplificada vs. factura completa
 
-**Qué hacer:** Si prestas servicios profesionales (actividades del artículo 95 del Reglamento del IRPF) a una empresa o a otro autónomo que actúa como empresario, tienes que aplicar **retención de IRPF**.
+No siempre necesitas emitir una factura completa. La **factura simplificada** (lo que antes se llamaba ticket) se puede usar cuando el importe no supera los 400 € IVA incluido, o hasta 3.000 € si el destinatario no necesita deducir el IVA.
 
-El tipo general en 2026 es **15 %**. Si llevas menos de 3 años ejerciendo la actividad, puedes aplicar el tipo reducido del **7 %** (válido el año de alta y los dos siguientes).
+La factura simplificada no necesita los datos del cliente. Es válida para ventas al público en general.
 
-La retención se aplica sobre la **base imponible** (antes de IVA) y se descuenta del total a pagar:
+Para cualquier cliente empresa o autónomo que quiera deducir el IVA, necesitas sí o sí la factura completa con todos sus datos.
 
-| Concepto | Importe |
-|---|---|
-| Base imponible | 1.000,00 € |
-| IVA 21 % | +210,00 € |
-| Retención IRPF 15 % | −150,00 € |
-| **Total a pagar** | **1.060,00 €** |
+## Verifactu: lo que cambia en 2025
 
-**Por qué:** La retención la ingresa tu cliente en Hacienda en tu nombre. Si no la aplicas cuando debes, tendrás que pagarla tú en la renta.
+Desde 2025, el software de facturación en España debe cumplir con **Verifactu**, la normativa que obliga a los programas a registrar cada factura de forma inalterable y, en muchos casos, a enviarla en tiempo real a la AEAT.
 
-**Qué verás:** Un campo de retención separado del IVA. En Holded y Anfix se configura por defecto en la ficha del autónomo/empresa para que se aplique automáticamente a cada nueva factura.
+Esto afecta directamente a los autónomos que usan software de facturación. Si usas Excel o Word para emitir facturas, técnicamente estás fuera de cumplimiento.
 
-<Callout type="warning">
-**Las retenciones no aplican siempre:** Si facturas a particulares (no empresarios), no aplicas retención. Tampoco si vendes productos físicos. Y si facturas a clientes de fuera de España, la situación varía — consulta con tu gestor.
-</Callout>
+Las herramientas que analizamos más abajo —[Holded](/facturacion/review-holded) y [Anfix](/facturacion/review-anfix)— ya están adaptadas a Verifactu.
 
-### Paso 7: ✅ Verifica los totales y el método de pago
+## Holded y Anfix: dos opciones para autónomos españoles
 
-**Qué hacer:** El bloque final de la factura debe mostrar de forma clara:
+No hace falta que hagas los cálculos a mano ni que te preocupes por el formato. Estas dos herramientas están pensadas para el mercado español y cumplen con Verifactu.
 
-- **Base imponible total**
-- **Importe de IVA** (desglosado por tipo si aplicas varios)
-- **Importe de retención IRPF** (en negativo, restando)
-- **Total a pagar**
+**Holded** es la opción más completa. Además de facturación, incluye contabilidad, CRM y gestión de proyectos. Ideal si quieres centralizar todo en un sitio.
 
-Añade también:
-- **Forma de pago:** transferencia bancaria, domiciliación, tarjeta, etc.
-- **IBAN** si cobras por transferencia — esto evita emails de seguimiento del cliente preguntando a qué cuenta ingresa.
-- **Plazo de pago** si es relevante: `"Pago a 30 días desde la fecha de emisión"`.
-
-**Por qué:** Una factura sin IBAN o sin plazo claro alarga los cobros. Es información práctica, no solo legal.
-
-**Qué verás:** Un resumen automático de totales calculado por la herramienta, más campos opcionales para condiciones de pago e información bancaria.
-
-{/* TODO: captura — pantalla de resumen de factura en Holded con los totales desglosados */}
-
-### Paso 8: 🇪🇸 Cumple con Verifactu si usas software de facturación
-
-**Qué hacer:** Desde 2025, el software de facturación en España debe cumplir con **Verifactu** (Reglamento de requisitos técnicos del software de facturación, aprobado por RD 1007/2023). Esto afecta a los programas que usan los autónomos, no a las facturas manuales en papel.
-
-Si usas un programa de facturación, verifica que esté **certificado Verifactu**. Tanto **Holded** como **Anfix** han comunicado adaptación a este reglamento.
-
-Si facturas desde una hoja de Excel o Word, técnicamente no estás sujeto al reglamento de software — pero estás usando un método muy vulnerable a errores y difícil de auditar.
-
-**Por qué:** Usar software no adaptado a Verifactu puede acarrear sanciones. La AEAT está realizando inspecciones sobre el software de facturación usado por pymes y autónomos.
-
-**Qué verás:** En Holded y Anfix, la adaptación a Verifactu es transparente para el usuario — no tienes que hacer nada adicional. El sistema genera internamente los registros necesarios.
-
-## ⚠️ Errores comunes
-
-**La factura no tiene número correlativo o empieza desde 001 cada mes**
-
-*Síntoma:* Tu gestor o un cliente te avisa de que la numeración no es correcta.
-
-*Causa:* Confundir la numeración mensual con la anual. La correlatividad obligatoria en España es **dentro del año fiscal**, no del mes. Reiniciar cada mes no es obligatorio y puede generar confusión.
-
-*Solución:* Usa un formato tipo `2026-001` y continúa la secuencia todo el año. Si ya has emitido facturas con otro sistema, consulta a tu gestor si necesitas hacer una factura rectificativa o simplemente continuar la serie correctamente.
-
-**Has olvidado la retención y el cliente ya ha pagado**
-
-*Síntoma:* Revisas la factura tras el pago y ves que no pusiste retención.
-
-*Causa:* Pasar por alto el campo de IRPF, especialmente cuando empiezas.
-
-*Solución:* Emite una **factura rectificativa** (serie aparte, por ejemplo `R-2026-001`) que referencia la original y corrige el error. El cliente deberá ajustar el pago por la diferencia o compensarlo en la siguiente factura. Nunca modifiques una factura ya emitida y cobrada.
-
-**El cliente rechaza la factura porque falta su dirección fiscal**
-
-*Síntoma:* El departamento de compras de tu cliente devuelve la factura sin procesar.
-
-*Causa:* Has usado el nombre comercial del cliente pero no su dirección fiscal registrada, o has omitido el CIF.
-
-*Solución:* Pide siempre los datos fiscales completos antes de emitir la primera factura a un cliente nuevo. En Holded y Anfix puedes guardar la ficha completa del cliente para que se rellene automáticamente en futuras facturas.
-
-## Resultado final
-
-Si has seguido todos los pasos, cada factura que emitas tendrá:
-
-- ✅ Identificación completa de emisor y receptor con NIF
-- ✅ Número correlativo sin saltos dentro del año
-- ✅ Fechas de emisión y operación diferenciadas
-- ✅ Descripción detallada de los conceptos
-- ✅ IVA al tipo correcto para tu actividad
-- ✅ Retención de IRPF aplicada si corresponde
-- ✅ Totales desglosados y datos de pago claros
-
-El siguiente paso lógico es automatizar la emisión para no tener que revisar estos campos manualmente cada vez. Te lo explicamos abajo.
-
-## 🛠️ Herramientas que facilitan esto
-
-Hacer facturas correctas a mano en Word o Excel es viable al principio, pero escala mal. A partir de 3-4 facturas al mes, un programa de facturación amortiza el tiempo invertido en configurarlo.
-
-**Holded** y **Anfix** son las dos opciones más usadas por autónomos y pymes en España. Ambas tienen interfaz en español, soporte en español y están adaptadas a Verifactu.
+- Precio desde: **No publican el precio actualizado en abierto — solicita presupuesto en su web.** Precios consultados en mayo 2026. Verifica siempre en holded.com.
+- Interfaz en español: ✅
+- Soporte en español: ✅
+- Cumple Verifactu: ✅
 
 <AffiliateLink programSlug="holded" articleSlug="como-hacer-factura-autonomo" label="Probar Holded gratis" />
 
+**Anfix** está más orientada al autónomo puro: más sencilla, más barata y con gestión de impuestos trimestrales integrada (modelo 303, modelo 130).
+
+- Precio desde: **No publican el precio actualizado en abierto — solicta presupuesto en su web.** Precios consultados en mayo 2026. Verifica siempre en anfix.es.
+- Interfaz en español: ✅
+- Soporte en español: ✅
+- Cumple Verifactu: ✅
+
 <AffiliateLink programSlug="anfix" articleSlug="como-hacer-factura-autonomo" label="Probar Anfix gratis" />
 
-{/* TODO: captura — comparativa lado a lado de la pantalla de creación de factura en Holded vs Anfix */}
+Si ya usas Sage para contabilidad, tanto Holded como Anfix permiten exportar en formatos compatibles para que tu gestor trabaje con los datos sin fricciones.
 
-### Comparativa rápida para elegir
+## Preguntas frecuentes
 
-| | **Holded** | **Anfix** |
-|---|---|---|
-| Interfaz en español | ✅ | ✅ |
-| Soporte en español | ✅ (chat + email) | ✅ (chat + email) |
-| Verifactu | ✅ Adaptado | ✅ Adaptado |
-| TicketBAI (País Vasco / Navarra) | Consultar | ✅ Incluido |
-| Plan básico (precio orientativo) | No publican precio fijo — solicitar demo | No publican precio fijo — solicitar demo |
-| Integración con contabilidad | ✅ Nativa | ✅ Nativa |
-| App móvil para emitir facturas | ✅ | ✅ |
+### ¿Puedo hacer una factura en Word o Excel?
 
-<Callout type="info">
-**Sobre los precios:** Ni Holded ni Anfix publican sus tarifas actualizadas de forma estable en web pública. Ambos trabajan con presupuesto personalizado según número de usuarios y módulos. Solicita demo directamente — el proceso es rápido y sin compromiso.
-</Callout>
+Sí, legalmente puedes. Pero desde 2025, el software de facturación debe cumplir Verifactu, y Word o Excel no lo hacen. Si en una inspección demuestras que usaste herramientas no homologadas, podrías enfrentarte a sanciones. Lo más seguro es usar un programa certificado.
 
-## ❓ Preguntas frecuentes
+### ¿Qué pasa si me equivoco en una factura ya enviada?
 
-### ¿Puedo hacer facturas en Word o Excel como autónomo?
+No puedes eliminarla ni modificarla. Debes emitir una **factura rectificativa** que anule la original y emita los datos correctos. La factura rectificativa debe hacer referencia explícita al número de la factura original que corrige.
 
-Sí, es legal. No hay obligación de usar un software específico para emitir facturas (salvo que tu volumen de facturación supere ciertos umbrales o que la normativa Verifactu te afecte directamente como software de facturación).
+### ¿Tengo que guardar copias de mis facturas? ¿Durante cuánto tiempo?
 
-El problema práctico es el control: sin numeración automática, es fácil cometer errores correlativos. Y sin registro histórico, reconstruir un año fiscal para la renta se convierte en horas de trabajo.
-
-### ¿Qué pasa si me olvido de poner el IVA en una factura?
-
-Una factura sin IVA cuando debería llevarlo es una factura incorrecta. Tienes que emitir una factura rectificativa que anule la original y la sustituya por una correcta.
-
-Si ya la has cobrado sin IVA, el IVA sigue siendo exigible — tendrás que liquidarlo igualmente en tu declaración trimestral. La solución es acordar con el cliente la forma de regularizarlo.
-
-### ¿Cuándo tengo que aplicar retención del 7 % en vez del 15 %?
-
-Puedes aplicar el 7 % si es el año en que te diste de alta como autónomo o alguno de los dos años siguientes, y si en ninguno de esos años has ejercido la misma actividad profesional anteriormente.
-
-Para acogerte al 7 %, debes indicarlo expresamente en la factura. En la práctica, la mayoría de autónomos aplican el 15 % directamente para simplificar.
-
-### ¿Las facturas a clientes de la Unión Europea llevan IVA?
-
-Depende. Si facturas a una empresa (B2B) de otro país de la UE con CIF intracomunitario, la operación puede estar sujeta a la regla de inversión del sujeto pasivo y **no llevar IVA español**. Debes indicar en la factura: `"Operación exenta. Inversión del sujeto pasivo. Art. 69 Ley IVA"`.
-
-Si facturas a un particular europeo, la situación es diferente. Esto es suficientemente complejo como para que vale la pena consultarlo con tu gestor la primera vez.
-
-### ¿Cada cuánto tiempo debo presentar el IVA de mis facturas?
-
-Como autónomo, la periodicidad estándar es **trimestral**: modelos 303 (liquidación del IVA) y 130 o 131 (pago fraccionado de IRPF), con plazos en abril, julio, octubre y enero.
-
-Los grandes empresarios (facturación superior a 6 millones de euros) presentan el IVA mensualmente. Para la mayoría de autónomos, el trimestral es suficiente.
-
-## 📖 También te puede interesar
-
-- [5 alternativas a Holded para pymes en España 2026](https://pymestools.com/facturacion/alternativas-holded)
-- [Cómo elegir software de facturación para tu pyme española: guía 2026](https://pymestools.com/facturacion/como-elegir-software-facturacion)
-- [Facturación electrónica obligatoria para pymes en 2026: guía completa](https://pymestools.com/facturacion/facturacion-electronica-pymes)
+Sí. La normativa española obliga a conservar las facturas durante **cuatro años** (el período de prescripción tributaria). Si hay operaciones con inmuebles, el plazo puede ser mayor. Guárdalas en formato digital con respaldo: Hacienda puede pedírtelas en cualquier momento dentro de ese plazo.
 
 ---
 

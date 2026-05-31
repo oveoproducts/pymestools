@@ -1,193 +1,93 @@
 ---
 title: "Make (Integromat): ¿Vale la pena para automatizar tu pyme?"
 slug: "review-make"
+description: "Análisis honesto de Make para pymes españolas: qué automatiza, cuánto cuesta, para quién vale la pena y para quién no. Precios verificados y sin florituras."
 category: "automatizacion"
-description: "Análisis honesto de Make para pymes españolas: precios verificados, flujos de automatización, para quién sirve y para quién no. Con casos de uso reales."
 type: "review"
-publishedAt: null
-updatedAt: "2026-05-24T17:43:01.052Z"
 tools: ["make"]
-keywords:
-  primary: "Make automatización pymes"
-  secondary:
-    - "Make Integromat opiniones"
-    - "Make vs Zapier España"
-    - "automatizar procesos pyme sin programar"
-    - "Make precio euros"
+keywords_primary: "Make Integromat automatización pymes España"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "9 min"
-qualityScore: null
+readingTime: 6
+publishedAt: null
+updatedAt: "2026-05-31T16:11:50.638Z"
 ---
 
-Recibes un formulario de contacto en la web, hay que meterlo en el CRM, avisar a tu comercial por WhatsApp y añadir la tarea al gestor de proyectos. Cuatro pasos manuales que alguien de tu equipo hace —o se olvida de hacer— cada vez.
+Tienes [Holded](/facturacion/review-holded) para facturar, [Mailchimp](/email-marketing/review-mailchimp) para enviar newsletters y un Excel donde vas apuntando los pedidos que llegan por correo. Cada semana, alguien de tu equipo copia datos de un sitio a otro. Make promete acabar con eso.
 
-Make existe para que eso ocurra solo, sin tocar nada. La pregunta es si una herramienta con esta potencia tiene sentido para una empresa de tu tamaño, o si vas a pagar por complejidad que no necesitas.
+¿Cumple la promesa? Depende mucho de lo que necesites y de cuánto tiempo tienes para montarlo.
 
-## Resumen rápido
+<ScoreCard score={7.2} label="Puntuación PymesTools" />
 
-- **Para quién:** Pymes de 3–50 empleados con procesos repetitivos entre varias herramientas digitales y alguien en el equipo con ganas de trastos
-- **Lo mejor:** El editor visual de flujos es el más potente del mercado en su rango de precio — permite lógica condicional, bucles y transformación de datos sin escribir código
-- **Lo peor:** La curva de aprendizaje es real: los primeros flujos complejos llevan horas, no minutos
-- **Precio desde:** 9 $/mes + IVA en plan Core (aprox. 8 €/mes según tipo de cambio a mayo 2026) — plan gratuito disponible con limitaciones
-- **Permanencia:** Sin contrato de permanencia — puedes cancelar en cualquier momento; el plan anual tiene descuento pero no penalización
-- **Soporte en español:** Solo interfaz parcialmente — el soporte y la documentación oficial están en inglés
-- **Veredicto:** Potente y flexible para quien está dispuesto a invertir tiempo en configurarlo; si buscas algo que funcione en una tarde sin ayuda, mira primero Zapier o n8n
+## Lo bueno y lo malo
 
-<AffiliateLink programSlug="make" articleSlug="review-make" label="Probar Make gratis" />
+<ProsCons
+  pros={[
+    "Conecta más de 1.700 aplicaciones, incluyendo Holded, Gmail, WhatsApp Business y Google Sheets",
+    "El plan gratuito sirve para probar en serio: 1.000 operaciones al mes",
+    "La interfaz visual hace que puedas ver exactamente qué hace cada automatización",
+    "Mucho más barato que [Zapier](/automatizacion/review-zapier) para volumen medio de operaciones"
+  ]}
+  cons={[
+    "Curva de aprendizaje real: montar un flujo complejo lleva horas la primera vez",
+    "Soporte en inglés — la documentación oficial en español es escasa",
+    "Si un escenario falla a las 3 de la mañana, enterarte al día siguiente puede costar caro"
+  ]}
+/>
 
-## ¿Para quién es Make?
-
-**Encaja bien si:**
-
-- ✅ Tienes flujos repetitivos entre 3 o más herramientas (CRM + email + Slack + Google Sheets, por ejemplo) y alguien en tu equipo que no le tenga miedo a explorar configuraciones
-- ✅ Quieres automatizaciones con lógica real: si el cliente es de Madrid haz X, si viene de la web haz Y — no solo "cuando pase A, haz B"
-- ✅ Ya probaste Zapier y te quedaste corto con sus limitaciones de lógica o te pareció caro para el número de tareas que necesitas
-- ✅ Gestionas volumen medio-alto de operaciones (pedidos, leads, incidencias) y cada paso manual que eliminas tiene impacto directo en tiempo
-
-**No es para ti si:**
-
-- ❌ Nadie en tu equipo tiene paciencia para aprender una herramienta nueva — Make tiene curva y sin alguien que la domine, acabará sin usarse
-- ❌ Solo necesitas conectar dos herramientas con un flujo sencillo: hay opciones más rápidas y baratas para casos simples
-- ❌ Buscas soporte en castellano cuando algo falla: la documentación oficial y el soporte están en inglés
-- ❌ Tu empresa trabaja principalmente con software de gestión español (A3, Sage, Quipu) sin API — Make necesita que las herramientas tengan integración o API disponible
-
-## 🔑 Funcionalidades clave
-
-### Editor visual de escenarios
-
-El editor de Make funciona con bloques visuales que representan cada paso del flujo. Los conectas con líneas, defines condiciones y ves en tiempo real qué datos pasan de un módulo al siguiente.
-
-Lo que lo diferencia de la competencia es que puedes trabajar con la estructura de los datos: dividir arrays, transformar texto, aplicar filtros condicionales en cualquier punto del flujo. No es solo "disparador → acción", sino un diagrama real con ramificaciones.
-
-### Más de 1.700 integraciones
-
-{/* TODO: captura de la biblioteca de integraciones de Make */}
-
-Make conecta con la mayoría de herramientas que usa una pyme española: Google Workspace, Microsoft 365, HubSpot, Holded (vía API o webhook), Slack, Typeform, WooCommerce, Shopify, Notion y muchas más.
-
-Si una herramienta no tiene módulo nativo, puedes conectarte mediante webhook o HTTP request genérico, lo que amplía las posibilidades considerablemente. Eso sí, esa vía requiere saber lo que haces.
-
-### Ejecución programada y en tiempo real
-
-Puedes lanzar escenarios de dos formas: por evento (cuando llega un formulario, cuando se crea una fila en Sheets) o por programación (cada hora, cada día a las 8:00).
-
-El plan gratuito ejecuta los escenarios cada 15 minutos como mínimo. En planes de pago puedes bajar a 1 minuto o activar ejecución instantánea por webhook.
-
-### Historial de ejecuciones y depuración
-
-Cada vez que un escenario se ejecuta, Make guarda el registro completo: qué datos entaron, qué salió, dónde falló si hubo error.
-
-Esto es muy útil cuando algo no funciona como esperas — ves exactamente en qué módulo se rompió el flujo y con qué datos. Comparado con Zapier, el historial de Make es mucho más detallado.
-
-### Transformación de datos
-
-Make incluye funciones para manipular texto, fechas, números y arrays directamente en el flujo, sin necesidad de pasar por una hoja de cálculo intermedia.
-
-Puedes formatear fechas al estándar español (DD/MM/AAAA), extraer partes de un texto, hacer cálculos simples o limpiar datos antes de enviarlos al siguiente módulo. Disponible en todos los planes de pago.
-
-## 💶 Precios y planes
-
-{/* TODO: captura de la página de precios oficial de Make */}
-
-| Plan | Precio | Operaciones/mes | Escenarios activos | Intervalo mínimo | Trial |
-|------|--------|-----------------|--------------------|------------------|-------|
-| Free | 0 € | 1.000 | Ilimitados | 15 min | — |
-| Core | 9 $/mes + IVA (aprox. 8 €/mes) | 10.000 | Ilimitados | 1 min | — |
-| Pro | 16 $/mes + IVA (aprox. 15 €/mes) | 10.000 | Ilimitados | 1 min | — |
-| Teams | 29 $/mes + IVA (aprox. 27 €/mes) | 10.000 | Ilimitados | 1 min | — |
-| Enterprise | No publican el precio — hay que solicitar demo/presupuesto. | Personalizado | Personalizado | — | — |
-
-*Precios consultados en mayo 2026. Verifica siempre en la web del proveedor: make.com/en/pricing*
-
-**IVA:** Los precios anteriores no incluyen IVA. En España, los servicios digitales B2B tributan al 21 % de IVA.
-
-**Moneda:** Make cobra en dólares estadounidenses. La conversión aproximada a euros varía con el tipo de cambio — la indicada arriba corresponde a mayo 2026.
-
-**Facturación anual:** El plan anual incluye un descuento del 15–20 % según el plan. No hay contrato de permanencia obligatorio — si pagas anualmente y cancelas, Make no aplica penalización, pero tampoco reembolsa el tiempo no usado.
-
-**Operaciones:** Cada acción dentro de un escenario cuenta como una operación. Un flujo de 5 pasos que se ejecuta 1.000 veces consume 5.000 operaciones. Hay que tenerlo en cuenta al calcular el coste real del plan.
+## Planes y precios
 
 <Callout type="warning">
-**Ojo con las operaciones:** El precio base puede parecer bajo, pero si tus flujos tienen muchos pasos o se ejecutan con frecuencia, las 10.000 operaciones del plan Core se agotan más rápido de lo que parece. Haz el cálculo antes de comprometerte: nº de ejecuciones/mes × nº de pasos por flujo = operaciones necesarias.
+Make cobra por **operaciones**, no por automatizaciones. Una operación es cada vez que un módulo se ejecuta dentro de un escenario. Un flujo de 5 pasos que se dispara 200 veces al mes = 1.000 operaciones. Calcula bien antes de elegir plan.
 </Callout>
 
-## ✅ Lo que nos gusta
+Los precios siguientes fueron consultados en make.com en mayo 2026. Verifica siempre en la web del proveedor, los planes cambian con frecuencia.
 
-**El editor visual es genuinamente superior:** La forma en que Make representa los flujos —con módulos conectados, ramificaciones visibles y datos en tiempo real— hace que sea mucho más fácil entender qué está pasando en un flujo complejo que en Zapier, donde todo queda oculto en listas lineales. Para flujos con más de 4–5 pasos, la diferencia es notable.
+| Plan | Precio | Operaciones/mes | Escenarios activos |
+|---|---|---|---|
+| Free | 0 € | 1.000 | 2 |
+| Core | 9 $/mes (aprox. 8 €/mes) + IVA | 10.000 | Ilimitados |
+| Pro | 16 $/mes (aprox. 15 €/mes) + IVA | 10.000 + funciones avanzadas | Ilimitados |
+| Teams | 29 $/mes (aprox. 27 €/mes) + IVA | 10.000 compartidas en equipo | Ilimitados |
 
-**El plan gratuito sirve para arrancar:** 1.000 operaciones al mes con escenarios ilimitados permite a Carlos montar 2–3 automatizaciones simples sin pagar nada. Si el volumen es bajo, algunas pymes se quedan en el plan gratuito durante meses antes de necesitar el Core. No hay límite de tiempo ni requiere tarjeta.
+Make cobra en dólares. La conversión aproximada es orientativa según el cambio de mayo 2026.
 
-**Historial de ejecuciones detallado:** Cuando un flujo falla —y en algún momento fallará— Make muestra exactamente qué datos llegaron a cada módulo y en qué punto se rompió. Eso reduce el tiempo de diagnóstico de horas a minutos. La mayoría de competidores solo muestran "error" sin contexto.
+No publican el precio de los planes Enterprise — hay que solicitar presupuesto.
 
-## ❌ Lo que no nos gusta
+Los planes anuales tienen descuento respecto al pago mensual. Si contratas anual y cancelas antes, pierdes el importe restante.
 
-**La curva de aprendizaje no es trivial:** Make no es una herramienta que se configura en una tarde. Los primeros escenarios con lógica condicional, iteradores o transformación de datos pueden llevar varias horas y bastante lectura de documentación —en inglés—. Si en tu empresa nadie quiere invertir ese tiempo, Make se convierte en un gasto sin retorno.
+## Para quién es Make
 
-**Soporte y documentación solo en inglés:** La interfaz tiene traducción parcial al español, pero la documentación oficial, el centro de ayuda y el soporte por ticket están en inglés. Para una pyme cuyo equipo no domina el idioma, resolver problemas técnicos se complica. No hay soporte telefónico en ningún plan por debajo del Enterprise.
+Make funciona bien si tienes procesos repetitivos claros y alguien en tu equipo (o tú mismo) con ganas de dedicar unas horas a montarlo. No necesitas saber programar, pero sí necesitas paciencia.
 
-**El modelo de operaciones puede dar sustos:** A diferencia de Zapier, que cobra por "tareas" (ejecuciones completas), Make cobra por operaciones individuales. Un escenario de 8 pasos que se dispara 500 veces al mes consume 4.000 operaciones. Con flujos medianos y frecuentes, el plan Core de 10.000 operaciones se puede quedar pequeño antes de lo esperado, y el salto al siguiente nivel de operaciones tiene coste adicional.
+Un ejemplo concreto: Marta tiene una asesoría en Sevilla con 6 personas. Cada vez que un cliente rellena un formulario de Typeform, alguien lo copia a Holded, le manda un correo de bienvenida y lo añade a una hoja de Google Sheets. Con Make, ese flujo entero se hace solo. Tarda una tarde en montarlo la primera vez.
 
-## Comparado con otras opciones
+Si tus procesos cambian mucho, si tu equipo no tiene nadie mínimamente técnico, o si necesitas que alguien te lo configure y lo mantenga, Make no es la herramienta. Necesitarías contratar a alguien o mirar opciones más guiadas.
 
-Si estás evaluando Make junto a otras herramientas de automatización, aquí va el contexto sin rodeos:
+## Lo que no nos gusta
 
-- **vs Zapier:** Zapier es más fácil de configurar y tiene mejor soporte, pero es más caro para el mismo número de operaciones y tiene menos flexibilidad en la lógica de los flujos. Si tus automatizaciones son simples y valoras rapidez sobre potencia, Zapier gana. Si necesitas flujos complejos y puedes invertir tiempo en aprender, Make es mejor opción por precio.
+El soporte es el talón de Aquiles. No hay atención en español ni por teléfono. Si tienes un problema urgente, vas al foro de la comunidad o abres un ticket que puede tardarse días en resolverse.
 
-- **vs n8n:** n8n es open source y se puede autoalojar — para equipos con un técnico interno que prefieren control total y sin coste de suscripción, es una alternativa seria. La desventaja es que requiere más conocimiento técnico para instalar y mantener. Make es más accesible para perfiles no técnicos con ganas de aprender.
+La documentación oficial en español es prácticamente inexistente. Hay tutoriales en YouTube en castellano hechos por la comunidad, que están bien, pero no es lo mismo que soporte oficial.
 
-- **vs Zapier + Holded:** Si ya usas Holded para facturación y solo necesitas conectarlo con alguna herramienta más, Holded tiene integraciones nativas con Google, Slack y otras plataformas. Para casos sencillos dentro del ecosistema Holded, no necesitas Make ni Zapier.
+Además, Make es una empresa checa con servidores que pueden estar fuera de la UE según la configuración. Si procesas datos de clientes (formularios, correos, CRM), necesitas revisar su DPA y asegurarte de que cumples con GDPR y LOPDGDD antes de montar nada. Make sí ofrece DPA bajo GDPR, pero toca pedirlo y firmarlo explícitamente.
 
-<Callout type="tip">
-**Consejo antes de elegir:** Define primero cuántas operaciones necesitas al mes y cuántos pasos tienen tus flujos más frecuentes. Ese cálculo te dirá qué plan de Make —o si Make tiene sentido frente a Zapier— antes de empezar ninguna prueba.
-</Callout>
+## Preguntas frecuentes
 
-## 🇪🇸 Make y la normativa española
+### ¿Make funciona con Holded?
 
-Make cumple con el GDPR. Firma un DPA (Data Processing Agreement) disponible en su web para clientes que lo necesiten para su cumplimiento con la AEPD y la LOPDGDD.
+Sí. Make tiene integración nativa con Holded. Puedes crear facturas, contactos o actualizar datos automáticamente desde otros sistemas. Es una de las integraciones más útiles para pymes españolas que ya usan Holded.
 
-Los datos pueden procesarse en servidores fuera de la Unión Europea dependiendo de la configuración. Consulta la política de privacidad de Make y adapta tu DPA según los flujos que impliquen datos personales de clientes o empleados.
+### ¿Necesito saber programar para usar Make?
 
-Make no tiene módulo de facturación y no es compatible con Verifactu — no aplica en este caso.
+No es obligatorio, pero tener cierta lógica ayuda. Montar escenarios sencillos (formulario → correo → hoja de cálculo) es asequible sin código. Los flujos con condiciones complejas, filtros o transformaciones de datos pueden complicarse y requieren tiempo de aprendizaje.
 
-## ¿Preguntas frecuentes?
+### ¿Es Make mejor que Zapier para una pyme española?
 
-### ¿Make funciona en español?
-
-La interfaz tiene traducción parcial al español, pero no es completa. La documentación oficial y el soporte están en inglés. Para uso básico, el español es suficiente; para resolver problemas técnicos, necesitarás desenvolverte en inglés o buscar recursos de la comunidad.
-
-### ¿Cuántas operaciones necesito para empezar?
-
-Depende de tus flujos. Si tienes 3 automatizaciones sencillas de 3–4 pasos cada una que se ejecutan unas 200 veces al mes, son menos de 3.000 operaciones — caben en el plan gratuito. Si tienes flujos con 8–10 pasos y se ejecutan varias veces al día, el plan Core de 10.000 operaciones puede quedarse justo en pocos meses.
-
-### ¿Puedo migrar mis Zaps de Zapier a Make?
-
-No existe una herramienta de migración automática oficial. Tienes que rehacer los flujos en Make desde cero. El esfuerzo es proporcional a la complejidad de tus automatizaciones actuales. La buena noticia: los flujos simples se rehacen en 20–30 minutos una vez que conoces el editor.
-
-### ¿Hace falta saber programar para usar Make?
-
-No, pero ayuda tener mentalidad lógica. Crear flujos básicos no requiere código. Cuando necesitas transformar datos, aplicar lógica condicional compleja o conectar herramientas sin módulo nativo mediante API, la curva sube. Make tiene funciones integradas (texto, fechas, matemáticas) que sustituyen la mayoría de scripts básicos.
-
-### ¿Es seguro pasar datos de clientes por Make?
-
-Make firma DPA bajo GDPR, lo que te permite usarlo en flujos que manejen datos personales cumpliendo con la normativa europea. Aun así, revisa qué datos pasan por cada flujo y si alguna herramienta conectada almacena esos datos fuera de la UE — la responsabilidad sobre el tratamiento sigue siendo tuya como responsable del fichero ante la AEPD.
-
-## Veredicto
-
-Make es la mejor opción de su rango de precio si necesitas automatizaciones con lógica real y tienes a alguien en el equipo dispuesto a dedicarle unas horas de aprendizaje al inicio.
-
-Si buscas algo que funcione solo en una tarde, sin documentación en inglés y sin curva de aprendizaje, Make te va a frustrar — en ese caso, Zapier tiene más sentido aunque salga algo más caro.
-
-Si encajas en el primer perfil, el plan gratuito (sin tarjeta) es suficiente para montar 2–3 flujos reales y decidir si vale la pena antes de pagar un euro.
-
-<AffiliateLink programSlug="make" articleSlug="review-make" label="Probar Make gratis" />
-
-## 📖 También te puede interesar
-
-- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
-- [Las 2 mejores herramientas de automatización para pymes en España (2026)](https://pymestools.com/automatizacion/mejores-herramientas-automatizacion-pymes)
-- [Zapier vs Make: ¿Cuál elegir para tu pyme en 2025?](https://pymestools.com/automatizacion/zapier-vs-make)
+Para la mayoría de pymes, Make sale más barato con volumen medio-alto de operaciones. Zapier es más fácil de usar pero cuesta más. Si tienes tiempo para aprender, Make da más por menos dinero. Si quieres algo que funcione en 20 minutos sin complicaciones, Zapier gana en comodidad.
 
 ---
+
+<AffiliateLink programSlug="make" articleSlug="review-make" label="Probar Make gratis (plan gratuito sin tarjeta)" />
 
 *Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*

@@ -1,235 +1,99 @@
 ---
 title: "Cómo usar HubSpot CRM gratis para pymes: guía paso a paso"
 slug: "hubspot-crm-gratis-guia"
+description: "Guía práctica para pymes españolas que quieren sacar partido al plan gratuito de HubSpot CRM: qué incluye, qué límites tiene y cuándo tiene sentido pagar."
 category: "crm"
-description: "Guía paso a paso para configurar HubSpot CRM en su plan gratuito. Tendrás tus contactos organizados y tu primer pipeline de ventas funcionando en menos de una hora, sin conocimientos técnicos."
 type: "how-to"
-publishedAt: null
-updatedAt: "2026-05-24T16:51:05.896Z"
 tools: ["hubspot"]
-keywords:
-  primary: "hubspot crm gratis pymes guia paso a paso"
-  secondary:
-    - "hubspot gratis español"
-    - "hubspot crm como funciona"
-    - "crm gratuito para pymes españolas"
-    - "configurar hubspot desde cero"
-    - "hubspot vs holded crm"
+keywords_primary: "hubspot crm gratis pymes"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "9 min"
-qualityScore: null
+readingTime: 6
+publishedAt: null
+updatedAt: "2026-05-31T15:51:06.360Z"
 ---
 
-Al terminar esta guía, tendrás HubSpot CRM configurado con tus contactos importados, un pipeline de ventas adaptado a tu proceso y las primeras tareas asignadas a tu equipo. Todo en el plan gratuito, sin tarjeta de crédito. El proceso completo lleva entre 45 y 60 minutos si tienes tus datos de contactos en un Excel.
+Tienes un Excel con 400 clientes, tres personas del equipo comercial y ninguno sabe en qué punto está cada operación. [HubSpot CRM](/crm/review-hubspot-crm) gratuito resuelve exactamente eso — pero tiene límites que conviene conocer antes de empezar a migrar datos.
 
-<Callout type="info">
-**Plan requerido:** Todo lo que cubre esta guía está disponible en el plan **Free de HubSpot CRM**. No necesitas contratar nada. HubSpot tiene planes de pago (Starter desde 15 €/mes + IVA por usuario, según precios consultados en mayo 2026 — verifica en hubspot.com), pero para empezar no hacen falta.
-</Callout>
-
-## 🛠️ Lo que necesitas
-
-- **Cuenta en HubSpot:** El plan Free es suficiente para todo lo de esta guía. Créala en hubspot.com con tu email de empresa — no uses Gmail personal si quieres que tus comerciales vean los contactos compartidos.
-- **Tus contactos en un fichero CSV o Excel:** Nombre, apellidos, empresa, email y teléfono como mínimo. No hace falta que esté perfecto — HubSpot te deja mapear las columnas durante la importación.
-- **Acceso desde ordenador:** La configuración inicial no se hace bien desde el móvil. Una vez configurado, la app funciona razonablemente bien para el día a día.
-- **Nivel técnico necesario:** No necesitas saber programar ni tocar ningún código. Si sabes usar Excel y enviar correos, tienes suficiente.
-
-## Pasos
-
-### Paso 1: 🔐 Crea tu cuenta y configura el idioma en español
-
-**Qué hacer:** Ve a hubspot.com y haz clic en "Empieza gratis". Rellena el formulario con tu email de empresa, nombre de empresa y número de empleados. HubSpot te pedirá un número de teléfono para verificar la cuenta — es obligatorio.
-
-Una vez dentro, ve a la esquina superior derecha, haz clic en el icono de tu perfil y selecciona "Profile & Preferences". En el apartado "Language", elige "Español (España)". Guarda los cambios y recarga la página.
-
-**Por qué:** La interfaz en inglés es un freno real para el día a día. Con el idioma en español, tu equipo la adopta mucho más fácilmente.
-
-**Qué verás:** El menú principal cambia al español. Verás "Contactos", "Negocios", "Tareas" y "Informes" en la barra de navegación superior.
-
-<Callout type="warning">
-**Ojo:** HubSpot tiene la interfaz en español, pero el soporte en español solo está disponible en los planes de pago. En el plan Free, el soporte es por comunidad (en inglés) y documentación. Si necesitas ayuda, busca en la comunidad de HubSpot en español — es bastante activa.
-</Callout>
-
-### Paso 2: 📋 Configura las propiedades de tus contactos
-
-**Qué hacer:** Antes de importar nada, adapta los campos a tu negocio. Ve a "Configuración" (el icono del engranaje, arriba a la derecha) → "Propiedades" → "Propiedades de contacto".
-
-Verás que HubSpot tiene decenas de campos predefinidos. Para una pyme española, los imprescindibles son: Nombre, Apellidos, Email, Teléfono, Empresa, Cargo y Ciudad. Si necesitas un campo que no existe — por ejemplo, "NIF/CIF" o "Canal de captación" — haz clic en "Crear propiedad" y defínelo.
-
-**Por qué:** Si importas contactos sin revisar esto, acabarás con datos en campos incorrectos o información que no puedes filtrar después.
-
-**Qué verás:** Una lista de todas las propiedades disponibles. Las que están en gris son del sistema (no se pueden eliminar). Las tuyas aparecen marcadas como "Creadas por ti" si las has añadido.
-
-### Paso 3: 📥 Importa tus contactos desde Excel
-
-**Qué hacer:** Ve a "Contactos" en el menú superior → botón "Importar" (arriba a la derecha) → "Iniciar una importación". Selecciona "Fichero desde el ordenador" y sube tu CSV o Excel.
-
-HubSpot te mostrará una pantalla de mapeo de columnas. Por cada columna de tu fichero, le dices a HubSpot a qué propiedad corresponde. Por ejemplo: tu columna "Empresa" → propiedad "Nombre de la empresa". Si usas el nombre exacto que HubSpot espera, lo detecta automáticamente.
-
-Cuando llegues a la pantalla de revisión, marca la casilla "Tengo el consentimiento legal para contactar con estas personas". Esto es el cumplimiento básico del GDPR — no lo pases por alto.
-
-**Por qué:** Centralizar los contactos es el primer paso real. Sin esto, el CRM no sirve para nada.
-
-**Qué verás:** Una barra de progreso y, al finalizar, un resumen: "X contactos importados, Y errores". Los errores suelen ser emails duplicados o campos obligatorios vacíos. Puedes descargar el informe de errores para corregirlos.
-
-<Callout type="tip">
-**Antes de importar:** Limpia tu Excel. Quita duplicados con la función de Excel "Quitar duplicados" y asegúrate de que la columna de email no tiene espacios extra. Un contacto sin email válido es difícil de gestionar en HubSpot.
-</Callout>
-
-### Paso 4: 🏗️ Crea tu pipeline de ventas
-
-**Qué hacer:** Ve a "Negocios" en el menú superior. Si es la primera vez, HubSpot te mostrará el pipeline por defecto con estas etapas: Cita programada, Cualificado para comprar, Presentación programada, Decisión maker contactado, Contrato enviado, Cerrado ganado, Cerrado perdido.
-
-Esas etapas son para una empresa de software americana. Cámbialas. Haz clic en "Acciones" → "Editar pipeline". Renombra cada etapa con las de tu proceso real. Un ejemplo para una empresa de servicios B2B española:
-
-| Etapa HubSpot (por defecto) | Tu etapa (ejemplo servicios B2B) |
-|---|---|
-| Cita programada | Primera reunión |
-| Cualificado para comprar | Propuesta enviada |
-| Presentación programada | Negociación |
-| Contrato enviado | Contrato enviado |
-| Cerrado ganado | Cliente |
-| Cerrado perdido | Descartado |
-
-Para cada etapa, puedes definir una "probabilidad de cierre" — útil si luego quieres previsiones de ventas.
-
-**Por qué:** Un pipeline que no refleja cómo vendes tú es un pipeline que nadie actualiza.
-
-**Qué verás:** Un tablero tipo Kanban con tus etapas en columnas. Aquí es donde tu equipo moverá los negocios semana a semana.
-
-### Paso 5: ➕ Añade tus primeros negocios y asígnalos al equipo
-
-**Qué hacer:** Desde la vista del pipeline, haz clic en "+ Crear negocio" en la columna de la primera etapa. Rellena: nombre del negocio (suele ser "Nombre empresa — producto/servicio"), importe estimado, fecha de cierre prevista y contacto asociado.
-
-En el campo "Propietario del negocio", asigna el negocio a la persona de tu equipo responsable. Para que tus comerciales aparezcan aquí, primero tienen que tener cuenta en HubSpot — invítales desde "Configuración" → "Usuarios y equipos" → "Crear usuario".
-
-**Por qué:** Si todos los negocios aparecen asignados al mismo usuario, no puedes ver el rendimiento por comercial ni hacer seguimiento individual.
-
-**Qué verás:** El negocio aparece como una tarjeta en la columna correspondiente del pipeline. Al hacer clic en él, se abre el registro completo con actividad, notas y tareas asociadas.
-
-### Paso 6: 📅 Configura tareas y recordatorios de seguimiento
-
-**Qué hacer:** Dentro de cualquier negocio o contacto, haz clic en "Crear tarea". Define: nombre de la tarea ("Llamar para confirmar propuesta"), fecha de vencimiento, tipo (llamada, email, reunión, to-do) y asignado.
-
-Para crear recordatorios automáticos cuando un negocio lleva más de X días sin actividad, necesitas la sección "Secuencias" — eso ya requiere plan de pago. En el plan Free, los recordatorios son manuales.
-
-**Por qué:** El seguimiento es donde se gana o se pierde una venta. Sin una tarea asignada, el negocio se queda parado sin que nadie lo note.
-
-**Qué verás:** Las tareas pendientes aparecen en "Actividad" → "Tareas". También recibirás un email diario con tus tareas del día si tienes activadas las notificaciones.
-
-### Paso 7: 🔗 Conecta tu email de empresa
-
-**Qué hacer:** Ve a "Configuración" → "General" → "Email conectado" → "Conectar email personal". HubSpot es compatible con Gmail y con Outlook/Microsoft 365. Sigue el asistente de autenticación — te pedirá que autorices el acceso a tu bandeja de entrada.
-
-Una vez conectado, todos los emails que envíes a un contacto de HubSpot quedarán registrados automáticamente en su ficha, y los que recibas también (si instalas la extensión de Chrome de HubSpot Sales).
-
-**Por qué:** Sin esto, tienes que registrar los emails a mano. Nadie lo hace. El CRM se queda vacío en dos semanas.
-
-**Qué verás:** En cada contacto, la pestaña "Actividad" mostrará el historial completo de emails enviados y recibidos, con fecha y hora.
-
-## ⚠️ Errores comunes
-
-**Los contactos importados no aparecen en el pipeline de negocios**
-*Síntoma:* Ves los contactos en "Contactos" pero el pipeline de "Negocios" está vacío.
-*Causa:* Los contactos y los negocios son objetos distintos en HubSpot. Importar contactos no crea negocios automáticamente.
-*Solución:* Desde la ficha de cada contacto, haz clic en "Crear negocio" en el panel derecho. O crea los negocios directamente desde la vista del pipeline y asocia el contacto al crearlos.
-
-**El email corporativo no se conecta correctamente**
-*Síntoma:* HubSpot muestra error de autenticación o "No se puede verificar el dominio" al conectar el email.
-*Causa:* Algunos proveedores de hosting español (como Nominalia, Arsys o 1&1) tienen configuraciones SMTP restrictivas que no son compatibles con OAuth.
-*Solución:* Prueba a conectar el email mediante IMAP/SMTP manual en lugar de la autenticación OAuth. Necesitarás el servidor SMTP de tu proveedor, tu usuario y contraseña. Si usas Microsoft 365, la autenticación OAuth funciona sin problemas.
-
-**Los usuarios invitados no ven los contactos de los demás**
-*Síntoma:* Cada comercial solo ve sus propios contactos, aunque todos estén en la misma cuenta.
-*Causa:* HubSpot tiene configuraciones de visibilidad por equipo. En el plan Free, la visibilidad por defecto puede estar configurada como "Solo el propietario".
-*Solución:* Ve a "Configuración" → "Usuarios y equipos" → selecciona el usuario → "Permisos" → en "CRM", cambia la visibilidad de contactos y negocios a "Todo el equipo".
-
-## ✅ Resultado final
-
-Si has seguido todos los pasos, ahora tienes:
-
-- **Contactos importados** y organizados con las propiedades que usa tu negocio, con consentimiento GDPR registrado.
-- **Un pipeline de ventas** con las etapas de tu proceso real — no las de una startup de San Francisco.
-- **Negocios asignados** a cada miembro del equipo con fechas de cierre estimadas.
-- **Tareas de seguimiento** para que ningún negocio se quede parado sin que nadie lo vea.
-- **Email conectado** para que el historial de comunicaciones se registre solo, sin trabajo manual.
-
-El siguiente paso lógico es aprender a crear vistas filtradas — por ejemplo, "todos los negocios en fase de propuesta de más de 10.000 €" — para que las reuniones de equipo sean más rápidas. Lo cubrimos en nuestra guía de [segmentación y vistas en HubSpot CRM].
-
-## 🤔 ¿Para quién NO es HubSpot CRM gratis?
-
-- **Si necesitas soporte en español:** El plan Free no incluye soporte directo en español. Si tu equipo va a necesitar ayuda regularmente, valora el plan Starter o mira alternativas como Holded o Pipedrive, que tienen soporte en español desde el primer euro.
-- **Si facturas y quieres el CRM integrado con tus facturas:** HubSpot no hace facturación. Si quieres que el CRM y las facturas estén en el mismo sitio, Holded o Anfix son mejores opciones para una pyme española.
-- **Si tu equipo tiene más de 5 comerciales activos:** El plan Free empieza a quedarse corto con equipos grandes — la falta de automatizaciones y secuencias hace que el trabajo manual se multiplique. En ese caso, el Starter (15 €/usuario/mes + IVA, precios de mayo 2026) empieza a tener sentido.
-- **Si solo envías newsletters y no gestionas oportunidades de venta:** HubSpot es un CRM, no una herramienta de email marketing. Para solo enviar emails, Mailrelay o Acumbamail son más sencillos y más baratos.
-
-## 💶 El plan Free en la práctica: qué tienes y qué no tienes
-
-| Funcionalidad | Plan Free | Plan Starter (desde 15 €/usuario/mes + IVA) |
-|---|---|---|
-| Contactos | Hasta 1.000.000 | Hasta 1.000.000 |
-| Pipeline de ventas | 1 pipeline | Múltiples pipelines |
-| Automatizaciones de ventas | ❌ | ✅ |
-| Secuencias de email | ❌ | ✅ |
-| Soporte en español | ❌ | ✅ (email y chat) |
-| Informes personalizados | ❌ | ✅ |
-| Branding de HubSpot en formularios | ✅ (visible) | ❌ (se puede quitar) |
-
-*Precios consultados en mayo 2026. Verifica siempre en hubspot.com/pricing.*
-
-<Callout type="warning">
-**Permanencia:** HubSpot no tiene contrato de permanencia en los planes mensuales. Si contratas el plan anual (más barato), el importe se paga por adelantado — si cancelas antes del año, perderás el importe restante. El plan Free no tiene ninguna restricción de este tipo.
-</Callout>
-
-## 🇪🇸 HubSpot y la normativa española
-
-HubSpot firma DPA (Data Processing Agreement) bajo GDPR. Los datos pueden almacenarse en servidores estadounidenses bajo el marco Privacy Shield/Data Privacy Framework. Si tu empresa necesita que los datos estén exclusivamente en servidores europeos, consulta la política de privacidad de HubSpot antes de importar datos de clientes.
-
-Para cumplir con la **LOPDGDD**, asegúrate de:
-1. Registrar el consentimiento de cada contacto en HubSpot (el campo "Base legal" en cada contacto).
-2. Tener firmado el DPA con HubSpot — lo puedes descargar desde tu configuración de cuenta.
-3. No importar datos de contactos sin haber informado a esas personas de que sus datos están en tu CRM.
-
-HubSpot **no es una herramienta de facturación** y no tiene relevancia para Verifactu ni TicketBAI.
-
-## Herramientas que facilitan esto
-
-Si aún no tienes cuenta en HubSpot, aquí tienes el acceso directo al plan Free:
-
-<AffiliateLink programSlug="hubspot" articleSlug="hubspot-crm-gratis-guia" label="Crear cuenta gratuita en HubSpot" />
-
-Si usas Holded para facturación, HubSpot tiene integración nativa con Holded — los negocios cerrados en HubSpot pueden generar facturas en Holded sin exportar datos manualmente:
-
-<AffiliateLink programSlug="holded" articleSlug="hubspot-crm-gratis-guia" label="Ver Holded (facturación para pymes)" />
-
-## ❓ Preguntas frecuentes
-
-### ¿HubSpot CRM gratis es realmente gratis para siempre?
-
-Sí, el plan Free no tiene fecha de caducidad ni te piden tarjeta para crearlo. Lo que sí hace HubSpot es mostrarte constantemente opciones de actualización a planes de pago dentro de la interfaz — es su modelo de negocio. Puedes ignorarlas sin problema si el plan Free cubre tus necesidades.
-
-### ¿Está HubSpot en español?
-
-La interfaz está disponible en español. El soporte directo en español (chat y email) solo está disponible a partir del plan Starter. En el plan Free, el soporte es a través de la comunidad y la documentación, que sí están parcialmente en español.
-
-### ¿Puedo migrar mis datos de HubSpot si en algún momento quiero cambiar de CRM?
-
-Sí. HubSpot permite exportar todos tus contactos, negocios y actividades en formato CSV desde "Configuración" → "Importar y exportar". No te bloquea los datos. Esto es importante para Carlos: si en dos años decides cambiarte a Holded CRM o a Pipedrive, no empiezas de cero.
-
-### ¿Cuántos usuarios puedo añadir en el plan Free?
-
-HubSpot Free permite usuarios ilimitados — no hay límite en el número de personas de tu equipo que pueden acceder. Donde sí hay límites es en funcionalidades (automatizaciones, secuencias, informes avanzados), no en usuarios.
-
-### ¿HubSpot reemplaza a Sage o a mi software de contabilidad?
-
-No. HubSpot es un CRM — gestiona contactos y oportunidades de venta, no contabilidad ni facturación. Si usas Sage 50 para la contabilidad, sigue usándolo. HubSpot se ocupa del proceso comercial (antes de que exista la factura); Sage se ocupa de lo que pasa después.
-
-## 📖 También te puede interesar
-
-- [5 alternativas a HubSpot CRM para pymes en España](https://pymestools.com/crm/alternativas-hubspot-crm)
-- [5 alternativas a Pipedrive para pymes en España](https://pymestools.com/crm/alternativas-pipedrive)
-- [7 alternativas a Salesforce para pymes en España 2026](https://pymestools.com/crm/alternativas-salesforce)
+<ScoreCard score={7.2} label="Puntuación PymesTools" />
 
 ---
 
+## Lo bueno y lo malo
+
+<ProsCons
+  pros={[
+    "Plan gratuito real: contactos ilimitados y pipeline de ventas sin coste",
+    "Interfaz en español y soporte en español (chat y email)",
+    "Integración directa con Gmail y Outlook — sin configuración técnica",
+    "Cumple GDPR y firma DPA; servidores con opción de alojamiento en la UE"
+  ]}
+  cons={[
+    "Las automatizaciones útiles están bloqueadas en el plan gratuito — necesitas pagar desde el primer flujo de trabajo",
+    "El precio del plan de pago sube muy rápido: Starter CRM Suite cuesta 15 $/usuario/mes (aprox. 14 €/usuario/mes al cambio de mayo 2026) + IVA, pero muchas funciones relevantes requieren el plan Professional, que no publican precio directamente — hay que solicitar presupuesto",
+    "Curva de aprendizaje visible si vienes de Excel o Sage: la lógica de 'contactos, empresas y negocios' como objetos separados desorienta al principio"
+  ]}
+/>
+
+<Callout type="warning">
+HubSpot no publica el precio del plan Professional en su web española de forma directa. Si un comercial te da un precio verbal, pídelo siempre por escrito. El precio del plan Starter (el más barato de pago) está en dólares — revisa el cambio el día que firmes.
+</Callout>
+
+## Planes y precios
+
+| Plan | Precio | Qué incluye |
+|------|--------|-------------|
+| Free | 0 € | Contactos ilimitados, pipeline básico, integración email |
+| Starter CRM Suite | 15 $/usuario/mes (aprox. 14 €/usuario/mes al cambio de mayo 2026) + IVA | Automatizaciones simples, sin límite de usuarios del equipo |
+| Professional | No publican precio — hay que solicitar presupuesto | Automatizaciones avanzadas, reporting personalizado |
+| Enterprise | No publican precio — hay que solicitar presupuesto | Para equipos grandes; fuera del rango de la mayoría de pymes |
+
+_Precios consultados en mayo 2026. Verifica siempre en hubspot.com/es/pricing antes de contratar._
+
+El plan Starter requiere contrato anual si quieres el precio mensual más bajo. Si cancelas antes de los 12 meses, perderás el importe restante del año.
+
+## Cómo empezar paso a paso
+
+**Paso 1 — Crea tu cuenta gratuita.**
+Ve a hubspot.com/es y regístrate con tu email de empresa. No necesitas tarjeta de crédito. El onboarding está en español y dura unos 10 minutos.
+
+**Paso 2 — Importa tus contactos.**
+HubSpot acepta CSV directo desde Excel. Mapea las columnas (nombre, empresa, teléfono, email) y el sistema detecta duplicados automáticamente. Con 400 contactos, la importación tarda menos de 5 minutos.
+
+**Paso 3 — Configura tu pipeline de ventas.**
+Ve a Ventas → Negocios → Editar pipeline. Renombra las etapas a las que usa tu equipo: "Primer contacto", "Presupuesto enviado", "Negociación", "Ganado/Perdido". Imagina que eres Transportes Morales S.L., en Valencia: tus etapas son distintas a las de una agencia de marketing — adáptalas desde el primer día.
+
+**Paso 4 — Conecta tu email.**
+La integración con Gmail y Outlook es directa desde Configuración → Integraciones. A partir de ahí, los emails con clientes quedan registrados automáticamente en la ficha del contacto, sin que nadie tenga que copiar nada.
+
+**Paso 5 — Asigna contactos al equipo.**
+En el plan gratuito puedes tener usuarios ilimitados. Asigna cada contacto o negocio a la persona responsable. Así Carlos —o quien lleve la cuenta— ve de un vistazo qué le toca sin preguntar.
+
+## Para quién es HubSpot CRM gratuito
+
+Es una buena opción si tienes entre 2 y 10 personas en el equipo comercial, gestionas más de 100 clientes activos y el mayor problema actual es que la información está repartida entre emails, Excel y la cabeza de cada uno.
+
+También encaja si ya usas Gmail o Google Workspace: la integración es inmediata y el equipo no necesita cambiar de hábitos para registrar conversaciones.
+
+No encaja si necesitas automatizar seguimientos, asignar tareas automáticamente o generar informes personalizados desde el primer mes. Esas funciones requieren el plan de pago, y el salto de precio puede sorprender.
+
+Si comparas con [Holded](/facturacion/review-holded) o con [Anfix](/facturacion/review-anfix), ten en cuenta que esas herramientas combinan CRM con facturación en el mismo sitio. HubSpot no factura — si necesitas las dos cosas integradas, Holded puede ser más directo para una pyme española.
+
+## Preguntas frecuentes
+
+### ¿El plan gratuito de HubSpot tiene límite de contactos?
+
+No. El plan gratuito permite contactos ilimitados y hasta 1.000.000 de registros en total. El límite real no es de cantidad, sino de funcionalidad: sin plan de pago no puedes automatizar ni personalizar informes más allá de lo básico.
+
+### ¿HubSpot cumple con la normativa española de protección de datos?
+
+Sí. HubSpot cumple GDPR y tiene un DPA (Data Processing Agreement) disponible para firmar. Los datos pueden almacenarse en servidores europeos si así lo configuras. Consulta su política de privacidad actualizada y, si lo necesitas, revísalo con tu asesor antes de firmar el DPA con la AEPD.
+
+### ¿Puedo usar HubSpot gratis para siempre o en algún momento me obliga a pagar?
+
+El plan gratuito no caduca. HubSpot no te corta el acceso ni te fuerza a subir de plan. Lo que sí ocurre es que, a medida que tu equipo crece, las limitaciones del gratuito se notan más — y ahí empieza la presión comercial. Si llegas a ese punto, compara antes de aceptar la primera propuesta del equipo de ventas de HubSpot.
+
+<AffiliateLink programSlug="hubspot" articleSlug="hubspot-crm-gratis-guia" label="✅ Probar HubSpot CRM gratis" />
+
+---
 *Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*

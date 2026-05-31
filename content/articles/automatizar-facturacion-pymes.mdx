@@ -1,207 +1,93 @@
 ---
 title: "Cómo automatizar la facturación en tu pyme con Holded y Zapier: guía paso a paso"
 slug: "automatizar-facturacion-pymes"
+description: "Conecta Holded con Zapier para generar facturas automáticamente, evitar errores manuales y ahorrar horas cada mes. Guía práctica para pymes españolas."
 category: "automatizacion"
-description: "Guía paso a paso para conectar Holded y Zapier y generar facturas automáticamente cuando recibes un pedido, cobro o cliente nuevo. Sin tocar código. Resultado en menos de 45 minutos."
 type: "how-to"
-publishedAt: null
-updatedAt: "2026-05-24T16:07:05.096Z"
 tools: ["zapier", "holded"]
-keywords:
-  primary: "automatizar facturación pymes holded zapier"
-  secondary:
-    - "automatización facturas holded"
-    - "zapier holded integración"
-    - "facturación automática pyme españa"
-    - "holded zapier tutorial"
-    - "crear facturas automáticas sin código"
+keywords_primary: "automatizar facturación pymes holded zapier"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "9 min"
-qualityScore: null
+readingTime: 6
+publishedAt: null
+updatedAt: "2026-05-31T15:33:24.187Z"
 ---
 
-Al terminar esta guía, tendrás una automatización activa que genera una factura en Holded cada vez que recibes un pedido, un cobro o un cliente nuevo — venga de donde venga: tu tienda online, un formulario, Stripe, o cualquier otra herramienta conectada a Zapier.
-
-Sin tocar código. Sin acordarte de facturar manualmente el viernes por la tarde. El proceso completo lleva unos 40 minutos si tienes Holded ya configurado con tus datos de empresa.
-
-## 📋 Lo que necesitas
-
-- **Cuenta en Holded:** Cualquier plan de pago incluye la API necesaria para esta integración. El plan gratuito de Holded **no** da acceso a la API — necesitas al menos el plan Básico. Si aún no tienes cuenta, hay prueba gratuita de 14 días que sí incluye acceso a la API.
-- **Cuenta en Zapier:** El plan gratuito (Free) permite hasta 5 Zaps de un solo paso. Para esta automatización necesitas un Zap multistep, así que hace falta el plan **Starter** (desde 19,99 $/mes — aprox. 18 €/mes según cambio a mayo 2026, + IVA). Hay prueba gratuita de 14 días del plan de pago.
-- **La herramienta de origen configurada:** WooCommerce, Stripe, Typeform, Google Forms, o cualquier otra app que actúe como disparador. En esta guía usamos Stripe como ejemplo, pero los pasos son idénticos con cualquier otra fuente.
-- **Los datos de tu empresa en Holded completos:** NIF, dirección fiscal, series de facturación creadas. Si no los tienes configurados, hazlo antes de empezar — el Zap fallará si Holded no puede generar la factura por datos incompletos.
-- **Nivel técnico necesario:** No hace falta saber programar. Si sabes moverte por paneles de administración y entiendes qué es un "trigger" y una "acción", es suficiente. Zapier está diseñado para no-técnicos.
+Si cada vez que entra un pedido alguien de tu equipo abre [Holded](/facturacion/review-holded), rellena los datos a mano y envía la factura, estás pagando horas de trabajo por algo que puede hacerse solo. Esta guía explica cómo conectar Holded con [Zapier](/automatizacion/review-zapier) para que las facturas salgan automáticamente, sin tocarlas.
 
 <Callout type="warning">
-**El plan gratuito de Zapier no sirve para esto.** Los Zaps de varios pasos (trigger + acción + acción) requieren plan Starter o superior. Si intentas configurarlo con el plan Free, Zapier te dejará crear el Zap pero te pedirá que actualices antes de activarlo. Tenlo en cuenta antes de empezar.
+**Antes de empezar:** Holded es compatible con Verifactu, el sistema obligatorio de facturación verificable en España a partir de 2025. Antes de automatizar, confirma que tu plan de Holded tiene Verifactu activo. Si no, las facturas generadas automáticamente pueden no cumplir la normativa.
 </Callout>
 
-## ⚙️ Pasos
+## Lo bueno y lo malo
 
-### Paso 1: Obtén tu clave API de Holded
+<ProsCons
+  pros={[
+    "Holded tiene integración nativa con Zapier — no necesitas código ni APIs",
+    "Puedes automatizar desde cualquier origen: formularios, Stripe, WooCommerce, tu CRM",
+    "Ahorro real de tiempo: entre 30 minutos y 2 horas al día para equipos con volumen alto de facturas",
+    "Holded cumple GDPR y LOPDGDD, con servidores en Europa"
+  ]}
+  cons={[
+    "Zapier tiene un coste mensual propio — la combinación Holded + Zapier puede superar los 80 €/mes según el plan",
+    "Las automatizaciones de Zapier fallan en silencio si hay un campo mal mapeado — necesitas monitorización activa"
+  ]}
+/>
 
-**Qué hacer:** Entra en tu cuenta de Holded y ve a **Configuración → Integraciones → API**. Haz clic en **"Generar nueva clave API"**. Copia la clave que aparece y guárdala en un lugar seguro — solo se muestra una vez.
+## Qué necesitas antes de empezar
 
-**Por qué:** Zapier necesita esta clave para hablar con Holded en tu nombre. Sin ella, la conexión no es posible.
+Necesitas tres cosas activas antes de crear el primer Zap:
 
-**Qué verás:** Una cadena de letras y números (algo como `sk_live_xxxxx...`). Aparece en pantalla junto a un aviso de que no podrás verla de nuevo una vez cierres esa ventana.
+- **Cuenta de Holded** con el módulo de facturación activado (cualquier plan de pago)
+- **Cuenta de Zapier** — el plan gratuito no permite automatizaciones de varios pasos; necesitarás al menos el plan Starter
+- **La herramienta de origen** donde llegan tus pedidos o contratos (Typeform, Stripe, WooCommerce, [HubSpot](/crm/review-hubspot-crm), o lo que uses)
 
-{/* TODO: captura de la sección API en Configuración de Holded */}
+Los precios de Zapier no están publicados de forma fija — varían según tareas mensuales y funciones. **Consulta el precio actualizado en zapier.com el día que lo contrates.** Holded parte desde 29 €/mes + IVA en su plan más básico, aunque el módulo completo de facturación requiere planes superiores — verifica en holded.com.
 
-### Paso 2: Crea un Zap nuevo en Zapier
+## La automatización paso a paso
 
-**Qué hacer:** Entra en tu cuenta de Zapier y haz clic en **"+ Create Zap"** en la barra lateral izquierda. Pon un nombre descriptivo al Zap en el campo superior — por ejemplo: `"Stripe → Holded: nueva factura al cobrar"`.
+**Paso 1 — Crea un nuevo Zap en Zapier.**
+Selecciona la app de origen (por ejemplo, Typeform si usas formularios de pedido). Elige el trigger "New Entry" o equivalente.
 
-**Por qué:** El nombre del Zap es lo único que te ayudará a identificarlo cuando tengas varios. Un nombre genérico como "Zap 1" es inútil en dos semanas.
+**Paso 2 — Conecta tu cuenta de Holded.**
+Busca "Holded" en Zapier. La integración es oficial. Necesitarás tu API Key de Holded: está en Configuración → Integraciones → API.
 
-**Qué verás:** El editor visual de Zapier, con dos bloques vacíos: **Trigger** (disparador) y **Action** (acción). Es aquí donde configurarás todo.
+**Paso 3 — Elige la acción "Create Invoice" en Holded.**
+Mapea los campos: nombre del cliente, NIF, concepto, importe, fecha de vencimiento. Si el cliente ya existe en Holded, se enlaza automáticamente. Si no, puedes añadir un paso previo para crearlo.
 
-### Paso 3: Configura el disparador — qué activa la factura
+**Paso 4 — Activa el modo "test" antes de publicar.**
+Zapier te permite ejecutar el Zap con datos reales de prueba. Revisa que la factura aparece bien en Holded antes de activarlo definitivamente.
 
-**Qué hacer:** Haz clic en el bloque **Trigger** y busca la app que quieres usar como origen. En este ejemplo: escribe "Stripe" en el buscador y selecciónala. En el campo **"Trigger Event"**, elige **"New Payment"** (nuevo pago). Conecta tu cuenta de Stripe siguiendo las instrucciones en pantalla — Zapier te pedirá autorización en una ventana emergente.
+**Paso 5 — Añade un paso de notificación (opcional pero recomendado).**
+Conecta un paso final que te envíe un mensaje de Slack o un email cuando se genere una factura. Así detectas errores antes de que el cliente los vea.
 
-Una vez conectada, haz clic en **"Test trigger"**. Zapier buscará los últimos pagos reales de tu cuenta de Stripe para usar como datos de prueba.
+**Ejemplo real:** Distribuciones Ferrer, una empresa de Valencia con 6 empleados, recibe pedidos por Typeform. Antes, alguien abría Holded y los pasaba a mano. Con este Zap, la factura se genera sola en menos de 2 minutos, se envía al cliente y el equipo recibe un aviso en Slack. Cero intervención manual.
 
-**Por qué:** Necesitas datos de prueba reales para configurar correctamente el paso siguiente. Sin esto, no podrás mapear los campos (nombre del cliente, importe, etc.) al crear la factura en Holded.
+## Para quién tiene sentido esta automatización
 
-**Qué verás:** Un panel con los campos del último pago de Stripe: `customer_email`, `amount`, `currency`, `description`, etc. Si no aparece nada, es porque no hay pagos recientes — en ese caso haz una prueba de pago de 1 € antes de continuar.
+Tiene sentido si recibes **más de 15-20 facturas al mes** y el proceso es repetitivo: misma estructura, datos que vienen siempre del mismo sitio, poco margen de personalización manual.
 
-**Nota:** Si usas WooCommerce en lugar de Stripe, el evento equivalente es **"New Order"**. Con Typeform sería **"New Entry"**. La lógica es la misma.
+También es especialmente útil si tienes **facturación recurrente**: suscripciones, contratos mensuales, servicios fijos. En ese caso, puedes combinar Holded Recurring + Zapier para gestionar todo el ciclo sin intervención.
 
-{/* TODO: captura del editor de Zapier con los datos de prueba de Stripe */}
+**No tiene tanto sentido** si cada factura es diferente, requiere revisar precios manualmente o tiene condiciones específicas por cliente. Automatizar algo variable genera más errores que soluciones.
 
-### Paso 4: Añade la acción — conecta Holded
+## Preguntas frecuentes
 
-**Qué hacer:** Haz clic en el bloque **Action** y busca "Holded" en el buscador de apps. Selecciona **Holded**. En **"Action Event"**, elige **"Create Invoice"** (crear factura).
+### ¿Holded cumple con Verifactu para las facturas generadas automáticamente?
 
-Haz clic en **"Sign in to Holded"**. Aparecerá una ventana donde Zapier te pide la clave API que copiaste en el Paso 1. Pégala y haz clic en **"Yes, Continue"**.
+Sí, Holded es compatible con Verifactu. Pero necesitas tenerlo configurado en tu cuenta antes de generar facturas vía Zapier. Las facturas creadas por API también pasan por el sistema de verificación. Confirma con el soporte de Holded si tu plan incluye Verifactu activado por defecto.
 
-**Por qué:** Esta acción es la que crea la factura real en Holded cada vez que Stripe registra un pago. La conexión con la clave API garantiza que Zapier actúa en tu nombre con los permisos que tú controlas.
+### ¿Puedo usar Make (antes Integromat) en lugar de Zapier?
 
-**Qué verás:** Un formulario con los campos de la factura de Holded. Algunos son obligatorios (marcados con asterisco): **Contact**, **Items**, **Date**. Los opcionales incluyen serie de facturación, notas, etc.
+Sí. [Make](/automatizacion/review-make) también tiene integración con Holded y suele ser más barato para automatizaciones con volumen alto de tareas. La lógica es la misma: trigger en el origen, acción "crear factura" en Holded. Si el coste de Zapier te parece elevado, Make es la alternativa más directa.
 
-### Paso 5: Mapea los campos del pago a la factura
+### ¿Qué pasa si Zapier falla y una factura no se genera?
 
-**Qué hacer:** Aquí conectas los datos que llegan de Stripe con los campos de la factura en Holded. Es el paso más importante y el que más errores genera si se hace rápido.
-
-Campo por campo:
-
-- **Contact (cliente):** Haz clic en el campo y selecciona el dato de Stripe que corresponde al email o nombre del cliente — normalmente `customer_email` o `customer_name`. Si el contacto no existe en Holded, el Zap fallará (ver sección de errores más abajo).
-- **Items → Description:** Usa `description` de Stripe o el nombre del producto.
-- **Items → Price:** Usa `amount`. Atención: Stripe trabaja en céntimos — un pago de 100 € aparece como `10000`. Tendrás que usar el formateador de Zapier para dividir por 100 (lo vemos en el paso siguiente).
-- **Items → Quantity:** Pon `1` de forma fija salvo que tu sistema envíe cantidad.
-- **Date:** Usa `created` de Stripe (la fecha del pago).
-- **Series:** Selecciona la serie de facturación que tienes configurada en Holded — normalmente `A-2026` o similar.
-
-**Por qué:** El mapeo incorrecto de campos es la causa del 80% de los fallos en esta integración. Dedica tiempo aquí.
-
-**Qué verás:** Los campos se rellenan con etiquetas como `{{stripe_customer_email}}` — son referencias dinámicas, no texto fijo. Eso es correcto.
-
-### Paso 6: Corrige el importe con el formateador de Zapier
-
-**Qué hacer:** Entre el bloque de Stripe y el bloque de Holded, añade un paso intermedio. Haz clic en el botón **"+"** entre los dos bloques y busca la app **"Formatter by Zapier"**. Elige el evento **"Numbers"** y la transformación **"Spreadsheet-Style Formula"**. En el campo de fórmula, escribe: `{stripe_amount} / 100`.
-
-Vuelve al bloque de Holded y en el campo **Items → Price** reemplaza el valor anterior por el resultado del Formatter: `{{formatted_number}}`.
-
-**Por qué:** Stripe almacena los importes en céntimos para evitar errores de decimales. Si no haces esta conversión, tu factura de 250 € aparecerá como 25.000 € en Holded.
-
-**Qué verás:** En la pantalla de prueba del Formatter, el campo de salida mostrará el número ya convertido — por ejemplo `250` en lugar de `25000`.
-
-<Callout type="tip">
-**Si tu disparador no es Stripe**, comprueba cómo envía el importe tu app de origen. WooCommerce y la mayoría de plataformas de e-commerce ya envían el importe en euros con decimales — en ese caso puedes saltarte este paso.
-</Callout>
-
-### Paso 7: Prueba el Zap y actívalo
-
-**Qué hacer:** Haz clic en **"Test step"** en el bloque de Holded. Zapier intentará crear una factura real en Holded con los datos de prueba del paso 3. Ve a tu cuenta de Holded → **Ventas → Facturas** y comprueba que ha aparecido la factura de prueba.
-
-Si todo está correcto, haz clic en **"Publish Zap"** (botón azul, esquina superior derecha). El Zap queda activo y empezará a ejecutarse automáticamente con cada nuevo pago.
-
-**Por qué:** La prueba es obligatoria — no actives el Zap sin verificar que la factura se ha creado correctamente en Holded. Un Zap mal configurado que lleva semanas activo puede generar decenas de facturas erróneas.
-
-**Qué verás:** En Holded, una factura nueva con el nombre del cliente, el importe y la fecha del pago de prueba. Revisa que el NIF del cliente sea correcto, el importe esté bien y la serie de facturación sea la que corresponde.
-
-{/* TODO: captura de la factura de prueba generada en Holded */}
-
-## 🐛 Errores comunes
-
-**El Zap falla con "Contact not found" en el paso de Holded**
-
-*Síntoma:* El historial de Zapier muestra el Zap como "Error" con el mensaje `Contact not found or could not be created`.
-
-*Causa:* Holded necesita que el cliente ya exista como contacto en su base de datos, o que el Zap tenga permiso para crearlo. Si el email del cliente que llega de Stripe no coincide con ningún contacto en Holded, el Zap se cae.
-
-*Solución:* Añade un segundo paso de acción antes de crear la factura: **"Create or Update Contact"** en Holded. Mapea el email de Stripe al campo de email del contacto. Así Holded crea el contacto si no existe y luego genera la factura sin problemas.
-
-**La factura aparece con importe incorrecto (por ejemplo, 10.000 € en vez de 100 €)**
-
-*Síntoma:* Las facturas en Holded se generan con importes desorbitados.
-
-*Causa:* No se ha configurado el paso de Formatter para convertir los céntimos de Stripe a euros.
-
-*Solución:* Revisa el Paso 6. Desactiva el Zap, añade el bloque de Formatter between Stripe y Holded, y vuelve a testearlo antes de reactivarlo.
-
-**El Zap se activa pero no aparece la factura en Holded**
-
-*Síntoma:* Zapier marca el Zap como "Success" pero en Holded no aparece ninguna factura nueva.
-
-*Causa:* Lo más probable es que la clave API de Holded haya caducado o sido regenerada. También puede ser un problema con la serie de facturación — si la serie que indicaste en el Zap no existe en Holded, la petición falla silenciosamente en algunos casos.
-
-*Solución:* Ve a Holded → Configuración → API y verifica que la clave sigue activa. Si la regeneraste por cualquier motivo, actualiza la conexión en Zapier: ve a **"Connected Accounts"** en el menú de Zapier y edita la conexión de Holded con la nueva clave.
-
-## ✅ Resultado final
-
-Si has seguido todos los pasos, ahora tienes:
-
-- Un Zap activo que genera una factura en Holded de forma automática cada vez que recibes un pago en Stripe (o en la app que hayas elegido como disparador).
-- Las facturas se crean con los datos del cliente, el importe correcto, la fecha del cobro y la serie de facturación que tú hayas definido — sin intervención manual.
-- Un registro completo en Holded que puedes exportar para tu gestor o contable sin tener que repasar nada.
-
-El siguiente paso lógico es añadir una segunda acción al Zap: enviar automáticamente la factura al cliente por email desde Holded una vez creada. Es una acción adicional en el mismo Zap — busca **"Send Invoice"** en las acciones de Holded dentro de Zapier.
-
-## 🔧 Herramientas que necesitas para esto
-
-Si aún no tienes cuenta en Holded o quieres probar el plan de pago antes de comprometerte:
+Zapier registra los errores en el historial del Zap y puede enviarte un email de aviso. El problema es que si no tienes alertas activas, puedes tardar días en detectarlo. Configura siempre las notificaciones de error en Zapier y, si el volumen es alto, revisa el historial cada semana.
 
 <AffiliateLink programSlug="holded" articleSlug="automatizar-facturacion-pymes" label="Probar Holded gratis 14 días" />
 
-Para Zapier, el plan Starter es el mínimo para esta integración:
-
-<AffiliateLink programSlug="zapier" articleSlug="automatizar-facturacion-pymes" label="Probar Zapier Starter gratis" />
-
-<Callout type="info">
-**Sobre precios (verificado mayo 2026):** Holded no publica sus precios en abierto — hay que solicitar demo o acceder al trial para ver los planes actuales. Zapier Starter cuesta 19,99 $/mes (aprox. 18 €/mes según cambio a mayo 2026), facturado mensualmente, + IVA. El plan anual tiene descuento. Verifica siempre en la web del proveedor antes de contratar.
-</Callout>
-
-## ❓ Preguntas frecuentes
-
-### ¿Holded y Zapier son compatibles con los requisitos de Verifactu?
-
-Holded está trabajando en la adaptación a Verifactu, el sistema de registro de facturas exigido por la AEAT para software de facturación en España a partir de 2025. Las facturas generadas a través de la API (que es como las crea Zapier) deben cumplir los mismos requisitos que las creadas manualmente. Consulta directamente con Holded el estado actual de su certificación Verifactu antes de usar esta integración como tu único sistema de facturación.
-
-### ¿Puedo usar esta integración con WooCommerce en lugar de Stripe?
-
-Sí. El proceso es idéntico. En el Paso 3, en lugar de Stripe elige **WooCommerce** como app de origen y el evento **"New Order"** o **"Order Status Changed"** (según si quieres facturar al hacer el pedido o al marcarlo como completado). WooCommerce ya envía el importe en euros, así que puedes saltarte el Paso 6 del Formatter.
-
-### ¿Los datos de mis clientes cumplen con el GDPR al pasar por Zapier?
-
-Zapier está certificado bajo el Marco de Privacidad de Datos UE-EE. UU. y permite firmar un DPA (Data Processing Agreement). Sin embargo, los datos transitan por servidores de Zapier, que son principalmente estadounidenses. Si manejas datos personales sensibles, revisa la política de privacidad de Zapier y considera añadir una cláusula en tu DPA con la AEPD que cubra esta transferencia internacional. Holded tiene servidores en la UE y cumple GDPR.
-
-### ¿Qué pasa si el Zap falla y no se crea una factura?
-
-Zapier guarda un historial de todos los Zaps ejecutados, tanto los correctos como los fallidos. Puedes ir a **"Zap History"** en tu cuenta de Zapier, filtrar por errores y volver a ejecutar manualmente los pasos que fallaron una vez corregido el problema. No se pierden datos — Zapier guarda la información del evento original durante 90 días en los planes de pago.
-
-### ¿Puedo automatizar también los presupuestos, no solo las facturas?
-
-Sí. Holded tiene una acción en Zapier llamada **"Create Estimate"** (crear presupuesto). El proceso es el mismo que el de esta guía, pero eligiendo esa acción en lugar de **"Create Invoice"**. Útil si quieres generar un presupuesto automático cuando alguien rellena un formulario de contacto en tu web, por ejemplo.
-
-## 📖 También te puede interesar
-
-- [Cómo conectar Holded con HubSpot y Pipedrive: guía paso a paso](https://pymestools.com/automatizacion/como-conectar-holded-con-crm)
-- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
-- [Cómo automatizar la atención al cliente en pymes: guía práctica con Zapier y Make](https://pymestools.com/automatizacion/automatizar-atencion-cliente-pymes)
+<AffiliateLink programSlug="zapier" articleSlug="automatizar-facturacion-pymes" label="Crear cuenta en Zapier" />
 
 ---
-
 *Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*

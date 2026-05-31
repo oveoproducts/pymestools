@@ -1,128 +1,130 @@
 /**
  * add-internal-links.ts
- * Adds "También te puede interesar" section to all articles based on
- * shared tools and category. Also fixes trailing ``` fences left by
- * the article generator.
+ * Adds internal links between articles by detecting tool mentions.
+ * - Only links first mention per tool per article
+ * - Max 5 internal links per article
+ * - Skips headings, existing links, code blocks, and component lines
  *
  * Usage: npx tsx --env-file=.env.local scripts/add-internal-links.ts
  */
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
-import matter from 'gray-matter'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ARTICLES_DIR = path.join(__dirname, '..', 'content', 'articles')
-const SITE_URL = 'https://pymestools.com'
 
-interface ArticleMeta {
-  slug: string
-  title: string
-  tools: string[]
-  category: string
-  type: string
-  filePath: string
-  content: string
+// Tool name -> url, ordered longest first to avoid partial matches
+const TOOL_MAP: Array<{ name: string; url: string; slug: string }> = [
+  { name: 'Zoho CRM',       url: '/crm/review-zoho-crm',                   slug: 'review-zoho-crm' },
+  { name: 'HubSpot CRM',    url: '/crm/review-hubspot-crm',                slug: 'review-hubspot-crm' },
+  { name: 'HubSpot',        url: '/crm/review-hubspot-crm',                slug: 'review-hubspot-crm' },
+  { name: 'Pipedrive',      url: '/crm/review-pipedrive',                  slug: 'review-pipedrive' },
+  { name: 'Salesforce',     url: '/crm/review-salesforce-pymes',           slug: 'review-salesforce-pymes' },
+  { name: 'Freshsales',     url: '/crm/review-freshsales',                 slug: 'review-freshsales' },
+  { name: 'Copper CRM',     url: '/crm/review-copper-crm',                 slug: 'review-copper-crm' },
+  { name: 'ActiveCampaign', url: '/email-marketing/review-activecampaign', slug: 'review-activecampaign' },
+  { name: 'GetResponse',    url: '/email-marketing/review-getresponse',    slug: 'review-getresponse' },
+  { name: 'Mailchimp',      url: '/email-marketing/review-mailchimp',      slug: 'review-mailchimp' },
+  { name: 'Brevo',          url: '/email-marketing/review-brevo',          slug: 'review-brevo' },
+  { name: 'Acumbamail',     url: '/email-marketing/review-acumbamail',     slug: 'review-acumbamail' },
+  { name: 'Mailrelay',      url: '/email-marketing/review-mailrelay',      slug: 'review-mailrelay' },
+  { name: 'Factorial',      url: '/recursos-humanos/review-factorial',     slug: 'review-factorial' },
+  { name: 'Sesame HR',      url: '/recursos-humanos/review-sesame',        slug: 'review-sesame' },
+  { name: 'Sesame',         url: '/recursos-humanos/review-sesame',        slug: 'review-sesame' },
+  { name: 'Bizneo',         url: '/recursos-humanos/review-bizneo',        slug: 'review-bizneo' },
+  { name: 'Kenjo',          url: '/recursos-humanos/review-kenjo',         slug: 'review-kenjo' },
+  { name: 'Holded',         url: '/facturacion/review-holded',             slug: 'review-holded' },
+  { name: 'Anfix',          url: '/facturacion/review-anfix',              slug: 'review-anfix' },
+  { name: 'Contasimple',    url: '/facturacion/review-contasimple',        slug: 'review-contasimple' },
+  { name: 'Sage 50',        url: '/facturacion/review-sage-50',            slug: 'review-sage-50' },
+  { name: 'Factusol',       url: '/facturacion/review-factusol',           slug: 'review-factusol' },
+  { name: 'Zapier',         url: '/automatizacion/review-zapier',          slug: 'review-zapier' },
+  { name: 'Make',           url: '/automatizacion/review-make',            slug: 'review-make' },
+  { name: 'n8n',            url: '/automatizacion/review-n8n',             slug: 'review-n8n' },
+  { name: 'Notion',         url: '/gestion-proyectos/review-notion-pymes', slug: 'review-notion-pymes' },
+  { name: 'Trello',         url: '/gestion-proyectos/review-trello',       slug: 'review-trello' },
+  { name: 'Asana',          url: '/gestion-proyectos/review-asana',        slug: 'review-asana' },
+  { name: 'ClickUp',        url: '/gestion-proyectos/review-clickup',      slug: 'review-clickup' },
+  { name: 'Monday.com',     url: '/gestion-proyectos/review-monday-crm',   slug: 'review-monday-crm' },
+]
+
+function isSkippableLine(line: string): boolean {
+  const t = line.trim()
+  return (
+    t.startsWith('#') ||
+    t.startsWith('<') ||
+    t.startsWith('|') ||
+    t.startsWith('```') ||
+    t.startsWith('    ') ||
+    t.startsWith('`') ||
+    t.includes('](') ||
+    t.includes('programSlug') ||
+    t.includes('articleSlug')
+  )
 }
 
-function categoryToPath(category: string): string {
-  return category.replace(/_/g, '-')
-}
+function addInternalLinks(body: string, currentSlug: string): { text: string; count: number } {
+  const lines = body.split('\n')
+  let linksAdded = 0
+  const MAX_LINKS = 5
+  const linkedSlugs = new Set<string>()
 
-function score(a: ArticleMeta, b: ArticleMeta): number {
-  if (a.slug === b.slug) return -1
-  let s = 0
-  // Shared tools are the strongest signal
-  for (const tool of a.tools) {
-    if (b.tools.includes(tool)) s += 3
-  }
-  // Same category
-  if (a.category === b.category) s += 1
-  // Bonus for complementary types (review ↔ comparison/alternatives)
-  const complementary = new Set([
-    'review:comparison', 'review:alternatives', 'review:top-list',
-    'comparison:review', 'alternatives:review', 'top-list:review',
-  ])
-  if (complementary.has(`${a.type}:${b.type}`)) s += 1
-  return s
-}
+  const processed = lines.map(line => {
+    if (linksAdded >= MAX_LINKS || isSkippableLine(line)) return line
 
-function buildRelatedSection(current: ArticleMeta, all: ArticleMeta[]): string {
-  const scored = all
-    .filter((a) => a.slug !== current.slug)
-    .map((a) => ({ meta: a, s: score(current, a) }))
-    .filter((x) => x.s > 0)
-    .sort((a, b) => b.s - a.s)
-    .slice(0, 3)
+    let result = line
 
-  if (scored.length === 0) return ''
+    for (const tool of TOOL_MAP) {
+      if (linksAdded >= MAX_LINKS) break
+      if (tool.slug === currentSlug) continue
+      if (linkedSlugs.has(tool.slug)) continue
 
-  const links = scored
-    .map(({ meta }) => `- [${meta.title}](${SITE_URL}/${categoryToPath(meta.category)}/${meta.slug})`)
-    .join('\n')
+      const escaped = tool.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      const regex = new RegExp('\\b' + escaped + '\\b')
 
-  return `\n---\n\n## 📖 También te puede interesar\n\n${links}\n`
-}
+      if (regex.test(result) && !result.includes('[' + tool.name + ']')) {
+        result = result.replace(regex, '[' + tool.name + '](' + tool.url + ')')
+        linkedSlugs.add(tool.slug)
+        linksAdded++
+      }
+    }
 
-function insertRelatedSection(raw: string, section: string): string {
-  // Remove trailing ``` fence left by the generator
-  const cleaned = raw.replace(/\n?```\s*$/, '').trimEnd()
+    return result
+  })
 
-  // Find the disclosure line and insert before its preceding ---
-  const disclosureRegex = /(\n---\n\n?\*Este artículo contiene)/
-  const match = disclosureRegex.exec(cleaned)
-  if (match) {
-    const idx = match.index
-    return cleaned.slice(0, idx) + section + cleaned.slice(idx) + '\n'
-  }
-
-  // No disclosure found — append at end
-  return cleaned + section + '\n'
+  return { text: processed.join('\n'), count: linksAdded }
 }
 
 async function main() {
-  console.log('\n🔗  Adding internal links to articles\n')
+  const files = (await fs.readdir(ARTICLES_DIR)).filter((f: string) => f.endsWith('.mdx'))
+  let totalLinks = 0
+  let updatedFiles = 0
 
-  // 1. Read all articles
-  const files = (await fs.readdir(ARTICLES_DIR)).filter((f) => f.endsWith('.mdx'))
-  const articles: ArticleMeta[] = []
+  console.log('\n🔗  Añadiendo enlaces internos a ' + files.length + ' artículos\n')
 
   for (const file of files) {
     const filePath = path.join(ARTICLES_DIR, file)
+    const slug = file.replace('.mdx', '')
     const raw = await fs.readFile(filePath, 'utf-8')
-    const { data, content } = matter(raw)
-    articles.push({
-      slug: data.slug ?? file.replace('.mdx', ''),
-      title: data.title ?? file,
-      tools: Array.isArray(data.tools) ? data.tools : [],
-      category: data.category ?? 'herramientas-pymes',
-      type: data.type ?? 'article',
-      filePath,
-      content: raw,
-    })
-  }
 
-  console.log(`  Found ${articles.length} articles\n`)
+    const fmEnd = raw.indexOf('---', 3)
+    if (fmEnd === -1) continue
 
-  // 2. Process each article
-  let updated = 0
-  for (const article of articles) {
-    const section = buildRelatedSection(article, articles)
-    const newContent = insertRelatedSection(article.content, section)
+    const frontmatter = raw.slice(0, fmEnd + 3)
+    const body = raw.slice(fmEnd + 3)
 
-    if (newContent !== article.content) {
-      await fs.writeFile(article.filePath, newContent, 'utf-8')
-      console.log(`  ✅  ${article.slug}`)
-      updated++
-    } else {
-      console.log(`  ⏭️   ${article.slug} (sin cambios)`)
+    const { text: newBody, count } = addInternalLinks(body, slug)
+
+    if (count > 0) {
+      await fs.writeFile(filePath, frontmatter + newBody, 'utf-8')
+      console.log('  ✅  ' + slug + ' — ' + count + ' enlace(s)')
+      totalLinks += count
+      updatedFiles++
     }
   }
 
-  console.log(`\n✅  ${updated}/${articles.length} artículos actualizados\n`)
+  console.log('\n✅  ' + updatedFiles + ' artículos actualizados — ' + totalLinks + ' enlaces internos añadidos\n')
 }
 
-main().catch((err) => {
-  console.error('❌', err)
-  process.exit(1)
-})
+main().catch((err: Error) => { console.error('❌', err); process.exit(1) })

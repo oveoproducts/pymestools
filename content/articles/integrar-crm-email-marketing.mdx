@@ -1,221 +1,101 @@
 ---
 title: "Cómo integrar CRM con email marketing en tu pyme sin programar"
 slug: "integrar-crm-email-marketing"
+description: "Conecta tu CRM con tu herramienta de email marketing sin tocar código. Guía práctica con Zapier y Make para pymes españolas que quieren automatizar sin depender de un técnico."
 category: "automatizacion"
-description: "Guía paso a paso para conectar tu CRM con tu herramienta de email marketing usando Zapier o Make. Sin código, sin técnicos. Resultado en menos de 45 minutos."
 type: "how-to"
-publishedAt: null
-updatedAt: "2026-05-24T16:54:22.927Z"
 tools: ["zapier", "make"]
-keywords:
-  primary: "cómo integrar CRM con email marketing en pymes sin programar"
-  secondary:
-    - "conectar CRM email marketing sin código"
-    - "zapier make integración pymes españa"
-    - "automatizar email marketing CRM pyme"
-    - "integrar holded mailrelay zapier"
-    - "sincronizar contactos CRM newsletter"
+keywords_primary: "integrar CRM email marketing pyme"
 status: "draft"
 author: "Equipo PymesTools"
-readingTime: "9 min"
-qualityScore: null
+readingTime: 6
+publishedAt: null
+updatedAt: "2026-05-31T15:52:29.086Z"
 ---
 
-Al terminar esta guía, tendrás tu CRM y tu herramienta de email marketing sincronizados. Cada vez que añadas un contacto nuevo en el CRM — o que cambie su estado — esa información llegará automáticamente a tu lista de email. Sin exportar Excel. Sin copiar y pegar. Sin pedirle nada al informático.
+Tu CRM tiene los contactos. Tu herramienta de email marketing, las campañas. Pero los dos sistemas no se hablan — y acabas exportando Excel a mano cada vez que quieres enviar algo.
 
-El proceso completo lleva entre 30 y 45 minutos la primera vez. A partir de ahí, funciona solo.
+Hay una forma de conectarlos sin llamar a un programador. Y no cuesta lo que crees.
 
-## 🧰 Lo que necesitas
+<ScoreCard score={8.2} label="Puntuación PymesTools — flujo CRM + email sin código" />
 
-- **Una cuenta en Zapier o Make:** Ambas tienen plan gratuito con el que puedes hacer esta integración básica. Si tienes más de 3-4 automatizaciones activas, necesitarás un plan de pago. Los detallamos abajo.
-- **Acceso a tu CRM:** Holded, HubSpot, Pipedrive, Salesforce o cualquier CRM con API o integración nativa con Zapier/Make. La mayoría los tienen.
-- **Acceso a tu herramienta de email marketing:** Mailrelay, Acumbamail, GetResponse, ActiveCampaign, Mailchimp. Lo mismo — casi todas están en el catálogo de Zapier y Make.
-- **Una lista de contactos activa en email marketing:** No hace falta que esté llena. Puede tener 5 contactos de prueba.
-- **Nivel técnico necesario:** Cero programación. Si sabes hacer clic en menús desplegables y rellenar campos de texto, es suficiente. El único momento que puede complicarse es si tu CRM tiene campos personalizados muy específicos — pero también lo explicamos.
+## Lo bueno y lo malo
 
-<Callout type="info">
-**¿Holded + Mailrelay?** Es la combinación más habitual entre las pymes españolas que pasan por aquí. Los pasos de esta guía son iguales para cualquier combinación — los nombres de los campos cambian, la lógica es la misma.
-</Callout>
+<ProsCons
+  pros={[
+    "Se configura en menos de una hora si ya tienes las dos herramientas",
+    "No necesitas programar ni contratar a nadie externo",
+    "[Zapier](/automatizacion/review-zapier) y [Make](/automatizacion/review-make) tienen planes gratuitos para empezar a probar",
+    "Funciona con Holded, [HubSpot](/crm/review-hubspot-crm), [Mailchimp](/email-marketing/review-mailchimp), [Acumbamail](/email-marketing/review-acumbamail) y la mayoría de CRM españoles"
+  ]}
+  cons={[
+    "Los planes gratuitos de Zapier y Make tienen límites que una pyme activa supera rápido",
+    "Si tu CRM es muy antiguo o no tiene API, la integración puede no ser posible sin código"
+  ]}
+/>
 
-## 🤔 Por qué esto importa (y por qué no se hace solo)
+## El problema concreto que esto resuelve
 
-Tu CRM sabe cuándo un contacto pasa de "lead" a "cliente". Tu herramienta de email sabe a quién le has enviado qué y quién lo ha abierto.
+Imagina que Logística Bernal — una empresa de transportes de Murcia con 12 empleados — capta leads en su web. Esos leads van al CRM. Pero para añadirlos a la secuencia de bienvenida de Mailchimp, alguien los exporta a mano los lunes por la mañana.
 
-El problema es que no se hablan entre sí. Así que acabas enviando newsletters de captación a clientes que llevan dos años contigo. O no enviando nada a leads calientes porque no están en tu lista.
+Ese proceso manual tiene dos fallos: el retraso (un lead captado el martes no recibe nada hasta el lunes siguiente) y el error humano. Con una integración automática, el lead entra en el CRM y en segundos ya está en la lista de email correcto.
 
-La integración resuelve eso. Y no necesitas un plan Enterprise ni un desarrollador.
+Eso es exactamente lo que Zapier y Make permiten hacer.
 
-## ⚖️ Zapier vs. Make: cuál usar
+## Zapier vs Make: cuál elegir
 
-Antes de entrar en los pasos, vale la pena elegir bien la herramienta de integración. No son iguales.
+**Zapier** es más sencillo de configurar. Interfaz en inglés, pero muy visual. Funciona con más de 7.000 aplicaciones. Su punto débil es el precio: el plan gratuito solo permite 100 tareas al mes y los flujos más simples. El plan de pago empieza en 19,99 $/mes — unos 18 €/mes aproximadamente según el cambio a mayo 2026 — más IVA.
 
-| | **Zapier** | **Make** |
-|---|---|---|
-| **Curva de aprendizaje** | Más fácil — lógica lineal | Más visual pero algo más compleja al principio |
-| **Plan gratuito** | 100 tareas/mes, 5 Zaps activos | 1.000 operaciones/mes, automatizaciones ilimitadas |
-| **Precio de entrada (pago)** | Desde 19,99 $/mes (aprox. 18 €/mes + IVA según cambio mayo 2026) | Desde 9 $/mes (aprox. 8 €/mes + IVA según cambio mayo 2026) |
-| **Integraciones con CRMs españoles** | Holded, Pipedrive, HubSpot, Salesforce | Holded, Pipedrive, HubSpot, Salesforce |
-| **Integraciones con email marketing español** | Mailrelay, Acumbamail, GetResponse, ActiveCampaign | GetResponse, ActiveCampaign, Mailchimp (Mailrelay y Acumbamail: vía webhook) |
-| **GDPR** | Cumple — DPA disponible, servidores en EE.UU. con cláusulas SCCs | Cumple — DPA disponible, servidores en UE disponibles |
-| **Para quién** | Quien quiere montarlo en 20 minutos sin complicaciones | Quien quiere flujos más complejos o tiene muchas automatizaciones |
-
-**Precios consultados en mayo 2026. Verifica siempre en zapier.com y make.com antes de contratar.**
-
-<Callout type="warning">
-**Ojo con el GDPR:** Cuando conectas CRM y email marketing a través de Zapier o Make, estás transfiriendo datos de contacto (nombre, email, empresa) a través de un tercero. Asegúrate de que tu política de privacidad y tu DPA con la AEPD contemplan este flujo. Make ofrece procesamiento en servidores europeos — Zapier los tiene en EE.UU. con cláusulas SCCs. Si tienes dudas, consúltalo con tu asesor de protección de datos.
-</Callout>
-
-## 🪜 Pasos
-
-Esta guía usa **Zapier** como herramienta de integración, **Holded** como CRM y **Mailrelay** como email marketing. Si usas otra combinación, los pasos son idénticos — solo cambian los nombres de los campos y las pantallas de autorización.
-
-Al final de cada paso indicamos cómo adaptar si usas Make.
-
-### Paso 1: Crea una cuenta en Zapier (o entra si ya tienes)
-
-**Qué hacer:** Ve a zapier.com y crea una cuenta gratuita con tu email de empresa. Si ya tienes cuenta, entra directamente.
-
-**Por qué:** Zapier es el puente entre tus dos herramientas. Sin cuenta, no hay puente.
-
-**Qué verás:** El dashboard principal de Zapier, con un botón grande azul `"+ Create"` en la parte superior izquierda y un listado de tus Zaps activos (vacío si es nueva).
-
-**Si usas Make:** El proceso es equivalente — make.com, crea cuenta, llegarás a un panel llamado `"Scenarios"`.
-
-### Paso 2: Empieza un Zap nuevo
-
-**Qué hacer:** Haz clic en `"+ Create"` y selecciona `"Zaps"`. Se abrirá el editor de Zaps con dos bloques: `"Trigger"` (disparador) y `"Action"` (acción).
-
-**Por qué:** Todo en Zapier funciona con esta lógica: algo pasa en la herramienta A (trigger) y entonces se hace algo en la herramienta B (action). En nuestro caso: se añade un contacto en el CRM → se añade a la lista de email.
-
-**Qué verás:** Un canvas con dos bloques grises. El primero dice `"Trigger"` y el segundo `"Action"`. Haz clic en `"Trigger"` para empezar.
-
-**Si usas Make:** En Make esto se llama `"Scenario"`. Haz clic en `"Create a new scenario"` y verás un círculo central con un `"+"`. Haz clic ahí para añadir el primer módulo (el trigger).
-
-### Paso 3: Elige Holded como disparador
-
-**Qué hacer:** En el buscador de aplicaciones del bloque Trigger, escribe `"Holded"`. Selecciona la app. Luego elige el evento `"New Contact"` (nuevo contacto) en el desplegable `"Event"`.
-
-**Por qué:** Le estás diciendo a Zapier que vigile Holded. Cada vez que aparezca un contacto nuevo, el Zap se activará.
-
-**Qué verás:** Zapier te pedirá que conectes tu cuenta de Holded. Haz clic en `"Sign in to Holded"` — se abrirá una ventana emergente donde introduces tu API key de Holded (la encuentras en Holded → Configuración → API).
-
-**Nota:** Si no quieres disparar el Zap con contactos nuevos sino cuando un contacto cambia de etapa (de lead a cliente, por ejemplo), busca el evento `"Updated Contact"` o `"New Deal Stage"` según lo que ofrezca tu CRM. Holded tiene opciones limitadas en este sentido — Pipedrive y HubSpot tienen más granularidad.
-
-### Paso 4: Prueba el disparador con un contacto real
-
-**Qué hacer:** Zapier te pedirá que hagas una prueba. Haz clic en `"Test trigger"`. Zapier buscará los últimos contactos creados en Holded y mostrará uno como ejemplo.
-
-**Por qué:** Necesitas ver los campos reales de tu CRM para poder mapearlos correctamente en el siguiente paso. Si no tienes ningún contacto en Holded todavía, crea uno de prueba (nombre ficticio, email de prueba) antes de hacer este paso.
-
-**Qué verás:** Una lista de campos con los datos del contacto: `"name"`, `"email"`, `"phone"`, `"company"`, etc. Apunta mentalmente cuáles tienes — los usarás en el paso 6.
-
-### Paso 5: Añade la acción — Mailrelay
-
-**Qué hacer:** Haz clic en el bloque `"Action"`. En el buscador, escribe `"Mailrelay"`. Selecciona la app y elige el evento `"Add Subscriber to List"` (añadir suscriptor a lista).
-
-**Por qué:** Esta es la acción que se ejecutará cada vez que se active el disparador. El contacto nuevo en Holded se convertirá en suscriptor en Mailrelay.
-
-**Qué verás:** Zapier te pedirá que conectes Mailrelay con tu API key (en Mailrelay: Mi cuenta → API). Una vez conectado, aparecerá un formulario con los campos a rellenar.
-
-**Nota:** Si usas Acumbamail en lugar de Mailrelay, búscala en el catálogo de Zapier — tiene integración nativa con el evento equivalente `"Subscribe Contact"`. Si usas GetResponse o ActiveCampaign, también están disponibles de forma nativa.
-
-### Paso 6: Mapea los campos entre Holded y Mailrelay
-
-**Qué hacer:** Rellena el formulario de la acción. Para el campo `"Email"` de Mailrelay, selecciona el campo `"email"` que vino de Holded en el paso anterior. Para `"Name"`, selecciona `"name"`. Para la lista de destino, elige la lista correcta en tu cuenta de Mailrelay desde el desplegable.
-
-**Por qué:** Zapier no sabe solo qué dato va a qué campo. Tú le dices que el email del CRM es el email del suscriptor, que el nombre del CRM es el nombre del suscriptor, etc.
-
-**Qué verás:** Cada campo tiene un botón con un icono de rayo que abre un selector de campos del trigger. Al hacer clic, aparecen todos los campos disponibles de Holded para que los selecciones.
+**Make** (antes Integromat) tiene un plan gratuito más generoso: 1.000 operaciones al mes. La interfaz es más visual y permite flujos más complejos con condiciones y filtros. Tiene soporte parcial en español. El plan de pago arranca en 9 €/mes + IVA.
 
 <Callout type="tip">
-**Campos personalizados:** Si en Holded tienes campos propios (sector, tamaño de empresa, comercial asignado) y quieres usarlos como tags en Mailrelay para segmentar, este es el momento de mapearlos. En Mailrelay, busca el campo `"Tags"` en la acción y asigna los valores del CRM que quieras usar como etiquetas.
+Si estás empezando y solo necesitas un flujo sencillo (nuevo contacto en CRM → añadir a lista de email), empieza con Make. El plan gratuito aguanta bien para una pyme con menos de 300 leads al mes.
 </Callout>
 
-### Paso 7: Prueba la integración completa y actívala
+Para flujos simples, los dos hacen lo mismo. Make gana en precio. Zapier gana en facilidad si tu equipo es poco técnico.
 
-**Qué hacer:** Haz clic en `"Test action"`. Zapier ejecutará la acción de verdad: añadirá el contacto de prueba a tu lista de Mailrelay. Entra en Mailrelay y confirma que el contacto ha aparecido. Si todo está bien, haz clic en `"Publish"` para activar el Zap.
+## Cómo montarlo paso a paso
 
-**Por qué:** La prueba usa datos reales. Si el contacto aparece en Mailrelay con los campos correctos, el Zap funciona. Si no aparece, hay un error en el mapeo o en las credenciales.
+Estos son los pasos para conectar, por ejemplo, Holded con Acumbamail usando Make. El proceso con Zapier es casi idéntico.
 
-**Qué verás:** Zapier mostrará un mensaje verde `"Test was successful"`. En Mailrelay, el contacto de prueba estará en la lista que elegiste.
+1. Crea cuenta gratuita en Make (make.com)
+2. Crea un "Escenario" nuevo
+3. Elige el trigger: "Nuevo contacto en Holded"
+4. Elige la acción: "Añadir suscriptor en Acumbamail"
+5. Mapea los campos (nombre, email, empresa)
 
-## 🚨 Errores comunes
+La primera vez tarda unos 45 minutos. La segunda, 15.
 
-**El Zap se activa pero el contacto no aparece en la lista de email**
+Lo que necesitas tener a mano: las claves API de tu CRM y de tu herramienta de email. Ambas se encuentran en la configuración de cada plataforma, en el apartado "Integraciones" o "API".
 
-*Síntoma:* El historial de Zapier muestra `"Success"` pero el contacto no está en Mailrelay.
+## Planes y precios
 
-*Causa:* El contacto de Holded no tiene email, o tiene un email con formato incorrecto (espacios, tildes). Mailrelay rechaza el suscriptor en silencio si el email no es válido.
+| Herramienta | Plan gratuito | Plan de pago desde | Límite gratuito |
+|---|---|---|---|
+| Make | Sí | 9 €/mes + IVA | 1.000 operaciones/mes |
+| Zapier | Sí | ~18 €/mes + IVA* | 100 tareas/mes |
 
-*Solución:* En el historial de Zapier (`"Zap History"` en el menú lateral), haz clic en la tarea fallida y revisa el detalle. Si pone `"invalid email"`, el problema está en el dato origen. Revisa el contacto en Holded y corrige el email.
+*Zapier cobra en dólares. Precio aproximado a mayo 2026 según cambio USD/EUR. Verifica siempre en zapier.com.
 
-**Zapier no encuentra Holded o dice que no tiene permisos**
+Precios consultados en mayo 2026. Verifica siempre en la web del proveedor.
 
-*Síntoma:* Al conectar Holded, Zapier da error de autenticación o la conexión aparece como inválida.
+## Preguntas frecuentes
 
-*Causa:* La API key de Holded caduca o se regenera si cambias la contraseña de tu cuenta. También ocurre si el usuario de Holded no tiene permisos de administrador.
+### ¿Funciona con Holded y Mailchimp?
 
-*Solución:* Ve a Holded → Configuración → API, genera una nueva API key y actualiza la conexión en Zapier desde `"My Apps"` → `"Holded"` → `"Reconnect"`.
+Sí. Tanto Zapier como Make tienen conectores nativos para Holded y Mailchimp. No necesitas tocar la API directamente. El flujo más común — nuevo contacto en Holded → añadir a lista en Mailchimp — se monta en menos de media hora.
 
-**El Zap se dispara con contactos duplicados**
+### ¿Es legal conectar estos datos entre plataformas bajo GDPR?
 
-*Síntoma:* El mismo contacto aparece varias veces en tu lista de email marketing.
+Depende de cómo hayas recogido el consentimiento. Si el contacto dio su permiso explícito para recibir comunicaciones comerciales, puedes moverlo a tu herramienta de email sin problema. Make y Zapier actúan como encargados de tratamiento — ambos firman DPA bajo GDPR. Revisa que tu CRM y tu plataforma de email también lo hagan. Si tienes dudas, consulta con tu asesor de protección de datos.
 
-*Causa:* Holded dispara el evento `"New Contact"` cada vez que se modifica un contacto importado en bloque, no solo cuando se crea.
+### ¿Qué pasa si supero el límite del plan gratuito?
 
-*Solución:* En Mailrelay y la mayoría de herramientas de email, si el email ya existe en la lista, el sistema actualiza el contacto en lugar de duplicarlo. Si sigues viendo duplicados, activa la opción `"Update subscriber if exists"` en la acción de Zapier (si está disponible para tu combinación).
-
-## ✅ Resultado final
-
-Si has seguido todos los pasos, ahora tienes:
-
-- **Una integración activa** entre tu CRM y tu herramienta de email marketing que funciona en tiempo real.
-- **Cada contacto nuevo** que entres en Holded aparecerá automáticamente en tu lista de Mailrelay, con los campos correctos y las etiquetas que hayas configurado.
-- **Cero trabajo manual** de exportar CSV, importar listas ni actualizar contactos a mano.
-
-El siguiente paso lógico es añadir una segunda acción: que cuando un contacto pase a estado `"Cliente"` en tu CRM, se mueva automáticamente a una lista diferente en email marketing (la de clientes, no la de leads). La lógica es idéntica — solo cambia el trigger y la lista de destino.
-
-## ❓ Preguntas frecuentes
-
-### ¿Funciona esto con cualquier CRM y cualquier herramienta de email?
-
-Depende de si ambas herramientas están en el catálogo de Zapier o Make. Casi todos los CRMs y herramientas de email marketing populares están. Si tu CRM es muy específico del sector (ERP industrial, software de clínicas, etc.) puede que no esté — en ese caso, Make permite conexiones vía webhook que son algo más técnicas pero no requieren programar.
-
-### ¿El plan gratuito de Zapier es suficiente para una pyme?
-
-Para empezar, sí. El plan gratuito permite 5 Zaps activos y 100 tareas al mes. Si tienes una pyme con movimiento moderado de contactos (menos de 100 nuevos contactos al mes), el plan gratuito aguanta. En cuanto superes ese volumen o quieras más de 5 automatizaciones activas, necesitarás el plan de pago — desde 19,99 $/mes (aprox. 18 €/mes + IVA según cambio mayo 2026).
-
-### ¿Esto cumple con el GDPR y la LOPDGDD?
-
-La integración técnica en sí no incumple nada. Lo que importa es que el consentimiento del contacto para recibir emails esté correctamente recogido y documentado antes de que llegue a tu lista. Si captas contactos a través de un formulario web con casilla de consentimiento, estás cubierto. Si los introduces manualmente en el CRM sin consentimiento explícito para email marketing, tienes un problema que esta guía no resuelve. Revisa tu política de privacidad con tu asesor.
-
-### ¿Puedo hacer lo mismo al revés — que los suscriptores de email pasen al CRM?
-
-Sí, y es igual de útil. El proceso es idéntico pero con el trigger en la herramienta de email (nuevo suscriptor) y la acción en el CRM (crear contacto). Muy útil si captas leads a través de formularios en newsletters o landing pages y quieres que entren automáticamente en tu pipeline de ventas.
-
-### ¿Make es mejor que Zapier para esto?
-
-Para esta integración concreta, Zapier es más rápido de configurar. Make vale la pena si quieres lógica más compleja — por ejemplo: `"si el contacto tiene más de 10 empleados Y es del sector industrial, añádelo a la lista X; si no, a la lista Y"`. Esa bifurcación condicional es más sencilla en Make. Para una sincronización lineal, Zapier gana en velocidad de configuración.
-
-## 🛠️ Herramientas que facilitan esto
-
-Si aún no tienes cuenta en Zapier:
-
-<AffiliateLink programSlug="zapier" articleSlug="integrar-crm-email-marketing" label="Probar Zapier gratis" />
-
-Si prefieres empezar con Make (mejor plan gratuito y servidores europeos):
+Make pausa los escenarios hasta el siguiente ciclo mensual. Zapier desactiva los Zaps. En ambos casos te avisan por email antes de llegar al límite. Si tu volumen crece, el salto al plan de pago de Make (9 €/mes + IVA) compensa desde el primer mes.
 
 <AffiliateLink programSlug="make" articleSlug="integrar-crm-email-marketing" label="Probar Make gratis" />
 
-{/* TODO: captura del editor de Zapier con la integración Holded → Mailrelay configurada */}
-
-{/* TODO: captura de la página de precios de Zapier — mayo 2026 */}
-
-## 📖 También te puede interesar
-
-- [5 alternativas gratuitas a Zapier para pymes en España](https://pymestools.com/automatizacion/alternativas-zapier-gratis)
-- [Cómo automatizar la atención al cliente en pymes: guía práctica con Zapier y Make](https://pymestools.com/automatizacion/automatizar-atencion-cliente-pymes)
-- [Cómo automatizar redes sociales para pymes: guía con Zapier y Make](https://pymestools.com/automatizacion/automatizar-redes-sociales-pymes)
+<AffiliateLink programSlug="zapier" articleSlug="integrar-crm-email-marketing" label="Probar Zapier gratis" />
 
 ---
 
