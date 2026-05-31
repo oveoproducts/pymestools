@@ -1,0 +1,95 @@
+---
+title: Cómo integrar tu CRM con WhatsApp
+slug: integrar-crm-whatsapp
+description: >-
+  Conecta WhatsApp con tu CRM en menos de una hora para registrar
+  conversaciones, automatizar seguimientos y no perder ningún cliente potencial.
+category: automatizacion
+type: tutorial
+tools:
+  - zapier
+  - hubspot
+  - pipedrive
+keywords_primary: integrar crm con whatsapp
+status: draft
+author: Equipo PymesTools
+readingTime: 5
+publishedAt: null
+updatedAt: '2026-05-31T18:19:29.190Z'
+meta_title: Cómo integrar tu CRM con WhatsApp (2026)
+---
+
+Si recibes consultas por WhatsApp pero luego las gestionas en el CRM a mano, estás duplicando trabajo. Y lo que es peor: perdiendo contexto cada vez que un cliente vuelve a escribir.
+
+En este tutorial conectas WhatsApp con [HubSpot](/crm/review-hubspot-crm) o [Pipedrive](/crm/review-pipedrive) usando [Zapier](/automatizacion/review-zapier). Tiempo estimado: 45 minutos si ya tienes los accesos. Sin código.
+
+## Paso 1: Elige tu punto de entrada de WhatsApp
+
+WhatsApp no tiene una API pública directa para integraciones de terceros. Para conectarlo con un CRM necesitas una de estas dos opciones:
+
+**WhatsApp Business API (vía proveedor oficial):** Es la opción robusta. Proveedores como 360dialog o Callbell te dan acceso a la API y se conectan con Zapier. Tienen coste mensual — desde 49 €/mes aproximadamente, aunque los precios varían según proveedor y volumen. Verifica siempre en su web oficial.
+
+**Extensiones de Chrome para WhatsApp Web:** Herramientas como Wazzup o WAPlus capturan mensajes desde el navegador. Son más baratas pero menos fiables — dependen de que tengas WhatsApp Web abierto.
+
+Para una pyme con tráfico de mensajes diario, la API es la opción seria. Las extensiones valen para empezar a probar.
+
+<Callout type="warning">
+WhatsApp no permite integraciones directas sin pasar por un proveedor oficial de la API (Business Solution Provider). Soluciones que prometen conectar WhatsApp "sin API" suelen violar los términos de servicio y pueden resultar en el bloqueo de tu número.
+</Callout>
+
+## Paso 2: Configura el disparador en Zapier
+
+Con el proveedor de API activo, entra en Zapier y crea un nuevo Zap.
+
+Elige como **disparador (Trigger)** la aplicación de tu proveedor de WhatsApp. Si usas 360dialog, busca su integración nativa. Si no la tiene, usa el disparador **Webhooks by Zapier** y pega la URL que te da el proveedor.
+
+El evento que te interesa es "Mensaje entrante recibido". Haz una prueba real: envía un WhatsApp a tu número de empresa y comprueba que Zapier lo captura con los datos correctos — número de teléfono del remitente, texto del mensaje y fecha.
+
+Si el test no devuelve datos, revisa que el webhook esté activado en el panel de tu proveedor. Es el error más habitual en este paso.
+
+## Paso 3: Conecta con tu CRM
+
+Ahora añade la **acción (Action)** del Zap. Elige HubSpot o Pipedrive según tu caso.
+
+**Con HubSpot:**
+Usa la acción "Create or Update Contact". Mapea el número de teléfono del mensaje al campo de teléfono del contacto. Si el contacto ya existe, HubSpot lo actualiza; si no, lo crea. Añade una segunda acción "Create Note" para guardar el texto del mensaje en la línea de tiempo del contacto.
+
+**Con Pipedrive:**
+La lógica es la misma: busca primero el contacto con "Find Person", luego usa "Create Note" o "Create Activity" para registrar la conversación. Pipedrive no tiene una acción nativa de "buscar o crear" tan directa como HubSpot — puede que necesites un paso intermedio con "Filter by Zapier" para gestionar contactos nuevos.
+
+Activa el Zap y prueba de nuevo con un mensaje real. Comprueba en tu CRM que el contacto y la nota aparecen correctamente.
+
+<Callout type="tip">
+Añade una etiqueta o campo personalizado en el CRM para marcar los contactos que llegan por WhatsApp. Te permitirá filtrarlos después y medir cuántas oportunidades entran por ese canal.
+</Callout>
+
+## Herramientas que facilitan esto
+
+**Zapier** es el pegamento que une WhatsApp con tu CRM. El plan de pago empieza en 19,99 $/mes (aprox. 18 €/mes según cambio a mayo 2026) + IVA. Existe un plan gratuito limitado a 100 tareas/mes — suficiente para probar, no para producción.
+
+<AffiliateLink programSlug="zapier" articleSlug="integrar-crm-whatsapp" label="Probar Zapier gratis" />
+
+**HubSpot** tiene un CRM gratuito que ya incluye los campos y la API necesarios para este flujo. Si recibes más de 200 mensajes al mes, el plan Starter (desde 15 €/mes por usuario + IVA, precio verificado en hubspot.com en mayo 2026) añade automatizaciones que ahorran pasos manuales.
+
+<AffiliateLink programSlug="hubspot" articleSlug="integrar-crm-whatsapp" label="Probar HubSpot gratis" />
+
+**Pipedrive** es una alternativa más sencilla si tu equipo ya lo usa. Desde 14 €/mes por usuario + IVA (plan Essential, precio verificado en pipedrive.com en mayo 2026). Su integración con Zapier es sólida y la curva de aprendizaje es menor que HubSpot para equipos pequeños.
+
+*Precios consultados en mayo 2026. Verifica siempre en la web del proveedor antes de contratar.*
+
+## Preguntas frecuentes
+
+### ¿Esta integración cumple con el GDPR?
+
+Sí, si lo configuras correctamente. Los mensajes de WhatsApp contienen datos personales — número de teléfono y conversaciones. Al guardarlos en tu CRM, ese CRM pasa a ser un encargado del tratamiento. Asegúrate de tener firmado el DPA (Data Processing Agreement) con HubSpot o Pipedrive, y de informar a tus contactos en tu política de privacidad de que gestionas comunicaciones por WhatsApp. La AEPD ha sancionado a empresas por no tener esta base legal clara.
+
+### ¿Funciona también para enviar mensajes desde el CRM hacia WhatsApp?
+
+Sí, pero requiere más pasos. El flujo inverso — que un comercial envíe un WhatsApp desde HubSpot o Pipedrive — necesita que tu proveedor de API soporte envío de mensajes salientes, y que configures un Zap con disparador en el CRM. HubSpot tiene integraciones nativas con algunos proveedores de WhatsApp Business en su marketplace. Pipedrive depende más de Zapier o de herramientas como Callbell.
+
+### ¿Qué pasa si el cliente escribe desde un número que no está en el CRM?
+
+Con la configuración de este tutorial, Zapier crea el contacto nuevo automáticamente con el número de teléfono como identificador. En HubSpot quedará como contacto sin nombre hasta que alguien lo complete o el cliente lo facilite en la conversación. Es recomendable revisar estos contactos nuevos una vez al día para enriquecerlos — o configurar un Zap adicional que notifique al equipo comercial cuando entra un número desconocido.
+
+---
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*

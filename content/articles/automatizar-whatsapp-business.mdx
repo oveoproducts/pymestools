@@ -1,0 +1,92 @@
+---
+title: Cómo automatizar WhatsApp Business para pymes
+slug: automatizar-whatsapp-business
+description: >-
+  Aprende a automatizar WhatsApp Business con Zapier y Make para responder
+  clientes, enviar confirmaciones y ahorrar horas de gestión manual.
+category: automatizacion
+type: tutorial
+tools:
+  - zapier
+  - make
+keywords_primary: automatizar whatsapp business pymes
+status: draft
+author: Equipo PymesTools
+readingTime: 5
+publishedAt: null
+updatedAt: '2026-05-31T18:18:47.745Z'
+meta_title: Cómo automatizar WhatsApp Business para pymes (2026)
+---
+
+Si tienes WhatsApp Business y lo gestionas a mano, estás perdiendo tiempo que no tienes. Responder confirmaciones de cita, avisar de pedidos pendientes o mandar presupuestos uno a uno puede automatizarse en menos de una tarde.
+
+Este tutorial te explica cómo hacerlo paso a paso, sin conocimientos técnicos y con herramientas que ya existen para pymes españolas.
+
+## Paso 1: Elige la API correcta de WhatsApp
+
+WhatsApp Business tiene dos versiones: la app gratuita y la API oficial.
+
+La app gratuita no se puede automatizar de forma nativa — cualquier solución que veas para hackearla viola los términos de servicio de Meta y arriesga el bloqueo de tu número. Para automatizar de verdad, necesitas la **WhatsApp Business API**, que es gratuita pero requiere aprobación de Meta y un número de teléfono dedicado.
+
+Los proveedores de acceso a la API más usados en España son **360dialog**, **Twilio** y **WATI**. El coste depende del volumen de mensajes — Meta cobra por conversación iniciada por la empresa (no por la del cliente). A mayo de 2026, las conversaciones de marketing rondan los **0,0735 €** y las de utilidad **0,0200 €**, aunque esto varía según el país de destino. Verifica el precio actualizado en [business.whatsapp.com](https://business.whatsapp.com).
+
+<Callout type="warning">
+**Ojo con las soluciones "gratis" que automatizan la app de WhatsApp Business.** Funcionan hasta que Meta detecta el tráfico automatizado y bloquea el número. Una vez bloqueado, perderás el historial de conversaciones y el número queda inutilizado para WhatsApp.
+</Callout>
+
+## Paso 2: Conecta la API con Zapier o Make
+
+Con la API activa, el siguiente paso es conectarla a tu herramienta de automatización.
+
+**Con [Zapier](/automatizacion/review-zapier):** busca la integración de tu proveedor de WhatsApp API (por ejemplo, "360dialog" o "Twilio" tienen módulos nativos en Zapier). Desde ahí puedes crear Zaps que disparen mensajes de WhatsApp cuando ocurra algo en otra app — un formulario rellenado en Typeform, un pedido nuevo en WooCommerce, una fila nueva en Google Sheets.
+
+**Con [Make](/automatizacion/review-make):** el flujo es similar pero más visual y flexible para lógicas complejas. Make permite ramificaciones condicionales — por ejemplo: si el cliente ha comprado más de dos veces, envía un mensaje distinto al que enviarías a un cliente nuevo. Para una pyme con procesos algo elaborados, Make suele ser más potente.
+
+Los planes de entrada de ambas herramientas cubren volúmenes razonables para una pyme de hasta 10 personas:
+
+- **Zapier:** desde 19,99 $/mes (aprox. 18 €/mes según cambio a mayo 2026) + IVA para automatizaciones multipasos.
+- **Make:** desde 9 $/mes (aprox. 8 €/mes según cambio a mayo 2026) + IVA.
+
+Precios consultados en mayo 2026. Verifica siempre en la web del proveedor.
+
+<AffiliateLink programSlug="zapier" articleSlug="automatizar-whatsapp-business" label="Probar Zapier gratis" />
+
+## Paso 3: Configura tus primeras automatizaciones
+
+Empieza por los casos más repetitivos. Estos son los tres que más tiempo ahorran a una pyme de servicios:
+
+- **Confirmación de cita:** cuando un cliente rellena tu formulario de reserva (Calendly, Google Forms, Acuity), se dispara un mensaje de WhatsApp con los detalles.
+- **Aviso de presupuesto enviado:** cuando marcas un presupuesto como "enviado" en tu CRM o en [Holded](/facturacion/review-holded), el cliente recibe un WhatsApp avisando de que tiene el documento en su correo.
+- **Recordatorio de pago pendiente:** 48 horas antes del vencimiento de una factura, el cliente recibe un recordatorio automático.
+
+En Make, cada uno de estos flujos se construye en menos de 30 minutos si tienes los accesos configurados. En Zapier, el editor guiado es algo más intuitivo para quien nunca ha usado automatizaciones.
+
+<Callout type="tip">
+**Empieza con un solo flujo y pruébalo durante una semana antes de montar el siguiente.** El error más habitual es construir cinco automatizaciones a la vez, que alguna falle silenciosamente y no enterarte hasta que un cliente te lo diga.
+</Callout>
+
+## Herramientas que facilitan esto
+
+Para pymes que no quieren gestionar la API directamente, **WATI** y **Respond.io** ofrecen una capa intermedia: ya incluyen el acceso a la API y tienen integraciones nativas con Zapier y Make. Son más caras que contratar la API directa, pero te ahorran la parte técnica de la configuración inicial.
+
+Si ya usas un CRM como [HubSpot](/crm/review-hubspot-crm) o [ActiveCampaign](/email-marketing/review-activecampaign), revisa si tienen integración directa con WhatsApp antes de añadir otra herramienta al stack — a veces el flujo más limpio ya lo tienes delante.
+
+<AffiliateLink programSlug="zapier" articleSlug="automatizar-whatsapp-business" label="Empezar con Zapier gratis" />
+
+## Preguntas frecuentes
+
+### ¿Necesito un número nuevo para la API de WhatsApp?
+
+Sí. El número que uses para la API no puede usarse simultáneamente en la app de WhatsApp Business. Muchas pymes usan un número de VoIP o una línea adicional del móvil de empresa para esto.
+
+### ¿Cumple esto con el RGPD y la LOPDGDD?
+
+Enviar mensajes de WhatsApp a clientes requiere consentimiento explícito previo, igual que el email marketing. Guarda registro de cuándo y cómo obtuviste ese consentimiento. Los datos de conversación gestionados a través de proveedores como 360dialog o Twilio se procesan en servidores que pueden estar fuera de la UE — revisa el DPA de tu proveedor y adáptalo a tu registro de actividades de tratamiento ante la AEPD.
+
+### ¿Cuánto cuesta en total montar esto para una pyme pequeña?
+
+Depende del volumen. Una pyme que envía 200-300 mensajes al mes puede estar en un coste total de **20-35 €/mes** sumando el acceso a la API, el proveedor intermedio y la herramienta de automatización. Es orientativo — los precios de Meta cambian y el proveedor de API tiene su propio margen. Pide presupuesto específico a tu proveedor antes de comprometerte.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*

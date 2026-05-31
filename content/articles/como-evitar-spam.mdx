@@ -1,0 +1,103 @@
+---
+title: Cómo evitar que tus emails lleguen a spam
+slug: como-evitar-spam
+description: >-
+  Configura SPF, DKIM y DMARC, limpia tu lista y elige bien la herramienta de
+  envío para que tus emails lleguen a la bandeja de entrada, no a la carpeta de
+  spam.
+category: email-marketing
+type: tutorial
+tools:
+  - activecampaign
+  - getresponse
+  - brevo
+keywords_primary: cómo evitar que mis emails lleguen a spam
+status: draft
+author: Equipo PymesTools
+readingTime: 6
+publishedAt: null
+updatedAt: '2026-05-31T18:07:40.116Z'
+meta_title: Cómo evitar que tus emails lleguen a spam (2026)
+---
+
+Si mandas una campaña a 500 contactos y la mitad acaba en spam, estás perdiendo dinero y reputación al mismo tiempo. En 20 minutos puedes corregir los errores más comunes que mandan tus emails directamente a la papelera.
+
+## Paso 1: Configura SPF, DKIM y DMARC en tu dominio
+
+Los servidores de Gmail, Outlook y otros verifican si tienes permiso para enviar emails desde tu dominio. Si no tienes configurados estos tres registros DNS, tu email llega marcado como sospechoso antes de que nadie lo abra.
+
+**SPF** le dice al mundo qué servidores pueden enviar en nombre de tu dominio.
+**DKIM** firma cada email con una clave criptográfica para demostrar que no ha sido manipulado.
+**DMARC** indica qué hacer si un email falla esas verificaciones: ignorarlo, ponerlo en cuarentena o rechazarlo.
+
+Para configurarlos, entra en el panel de tu dominio (Nominalia, Arsys, 1&1... donde lo tengas registrado) y añade los registros TXT que te facilite tu herramienta de email marketing. [ActiveCampaign](/email-marketing/review-activecampaign), [GetResponse](/email-marketing/review-getresponse) y [Brevo](/email-marketing/review-brevo) los generan automáticamente desde su panel de configuración de dominios. Tarda menos de 10 minutos.
+
+<Callout type="warning">
+**Si usas Gmail con tu dominio (@tuempresa.com)**, Google Workspace también requiere que configures DKIM desde su consola de administración. Sin esto, hasta tus emails transaccionales pueden acabar en spam.
+</Callout>
+
+## Paso 2: Cuida la calidad de tu lista de contactos
+
+Una lista con muchos rebotes o contactos que nunca abren tus emails destruye tu reputación de envío. Los proveedores de email (Google, Microsoft) rastrean estas señales y penalizan a los remitentes con tasas de interacción bajas.
+
+Haz esto al menos una vez cada 3 meses:
+
+- Elimina los emails que rebotan de forma permanente (hard bounces)
+- Retira a quienes llevan 6 meses sin abrir un solo email
+- Nunca compres listas de contactos — contamina tu reputación y en España incumple la LOPDGDD
+- Confirma siempre el consentimiento con doble opt-in
+
+Una lista de 300 contactos activos funciona mucho mejor que una de 3.000 contactos inactivos.
+
+## Paso 3: Revisa el contenido antes de enviar
+
+El filtro de spam no solo mira quién envía. También analiza qué envías. Hay patrones que disparan las alarmas automáticamente.
+
+Evita esto en tus emails:
+
+- Palabras como "GRATIS", "OFERTA EXCLUSIVA" o "GANA DINERO" en mayúsculas en el asunto
+- Imágenes sin texto acompañante (los filtros no leen imágenes)
+- Un único enlace que ocupa todo el email
+- Asuntos con signos de exclamación o interrogación en exceso
+
+Usa siempre una proporción equilibrada de texto e imágenes. Y antes de enviar a toda la lista, manda una prueba a una cuenta de Gmail y una de Outlook para ver cómo llega.
+
+<Callout type="tip">
+**Herramienta gratuita:** Mail Tester (mail-tester.com) analiza tu email y te da una puntuación de 1 a 10 con los problemas exactos a corregir. Manda tu email de prueba a la dirección que te dan y ves el resultado en segundos.
+</Callout>
+
+## Herramientas que facilitan todo esto
+
+Las tres herramientas que mencionamos automatizan buena parte de este proceso: te guían en la configuración de autenticación, gestionan las bajas automáticamente y te alertan si tu tasa de rebote sube.
+
+**ActiveCampaign** incluye gestión de reputación de envío y segmentación avanzada para apartar contactos inactivos. Es la opción más potente si también quieres automatizar seguimientos.
+
+<AffiliateLink programSlug="activecampaign" articleSlug="como-evitar-spam" label="Probar ActiveCampaign gratis" />
+
+**GetResponse** tiene un verificador de spam integrado antes del envío y asistente de configuración de DKIM paso a paso. Buena opción si empiezas desde cero.
+
+<AffiliateLink programSlug="getresponse" articleSlug="como-evitar-spam" label="Probar GetResponse gratis" />
+
+**Brevo** (antes Sendinblue) es la alternativa con mejor plan gratuito para volúmenes bajos: hasta 300 emails al día sin coste. Tiene servidores en Europa y firma el DPA bajo GDPR, lo que facilita el cumplimiento con la AEPD.
+
+<AffiliateLink programSlug="brevo" articleSlug="como-evitar-spam" label="Probar Brevo gratis" />
+
+⚠️ Precios consultados en mayo 2026. Verifica siempre en la web del proveedor.
+
+## Preguntas frecuentes
+
+### ¿Cuánto tarda en mejorar mi reputación de envío?
+
+Depende del punto de partida. Si acabas de configurar SPF, DKIM y DMARC y empiezas a limpiar la lista, en 4-6 semanas de envíos consistentes deberías notar mejoría en las tasas de apertura. La reputación se construye despacio y se destruye rápido.
+
+### ¿Puedo usar mi cuenta de Gmail para enviar campañas?
+
+No deberías. Gmail limita el volumen de envío y no te permite configurar autenticación correcta para un dominio propio. Para más de 50 contactos, usa una plataforma de email marketing con IP dedicada o compartida de buena reputación.
+
+### ¿El doble opt-in mejora la entregabilidad?
+
+Sí, de forma directa. Los contactos que confirman su suscripción tienen tasas de apertura mucho más altas, y eso mejora tu reputación ante los filtros. Además, en España es la forma más segura de demostrar consentimiento explícito según la LOPDGDD.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*

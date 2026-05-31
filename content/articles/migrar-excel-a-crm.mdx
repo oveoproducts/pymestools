@@ -1,0 +1,105 @@
+---
+title: Cómo migrar tus contactos de Excel a un CRM
+slug: migrar-excel-a-crm
+description: >-
+  Guía paso a paso para pasar tus contactos de Excel a un CRM sin perder datos
+  ni perder la tarde.
+category: crm
+type: tutorial
+tools:
+  - hubspot
+  - zoho-crm
+keywords_primary: pasar contactos excel a crm
+status: draft
+author: Equipo PymesTools
+readingTime: 5
+publishedAt: null
+updatedAt: '2026-05-31T18:07:00.857Z'
+meta_title: Cómo migrar tus contactos de Excel a un CRM (2026)
+---
+
+Si llevas años gestionando clientes en Excel, el salto a un CRM da un poco de respeto. La buena noticia: mover los contactos no es complicado si preparas bien el archivo antes de importar.
+
+Este tutorial te lleva desde el Excel desordenado hasta los contactos cargados en el CRM. En menos de una hora, si sigues los pasos.
+
+## Paso 1: Limpia el Excel antes de tocar el CRM
+
+Este es el paso que más gente se salta — y el que más problemas causa después.
+
+Abre tu archivo y elimina filas duplicadas, columnas vacías y celdas con datos mezclados (por ejemplo, nombre y apellidos en la misma celda). Cada columna debe contener un solo tipo de dato: una columna para nombre, otra para apellidos, otra para email, otra para teléfono.
+
+Revisa también que los emails tengan formato correcto. Un email mal escrito no se importa, y si el CRM no te avisa del error, ese contacto desaparece sin dejar rastro.
+
+**Columnas mínimas recomendadas para cualquier CRM:**
+
+- Nombre
+- Apellidos
+- Email
+- Teléfono
+- Empresa
+- Cargo (opcional pero útil)
+
+Guarda el archivo en formato `.csv` con codificación **UTF-8**. Sin esto, las tildes y las eñes aparecen como caracteres extraños después de importar.
+
+<Callout type="warning">
+**Ojo con la codificación:** Si tu Excel está en Windows y guardas directamente como CSV, es probable que use codificación Windows-1252. Ábrelo con Google Sheets y descárgalo desde ahí como CSV UTF-8 para evitar problemas con tildes y eñes.
+</Callout>
+
+## Paso 2: Mapea las columnas con las del CRM
+
+Cada CRM tiene sus propios nombres de campos. "Nombre" en tu Excel puede llamarse `firstname` en [HubSpot](/crm/review-hubspot-crm) o `First Name` en [Zoho CRM](/crm/review-zoho-crm). El proceso de importación te pedirá que relacionas cada columna tuya con el campo correcto del CRM — a esto se le llama mapeo.
+
+Dedica 5 minutos a este paso. Si mapeas mal una columna, todos tus contactos quedarán con el teléfono en el campo de empresa, o el nombre en blanco.
+
+Lo más habitual que falla en el mapeo:
+
+- Teléfono → asegúrate de elegir "Teléfono móvil" o "Teléfono fijo" según corresponda, no el campo genérico si el CRM los distingue.
+- Empresa → en HubSpot, empresa y contacto son objetos separados. Si importas solo contactos, el nombre de la empresa puede quedarse como texto plano sin crear el registro de empresa automáticamente.
+- Etiquetas o listas → si tienes una columna "Tipo de cliente" en Excel, tendrás que crear ese campo personalizado en el CRM antes de importar.
+
+## Paso 3: Importa y revisa el resultado
+
+Con el CSV limpio y el mapeo preparado, el proceso de importación en HubSpot y Zoho CRM es prácticamente igual:
+
+1. Ve a **Contactos → Importar** (o equivalente según el CRM).
+2. Sube el archivo CSV.
+3. Mapea las columnas con los campos del CRM.
+4. Confirma y ejecuta la importación.
+
+Cuando termine, el CRM te mostrará cuántos contactos se han importado correctamente y cuántos han fallado. **Descarga siempre el informe de errores** — no lo ignores aunque sean pocos. Un email duplicado o un campo obligatorio vacío son los motivos más frecuentes de fallo.
+
+Revisa 10-15 contactos al azar para confirmar que los datos están donde deben estar. Es más rápido hacer esta comprobación ahora que limpiar errores en 500 registros dentro de tres meses.
+
+<Callout type="tip">
+**Truco para listas grandes:** Si tienes más de 1.000 contactos, importa primero un lote de 20-30 para verificar que el mapeo es correcto. Así evitas repetir el proceso completo si algo falla.
+</Callout>
+
+## Herramientas que facilitan este proceso
+
+Tanto HubSpot como Zoho CRM tienen importación por CSV incluida en sus planes gratuitos. Aquí tienes las diferencias relevantes para este proceso:
+
+**HubSpot** detecta duplicados automáticamente durante la importación y te deja asignar los contactos a una lista en el mismo paso. La interfaz está completamente en español y el soporte también atiende en español. Cumple GDPR y tiene DPA disponible.
+
+<AffiliateLink programSlug="hubspot" articleSlug="migrar-excel-a-crm" label="Probar HubSpot gratis" />
+
+**Zoho CRM** permite importar hasta 1.500 registros por lote en el plan gratuito y tiene una función de deduplicación manual después de importar. La interfaz está en español, aunque parte de la documentación técnica está solo en inglés. También cumple GDPR.
+
+Los precios de ambas herramientas cambian con frecuencia. Consulta los planes actuales directamente en sus webs antes de decidir — lo que publicamos aquí puede estar desactualizado.
+
+## Preguntas frecuentes
+
+### ¿Qué hago si tengo contactos duplicados entre Excel y el CRM?
+
+Si ya tienes contactos en el CRM y quieres añadir más desde Excel, activa la opción "actualizar registros existentes" durante la importación. Tanto HubSpot como Zoho CRM usan el email como identificador único para detectar duplicados. Si dos registros tienen el mismo email, el sistema los fusiona en lugar de crear uno nuevo.
+
+### ¿Necesito formatear los teléfonos de alguna manera?
+
+Sí. El formato más seguro es el internacional con prefijo: `+34 612 345 678`. Sin el prefijo, algunos CRM no reconocen el número como válido o no permiten hacer llamadas desde la plataforma si tienes integración con telefonía.
+
+### ¿Mis contactos importados cumplen con la LOPDGDD?
+
+Importar los contactos al CRM no te exime de tener base legal para tratarlos. Si esos contactos te dieron sus datos para recibir presupuestos, tienes base legítima. Si los compraste o los extrajiste de LinkedIn sin consentimiento, no. El CRM almacena los datos, pero la responsabilidad sobre la base legal es tuya. Si tienes dudas, consulta con un asesor de protección de datos antes de empezar a enviarles comunicaciones comerciales.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: mayo 2026.*
