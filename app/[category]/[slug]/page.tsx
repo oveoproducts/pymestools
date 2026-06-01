@@ -118,6 +118,15 @@ function getMdxContent(slug: string): string | null {
   return content
 }
 
+
+function getMdxScore(slug: string): number | null {
+  const filePath = path.join(process.cwd(), 'content', 'articles', `${slug}.mdx`)
+  if (!fs.existsSync(filePath)) return null
+  const raw = fs.readFileSync(filePath, 'utf-8')
+  const { data } = matter(raw)
+  return typeof data.score === 'number' ? data.score : null
+}
+
 function formatDate(dateString: string | null): string {
   if (!dateString) return ''
   return new Date(dateString).toLocaleDateString('es-ES', {
@@ -176,6 +185,7 @@ export default async function ArticlePage({ params }: PageProps) {
   }
 
   const mdxContent = getMdxContent(slug)
+  const articleScore = getMdxScore(slug)
 
   const relatedArticles = (await getArticlesByCategory(category, 4)).filter(
     (a) => a.slug !== slug,
@@ -274,6 +284,34 @@ export default async function ArticlePage({ params }: PageProps) {
     ],
   }
 
+  const jsonLdReview = (article.type === 'review' && articleScore && article.tools?.[0]) ? {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    itemReviewed: {
+      '@type': 'SoftwareApplication',
+      name: article.tools[0],
+      applicationCategory: 'BusinessApplication',
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: articleScore.toFixed(1),
+      bestRating: '10',
+      worstRating: '0',
+    },
+    author: {
+      '@type': 'Organization',
+      name: brand.siteName,
+      url: brand.siteUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: brand.siteName,
+      url: brand.siteUrl,
+    },
+    url: articleUrl,
+    datePublished: article.published_at ?? undefined,
+  } : null
+
   return (
     <>
       <script
@@ -288,6 +326,12 @@ export default async function ArticlePage({ params }: PageProps) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFAQ) }}
+        />
+      )}
+      {jsonLdReview && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdReview) }}
         />
       )}
 
