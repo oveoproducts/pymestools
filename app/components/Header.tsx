@@ -14,11 +14,16 @@ export function Header() {
             <Link href="/crm" className="hover:text-gray-900">CRM</Link>
             <Link href="/automatizacion" className="hover:text-gray-900">Automatización</Link>
             <Link href="/comparativas" className="hover:text-gray-900">Comparativas</Link>
+            <Link href="/recomiendame" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-1.5 rounded-lg transition-colors">
+              ¿Qué necesito?
+            </Link>
           </nav>
           <div className="sm:hidden">
             <nav className="flex items-center gap-3 text-xs text-gray-600">
               <Link href="/comparativas" className="hover:text-gray-900">Comparativas</Link>
-              <Link href="/email-marketing" className="hover:text-gray-900">Email</Link>
+              <Link href="/recomiendame" className="bg-blue-600 text-white font-semibold px-2.5 py-1 rounded-lg">
+                ¿Qué necesito?
+              </Link>
             </nav>
           </div>
         </div>
