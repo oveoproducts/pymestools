@@ -236,7 +236,12 @@ export default async function ArticlePage({ params }: PageProps) {
       while (j < lines.length && !lines[j].match(/^#{1,3}\s/)) {
         const l = lines[j].trim()
         if (l && !l.startsWith('|') && !l.startsWith('<') && !l.startsWith('{') && !l.startsWith('!')) {
-          answerLines.push(l.replace(/\*\*/g, '').replace(/\*/g, ''))
+          // Strip markdown: bold, italic, inline links [text](url) → text
+          const clean = l
+            .replace(/\*\*/g, '')
+            .replace(/\*/g, '')
+            .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+          answerLines.push(clean)
         }
         if (answerLines.length >= 2) break
         j++
@@ -284,12 +289,20 @@ export default async function ArticlePage({ params }: PageProps) {
     ],
   }
 
+  const TOOL_NAMES: Record<string, string> = {
+    hubspot: 'HubSpot CRM', 'zoho-crm': 'Zoho CRM', pipedrive: 'Pipedrive',
+    brevo: 'Brevo', mailchimp: 'Mailchimp', getresponse: 'GetResponse',
+    activecampaign: 'ActiveCampaign', mailrelay: 'Mailrelay', acumbamail: 'Acumbamail',
+    holded: 'Holded', factorial: 'Factorial', make: 'Make', zapier: 'Zapier',
+    notion: 'Notion', clickup: 'ClickUp', trello: 'Trello', asana: 'Asana',
+    anfix: 'Anfix', n8n: 'n8n', freshsales: 'Freshsales', salesforce: 'Salesforce',
+  }
   const jsonLdReview = (article.type === 'review' && articleScore && article.tools?.[0]) ? {
     '@context': 'https://schema.org',
     '@type': 'Review',
     itemReviewed: {
       '@type': 'SoftwareApplication',
-      name: article.tools[0],
+      name: TOOL_NAMES[article.tools[0]] ?? article.tools[0],
       applicationCategory: 'BusinessApplication',
     },
     reviewRating: {

@@ -9,8 +9,16 @@ export function SchemaOrgWebsite() {
         '@id': `${brand.siteUrl}/#organization`,
         name: brand.displayName,
         url: brand.siteUrl,
-        logo: { '@type': 'ImageObject', url: `${brand.siteUrl}/logo.png` },
-        contactPoint: { '@type': 'ContactPoint', email: `hola@${brand.domain}`, contactType: 'customer support' },
+        logo: {
+          '@type': 'ImageObject',
+          url: `${brand.siteUrl}/logo.svg`,
+          width: 200,
+          height: 60,
+        },
+        sameAs: [
+          'https://twitter.com/pymestools',
+        ],
+        contactPoint: { '@type': 'ContactPoint', email: `hola@${brand.domain}`, contactType: 'customer support', availableLanguage: 'Spanish' },
       },
       {
         '@type': 'WebSite',
@@ -20,11 +28,6 @@ export function SchemaOrgWebsite() {
         description: brand.defaultDescription,
         publisher: { '@id': `${brand.siteUrl}/#organization` },
         inLanguage: 'es',
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: { '@type': 'EntryPoint', urlTemplate: `${brand.siteUrl}/comparativas?q={search_term_string}` },
-          'query-input': 'required name=search_term_string',
-        },
       },
     ],
   }
