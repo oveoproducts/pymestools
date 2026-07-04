@@ -7,15 +7,22 @@ import { ArticleCard } from '@/app/components/ArticleCard'
 export const metadata: Metadata = {
   title: 'Mejores CRM para pymes en España 2026',
   description:
-    'Comparativa actualizada de los mejores CRM para pymes españolas: HubSpot, Zoho CRM, Pipedrive y más. Precios en euros, planes gratuitos y cuál elegir según el tamaño de tu empresa.',
+    'HubSpot, Zoho CRM, Pipedrive y más: comparativa de CRM para pymes españolas. Precios en euros, planes gratuitos y cuál elegir según tu tamaño.',
   alternates: { canonical: `${brand.siteUrl}/crm` },
   openGraph: {
     title: 'Mejores CRM para pymes en España 2026',
     description:
-      'Comparativa actualizada de los mejores CRM para pymes españolas: HubSpot, Zoho CRM, Pipedrive y más.',
+      'HubSpot, Zoho CRM, Pipedrive y más: comparativa de CRM para pymes españolas. Precios en euros, planes gratuitos y cuál elegir.',
     url: `${brand.siteUrl}/crm`,
     siteName: brand.siteName,
     type: 'website',
+    images: [{ url: `${brand.siteUrl}/api/og?title=CRM+para+Pymes&type=category`, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mejores CRM para pymes en España 2026',
+    description: 'HubSpot, Zoho CRM, Pipedrive y más. Planes gratuitos, precios en euros y cuál elegir.',
+    images: [`${brand.siteUrl}/api/og?title=CRM+para+Pymes&type=category`],
   },
 }
 

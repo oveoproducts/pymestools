@@ -222,13 +222,31 @@ export default async function ArticlePage({ params }: PageProps) {
     image: `${brand.siteUrl}/api/og?title=${encodeURIComponent(article.title)}&type=${encodeURIComponent(article.type)}`,
   }
 
-  // Extract FAQ items from headings ending with "?"
+  // Extract FAQ items only from within a "Preguntas frecuentes" section
   function extractFAQs(content: string | null) {
     if (!content) return []
     const lines = content.split('\n')
     const faqs: Array<{ question: string; answer: string }> = []
+    let inFaqSection = false
+
     for (let i = 0; i < lines.length; i++) {
-      const match = lines[i].match(/^#{2,3}\s+(.+\?)/)
+      const line = lines[i]
+
+      // Detect FAQ section start (H2 containing "preguntas" or "faq")
+      if (/^#{1,2}\s+.*(preguntas|faq)/i.test(line)) {
+        inFaqSection = true
+        continue
+      }
+      // Exit FAQ section when another H1/H2 starts (not H3)
+      if (inFaqSection && /^#{1,2}\s+/.test(line) && !/^#{3,}/.test(line)) {
+        inFaqSection = false
+        continue
+      }
+
+      if (!inFaqSection) continue
+
+      // Only pick H3 headings ending with "?" inside the FAQ section
+      const match = line.match(/^#{3}\s+(.+\?)/)
       if (!match) continue
       const question = match[1].replace(/[*_`]/g, '').trim()
       const answerLines: string[] = []
@@ -236,7 +254,6 @@ export default async function ArticlePage({ params }: PageProps) {
       while (j < lines.length && !lines[j].match(/^#{1,3}\s/)) {
         const l = lines[j].trim()
         if (l && !l.startsWith('|') && !l.startsWith('<') && !l.startsWith('{') && !l.startsWith('!')) {
-          // Strip markdown: bold, italic, inline links [text](url) → text
           const clean = l
             .replace(/\*\*/g, '')
             .replace(/\*/g, '')

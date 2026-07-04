@@ -9,6 +9,7 @@ export function SchemaOrgWebsite() {
         '@id': `${brand.siteUrl}/#organization`,
         name: brand.displayName,
         url: brand.siteUrl,
+        description: 'Sitio independiente de comparativas y reviews de software para pymes españolas.',
         logo: {
           '@type': 'ImageObject',
           url: `${brand.siteUrl}/logo.svg`,

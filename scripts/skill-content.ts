@@ -144,6 +144,15 @@ REGLAS DE FORMATO:
 - Usa <AffiliateLink programSlug="[slug]" articleSlug="${slug}" label="Probar [Herramienta] gratis" /> para CTAs — NUNCA pongas URLs de afiliado directamente
 - Añade {/* TODO: captura del dashboard */} donde irían imágenes clave
 
+REGLAS CRÍTICAS PARA <ProsCons>:
+- Cada item de pros/cons DEBE tener formato "Título corto: explicación concreta de 1 frase"
+- El separador es ": " (dos puntos + espacio) — OBLIGATORIO en cada item
+- CORRECTO: "Plan gratuito generoso: hasta 300 emails/día con contactos ilimitados, sin caducidad"
+- CORRECTO: "Sin soporte telefónico: solo chat y email, con tiempos de respuesta de 24-48h"
+- INCORRECTO: "Plan gratuito generoso" (sin explicación)
+- INCORRECTO: "Interfaz en español" (sin contexto de por qué importa)
+- Cada item debe poder leerse de forma independiente y responder "¿por qué esto es bueno/malo para una pyme española?"
+
 ${template ? `PLANTILLA DE ESTRUCTURA A SEGUIR:\n${template}` : ''}
 
 Devuelve SOLO el bloque MDX completo. Sin texto fuera del MDX.`

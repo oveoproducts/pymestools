@@ -5,9 +5,23 @@ import { getPublishedArticles, getArticlesByCategory } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
 
 export const metadata: Metadata = {
-  title: 'PymesTools — Comparativas y reviews de software para pymes en España 2026',
-  description: 'Reviews honestas y comparativas de CRM, email marketing, facturación y automatización para pymes españolas. Precios en euros, soporte en español y cumplimiento GDPR.',
+  title: { absolute: 'PymesTools — Software para pymes en España' },
+  description: 'Reviews y comparativas de CRM, email marketing, facturación y automatización para pymes españolas. Precios en euros, soporte en español y cumplimiento GDPR.',
   alternates: { canonical: brand.siteUrl },
+  openGraph: {
+    title: 'PymesTools — Software para pymes en España',
+    description: 'Reviews y comparativas de CRM, email marketing, facturación y automatización para pymes españolas.',
+    url: brand.siteUrl,
+    siteName: brand.siteName,
+    type: 'website',
+    images: [{ url: `${brand.siteUrl}/api/og?title=PymesTools&type=home`, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PymesTools — Software para pymes en España',
+    description: 'Reviews y comparativas de CRM, email marketing y automatización para pymes españolas.',
+    images: [`${brand.siteUrl}/api/og?title=PymesTools&type=home`],
+  },
 }
 
 const CATEGORIES = [

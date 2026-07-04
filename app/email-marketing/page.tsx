@@ -5,17 +5,24 @@ import { getArticlesByCategory } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
 
 export const metadata: Metadata = {
-  title: 'Mejores herramientas de email marketing para pymes en España 2026',
+  title: 'Email marketing para pymes en España 2026',
   description:
-    'Comparativa actualizada de las mejores plataformas de email marketing para pymes españolas: Brevo, Mailchimp, GetResponse, Mailrelay y más. Planes gratuitos, precios en euros y cuál elegir.',
+    'Brevo, Mailchimp, Mailrelay y más: comparativa de email marketing para pymes españolas. Planes gratuitos, precios en euros y cuál elegir.',
   alternates: { canonical: `${brand.siteUrl}/email-marketing` },
   openGraph: {
-    title: 'Mejores herramientas de email marketing para pymes en España 2026',
+    title: 'Email marketing para pymes en España 2026',
     description:
-      'Comparativa de las mejores plataformas de email marketing para pymes españolas: planes gratuitos, precios y cuál elegir.',
+      'Brevo, Mailchimp, Mailrelay y más: comparativa de email marketing para pymes españolas. Planes gratuitos, precios en euros y cuál elegir.',
     url: `${brand.siteUrl}/email-marketing`,
     siteName: brand.siteName,
     type: 'website',
+    images: [{ url: `${brand.siteUrl}/api/og?title=Email+Marketing+para+Pymes&type=category`, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Email marketing para pymes en España 2026',
+    description: 'Brevo, Mailchimp, Mailrelay y más: planes gratuitos, precios en euros y cuál elegir.',
+    images: [`${brand.siteUrl}/api/og?title=Email+Marketing+para+Pymes&type=category`],
   },
 }
 
