@@ -457,6 +457,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 mdxOptions: {
                   remarkPlugins: [remarkGfm],
                 },
+                blockJS: false,
               }}
             />
           </article>
