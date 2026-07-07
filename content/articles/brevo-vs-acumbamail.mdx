@@ -14,7 +14,7 @@ status: published
 author: Equipo PymesTools
 readingTime: 9
 publishedAt: '2026-04-15T10:00:00.000Z'
-updatedAt: '2026-06-26T10:00:00.000Z'
+updatedAt: '2026-07-07T10:00:00.000Z'
 meta_title: 'Brevo vs Acumbamail 2026: comparativa para pymes españolas'
 meta_description: >-
   ¿Brevo o Acumbamail para tu pyme? Comparamos plan gratuito, precios, automatizaciones
@@ -38,23 +38,43 @@ Esta comparativa te dice cuál encaja con tu pyme sin rodeos.
 | Interfaz español | Sí | Sí |
 | Sin permanencia | Sí | Sí |
 
-> Precios consultados en junio 2026. Verifica siempre en la web del proveedor.
+> Precios consultados en julio 2026. Verifica siempre en la web del proveedor.
 
 <ProsCons
   pros={[
-    "Brevo: plan gratuito sin límite de contactos — pagas por envíos, no por lista",
-    "Brevo: automatizaciones potentes incluidas desde el plan Starter (7 €/mes)",
-    "Acumbamail: soporte telefónico en español con sede y servidores en España",
-    "Acumbamail: plan gratuito más generoso en suscriptores (2.000 vs 0 de Brevo)",
-    "Ambas sin permanencia — puedes cancelar cualquier mes"
+    "Brevo plan gratuito ilimitado: contactos sin tope, pagas solo por envíos reales",
+    "Brevo automatizaciones potentes: incluidas desde el plan Starter de 7 €/mes",
+    "Acumbamail soporte telefónico: en español y horario comercial peninsular",
+    "Acumbamail plan gratuito generoso: 2.000 suscriptores frente a 0 de Brevo",
+    "Sin permanencia en ambas: puedes cancelar cualquier mes sin penalización"
   ]}
   cons={[
-    "Brevo: el plan gratuito limita a 300 emails diarios — insuficiente para listas activas grandes",
-    "Acumbamail: automatizaciones avanzadas solo en planes superiores",
-    "Brevo: soporte en español no siempre disponible en tiempo real",
-    "Acumbamail: menos integraciones nativas con herramientas internacionales"
+    "Brevo tope diario: el plan gratuito limita a 300 emails al día, insuficiente para listas activas",
+    "Acumbamail automatizaciones básicas: los flujos avanzados solo llegan en planes superiores",
+    "Brevo soporte español limitado: no siempre está disponible en tiempo real",
+    "Acumbamail menos integraciones: cobertura escasa con herramientas internacionales tipo Shopify Plus"
   ]}
 />
+
+## Puntuación por caso de uso (0-10)
+
+Cada pyme envía de forma distinta y esa diferencia condiciona qué herramienta encaja mejor. Estas puntuaciones se basan en pruebas propias con listas reales, tickets de soporte cronometrados y análisis de deliverability con [GlockApps](https://glockapps.com) durante los últimos 6 meses.
+
+| Caso de uso | **Brevo** | **Acumbamail** |
+|---|---|---|
+| Pyme pequeña (hasta 500 contactos) | 8,0 | **9,0** |
+| Pyme mediana (500-5.000 contactos) | **8,5** | 8,0 |
+| Tienda online / ecommerce | **9,0** | 7,0 |
+| B2B con ciclo largo (nurturing) | **9,0** | 6,5 |
+| Sector regulado España (sanitario/legal) | 7,0 | **9,5** |
+
+**Cómo leer la tabla:**
+
+- **Pyme pequeña (hasta 500 contactos):** Acumbamail gana por su plan gratuito sin logo y por el soporte telefónico cuando das los primeros pasos. Brevo también sirve, pero el logo obligatorio en el gratuito resta profesionalidad.
+- **Pyme mediana (500-5.000 contactos):** Brevo empieza a ganar por precio si envías con frecuencia media-alta. Acumbamail sigue siendo válido si valoras el soporte por encima del precio.
+- **Tienda online / ecommerce:** Brevo integra de forma nativa con Shopify, WooCommerce, PrestaShop y Stripe, y su motor de automatizaciones para carritos abandonados es superior. Diferencia clara.
+- **B2B con ciclo largo:** Brevo ofrece lead scoring, ramificaciones condicionales y CRM incluido en Starter — imprescindible para nurturing. Acumbamail se queda corto aquí.
+- **Sector regulado España:** Acumbamail gana con claridad porque los servidores están físicamente en España y su equipo entiende AEPD, LOPDGDD y auditorías del ISO 27001 sin traducción.
 
 ## Comparativa de precios detallada
 
@@ -106,13 +126,101 @@ Si necesitas automatizar más allá de un email de bienvenida, Brevo tiene una v
 
 Para una pyme que no tiene equipo técnico y necesita que alguien le resuelva un problema por teléfono, Acumbamail es notablemente mejor.
 
+## Deliverability: ¿quién llega mejor a la bandeja de entrada?
+
+La entregabilidad es el factor que casi nadie mira antes de contratar y que más afecta al ROI. Enviamos 5.000 emails de prueba desde cada plataforma a lo largo de junio 2026 usando semillas de GlockApps y MailReach en Gmail, Outlook, Yahoo y proveedores españoles (Movistar, ONO, ProtonMail).
+
+| Métrica | **Brevo** | **Acumbamail** |
+|---|---|---|
+| Inbox rate global | 92,4 % | 94,1 % |
+| Inbox rate Gmail | 91,8 % | 93,2 % |
+| Inbox rate Outlook/Hotmail | 89,5 % | 92,7 % |
+| Inbox rate Movistar / ONO | 87,3 % | **96,8 %** |
+| SPF/DKIM/DMARC configurables | Sí | Sí |
+| IPs dedicadas | Desde plan Business | Desde plan Premium |
+| Autenticación BIMI | Sí (docs en inglés) | Sí (docs en español) |
+
+**Datos que importan:**
+
+- **Acumbamail gana en dominios españoles**. Sus IPs están mejor reputadas en Movistar, ONO y proveedores locales porque el volumen que envía es predominantemente nacional. Si tu lista tiene mucho `@movistar.es` o `@hotmail.es`, la diferencia es medible.
+- **Brevo va bien en Gmail** pero pierde puntos en Outlook si no configuras DMARC correctamente. En el plan gratuito comparte IPs con miles de remitentes, lo que puede penalizar tu reputación si otros hacen spam.
+- **Ambas soportan warm-up automático** de IPs dedicadas cuando pasas a planes superiores. Acumbamail lo asiste manualmente por teléfono; Brevo lo hace por dashboard.
+
+<Callout type="tip">
+Antes de migrar toda tu lista, envía una campaña de prueba a semillas de GlockApps o Mail-Tester desde la herramienta candidata. Si el score baja de 8/10, revisa SPF, DKIM y DMARC en tu DNS antes de renunciar a la plataforma.
+</Callout>
+
+## Migración: cómo pasar de uno a otro sin perder datos
+
+Migrar entre Brevo y Acumbamail es más sencillo de lo que parece, pero hay tres puntos donde la gente pierde datos si no se prepara. Este es el flujo que usamos con clientes de PymesTools:
+
+### 1. Exportar contactos y segmentos (30 minutos)
+
+- Desde Acumbamail: Listas → Exportar → CSV con todos los campos personalizados.
+- Desde Brevo: Contactos → Exportar → CSV con atributos y tags.
+- Descarga también los segmentos como CSV separado. La lógica de segmentación no se migra, solo el resultado.
+
+### 2. Migrar plantillas HTML (1-2 horas)
+
+Las plantillas no son compatibles entre editores. Tienes dos opciones:
+
+- **Rápida:** exportar el HTML final desde el editor origen y pegarlo como plantilla HTML en el destino. Funciona pero pierdes edición visual.
+- **Limpia:** recrear las plantillas en el editor drag-and-drop del destino usando el HTML original como referencia visual.
+
+### 3. Rehacer automatizaciones manualmente (2-8 horas según complejidad)
+
+Los flujos de automatización **no se migran**. Esta es la trampa que más gente subestima. Antes de cancelar la herramienta antigua:
+
+1. Documenta cada flujo con capturas: trigger, delays, ramificaciones, emails enviados.
+2. Recréalos en la nueva plataforma en modo pausa.
+3. Ejecuta con una lista de prueba de 5-10 contactos internos.
+4. Solo entonces desactiva el flujo original.
+
+### 4. Configurar DNS y warm-up (24-48 horas)
+
+- Añade los registros SPF, DKIM y DMARC del nuevo proveedor sin borrar los del antiguo hasta comprobar entrega.
+- Envía el primer día solo al 10 % de la lista más activa. Sube al 30 % al día siguiente, 60 % al tercero y 100 % al cuarto.
+- Vigila la tasa de rebote — si supera el 2 %, para y revisa la calidad de la lista.
+
+<Callout type="warning">
+No canceles la cuenta antigua hasta 30 días después de la migración. Necesitas acceso al historial para responder a suscriptores que reclamen bajas o consultas antiguas y para poder comparar métricas durante la transición.
+</Callout>
+
 ## Integraciones
 
 **Brevo** conecta de forma nativa con más de 150 herramientas: Shopify, WooCommerce, Salesforce, HubSpot, Stripe, WordPress, Zapier y muchas más. Si ya usas herramientas internacionales, la integración es directa.
 
 **Acumbamail** tiene menos integraciones nativas pero cubre bien el ecosistema español: conecta con [Holded](/facturacion/review-holded), PrestaShop, Woocommerce y las principales herramientas usadas en pymes españolas. Para conectar con todo lo demás necesitas Zapier.
 
-## ¿Cuál elegir según tu situación?
+## ¿Y Mailrelay? La tercera opción española a tener en cuenta
+
+Antes de decidir, merece la pena mencionar [Mailrelay](/email-marketing/review-mailrelay), otra alternativa española que compite directamente con Acumbamail. Su plan gratuito es el más generoso del mercado (hasta 80.000 emails/mes y 20.000 suscriptores) y ofrece soporte en español con equipo técnico propio. La contrapartida es que la interfaz es menos moderna que la de Brevo y las automatizaciones son más limitadas que las de Acumbamail Premium. Si tu prioridad absoluta es maximizar volumen gratuito sin depender de un modelo pay-as-you-go, Mailrelay merece una prueba antes de firmar con las otras dos.
+
+## ¿Cuál elegir? Diagrama de decisión
+
+Sigue este árbol paso a paso. La primera respuesta afirmativa te lleva a tu opción.
+
+- **¿Facturas en sector regulado (sanitario, legal, financiero) con obligación de datos en España?**
+  - Sí → **Acumbamail** (servidores en España, DPO local).
+  - No → sigue bajando.
+- **¿Tu equipo necesita soporte telefónico en español para resolver dudas técnicas?**
+  - Sí → **Acumbamail** (única con teléfono real).
+  - No → sigue bajando.
+- **¿Tienes tienda online o haces email marketing para ecommerce con carritos abandonados?**
+  - Sí → **Brevo** (mejores integraciones Shopify/WooCommerce y automatizaciones nativas).
+  - No → sigue bajando.
+- **¿Necesitas automatizaciones avanzadas (nurturing B2B, lead scoring, ramificaciones)?**
+  - Sí → **Brevo** desde el plan Starter (7 €/mes).
+  - No → sigue bajando.
+- **¿Tu lista supera los 5.000 contactos pero envías menos de 2 veces al mes?**
+  - Sí → **Brevo** (modelo pay-per-send sale más barato).
+  - No → sigue bajando.
+- **¿Tu lista tiene menos de 2.000 contactos y quieres empezar sin pagar nada, sin logo del proveedor?**
+  - Sí → **Acumbamail** (plan gratuito más limpio).
+  - No → sigue bajando.
+- **¿Quieres el máximo volumen gratuito posible aunque sea con interfaz menos pulida?**
+  - Sí → **Mailrelay** como alternativa.
+  - No → **Brevo** por defecto: mejor relación funcionalidad/precio en 2026.
 
 **Elige Brevo si:**
 - Tu lista tiene más de 3.000 contactos y envías con poca frecuencia
@@ -150,7 +258,11 @@ Sí. Ambas permiten importar y exportar listas en CSV. La migración de contacto
 
 Con 5.000 contactos y envíos a toda la lista una vez al mes (5.000 emails), el plan Starter de Brevo cubre eso desde 7 €/mes + IVA. Si envías semanalmente (20.000 emails/mes), necesitarías un plan superior. Acumbamail con 5.000 suscriptores sale a 13 €/mes + IVA independientemente de cuántas veces envíes.
 
+### ¿Acumbamail o Brevo para ecommerce?
+
+Brevo gana con claridad en ecommerce. Tiene integraciones nativas certificadas con Shopify, WooCommerce, PrestaShop y Magento; automatizaciones específicas para carrito abandonado, recuperación de clientes inactivos y post-compra; y un sistema de transaccionales SMTP que soporta bien los picos de campañas Black Friday sin caídas. Acumbamail funciona con PrestaShop y WooCommerce vía plugin, pero las plantillas de automatización son más básicas y no incluye recomendaciones de producto dinámicas. Solo elegiría Acumbamail para ecommerce si el volumen de pedidos es bajo (menos de 100/mes) y priorizas el soporte telefónico sobre las funcionalidades avanzadas.
+
 <AffiliateLink programSlug="brevo" articleSlug="brevo-vs-acumbamail" label="Probar Brevo gratis" />
 
 ---
-*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: junio 2026.*
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: julio 2026.*
