@@ -141,8 +141,10 @@ async function updateQueueItem(
 // Tier 1 — Programmatic checks
 // ---------------------------------------------------------------------------
 
+// Nota: no se exige "## Introducción" — todas las plantillas usan
+// deliberadamente un hook de apertura sin cabecera en vez de una
+// introducción genérica (ver lib/prompts/templates/*.md).
 const REQUIRED_SECTIONS = [
-  { pattern: /##\s*(introducción|introduction)/i, label: 'Introducción' },
   { pattern: /##\s*(faq|preguntas frecuentes)/i, label: 'FAQ' },
   { pattern: /##\s*(conclusi[oó]n|resumen)/i, label: 'Conclusión' },
   { pattern: /afiliado|affiliate|compensaci[oó]n/i, label: 'Affiliate disclosure' },

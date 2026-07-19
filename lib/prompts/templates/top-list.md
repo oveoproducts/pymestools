@@ -191,6 +191,30 @@ No todas las herramientas de esta lista valen para el mismo perfil. Aquí tienes
 
 ---
 
+### FAQ (Preguntas frecuentes)
+
+**Función:** Responde 3–5 preguntas reales que Carlos buscaría en Google sobre esta categoría de herramientas — ayuda a captar featured snippets y consultas de voz/IA.
+
+**Instrucciones:**
+- Preguntas cortas, en lenguaje natural (como se escriben en el buscador), no genéricas.
+- Respuestas de 2–4 frases cada una, directas, sin remitir a otra sección del artículo.
+- Incluye al menos una pregunta sobre cuál es la mejor opción gratuita y una sobre precio.
+
+```mdx
+## Preguntas frecuentes
+
+### [Pregunta 1]
+[Respuesta directa.]
+
+### [Pregunta 2]
+[Respuesta directa.]
+
+### [Pregunta 3]
+[Respuesta directa.]
+```
+
+---
+
 ### Disclosure
 
 ```mdx
@@ -221,6 +245,7 @@ Si hay más de 3 herramientas con afiliado activo en una top-list, prioriza las 
 - [ ] Precios verificados el día de escritura
 - [ ] Sección de guía de decisión con mínimo 3 escenarios y recomendaciones concretas
 - [ ] Conclusión breve
+- [ ] Sección FAQ con 3–5 preguntas reales
 - [ ] Disclosure al final
 - [ ] Máximo 3 CTAs de afiliado en total
 - [ ] Sin frases prohibidas

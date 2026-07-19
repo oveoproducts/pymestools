@@ -69,7 +69,7 @@ const anthropic = new Anthropic({
 // Helpers
 // ---------------------------------------------------------------------------
 
-function keywordToSlug(keyword: string): string {
+export function keywordToSlug(keyword: string): string {
   return keyword
     .toLowerCase()
     .normalize('NFD')
@@ -225,7 +225,18 @@ async function generateArticle(keyword: Keyword): Promise<string> {
     `  API call complete. Input tokens: ${message.usage.input_tokens}, Output: ${message.usage.output_tokens}`
   )
 
-  return content.text
+  return stripCodeFence(content.text)
+}
+
+/**
+ * The model occasionally wraps the whole MDX output in a ```mdx ... ```
+ * fence despite instructions not to. That breaks frontmatter parsing and
+ * component rendering, so strip it defensively rather than trust the prompt.
+ */
+function stripCodeFence(text: string): string {
+  const trimmed = text.trim()
+  const match = trimmed.match(/^```[a-z]*\n([\s\S]*)\n```$/)
+  return match ? match[1] : trimmed
 }
 
 async function saveArticleMDX(slug: string, mdx: string): Promise<string> {
@@ -308,23 +319,42 @@ export async function runContent(options: ContentOptions): Promise<ContentResult
 
     console.log(`  Keyword: "${keyword.keyword}" [${keyword.category}]`)
 
-    // 2. Mark keyword in_progress
+    // 2. Bail early if this slug is already published — avoids wasting an
+    //    Anthropic API call and hitting the articles_slug_key constraint.
+    const slug = keywordToSlug(keyword.keyword)
+    const { data: existingArticle } = await supabase
+      .from('articles')
+      .select('id')
+      .eq('slug', slug)
+      .maybeSingle()
+
+    if (existingArticle) {
+      await supabase.from('keywords').update({ status: 'rejected' }).eq('id', keyword.id)
+      const message = `Skipped: slug "${slug}" already published`
+      if (options.queueItemId) {
+        await updateQueueItem(options.queueItemId, { status: 'failed', error_message: message })
+      }
+      await logAgent('content:generate', 'completed', Date.now() - startedAt, undefined, message)
+      console.log(`\n⏭️   ${message}`)
+      return { success: false, message }
+    }
+
+    // 3. Mark keyword in_progress
     await supabase
       .from('keywords')
       .update({ status: 'in_progress' })
       .eq('id', keyword.id)
 
-    // 3. Generate article via Anthropic API
+    // 4. Generate article via Anthropic API
     const mdx = await generateArticle(keyword)
 
-    // 4. Derive slug and save MDX
-    const slug = keywordToSlug(keyword.keyword)
+    // 5. Save MDX
     await saveArticleMDX(slug, mdx)
 
-    // 5. Insert article record
+    // 6. Insert article record
     const articleId = await insertArticle(keyword, slug, mdx)
 
-    // 6. Update pipeline queue
+    // 7. Update pipeline queue
     if (options.queueItemId) {
       await updateQueueItem(options.queueItemId, {
         status: 'qa_review',

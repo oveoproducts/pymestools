@@ -18,7 +18,7 @@ import 'dotenv/config'
 import { fileURLToPath } from 'node:url'
 import { supabase } from '../lib/db/client'
 import { runResearch } from './skill-research'
-import { runContent } from './skill-content'
+import { runContent, keywordToSlug } from './skill-content'
 import { runQA } from './skill-qa'
 import { runSEO } from './skill-seo'
 import { runPublish } from './skill-publish'
@@ -87,6 +87,59 @@ async function updateQueueItem(
     .from('pipeline_queue')
     .update({ ...patch, updated_at: new Date().toISOString() })
     .eq('id', id)
+}
+
+function inferQueueType(keyword: string): string {
+  const kw = keyword.toLowerCase()
+  if (kw.includes('alternativa')) return 'alternatives'
+  if (kw.includes('comparati') || kw.includes(' vs ')) return 'comparison'
+  if (kw.includes('mejor')) return 'top-list'
+  if (kw.includes('cómo') || kw.includes('como') || kw.includes('qué es')) return 'how-to'
+  return 'review'
+}
+
+/**
+ * Pulls the next approved keyword that isn't already queued or published
+ * into a fresh pipeline_queue item. Without this, `keywords` fills up with
+ * approved rows that nothing ever turns into an article — research alone
+ * doesn't drive publishing.
+ */
+async function enqueueNextApprovedKeyword(): Promise<boolean> {
+  const { data: queued } = await supabase.from('pipeline_queue').select('keyword_id')
+  const queuedIds = new Set((queued ?? []).map((q) => q.keyword_id).filter(Boolean))
+
+  const { data: candidates } = await supabase
+    .from('keywords')
+    .select('id, keyword, priority_score')
+    .eq('status', 'approved')
+    .order('priority_score', { ascending: false })
+    .limit(50)
+
+  if (!candidates || candidates.length === 0) return false
+
+  const { data: articles } = await supabase.from('articles').select('slug')
+  const existingSlugs = new Set((articles ?? []).map((a) => a.slug))
+
+  for (const kw of candidates) {
+    if (queuedIds.has(kw.id)) continue
+
+    const slug = keywordToSlug(kw.keyword)
+    if (existingSlugs.has(slug)) {
+      await supabase.from('keywords').update({ status: 'rejected' }).eq('id', kw.id)
+      continue
+    }
+
+    await supabase.from('pipeline_queue').insert({
+      keyword_id: kw.id,
+      type: inferQueueType(kw.keyword),
+      status: 'pending',
+      priority: kw.priority_score ?? 5,
+    })
+    console.log(`  ➕  Encolado "${kw.keyword}"`)
+    return true
+  }
+
+  return false
 }
 
 /**
@@ -185,13 +238,19 @@ export async function runPipeline(): Promise<RunResult> {
     const item = await fetchNextItem()
 
     if (!item) {
-      // Empty queue
+      // Empty queue: top up keyword candidates on Mondays, then always try
+      // to pull the next approved keyword into a fresh queue item so
+      // publishing keeps moving on the other days too.
       if (isMonday()) {
         console.log('  Queue is empty and today is Monday → running discovery research.')
         await runResearch({ mode: 'discovery' })
+      }
+
+      const enqueued = await enqueueNextApprovedKeyword()
+      if (enqueued) {
         itemsProcessed = 1
       } else {
-        console.log('  Queue is empty. Nothing to do today.')
+        console.log('  Queue is empty and no approved keywords left to enqueue.')
       }
     } else {
       await dispatch(item)

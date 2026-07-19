@@ -280,6 +280,30 @@ Si estás dudando entre [Herramienta] y otras opciones, aquí tienes el contexto
 
 ---
 
+### FAQ (Preguntas frecuentes)
+
+**Función:** Responde 3–5 preguntas reales que Carlos buscaría en Google sobre esta herramienta — ayuda a captar featured snippets y consultas de voz/IA.
+
+**Instrucciones:**
+- Preguntas cortas, en lenguaje natural (como se escriben en el buscador), no genéricas.
+- Respuestas de 2–4 frases cada una, directas, sin remitir a otra sección del artículo.
+- Incluye al menos una pregunta sobre precio y una sobre si tiene versión gratuita o alternativa más barata.
+
+```mdx
+## Preguntas frecuentes
+
+### [Pregunta 1]
+[Respuesta directa.]
+
+### [Pregunta 2]
+[Respuesta directa.]
+
+### [Pregunta 3]
+[Respuesta directa.]
+```
+
+---
+
 ### Disclosure (texto exacto — siempre al final)
 
 ```mdx
@@ -301,6 +325,7 @@ Antes de marcar el artículo como `qa_review`, verifica:
 - [ ] `✅ Lo que nos gusta` — 3 pros concretos
 - [ ] `❌ Lo que no nos gusta` — 2–3 contras específicos (BLOQUEANTE si falta)
 - [ ] Veredicto con recomendación clara
+- [ ] Sección FAQ con 3–5 preguntas reales
 - [ ] Disclosure al final (texto exacto)
 - [ ] Máximo 3 CTAs de afiliado con componente `<AffiliateLink />`
 - [ ] Sin frases del array `blocking` en `data/forbidden-phrases.json`

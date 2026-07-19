@@ -274,6 +274,30 @@ Cada dimensión lleva un H3. Las dimensiones siguientes son todas obligatorias.
 
 ---
 
+### FAQ (Preguntas frecuentes)
+
+**Función:** Responde 3–5 preguntas reales que Carlos buscaría en Google sobre esta comparativa — ayuda a captar featured snippets y consultas de voz/IA.
+
+**Instrucciones:**
+- Preguntas cortas, en lenguaje natural (como se escriben en el buscador), no genéricas.
+- Respuestas de 2–4 frases cada una, directas, sin remitir a otra sección del artículo.
+- Incluye al menos una pregunta tipo "¿[Herramienta A] o [Herramienta B] para pymes?" y una sobre precio.
+
+```mdx
+## Preguntas frecuentes
+
+### [Pregunta 1]
+[Respuesta directa.]
+
+### [Pregunta 2]
+[Respuesta directa.]
+
+### [Pregunta 3]
+[Respuesta directa.]
+```
+
+---
+
 ### Disclosure
 
 ```mdx
@@ -295,6 +319,7 @@ Cada dimensión lleva un H3. Las dimensiones siguientes son todas obligatorias.
 - [ ] Sección Integraciones con herramientas españolas tiene datos verificados
 - [ ] Veredicto por perfil con mínimo 4 perfiles y razones
 - [ ] Conclusión con CTAs de afiliado
+- [ ] Sección FAQ con 3–5 preguntas reales
 - [ ] Disclosure al final
 - [ ] Sin frases prohibidas (verificar contra `data/forbidden-phrases.json`)
 - [ ] Test de Carlos superado

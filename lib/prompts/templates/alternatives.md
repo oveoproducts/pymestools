@@ -175,6 +175,30 @@ qualityScore: null
 
 ---
 
+### FAQ (Preguntas frecuentes)
+
+**Función:** Responde 3–5 preguntas reales que Carlos buscaría en Google sobre este tema — ayuda a captar featured snippets y consultas de voz/IA.
+
+**Instrucciones:**
+- Preguntas cortas, en lenguaje natural (como se escriben en el buscador), no genéricas.
+- Respuestas de 2–4 frases cada una, directas, sin remitir a otra sección del artículo.
+- Incluye al menos una pregunta sobre precio y una sobre cuál alternativa elegir.
+
+```mdx
+## Preguntas frecuentes
+
+### [Pregunta 1]
+[Respuesta directa.]
+
+### [Pregunta 2]
+[Respuesta directa.]
+
+### [Pregunta 3]
+[Respuesta directa.]
+```
+
+---
+
 ### Disclosure
 
 ```mdx
@@ -209,6 +233,7 @@ Si hay herramientas españolas que cubren el mismo caso de uso (Mailrelay, Acumb
 - [ ] Ninguna entrada tiene solo pros — todas tienen contras específicos
 - [ ] Tabla comparativa de precios con herramienta original como referencia
 - [ ] Sección de decisión por perfil con mínimo 4 perfiles y recomendaciones concretas
+- [ ] Sección FAQ con 3–5 preguntas reales
 - [ ] Disclosure al final
 - [ ] Máximo 3 CTAs de afiliado en total
 - [ ] Sin frases prohibidas

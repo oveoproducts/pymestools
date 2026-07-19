@@ -12,6 +12,7 @@
 import 'dotenv/config'
 import { fileURLToPath } from 'node:url'
 import { supabase } from '../lib/db/client'
+import { keywordToSlug } from './skill-content'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -77,26 +78,27 @@ const INTENT_PATTERNS: Record<string, 'commercial' | 'informational' | 'transact
  * Generates keyword candidates for a given affiliate program.
  * TODO: replace with Anthropic API + web search for real volume/difficulty data.
  */
+const SECTORS = ['servicios', 'ecommerce', 'inmobiliarias', 'autonomos', 'clinicas']
+
 function generateKeywordCandidates(program: AffiliateProgram): KeywordCandidate[] {
   const toolName = program.name.toLowerCase()
   const category = deriveCategory(program)
+  const year = new Date().getFullYear()
 
   const templates: Array<{ keyword: string; intent: KeywordCandidate['search_intent']; priority: number }> = [
-    {
-      keyword: `mejor ${toolName} para pymes`,
-      intent: 'commercial',
-      priority: 8,
-    },
-    {
-      keyword: `alternativas a ${toolName} en español`,
-      intent: 'commercial',
-      priority: 7,
-    },
-    {
-      keyword: `${toolName} precio y planes ${new Date().getFullYear()}`,
-      intent: 'commercial',
-      priority: 6,
-    },
+    { keyword: `mejor ${toolName} para pymes`, intent: 'commercial', priority: 8 },
+    { keyword: `alternativas a ${toolName} en español`, intent: 'commercial', priority: 7 },
+    { keyword: `${toolName} precio y planes ${year}`, intent: 'commercial', priority: 6 },
+    { keyword: `${toolName} review español pymes`, intent: 'commercial', priority: 7 },
+    { keyword: `${toolName} opiniones ${year}`, intent: 'commercial', priority: 6 },
+    { keyword: `cómo funciona ${toolName} tutorial español`, intent: 'informational', priority: 5 },
+    { keyword: `qué es ${toolName} y para qué sirve`, intent: 'informational', priority: 4 },
+    { keyword: `${toolName} gratis pymes españa`, intent: 'commercial', priority: 6 },
+    ...SECTORS.map((sector) => ({
+      keyword: `mejor ${toolName} para ${sector}`,
+      intent: 'commercial' as const,
+      priority: 5,
+    })),
   ]
 
   return templates.map((t) => ({
@@ -133,10 +135,37 @@ async function fetchActivePrograms(): Promise<AffiliateProgram[]> {
   return (data ?? []) as AffiliateProgram[]
 }
 
-async function insertKeywords(candidates: KeywordCandidate[]): Promise<number> {
-  if (candidates.length === 0) return 0
+/**
+ * Filters out candidates whose keyword text already exists in the `keywords`
+ * table (any status) or whose derived slug already has a published article.
+ * Without this, every daily research run re-inserts the same fixed template
+ * set as new duplicate rows (seen: some keywords duplicated 16x).
+ */
+async function filterNewCandidates(candidates: KeywordCandidate[]): Promise<KeywordCandidate[]> {
+  const { data: existingKeywords } = await supabase.from('keywords').select('keyword')
+  const existingText = new Set((existingKeywords ?? []).map((k) => k.keyword.trim().toLowerCase()))
 
-  const rows = candidates.map((c) => ({
+  const { data: articles } = await supabase.from('articles').select('slug')
+  const existingSlugs = new Set((articles ?? []).map((a) => a.slug))
+
+  const seen = new Set<string>()
+  return candidates.filter((c) => {
+    const norm = c.keyword.trim().toLowerCase()
+    if (existingText.has(norm) || seen.has(norm)) return false
+    if (existingSlugs.has(keywordToSlug(c.keyword))) return false
+    seen.add(norm)
+    return true
+  })
+}
+
+async function insertKeywords(candidates: KeywordCandidate[]): Promise<number> {
+  const newCandidates = await filterNewCandidates(candidates)
+  if (newCandidates.length === 0) return 0
+
+  // Approved directly: there is no separate human-review step downstream of
+  // this table (see project rule "sin intervención humana en el contenido")
+  // — QA/SEO review after content generation is the real quality gate.
+  const rows = newCandidates.map((c) => ({
     keyword: c.keyword,
     search_intent: c.search_intent,
     category: c.category,
@@ -144,7 +173,7 @@ async function insertKeywords(candidates: KeywordCandidate[]): Promise<number> {
     priority_score: c.priority_score,
     monthly_volume: c.monthly_volume ?? null,
     difficulty: c.difficulty ?? null,
-    status: 'pending_approval' as const,
+    status: 'approved' as const,
   }))
 
   const { data, error } = await supabase.from('keywords').insert(rows).select('id')

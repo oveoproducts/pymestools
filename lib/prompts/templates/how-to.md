@@ -184,6 +184,30 @@ Para captar los contactos que van a entrar en esta automatización, [NombreHerra
 
 ---
 
+### FAQ (Preguntas frecuentes)
+
+**Función:** Responde 3–5 preguntas reales que Carlos buscaría en Google sobre este tutorial — ayuda a captar featured snippets y consultas de voz/IA.
+
+**Instrucciones:**
+- Preguntas cortas, en lenguaje natural (como se escriben en el buscador), no genéricas.
+- Respuestas de 2–4 frases cada una, directas, sin remitir a otra sección del artículo.
+- Incluye al menos una pregunta sobre un problema común al hacer esto y una sobre si existe una forma gratuita/manual.
+
+```mdx
+## Preguntas frecuentes
+
+### [Pregunta 1]
+[Respuesta directa.]
+
+### [Pregunta 2]
+[Respuesta directa.]
+
+### [Pregunta 3]
+[Respuesta directa.]
+```
+
+---
+
 ### Disclosure
 
 ```mdx
@@ -210,6 +234,7 @@ Si durante la redacción detectas que la interfaz de la herramienta ha cambiado 
 - [ ] Sección `Errores comunes` con 2–3 problemas reales y soluciones accionables
 - [ ] Sección `Resultado final` confirma lo que Carlos tiene ahora
 - [ ] CTAs de afiliado solo si el programa está activo (máximo 3 en todo el artículo)
+- [ ] Sección FAQ con 3–5 preguntas reales
 - [ ] Disclosure al final
 - [ ] Sin frases prohibidas
 - [ ] Test de Carlos superado
