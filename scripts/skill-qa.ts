@@ -145,8 +145,10 @@ async function updateQueueItem(
 // deliberadamente un hook de apertura sin cabecera en vez de una
 // introducción genérica (ver lib/prompts/templates/*.md).
 const REQUIRED_SECTIONS = [
-  { pattern: /##\s*(faq|preguntas frecuentes)/i, label: 'FAQ' },
-  { pattern: /##\s*(conclusi[oó]n|resumen)/i, label: 'Conclusión' },
+  { pattern: /^##\s+.*(faq|preguntas frecuentes)/im, label: 'FAQ' },
+  // Match anywhere in the H2 line, not just immediately after "## " — real
+  // headings vary ("## TL;DR — Resumen rápido", "## Veredicto final").
+  { pattern: /^##\s+.*(conclusi[oó]n|resumen|veredicto)/im, label: 'Conclusión' },
   { pattern: /afiliado|affiliate|compensaci[oó]n/i, label: 'Affiliate disclosure' },
 ]
 

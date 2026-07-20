@@ -226,8 +226,10 @@ function buildSchemaMarkup(article: ArticleRow, meta: MetaResult, mdx: string): 
 const FAQ_QUESTION_PATTERN = /###\s+(.+)\n+([\s\S]+?)(?=###|\n##|$)/g
 
 function extractFAQSchema(mdx: string): SchemaFAQPage | null {
-  // Find FAQ section
-  const faqMatch = mdx.match(/##\s+(FAQ|Preguntas frecuentes)([\s\S]+?)(?=\n##|$)/i)
+  // Find FAQ section. The lookahead requires a real H2 (not H3 — "\n##(?!#)"
+  // excludes "### Question" subheadings, which otherwise terminate the
+  // section immediately after the FAQ heading, capturing nothing).
+  const faqMatch = mdx.match(/##\s+(FAQ|Preguntas frecuentes)([\s\S]+?)(?=\n##(?!#)|$)/i)
   if (!faqMatch) return null
 
   const faqSection = faqMatch[2]
