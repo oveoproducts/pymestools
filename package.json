@@ -19,6 +19,7 @@
     "pipeline:analytics": "tsx --env-file=.env.local scripts/skill-analytics.ts",
     "pipeline:analytics:weekly": "tsx --env-file=.env.local scripts/skill-analytics.ts --mode=weekly",
     "pipeline:analytics:monthly": "tsx --env-file=.env.local scripts/skill-analytics.ts --mode=monthly",
+    "gsc:ingest": "tsx --env-file=.env.local scripts/ingest-gsc.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },

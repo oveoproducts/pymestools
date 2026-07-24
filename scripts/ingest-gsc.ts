@@ -5,11 +5,16 @@
  *
  * Prerequisites:
  *   1. Google Cloud project with Search Console API enabled
- *   2. Service account with "Verified owner" role in GSC for pymestools.com
- *   3. GOOGLE_SERVICE_ACCOUNT_JSON env var with the full service account JSON
+ *   2. The service account (GOOGLE_SERVICE_ACCOUNT_JSON's client_email) added
+ *      as a user in Search Console → Settings → Users and permissions, for
+ *      the pymestools.com property
  *
  * Usage: npx tsx --env-file=.env.local scripts/ingest-gsc.ts
- * Railway: add to cronSchedule alongside pipeline-run (or daily after it)
+ *
+ * Uses a service account instead of the OAuth refresh-token flow
+ * (auth-gsc.ts) — refresh tokens from an OAuth consent screen in "Testing"
+ * status expire after 7 days, which is why this silently stopped working
+ * repeatedly. Service account credentials don't expire.
  */
 import 'dotenv/config'
 import { google } from 'googleapis'
@@ -22,16 +27,16 @@ const DAYS_BACK = 30
 // Auth
 // ---------------------------------------------------------------------------
 
-function getAuth() {
-  const clientId = process.env.GSC_CLIENT_ID
-  const clientSecret = process.env.GSC_CLIENT_SECRET
-  const refreshToken = process.env.GSC_REFRESH_TOKEN
-  if (!clientId || !clientSecret || !refreshToken) {
-    throw new Error('Missing env vars: GSC_CLIENT_ID, GSC_CLIENT_SECRET, GSC_REFRESH_TOKEN')
+function getAuth(): InstanceType<typeof google.auth.GoogleAuth> {
+  const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON
+  if (!raw) {
+    throw new Error('Missing env var: GOOGLE_SERVICE_ACCOUNT_JSON')
   }
-  const oauth2Client = new google.auth.OAuth2(clientId, clientSecret)
-  oauth2Client.setCredentials({ refresh_token: refreshToken })
-  return oauth2Client
+  const credentials = JSON.parse(raw)
+  return new google.auth.GoogleAuth({
+    credentials,
+    scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
+  })
 }
 
 // ---------------------------------------------------------------------------
