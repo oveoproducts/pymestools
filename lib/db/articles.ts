@@ -86,6 +86,53 @@ export async function getArticlesByCategory(
   return data.map(normalise)
 }
 
+/**
+ * Related articles for a given article: prioritizes articles that share a
+ * tool (e.g. other HubSpot content) over just "same category, most recent" —
+ * the previous logic ignored `tools` entirely, so a HubSpot review's related
+ * block could show unrelated CRM articles while missing
+ * "alternativas-a-hubspot" or "hubspot-precio-y-planes" pages.
+ */
+export async function getRelatedArticles(
+  article: Pick<Article, 'id' | 'category' | 'tools'>,
+  limit = 3,
+): Promise<Article[]> {
+  const byTool: Article[] = []
+
+  if (article.tools.length > 0) {
+    const { data } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('status', 'published')
+      .neq('id', article.id)
+      .overlaps('tools', article.tools)
+      .order('published_at', { ascending: false })
+      .limit(limit)
+
+    if (data) byTool.push(...data.map(normalise))
+  }
+
+  if (byTool.length >= limit) return byTool.slice(0, limit)
+
+  const dbCategory = article.category.replace(/-/g, '_')
+  const excludeIds = new Set([article.id, ...byTool.map((a) => a.id)])
+
+  const { data: byCategory } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('status', 'published')
+    .eq('category', dbCategory)
+    .order('published_at', { ascending: false })
+    .limit(limit + excludeIds.size)
+
+  const fallback = (byCategory ?? [])
+    .map(normalise)
+    .filter((a) => !excludeIds.has(a.id))
+    .slice(0, limit - byTool.length)
+
+  return [...byTool, ...fallback]
+}
+
 export async function getArticlesByType(
   type: string,
   limit?: number,

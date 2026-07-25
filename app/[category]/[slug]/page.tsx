@@ -10,7 +10,7 @@ import brand from '@/data/brand.json'
 import {
   getArticleBySlug,
   getPublishedArticles,
-  getArticlesByCategory,
+  getRelatedArticles,
 } from '@/lib/db/articles'
 import { ScrollDepthTracker } from '@/app/components/ScrollDepthTracker'
 import { ArticleCard } from '@/app/components/ArticleCard'
@@ -187,9 +187,7 @@ export default async function ArticlePage({ params }: PageProps) {
   const mdxContent = getMdxContent(slug)
   const articleScore = getMdxScore(slug)
 
-  const relatedArticles = (await getArticlesByCategory(category, 4)).filter(
-    (a) => a.slug !== slug,
-  ).slice(0, 3)
+  const relatedArticles = await getRelatedArticles(article, 3)
 
   const categoryLabel =
     CATEGORY_LABELS[category as ValidCategory] ?? category

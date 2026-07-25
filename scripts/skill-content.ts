@@ -167,6 +167,15 @@ async function fetchAffiliateNames(ids: string[]): Promise<string[]> {
   return (data ?? []).map((r: { name: string }) => r.name)
 }
 
+async function fetchAffiliateSlugs(ids: string[]): Promise<string[]> {
+  if (ids.length === 0) return []
+  const { data } = await supabase
+    .from('affiliate_programs')
+    .select('slug')
+    .in('id', ids)
+  return (data ?? []).map((r: { slug: string }) => r.slug)
+}
+
 async function logAgent(
   task: string,
   status: 'started' | 'completed' | 'failed',
@@ -256,6 +265,7 @@ async function insertArticle(
 ): Promise<string> {
   const articleType = inferArticleType(keyword.keyword, keyword.search_intent)
   const readingTime = estimateReadingTime(mdx)
+  const tools = await fetchAffiliateSlugs(keyword.affiliate_program_ids ?? [])
 
   const insert: ArticleInsert = {
     title: keyword.keyword, // TODO: extract from MDX frontmatter
@@ -266,7 +276,7 @@ async function insertArticle(
     status: 'draft',
     keywords_primary: keyword.keyword,
     reading_time_minutes: readingTime,
-    tools: [], // TODO: extract from MDX frontmatter
+    tools,
   }
 
   const { data, error } = await supabase
