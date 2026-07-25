@@ -79,27 +79,52 @@ const INTENT_PATTERNS: Record<string, 'commercial' | 'informational' | 'transact
  * TODO: replace with Anthropic API + web search for real volume/difficulty data.
  */
 const SECTORS = ['servicios', 'ecommerce', 'inmobiliarias', 'autonomos', 'clinicas']
+const CITIES = ['Madrid', 'Barcelona', 'Valencia']
+// Spanish-market tools worth pairing in integration/migration queries — low
+// competition, high intent (someone searching this already uses one of the
+// two and is close to a decision).
+const ES_TOOLS = ['Holded', 'Sage', 'Factorial']
 
 function generateKeywordCandidates(program: AffiliateProgram): KeywordCandidate[] {
   const toolName = program.name.toLowerCase()
   const category = deriveCategory(program)
   const year = new Date().getFullYear()
 
-  const templates: Array<{ keyword: string; intent: KeywordCandidate['search_intent']; priority: number }> = [
-    { keyword: `mejor ${toolName} para pymes`, intent: 'commercial', priority: 8 },
-    { keyword: `alternativas a ${toolName} en español`, intent: 'commercial', priority: 7 },
+  // Head terms: high competition, unlikely to rank for a new domain for
+  // months regardless of content quality — kept, but not prioritized over
+  // the long-tail terms below.
+  const headTerms: Array<{ keyword: string; intent: KeywordCandidate['search_intent']; priority: number }> = [
+    { keyword: `mejor ${toolName} para pymes`, intent: 'commercial', priority: 6 },
+    { keyword: `alternativas a ${toolName} en español`, intent: 'commercial', priority: 6 },
     { keyword: `${toolName} precio y planes ${year}`, intent: 'commercial', priority: 6 },
-    { keyword: `${toolName} review español pymes`, intent: 'commercial', priority: 7 },
-    { keyword: `${toolName} opiniones ${year}`, intent: 'commercial', priority: 6 },
-    { keyword: `cómo funciona ${toolName} tutorial español`, intent: 'informational', priority: 5 },
-    { keyword: `qué es ${toolName} y para qué sirve`, intent: 'informational', priority: 4 },
-    { keyword: `${toolName} gratis pymes españa`, intent: 'commercial', priority: 6 },
+    { keyword: `${toolName} review español pymes`, intent: 'commercial', priority: 6 },
+    { keyword: `${toolName} opiniones ${year}`, intent: 'commercial', priority: 5 },
+    { keyword: `${toolName} gratis pymes españa`, intent: 'commercial', priority: 5 },
+  ]
+
+  // Long-tail: lower search volume but far less competed, so a new domain
+  // can realistically rank within weeks instead of months.
+  const longTail: Array<{ keyword: string; intent: KeywordCandidate['search_intent']; priority: number }> = [
+    { keyword: `cómo funciona ${toolName} tutorial español`, intent: 'informational', priority: 6 },
+    { keyword: `qué es ${toolName} y para qué sirve`, intent: 'informational', priority: 5 },
     ...SECTORS.map((sector) => ({
       keyword: `mejor ${toolName} para ${sector}`,
       intent: 'commercial' as const,
-      priority: 5,
+      priority: 7,
+    })),
+    ...CITIES.map((city) => ({
+      keyword: `${toolName} para pymes en ${city}`,
+      intent: 'commercial' as const,
+      priority: 6,
+    })),
+    ...ES_TOOLS.map((esTool) => ({
+      keyword: `cómo conectar ${toolName} con ${esTool}`,
+      intent: 'informational' as const,
+      priority: 6,
     })),
   ]
+
+  const templates = [...headTerms, ...longTail]
 
   return templates.map((t) => ({
     keyword: t.keyword,
