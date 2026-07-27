@@ -329,16 +329,20 @@ export async function runContent(options: ContentOptions): Promise<ContentResult
 
     console.log(`  Keyword: "${keyword.keyword}" [${keyword.category}]`)
 
-    // 2. Bail early if this slug is already published — avoids wasting an
-    //    Anthropic API call and hitting the articles_slug_key constraint.
+    // 2. Handle an existing row for this slug.
+    //    - published: real duplicate content → skip and reject the keyword.
+    //    - any other status (draft/qa_review/…): a leftover from a prior run
+    //      that never finished (e.g. its MDX file was lost on an ephemeral
+    //      runner). Delete it so we can regenerate cleanly instead of
+    //      abandoning the queue item or colliding on the unique slug.
     const slug = keywordToSlug(keyword.keyword)
     const { data: existingArticle } = await supabase
       .from('articles')
-      .select('id')
+      .select('id, status')
       .eq('slug', slug)
       .maybeSingle()
 
-    if (existingArticle) {
+    if (existingArticle?.status === 'published') {
       await supabase.from('keywords').update({ status: 'rejected' }).eq('id', keyword.id)
       const message = `Skipped: slug "${slug}" already published`
       if (options.queueItemId) {
@@ -347,6 +351,11 @@ export async function runContent(options: ContentOptions): Promise<ContentResult
       await logAgent('content:generate', 'completed', Date.now() - startedAt, undefined, message)
       console.log(`\n⏭️   ${message}`)
       return { success: false, message }
+    }
+
+    if (existingArticle) {
+      console.log(`  Removing stale ${existingArticle.status} article for slug "${slug}" before regenerating`)
+      await supabase.from('articles').delete().eq('id', existingArticle.id)
     }
 
     // 3. Mark keyword in_progress
