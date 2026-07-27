@@ -32,7 +32,7 @@ jobs:
         run: npx tsx scripts/ingest-gsc.ts
         continue-on-error: true
 
-      - name: Run pipeline
+      - name: Run pipeline until an article publishes
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
@@ -42,4 +42,28 @@ jobs:
         run: |
           git config user.name "pymestools-bot"
           git config user.email "bot@pymestools.com"
-          npx tsx scripts/pipeline-run.ts
+
+          # pipeline-run.ts advances ONE queue step per call. Loop within this
+          # single job so the whole research→content→QA→SEO→publish chain runs
+          # in ONE ephemeral filesystem session — otherwise the .mdx a "content"
+          # step writes to disk is gone by the next day's "QA" step (ENOENT),
+          # and one article would take ~5 days instead of one.
+          START_HEAD=$(git rev-parse HEAD)
+          for i in $(seq 1 8); do
+            echo "=== pipeline iteration $i ==="
+            npx tsx scripts/pipeline-run.ts
+            if [ "$(git rev-parse HEAD)" != "$START_HEAD" ]; then
+              echo "An article was published (git HEAD advanced) — stopping."
+              break
+            fi
+          done
+
+          # Safety net: if the loop ended without publishing (e.g. an article
+          # is mid-QA), commit any drafted MDX so the next run can find it.
+          # Draft files in the repo are harmless — the site only serves rows
+          # whose DB status is 'published'.
+          if [ -n "$(git status --porcelain content/articles)" ]; then
+            git add content/articles
+            git commit -m "content: persist in-progress articles [skip ci]"
+            git push
+          fi
