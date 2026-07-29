@@ -108,6 +108,20 @@ async function enqueueNextApprovedKeyword(): Promise<boolean> {
   const { data: queued } = await supabase.from('pipeline_queue').select('keyword_id')
   const queuedIds = new Set((queued ?? []).map((q) => q.keyword_id).filter(Boolean))
 
+  // Slugs already represented by a queue item (via its keyword). Two approved
+  // keyword rows can share the same text → same slug (legacy duplicates); if
+  // one is already in flight, enqueuing the other produces a duplicate-slug
+  // collision downstream. Guard against slug, not just keyword_id.
+  const queuedKeywordIds = [...queuedIds] as string[]
+  const inFlightSlugs = new Set<string>()
+  if (queuedKeywordIds.length > 0) {
+    const { data: queuedKws } = await supabase
+      .from('keywords')
+      .select('keyword')
+      .in('id', queuedKeywordIds)
+    for (const k of queuedKws ?? []) inFlightSlugs.add(keywordToSlug(k.keyword))
+  }
+
   const { data: candidates } = await supabase
     .from('keywords')
     .select('id, keyword, priority_score')
@@ -124,7 +138,7 @@ async function enqueueNextApprovedKeyword(): Promise<boolean> {
     if (queuedIds.has(kw.id)) continue
 
     const slug = keywordToSlug(kw.keyword)
-    if (existingSlugs.has(slug)) {
+    if (existingSlugs.has(slug) || inFlightSlugs.has(slug)) {
       await supabase.from('keywords').update({ status: 'rejected' }).eq('id', kw.id)
       continue
     }
