@@ -12,6 +12,9 @@ const VALID_CATEGORIES = [
   'facturacion',
   'recursos-humanos',
   'gestion-proyectos',
+  'seo',
+  'productividad',
+  'hosting',
 ] as const
 
 type ValidCategory = (typeof VALID_CATEGORIES)[number]
@@ -24,6 +27,9 @@ const CATEGORY_LABELS: Record<ValidCategory, string> = {
   facturacion: 'Facturación',
   'recursos-humanos': 'Recursos Humanos',
   'gestion-proyectos': 'Gestión de Proyectos',
+  seo: 'SEO',
+  productividad: 'Productividad',
+  hosting: 'Hosting',
 }
 
 const CATEGORY_DESCRIPTIONS: Record<ValidCategory, string> = {
@@ -40,6 +46,11 @@ const CATEGORY_DESCRIPTIONS: Record<ValidCategory, string> = {
     'Herramientas de gestión de recursos humanos y RRHH para pymes en España.',
   'gestion-proyectos':
     'Reviews y comparativas de herramientas de gestión de proyectos para pymes españolas.',
+  seo: 'Herramientas de SEO y posicionamiento web para pymes españolas.',
+  productividad:
+    'Reviews y comparativas de herramientas de productividad para pymes en España.',
+  hosting:
+    'Guías y comparativas de hosting y alojamiento web para pymes españolas.',
 }
 
 interface PageProps {

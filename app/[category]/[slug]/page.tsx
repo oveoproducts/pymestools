@@ -31,6 +31,9 @@ const VALID_CATEGORIES = [
   'facturacion',
   'recursos-humanos',
   'gestion-proyectos',
+  'seo',
+  'productividad',
+  'hosting',
 ] as const
 
 type ValidCategory = (typeof VALID_CATEGORIES)[number]
@@ -43,6 +46,9 @@ const CATEGORY_LABELS: Record<ValidCategory, string> = {
   facturacion: 'Facturación',
   'recursos-humanos': 'Recursos Humanos',
   'gestion-proyectos': 'Gestión de Proyectos',
+  seo: 'SEO',
+  productividad: 'Productividad',
+  hosting: 'Hosting',
 }
 
 const MDX_COMPONENTS = {

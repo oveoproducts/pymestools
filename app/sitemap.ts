@@ -10,6 +10,9 @@ const CATEGORIES = [
   'facturacion',
   'recursos-humanos',
   'gestion-proyectos',
+  'seo',
+  'productividad',
+  'hosting',
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
