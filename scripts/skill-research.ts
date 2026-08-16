@@ -126,12 +126,23 @@ function generateKeywordCandidates(program: AffiliateProgram): KeywordCandidate[
 
   const templates = [...headTerms, ...longTail]
 
+  // Priority by commission type — recurring programs earn commission every
+  // month a referral stays subscribed, so they're worth far more per article
+  // than one-time payouts (project rule: "comisiones recurrentes primero").
+  // This also sidesteps the current publishing stall: the one-time tools
+  // (Semrush, Hostinger) are exactly the ones whose pricing the model can't
+  // verify, so their articles keep failing QA. Sinking them lets the pipeline
+  // pull verifiable recurring-tool keywords first.
+  const commissionBoost = program.commission_type === 'recurring' ? 2
+    : program.commission_type === 'one-time' ? -4
+    : 0
+
   return templates.map((t) => ({
     keyword: t.keyword,
     search_intent: t.intent,
     category,
     affiliate_program_ids: [program.id],
-    priority_score: t.priority,
+    priority_score: Math.max(1, t.priority + commissionBoost),
     // monthly_volume and difficulty to be filled by real SEO data source
   }))
 }
