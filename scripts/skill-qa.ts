@@ -148,7 +148,7 @@ const REQUIRED_SECTIONS = [
   { pattern: /^##\s+.*(faq|preguntas frecuentes)/im, label: 'FAQ' },
   // Match anywhere in the H2 line, not just immediately after "## " — real
   // headings vary ("## TL;DR — Resumen rápido", "## Veredicto final").
-  { pattern: /^##\s+.*(conclusi[oó]n|resumen|veredicto)/im, label: 'Conclusión' },
+  { pattern: /^##\s+.*(conclusi[oó]n|resumen|veredicto|resultado final)/im, label: 'Conclusión' },
   { pattern: /afiliado|affiliate|compensaci[oó]n/i, label: 'Affiliate disclosure' },
 ]
 
