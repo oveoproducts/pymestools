@@ -1,0 +1,219 @@
+---
+title: "Cómo conectar Hostinger con Sage: guía paso a paso"
+slug: "como-conectar-hostinger-con-sage"
+category: "hosting"
+description: "Guía paso a paso para conectar tu dominio y correo de Hostinger con Sage. Sin conocimientos técnicos. Resultado en menos de 30 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-31"
+tools: ["hostinger"]
+keywords:
+  primary: "cómo conectar hostinger con sage"
+  secondary:
+    - "hostinger sage integración"
+    - "correo profesional hostinger sage"
+    - "dominio hostinger sage 50"
+    - "hostinger pymes españa"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "6 min"
+qualityScore: null
+---
+
+<Callout type="info">
+**Lo que vas a conseguir aquí:** Hostinger y Sage no tienen una integración nativa directa. Lo que sí puedes hacer — y lo que la mayoría de pymes necesita — es usar tu dominio y correo profesional de Hostinger dentro de Sage para enviar facturas y comunicaciones con tu propio dominio. Eso es lo que cubre esta guía.
+</Callout>
+
+Al terminar esta guía, podrás enviar facturas desde Sage usando una dirección de correo con tu propio dominio — por ejemplo, `facturas@tuempresa.com` — alojado en Hostinger. Sin correos de Gmail ni de Hotmail que resten credibilidad. El proceso completo lleva unos 20-30 minutos si tienes los datos de acceso a mano.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta activa en Hostinger:** cualquier plan de pago incluye correo profesional y acceso a los registros DNS. Si tienes un plan de hosting compartido (Business o superior), es más que suficiente. Si aún no tienes cuenta, puedes crearla aquí:
+
+<AffiliateLink programSlug="hostinger" articleSlug="como-conectar-hostinger-con-sage" label="Crear cuenta en Hostinger" />
+
+- **Un dominio activo en Hostinger:** necesitas que el dominio esté apuntando a los servidores de Hostinger (nameservers). Si lo tienes en otro registrador, el proceso es diferente y más largo.
+- **Sage 50 o Sage Business Cloud:** esta guía cubre ambas versiones. La pantalla de configuración de correo es ligeramente distinta entre ellas — lo indicamos en el paso correspondiente.
+- **Datos SMTP de Hostinger:** los encontrarás en el panel de Hostinger. Los necesitarás en el paso 4.
+- **Nivel técnico necesario:** no necesitas saber programar. Si sabes copiar y pegar texto y encontrar un menú de configuración, es suficiente. Los pasos de DNS pueden ser los menos familiares, pero los explicamos uno a uno.
+
+---
+
+## Pasos
+
+### Paso 1: Crea una cuenta de correo en Hostinger
+
+**Qué hacer:** Entra en el panel de control de Hostinger (hPanel) en `hpanel.hostinger.com`. En el menú lateral, busca la sección `"Emails"` y haz clic en `"Cuentas de correo"`. Pulsa el botón `"Crear cuenta de correo"`. Elige el nombre que quieras usar (por ejemplo, `facturas`, `admin` o `info`), escribe una contraseña segura y guárdala en algún sitio — la necesitarás más adelante.
+
+**Por qué:** Necesitas una cuenta de correo real alojada en Hostinger para que Sage pueda enviar emails a través de ella. No sirve con cualquier dirección externa.
+
+**Qué verás:** Aparecerá la nueva cuenta en el listado, con el estado `"Activa"` y el espacio de almacenamiento asignado.
+
+---
+
+### Paso 2: Anota los datos SMTP de Hostinger
+
+**Qué hacer:** Desde la misma sección `"Emails"`, haz clic en los tres puntos (`···`) junto a la cuenta que acabas de crear y selecciona `"Configurar cliente de correo"`. Verás una pantalla con los datos de configuración. Necesitas copiar estos tres valores:
+
+- **Servidor SMTP:** normalmente `smtp.hostinger.com`
+- **Puerto SMTP:** `587` (con STARTTLS) o `465` (con SSL)
+- **Usuario:** tu dirección de correo completa (ej: `facturas@tuempresa.com`)
+
+**Por qué:** Sage necesita estos datos para saber a qué servidor conectarse cuando envíe un correo. Sin el servidor SMTP correcto, los emails no salen.
+
+**Qué verás:** Una tabla con los ajustes para IMAP, POP3 y SMTP. Solo necesitas el bloque SMTP.
+
+<Callout type="warning">
+**Contraseña:** Hostinger no te muestra la contraseña SMTP por separado. Es la misma que asignaste al crear la cuenta de correo en el paso anterior. Si la has olvidado, ve a `"Cuentas de correo"` y cambia la contraseña antes de continuar.
+</Callout>
+
+---
+
+### Paso 3: Accede a la configuración de correo en Sage
+
+**Qué hacer:** Abre Sage en tu ordenador.
+
+- **En Sage 50:** ve al menú superior `"Herramientas"` → `"Opciones"` → pestaña `"Correo electrónico"`.
+- **En Sage Business Cloud (versión web):** accede a `"Configuración"` (icono de engranaje en la esquina superior derecha) → `"Empresa"` → `"Correo electrónico"`.
+
+En ambos casos verás un formulario para introducir los datos del servidor de correo saliente.
+
+**Por qué:** Este es el punto donde le dices a Sage desde qué cuenta y servidor tiene que enviar las facturas y documentos.
+
+**Qué verás:** Un formulario con campos como `"Servidor SMTP"`, `"Puerto"`, `"Usuario"` y `"Contraseña"`. Si ya tenías alguna configuración anterior (por ejemplo, una cuenta de Gmail), aparecerá rellenada.
+
+---
+
+### Paso 4: Introduce los datos SMTP de Hostinger en Sage
+
+**Qué hacer:** Rellena el formulario con los datos que anotaste en el paso 2:
+
+| Campo | Valor |
+|---|---|
+| Servidor SMTP | `smtp.hostinger.com` |
+| Puerto | `587` |
+| Seguridad | `STARTTLS` |
+| Usuario | `facturas@tuempresa.com` (tu dirección completa) |
+| Contraseña | La que asignaste en el paso 1 |
+
+Marca la casilla `"Requiere autenticación"` si está disponible — en Hostinger es obligatorio.
+
+**Por qué:** Sin autenticación, el servidor SMTP de Hostinger rechazará la conexión. No es opcional.
+
+**Qué verás:** Los campos rellenados. Todavía no ha pasado nada hasta que no guardas y pruebas.
+
+**Nota:** Si Sage te pide un `"Nombre del remitente"`, escribe el nombre que quieres que vean tus clientes — por ejemplo, `"Facturación Empresa SL"`.
+
+---
+
+### Paso 5: Envía un correo de prueba
+
+**Qué hacer:** Antes de guardar definitivamente, busca el botón `"Probar conexión"` o `"Enviar email de prueba"` (el nombre varía según la versión de Sage). Si existe, úsalo. Introduce una dirección de correo a la que tengas acceso (puede ser la tuya personal) y pulsa `"Enviar"`.
+
+Si Sage no tiene botón de prueba, guarda la configuración y envía una factura de prueba a ti mismo desde el menú de facturación habitual.
+
+**Por qué:** Hay que confirmar que la conexión funciona antes de que la use con clientes reales. Es mejor descubrir el problema ahora que cuando un cliente llame preguntando por qué no ha recibido su factura.
+
+**Qué verás:** Un mensaje de confirmación en pantalla y un email en tu bandeja de entrada. Si hay error, Sage mostrará un mensaje con el código de fallo — los más habituales los explicamos en la sección de errores más abajo.
+
+---
+
+### Paso 6: Verifica que el correo llega sin acabar en spam
+
+**Qué hacer:** Revisa el email de prueba que has recibido. Comprueba:
+
+1. Que el remitente muestra tu dominio (no `hostinger.com` ni nada raro)
+2. Que ha llegado a la bandeja de entrada, no a spam
+3. Que el asunto y el cuerpo se ven correctamente
+
+Si llega a spam, el siguiente paso es revisar los registros SPF y DKIM de tu dominio en Hostinger. Hostinger configura SPF y DKIM automáticamente si el dominio está gestionado desde hPanel — pero si lo tienes en otro registrador, habrá que añadirlos manualmente.
+
+**Por qué:** Sin SPF y DKIM correctos, muchos servidores de correo marcan tus facturas como spam. Esto es especialmente frecuente en dominios nuevos o recién migrados.
+
+**Qué verás:** El email en tu bandeja de entrada con el remitente correcto. Si algo falla, lo verás en la cabecera del email (en Gmail: `"Mostrar original"`).
+
+---
+
+## Errores comunes
+
+**Error de autenticación: `"535 Authentication failed"`**
+
+*Síntoma:* Sage muestra un mensaje de error con el código `535` o indica que las credenciales son incorrectas.
+
+*Causa:* La contraseña introducida en Sage no coincide con la de la cuenta de correo de Hostinger, o el nombre de usuario no es la dirección completa (por ejemplo, has puesto solo `facturas` en vez de `facturas@tuempresa.com`).
+
+*Solución:* Ve a Hostinger → `"Cuentas de correo"` → cambia la contraseña a una nueva. Vuelve a Sage e introduce la nueva contraseña. El usuario debe ser siempre la dirección completa con el `@`.
+
+---
+
+**El email de prueba llega a spam**
+
+*Síntoma:* El correo de prueba llega pero aparece en la carpeta de correo no deseado del destinatario.
+
+*Causa:* El dominio no tiene configurados correctamente los registros SPF y/o DKIM, o son muy recientes y los servidores externos aún no los han propagado.
+
+*Solución:* En hPanel de Hostinger, ve a `"Emails"` → `"Herramientas de correo"` → `"Autenticación de correo electrónico"`. Activa SPF y DKIM si no están activos. La propagación puede tardar hasta 24 horas. Mientras tanto, pide al destinatario de prueba que marque el correo como `"No es spam"`.
+
+---
+
+**Sage no conecta: `"Connection timed out"` o no hay respuesta del servidor**
+
+*Síntoma:* Al probar la conexión, Sage se queda cargando y acaba mostrando un error de tiempo de espera agotado.
+
+*Causa:* El puerto 587 puede estar bloqueado por el antivirus o el firewall del ordenador, o por las restricciones de la red de empresa. Es más frecuente en conexiones con VPN activa.
+
+*Solución:* Prueba a desactivar temporalmente el antivirus o la VPN y vuelve a probar. Si funciona, tendrás que añadir una excepción en el firewall para el puerto 587 hacia `smtp.hostinger.com`. Si el problema persiste, prueba el puerto alternativo `465` con `SSL/TLS` en vez de `STARTTLS`.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Una dirección de correo profesional** con tu dominio (`@tuempresa.com`) alojada en Hostinger y conectada a Sage.
+- **Sage configurado para enviar facturas, presupuestos y cualquier documento** directamente desde esa dirección, sin pasar por Gmail ni cuentas personales.
+- **SPF y DKIM activos**, lo que mejora la entregabilidad y reduce la probabilidad de que tus facturas acaben en la carpeta de spam de tus clientes.
+
+El siguiente paso lógico es configurar una plantilla de email personalizada en Sage para que el asunto y el cuerpo del correo de cada factura tenga el estilo de tu empresa — eso lo encuentras en `"Herramientas"` → `"Plantillas de email"` en Sage 50.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes hosting o dominio en Hostinger, aquí tienes el acceso directo. Los planes de hosting compartido incluyen cuentas de correo profesionales desde el plan Business:
+
+<AffiliateLink programSlug="hostinger" articleSlug="como-conectar-hostinger-con-sage" label="Ver planes de Hostinger" />
+
+<Callout type="tip">
+**🇪🇸 Dato relevante para pymes españolas:** Hostinger tiene interfaz y soporte en español. El panel hPanel está completamente traducido. Si necesitas ayuda con los registros DNS o la configuración de correo, el chat de soporte atiende en español en horario amplio.
+</Callout>
+
+---
+
+## Preguntas frecuentes
+
+### ¿Hostinger y Sage tienen integración oficial?
+
+No. Hostinger es una plataforma de hosting web y dominios; Sage es software de gestión y contabilidad. No existe una integración directa entre ambos. Lo que puedes hacer es usar el correo profesional de Hostinger como servidor SMTP de salida en Sage, que es lo que cubre esta guía.
+
+### ¿Funciona esta configuración con Sage Business Cloud o solo con Sage 50?
+
+Funciona con ambos. La pantalla de configuración de correo está en sitios distintos según la versión (lo indicamos en el paso 3), pero los datos SMTP de Hostinger son los mismos en los dos casos.
+
+### ¿Puedo usar Gmail o Outlook en vez del correo de Hostinger en Sage?
+
+Sí, técnicamente es posible. Pero si ya tienes un dominio propio en Hostinger, usar una dirección con ese dominio da más credibilidad a tus facturas y comunicaciones. Gmail y Outlook también tienen sus propios servidores SMTP, pero Google ha endurecido las restricciones para aplicaciones de terceros — puede requerir pasos adicionales de verificación.
+
+### ¿Cuántas cuentas de correo puedo crear en Hostinger?
+
+Depende del plan. El plan Business incluye 100 cuentas de correo. El plan Premium incluye 10. Para una pyme de 8 personas, cualquiera de los dos es suficiente. Verifica el límite exacto de tu plan en `hPanel` → `"Emails"` → `"Uso"`.
+
+### ¿Qué pasa si el dominio no está en Hostinger sino en otro registrador?
+
+El proceso de configuración SMTP en Sage es idéntico — los datos SMTP de Hostinger no cambian. Lo que sí cambia es dónde tienes que añadir los registros SPF y DKIM: tendrás que hacerlo en el panel DNS del registrador donde tengas el dominio (GoDaddy, Nominalia, Arsys, etc.), no en hPanel de Hostinger. Consulta la documentación de soporte de Hostinger para ver los valores exactos que necesitas añadir.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*

@@ -1,0 +1,216 @@
+---
+title: "Cómo conectar Notion con Sage: guía paso a paso"
+slug: "como-conectar-notion-con-sage"
+category: "productividad"
+description: "Guía paso a paso para conectar Notion con Sage y mantener sincronizados tus proyectos y datos financieros. Sin programar, en menos de 45 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-31T00:00:00Z"
+tools: ["notion"]
+keywords:
+  primary: "cómo conectar notion con sage"
+  secondary:
+    - "notion sage integración"
+    - "sincronizar notion sage"
+    - "notion make zapier sage"
+    - "notion pymes españa"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Notion y Sage conectados de forma que los datos clave de tu contabilidad aparezcan automáticamente en tus documentos de trabajo en Notion. Sin exportar Excel a mano. Sin copiar y pegar facturas.
+
+El proceso completo lleva entre 30 y 45 minutos si tienes las credenciales a mano.
+
+<Callout type="warning">
+**Aviso importante antes de empezar:** Sage (en sus versiones para pymes españolas — Sage 50, Sage 200 y Sage Business Cloud) **no tiene integración oficial ni nativa con Notion**. No existe una conexión directa de un clic entre ambas plataformas. Lo que sí existe — y es lo que cubrimos en esta guía — son tres métodos reales para conectarlas: mediante una herramienta de automatización intermedia (Make o Zapier), mediante exportación manual estructurada a Notion, o mediante la API de Notion si tienes a alguien técnico en el equipo. Elige el método que encaja con tus recursos.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Notion:** El método de automatización requiere el plan Plus o Business (desde 10 $/usuario/mes aproximadamente — verifica el precio actualizado en notion.so/es). El método de exportación manual funciona con el plan gratuito.
+- **Sage activo:** Cualquier versión de Sage para pymes en España: Sage 50, Sage 200 o Sage Business Cloud. Necesitas acceso con permisos para exportar informes.
+- **Cuenta en Make o Zapier (para el método automatizado):** Make tiene plan gratuito con 1.000 operaciones/mes. Zapier tiene plan gratuito con 100 tareas/mes — posiblemente insuficiente para uso real. Verifica precios en make.com y zapier.com antes de elegir.
+- **Nivel técnico necesario:** El método de exportación manual no requiere ningún conocimiento técnico. El método con Make requiere saber seguir instrucciones en una interfaz visual — sin programar. El método por API requiere conocimientos básicos de programación o tener a alguien que te ayude.
+
+---
+
+## Los tres métodos disponibles
+
+Esta guía cubre el **Método 1 (Make)** en detalle, porque es el que mejor equilibra automatización y coste para una pyme española sin equipo técnico. Al final explicamos los otros dos de forma resumida.
+
+---
+
+## Pasos — Método 1: conectar vía Make (recomendado)
+
+### Paso 1: Crea una base de datos en Notion para los datos de Sage
+
+**Qué hacer:** En Notion, crea una página nueva y dentro de ella añade una base de datos de tipo "Tabla". Llámala, por ejemplo, "Facturas emitidas Sage" o "Gastos mensuales Sage". Define las columnas que quieres importar desde Sage: número de factura, fecha, cliente, importe, estado de cobro. Usa los tipos de campo correctos en Notion: `Número` para importes, `Fecha` para fechas, `Texto` para referencias.
+
+**Por qué:** Make va a necesitar una base de datos destino en Notion con la estructura definida antes de empezar a enviar datos. Si la estructura no existe, la automatización falla en la primera ejecución.
+
+**Qué verás:** Una tabla vacía en Notion con las columnas que has creado. En la parte superior de la base de datos verás el nombre que le has dado. Eso es suficiente para continuar.
+
+---
+
+### Paso 2: Obtén el ID de tu base de datos de Notion
+
+**Qué hacer:** Abre la base de datos que acabas de crear. En la barra de direcciones del navegador verás una URL similar a `notion.so/tuworkspace/[cadena-larga-de-caracteres]?v=[otra-cadena]`. La cadena larga de caracteres antes del `?v=` es el ID de tu base de datos. Cópiala y guárdala en un documento aparte — la necesitarás en el paso 4.
+
+**Por qué:** Make necesita este identificador para saber exactamente en qué base de datos de Notion tiene que escribir los datos.
+
+**Qué verás:** Una cadena de 32 caracteres con letras y números, sin guiones visibles en la URL (aunque el ID real los lleva internamente). Ejemplo de formato: `a1b2c3d4e5f6789012345678901234ab`.
+
+---
+
+### Paso 3: Exporta los datos de Sage en formato CSV
+
+**Qué hacer:** En Sage, ve al módulo de informes o al listado que quieres conectar (facturas emitidas, gastos, extracto de cuentas). Usa la opción de exportar o imprimir a fichero — según la versión de Sage que uses, el botón se llama `"Exportar"`, `"Guardar como CSV"` o `"Enviar a Excel"`. Guarda el archivo CSV en tu ordenador.
+
+**Por qué:** Sage no tiene API pública accesible directamente desde Make en la mayoría de versiones para pymes españolas. El CSV es el puente de datos más fiable y disponible en todas las versiones.
+
+**Qué verás:** Un archivo `.csv` o `.xlsx` en tu carpeta de descargas con las filas de datos de Sage. Ábrelo brevemente para confirmar que los datos son los correctos antes de continuar.
+
+<Callout type="tip">
+**Si usas Sage Business Cloud:** esta versión tiene una API REST más accesible que Sage 50 o Sage 200. Consulta la documentación de desarrolladores de Sage Business Cloud para obtener el endpoint de facturas — Make tiene un módulo HTTP genérico que puede consumirla directamente, saltándote el paso del CSV.
+</Callout>
+
+---
+
+### Paso 4: Crea el escenario en Make
+
+**Qué hacer:** Accede a make.com con tu cuenta. Haz clic en `"Create a new scenario"`. En el primer módulo (el círculo con un signo `+`), busca y selecciona `"CSV"` → `"Parse CSV"`. Sube el archivo que exportaste en el paso anterior. Configura el separador (normalmente coma o punto y coma — Sage España suele usar punto y coma).
+
+Añade un segundo módulo haciendo clic en el botón `"+"` que aparece a la derecha del primero. Busca `"Notion"` → `"Create a Database Item"`. Conecta tu cuenta de Notion siguiendo el asistente de autorización que abre Make (te pedirá que selecciones a qué páginas o bases de datos da acceso). Introduce el ID de base de datos que copiaste en el paso 2.
+
+Mapea cada columna del CSV con el campo correspondiente en la base de datos de Notion: la columna "Importe" del CSV va al campo "Importe" de Notion, la columna "Fecha" va al campo "Fecha", etcétera.
+
+**Por qué:** Este escenario le dice a Make: "coge cada fila del CSV y crea un elemento nuevo en la base de datos de Notion". Cada fila de Sage se convierte en una fila en tu tabla de Notion.
+
+**Qué verás:** En la pantalla de Make verás los dos módulos conectados por una línea. Si haces clic en `"Run once"` (botón de prueba), Make procesará el CSV y mostrará en verde cuántos registros ha enviado a Notion correctamente.
+
+---
+
+### Paso 5: Verifica los datos en Notion y ajusta el mapeo si es necesario
+
+**Qué hacer:** Ve a Notion y abre la base de datos. Deberías ver las filas importadas desde Sage. Comprueba que los importes tienen el formato correcto (sin símbolos de moneda inesperados), que las fechas se han interpretado bien y que no hay columnas vacías que deberían tener datos.
+
+Si algún campo está vacío o mal formateado, vuelve a Make, abre el módulo de Notion y revisa el mapeo de ese campo concreto. Los errores más frecuentes son las fechas en formato `DD/MM/YYYY` (que Notion interpreta como texto si no se convierte) y los importes con coma decimal en lugar de punto.
+
+**Por qué:** El mapeo inicial raramente queda perfecto a la primera. Esta verificación evita tener datos incorrectos en Notion sin darte cuenta.
+
+**Qué verás:** Una tabla en Notion con todas las filas de Sage correctamente representadas. Si algo falla, Make muestra un error en rojo indicando qué campo ha dado el problema.
+
+---
+
+### Paso 6: Programa la automatización (opcional)
+
+**Qué hacer:** Si quieres que este proceso se repita automáticamente (por ejemplo, cada semana), en Make puedes configurar el escenario para que se ejecute con una programación. Haz clic en el icono del reloj que aparece en la parte inferior del escenario y selecciona la frecuencia deseada: diaria, semanal o mensual.
+
+Para que funcione de forma totalmente automática necesitarías que Sage genere el CSV automáticamente y lo deposite en un lugar accesible (carpeta de Google Drive, correo electrónico, SFTP). Si no es tu caso, el proceso semi-manual — exportas el CSV de Sage y ejecutas el escenario de Make a mano — ya supone un ahorro de tiempo real respecto a copiar datos manualmente.
+
+**Por qué:** La automatización completa es el objetivo final, pero el proceso semi-manual ya tiene valor desde el primer día.
+
+**Qué verás:** En Make, el escenario mostrará la próxima ejecución programada junto al botón de activar/desactivar.
+
+---
+
+## Método 2: Exportación manual estructurada (sin herramientas extra)
+
+Si no quieres pagar por Make ni por un plan de pago de Notion, este método funciona con las versiones gratuitas de ambas herramientas.
+
+Exporta el CSV desde Sage → importa el CSV directamente en Notion usando la opción `"Merge with CSV"` que aparece en el menú `"..."` de cualquier base de datos de Notion. Notion leerá las columnas del CSV y las mapeará a los campos de tu tabla.
+
+El problema: es un proceso manual. Tienes que hacerlo cada vez. Pero para un volumen bajo (revisión mensual de facturas, por ejemplo) puede ser suficiente sin automatizar nada.
+
+---
+
+## Método 3: API de Notion + API de Sage Business Cloud
+
+Si tienes Sage Business Cloud y acceso a un desarrollador (aunque sea externo), la integración puede ser más directa y en tiempo real. Sage Business Cloud expone una API REST documentada, y Notion tiene su propia API pública.
+
+Este método está fuera del alcance de esta guía, pero si te interesa, el punto de partida es la documentación oficial de ambas APIs: `developer.sage.com` y `developers.notion.com`.
+
+---
+
+## Errores comunes
+
+**El CSV de Sage tiene caracteres extraños (tildes, eñes) mal codificados al llegar a Notion**
+
+*Síntoma:* En Notion ves caracteres como `Ã©` en lugar de `é`, o `â€œ` en lugar de comillas. Los nombres de clientes españoles quedan ilegibles.
+
+*Causa:* Sage exporta algunos informes en codificación ISO-8859-1 (Latin-1) en lugar de UTF-8. Notion espera UTF-8.
+
+*Solución:* Antes de subir el CSV a Make, ábrelo con un editor de texto como Notepad++ (gratuito) o VS Code. Ve a `"Codificación"` → `"Convertir a UTF-8"` y guarda. Luego usa ese archivo convertido en Make.
+
+---
+
+**Make muestra error al conectar con Notion: "Object not found"**
+
+*Síntoma:* Make devuelve un error en el módulo de Notion indicando que no encuentra la base de datos, aunque el ID parece correcto.
+
+*Causa:* Notion requiere que la integración (conexión de Make) tenga acceso explícito a la base de datos. Por defecto, cuando autorizas Notion en Make, solo das acceso a las páginas que seleccionas en ese momento.
+
+*Solución:* En Notion, abre la base de datos → haz clic en los tres puntos `"..."` de la esquina superior derecha → `"Connections"` → busca y añade la conexión de Make. Después vuelve a Make y prueba de nuevo el escenario.
+
+---
+
+**Los importes de Sage llegan a Notion como texto, no como números**
+
+*Síntoma:* En la columna de importes de Notion aparecen los valores correctos pero no puedes sumarlos ni filtrar por rango numérico.
+
+*Causa:* El CSV de Sage incluye el símbolo `€` o separadores de miles (puntos) junto al número, lo que hace que Notion lo interprete como texto.
+
+*Solución:* En Make, antes del módulo de Notion, añade un módulo `"Tools"` → `"Set variable"` y usa la función `replace` para limpiar el campo: elimina el símbolo `€`, los puntos de miles y sustituye la coma decimal por un punto. Luego mapea el resultado limpio al campo numérico de Notion.
+
+---
+
+## Resultado final
+
+Si has seguido el Método 1, ahora tienes:
+
+- Una base de datos en Notion con los datos de Sage importados y estructurados correctamente.
+- Un escenario en Make que puedes ejecutar cuando necesites actualizar los datos (o que se ejecuta automáticamente si lo has programado).
+- Los datos financieros de Sage accesibles desde Notion, donde puedes cruzarlos con tus proyectos, clientes o documentación operativa sin salir de la herramienta.
+
+El siguiente paso lógico es crear una vista de base de datos en Notion filtrada por estado de cobro, para tener un panel de facturas pendientes visible de un vistazo.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Notion o quieres explorar sus funciones antes de configurar la integración:
+
+<AffiliateLink programSlug="notion" articleSlug="como-conectar-notion-con-sage" label="Probar Notion gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Existe alguna integración oficial entre Notion y Sage?
+
+No. A fecha de esta guía, ni Sage ni Notion tienen una integración oficial entre ambas plataformas. La conexión se hace siempre a través de una herramienta intermedia (Make, Zapier) o mediante importación manual de CSV.
+
+### ¿Puedo hacer esto sin pagar por Make?
+
+Sí, dentro de límites. Make tiene un plan gratuito con 1.000 operaciones/mes. Si tus exportaciones de Sage tienen pocas filas (menos de 500 registros por importación y no lo ejecutas más de una vez al día), el plan gratuito puede ser suficiente. Comprueba el consumo de operaciones en tu panel de Make después de la primera ejecución real.
+
+### ¿Los datos que entran en Notion desde Sage se actualizan solos?
+
+Solo si programas el escenario de Make para que se ejecute periódicamente y Sage puede generar el CSV automáticamente. Si el CSV lo exportas a mano, el proceso también es manual. La sincronización en tiempo real bidireccional entre Notion y Sage no es posible sin desarrollo a medida.
+
+### ¿Esto cumple con el RGPD si paso datos de clientes a Notion?
+
+Notion firma un DPA (Data Processing Agreement) conforme al RGPD. Sin embargo, los datos pueden almacenarse en servidores fuera de la UE (incluyendo EEUU). Antes de importar datos personales de clientes (nombre, email, NIF), revisa la política de privacidad de Notion y asegúrate de que tu DPA con la AEPD cubre este tratamiento. Si trabajas con datos especialmente sensibles, consulta con tu asesor de protección de datos.
+
+### ¿Funciona igual con Sage 50 que con Sage Business Cloud?
+
+El método de CSV funciona con cualquier versión de Sage que permita exportar informes. La diferencia está en el Método 3 (API directa): Sage Business Cloud tiene una API REST documentada y accesible; Sage 50 y Sage 200 no tienen una API pública equivalente, así que dependen del CSV como única vía de exportación.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
