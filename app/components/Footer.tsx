@@ -19,6 +19,13 @@ export function Footer() {
               <li><Link href="/crm" className="hover:text-gray-700">CRM para pymes</Link></li>
               <li><Link href="/automatizacion" className="hover:text-gray-700">Automatización</Link></li>
               <li><Link href="/comparativas" className="hover:text-gray-700">Comparativas</Link></li>
+              <li><Link href="/facturacion" className="hover:text-gray-700">Facturación</Link></li>
+              <li><Link href="/recursos-humanos" className="hover:text-gray-700">Recursos Humanos</Link></li>
+              <li><Link href="/gestion-proyectos" className="hover:text-gray-700">Gestión de Proyectos</Link></li>
+              <li><Link href="/seo" className="hover:text-gray-700">SEO</Link></li>
+              <li><Link href="/productividad" className="hover:text-gray-700">Productividad</Link></li>
+              <li><Link href="/hosting" className="hover:text-gray-700">Hosting</Link></li>
+              <li><Link href="/articulos" className="hover:text-gray-700 font-medium">Todos los artículos →</Link></li>
             </ul>
           </div>
           <div>
