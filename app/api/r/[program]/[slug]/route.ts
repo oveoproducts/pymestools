@@ -8,53 +8,37 @@ export async function GET(
 ) {
   const { program: programSlug, slug: articleSlug } = await params
 
-  // Look up program
-  const { data: program, error: programError } = await supabase
+  // affiliate_programs uses a boolean `active` column — the previous
+  // `.eq('status', 'active')` matched a column that doesn't exist, so the
+  // lookup always failed and every click fell through to the homepage
+  // redirect below instead of reaching the merchant.
+  const { data: program } = await supabase
     .from('affiliate_programs')
     .select('id, affiliate_url')
     .eq('slug', programSlug)
-    .eq('status', 'active')
-    .single()
+    .eq('active', true)
+    .maybeSingle()
 
-  if (programError || !program) {
+  if (!program?.affiliate_url) {
     return NextResponse.redirect(brand.siteUrl, { status: 302 })
   }
 
-  // Try to find an article-specific affiliate link
-  let affiliateUrl: string = program.affiliate_url
-  let linkId: string | null = null
+  // Best-effort, non-blocking click log. Resolve the article by slug so the
+  // click is attributed to a page; skip silently if anything is missing.
+  void (async () => {
+    const { data: article } = await supabase
+      .from('articles')
+      .select('id')
+      .eq('slug', articleSlug)
+      .maybeSingle()
+    await supabase.from('affiliate_links').insert({
+      program_id: program.id,
+      article_id: article?.id ?? null,
+      url: program.affiliate_url,
+      anchor_text: articleSlug,
+      clicks: 1,
+    })
+  })()
 
-  const { data: link } = await supabase
-    .from('affiliate_links')
-    .select('id, affiliate_url')
-    .eq('program_id', program.id)
-    .eq('article_slug', articleSlug)
-    .single()
-
-  if (link?.affiliate_url) {
-    affiliateUrl = link.affiliate_url
-    linkId = link.id
-  } else {
-    // Fall back to generic program link (no article)
-    const { data: genericLink } = await supabase
-      .from('affiliate_links')
-      .select('id, affiliate_url')
-      .eq('program_id', program.id)
-      .is('article_id', null)
-      .single()
-
-    if (genericLink?.affiliate_url) {
-      affiliateUrl = genericLink.affiliate_url
-      linkId = genericLink.id
-    }
-  }
-
-  // Fire-and-forget click tracking
-  if (linkId) {
-    void supabase
-      .rpc('increment_affiliate_clicks', { link_id: linkId })
-      .then(() => {})
-  }
-
-  return NextResponse.redirect(affiliateUrl, { status: 302 })
+  return NextResponse.redirect(program.affiliate_url, { status: 302 })
 }

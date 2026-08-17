@@ -42,7 +42,7 @@ const WEBSITE_URLS: Record<string, string> = {
   odoo: 'https://www.odoo.com/es_ES/',
 }
 
-export async function AffiliateLink({ programSlug, label }: Props) {
+export async function AffiliateLink({ programSlug, articleSlug, label }: Props) {
   const { data: program } = await supabase
     .from('affiliate_programs')
     .select('affiliate_url, name')
@@ -51,11 +51,17 @@ export async function AffiliateLink({ programSlug, label }: Props) {
 
   const affiliateUrl = program?.affiliate_url
   const fallbackUrl = WEBSITE_URLS[programSlug]
-  const url = affiliateUrl || fallbackUrl
+
+  const isAffiliate = !!affiliateUrl
+  // Affiliate clicks go through /api/r so they're logged and the merchant URL
+  // stays server-side (swappable for a real referral link without touching
+  // content). Non-affiliate tools link straight to their official site.
+  const url = isAffiliate
+    ? `/api/r/${programSlug}/${articleSlug}`
+    : fallbackUrl
 
   if (!url) return null
 
-  const isAffiliate = !!affiliateUrl
   const toolName = program?.name ?? programSlug
   const buttonLabel = label || (isAffiliate ? `Probar ${toolName} gratis` : `Ver ${toolName}`)
 
