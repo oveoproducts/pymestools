@@ -196,7 +196,7 @@ async function logAgent(
 
 async function updateQueueItem(
   id: string,
-  patch: { status: string; article_id?: string; error_message?: string }
+  patch: { status?: string; article_id?: string; error_message?: string }
 ): Promise<void> {
   await supabase
     .from('pipeline_queue')
@@ -396,11 +396,12 @@ export async function runContent(options: ContentOptions): Promise<ContentResult
     const durationMs = Date.now() - startedAt
     const message = err instanceof Error ? err.message : String(err)
 
+    // Record the error but leave the stage alone. Quarantine is the runner's
+    // call: it counts attempts and gives up after MAX_ATTEMPTS. Failing the
+    // item here burned a keyword permanently on the first transient error —
+    // an empty Anthropic balance killed three approved keywords in one run.
     if (options.queueItemId) {
-      await updateQueueItem(options.queueItemId, {
-        status: 'failed',
-        error_message: message,
-      })
+      await updateQueueItem(options.queueItemId, { error_message: message })
     }
 
     await logAgent('content:generate', 'failed', durationMs, undefined, message)
