@@ -376,16 +376,14 @@ export async function runPublish(options: PublishOptions): Promise<PublishResult
     const durationMs = Date.now() - startedAt
     const message = err instanceof Error ? err.message : String(err)
 
-    if (options.articleId) {
-      await supabase
-        .from('articles')
-        .update({ status: 'failed', updated_at: new Date().toISOString() })
-        .eq('id', options.articleId)
-    }
+    // Record the error only. Publishing fails for transient reasons all the
+    // time (git push race, Vercel hiccup); quarantining a finished article on
+    // the first one throws away the whole cost of producing it. The runner
+    // counts attempts and quarantines after MAX_ATTEMPTS.
     if (options.queueItemId) {
       await supabase
         .from('pipeline_queue')
-        .update({ status: 'failed', error_message: message, updated_at: new Date().toISOString() })
+        .update({ error_message: message, updated_at: new Date().toISOString() })
         .eq('id', options.queueItemId)
     }
 
