@@ -198,8 +198,21 @@ const migrations: Array<{ label: string; sql: string }> = [
       );
     `,
   },
+  {
+    label: 'pipeline_queue resilience columns',
+    sql: `
+      ALTER TABLE pipeline_queue ADD COLUMN IF NOT EXISTS attempts      int DEFAULT 0;
+      ALTER TABLE pipeline_queue ADD COLUMN IF NOT EXISTS last_error_at timestamptz;
+      ALTER TABLE pipeline_queue ADD COLUMN IF NOT EXISTS stage_entered_at timestamptz DEFAULT now();
+    `,
+  },
+  {
+    label: 'articles.content_mdx (filesystem-independent body)',
+    sql: `
+      ALTER TABLE articles ADD COLUMN IF NOT EXISTS content_mdx text;
+    `,
+  },
 ]
-
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------

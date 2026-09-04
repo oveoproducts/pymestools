@@ -4,4 +4,7 @@ buildCommand = "npm install"
 
 [deploy]
 startCommand = "npx tsx scripts/pipeline-run.ts"
-cronSchedule = "0 8 * * *"
+# Cron intentionally disabled: GitHub Actions (.github/workflows/pipeline.yml)
+# owns the daily schedule. Both ran at 08:00, so every day two runners raced
+# for the same queue item and paid the Anthropic bill twice.
+# cronSchedule = "0 8 * * *"

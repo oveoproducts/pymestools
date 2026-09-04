@@ -22,6 +22,7 @@ import { runContent, keywordToSlug } from './skill-content'
 import { runQA } from './skill-qa'
 import { runSEO } from './skill-seo'
 import { runPublish } from './skill-publish'
+import { alert } from '../lib/notify'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -46,6 +47,8 @@ interface QueueItem {
   status: QueueStatus
   priority: number
   error_message: string | null
+  attempts: number | null
+  last_error_at: string | null
   created_at: string
   updated_at: string
 }
@@ -54,7 +57,24 @@ interface RunResult {
   success: boolean
   message: string
   itemsProcessed: number
+  /** True when the run actually advanced a queue item. */
+  progressed: boolean
 }
+
+interface StepResult {
+  success: boolean
+  message: string
+}
+
+/**
+ * How many times a single queue item may fail before it is quarantined.
+ *
+ * Without this the runner retried the same broken item forever: fetchNextItem
+ * always returns the highest-priority active item, the skill swallowed its own
+ * error and returned success:false, and nothing ever advanced. One article
+ * stuck in seo_review blocked every other item behind it for 19 days.
+ */
+const MAX_ATTEMPTS = 3
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -179,37 +199,75 @@ async function fetchNextItem(): Promise<QueueItem | null> {
 // Route dispatcher
 // ---------------------------------------------------------------------------
 
-async function dispatch(item: QueueItem): Promise<void> {
-  console.log(`\n→  Dispatching item ${item.id} [status: ${item.status}]`)
+async function dispatch(item: QueueItem): Promise<StepResult> {
+  console.log(`\n→  Dispatching item ${item.id} [status: ${item.status}] (intento ${(item.attempts ?? 0) + 1}/${MAX_ATTEMPTS})`)
 
   switch (item.status) {
     case 'pending': {
       // Transition to researching before calling skill
       await updateQueueItem(item.id, { status: 'researching' })
-      await runResearch({ mode: 'keyword', queueItemId: item.id, keywordId: item.keyword_id })
-      break
+      return await runResearch({ mode: 'keyword', queueItemId: item.id, keywordId: item.keyword_id })
     }
     case 'researching':
-    case 'drafting': {
-      await runContent({ queueItemId: item.id, keywordId: item.keyword_id })
-      break
-    }
-    case 'qa_review': {
-      await runQA({ queueItemId: item.id, articleId: item.article_id })
-      break
-    }
-    case 'seo_review': {
-      await runSEO({ queueItemId: item.id, articleId: item.article_id })
-      break
-    }
-    case 'ready_to_publish': {
-      await runPublish({ queueItemId: item.id, articleId: item.article_id })
-      break
-    }
-    default: {
-      console.warn(`  ⚠️  No handler for status: ${item.status}`)
-    }
+    case 'drafting':
+      return await runContent({ queueItemId: item.id, keywordId: item.keyword_id })
+    case 'qa_review':
+      return await runQA({ queueItemId: item.id, articleId: item.article_id })
+    case 'seo_review':
+      return await runSEO({ queueItemId: item.id, articleId: item.article_id })
+    case 'ready_to_publish':
+      return await runPublish({ queueItemId: item.id, articleId: item.article_id })
+    default:
+      return { success: false, message: `No handler for status: ${item.status}` }
   }
+}
+
+/**
+ * Records a failed step. Retries up to MAX_ATTEMPTS, then quarantines the item
+ * as 'failed' so the queue can move on, and alerts a human — a quarantined item
+ * is content that was researched and paid for but will never publish itself.
+ */
+async function handleStepFailure(item: QueueItem, message: string): Promise<void> {
+  const attempts = (item.attempts ?? 0) + 1
+  const quarantine = attempts >= MAX_ATTEMPTS
+
+  await supabase
+    .from('pipeline_queue')
+    .update({
+      attempts,
+      error_message: message.slice(0, 1000),
+      last_error_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      ...(quarantine ? { status: 'failed' } : {}),
+    })
+    .eq('id', item.id)
+
+  if (!quarantine) {
+    console.warn(`  ⚠️  Fallo ${attempts}/${MAX_ATTEMPTS} — se reintentará mañana.`)
+    return
+  }
+
+  // Release the article so it stops occupying an active pipeline status.
+  if (item.article_id) {
+    await supabase.from('articles').update({ status: 'failed' }).eq('id', item.article_id)
+  }
+
+  console.error(`  ⛔  Item ${item.id} en cuarentena tras ${attempts} intentos.`)
+  await alert(
+    'error',
+    `Item en cuarentena tras ${attempts} intentos`,
+    [
+      `Queue item : ${item.id}`,
+      `Etapa      : ${item.status}`,
+      `Tipo       : ${item.type}`,
+      `Article id : ${item.article_id ?? '—'}`,
+      '',
+      `Último error: ${message}`,
+      '',
+      'La cola ha seguido con el siguiente item. Revisa este cuando puedas:',
+      '  npx tsx --env-file=.env.local scripts/pipeline-doctor.ts',
+    ].join('\n'),
+  )
 }
 
 // ---------------------------------------------------------------------------
@@ -222,6 +280,7 @@ async function sendDailySummary(result: RunResult): Promise<void> {
   console.log('─'.repeat(40))
   console.log(`  Items processed : ${result.itemsProcessed}`)
   console.log(`  Status          : ${result.success ? '✅ OK' : '❌ FAILED'}`)
+  console.log(`  Progressed      : ${result.progressed ? 'sí' : 'no'}`)
   console.log(`  Message         : ${result.message}`)
   console.log('─'.repeat(40))
 }
@@ -230,23 +289,13 @@ async function sendDailySummary(result: RunResult): Promise<void> {
 // Main runner
 // ---------------------------------------------------------------------------
 
-async function pingSitemap(): Promise<void> {
-  const sitemapUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pymestools.com'}/sitemap.xml`
-  try {
-    await fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`)
-    console.log('  🗺️  Sitemap pinged to Google')
-  } catch {
-    console.warn('  ⚠️  Sitemap ping failed (non-fatal)')
-  }
-}
-
 export async function runPipeline(): Promise<RunResult> {
   const startedAt = Date.now()
   console.log('\n🚀  PymesTools — Pipeline Run\n')
   await logAgent('pipeline-run', 'started')
-  await pingSitemap()
 
   let itemsProcessed = 0
+  let progressed = false
 
   try {
     const item = await fetchNextItem()
@@ -263,12 +312,40 @@ export async function runPipeline(): Promise<RunResult> {
       const enqueued = await enqueueNextApprovedKeyword()
       if (enqueued) {
         itemsProcessed = 1
+        progressed = true
       } else {
         console.log('  Queue is empty and no approved keywords left to enqueue.')
       }
     } else {
-      await dispatch(item)
+      const step = await dispatch(item)
       itemsProcessed = 1
+
+      if (!step.success) {
+        // A skill that returns success:false has already caught and logged its
+        // own error. If the runner ignores that (as it used to), the item keeps
+        // its status, gets picked again next run, and blocks the whole queue.
+        await handleStepFailure(item, step.message)
+
+        const durationMs = Date.now() - startedAt
+        await logAgent('pipeline-run', 'failed', durationMs, step.message)
+        const result: RunResult = {
+          success: false,
+          message: step.message,
+          itemsProcessed,
+          progressed: false,
+        }
+        await sendDailySummary(result)
+        return result
+      }
+
+      // A successful step clears the failure counter for the next stage.
+      if ((item.attempts ?? 0) > 0) {
+        await supabase
+          .from('pipeline_queue')
+          .update({ attempts: 0, error_message: null })
+          .eq('id', item.id)
+      }
+      progressed = true
     }
 
     const durationMs = Date.now() - startedAt
@@ -283,6 +360,7 @@ export async function runPipeline(): Promise<RunResult> {
       success: true,
       message: `Processed ${itemsProcessed} item(s) in ${durationMs}ms`,
       itemsProcessed,
+      progressed,
     }
 
     await sendDailySummary(result)
@@ -292,8 +370,9 @@ export async function runPipeline(): Promise<RunResult> {
     const message = err instanceof Error ? err.message : String(err)
     await logAgent('pipeline-run', 'failed', durationMs, message)
     console.error('\n❌  Pipeline error:', message)
+    await alert('error', 'Pipeline abortado con excepción', message)
 
-    const result: RunResult = { success: false, message, itemsProcessed }
+    const result: RunResult = { success: false, message, itemsProcessed, progressed: false }
     await sendDailySummary(result)
     return result
   }

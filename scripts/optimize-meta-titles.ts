@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import matter from 'gray-matter'
 import { supabase } from '../lib/db/client'
+import { buildMetaTitle as fitMetaTitle, META_TITLE_MAX } from '../lib/seo/meta-title'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ARTICLES_DIR = path.join(__dirname, '..', 'content', 'articles')
@@ -56,7 +57,9 @@ function buildMetaTitle(title: string, type: string, tools: string[]): string {
   const t2 = tools[1] ? toolName(tools[1]) : ''
 
   if (type === 'review' && t1) {
-    return `Review ${t1} ${year}: opiniones y precio para pymes`
+    const t = `Review ${t1} ${year}: opiniones y precio para pymes`
+    if (t.length <= META_TITLE_MAX) return t
+    return `Review ${t1} ${year}: opiniones y precio`
   }
 
   if ((type === 'comparison' || type === 'comparativa') && t1 && t2) {
@@ -69,10 +72,9 @@ function buildMetaTitle(title: string, type: string, tools: string[]): string {
     if (t1) return `Mejores alternativas a ${t1} en ${year} para pymes`
   }
 
-  // Default: clean title + year
-  const clean = title.replace(/\s*[\(\[]?\d{4}[\)\]]?\s*/g, '').trim()
-  const withYear = `${clean} (${year})`
-  return withYear.length <= 62 ? withYear : `${clean.slice(0, 55)}… (${year})`
+  // Default: shorten structurally. Slicing mid-word and appending "…" shipped
+  // 26 broken titles to production — never truncate blind.
+  return fitMetaTitle(title, year)
 }
 
 async function main() {

@@ -16,10 +16,9 @@
 
 import 'dotenv/config'
 import { fileURLToPath } from 'node:url'
-import fs from 'node:fs/promises'
-import path from 'node:path'
 import Anthropic from '@anthropic-ai/sdk'
 import { supabase } from '../lib/db/client'
+import { readArticleBody } from '../lib/content-store'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -98,11 +97,6 @@ const anthropic = new Anthropic({
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-async function readArticleMDX(slug: string): Promise<string> {
-  const filePath = path.join(process.cwd(), 'content', 'articles', `${slug}.mdx`)
-  return fs.readFile(filePath, 'utf-8')
-}
 
 async function fetchArticle(articleId: string): Promise<ArticleRow> {
   const { data, error } = await supabase
@@ -332,7 +326,7 @@ export async function runSEO(options: SEOOptions): Promise<SEOResult> {
     const article = await fetchArticle(options.articleId!)
     console.log(`  Article: "${article.title}" [${article.slug}]`)
 
-    const mdx = await readArticleMDX(article.slug)
+    const mdx = await readArticleBody(article.slug)
 
     // Generate meta
     const meta = await generateMeta(article, mdx)

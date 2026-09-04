@@ -79,7 +79,6 @@ const INTENT_PATTERNS: Record<string, 'commercial' | 'informational' | 'transact
  * TODO: replace with Anthropic API + web search for real volume/difficulty data.
  */
 const SECTORS = ['servicios', 'ecommerce', 'inmobiliarias', 'autonomos', 'clinicas']
-const CITIES = ['Madrid', 'Barcelona', 'Valencia']
 // Spanish-market tools worth pairing in integration/migration queries — low
 // competition, high intent (someone searching this already uses one of the
 // two and is close to a decision).
@@ -112,11 +111,10 @@ function generateKeywordCandidates(program: AffiliateProgram): KeywordCandidate[
       intent: 'commercial' as const,
       priority: 7,
     })),
-    ...CITIES.map((city) => ({
-      keyword: `${toolName} para pymes en ${city}`,
-      intent: 'commercial' as const,
-      priority: 6,
-    })),
+    // No city templates. Cloud software has no local search intent: nobody
+    // queries "brevo para pymes en Madrid", and the three city variants of a
+    // tool are near-duplicates of each other. They produced thin pages that
+    // Google crawls and declines to index, which drags on the whole domain.
     ...ES_TOOLS.map((esTool) => ({
       keyword: `cómo conectar ${toolName} con ${esTool}`,
       intent: 'informational' as const,

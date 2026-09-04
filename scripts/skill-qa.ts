@@ -24,6 +24,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import Anthropic from '@anthropic-ai/sdk'
 import { supabase } from '../lib/db/client'
+import { readArticleBody } from '../lib/content-store'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -80,11 +81,6 @@ const anthropic = new Anthropic({
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
-
-async function readArticleMDX(slug: string): Promise<string> {
-  const filePath = path.join(process.cwd(), 'content', 'articles', `${slug}.mdx`)
-  return fs.readFile(filePath, 'utf-8')
-}
 
 async function loadForbiddenPhrases(): Promise<string[]> {
   const filePath = path.join(process.cwd(), 'data', 'forbidden-phrases.json')
@@ -286,7 +282,7 @@ export async function runQA(options: QAOptions): Promise<QAResult> {
     console.log(`  Article: "${article.title}" [${article.slug}]`)
 
     // Load MDX
-    const mdx = await readArticleMDX(article.slug)
+    const mdx = await readArticleBody(article.slug)
 
     // Load forbidden phrases
     const forbiddenPhrases = await loadForbiddenPhrases()

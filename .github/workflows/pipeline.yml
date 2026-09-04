@@ -8,6 +8,26 @@ on:
 permissions:
   contents: write
 
+# A second run starting while one is mid-flight would race for the same queue
+# item and double-spend the Anthropic budget on it.
+concurrency:
+  group: content-pipeline
+  cancel-in-progress: false
+
+env:
+  NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+  SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+  NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+  GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+  INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+  RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+  NOTIFICATION_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
+  RESEND_FROM: ${{ secrets.RESEND_FROM }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
+
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
@@ -24,46 +44,48 @@ jobs:
       - run: npm ci
 
       - name: Ingest Search Console metrics
-        env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
-          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: npx tsx scripts/ingest-gsc.ts
         continue-on-error: true
 
-      - name: Run pipeline until an article publishes
-        env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
-          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+      - name: Run pipeline
         run: |
           git config user.name "pymestools-bot"
           git config user.email "bot@pymestools.com"
 
-          # pipeline-run.ts advances ONE queue step per call. Loop within this
-          # single job so the whole research→content→QA→SEO→publish chain runs
-          # in ONE ephemeral filesystem session — otherwise the .mdx a "content"
-          # step writes to disk is gone by the next day's "QA" step (ENOENT),
-          # and one article would take ~5 days instead of one.
-          START_HEAD=$(git rev-parse HEAD)
+          # Each call advances ONE queue step. Looping here lets a single
+          # article travel research→content→QA→SEO→publish in one run instead
+          # of one stage per day. Article bodies now live in Supabase
+          # (articles.content_mdx), so a stage no longer needs the same
+          # checkout as the stage before it.
+          failures=0
           for i in $(seq 1 8); do
             echo "=== pipeline iteration $i ==="
-            npx tsx scripts/pipeline-run.ts
-            if [ "$(git rev-parse HEAD)" != "$START_HEAD" ]; then
-              echo "An article was published (git HEAD advanced) — stopping."
-              break
+            if npx tsx scripts/pipeline-run.ts; then
+              failures=0
+            else
+              failures=$((failures + 1))
+              # Two consecutive failures means the runner is not making
+              # progress. Keeping the loop going just burns API budget on the
+              # same broken item.
+              if [ "$failures" -ge 2 ]; then
+                echo "::warning::Two consecutive pipeline failures — stopping early."
+                break
+              fi
             fi
           done
 
-          # Safety net: if the loop ended without publishing (e.g. an article
-          # is mid-QA), commit any drafted MDX so the next run can find it.
-          # Draft files in the repo are harmless — the site only serves rows
-          # whose DB status is 'published'.
+          # Persist any MDX drafted this run. Draft files in the repo are
+          # harmless: the site only serves rows whose DB status is 'published'.
           if [ -n "$(git status --porcelain content/articles)" ]; then
             git add content/articles
             git commit -m "content: persist in-progress articles [skip ci]"
             git push
           fi
+
+      # Runs even when the step above failed — this is what turns a silent
+      # stall into an email. Its exit code is what makes the job red.
+      - name: Health check
+        if: always()
+        env:
+          DOCTOR_ALERT: '1'
+        run: npx tsx scripts/pipeline-doctor.ts
