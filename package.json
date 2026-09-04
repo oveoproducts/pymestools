@@ -10,6 +10,8 @@
     "db:migrate": "tsx --env-file=.env.local scripts/db-migrate.ts",
     "db:seed": "tsx --env-file=.env.local scripts/db-seed.ts",
     "pipeline:run": "tsx --env-file=.env.local scripts/pipeline-run.ts",
+    "pipeline:doctor": "tsx --env-file=.env.local scripts/pipeline-doctor.ts",
+    "pipeline:doctor:fix": "tsx --env-file=.env.local scripts/pipeline-doctor.ts --fix",
     "pipeline:research": "tsx --env-file=.env.local scripts/skill-research.ts",
     "pipeline:content": "tsx --env-file=.env.local scripts/skill-content.ts",
     "pipeline:qa": "tsx --env-file=.env.local scripts/skill-qa.ts",
@@ -21,7 +23,11 @@
     "pipeline:analytics:monthly": "tsx --env-file=.env.local scripts/skill-analytics.ts --mode=monthly",
     "gsc:ingest": "tsx --env-file=.env.local scripts/ingest-gsc.ts",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "seo:fix-titles": "tsx --env-file=.env.local scripts/fix-long-meta-titles.ts",
+    "content:backfill": "tsx --env-file=.env.local scripts/backfill-content-mdx.ts",
+    "content:sync": "tsx --env-file=.env.local scripts/sync-articles.ts",
+    "index:urls": "tsx --env-file=.env.local scripts/index-urls.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.95.1",

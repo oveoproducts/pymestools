@@ -48,6 +48,7 @@ interface ArticleInsert {
   keywords_primary: string
   reading_time_minutes: number
   tools: string[]
+  content_mdx: string
 }
 
 interface ContentResult {
@@ -277,6 +278,10 @@ async function insertArticle(
     keywords_primary: keyword.keyword,
     reading_time_minutes: readingTime,
     tools,
+    // Persist the body with the row. A later stage may run on a different
+    // machine with a fresh checkout, where the file written to disk above
+    // no longer exists.
+    content_mdx: mdx,
   }
 
   const { data, error } = await supabase

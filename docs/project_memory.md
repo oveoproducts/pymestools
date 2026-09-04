@@ -124,3 +124,43 @@ Ver `docs/LESSONS_LEARNED.md` para el detalle completo. Resumen crítico:
 - GitHub repo: `[COMPLETAR]`
 - Resend API key: `[COMPLETAR — en .env.local]`
 - Anthropic API key: `[COMPLETAR — en .env.local]`
+
+---
+
+## Revisión de septiembre 2026 (2026-09-04)
+
+Auditoría completa del pipeline. El sistema llevaba **19 días sin publicar** y
+nadie se había enterado. Ver `docs/OPERATIONS.md` para el manual operativo.
+
+### Causa raíz
+Un artículo (`notion-para-pymes-en-barcelona`) se atascó en `seo_review` el
+2026-08-16 porque su MDX no existía en el checkout de CI. `skill-seo` capturaba
+el ENOENT, devolvía `{ success: false }` y `pipeline-run` lo ignoraba saliendo
+con 0. Como `fetchNextItem` siempre devuelve el item activo más prioritario, ese
+item se reintentaba a diario y bloqueaba toda la cola detrás. CI en verde.
+
+### Arreglado
+- `MAX_ATTEMPTS = 3` + cuarentena automática: ningún item puede volver a
+  bloquear la cola.
+- Los fallos de skill ahora se propagan; el runner sale con código distinto de 0.
+- `articles.content_mdx` + `lib/content-store.ts`: el pipeline ya no depende del
+  disco. 128 cuerpos migrados.
+- `lib/notify.ts`: alertas por Resend (era un TODO desde el principio).
+- `sync-articles.ts` ya no puede despublicar artículos vivos.
+- Cron de Railway desactivado — duplicaba el de GitHub Actions a la misma hora.
+- IndexNow apuntaba a `/slug` en vez de `/categoria/slug`: **todos** los pings
+  desde el lanzamiento fueron a un 404.
+- Polling real de despliegue en Vercel (antes era un `sleep(2000)`).
+- 31 meta titles reconstruidos: el fallback cortaba a 55 caracteres y metía "…"
+  en medio de la frase.
+- Eliminadas las keywords geográficas (14 rechazadas). Un SaaS no tiene
+  intención local; esas páginas son las que quedan "rastreadas, sin indexar".
+
+### Pendiente del humano
+- [ ] `NOTIFICATION_EMAIL` en `.env.local` y en los secrets de GitHub — sin eso
+      no llega ninguna alerta.
+- [ ] Dar rol de **Propietario** en Search Console a
+      `pymestools-gsc@pymestools-495915.iam.gserviceaccount.com` para arreglar la
+      Indexing API (`GSC_REFRESH_TOKEN` caduca cada 7 días).
+- [ ] Decidir qué hacer con 24 MDX en `draft` que están en el repo pero no en
+      Supabase: contenido ya generado que el sitio no sirve.

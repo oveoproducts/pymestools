@@ -18,10 +18,10 @@
 
 import 'dotenv/config'
 import { fileURLToPath } from 'node:url'
-import fs from 'node:fs/promises'
-import path from 'node:path'
 import simpleGit, { type SimpleGit } from 'simple-git'
 import { supabase } from '../lib/db/client'
+import { readArticleBody } from '../lib/content-store'
+import { alert } from '../lib/notify'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -64,8 +64,6 @@ interface PublishResult {
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pymestools.com'
 const INDEXNOW_KEY = process.env.INDEXNOW_KEY ?? ''
-const RESEND_API_KEY = process.env.RESEND_API_KEY ?? ''
-const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? ''
 
 async function fetchArticle(articleId: string): Promise<ArticleRow> {
   const { data, error } = await supabase
@@ -106,12 +104,13 @@ async function validateArticle(article: ArticleRow): Promise<ValidationResult> {
   if (!article.meta_description) errors.push('Missing meta_description')
   if (!article.schema_markup) warnings.push('Missing schema_markup (AEO impact)')
 
-  // File exists
-  const filePath = path.join(process.cwd(), 'content', 'articles', `${article.slug}.mdx`)
+  // Body must be retrievable — from Supabase or, failing that, from disk.
+  // Checking the filesystem alone wrongly blocks an article whose body was
+  // drafted on another machine and only ever persisted to the database.
   try {
-    await fs.access(filePath)
+    await readArticleBody(article.slug)
   } catch {
-    errors.push(`MDX file not found: content/articles/${article.slug}.mdx`)
+    errors.push(`No MDX body found for "${article.slug}" (neither Supabase nor disk)`)
   }
 
   // Status must be ready_to_publish
@@ -146,20 +145,67 @@ async function gitCommitAndPush(article: ArticleRow): Promise<void> {
 // Step 3 — Vercel deploy polling
 // ---------------------------------------------------------------------------
 
-async function pollVercelDeploy(): Promise<string> {
-  // TODO: implement real Vercel API polling
-  // 1. GET https://api.vercel.com/v6/deployments?teamId=X&limit=1
-  // 2. Poll until state === 'READY' (timeout 5 min)
-  // 3. Return deploy URL
+interface VercelDeployment {
+  uid: string
+  url: string
+  readyState: 'QUEUED' | 'BUILDING' | 'READY' | 'ERROR' | 'CANCELED'
+  created: number
+}
 
-  console.log('  Polling Vercel deploy status… (placeholder)')
+const VERCEL_TOKEN = process.env.VERCEL_TOKEN ?? ''
+const VERCEL_PROJECT_ID = process.env.VERCEL_PROJECT_ID ?? ''
+const VERCEL_TEAM_ID = process.env.VERCEL_TEAM_ID ?? ''
+const DEPLOY_TIMEOUT_MS = 5 * 60_000
+const DEPLOY_POLL_MS = 10_000
 
-  // Simulate a 2-second wait for skeleton
-  await new Promise((resolve) => setTimeout(resolve, 2000))
+/**
+ * Waits for the deploy triggered by the push to reach READY.
+ *
+ * Returns false if it cannot confirm. Callers treat that as "not confirmed",
+ * never as failure: the article is already committed, and a slow deploy must
+ * not fail the run.
+ */
+async function pollVercelDeploy(sincePushed: number): Promise<boolean> {
+  if (!VERCEL_TOKEN || !VERCEL_PROJECT_ID) {
+    console.log('  Vercel: VERCEL_TOKEN/VERCEL_PROJECT_ID not set — skipping deploy wait')
+    return false
+  }
 
-  const deployUrl = process.env.VERCEL_DEPLOY_URL ?? SITE_URL
-  console.log(`  Deploy URL: ${deployUrl}`)
-  return deployUrl
+  const params = new URLSearchParams({ projectId: VERCEL_PROJECT_ID, limit: '5' })
+  if (VERCEL_TEAM_ID) params.set('teamId', VERCEL_TEAM_ID)
+  const endpoint = `https://api.vercel.com/v6/deployments?${params}`
+
+  const deadline = Date.now() + DEPLOY_TIMEOUT_MS
+  while (Date.now() < deadline) {
+    try {
+      const res = await fetch(endpoint, {
+        headers: { Authorization: `Bearer ${VERCEL_TOKEN}` },
+      })
+      if (!res.ok) {
+        console.warn(`  ⚠️  Vercel API HTTP ${res.status} — skipping deploy wait`)
+        return false
+      }
+      const body = (await res.json()) as { deployments?: VercelDeployment[] }
+      const deploy = (body.deployments ?? []).find((d) => d.created >= sincePushed)
+
+      if (deploy?.readyState === 'READY') {
+        console.log(`  ✅ Deploy ${deploy.uid} READY`)
+        return true
+      }
+      if (deploy && (deploy.readyState === 'ERROR' || deploy.readyState === 'CANCELED')) {
+        console.warn(`  ⚠️  Deploy ${deploy.uid} ended as ${deploy.readyState}`)
+        return false
+      }
+      console.log(`  … deploy ${deploy?.readyState ?? 'no encontrado todavía'}`)
+    } catch (err) {
+      console.warn(`  ⚠️  Vercel poll error: ${err instanceof Error ? err.message : String(err)}`)
+      return false
+    }
+    await new Promise((r) => setTimeout(r, DEPLOY_POLL_MS))
+  }
+
+  console.warn('  ⚠️  Deploy no confirmado en 5 min — se continúa igualmente')
+  return false
 }
 
 // ---------------------------------------------------------------------------
@@ -185,13 +231,12 @@ async function verifyLiveUrl(slug: string, category: string): Promise<boolean> {
 // Step 7 — IndexNow ping
 // ---------------------------------------------------------------------------
 
-async function pingIndexNow(slug: string): Promise<void> {
+async function pingIndexNow(url: string): Promise<void> {
   if (!INDEXNOW_KEY) {
     console.log('  IndexNow: INDEXNOW_KEY not set — skipping')
     return
   }
 
-  const url = `${SITE_URL}/${slug}`
   const endpoint = `https://api.indexnow.org/indexnow?url=${encodeURIComponent(url)}&key=${INDEXNOW_KEY}`
 
   try {
@@ -207,21 +252,17 @@ async function pingIndexNow(slug: string): Promise<void> {
 // ---------------------------------------------------------------------------
 
 async function sendPublishNotification(article: ArticleRow, liveUrl: string): Promise<void> {
-  if (!RESEND_API_KEY || !NOTIFY_EMAIL) {
-    console.log('  Resend: RESEND_API_KEY or NOTIFY_EMAIL not set — skipping email')
-    return
-  }
-
-  // TODO: replace with @resend/node SDK call
-  // const resend = new Resend(RESEND_API_KEY)
-  // await resend.emails.send({
-  //   from: 'robots@pymestools.com',
-  //   to: NOTIFY_EMAIL,
-  //   subject: `✅ Published: ${article.title}`,
-  //   html: `<p>New article published: <a href="${liveUrl}">${article.title}</a></p>`,
-  // })
-
-  console.log(`  Resend: would notify ${NOTIFY_EMAIL} about "${article.title}" — placeholder`)
+  await alert(
+    'info',
+    `Publicado: ${article.title}`,
+    [
+      `Se ha publicado un artículo nuevo.`,
+      '',
+      `Título : ${article.title}`,
+      `URL    : ${liveUrl}`,
+      `Slug   : ${article.slug}`,
+    ].join('\n'),
+  )
 }
 
 // ---------------------------------------------------------------------------
@@ -267,16 +308,17 @@ export async function runPublish(options: PublishOptions): Promise<PublishResult
     console.log('    ✅ Validation passed')
 
     const categorySlug = article.category.replace(/_/g, '-')
-    let liveUrl = `${SITE_URL}/${categorySlug}/${article.slug}`
+    const liveUrl = `${SITE_URL}/${categorySlug}/${article.slug}`
 
     if (!dryRun) {
       // Step 2 — Git commit + push
       console.log('\n  Step 2/8 — Git commit + push')
+      const pushedAt = Date.now()
       await gitCommitAndPush(article)
 
       // Step 3 — Vercel deploy polling
       console.log('\n  Step 3/8 — Vercel deploy polling')
-      await pollVercelDeploy()
+      await pollVercelDeploy(pushedAt)
 
       // Step 4 — Live URL verification
       console.log('\n  Step 4/8 — Live URL verification')
@@ -315,7 +357,7 @@ export async function runPublish(options: PublishOptions): Promise<PublishResult
     if (!dryRun) {
       // Step 7 — IndexNow
       console.log('\n  Step 7/8 — IndexNow ping')
-      await pingIndexNow(article.slug)
+      await pingIndexNow(liveUrl)
 
       // Step 8 — Resend notification
       console.log('\n  Step 8/8 — Email notification')
