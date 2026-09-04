@@ -12,7 +12,11 @@ import { Resend } from 'resend'
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY ?? ''
 const NOTIFY_EMAIL = process.env.NOTIFICATION_EMAIL ?? ''
-const FROM = process.env.RESEND_FROM ?? 'noreply@pymestools.com'
+// Resend refuses any From address on a domain it has not verified, so the
+// default is its shared sender: it delivers to the Resend account owner with no
+// DNS setup. Switch to noreply@pymestools.com once pymestools.com is verified
+// at resend.com/domains.
+const FROM = process.env.RESEND_FROM ?? 'onboarding@resend.dev'
 
 export type AlertLevel = 'info' | 'warn' | 'error'
 
