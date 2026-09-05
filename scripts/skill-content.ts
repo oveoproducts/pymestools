@@ -120,29 +120,32 @@ async function loadTemplate(articleType: string): Promise<string> {
   }
 }
 
-async function buildUserPrompt(keyword: Keyword): Promise<string> {
+interface UserPromptBlocks {
+  // Identical for every article of a given type — safe to cache. Must come
+  // FIRST in the message: a cache breakpoint only pays off on a byte-stable
+  // prefix, so nothing keyword-specific (including the slug, which used to
+  // be interpolated straight into these rules) can live in here.
+  staticText: string
+  // Differs on every call — appended after the cached block.
+  dynamicText: string
+}
+
+async function buildUserPrompt(keyword: Keyword): Promise<UserPromptBlocks> {
   const affiliateNames = await fetchAffiliateNames(keyword.affiliate_program_ids ?? [])
   const articleType = inferArticleType(keyword.keyword, keyword.search_intent)
   const template = await loadTemplate(articleType)
   const slug = keywordToSlug(keyword.keyword)
 
-  return `Escribe un artículo MDX completo para la keyword: "${keyword.keyword}"
-
-Categoría: ${keyword.category ?? 'herramientas-pymes'}
-Slug: ${slug}
-Tipo: ${articleType}
-Intención de búsqueda: ${keyword.search_intent ?? 'commercial'}
-Herramientas afiliadas: ${affiliateNames.length > 0 ? affiliateNames.join(', ') : 'ninguna específica'}
-
-FRONTMATTER OBLIGATORIO (incluye todos estos campos):
-- title, slug ("${slug}"), description, category, type, tools[], keywords_primary
+  const staticText = `FRONTMATTER OBLIGATORIO (incluye todos estos campos):
+- title, slug, description, category, type, tools[], keywords_primary
 - status: "draft", author: "Equipo PymesTools", readingTime, publishedAt: null, updatedAt: "[hoy ISO]"
+- El slug del frontmatter, y el de cualquier AffiliateLink, deben coincidir EXACTAMENTE con el "Slug:" indicado más abajo en este mensaje.
 
 REGLAS DE FORMATO:
 - Párrafos máx 3 líneas (~55 palabras). Si se alarga, rómpelo.
 - H2/H3 con emoji donde ayude (💶 precios, ✅ ventajas, ❌ pegas, ⚠️ advertencias, 🇪🇸 España)
 - Usa <Callout type="warning|tip|info"> para info crítica (permanencia, trampas de precio, consejos)
-- Usa <AffiliateLink programSlug="[slug]" articleSlug="${slug}" label="Probar [Herramienta] gratis" /> para CTAs — NUNCA pongas URLs de afiliado directamente
+- Usa <AffiliateLink programSlug="[slug-del-programa]" articleSlug="[slug-del-articulo]" label="Probar [Herramienta] gratis" /> para CTAs, con el slug real del artículo — NUNCA pongas URLs de afiliado directamente
 - Añade {/* TODO: captura del dashboard */} donde irían imágenes clave
 
 REGLAS CRÍTICAS PARA <ProsCons>:
@@ -153,10 +156,19 @@ REGLAS CRÍTICAS PARA <ProsCons>:
 - INCORRECTO: "Plan gratuito generoso" (sin explicación)
 - INCORRECTO: "Interfaz en español" (sin contexto de por qué importa)
 - Cada item debe poder leerse de forma independiente y responder "¿por qué esto es bueno/malo para una pyme española?"
-
-${template ? `PLANTILLA DE ESTRUCTURA A SEGUIR:\n${template}` : ''}
+${template ? `\nPLANTILLA DE ESTRUCTURA A SEGUIR (tipo: ${articleType}):\n${template}` : ''}
 
 Devuelve SOLO el bloque MDX completo. Sin texto fuera del MDX.`
+
+  const dynamicText = `Escribe un artículo MDX completo para la keyword: "${keyword.keyword}"
+
+Categoría: ${keyword.category ?? 'herramientas-pymes'}
+Slug: ${slug}
+Tipo: ${articleType}
+Intención de búsqueda: ${keyword.search_intent ?? 'commercial'}
+Herramientas afiliadas: ${affiliateNames.length > 0 ? affiliateNames.join(', ') : 'ninguna específica'}`
+
+  return { staticText, dynamicText }
 }
 
 async function fetchAffiliateNames(ids: string[]): Promise<string[]> {
@@ -210,18 +222,28 @@ async function updateQueueItem(
 
 async function generateArticle(keyword: Keyword): Promise<string> {
   const systemPrompt = await loadSystemPrompt()
-  const userPrompt = await buildUserPrompt(keyword)
+  const { staticText, dynamicText } = await buildUserPrompt(keyword)
 
   console.log(`  Calling Anthropic API for keyword: "${keyword.keyword}"`)
 
+  // content-system.md and the per-type rules+template block never change
+  // between calls, so both carry a 1h cache breakpoint — cheap to write
+  // once, then near-free to read on every other article the same pipeline
+  // run drafts (or a retry of this one). Only the per-keyword block at the
+  // end is never cached, since it's different on every call by definition.
   const message = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 8192,
-    system: systemPrompt,
+    system: [
+      { type: 'text', text: systemPrompt, cache_control: { type: 'ephemeral', ttl: '1h' } },
+    ],
     messages: [
       {
         role: 'user',
-        content: userPrompt,
+        content: [
+          { type: 'text', text: staticText, cache_control: { type: 'ephemeral', ttl: '1h' } },
+          { type: 'text', text: dynamicText },
+        ],
       },
     ],
   })
@@ -231,8 +253,11 @@ async function generateArticle(keyword: Keyword): Promise<string> {
     throw new Error('Unexpected response type from Anthropic API')
   }
 
+  const cacheRead = message.usage.cache_read_input_tokens ?? 0
+  const cacheWrite = message.usage.cache_creation_input_tokens ?? 0
   console.log(
-    `  API call complete. Input tokens: ${message.usage.input_tokens}, Output: ${message.usage.output_tokens}`
+    `  API call complete. Input tokens: ${message.usage.input_tokens}, Output: ${message.usage.output_tokens}` +
+      (cacheRead || cacheWrite ? `, cache read: ${cacheRead}, cache write: ${cacheWrite}` : '')
   )
 
   return stripCodeFence(content.text)
