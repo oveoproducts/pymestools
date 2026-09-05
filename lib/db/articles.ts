@@ -92,12 +92,20 @@ export async function getArticlesByCategory(
  * the previous logic ignored `tools` entirely, so a HubSpot review's related
  * block could show unrelated CRM articles while missing
  * "alternativas-a-hubspot" or "hubspot-precio-y-planes" pages.
+ *
+ * One slot is reserved for whichever topically-relevant candidate is
+ * currently weakest in Search Console (traffic audit, 2026-09-05): with
+ * 123 articles and near-zero domain authority, internal links are the
+ * cheapest lever this site has, and left to pure recency they never
+ * deliberately reach the pages that need them — a page Google has never
+ * even crawled scores as weak as it gets, worse than any real position.
  */
 export async function getRelatedArticles(
   article: Pick<Article, 'id' | 'category' | 'tools'>,
   limit = 3,
 ): Promise<Article[]> {
-  const byTool: Article[] = []
+  const pool: Article[] = []
+  const seen = new Set([article.id])
 
   if (article.tools.length > 0) {
     const { data } = await supabase
@@ -107,30 +115,66 @@ export async function getRelatedArticles(
       .neq('id', article.id)
       .overlaps('tools', article.tools)
       .order('published_at', { ascending: false })
-      .limit(limit)
+      .limit(limit * 4)
 
-    if (data) byTool.push(...data.map(normalise))
+    for (const a of data ?? []) {
+      if (seen.has(a.id)) continue
+      pool.push(normalise(a))
+      seen.add(a.id)
+    }
   }
 
-  if (byTool.length >= limit) return byTool.slice(0, limit)
+  if (pool.length < limit * 2) {
+    const dbCategory = article.category.replace(/-/g, '_')
+    const { data: byCategory } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('status', 'published')
+      .eq('category', dbCategory)
+      .order('published_at', { ascending: false })
+      .limit(limit * 4)
 
-  const dbCategory = article.category.replace(/-/g, '_')
-  const excludeIds = new Set([article.id, ...byTool.map((a) => a.id)])
+    for (const a of byCategory ?? []) {
+      if (seen.has(a.id)) continue
+      pool.push(normalise(a))
+      seen.add(a.id)
+    }
+  }
 
-  const { data: byCategory } = await supabase
-    .from('articles')
-    .select('*')
-    .eq('status', 'published')
-    .eq('category', dbCategory)
-    .order('published_at', { ascending: false })
-    .limit(limit + excludeIds.size)
+  if (pool.length <= limit) return pool
 
-  const fallback = (byCategory ?? [])
-    .map(normalise)
-    .filter((a) => !excludeIds.has(a.id))
-    .slice(0, limit - byTool.length)
+  const thirtyDaysAgo = new Date(Date.now() - 30 * 86_400_000).toISOString().slice(0, 10)
+  const { data: metrics } = await supabase
+    .from('content_metrics')
+    .select('article_id, impressions, avg_position')
+    .in(
+      'article_id',
+      pool.map((a) => a.id),
+    )
+    .gte('recorded_at', thirtyDaysAgo)
 
-  return [...byTool, ...fallback]
+  const posByArticle = new Map<string, { weightedSum: number; weight: number }>()
+  for (const m of metrics ?? []) {
+    if (m.avg_position == null || m.impressions === 0) continue
+    const cur = posByArticle.get(m.article_id) ?? { weightedSum: 0, weight: 0 }
+    cur.weightedSum += m.avg_position * m.impressions
+    cur.weight += m.impressions
+    posByArticle.set(m.article_id, cur)
+  }
+
+  // No impressions in 30 days outranks (in weakness) even position 100 —
+  // it means the page hasn't been discovered at all, not just that it
+  // ranks poorly for something.
+  const weaknessScore = (a: Article): number => {
+    const p = posByArticle.get(a.id)
+    if (!p || p.weight === 0) return Number.POSITIVE_INFINITY
+    return p.weightedSum / p.weight
+  }
+
+  const weakest = [...pool].sort((a, b) => weaknessScore(b) - weaknessScore(a))[0]!
+  const rest = pool.filter((a) => a.id !== weakest.id).slice(0, limit - 1)
+
+  return [weakest, ...rest]
 }
 
 export async function getArticlesByType(
