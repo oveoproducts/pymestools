@@ -244,7 +244,16 @@ function printReport(report: AnalyticsReport): void {
   console.log(`    Clicks         : ${report.totalClicks.toLocaleString()}`)
   console.log(`    Avg CTR        : ${report.avgCTR.toFixed(2)}%`)
   console.log(`    Affiliate clicks: ${report.totalAffiliateClicks.toLocaleString()}`)
-  console.log(`    Est. revenue   : €${report.totalRevenue.toFixed(2)}`)
+  // estimated_revenue has no real conversion data behind it yet (see
+  // sync-affiliate-clicks.ts) — €0.00 would read as "confirmed zero
+  // income" when clicks are real and revenue is simply unmeasured.
+  console.log(
+    `    Est. revenue   : ${
+      report.totalRevenue > 0
+        ? `€${report.totalRevenue.toFixed(2)}`
+        : 'no medido (revisa las conversiones en el panel de cada programa de afiliado)'
+    }`
+  )
 
   if (report.topArticles.length > 0) {
     console.log('\n  Top articles:')
@@ -408,7 +417,8 @@ export async function runAnalytics(options: AnalyticsOptions): Promise<Analytics
     printReport(report)
 
     const durationMs = Date.now() - startedAt
-    const message = `${options.mode} analytics complete. ${report.totalClicks} clicks, €${report.totalRevenue.toFixed(2)} revenue.`
+    const revenueText = report.totalRevenue > 0 ? `€${report.totalRevenue.toFixed(2)} revenue` : 'revenue not measured'
+    const message = `${options.mode} analytics complete. ${report.totalClicks} clicks, ${report.totalAffiliateClicks} affiliate clicks, ${revenueText}.`
     await logAgent(`analytics:${options.mode}`, 'completed', durationMs, message)
 
     return { success: true, report, message }
