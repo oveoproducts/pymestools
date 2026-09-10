@@ -1,0 +1,199 @@
+---
+title: "Cómo conectar HubSpot con Sage: guía paso a paso"
+slug: "como-conectar-hubspot-con-sage"
+category: "crm"
+description: "Guía paso a paso para conectar HubSpot con Sage y evitar la doble introducción de datos. Sin conocimientos técnicos. Resultado en menos de una hora."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["hubspot"]
+keywords:
+  primary: "como conectar hubspot con sage"
+  secondary:
+    - "integración hubspot sage"
+    - "sincronizar hubspot sage 50"
+    - "hubspot sage crm erp"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás HubSpot y Sage intercambiando datos automáticamente: los contactos que cierras en HubSpot llegarán solos a Sage, y las facturas de Sage serán visibles desde el perfil del cliente en HubSpot. Sin copiar y pegar entre pantallas.
+
+El proceso completo lleva entre 45 minutos y una hora, dependiendo del método que uses.
+
+<Callout type="warning">
+**Antes de empezar:** Esta integración no es nativa. HubSpot y Sage no tienen un botón de conexión directa en sus paneles. Necesitarás una herramienta intermediaria (Zapier, Make o un conector específico) o acceso a la API de Sage. Te explicamos las dos opciones.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en HubSpot:** El plan gratuito es suficiente para empezar, pero las automatizaciones avanzadas (como sincronización bidireccional en tiempo real) requieren el plan **Starter** desde 15 €/mes + IVA. Si estás en trial, puedes probar todo el proceso.
+- **Versión de Sage compatible:** Sage 50, Sage 200 o Sage Business Cloud. La integración varía según la versión — lo indicamos en cada paso.
+- **Cuenta en Zapier o Make (recomendado para la mayoría):** Zapier tiene plan gratuito con limitaciones; Make tiene también plan gratuito. Para uso real en una pyme con volumen de operaciones diario, necesitarás el plan de pago de la herramienta intermediaria (desde unos 9 €/mes en Make).
+- **Acceso de administrador en ambas plataformas:** No funciona con un usuario con permisos limitados.
+- **Nivel técnico necesario:** No necesitas programar. Si sabes configurar reglas de filtrado en Excel, esto te resultará familiar. La parte más técnica es obtener la clave de API de Sage — te explicamos cómo.
+
+---
+
+## Pasos
+
+### Paso 1: Decide el método de integración que mejor encaja contigo
+
+**Qué hacer:** Antes de tocar nada, elige uno de estos tres métodos según tu situación:
+
+- **Opción A — Zapier o Make (recomendado):** Conector visual sin código. Funciona bien para sincronizar contactos, empresas y deals de HubSpot con clientes y facturas de Sage. Es la opción más rápida de configurar.
+- **Opción B — Conector nativo de Sage Business Cloud:** Si usas **Sage Business Cloud Accounting**, existe una integración directa con HubSpot a través del marketplace de HubSpot. Busca "Sage" en [ecosystem.hubspot.com](https://ecosystem.hubspot.com). Es la opción más estable si está disponible para tu versión.
+- **Opción C — API directa:** Para equipos con un informático de confianza o un partner tecnológico. Más potente, más mantenimiento.
+
+**Por qué:** Elegir mal aquí significa rehacer la configuración. Sage 50 de escritorio tiene menos compatibilidad nativa que Sage Business Cloud — lo más habitual en una pyme como la tuya es ir por Zapier o Make.
+
+**Qué verás:** Nada cambia en pantalla todavía. Es una decisión previa.
+
+---
+
+### Paso 2: Obtén la clave API de HubSpot
+
+**Qué hacer:** Entra en tu cuenta de HubSpot. En la esquina superior derecha, haz clic en el icono de tu cuenta y selecciona `"Configuración"`. En el menú lateral izquierdo, busca `"Integraciones"` → `"Aplicaciones privadas"`. Haz clic en `"Crear aplicación privada"`.
+
+Dale un nombre descriptivo (por ejemplo, "Integración Sage") y en la pestaña `"Permisos"` activa al menos: `crm.objects.contacts.read`, `crm.objects.contacts.write`, `crm.objects.companies.read` y `crm.objects.companies.write`. Guarda y copia el token que aparece — solo se muestra una vez.
+
+**Por qué:** Este token es la "llave" que permite que Zapier, Make o cualquier conector externo acceda a tus datos de HubSpot en tu nombre.
+
+**Qué verás:** Un token largo (empieza por `pat-eu1-...`). Guárdalo en un lugar seguro — un gestor de contraseñas o un documento privado.
+
+<Callout type="warning">
+**No compartas este token.** Quien lo tenga tiene acceso completo a tu CRM. Si sospechas que se ha filtrado, ve a `"Aplicaciones privadas"` y revócalo desde allí.
+</Callout>
+
+---
+
+### Paso 3: Conecta Sage en tu herramienta intermediaria (Zapier o Make)
+
+**Qué hacer (con Zapier):** Entra en [zapier.com](https://zapier.com) y haz clic en `"Crear Zap"`. En el paso `"App & event"`, busca "Sage Business Cloud Accounting" o "Sage 50" según tu versión. Zapier te pedirá que inicies sesión en tu cuenta de Sage para autorizar la conexión.
+
+**Qué hacer (con Make):** Entra en [make.com](https://make.com) y crea un `"Nuevo escenario"`. Busca el módulo de Sage. Make también te solicitará autorización vía OAuth con tu cuenta de Sage.
+
+**Por qué:** Sin esta autorización, la herramienta intermediaria no puede leer ni escribir datos en Sage.
+
+**Qué verás en Zapier:** Un tick verde junto al nombre de Sage cuando la conexión es correcta. Si aparece en rojo, revisa que estás usando el usuario administrador de Sage.
+
+**Nota:** Si usas **Sage 50 de escritorio** (versión instalada en el ordenador, no en la nube), la integración directa no es posible desde Zapier. Necesitarás exportar datos manualmente o usar el módulo de importación de Sage con ficheros CSV generados desde HubSpot. Esto es un paso intermedio — no ideal, pero funciona para volúmenes bajos.
+
+---
+
+### Paso 4: Crea el primer flujo — nuevo cliente en HubSpot → cliente en Sage
+
+**Qué hacer:** En Zapier, configura el flujo así:
+
+- **Trigger (disparador):** HubSpot → `"New Contact"` o `"Deal Stage Changed"` (cuando un deal pasa a `"Cerrado ganado"`)
+- **Action (acción):** Sage → `"Create Customer"`
+
+Mapea los campos: el nombre del contacto en HubSpot al nombre del cliente en Sage, el email al email, el CIF/NIF si lo tienes como propiedad personalizada en HubSpot al campo fiscal de Sage.
+
+Haz clic en `"Test"` para verificar que el flujo funciona con un contacto real de prueba.
+
+**Por qué:** Este es el flujo más útil para la mayoría de pymes: evita crear el cliente manualmente en Sage cada vez que cierras un deal en HubSpot.
+
+**Qué verás:** Zapier ejecuta el test y muestra en verde `"Test successful"`. En Sage, aparece un nuevo cliente con los datos del contacto de prueba.
+
+---
+
+### Paso 5: Crea el segundo flujo — factura en Sage → nota en HubSpot
+
+**Qué hacer:** Crea un segundo Zap (o escenario en Make):
+
+- **Trigger:** Sage → `"New Invoice"`
+- **Action:** HubSpot → `"Create Note"` en el contacto correspondiente, con el número de factura, importe y fecha como contenido de la nota.
+
+Si quieres ir un paso más allá, puedes usar la action `"Update Deal"` para actualizar el importe en el deal de HubSpot cuando se genera la factura en Sage.
+
+**Por qué:** Así el equipo comercial ve desde HubSpot si un cliente ya ha sido facturado, sin tener que abrir Sage.
+
+**Qué verás:** En el perfil del contacto en HubSpot, aparecerá una nueva actividad en el feed de notas con los datos de la factura de Sage.
+
+---
+
+### Paso 6: Activa los flujos y verifica con datos reales
+
+**Qué hacer:** En Zapier, cambia el estado del Zap de `"Off"` a `"On"` con el interruptor de la esquina superior derecha. Haz lo mismo para cada flujo que hayas creado. Espera 10–15 minutos y genera una operación real de prueba: crea un deal en HubSpot, ciérralo como ganado, y comprueba si el cliente aparece en Sage.
+
+**Por qué:** El test del paso 4 usa datos de ejemplo. La verificación con datos reales confirma que el mapeo de campos es correcto y que no hay problemas de permisos en producción.
+
+**Qué verás:** El cliente creado en Sage con exactamente los datos que has introducido en HubSpot. Si falta algún campo, vuelve al mapeo del Paso 4 y revisa qué campo de HubSpot está vacío o mal mapeado.
+
+---
+
+## Errores comunes
+
+**El cliente aparece en Sage sin CIF/NIF**
+*Síntoma:* El cliente se crea en Sage pero el campo de identificación fiscal está vacío.
+*Causa:* HubSpot no tiene un campo estándar de CIF/NIF. Si no has creado una propiedad personalizada en HubSpot para este dato, no hay nada que mapear.
+*Solución:* En HubSpot, ve a `"Configuración"` → `"Propiedades"` → `"Crear propiedad"`. Crea una propiedad de texto llamada "CIF/NIF" en el objeto Contacto o Empresa. Pide a tu equipo que lo rellene al crear el contacto. Después actualiza el mapeo en Zapier.
+
+---
+
+**Zapier dice "Connection error" al conectar con Sage**
+*Síntoma:* Al intentar autorizar Sage en Zapier, aparece un mensaje de error de conexión o la pantalla de autorización no carga.
+*Causa:* Suele ocurrir con cuentas de Sage Business Cloud que tienen la verificación en dos pasos activa, o con usuarios que no tienen permisos de administrador.
+*Solución:* Asegúrate de entrar con el usuario administrador de Sage. Si tienes 2FA activo, completa el proceso de verificación antes de volver a Zapier. Si el problema persiste, contacta con el soporte de Zapier indicando la versión exacta de Sage que usas.
+
+---
+
+**Los deals cerrados en HubSpot no disparan el Zap**
+*Síntoma:* Cierras un deal como "Cerrado ganado" en HubSpot pero no se crea ningún cliente en Sage.
+*Causa:* El trigger de Zapier está configurado como `"New Contact"` en lugar de `"Deal Stage Changed"`. O el Zap está en estado `"Off"`.
+*Solución:* Revisa el trigger del Zap. Si necesitas que se dispare al cerrar un deal, el trigger correcto es `"Deal Stage Changed"` en HubSpot, con el filtro de etapa = `"Closed Won"` (o el nombre que uses tú para esa etapa). Verifica también que el Zap esté activado.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Un flujo automático** que crea clientes en Sage cada vez que cierras un deal en HubSpot — sin tocar Sage manualmente.
+- **Un flujo de vuelta** que añade una nota en el perfil de HubSpot cuando se genera una factura en Sage, para que tu equipo comercial vea el estado de facturación sin salir del CRM.
+- **Menos doble introducción de datos**, que es la queja principal de cualquier empresa que usa CRM y ERP por separado.
+
+El siguiente paso lógico es añadir un flujo para sincronizar actualizaciones de contacto (si cambias el email o el teléfono en HubSpot, que se actualice también en Sage). La configuración es idéntica a la del Paso 4, pero con el trigger `"Updated Contact"`.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en HubSpot o quieres explorar sus opciones de integración antes de comprometerte con un plan de pago:
+
+<AffiliateLink programSlug="hubspot" articleSlug="como-conectar-hubspot-con-sage" label="Probar HubSpot gratis" />
+
+HubSpot tiene un plan gratuito funcional para empezar. Las automatizaciones de sincronización con Sage que hemos descrito en esta guía funcionan desde el plan **Starter** si combinas HubSpot con Zapier o Make.
+
+---
+
+## Preguntas frecuentes
+
+### ¿Funciona esta integración con Sage 50 de escritorio (no en la nube)?
+
+Con Sage 50 instalado en local, la integración automática vía Zapier no está disponible de forma nativa. La alternativa más práctica es exportar contactos desde HubSpot en CSV e importarlos manualmente en Sage 50. No es ideal, pero es lo que hay con la versión de escritorio. Si tu volumen de operaciones lo justifica, valorar el salto a Sage Business Cloud facilita mucho esta sincronización.
+
+### ¿Necesito Zapier de pago para que esto funcione?
+
+Para volúmenes bajos (menos de 100 operaciones al mes), el plan gratuito de Zapier puede ser suficiente. En la práctica, una pyme con actividad comercial regular suele superar ese límite en pocas semanas. Make tiene un plan gratuito algo más generoso. Si el coste es un freno, empieza con Make en gratuito y evalúa si necesitas subir de plan al mes.
+
+### ¿Los datos de clientes que pasan por Zapier cumplen con el GDPR?
+
+Zapier tiene DPA (Data Processing Agreement) disponible para firmar y cumple con GDPR. Los datos pueden procesarse en servidores fuera de la UE — revisa la política de Zapier y ajusta tu DPA con la AEPD si es necesario. Make tiene servidores en la UE (Ámsterdam), lo que simplifica el cumplimiento para empresas españolas.
+
+### ¿Puedo hacer que funcione en los dos sentidos (bidireccional)?
+
+Sí, pero con precaución. La sincronización bidireccional (cambios en Sage actualizan HubSpot y viceversa) puede generar bucles si no se configura bien. Lo más seguro es empezar con sincronización unidireccional (HubSpot → Sage) y añadir el sentido contrario solo para los campos donde realmente lo necesites.
+
+### ¿HubSpot tiene soporte en español para resolver dudas de la integración?
+
+Sí. HubSpot tiene la interfaz completamente en español y ofrece soporte en español por chat y email. La documentación oficial también está disponible en español en [knowledge.hubspot.com](https://knowledge.hubspot.com/es). Para dudas específicas de la integración con Sage, el soporte de Zapier atiende en inglés — considera eso si el inglés es un freno para tu equipo.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
