@@ -1,0 +1,183 @@
+---
+title: "Cómo conectar Notion con Factorial: guía paso a paso"
+slug: "como-conectar-notion-con-factorial"
+category: "productividad"
+description: "Guía paso a paso para conectar Notion con Factorial usando Zapier o Make. Sincroniza empleados, vacaciones y onboarding sin copiar datos a mano. Sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["notion"]
+keywords:
+  primary: "como conectar notion con factorial"
+  secondary:
+    - "notion factorial integracion"
+    - "sincronizar factorial notion zapier"
+    - "automatizar onboarding notion factorial"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás un flujo automático que vuelca en Notion la información de tus empleados desde Factorial — sin copiar nada a mano. Útil si usas Notion como base de conocimiento del equipo y Factorial para RRHH y nóminas.
+
+El proceso completo lleva unos 30–40 minutos la primera vez. Una vez configurado, funciona solo.
+
+<Callout type="info">
+Notion y Factorial **no tienen integración nativa directa**. La conexión se hace a través de una herramienta de automatización: Zapier o Make (antes Integromat). Esta guía usa **Zapier**, pero el proceso en Make es equivalente.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Notion:** El plan gratuito es suficiente para empezar. Si quieres compartir la base de datos con todo tu equipo, necesitarás el plan Plus (16 $/mes por usuario, aprox. — verifica en notion.so antes de contratar). Puedes probar la integración con tu cuenta actual.
+- **Cuenta en Factorial:** El acceso a la API de Factorial requiere un plan de pago. Consulta con tu gestor de cuenta de Factorial si tienes acceso habilitado — no todos los planes lo incluyen por defecto.
+- **Cuenta en Zapier:** El plan gratuito permite hasta 100 tareas al mes y Zaps de un solo paso. Para automatizaciones más complejas (varios pasos), necesitarás el plan Starter (aprox. 19,99 $/mes — verifica en zapier.com). Para probar esta guía, el plan gratuito es suficiente.
+- **Acceso a la API de Factorial:** Necesitas generar una API Key desde el panel de administrador de Factorial. Te explicamos cómo en el Paso 1.
+- **Nivel técnico necesario:** No necesitas programar. Si sabes moverte por paneles de administración y copiar y pegar texto, es suficiente.
+
+---
+
+## Pasos
+
+### Paso 1: Genera tu API Key en Factorial
+
+**Qué hacer:** Entra en tu cuenta de Factorial como administrador. Ve al menú de configuración (icono de engranaje, normalmente en la esquina inferior izquierda), busca la sección `"Integraciones"` o `"API"` y haz clic en `"Generar nueva API Key"`. Copia el token que aparece — solo se muestra una vez.
+
+**Por qué:** Zapier necesita esta clave para autenticarse con Factorial en tu nombre y leer los datos de empleados, vacaciones o eventos que quieras sincronizar.
+
+**Qué verás:** Una cadena larga de letras y números. Guárdala en un lugar seguro (un documento privado en Notion, por ejemplo). Si la pierdes, tendrás que generar una nueva.
+
+<Callout type="warning">
+**No compartas esta API Key.** Quien la tenga puede leer los datos de RRHH de tu empresa desde Factorial. Trátala como una contraseña.
+</Callout>
+
+---
+
+### Paso 2: Crea la base de datos en Notion
+
+**Qué hacer:** En Notion, crea una página nueva y añade una base de datos de tipo `"Tabla"` (`"Table"` si tu interfaz está en inglés). Añade las columnas que quieres rellenar desde Factorial: por ejemplo, `"Nombre"`, `"Email"`, `"Departamento"`, `"Fecha de incorporación"`, `"Estado"`.
+
+**Por qué:** Zapier necesita una base de datos de destino con las columnas ya creadas. Si no existen, no puede mapear los datos.
+
+**Qué verás:** Una tabla vacía con las columnas que has definido. El título de la base de datos es libre — puedes llamarla `"Directorio del equipo"` o `"Empleados Factorial"`.
+
+**Nota:** Anota el nombre exacto de cada columna. En el Paso 5 tendrás que relacionar cada campo de Factorial con el nombre de columna correcto en Notion. Si el nombre no coincide exactamente, Zapier no lo encontrará.
+
+---
+
+### Paso 3: Crea un Zap nuevo en Zapier
+
+**Qué hacer:** Entra en zapier.com y haz clic en `"Create Zap"`. Dale un nombre descriptivo, por ejemplo: `"Factorial → Notion: nuevos empleados"`.
+
+**Por qué:** Cada Zap es un flujo de automatización independiente. Es mejor tener un Zap por tipo de evento (uno para nuevos empleados, otro para solicitudes de vacaciones) que intentar hacerlo todo en uno.
+
+**Qué verás:** El editor de Zapier, con dos bloques vacíos: `"Trigger"` (disparador) y `"Action"` (acción).
+
+---
+
+### Paso 4: Configura el disparador desde Factorial
+
+**Qué hacer:** En el bloque `"Trigger"`, busca `"Factorial"` en el buscador de aplicaciones. Selecciona el evento que quieres usar como disparador — por ejemplo, `"New Employee"` (nuevo empleado) o `"New Leave Request"` (nueva solicitud de vacaciones).
+
+Cuando Zapier te pida autenticación, elige `"API Key"` como método y pega la clave que generaste en el Paso 1.
+
+**Por qué:** El disparador es el evento que activa todo el flujo. Sin este paso, Zapier no sabe cuándo tiene que hacer algo.
+
+**Qué verás:** Zapier intentará hacer una prueba de conexión con Factorial. Si la API Key es correcta, verás un mensaje de éxito y una muestra de datos reales de tu cuenta de Factorial.
+
+**Nota:** Si Factorial no aparece como aplicación nativa en Zapier, usa el trigger `"Webhooks by Zapier"` con la URL de webhook que te proporciona Zapier. Después, configura en Factorial (sección `"Integraciones"`) que envíe eventos a esa URL. Es un paso extra, pero funciona igual.
+
+---
+
+### Paso 5: Configura la acción en Notion
+
+**Qué hacer:** En el bloque `"Action"`, busca `"Notion"` y selecciona la acción `"Create Database Item"` (crear elemento en base de datos). Conecta tu cuenta de Notion cuando te lo pida (Zapier abrirá una ventana de autorización de Notion — acepta los permisos).
+
+Selecciona la base de datos que creaste en el Paso 2. Después, mapea cada campo: haz clic en cada columna de tu tabla de Notion y selecciona el dato correspondiente de Factorial que aparece en el menú desplegable.
+
+**Por qué:** Este paso le dice a Zapier exactamente qué datos de Factorial van a qué columna de Notion.
+
+**Qué verás:** Un formulario con todas las columnas de tu base de datos de Notion. Junto a cada una, un menú con los campos disponibles de Factorial.
+
+---
+
+### Paso 6: Prueba el Zap y actívalo
+
+**Qué hacer:** Haz clic en `"Test step"` para que Zapier ejecute el flujo con datos reales. Comprueba en tu base de datos de Notion que aparece un nuevo registro con los datos correctos. Si todo está bien, haz clic en `"Publish Zap"` para activarlo.
+
+**Por qué:** La prueba te confirma que el mapeo es correcto antes de que el Zap procese datos en producción.
+
+**Qué verás:** Un nuevo registro en tu tabla de Notion con los datos del empleado de prueba que Zapier usó. Si algún campo aparece vacío o con el valor incorrecto, vuelve al Paso 5 y revisa el mapeo.
+
+---
+
+## Errores comunes
+
+**Zapier no encuentra Factorial como aplicación nativa**
+*Síntoma:* Buscas "Factorial" en Zapier y no aparece, o aparece pero sin los eventos que necesitas.
+*Causa:* La integración nativa de Factorial en Zapier puede estar limitada o no disponible según la región o el plan.
+*Solución:* Usa `"Webhooks by Zapier"` como trigger. En Factorial, ve a `"Integraciones"` → `"Webhooks"` y añade la URL que te da Zapier. Desde ese momento, Factorial enviará eventos a Zapier automáticamente.
+
+---
+
+**La base de datos de Notion no aparece en el menú de Zapier**
+*Síntoma:* Al configurar la acción en Notion, tu base de datos no aparece en el desplegable aunque existe.
+*Causa:* Zapier solo puede acceder a las páginas de Notion a las que le has dado permiso explícito durante la autorización.
+*Solución:* Ve a la configuración de la conexión de Notion en Zapier (`"My Apps"` → `"Notion"` → `"Reconnect"`). Durante el proceso de autorización, selecciona manualmente las páginas o bases de datos a las que Zapier puede acceder.
+
+---
+
+**Los datos llegan a Notion pero con campos vacíos**
+*Síntoma:* El registro se crea en Notion pero algunas columnas están vacías.
+*Causa:* El nombre de la columna en Notion no coincide exactamente con lo que Zapier espera, o el campo en Factorial no tiene valor para ese empleado concreto.
+*Solución:* Revisa el mapeo en el Paso 5. Comprueba también que el empleado de prueba en Factorial tiene rellenos los campos que estás intentando sincronizar. Los campos vacíos en origen llegan vacíos en destino.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Un flujo automático que crea un registro en tu base de datos de Notion cada vez que ocurre un evento en Factorial (nuevo empleado, solicitud de vacaciones, o el evento que hayas configurado).
+- Los datos de RRHH de Factorial accesibles en Notion sin copiar nada a mano — útil si tu equipo usa Notion como wiki interna y quiere tener el directorio del equipo siempre actualizado.
+- La base para añadir más pasos: por ejemplo, que al crear el registro en Notion se envíe también una notificación por Slack al responsable del onboarding.
+
+El siguiente paso lógico es crear un segundo Zap para sincronizar las solicitudes de vacaciones — así tu tabla de Notion refleja en tiempo real quién está fuera sin que nadie tenga que actualizar nada manualmente.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Notion o quieres explorar el plan de pago para compartirlo con tu equipo:
+
+<AffiliateLink programSlug="notion" articleSlug="como-conectar-notion-con-factorial" label="Probar Notion gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Puedo conectar Notion con Factorial sin pagar Zapier?
+
+Sí, con limitaciones. El plan gratuito de Zapier permite hasta 100 tareas al mes y Zaps de un solo paso. Si tu empresa tiene pocos movimientos de RRHH al mes (altas, bajas, solicitudes), puede ser suficiente para empezar. Si necesitas flujos de varios pasos o mayor volumen, necesitarás un plan de pago en Zapier.
+
+### ¿Funciona esto con Make (Integromat) en lugar de Zapier?
+
+Sí. El proceso es equivalente: trigger desde Factorial (vía webhook o módulo nativo si existe), acción en Notion para crear un registro. Make tiene un plan gratuito con 1.000 operaciones al mes, lo que suele ser más generoso que el de Zapier para este tipo de uso.
+
+### ¿Qué pasa si un empleado se modifica en Factorial? ¿Se actualiza en Notion?
+
+No automáticamente con esta configuración. El Zap que hemos creado solo detecta eventos nuevos (por ejemplo, alta de un empleado), no modificaciones. Para sincronizar actualizaciones necesitas un Zap adicional con el trigger `"Updated Employee"` y la acción `"Update Database Item"` en Notion. Es el mismo proceso, pero con un evento distinto.
+
+### ¿Factorial permite la integración vía API en todos sus planes?
+
+No necesariamente. El acceso a la API de Factorial depende del plan contratado. Algunos planes básicos no lo incluyen. Consulta directamente con el soporte de Factorial o revisa tu contrato antes de empezar — es el requisito más importante de esta guía.
+
+### ¿Esta integración cumple con el RGPD si estoy moviendo datos de empleados?
+
+Es una pregunta importante. Estás moviendo datos personales (nombres, emails, información laboral) entre dos sistemas. Asegúrate de que en tu política de privacidad interna y en el contrato con los empleados está contemplado el uso de herramientas de productividad como Notion para gestionar información de RRHH. Zapier firma un DPA bajo GDPR — consúltalo en su web antes de activar el flujo con datos reales.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
