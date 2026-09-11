@@ -1,0 +1,206 @@
+---
+title: "Cómo conectar HubSpot con Holded: guía paso a paso"
+slug: "como-conectar-hubspot-con-holded"
+category: "crm"
+description: "Guía paso a paso para conectar HubSpot con Holded y sincronizar contactos, facturas y datos de venta sin exportar Excel. Resultado en menos de 45 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["hubspot"]
+keywords:
+  primary: "como conectar hubspot con holded"
+  secondary:
+    - "integración hubspot holded"
+    - "sincronizar hubspot holded"
+    - "hubspot holded zapier"
+    - "crm holded erp integracion"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás HubSpot y Holded intercambiando datos de forma automática: cuando cierres un trato en HubSpot, los datos del cliente llegarán a Holded listos para facturar. Sin exportar CSV, sin copiar y pegar, sin que se te pierda ningún contacto.
+
+El proceso completo lleva entre 30 y 45 minutos si tienes las cuentas activas y acceso de administrador en ambas herramientas.
+
+<Callout type="warning">
+**No hay integración nativa directa.** HubSpot y Holded no tienen un conector oficial entre ellos (a enero de 2025). La conexión se hace a través de Zapier o Make (antes Integromat). Te explicamos el método con Zapier, que es el más accesible sin conocimientos técnicos.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en HubSpot:** Funciona desde el plan gratuito para sincronizar contactos básicos. Si quieres sincronizar datos de tratos (deals), necesitas al menos el plan **Starter de Sales Hub** (desde 15 €/mes + IVA por usuario). Precios consultados en enero 2025 — verifica en hubspot.com/es/pricing.
+- **Cuenta en Holded:** Cualquier plan de pago de Holded incluye acceso a la API, que es lo que usa Zapier para conectarse. El plan gratuito de Holded **no incluye acceso a API**.
+- **Cuenta en Zapier:** El plan gratuito de Zapier permite crear Zaps básicos con hasta 100 tareas al mes. Si tienes más volumen o quieres pasos intermedios, necesitarás el plan Starter (desde 19,99 $/mes — aprox. 18 €/mes según cambio a enero 2025 + IVA). Verifica en zapier.com/pricing.
+- **Acceso de administrador** en HubSpot y en Holded — sin él no puedes generar las claves de API.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes moverte por menús de configuración y seguir instrucciones en pantalla, es suficiente.
+
+---
+
+## Pasos
+
+### Paso 1: Obtén la clave de API de Holded
+
+**Qué hacer:** Entra en tu cuenta de Holded. En el menú lateral izquierdo, ve a "Configuración" (el icono de engranaje, abajo del todo). Dentro de Configuración, busca la sección "Integraciones" y después "API". Haz clic en "Generar clave" o "Nueva clave API". Copia el valor que aparece — lo necesitarás en el Paso 3.
+
+**Por qué:** Zapier necesita esta clave para autenticarse con Holded y leer/escribir datos en tu cuenta sin que tengas que introducir tu contraseña.
+
+**Qué verás:** Una cadena de caracteres alfanumérica larga. Guárdala en un lugar seguro (un bloc de notas, no en un email). Si la pierdes, tendrás que generar una nueva y actualizar todas tus integraciones.
+
+---
+
+### Paso 2: Conecta HubSpot con tu cuenta de Zapier
+
+**Qué hacer:** Entra en zapier.com e inicia sesión. Haz clic en "Create Zap" (el botón naranja, arriba a la izquierda). En el buscador de aplicaciones del primer bloque ("Trigger"), escribe "HubSpot" y selecciónalo. Zapier te pedirá que conectes tu cuenta de HubSpot — haz clic en "Sign in to HubSpot" y autoriza el acceso desde tu cuenta de HubSpot.
+
+**Por qué:** El "Trigger" es el evento que pone en marcha la automatización. Estás diciéndole a Zapier: "cuando pase algo en HubSpot, haz algo en Holded."
+
+**Qué verás:** Una pantalla con un desplegable para elegir el evento que dispara el Zap. Aquí es donde configuras el siguiente paso.
+
+---
+
+### Paso 3: Elige el activador en HubSpot
+
+**Qué hacer:** En el desplegable "Trigger Event", elige el evento que quieres que arranque la sincronización. Las opciones más útiles para una pyme son:
+
+- `"New Contact"` — se activa cuando se crea un contacto nuevo en HubSpot
+- `"Deal Stage Changed"` — se activa cuando un trato cambia de fase (por ejemplo, cuando pasa a "Cerrado ganado")
+
+Para empezar, selecciona `"Deal Stage Changed"`. Haz clic en "Continue" y luego en "Test trigger" para verificar que Zapier puede leer datos de tu HubSpot. Si tienes tratos en HubSpot, aparecerá uno de ejemplo.
+
+**Por qué:** Sincronizar solo cuando un trato se cierra evita llenar Holded con contactos que aún no son clientes. Es la configuración más limpia para facturación.
+
+**Qué verás:** Un panel con los datos del trato de prueba: nombre, empresa, importe, fase, etc. Si aparecen, la conexión con HubSpot funciona.
+
+---
+
+### Paso 4: Añade Holded como acción
+
+**Qué hacer:** En el bloque "Action" (el segundo bloque del Zap), busca "Holded" en el buscador de aplicaciones. Si no aparece directamente, es posible que necesites buscarlo como "Holded" — está disponible en el catálogo de Zapier. Haz clic en él y selecciona el evento de acción: `"Create Contact"` para crear el cliente en Holded.
+
+Cuando Zapier te pida autenticación con Holded, selecciona "API Key" e introduce la clave que copiaste en el Paso 1.
+
+**Por qué:** Le estás diciendo a Zapier qué tiene que hacer en Holded cuando se dispara el evento de HubSpot.
+
+**Qué verás:** Un formulario para mapear los campos: qué dato de HubSpot va a qué campo de Holded.
+
+---
+
+### Paso 5: Mapea los campos entre HubSpot y Holded
+
+**Qué hacer:** Este es el paso más importante. Zapier muestra dos columnas: los campos de Holded (destino) y los datos disponibles de HubSpot (origen). Tienes que decirle a Zapier qué va dónde.
+
+Configuración mínima recomendada:
+
+| Campo en Holded | Dato de HubSpot |
+|---|---|
+| Nombre | Contact: First Name + Last Name |
+| Email | Contact: Email |
+| Teléfono | Contact: Phone Number |
+| NIF/CIF | Contact: (campo personalizado si lo tienes) |
+| Nombre empresa | Associated Company: Name |
+
+Haz clic en cada campo de Holded y selecciona el dato correspondiente de HubSpot en el desplegable. Cuando termines, haz clic en "Continue".
+
+**Por qué:** Si no mapeas correctamente, los contactos se crearán en Holded con campos vacíos y tendrás que completarlos a mano — exactamente lo que querías evitar.
+
+**Qué verás:** Un resumen de los campos mapeados antes de hacer la prueba.
+
+---
+
+### Paso 6: Prueba el Zap y actívalo
+
+**Qué hacer:** Haz clic en "Test action". Zapier enviará un contacto de prueba a Holded usando los datos del trato de ejemplo del Paso 3. Entra en tu cuenta de Holded, ve a "Contactos" y comprueba que el contacto ha aparecido con los datos correctos.
+
+Si todo está bien, vuelve a Zapier y haz clic en "Publish Zap". El Zap quedará activo.
+
+**Por qué:** La prueba es la única forma de confirmar que el mapeo funciona antes de que empiece a procesar datos reales.
+
+**Qué verás:** En Holded, un contacto nuevo con los datos del trato de prueba. En Zapier, un mensaje de confirmación en verde: "Test was successful."
+
+<Callout type="tip">
+**Consejo:** Después de activar el Zap, cierra un trato de prueba real en HubSpot (con datos ficticios) y comprueba que llega bien a Holded. Mejor detectar problemas con datos de test que con el primer cliente real.
+</Callout>
+
+---
+
+## Errores comunes
+
+**El Zap se activa pero el contacto no aparece en Holded**
+
+*Síntoma:* Zapier muestra "Task successful" pero el contacto no está en Holded.
+
+*Causa:* La clave de API de Holded está mal copiada (con un espacio al principio o al final) o pertenece a una cuenta de Holded diferente a la que estás mirando.
+
+*Solución:* Ve a Holded → Configuración → API y genera una clave nueva. Cópiala directamente con Ctrl+C sin seleccionar espacios. Actualiza la autenticación en Zapier: ve a "My Apps", busca Holded y edita la conexión.
+
+---
+
+**Zapier no encuentra "Holded" en el catálogo de aplicaciones**
+
+*Síntoma:* Al buscar "Holded" en Zapier, no aparece ningún resultado o aparece una aplicación diferente.
+
+*Causa:* Holded no siempre aparece en todos los planes de Zapier. En el plan gratuito, algunas apps de pago están ocultas.
+
+*Solución:* Prueba a buscar "Holded" con mayúscula exacta. Si sigue sin aparecer, usa Make (make.com) como alternativa — tiene conector nativo con Holded y un plan gratuito más generoso que Zapier para esta integración. El proceso de configuración en Make es similar.
+
+---
+
+**Los tratos cerrados no disparan el Zap**
+
+*Síntoma:* Cierras un trato en HubSpot pero Zapier no hace nada.
+
+*Causa:* El Trigger está configurado como `"New Contact"` en lugar de `"Deal Stage Changed"`, o la fase "Cerrado ganado" en HubSpot tiene un nombre diferente al que Zapier está escuchando.
+
+*Solución:* Ve al Zap, edita el Trigger y comprueba que el filtro de fase está configurado exactamente igual que el nombre de la fase en tu pipeline de HubSpot (distingue mayúsculas y minúsculas).
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Un flujo automático que detecta cada trato cerrado en HubSpot y crea (o actualiza) el cliente en Holded sin intervención manual.
+- Los datos del cliente — nombre, empresa, email, teléfono — disponibles en Holded listos para emitir la primera factura.
+- Un registro en Zapier de cada sincronización, útil si alguna vez necesitas auditar qué datos se transfirieron y cuándo.
+
+El siguiente paso lógico es crear un segundo Zap en sentido contrario: que cuando emitas una factura en Holded, se registre una nota o actividad en el trato de HubSpot. Así tu equipo comercial sabe en todo momento si un cliente ya ha sido facturado.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en HubSpot o quieres explorar el plan de pago que necesitas para sincronizar tratos:
+
+<AffiliateLink programSlug="hubspot" articleSlug="como-conectar-hubspot-con-holded" label="Probar HubSpot gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Puedo conectar HubSpot con Holded sin pagar Zapier?
+
+Sí, con limitaciones. El plan gratuito de Zapier permite hasta 100 tareas al mes, lo que puede ser suficiente si tienes pocas operaciones. Si cierras más de 100 tratos al mes o quieres flujos más complejos (varios pasos, filtros), necesitarás un plan de pago. Make (make.com) tiene un plan gratuito con 1.000 operaciones al mes si Zapier se queda corto.
+
+### ¿Se sincronizan las facturas de Holded a HubSpot?
+
+No de forma automática con la configuración básica de esta guía. Esto requiere un segundo Zap en sentido contrario (Holded → HubSpot). El proceso es similar: Holded como Trigger con el evento `"New Invoice"` y HubSpot como Action para crear una nota o tarea en el contacto correspondiente.
+
+### ¿La integración cumple con el GDPR y la LOPDGDD?
+
+Zapier actúa como encargado del tratamiento de datos cuando transfiere información entre HubSpot y Holded. Zapier tiene DPA disponible bajo GDPR. Los datos pueden pasar por servidores fuera de la UE (Zapier opera desde EE. UU. con servidores en AWS). Revisa el DPA de Zapier y asegúrate de que tu registro de actividades de tratamiento con la AEPD refleja este flujo de datos.
+
+### ¿Qué pasa si modifico un contacto en HubSpot después de sincronizarlo?
+
+Con la configuración básica de esta guía, las modificaciones posteriores no se sincronizan automáticamente — el Zap solo se activa en el evento inicial (trato cerrado). Para sincronizar actualizaciones, necesitas un Zap adicional con el evento `"Updated Contact"` en HubSpot.
+
+### ¿Puedo hacer esta integración directamente sin Zapier?
+
+Solo si tienes conocimientos de desarrollo. Tanto HubSpot como Holded tienen APIs REST documentadas, por lo que un desarrollador puede construir una integración directa. Si tu empresa factura más de 100.000 € al año y tienes muchas operaciones, puede salir más rentable que pagar Zapier mensualmente. Para la mayoría de pymes, Zapier es la opción más práctica.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
