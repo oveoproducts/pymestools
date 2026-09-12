@@ -1,0 +1,182 @@
+---
+title: "Cómo conectar GetResponse con Holded: guía paso a paso"
+slug: "como-conectar-getresponse-con-holded"
+category: "email-marketing"
+description: "Guía paso a paso para conectar GetResponse con Holded vía Zapier o webhook. Sincroniza contactos automáticamente en menos de 45 minutos, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["getresponse"]
+keywords:
+  primary: "como conectar getresponse con holded"
+  secondary:
+    - "integración getresponse holded"
+    - "sincronizar contactos holded getresponse"
+    - "automatización email marketing holded"
+    - "zapier getresponse holded"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Holded y GetResponse sincronizados: cuando crees un contacto o cliente en Holded, entrará automáticamente en la lista de GetResponse que elijas. Sin exportar Excel, sin copiar emails a mano.
+
+El proceso completo lleva entre 30 y 45 minutos la primera vez. Después funciona solo.
+
+<Callout type="info">
+GetResponse y Holded **no tienen integración nativa directa**. La conexión se hace mediante Zapier (de pago) o mediante la API de ambas plataformas. Esta guía cubre el camino con Zapier — es el más rápido si no tienes perfil técnico.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en GetResponse:** Cualquier plan de pago o el trial de 30 días. El plan gratuito (hasta 500 contactos) también permite usar la API y recibir contactos vía Zapier.
+- **Cuenta en Holded:** El plan que uses ya incluye acceso a la API — no necesitas un plan especial.
+- **Cuenta en Zapier:** El plan gratuito de Zapier permite crear este Zap, pero con límite de 100 tareas/mes. Si tienes más de 100 contactos nuevos al mes, necesitarás el plan Starter de Zapier (desde 19,99 $/mes + IVA aprox.). Verifica el precio actualizado en zapier.com antes de contratar.
+- **Acceso de administrador en ambas herramientas:** No funciona con cuentas de usuario estándar — necesitas poder acceder a la configuración y generar claves API.
+- **Nivel técnico necesario:** No necesitas programar. Si sabes seguir instrucciones y copiar y pegar texto, es suficiente. El único momento que puede costar es localizar la clave API — lo explicamos con detalle en los pasos.
+
+---
+
+## Pasos
+
+### Paso 1: Obtén tu clave API de GetResponse
+
+**Qué hacer:** Entra en tu cuenta de GetResponse. En la esquina superior derecha, haz clic sobre tu nombre de usuario y selecciona `"Integraciones y API"` en el menú desplegable. Dentro, busca la sección `"API"` y copia el valor que aparece como `"API key"`. Guárdalo en un bloc de notas — lo necesitarás más adelante.
+
+**Por qué:** Zapier necesita esta clave para poder añadir contactos en GetResponse en tu nombre. Sin ella, no puede autenticarse.
+
+**Qué verás:** Una cadena larga de letras y números. Es normal que parezca un código incomprensible — es la contraseña que usa la integración.
+
+---
+
+### Paso 2: Obtén tu clave API de Holded
+
+**Qué hacer:** En Holded, ve a `"Configuración"` (icono de engranaje en el menú lateral izquierdo). Dentro de Configuración, selecciona `"Integraciones"` y luego `"API"`. Si no has generado ninguna clave antes, haz clic en `"Crear clave API"`. Copia la clave generada.
+
+**Por qué:** Igual que con GetResponse, Zapier necesita autenticarse en Holded para detectar cuándo creas un contacto nuevo.
+
+**Qué verás:** Una clave similar a la de GetResponse. Holded puede pedirte que confirmes la acción con tu contraseña de usuario.
+
+<Callout type="warning">
+**Estas claves API son como contraseñas.** No las compartas por email ni las dejes en documentos compartidos. Si alguna se compromete, ve a la configuración de la herramienta y generas una nueva — la antigua deja de funcionar automáticamente.
+</Callout>
+
+---
+
+### Paso 3: Crea el Zap en Zapier — configura el disparador (Holded)
+
+**Qué hacer:** Entra en Zapier y haz clic en `"Create Zap"`. En la sección `"Trigger"` (disparador), busca `"Holded"` en el buscador de apps. Selecciona Holded y elige el evento `"New Contact"` — esto significa que el Zap se activará cada vez que crees un contacto nuevo en Holded.
+
+Zapier te pedirá que conectes tu cuenta de Holded. Haz clic en `"Sign in to Holded"` y pega la clave API que copiaste en el paso anterior.
+
+**Por qué:** El disparador define qué evento en Holded activa la automatización. En este caso, un contacto nuevo.
+
+**Qué verás:** Zapier mostrará una pantalla de confirmación con `"Account connected"` y te pedirá que hagas una prueba de conexión. Haz clic en `"Test trigger"` — debería aparecer un contacto de ejemplo de tu Holded.
+
+**Nota:** Si Zapier no encuentra contactos de prueba, asegúrate de tener al menos un contacto creado en Holded. Puedes crear uno de prueba ahora mismo y luego borrarlo.
+
+---
+
+### Paso 4: Configura la acción (GetResponse)
+
+**Qué hacer:** En la sección `"Action"`, busca `"GetResponse"` en el buscador de apps. Selecciona el evento `"Create Contact"`. Zapier te pedirá que conectes tu cuenta de GetResponse — selecciona `"API Key"` como método de autenticación y pega la clave del paso 1.
+
+Una vez conectada la cuenta, configura los campos:
+
+- **Email:** selecciona el campo de email del contacto de Holded (aparecerá como `"Email"` en el desplegable de datos disponibles).
+- **List:** elige en qué lista de GetResponse quieres que entren estos contactos.
+- **Name:** mapea el nombre del contacto de Holded al campo de nombre de GetResponse.
+
+**Por qué:** Aquí le dices a Zapier exactamente qué datos de Holded tiene que copiar en GetResponse y dónde colocarlos.
+
+**Qué verás:** Un formulario con campos desplegables. Cada campo de GetResponse tiene un menú que muestra los datos disponibles de Holded — busca los que correspondan.
+
+---
+
+### Paso 5: Prueba el Zap y actívalo
+
+**Qué hacer:** Haz clic en `"Test action"`. Zapier intentará crear un contacto de prueba en GetResponse con los datos del contacto de ejemplo que usó antes. Ve a tu cuenta de GetResponse, entra en la lista que seleccionaste, y comprueba que el contacto ha aparecido.
+
+Si todo está correcto, haz clic en `"Publish Zap"`. El Zap pasa de estado `"Draft"` a estado `"On"`.
+
+**Por qué:** Publicar el Zap es lo que lo activa. Un Zap en modo borrador no hace nada.
+
+**Qué verás:** El panel de Zapier mostrará el Zap con un indicador verde y el estado `"On"`. A partir de este momento, cada nuevo contacto en Holded llegará automáticamente a tu lista de GetResponse.
+
+---
+
+## Errores comunes
+
+**Zapier dice "Authentication failed" al conectar Holded**
+*Síntoma:* Después de pegar la clave API de Holded, Zapier muestra un mensaje de error de autenticación.
+*Causa:* La clave API se ha copiado con un espacio en blanco al principio o al final — es un error muy frecuente.
+*Solución:* Vuelve a Holded, copia la clave API de nuevo con cuidado, pégala primero en el bloc de notas para verificar que no tiene espacios extra, y luego cópiala desde ahí a Zapier.
+
+---
+
+**El contacto de prueba aparece en GetResponse pero sin nombre**
+*Síntoma:* El test funciona, el contacto llega a GetResponse, pero el campo `"Name"` aparece vacío.
+*Causa:* En Holded, los contactos pueden tener el nombre dividido en `"Nombre"` y `"Apellidos"` como campos separados. Si solo mapeaste uno de los dos, el nombre queda incompleto.
+*Solución:* En la configuración de la acción en Zapier, ve al campo `"Name"` de GetResponse. En el desplegable, selecciona primero el campo `"Nombre"` de Holded, escribe un espacio, y luego añade el campo `"Apellidos"`. Zapier permite concatenar campos — busca el botón `"+"` que aparece al lado del campo.
+
+---
+
+**El Zap se activa pero el contacto no aparece en GetResponse**
+*Síntoma:* Zapier dice que la tarea se ejecutó correctamente, pero el contacto no está en la lista de GetResponse.
+*Causa:* El contacto puede haber entrado en la lista pero estar marcado como `"Unconfirmed"` si tienes activado el doble opt-in en esa lista de GetResponse.
+*Solución:* Ve a GetResponse, entra en la lista de destino y en su configuración busca la opción `"Confirmation message"`. Si el doble opt-in está activado, desactívalo para los contactos que llegan vía integración, o elige en Zapier la opción `"Add without confirmation"` si está disponible. Alternativamente, usa una lista diferente sin doble opt-in para los contactos importados de Holded.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Un Zap activo que detecta cada nuevo contacto creado en Holded y lo añade automáticamente a la lista de GetResponse que hayas elegido.
+- La sincronización funciona en los dos sentidos del flujo de trabajo: primero entra el cliente en Holded (cuando les facturas o presupuestas), y automáticamente pasa a tu lista de email marketing.
+- El siguiente paso lógico es crear en GetResponse una secuencia de bienvenida automática para estos contactos — así, cuando un nuevo cliente entra en la lista, recibe una serie de emails sin que tengas que hacer nada.
+
+<Callout type="tip">
+**Segmenta desde el principio.** Considera crear en GetResponse una lista específica llamada `"Clientes Holded"` separada de tus listas de leads o suscriptores web. Te permitirá enviarles comunicaciones distintas — no es lo mismo un nuevo suscriptor que alguien que ya te ha pagado.
+</Callout>
+
+---
+
+## Herramientas que facilitan esto
+
+Si todavía no tienes cuenta en GetResponse, puedes probarla gratis durante 30 días — sin tarjeta de crédito:
+
+<AffiliateLink programSlug="getresponse" articleSlug="como-conectar-getresponse-con-holded" label="Probar GetResponse gratis 30 días" />
+
+{/* TODO: captura de la pantalla de conexión de Zapier con GetResponse y Holded */}
+
+---
+
+## Preguntas frecuentes
+
+### ¿Puedo hacer esta integración sin Zapier?
+
+Sí, pero requiere conocimientos técnicos. Tanto GetResponse como Holded tienen API REST documentada — un desarrollador puede crear un script que escuche los webhooks de Holded y llame a la API de GetResponse. Si tienes a alguien técnico en el equipo o puedes contratar unas horas de desarrollo, es la solución más sólida y sin coste mensual de Zapier.
+
+### ¿La integración funciona también al revés, de GetResponse a Holded?
+
+Sí, con Zapier puedes crear un segundo Zap en sentido inverso: cuando alguien se suscribe a una lista de GetResponse, que se cree un contacto en Holded. El proceso es idéntico, pero inviertes el disparador y la acción. Útil si captas leads por formulario web antes de facturarles.
+
+### ¿Qué pasa con los contactos que ya tengo en Holded — se sincronizan automáticamente?
+
+No. El Zap solo actúa sobre contactos nuevos creados a partir del momento en que lo activas. Los contactos existentes en Holded no se migran automáticamente. Para pasarlos, tendrás que exportar desde Holded en CSV e importar manualmente en GetResponse.
+
+### ¿Cuánto tarda en sincronizarse un contacto nuevo?
+
+Con el plan gratuito de Zapier, los Zaps se comprueban cada 15 minutos. Con planes de pago, la sincronización puede ser prácticamente instantánea (menos de 2 minutos). Si necesitas velocidad en la sincronización — por ejemplo, para que el email de bienvenida llegue en segundos — necesitarás un plan de Zapier de pago.
+
+### ¿Esta integración cumple con el GDPR y la LOPDGDD?
+
+La integración en sí es una transferencia de datos entre sistemas que tú controlas. Lo que debes garantizar es que los contactos de Holded han dado su consentimiento para recibir comunicaciones comerciales por email. Simplemente tener su email como cliente no es suficiente base legal para email marketing bajo GDPR. Revisa tu política de privacidad y los consentimientos recogidos antes de añadirlos a listas de email marketing.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
