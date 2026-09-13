@@ -1,0 +1,182 @@
+---
+title: "Cómo conectar Notion con Holded: guía paso a paso"
+slug: "como-conectar-notion-con-holded"
+category: "integraciones"
+description: "Guía paso a paso para conectar Notion con Holded usando Zapier o Make. Sincroniza proyectos, clientes y tareas en menos de 45 minutos, sin programar."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["notion"]
+keywords:
+  primary: "como conectar notion con holded"
+  secondary:
+    - "integracion notion holded"
+    - "notion holded zapier"
+    - "sincronizar holded notion"
+    - "automatizar notion holded make"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Notion y Holded hablando entre sí: cuando crees un cliente nuevo en Holded, aparecerá automáticamente en tu base de datos de Notion. Sin copiar y pegar, sin exportar CSVs. El proceso completo lleva entre 30 y 45 minutos la primera vez.
+
+Esta integración se hace a través de una herramienta intermediaria (Zapier o Make). Notion y Holded no tienen conexión directa nativa, así que necesitas uno de estos puentes.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Holded:** Cualquier plan de pago incluye acceso a la API. El plan gratuito de Holded tiene limitaciones — verifica en tu panel que tienes el módulo de API activo.
+- **Cuenta en Notion:** Suficiente con el plan gratuito para empezar. Si quieres automatizaciones con tu equipo, necesitarás el plan Plus (8 €/usuario/mes + IVA aproximadamente — verifica precio actual en notion.so).
+- **Cuenta en Zapier o Make:** Ambos tienen plan gratuito con limitaciones. Para automatizaciones sencillas (1 zap, menos de 100 tareas/mes), el gratuito de Zapier es suficiente para empezar.
+- **Clave de API de Holded:** La obtienes desde tu panel de Holded. Te explico dónde en el Paso 1.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes crear una hoja de Excel y copiar un texto, es suficiente. El único momento "técnico" es copiar una clave de API — nada más.
+
+---
+
+## Pasos
+
+### Paso 1: Obtén la clave de API de Holded
+
+**Qué hacer:** Entra en tu panel de Holded. En el menú lateral izquierdo, ve a "Configuración" (el icono de rueda dentada). Dentro, busca la sección "Integraciones" o "API". Haz clic en "Generar clave de API" o "Nueva clave". Copia ese texto largo y guárdalo en un lugar seguro — lo necesitarás en el Paso 3.
+
+**Por qué:** Esta clave es la contraseña que permite a Zapier o Make acceder a tu cuenta de Holded en tu nombre. Sin ella, la conexión es imposible.
+
+**Qué verás:** Una cadena de caracteres alfanumérica (algo como `a1b2c3d4e5f6...`). Holded puede mostrártela solo una vez, así que cópiala ahora en un documento de texto antes de cerrar esa pantalla.
+
+⚠️ **Nota:** Si no ves la sección "API" en tu configuración de Holded, es posible que tu plan no la incluya. Contacta con soporte de Holded (atienden en español) para confirmarlo.
+
+---
+
+### Paso 2: Crea la base de datos en Notion
+
+**Qué hacer:** Abre Notion y crea una página nueva. Escribe `/table` y selecciona "Table — Full page" para crear una tabla de base de datos. Añade las columnas que quieres sincronizar desde Holded: por ejemplo, "Nombre del cliente", "Email", "CIF", "Fecha de alta". Ponle un nombre claro a la página, como "Clientes desde Holded".
+
+**Por qué:** Notion necesita tener una base de datos preparada antes de que lleguen los datos. Si no existe, Zapier no sabe dónde escribir.
+
+**Qué verás:** Una tabla vacía con las columnas que has creado. Eso es correcto — los datos llegarán solos cuando la automatización esté activa.
+
+**Nota:** Los nombres de las columnas que uses aquí los volverás a ver en el Paso 4 cuando configures el mapeo. Usa nombres descriptivos, no abreviaciones.
+
+---
+
+### Paso 3: Conecta Holded en Zapier (o Make)
+
+**Qué hacer:** Entra en zapier.com y crea una cuenta si no tienes. Haz clic en "Create Zap". En el bloque "Trigger" (disparador), busca "Holded" en el buscador. Selecciona Holded como aplicación de origen. Te pedirá que conectes tu cuenta: haz clic en "Connect a new account" y pega la clave de API que copiaste en el Paso 1.
+
+**Por qué:** El "disparador" es el evento que pone en marcha la automatización. En este caso, le estás diciendo a Zapier: "cada vez que pase algo en Holded, haz algo en Notion".
+
+**Qué verás:** Si la clave de API es correcta, Zapier mostrará un mensaje verde de confirmación: "Connection successful" o similar. Si hay un error, revisa que la clave esté copiada completa, sin espacios al principio ni al final.
+
+**Nota:** Si prefieres usar Make (antes Integromat), el proceso es idéntico en concepto. La interfaz visual es diferente — más parecida a un diagrama de flujo — pero los campos que necesitas son los mismos.
+
+---
+
+### Paso 4: Elige el evento que activa la sincronización
+
+**Qué hacer:** Con Holded como Trigger, Zapier te preguntará "Trigger Event" (evento disparador). Las opciones más útiles para una pyme son: `"New Contact"` (nuevo contacto/cliente), `"New Invoice"` (nueva factura) o `"New Sale"` (nueva venta). Selecciona `"New Contact"` para este ejemplo. Haz clic en "Continue" y luego en "Test trigger" — Zapier cargará un contacto real de tu Holded para confirmar que la conexión funciona.
+
+**Por qué:** Tienes que decirle a Zapier exactamente qué evento de Holded quieres vigilar. Si seleccionas "New Invoice", la automatización solo se activará cuando crees facturas — no cuando añadas clientes.
+
+**Qué verás:** Una tabla con datos reales de tu Holded (nombre, email, etc. del último contacto creado). Si la tabla está vacía, crea un contacto de prueba en Holded y vuelve a hacer el test.
+
+---
+
+### Paso 5: Configura Notion como destino
+
+**Qué hacer:** En el bloque "Action" (acción), busca "Notion" en el buscador. Selecciona Notion como aplicación de destino. Conecta tu cuenta de Notion haciendo clic en "Connect" — te pedirá que inicies sesión en Notion y autorices el acceso. Después, en "Action Event", selecciona `"Create Database Item"` (crear elemento en base de datos).
+
+**Por qué:** Le estás diciendo a Zapier qué hacer cuando se activa el disparador: crear una fila nueva en tu tabla de Notion.
+
+**Qué verás:** Un formulario de configuración donde elegirás qué base de datos de Notion usar (selecciona la que creaste en el Paso 2) y cómo mapear los campos.
+
+---
+
+### Paso 6: Mapea los campos entre Holded y Notion
+
+**Qué hacer:** Zapier te mostrará las columnas de tu base de datos de Notion (las que creaste en el Paso 2) y te pedirá que asignes un dato de Holded a cada columna. Por ejemplo: columna "Nombre del cliente" en Notion → dato "Name" de Holded. Columna "Email" → dato "Email" de Holded. Haz este emparejamiento para cada columna que quieras rellenar automáticamente.
+
+**Por qué:** Este mapeo es el corazón de la integración. Sin él, Zapier no sabe qué información poner en cada columna.
+
+**Qué verás:** Cada campo de Notion tendrá un valor de ejemplo sacado del contacto de prueba del Paso 4. Si algo no cuadra — por ejemplo, el email aparece en el campo "Nombre" — ajusta el mapeo aquí antes de continuar.
+
+---
+
+### Paso 7: Prueba y activa el Zap
+
+**Qué hacer:** Haz clic en "Test action". Zapier creará una fila real en tu base de datos de Notion con los datos del contacto de prueba. Ve a Notion y comprueba que la fila ha aparecido y los datos están en las columnas correctas. Si todo está bien, haz clic en "Publish Zap" para activarlo.
+
+**Por qué:** Probar antes de activar te evita descubrir errores con datos reales de clientes.
+
+**Qué verás:** En Notion, una fila nueva con los datos del contacto de prueba. Si ves la fila vacía o con datos en columnas equivocadas, vuelve al Paso 6 y revisa el mapeo.
+
+---
+
+## Errores comunes
+
+**La clave de API de Holded da error de autenticación**
+*Síntoma:* Zapier muestra "Authentication failed" o "Invalid API key" al intentar conectar Holded.
+*Causa:* La clave se ha copiado mal (con un espacio extra al principio o al final) o ha caducado porque se generó una nueva clave desde Holded y la antigua quedó invalidada.
+*Solución:* Ve a Holded → Configuración → API y genera una clave nueva. Cópiala directamente con Ctrl+C desde el navegador, sin seleccionar espacios adicionales. Pégala en Zapier y vuelve a hacer el test.
+
+---
+
+**Los datos de Holded llegan a Notion pero en las columnas equivocadas**
+*Síntoma:* En Notion aparece una fila nueva, pero el email está en la columna "Nombre" o el CIF aparece en "Email".
+*Causa:* El mapeo del Paso 6 no está bien configurado.
+*Solución:* En Zapier, edita el Zap y ve al Paso 5 (la acción de Notion). Revisa cada campo y asegúrate de que el dato de Holded que aparece a la derecha corresponde al nombre de columna de Notion que está a la izquierda. Guarda y vuelve a hacer el test.
+
+---
+
+**El Zap se activa pero no crea nada en Notion**
+*Síntoma:* Zapier dice que el Zap se ha ejecutado correctamente, pero en Notion no aparece ninguna fila nueva.
+*Causa:* La conexión con Notion ha caducado (Notion pide reautorización periódicamente) o los permisos de la integración no incluyen la página donde está la base de datos.
+*Solución:* En Zapier, ve a "My Apps" → Notion → vuelve a conectar la cuenta. Cuando Notion te pida que elijas qué páginas puede ver Zapier, asegúrate de marcar específicamente la página donde tienes la base de datos de clientes.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Una automatización activa que crea una fila nueva en Notion cada vez que añades un contacto en Holded.
+- Tu equipo puede ver en Notion los clientes nuevos sin tener que acceder a Holded — útil si parte del equipo usa Notion para gestión de proyectos pero no tiene acceso a Holded.
+- El siguiente paso lógico es crear el flujo inverso: cuando añades una tarea en Notion (por ejemplo, "llamar a este cliente"), que aparezca como actividad en Holded. El proceso es el mismo pero invirtiendo los roles de Trigger y Action.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Notion, puedes empezar gratis y añadir el plan de pago solo cuando lo necesites:
+
+<AffiliateLink programSlug="notion" articleSlug="como-conectar-notion-con-holded" label="Probar Notion gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Se puede conectar Notion con Holded sin Zapier?
+
+Técnicamente sí, usando la API de ambas herramientas y un desarrollador que programe la conexión. En la práctica, para una pyme sin equipo técnico, Zapier o Make son la opción más rápida y mantenible. Make tiene un plan gratuito con 1.000 operaciones/mes, que puede ser suficiente si solo sincronizas clientes nuevos.
+
+### ¿Cuánto cuesta esta integración?
+
+El plan gratuito de Zapier permite 5 Zaps activos y 100 tareas/mes. Si añades menos de 100 clientes al mes en Holded, no necesitas pagar nada en Zapier. Si superas ese límite, el plan Starter de Zapier cuesta aproximadamente 19,99 $/mes (verifica el precio actual en zapier.com — cobran en dólares). Notion tiene plan gratuito suficiente para este uso.
+
+### ¿Los datos se sincronizan en tiempo real?
+
+En el plan gratuito de Zapier, la sincronización puede tardar hasta 15 minutos en ejecutarse. En planes de pago, la frecuencia de comprobación es de 1-2 minutos. Para la mayoría de pymes, 15 minutos de retraso es perfectamente aceptable.
+
+### ¿Qué pasa si cambio un dato en Holded — se actualiza en Notion?
+
+No automáticamente con la configuración de este tutorial. El Zap que has creado solo detecta contactos *nuevos*, no modificaciones. Para sincronizar actualizaciones necesitarías un Zap adicional con el trigger "Updated Contact" de Holded, que funciona igual pero se activa cuando editas un contacto existente.
+
+### ¿Funciona esto si tengo Holded en español y Notion en inglés?
+
+Sí, el idioma de la interfaz no afecta a la integración. Los datos (nombres de clientes, emails, etc.) se copian tal cual están en Holded, independientemente del idioma en que tengas configurada cada herramienta.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
