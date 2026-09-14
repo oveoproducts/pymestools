@@ -1,0 +1,211 @@
+---
+title: "Cómo conectar GetResponse con Factorial: guía paso a paso"
+slug: "como-conectar-getresponse-con-factorial"
+category: "email-marketing"
+description: "Guía paso a paso para conectar GetResponse con Factorial vía Zapier o webhooks. Automatiza el alta de nuevos empleados en tus listas de email en menos de 45 minutos, sin programar."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["getresponse"]
+keywords:
+  primary: "como conectar getresponse con factorial"
+  secondary:
+    - "integrar getresponse factorial"
+    - "automatizar email marketing factorial"
+    - "getresponse zapier factorial"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía tendrás una conexión activa entre Factorial y GetResponse: cuando des de alta a un nuevo empleado en Factorial, ese contacto entrará automáticamente en la lista de GetResponse que tú elijas. Sin copiar y pegar emails. Sin exportar CSVs.
+
+El proceso completo lleva unos 40 minutos la primera vez. A partir de ahí funciona solo.
+
+> **Nota sobre la integración:** Factorial y GetResponse no tienen integración nativa directa (sin código). La conexión se hace a través de **Zapier** o mediante los **webhooks de GetResponse** combinados con la API de Factorial. En esta guía usamos Zapier porque no requiere conocimientos técnicos. Si prefieres la vía API, al final de la guía lo explicamos brevemente.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en GetResponse:** El plan gratuito de GetResponse no incluye el acceso a la API ni a integraciones vía Zapier con todas las funciones. Necesitas **mínimo el plan Email Marketing** (de pago). Si estás en trial, puedes probar la configuración completa durante los 30 días.
+- **Cuenta en Factorial:** Cualquier plan de pago de Factorial te da acceso a la API. El plan gratuito tiene limitaciones — comprueba que tienes acceso a "Integraciones" en tu panel.
+- **Cuenta en Zapier:** El plan gratuito de Zapier (llamado "Free") permite crear Zaps de 2 pasos, que es exactamente lo que necesitas aquí. No hace falta pagar.
+- **Una lista creada en GetResponse:** Antes de empezar, crea al menos una lista en GetResponse donde quieras recibir los contactos de Factorial. Si no tienes ninguna, el Zap no tendrá destino.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes navegar entre pestañas del navegador y copiar y pegar texto, es suficiente para esta guía.
+
+---
+
+## Pasos
+
+### Paso 1: Crea una lista en GetResponse (si no tienes una)
+
+**Qué hacer:** Entra en tu panel de GetResponse. En el menú lateral izquierdo, haz clic en "Contactos" y luego en "Listas". Haz clic en el botón "Crear lista", dale un nombre descriptivo (por ejemplo: `Empleados-Factorial`) y guarda.
+
+**Por qué:** El Zap necesita un destino concreto en GetResponse. Sin una lista activa, no puedes completar la configuración en Zapier.
+
+**Qué verás:** La nueva lista aparece en el listado con estado "Activa" y 0 contactos. Eso es correcto — todavía no hay nadie dentro.
+
+---
+
+### Paso 2: Obtén tu clave de API de GetResponse
+
+**Qué hacer:** En GetResponse, ve a la esquina superior derecha, haz clic en tu nombre de usuario y selecciona "Integraciones y API". Desplázate hasta la sección "API" y haz clic en "Generar clave API". Copia la clave que aparece — es una cadena larga de letras y números.
+
+**Por qué:** Zapier necesita esta clave para hablar con GetResponse en tu nombre. Sin ella, la conexión no se puede autenticar.
+
+**Qué verás:** Una clave del tipo `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`. Guárdala en un lugar seguro (un bloc de notas temporal vale). No la compartas con nadie.
+
+<Callout type="warning">
+**La clave API da acceso total a tu cuenta de GetResponse.** No la pegues en formularios que no sean los oficiales de Zapier o integraciones verificadas. Si sospechas que se ha filtrado, puedes revocarla desde el mismo panel y generar una nueva.
+</Callout>
+
+---
+
+### Paso 3: Crea un Zap nuevo en Zapier
+
+**Qué hacer:** Entra en [zapier.com](https://zapier.com) con tu cuenta. Haz clic en "Create Zap" (botón naranja, arriba a la izquierda). Se abrirá el editor de Zaps.
+
+**Por qué:** El Zap es el puente entre Factorial y GetResponse. Define qué evento en Factorial dispara qué acción en GetResponse.
+
+**Qué verás:** Una pantalla con dos bloques: "Trigger" (disparador) y "Action" (acción). Trabajarás primero el Trigger, luego la Action.
+
+---
+
+### Paso 4: Configura el disparador — nuevo empleado en Factorial
+
+**Qué hacer:** En el bloque "Trigger", haz clic en "Choose App & Event". Busca "Factorial" en el buscador. Selecciona "Factorial" como app. En "Trigger Event", elige "New Employee" (nuevo empleado). Haz clic en "Continue".
+
+A continuación, Zapier te pedirá conectar tu cuenta de Factorial. Haz clic en "Sign in to Factorial" y sigue el flujo de autorización (introduce tus credenciales de Factorial en la ventana que se abre).
+
+**Por qué:** Estás diciéndole a Zapier que vigile tu cuenta de Factorial y que actúe cada vez que se añada un empleado nuevo.
+
+**Qué verás:** Una vez conectada la cuenta, Zapier intentará hacer un "test" del trigger buscando un empleado reciente en Factorial. Si tienes empleados en la plataforma, aparecerán como datos de ejemplo. Selecciona uno de ellos para continuar.
+
+**Nota:** Si Factorial no aparece en el buscador de Zapier o ves un mensaje de error de conexión, comprueba que tu plan de Factorial incluye acceso a la API. Si el problema persiste, el soporte de Zapier en español puede ayudarte — tienen chat disponible.
+
+---
+
+### Paso 5: Configura la acción — añadir contacto en GetResponse
+
+**Qué hacer:** En el bloque "Action", haz clic en "Choose App & Event". Busca "GetResponse". Selecciona "GetResponse" como app. En "Action Event", elige "Create Contact" (crear contacto). Haz clic en "Continue".
+
+Zapier te pedirá conectar tu cuenta de GetResponse. Selecciona "Connect a new account", elige el método de autenticación por API Key y pega la clave que copiaste en el Paso 2.
+
+**Por qué:** Aquí defines qué hace Zapier cuando detecta el nuevo empleado: añadirlo como contacto en GetResponse.
+
+**Qué verás:** Después de validar la API Key, Zapier te mostrará un formulario con los campos del contacto a crear: email, nombre, lista de destino, etc.
+
+---
+
+### Paso 6: Mapea los campos de Factorial a GetResponse
+
+**Qué hacer:** En el formulario de configuración de la acción, completa estos campos obligatorios:
+
+- **Email:** Haz clic en el campo y selecciona el dato dinámico de Factorial `Email`. Aparecerá como un tag azul con el texto `Employee Email` o similar.
+- **List:** Selecciona la lista que creaste en el Paso 1 (`Empleados-Factorial`).
+- **Name:** Mapea el campo `First Name` de Factorial.
+- **Last Name (si está disponible):** Mapea `Last Name` de Factorial.
+
+Haz clic en "Continue" cuando hayas rellenado los campos obligatorios.
+
+**Por qué:** Mapear campos significa decirle a Zapier qué dato de Factorial va en qué campo de GetResponse. Si no lo haces, el contacto se crearía sin nombre ni email — inútil.
+
+**Qué verás:** Un resumen de la acción con los valores mapeados. Los campos dinámicos aparecen como tags de color, no como texto fijo.
+
+---
+
+### Paso 7: Prueba el Zap y actívalo
+
+**Qué hacer:** Haz clic en "Test action". Zapier enviará un contacto de prueba real a tu lista de GetResponse usando los datos del empleado de ejemplo del Paso 4.
+
+Si la prueba es correcta (aparece un mensaje en verde: "Test was successful"), haz clic en "Publish Zap".
+
+**Por qué:** La prueba confirma que la conexión funciona de extremo a extremo antes de dejarlo activo.
+
+**Qué verás:** En tu lista de GetResponse (`Empleados-Factorial`), aparecerá el contacto de prueba con los datos del empleado que seleccionaste en el Paso 4. Puedes borrarlo manualmente después si no quieres que se quede.
+
+<Callout type="tip">
+**Prueba con un empleado real de bajo riesgo.** Si tienes empleados de prueba o una cuenta de test en Factorial, úsala para la prueba del Zap. El contacto que crea Zapier es real en GetResponse, y si ese empleado recibe emails automáticos de tu cuenta podría ser un problema.
+</Callout>
+
+---
+
+## Errores comunes
+
+**La cuenta de Factorial no conecta con Zapier**
+
+*Síntoma:* Al intentar autenticar Factorial en el Paso 4, Zapier muestra un error de autorización o la ventana de login de Factorial se cierra sin completar la conexión.
+
+*Causa:* Tu plan de Factorial no tiene habilitado el acceso a API, o las credenciales que usas no tienen permisos de administrador.
+
+*Solución:* Entra en Factorial, ve a "Configuración" → "Integraciones" y comprueba que el acceso a API está habilitado. Si no aparece esa opción, contacta con el soporte de Factorial para confirmar qué incluye tu plan. El soporte de Factorial atiende en español por chat y email.
+
+---
+
+**El contacto llega a GetResponse sin nombre**
+
+*Síntoma:* El Zap funciona y el contacto aparece en la lista, pero el campo de nombre está vacío.
+
+*Causa:* En el Paso 6, el campo "Name" no se mapeó correctamente — probablemente se dejó en blanco o se escribió texto fijo en lugar de seleccionar el dato dinámico de Factorial.
+
+*Solución:* Edita el Zap, ve al Paso 5 (la Action), y en el campo "Name" asegúrate de seleccionar el dato dinámico `First Name` de Factorial (aparece como un tag azul, no como texto escrito a mano). Guarda y vuelve a hacer la prueba.
+
+---
+
+**El Zap no se activa con los nuevos empleados**
+
+*Síntoma:* Das de alta a un empleado en Factorial, pero al cabo de varios minutos no aparece en GetResponse.
+
+*Causa:* Los Zaps del plan gratuito de Zapier se comprueban cada 15 minutos, no en tiempo real. Si el plan de Zapier es de pago, el retraso puede deberse a que el Zap está en pausa o tiene un error reciente.
+
+*Solución:* En el panel de Zapier, comprueba que el Zap está en estado "On" (toggle azul). Si está activo, revisa la pestaña "Zap History" para ver si hubo un error en la última ejecución y cuál fue.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Un Zap activo que vigila Factorial y actúa automáticamente al crear un nuevo empleado.
+- Cada nuevo empleado que añadas en Factorial aparece como contacto en tu lista de GetResponse, con su nombre y email, sin intervención manual.
+- Una base para ampliar: puedes añadir más acciones al Zap (por ejemplo, suscribir al nuevo empleado a una campaña de onboarding interna, o etiquetarle con un tag específico en GetResponse).
+
+El siguiente paso lógico es crear en GetResponse una automatización de bienvenida que se dispare cuando alguien entra en la lista `Empleados-Factorial`. Si quieres hacerlo, tenemos una guía paso a paso para crear tu primera automatización de email en GetResponse.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en GetResponse, puedes probarla 30 días gratis sin introducir tarjeta:
+
+<AffiliateLink programSlug="getresponse" articleSlug="como-conectar-getresponse-con-factorial" label="Probar GetResponse gratis 30 días" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Es gratis conectar GetResponse con Factorial?
+
+Depende de qué herramientas pagues. Zapier tiene un plan gratuito que cubre esta integración de 2 pasos. GetResponse requiere al menos el plan Email Marketing (de pago) para usar la API. Factorial necesita un plan con acceso a integraciones. El coste real es el de tus suscripciones existentes, no el de la conexión en sí.
+
+### ¿Puedo hacer esta conexión sin Zapier?
+
+Sí, pero requiere conocimientos técnicos básicos. Tanto GetResponse como Factorial tienen APIs REST documentadas. Puedes configurar un webhook en GetResponse y llamarlo desde la API de Factorial cuando se cree un empleado. Si tienes un desarrollador de confianza, puede hacerlo en pocas horas. Para la mayoría de pymes, Zapier es más rápido y mantenible a largo plazo.
+
+### ¿Qué pasa si un empleado se da de baja en Factorial? ¿Se borra de GetResponse?
+
+No automáticamente. Zapier solo actúa cuando se crea un nuevo empleado, no cuando se elimina uno. Para gestionar las bajas tendrías que crear un segundo Zap con el trigger "Employee deactivated" (o similar, según lo que ofrezca Factorial en Zapier) y configurar la acción correspondiente en GetResponse. Comprueba qué triggers ofrece la integración de Factorial en Zapier en el momento de configurar.
+
+### ¿Funciona esta integración con el plan gratuito de GetResponse?
+
+No. El plan gratuito de GetResponse tiene acceso limitado a la API, lo que impide que Zapier pueda crear contactos en tu cuenta. Necesitas el plan Email Marketing o superior. Si estás en el trial de 30 días, la integración funciona durante el periodo de prueba.
+
+### ¿Los datos de mis empleados que pasan por Zapier cumplen con el GDPR?
+
+Zapier tiene certificaciones de cumplimiento GDPR y ofrece un DPA (Data Processing Agreement) disponible en su web. Sin embargo, los datos de empleados que envíes desde Factorial a GetResponse pasarán por servidores de Zapier, que pueden estar fuera de la UE. Revisa las políticas de transferencia de datos de Zapier y asegúrate de que tu DPA con la AEPD cubre este flujo. Si tienes dudas, consulta con tu asesor de protección de datos.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
