@@ -45,14 +45,18 @@ const WEBSITE_URLS: Record<string, string> = {
 export async function AffiliateLink({ programSlug, articleSlug, label }: Props) {
   const { data: program } = await supabase
     .from('affiliate_programs')
-    .select('affiliate_url, name')
+    .select('affiliate_url, name, active')
     .eq('slug', programSlug)
     .single()
 
+  const fallbackUrl = WEBSITE_URLS[programSlug] ?? program?.affiliate_url ?? undefined
   const affiliateUrl = program?.affiliate_url
-  const fallbackUrl = WEBSITE_URLS[programSlug]
 
-  const isAffiliate = !!affiliateUrl
+  // /api/r itself also checks `active` and redirects to the homepage if
+  // it's false — checking it here too so an inactive program (e.g. one
+  // that stopped accepting affiliates) falls back to a direct link
+  // instead of silently producing a button that bounces to the homepage.
+  const isAffiliate = !!affiliateUrl && program?.active === true
   // Affiliate clicks go through /api/r so they're logged and the merchant URL
   // stays server-side (swappable for a real referral link without touching
   // content). Non-affiliate tools link straight to their official site.
