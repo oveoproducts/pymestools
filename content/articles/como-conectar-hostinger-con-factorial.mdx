@@ -1,0 +1,207 @@
+---
+title: "Cómo conectar Hostinger con Factorial: guía paso a paso"
+slug: "como-conectar-hostinger-con-factorial"
+category: "hosting"
+description: "Guía paso a paso para conectar Hostinger con Factorial y automatizar el alta de empleados. Sin conocimientos técnicos. Resultado en menos de 30 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["hostinger"]
+keywords:
+  primary: "cómo conectar hostinger con factorial"
+  secondary:
+    - "integración hostinger factorial"
+    - "automatizar alta empleados factorial"
+    - "hostinger zapier factorial"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "6 min"
+qualityScore: null
+---
+
+<Callout type="warning">
+**Antes de empezar:** Hostinger y Factorial no tienen una integración nativa directa. La conexión se hace mediante Zapier (u otra herramienta de automatización como Make). Necesitarás una cuenta activa en ambos servicios y una cuenta de Zapier — el plan gratuito es suficiente para empezar.
+</Callout>
+
+Al terminar esta guía, tendrás un flujo automatizado que conecta tu web o formulario alojado en Hostinger con Factorial. El caso más habitual: cuando alguien rellena un formulario en tu web (un candidato, un empleado nuevo), los datos llegan solos a Factorial sin que tengas que copiarlos a mano.
+
+El proceso completo lleva entre 20 y 35 minutos si tienes ambas cuentas operativas.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Hostinger:** Cualquier plan de alojamiento activo es suficiente — no necesitas el plan más caro. Si todavía no tienes cuenta, puedes probar Hostinger desde aquí:
+
+<AffiliateLink programSlug="hostinger" articleSlug="como-conectar-hostinger-con-factorial" label="Ver planes de Hostinger" />
+
+- **Cuenta en Factorial:** El plan de pago de Factorial incluye acceso a la API, que es lo que Zapier utiliza para escribir datos. Comprueba en tu cuenta que tienes acceso a `Configuración → Integraciones → API`. Si no lo ves, contacta con tu gestor de cuenta de Factorial.
+- **Cuenta en Zapier:** El plan gratuito permite crear hasta 5 Zaps activos con pasos básicos. Para este tutorial es suficiente.
+- **Un formulario web en Hostinger:** Puede ser un formulario de WordPress, de un constructor como Elementor, o cualquier solución que genere un webhook o notificación por email al recibir una respuesta.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes seguir instrucciones en pantalla y copiar y pegar texto, puedes completar esta guía sin problema.
+
+---
+
+## Pasos
+
+### Paso 1: Obtén la clave API de Factorial
+
+**Qué hacer:** Entra en tu cuenta de Factorial. Ve al menú lateral y busca `"Configuración"` (icono de engranaje, normalmente en la parte inferior izquierda). Dentro de Configuración, busca la sección `"Integraciones"` y luego `"API"`. Haz clic en `"Generar nueva clave API"` o `"Crear token"`, dale un nombre descriptivo como `"Zapier-web"` y guarda la clave que aparece.
+
+**Por qué:** Zapier necesita esta clave para autenticarse con Factorial y poder crear o actualizar registros en tu cuenta. Sin ella, la conexión no es posible.
+
+**Qué verás:** Factorial te mostrará una cadena de caracteres (el token). **Cópiala ahora** — solo se muestra una vez. Pégala en un documento o gestor de contraseñas.
+
+---
+
+### Paso 2: Identifica el disparador en Hostinger
+
+**Qué hacer:** Decide qué evento en tu web de Hostinger va a iniciar la automatización. Las opciones más comunes son:
+
+- **Formulario de WordPress:** Si usas Contact Form 7, WPForms o Gravity Forms, estos plugins tienen integración directa con Zapier.
+- **Webhook personalizado:** Si tu formulario puede enviar datos a una URL externa, puedes usar el disparador `"Webhooks by Zapier"`.
+- **Email de notificación:** Si el formulario envía un email al recibir una respuesta, puedes usar Gmail o Outlook como disparador en Zapier.
+
+Decide cuál aplica a tu caso antes de continuar. Para este tutorial usamos el ejemplo de **WPForms con Zapier**.
+
+**Por qué:** Zapier necesita saber de dónde vienen los datos. Si no tienes claro el origen, el flujo no puede arrancar.
+
+**Qué verás:** Nada cambia en pantalla todavía. Este paso es de planificación.
+
+---
+
+### Paso 3: Crea un nuevo Zap en Zapier
+
+**Qué hacer:** Entra en zapier.com y haz clic en `"Create Zap"` (botón naranja, parte superior izquierda). En la pantalla que aparece, busca el campo `"Trigger"` y escribe el nombre de tu plugin de formularios (ej: `"WPForms"`). Selecciona el evento `"New Form Entry"` (nueva respuesta de formulario).
+
+**Por qué:** Este es el disparador: cada vez que alguien envíe el formulario en tu web, Zapier lo detecta y ejecuta el resto del flujo.
+
+**Qué verás:** Zapier te pedirá que conectes tu cuenta de WPForms. Sigue el proceso de autorización — te redirigirá a tu WordPress para que apruebes la conexión.
+
+---
+
+### Paso 4: Conecta Zapier con tu formulario de Hostinger
+
+**Qué hacer:** Una vez conectada la cuenta de WPForms, Zapier te pedirá que elijas el formulario concreto. En el desplegable `"Form"`, selecciona el formulario que tienes en tu web de Hostinger (ej: `"Formulario de incorporación de empleados"`). Haz clic en `"Test trigger"` para comprobar que Zapier puede leer las respuestas.
+
+**Por qué:** Zapier necesita un ejemplo real de respuesta para saber qué campos hay disponibles (nombre, email, DNI, cargo, etc.) y poder mapearlos después con Factorial.
+
+**Qué verás:** Si el test funciona, Zapier muestra una respuesta de ejemplo con los campos del formulario y sus valores. Si el formulario no tiene respuestas previas, Zapier te avisará — en ese caso, envía una respuesta de prueba desde tu web y repite el test.
+
+---
+
+### Paso 5: Añade Factorial como acción
+
+**Qué hacer:** En la pantalla del Zap, haz clic en `"Action"` (el segundo bloque del flujo). Busca `"Factorial"` en el buscador de aplicaciones. Si no aparece, busca `"Factorial HR"`.
+
+Selecciona el evento `"Create Employee"` (crear empleado) si quieres dar de alta a nuevos miembros del equipo automáticamente. Haz clic en `"Sign in to Factorial"` y pega la clave API que obtuviste en el Paso 1 cuando Zapier te la pida.
+
+**Por qué:** Este es el paso que escribe los datos en Factorial. Sin este bloque, el formulario no tiene destino.
+
+**Qué verás:** Zapier confirmará la conexión con Factorial mostrando un mensaje de `"Connected"` en verde junto al nombre de tu cuenta.
+
+---
+
+### Paso 6: Mapea los campos del formulario con Factorial
+
+**Qué hacer:** Zapier te mostrará los campos que Factorial necesita para crear un empleado (nombre, apellidos, email, fecha de inicio, etc.). Para cada campo de Factorial, haz clic en el espacio en blanco y elige el campo correspondiente de tu formulario usando el desplegable que aparece.
+
+Por ejemplo: en el campo `"First name"` de Factorial, selecciona `"Nombre"` de tu formulario. En `"Email"`, selecciona `"Email de contacto"`.
+
+**Por qué:** Si no mapeas los campos, Factorial no sabe dónde poner cada dato. Un campo mal mapeado puede crear empleados con el nombre en el campo de email, por ejemplo.
+
+**Qué verás:** Cada campo de Factorial quedará rellenado con el nombre del campo del formulario entre llaves, por ejemplo: `{Nombre}`, `{Email de contacto}`.
+
+<Callout type="tip">
+**Campos obligatorios en Factorial:** Como mínimo necesitas mapear nombre, apellidos y email. El resto puede rellenarse después desde el propio Factorial. No bloquees el flujo intentando mapear campos opcionales que tu formulario no recoge.
+</Callout>
+
+---
+
+### Paso 7: Prueba el flujo y actívalo
+
+**Qué hacer:** Haz clic en `"Test action"`. Zapier enviará los datos de ejemplo a Factorial y creará un empleado de prueba. Ve a tu cuenta de Factorial → `"Empleados"` y comprueba que el registro de prueba ha aparecido. Si es correcto, borra ese registro de prueba en Factorial y vuelve a Zapier. Haz clic en `"Publish Zap"` para activar el flujo.
+
+**Por qué:** Si publicas sin probar, un error de mapeo puede crear registros incorrectos en Factorial con datos de clientes o sin campos obligatorios.
+
+**Qué verás:** Zapier mostrará el Zap con estado `"On"` (activo) en color verde. A partir de ese momento, cada nueva respuesta del formulario creará automáticamente un empleado en Factorial.
+
+---
+
+## Errores comunes
+
+**La clave API de Factorial no funciona en Zapier**
+
+*Síntoma:* Zapier muestra un error `"Authentication failed"` o `"Invalid API key"` al intentar conectar con Factorial.
+
+*Causa:* La clave API se copió incompleta, o el plan de Factorial no incluye acceso a API.
+
+*Solución:* Vuelve a Factorial → `"Configuración"` → `"API"`, revoca la clave anterior y genera una nueva. Cópiala completa (suele tener 40 o más caracteres). Si el menú de API no aparece en tu cuenta de Factorial, contacta con el soporte de Factorial — puede ser una limitación de tu plan.
+
+---
+
+**El test de Zapier no encuentra respuestas del formulario**
+
+*Síntoma:* Zapier muestra `"We couldn't find any test data"` al hacer el test del disparador.
+
+*Causa:* El formulario no tiene respuestas registradas, o el plugin no está conectado correctamente con Zapier.
+
+*Solución:* Abre tu web en una pestaña nueva, rellena el formulario con datos de prueba y envíalo. Vuelve a Zapier y haz clic en `"Test trigger"` de nuevo. Si sigue sin aparecer, comprueba en WordPress que el plugin de formularios tiene la integración con Zapier activada (en WPForms: `"Configuración"` → `"Integraciones"` → `"Zapier"`).
+
+---
+
+**Los empleados se crean en Factorial con campos en blanco**
+
+*Síntoma:* El empleado aparece en Factorial pero le faltan datos (nombre en blanco, email vacío, etc.).
+
+*Causa:* Los campos no están correctamente mapeados en el Paso 6, o el formulario usa nombres de campo distintos a los esperados.
+
+*Solución:* Vuelve al Zap en Zapier, haz clic en el bloque de Factorial y revisa el mapeo de cada campo. Comprueba que el campo del formulario que seleccionaste realmente contiene el dato correcto mirando los valores de ejemplo.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Un flujo activo** que conecta tu formulario web en Hostinger con Factorial mediante Zapier.
+- **Alta automática de empleados:** cada vez que alguien envíe el formulario, Factorial crea el registro sin que tengas que copiar nada a mano.
+- **Tiempo ahorrado por incorporación:** el proceso manual de trasladar datos de un formulario a Factorial puede llevar entre 10 y 20 minutos por persona — con esto, son 0 minutos.
+
+El siguiente paso lógico es añadir más campos al formulario (cargo, fecha de inicio, tipo de contrato) y mapearlos en Factorial para tener el alta más completa desde el primer momento.
+
+---
+
+## Herramientas que facilitan esto
+
+Si todavía no tienes alojamiento web o estás valorando cambiar de proveedor, Hostinger es una opción sólida para pymes españolas con una relación precio-prestaciones competitiva:
+
+<AffiliateLink programSlug="hostinger" articleSlug="como-conectar-hostinger-con-factorial" label="Ver planes de Hostinger" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Hostinger y Factorial tienen integración directa sin Zapier?
+
+No. A fecha de enero de 2025, no existe una integración nativa entre Hostinger y Factorial. La conexión siempre requiere una herramienta intermediaria como Zapier o Make. Si esto cambia, lo actualizaremos en esta guía.
+
+### ¿Puedo hacer esto con el plan gratuito de Zapier?
+
+Sí, para empezar. El plan gratuito de Zapier permite hasta 5 Zaps activos y 100 tareas al mes. Si tu empresa incorpora muchos empleados al mes o quieres automatizar más flujos, necesitarás el plan de pago de Zapier (desde 19,99 $/mes — comprueba el cambio a euros en la web de Zapier).
+
+### ¿Qué pasa si el formulario recoge datos que no están en Factorial?
+
+No pasa nada. Puedes mapear solo los campos que Factorial acepta e ignorar el resto. Los datos del formulario que no mapees simplemente no se envían a Factorial — no generan ningún error.
+
+### ¿Funciona esto con cualquier plugin de formularios de WordPress?
+
+Con los principales, sí: WPForms, Gravity Forms, Contact Form 7 (con un plugin adicional), Elementor Forms y Ninja Forms tienen integración con Zapier. Si usas otro plugin menos conocido, comprueba en su documentación oficial si tienen conector de Zapier o si permiten enviar webhooks.
+
+### ¿Esta integración cumple con el RGPD si recojo datos de empleados?
+
+Debes revisar las políticas de Zapier como encargado del tratamiento, ya que los datos pasan por sus servidores antes de llegar a Factorial. Tanto Zapier como Factorial ofrecen DPA (Data Processing Agreement) bajo GDPR — solicítalos a ambos proveedores antes de activar el flujo con datos reales de personas.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
