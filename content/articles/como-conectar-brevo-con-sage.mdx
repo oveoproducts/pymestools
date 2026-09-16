@@ -1,0 +1,181 @@
+---
+title: "Cómo conectar Brevo con Sage: guía paso a paso"
+slug: "como-conectar-brevo-con-sage"
+category: "email-marketing"
+description: "Guía paso a paso para conectar Brevo con Sage y sincronizar tus contactos automáticamente. Sin conocimientos técnicos. Resultado en menos de 45 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["brevo"]
+keywords:
+  primary: "como conectar brevo con sage"
+  secondary:
+    - "integración brevo sage"
+    - "sincronizar contactos sage brevo"
+    - "brevo sage zapier"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Brevo sincronizado con Sage: los contactos que gestionas en Sage (clientes, proveedores) aparecerán automáticamente en tus listas de Brevo, listos para recibir tus campañas de email.
+
+El proceso lleva unos 40–45 minutos la primera vez. Necesitas Zapier (o Make) como puente, porque Brevo y Sage no tienen integración nativa directa.
+
+<Callout type="warning">
+**Brevo y Sage no se conectan directamente.** No hay un botón "Conectar con Sage" en el panel de Brevo. La integración se hace a través de una herramienta intermediaria (Zapier o Make). Tendrás que tener cuenta en una de ellas — lo explicamos en los requisitos.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Brevo:** El plan gratuito es suficiente para configurar la integración y recibir contactos. Las automatizaciones avanzadas requieren plan Starter (desde 7 €/mes + IVA). Puedes usar el trial de 30 días del plan de pago si quieres probar.
+- **Sage con acceso a la API o exportación de datos:** Dependiendo de tu versión (Sage 50, Sage 200, Sage Business Cloud), el método varía. Lo detallamos en el paso 2.
+- **Cuenta en Zapier o Make:** Zapier tiene plan gratuito con 100 tareas/mes — suficiente para empezar. Make también tiene plan gratuito. Si ya tienes una de las dos, úsala.
+- **Acceso de administrador en ambas plataformas:** Necesitas permisos para crear "Zaps" en Zapier y para generar la clave API de Brevo. Sin esto, no podrás completar los pasos.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes copiar y pegar texto y moverte por menús, es suficiente. El único momento técnico es copiar la clave API de Brevo — te indicamos exactamente dónde está.
+
+---
+
+## Pasos
+
+### Paso 1: Obtén tu clave API de Brevo
+
+**Qué hacer:** Entra en tu cuenta de Brevo. En la esquina superior derecha, haz clic en tu nombre de usuario y selecciona "SMTP & API" en el menú desplegable. Dentro de esa pantalla, ve a la pestaña "Claves API" y haz clic en "Generar una nueva clave API". Ponle un nombre descriptivo (por ejemplo, "Sage-Zapier") y guarda la clave que aparece — solo se muestra una vez.
+
+**Por qué:** Esta clave es la que permite a Zapier o Make comunicarse con tu cuenta de Brevo en tu nombre. Sin ella, la conexión no puede autenticarse.
+
+**Qué verás:** Una cadena de texto larga (empieza por `xkeysib-`). Cópiala y guárdala en un documento de texto o en tu gestor de contraseñas. Si la pierdes, tendrás que generar una nueva.
+
+---
+
+### Paso 2: Identifica cómo exporta datos tu versión de Sage
+
+**Qué hacer:** Aquí el proceso varía según tu versión de Sage. Localiza cuál de estas opciones aplica a tu caso:
+
+- **Sage 50 (versión de escritorio):** No tiene API pública. La integración se hace exportando contactos a CSV desde `"Clientes" → "Exportar"` y usando Zapier con un activador de Google Sheets o Dropbox como paso intermedio.
+- **Sage Business Cloud (versión web):** Tiene API REST. En Zapier encontrarás una integración nativa con "Sage Business Cloud Accounting" — úsala directamente en el paso 3.
+- **Sage 200:** Consulta con tu partner de Sage — algunas instalaciones permiten acceso a la base de datos directamente, pero requiere configuración por parte del proveedor.
+
+**Por qué:** No todos los Sage son iguales. Usar el método incorrecto es la razón principal por la que esta integración falla a mitad de camino.
+
+**Qué verás:** Si tienes Sage Business Cloud, busca en el panel de administración la sección "API" o "Integraciones" — verás que está disponible sin configuración adicional.
+
+<Callout type="info">
+**Si usas Sage 50 de escritorio**, el método más práctico para Carlos es exportar los contactos a una hoja de Google Sheets una vez a la semana y configurar Zapier para que sincronice esa hoja con Brevo. No es perfecto, pero funciona sin soporte técnico externo.
+</Callout>
+
+---
+
+### Paso 3: Crea el Zap en Zapier (o el escenario en Make)
+
+**Qué hacer:** Entra en Zapier. Haz clic en "Create Zap". En el campo "Trigger" (activador), busca "Sage Business Cloud Accounting" si tienes esa versión, o "Google Sheets" si usas el método de exportación CSV con Sage 50. Selecciona el evento `"New Contact"` (nuevo contacto) o `"New/Updated Row"` según el caso.
+
+Conecta tu cuenta de Sage (o tu Google Sheets) siguiendo las instrucciones de autenticación que aparecen en pantalla — Zapier te pedirá que inicies sesión en Sage o que des acceso a tu Google Drive.
+
+**Por qué:** El activador define cuándo se ejecuta la automatización. Cada vez que hay un contacto nuevo en Sage (o una fila nueva en tu hoja de cálculo), Zapier lo detecta y lo envía a Brevo.
+
+**Qué verás:** Zapier te mostrará un contacto de ejemplo extraído de Sage o de tu hoja para que puedas verificar que los datos llegan correctamente. Si el ejemplo tiene nombre, email y empresa, vas bien.
+
+---
+
+### Paso 4: Configura Brevo como destino del Zap
+
+**Qué hacer:** En la sección "Action" (acción) del Zap, busca "Brevo" en el buscador de aplicaciones. Selecciona el evento `"Create or Update Contact"`. Cuando Zapier te pida autenticarte con Brevo, elige la opción "API Key" e introduce la clave que copiaste en el paso 1.
+
+**Por qué:** Este paso le dice a Zapier qué hacer con el contacto una vez que lo recibe de Sage: crearlo en Brevo (o actualizarlo si ya existe).
+
+**Qué verás:** Zapier te mostrará un formulario con campos como "Email", "Nombre", "Apellidos" y "Lista". Mapea cada campo de Sage con su equivalente en Brevo usando los desplegables — por ejemplo, el campo "Email" de Sage va al campo "Email" de Brevo.
+
+---
+
+### Paso 5: Asigna los contactos a una lista de Brevo
+
+**Qué hacer:** En el mismo formulario del paso anterior, localiza el campo "List IDs" (IDs de lista). Para ver tus listas disponibles, ve a Brevo en otra pestaña, entra en `"Contactos" → "Listas"` y anota el número de ID que aparece junto al nombre de la lista donde quieres que aterricen los contactos de Sage. Introduce ese número en Zapier.
+
+**Por qué:** Si no asignas una lista, los contactos de Sage entrarán en Brevo sin segmentación. Tenerlos en una lista específica (por ejemplo, "Clientes Sage") te permite enviarles campañas segmentadas sin mezclarlos con otros suscriptores.
+
+**Qué verás:** El campo aceptará el número de ID directamente. Puedes añadir varios IDs separados por comas si quieres que el contacto entre en más de una lista.
+
+---
+
+### Paso 6: Prueba y activa el Zap
+
+**Qué hacer:** Haz clic en "Test action" para que Zapier envíe un contacto de prueba a Brevo. Ve a tu panel de Brevo, entra en `"Contactos"` y verifica que el contacto de prueba ha aparecido con los campos correctamente rellenados. Si todo está bien, vuelve a Zapier y haz clic en "Publish Zap" para activarlo.
+
+**Por qué:** La prueba confirma que los datos fluyen correctamente de Sage a Brevo antes de activarlo con tus contactos reales.
+
+**Qué verás:** En Brevo, el contacto de prueba aparecerá en la lista que asignaste en el paso 5. Verifica especialmente que el campo de email es correcto — si ese campo falla, los demás datos no importan.
+
+---
+
+## Errores comunes
+
+**El contacto llega a Brevo sin email (campo vacío)**
+*Síntoma:* El contacto aparece en Brevo pero sin dirección de email — solo con nombre y empresa.
+*Causa:* El campo de email en Sage no está mapeado correctamente en Zapier. En Sage 50 exportado a CSV, la columna de email a veces se llama "E-mail" con guion — Zapier no la detecta automáticamente.
+*Solución:* En el paso 4, revisa el mapeo manualmente. Despliega el campo "Email" de Brevo y selecciona explícitamente la columna correcta del origen. Haz otra prueba antes de activar el Zap.
+
+---
+
+**Zapier no encuentra la aplicación "Sage Business Cloud"**
+*Síntoma:* Al buscar "Sage" en Zapier, solo aparecen opciones que no corresponden a tu versión.
+*Causa:* Sage tiene varias aplicaciones en Zapier con nombres distintos según la versión y el país. La aplicación correcta para España es "Sage Business Cloud Accounting".
+*Solución:* Prueba a buscar "Sage Business Cloud Accounting" con el nombre completo. Si aun así no aparece, es probable que tu versión de Sage no tenga integración nativa con Zapier — usa el método de exportación CSV a Google Sheets descrito en el paso 2.
+
+---
+
+**Los contactos existentes en Sage no se sincronizan — solo los nuevos**
+*Síntoma:* La integración funciona para contactos nuevos, pero los que ya tenías en Sage antes de activar el Zap no aparecen en Brevo.
+*Causa:* Zapier, por diseño, solo procesa eventos nuevos a partir del momento en que el Zap se activa. No importa el historial.
+*Solución:* Para importar los contactos existentes, haz una exportación manual de Sage a CSV y súbela directamente a Brevo desde `"Contactos" → "Importar contactos"`. Una vez hecho esto, el Zap se encarga de los nuevos desde ese momento.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Sage y Brevo conectados via Zapier:** cada nuevo contacto que entra en Sage aparece automáticamente en la lista de Brevo que hayas asignado.
+- **Segmentación lista para usar:** tus clientes de Sage están en una lista propia en Brevo, separados del resto de suscriptores, listos para recibir una campaña específica.
+- **Cero trabajo manual:** no necesitas exportar ni importar contactos cada vez que añades un cliente nuevo en Sage.
+
+El siguiente paso lógico es crear en Brevo tu primera campaña de email dirigida a esta lista — si quieres automatizar también el envío de una bienvenida cada vez que entra un contacto nuevo de Sage, puedes configurarlo desde `"Automatizaciones"` en Brevo con el activador "Contacto añadido a lista".
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Brevo, aquí tienes el acceso directo al plan gratuito — no requiere tarjeta para empezar:
+
+<AffiliateLink programSlug="brevo" articleSlug="como-conectar-brevo-con-sage" label="Probar Brevo gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Es posible conectar Brevo con Sage sin usar Zapier?
+
+No de forma nativa. Brevo no tiene una integración directa con ninguna versión de Sage. Si quieres evitar Zapier, la alternativa es Make (antes Integromat), que tiene un plan gratuito similar. Si tienes conocimientos de desarrollo, también puedes usar la API de Brevo directamente, pero eso ya requiere programación.
+
+### ¿El plan gratuito de Brevo es suficiente para recibir contactos de Sage?
+
+Sí. El plan gratuito de Brevo permite tener contactos ilimitados y enviar hasta 300 emails al día. La integración con Zapier funciona igualmente con el plan gratuito de Brevo — la limitación la pone Zapier, no Brevo.
+
+### ¿Cuántas tareas de Zapier consume esta integración?
+
+Una tarea por cada contacto sincronizado. Con el plan gratuito de Zapier (100 tareas/mes), puedes sincronizar hasta 100 contactos nuevos al mes. Si tienes más volumen, el plan Starter de Zapier cuesta desde 19,99 $/mes (aprox. 18 €/mes según cambio a enero 2025, + IVA).
+
+### ¿Qué pasa si un cliente cambia de email en Sage?
+
+Si configuras el Zap con el evento "Create or Update Contact" en Brevo, la actualización se propaga automáticamente. Si usaste solo "Create Contact", el contacto antiguo quedará en Brevo con el email viejo — tendrás que actualizarlo manualmente o cambiar la configuración del Zap.
+
+### ¿Esta integración cumple con el RGPD y la LOPDGDD?
+
+Brevo firma un DPA (Acuerdo de Tratamiento de Datos) bajo GDPR, disponible en su panel de ajustes. Los datos se procesan en servidores dentro de la UE. Asegúrate de que en tu formulario o proceso de captación tienes el consentimiento explícito del contacto antes de añadirlo a tus listas de email — el hecho de que un contacto esté en Sage (como cliente o proveedor) no implica automáticamente que haya dado consentimiento para recibir emails de marketing.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*

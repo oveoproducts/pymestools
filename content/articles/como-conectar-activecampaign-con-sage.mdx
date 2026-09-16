@@ -1,0 +1,182 @@
+---
+title: "Cómo conectar ActiveCampaign con Sage: guía paso a paso"
+slug: "como-conectar-activecampaign-con-sage"
+category: "email-marketing"
+description: "Guía paso a paso para conectar ActiveCampaign con Sage y sincronizar contactos automáticamente. Sin conocimientos técnicos. Resultado en menos de 45 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["activecampaign"]
+keywords:
+  primary: "como conectar activecampaign con sage"
+  secondary:
+    - "integración activecampaign sage"
+    - "sincronizar contactos sage activecampaign"
+    - "activecampaign zapier sage"
+    - "automatización email marketing sage"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás ActiveCampaign sincronizando contactos desde Sage automáticamente. Cada vez que añadas un cliente en Sage, entrará solo en tu lista de ActiveCampaign — sin exportar Excel, sin copiar y pegar.
+
+El proceso completo lleva entre 30 y 45 minutos si tienes las cuentas preparadas.
+
+<Callout type="info">
+**¿Qué versión de Sage?** Esta guía cubre **Sage 50** y **Sage Business Cloud**, que son las más comunes en pymes españolas. La conexión se hace a través de Zapier, ya que ActiveCampaign y Sage no tienen integración nativa directa.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en ActiveCampaign:** La integración vía Zapier funciona desde el plan **Plus** (el mínimo con automatizaciones avanzadas). Si estás en el plan Lite, puedes usar Zapier para tareas simples, pero tendrás limitaciones en los flujos de trabajo automáticos. No hay forma gratuita de hacer esto de forma completamente automática.
+- **Cuenta en Zapier:** El plan gratuito de Zapier permite hasta 5 Zaps activos y 100 tareas al mes — suficiente para probar la integración. Para uso continuado en producción necesitarás el plan Starter (~20 €/mes según cambio actual; verifica precio en zapier.com).
+- **Acceso de administrador en Sage:** Necesitas permisos para ver y exportar clientes. No funciona con un usuario con acceso limitado.
+- **Acceso de administrador en ActiveCampaign:** Para crear listas y automatizaciones. Un usuario con rol de "Usuario" no puede hacer esto.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes usar el correo electrónico y has configurado alguna vez una regla en Excel, tienes suficiente.
+
+---
+
+## Pasos
+
+### Paso 1: Crea una lista específica en ActiveCampaign para los contactos de Sage
+
+**Qué hacer:** Entra en ActiveCampaign y ve al menú lateral izquierdo. Haz clic en "Contactos" y después en "Listas". Verás un botón verde que pone "Añadir lista" — haz clic ahí. Ponle un nombre claro, por ejemplo `"Clientes Sage"`. Rellena el nombre del remitente y el email de remite que usas habitualmente y guarda.
+
+**Por qué:** Si metes los contactos de Sage en tu lista general, perderás el control de su origen. Con una lista separada puedes segmentar campañas solo para estos clientes y saber exactamente cuántos vienen de Sage.
+
+**Qué verás:** La lista nueva aparece en el listado de listas con 0 contactos. Eso es correcto — se irá llenando cuando activemos el Zap.
+
+---
+
+### Paso 2: Obtén tu API Key de ActiveCampaign
+
+**Qué hacer:** En ActiveCampaign, ve a la esquina inferior izquierda y haz clic en tu nombre de usuario. Selecciona "Mi configuración" y después haz clic en la pestaña "Desarrollador". Verás un campo que pone "URL de la cuenta" y otro que pone "Clave API". Copia ambos valores — los necesitarás en Zapier.
+
+**Por qué:** Zapier se conecta a ActiveCampaign usando esta clave de API. Sin ella, Zapier no puede autenticarse ni enviar datos.
+
+**Qué verás:** Una cadena larga de números y letras. Es normal que parezca ilegible — no la compartas con nadie fuera de tus integraciones de confianza.
+
+---
+
+### Paso 3: Conecta Sage con Zapier como origen de datos
+
+**Qué hacer:** Entra en zapier.com y haz clic en "Crear Zap". En el bloque "Trigger" (disparador), busca "Sage" en el buscador. Selecciona la versión que usas: **Sage Business Cloud Accounting** o **Sage 50 Accounting** (esta última tiene conectividad más limitada en Zapier — ver nota abajo).
+
+Elige el evento disparador: `"New Customer"` (Cliente nuevo). Haz clic en "Continuar" y conecta tu cuenta de Sage con las credenciales de administrador cuando Zapier te lo pida.
+
+**Por qué:** Le estás diciendo a Zapier que cada vez que en Sage aparezca un cliente nuevo, tiene que hacer algo. Ese "algo" lo configuramos en el siguiente paso.
+
+**Qué verás:** Zapier te pedirá que hagas una prueba del trigger. Si hay clientes en Sage, traerá uno de ejemplo con sus datos (nombre, email, teléfono). Si no trae nada, probablemente el usuario de Sage no tiene permisos suficientes.
+
+**Nota:** Sage 50 (la versión de escritorio instalada localmente) requiere el conector de Zapier para aplicaciones de escritorio, que funciona de forma diferente. Si usas Sage 50 instalado en local, consulta la documentación de Zapier para "Zapier on-premise" — el proceso tiene pasos adicionales.
+
+---
+
+### Paso 4: Configura ActiveCampaign como destino en Zapier
+
+**Qué hacer:** En el bloque "Action" (acción), busca "ActiveCampaign". Selecciona el evento `"Add/Update Contact"` (Añadir o actualizar contacto). Conecta tu cuenta de ActiveCampaign introduciendo la URL de cuenta y la clave API que copiaste en el Paso 2.
+
+Mapea los campos: en "Email", selecciona el campo de email que vino de Sage. En "First Name" y "Last Name", mapea el nombre del cliente. En "List", selecciona la lista `"Clientes Sage"` que creaste en el Paso 1.
+
+**Por qué:** Estás diciéndole a Zapier qué datos de Sage van a qué campos de ActiveCampaign. Si no mapeas bien el email, el contacto no se creará.
+
+**Qué verás:** Una pantalla de resumen con los campos mapeados. Revisa que el email de Sage está vinculado al campo "Email" de ActiveCampaign antes de continuar.
+
+---
+
+### Paso 5: Prueba el Zap con un contacto real
+
+**Qué hacer:** Haz clic en "Probar acción". Zapier enviará el contacto de ejemplo de Sage a ActiveCampaign. Cuando termine, ve a ActiveCampaign y abre la lista `"Clientes Sage"` — el contacto de prueba debería aparecer ahí.
+
+**Por qué:** Sin esta prueba no sabes si el mapeo de campos es correcto. Es el paso que más gente se salta y el que causa el 80% de los problemas posteriores.
+
+**Qué verás:** En ActiveCampaign, el contacto aparece en la lista con los datos que vinieron de Sage. Si el nombre está en blanco o el email es incorrecto, vuelve al Paso 4 y revisa el mapeo.
+
+---
+
+### Paso 6: Activa el Zap y ponle un nombre claro
+
+**Qué hacer:** Cuando la prueba sea satisfactoria, haz clic en "Publicar Zap". Ponle un nombre descriptivo como `"Sage → ActiveCampaign: Clientes nuevos"`. Activa el interruptor que lo pone en estado "On".
+
+**Por qué:** Un Zap inactivo no hace nada. Y un Zap sin nombre claro se convierte en un problema cuando tengas 10 Zaps y no recuerdes cuál hace qué.
+
+**Qué verás:** El Zap aparece en tu panel de Zapier con el estado "On" en verde. A partir de ahora, cada nuevo cliente en Sage llegará automáticamente a ActiveCampaign.
+
+---
+
+## Errores comunes
+
+**El contacto llega a ActiveCampaign sin email**
+*Síntoma:* El contacto aparece en la lista pero el campo de email está vacío. ActiveCampaign puede guardar contactos sin email, pero no les puedes enviar nada.
+*Causa:* El campo de email en Sage no está relleno para ese cliente, o el mapeo en Zapier apunta al campo equivocado.
+*Solución:* Revisa en Sage que el cliente tiene email guardado. Después ve al Zap, edita la acción y comprueba que "Email" en ActiveCampaign está mapeado al campo de email de Sage (normalmente se llama `"Email Address"` o `"Primary Email"`). Guarda y vuelve a probar.
+
+---
+
+**Zapier dice "Authentication error" al conectar Sage**
+*Síntoma:* Al intentar conectar Sage, Zapier muestra un error de autenticación aunque has puesto las credenciales correctas.
+*Causa:* El usuario de Sage con el que te autenticas no tiene permisos de API activados, o la empresa tiene la API de Sage desactivada en el plan contratado.
+*Solución:* Entra en Sage como administrador principal y verifica en "Configuración de la empresa" que el acceso a la API está habilitado. Si usas Sage Business Cloud, comprueba que tu plan incluye acceso a integraciones externas — los planes más básicos lo limitan.
+
+---
+
+**Los contactos se duplican en ActiveCampaign**
+*Síntoma:* El mismo cliente aparece dos veces (o más) en la lista de ActiveCampaign.
+*Causa:* El cliente ya existía en ActiveCampaign antes de activar el Zap, y la opción `"Add/Update Contact"` crea un duplicado si hay alguna discrepancia en el email (mayúsculas, espacio extra).
+*Solución:* ActiveCampaign usa el email como identificador único. Asegúrate de que los emails en Sage están escritos exactamente igual que en ActiveCampaign (todo en minúsculas, sin espacios). Si ya tienes duplicados, puedes fusionarlos desde "Contactos" → busca el contacto → "Fusionar duplicados".
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Un Zap activo que detecta clientes nuevos en Sage y los añade automáticamente a tu lista `"Clientes Sage"` en ActiveCampaign.
+- Los datos básicos del cliente (nombre y email) sincronizados sin intervención manual.
+- Una lista limpia en ActiveCampaign que puedes usar para campañas dirigidas exclusivamente a tus clientes activos.
+
+El siguiente paso lógico es crear una automatización de bienvenida en ActiveCampaign que se active cuando un contacto entra en la lista `"Clientes Sage"` — por ejemplo, un email de presentación de tu equipo o una encuesta de satisfacción. Si necesitas ayuda con eso, tenemos una guía específica sobre cómo crear tu primera automatización en ActiveCampaign.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en ActiveCampaign, puedes probarla durante 14 días sin tarjeta de crédito:
+
+<AffiliateLink programSlug="activecampaign" articleSlug="como-conectar-activecampaign-con-sage" label="Probar ActiveCampaign gratis" />
+
+{/* TODO: captura del panel de Zapier con el Zap Sage → ActiveCampaign configurado */}
+
+{/* TODO: captura de la sección "Desarrollador" de ActiveCampaign donde se obtiene la API Key */}
+
+---
+
+## Preguntas frecuentes
+
+### ¿Puedo conectar ActiveCampaign con Sage sin usar Zapier?
+
+No existe integración nativa directa entre ActiveCampaign y Sage. La alternativa a Zapier es Make (antes Integromat), que tiene una lógica similar y puede salir más barato si necesitas muchas automatizaciones. Otra opción es exportar contactos de Sage en CSV e importarlos manualmente en ActiveCampaign — funciona, pero pierdes la automatización.
+
+### ¿Funciona esta integración con Sage 50 instalado en local (no en la nube)?
+
+Con Sage 50 en local el proceso es más complicado. Zapier tiene un conector para aplicaciones de escritorio, pero requiere instalar un software adicional en el ordenador donde está Sage y que ese ordenador esté encendido y conectado a internet para que el Zap funcione. Para la mayoría de pymes, la versión en la nube (Sage Business Cloud) es mucho más práctica para este tipo de integraciones.
+
+### ¿Se sincronizan también los clientes que ya tengo en Sage, o solo los nuevos?
+
+Por defecto, Zapier solo detecta clientes nuevos a partir del momento en que activas el Zap. Los clientes que ya tenías en Sage antes de activarlo no se sincronizan automáticamente. Para importar los existentes, exporta tu lista de clientes de Sage en CSV y súbela manualmente a ActiveCampaign desde "Contactos" → "Importar".
+
+### ¿Qué pasa si un cliente cambia su email en Sage?
+
+El Zap de `"New Customer"` solo se activa cuando se crea un cliente nuevo, no cuando se edita uno existente. Si necesitas sincronizar actualizaciones de datos, tienes que añadir un segundo Zap con el trigger `"Updated Customer"` (Cliente actualizado) y la misma acción de ActiveCampaign. Esto consume el doble de tareas de Zapier.
+
+### ¿Esta integración cumple con el RGPD?
+
+Tanto ActiveCampaign como Zapier firman DPA (Acuerdo de Tratamiento de Datos) bajo GDPR. Sin embargo, parte del procesamiento puede ocurrir en servidores fuera de la UE. Asegúrate de que en tu política de privacidad mencionas que usas estas herramientas para gestionar datos de clientes, y que tienes base legal para enviarles emails comerciales (consentimiento o interés legítimo). Consulta con tu asesor si tienes dudas sobre la LOPDGDD.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
