@@ -1,0 +1,207 @@
+---
+title: "Cómo conectar ActiveCampaign con Holded: guía paso a paso"
+slug: "como-conectar-activecampaign-con-holded"
+category: "email-marketing"
+description: "Guía paso a paso para conectar ActiveCampaign con Holded. Sincroniza contactos y automatiza tu marketing desde el ERP que ya usas. Sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["activecampaign"]
+keywords:
+  primary: "como conectar activecampaign con holded"
+  secondary:
+    - "integración activecampaign holded"
+    - "sincronizar contactos holded activecampaign"
+    - "automatización email marketing holded"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás ActiveCampaign sincronizado con Holded: los contactos y clientes de tu ERP entrarán automáticamente en tus listas de email marketing. Sin exportar CSVs, sin copiar datos a mano. El proceso completo lleva entre 30 y 45 minutos.
+
+Esta integración se hace a través de Zapier, ya que ActiveCampaign y Holded no tienen conexión nativa directa. Necesitarás una cuenta en los tres servicios.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Holded:** Cualquier plan de pago de Holded incluye acceso a la API. Verifica que tienes permisos de administrador para generar claves API.
+- **Cuenta en ActiveCampaign:** La integración funciona desde el plan **Starter** (antes llamado Lite). No requiere plan superior.
+- **Cuenta en Zapier:** El plan gratuito de Zapier permite crear este Zap si usas menos de 100 tareas/mes. Si tienes muchos contactos nuevos al mes, necesitarás el plan Starter de Zapier (desde 19,99 $/mes — consulta precio actualizado en zapier.com).
+- **Claves API de Holded y ActiveCampaign:** Las generarás durante el proceso. Se explica en los pasos.
+- **Nivel técnico necesario:** No necesitas saber programar. Si has configurado alguna integración en Zapier antes, te resultará familiar. Si es tu primera vez, sigue los pasos con calma — lleva algo más de tiempo pero es perfectamente hacible.
+
+<Callout type="info">
+**Sin Zapier:** Si prefieres evitar Zapier, existen alternativas como Make (antes Integromat) que permiten la misma integración. El proceso es similar. Esta guía cubre Zapier porque es la opción más extendida y con mejor documentación en español.
+</Callout>
+
+---
+
+## Pasos
+
+### Paso 1: Obtén tu clave API de Holded
+
+**Qué hacer:** Entra en tu cuenta de Holded. En el menú lateral izquierdo, ve a **"Configuración"** (icono de engranaje). Dentro de Configuración, busca la sección **"Integraciones"** y haz clic en **"API"**. Haz clic en **"Generar nueva clave"** y copia el valor que aparece — es una cadena larga de letras y números.
+
+**Por qué:** Zapier necesita esta clave para autenticarse en tu cuenta de Holded y leer los contactos o clientes que crees.
+
+**Qué verás:** La clave aparece una sola vez al generarla. Pégala inmediatamente en un documento de texto o en el gestor de contraseñas que uses — si cierras la ventana sin copiarla, tendrás que generar una nueva.
+
+---
+
+### Paso 2: Obtén tu clave API de ActiveCampaign
+
+**Qué hacer:** Entra en ActiveCampaign. En la esquina inferior izquierda, haz clic en tu nombre de usuario o en el icono de perfil y selecciona **"My Settings"** (Ajustes). En el menú de ajustes, busca la pestaña **"Developer"**. Verás tu **URL de cuenta** y tu **API Key**. Copia ambos valores.
+
+**Por qué:** Zapier necesita tanto la URL como la clave para conectarse a tu instancia específica de ActiveCampaign.
+
+**Qué verás:** La URL tiene un formato similar a `https://tunombre.api-us1.com`. Guarda los dos valores junto a la clave de Holded del paso anterior.
+
+<Callout type="warning">
+**Interfaz en inglés:** ActiveCampaign no tiene la sección de desarrollador traducida al español. Los menús que verás en este paso están en inglés aunque el resto de la plataforma esté en español. Es normal.
+</Callout>
+
+---
+
+### Paso 3: Crea un nuevo Zap en Zapier
+
+**Qué hacer:** Entra en zapier.com. Haz clic en **"Create Zap"** (botón naranja, esquina superior izquierda o en el centro de la pantalla si es la primera vez). Se abrirá el editor de Zaps.
+
+**Por qué:** Un Zap es la automatización que conecta las dos herramientas. Tiene dos partes: el disparador (qué ocurre en Holded) y la acción (qué hace ActiveCampaign como resultado).
+
+**Qué verás:** El editor muestra dos bloques en blanco: **"Trigger"** (disparador) y **"Action"** (acción). Completarás los dos en los pasos siguientes.
+
+---
+
+### Paso 4: Configura el disparador desde Holded
+
+**Qué hacer:** Haz clic en el bloque **"Trigger"**. En el buscador de aplicaciones, escribe `Holded` y selecciónalo. En **"Trigger Event"** (evento disparador), selecciona **"New Contact"** si quieres que se active al crear un contacto, o **"New Invoice"** si lo que te interesa es activar emails al facturar. Para la mayoría de casos de email marketing, elige **"New Contact"**.
+
+Haz clic en **"Sign in to Holded"** y pega la clave API que generaste en el Paso 1 cuando te la pida.
+
+**Por qué:** Estás diciéndole a Zapier que vigile Holded y reaccione cada vez que aparezca un contacto nuevo.
+
+**Qué verás:** Zapier pedirá que hagas una prueba del disparador. Si tienes contactos en Holded, aparecerá uno de muestra con sus datos (nombre, email, empresa). Eso confirma que la conexión con Holded funciona.
+
+**Nota:** Si tu empresa trabaja principalmente con clientes en lugar de contactos individuales, puedes usar el evento **"New Customer"** en su lugar.
+
+---
+
+### Paso 5: Configura la acción en ActiveCampaign
+
+**Qué hacer:** Haz clic en el bloque **"Action"**. Busca `ActiveCampaign` y selecciónalo. En **"Action Event"**, selecciona **"Create/Update Contact"** — esta opción añade el contacto si no existe y actualiza sus datos si ya estaba en tu lista.
+
+Haz clic en **"Sign in to ActiveCampaign"** y pega la URL de cuenta y la API Key del Paso 2.
+
+**Por qué:** La opción "Create/Update" evita duplicados. Si el mismo cliente aparece dos veces en Holded, ActiveCampaign no creará dos registros: simplemente actualizará el que ya tiene.
+
+**Qué verás:** Aparecerá un formulario para mapear los campos. Aquí conectas los datos de Holded con los campos de ActiveCampaign.
+
+---
+
+### Paso 6: Mapea los campos entre Holded y ActiveCampaign
+
+**Qué hacer:** En el formulario de la acción, asigna cada campo de Holded al campo correspondiente de ActiveCampaign:
+
+- **Email:** Selecciona el campo de email de Holded → campo `Email` de ActiveCampaign. Este es el único campo obligatorio.
+- **First Name / Last Name:** Nombre y apellidos del contacto de Holded.
+- **Phone:** Teléfono, si lo tienes en Holded.
+- **Organization:** Empresa del contacto (útil para segmentar por tipo de cliente).
+
+Deja sin mapear los campos que no necesites. No es obligatorio rellenarlos todos.
+
+**Por qué:** El mapeo le dice a Zapier qué información de Holded tiene que escribir en cada campo de ActiveCampaign. Sin esto, el contacto llegaría vacío.
+
+**Qué verás:** Al hacer clic en cada campo de ActiveCampaign, aparece un desplegable con los valores del contacto de muestra de Holded. Selecciona el campo correcto en cada caso.
+
+---
+
+### Paso 7: Añade el contacto a una lista de ActiveCampaign (opcional pero recomendado)
+
+**Qué hacer:** Justo debajo del mapeo de campos, busca el campo **"List"**. Selecciona la lista de ActiveCampaign a la que quieres añadir automáticamente estos contactos (por ejemplo, `"Clientes Holded"` o `"Newsletter general"`).
+
+Si no tienes la lista creada aún, crea una primero en ActiveCampaign antes de volver a este paso.
+
+**Por qué:** Sin asignar una lista, el contacto se crea en ActiveCampaign pero no pertenece a ninguna lista — no recibirá tus emails automatizados ni campañas.
+
+**Qué verás:** El campo muestra las listas que ya tienes creadas en tu cuenta de ActiveCampaign. Si no aparece ninguna, vuelve a ActiveCampaign y crea al menos una lista antes de continuar.
+
+---
+
+### Paso 8: Prueba y activa el Zap
+
+**Qué hacer:** Haz clic en **"Test action"**. Zapier enviará el contacto de muestra a ActiveCampaign. Ve a tu cuenta de ActiveCampaign → **"Contacts"** y busca el email del contacto de prueba. Si aparece, todo funciona.
+
+Cuando confirmes que el contacto ha llegado bien, vuelve a Zapier y haz clic en **"Publish"** (o **"Turn on Zap"**) para activar la automatización.
+
+**Por qué:** La prueba es el único momento en que puedes confirmar que el mapeo es correcto antes de que empiece a funcionar de verdad.
+
+**Qué verás:** Zapier muestra un mensaje de éxito en verde si la acción se completó. Si hay un error, aparece en rojo con una descripción del problema.
+
+---
+
+## Errores comunes
+
+**El contacto llega a ActiveCampaign sin email**
+*Síntoma:* El contacto aparece en ActiveCampaign con nombre pero sin dirección de email — o el Zap falla con un error de campo obligatorio.
+*Causa:* El campo de email no está mapeado correctamente en el Paso 6, o el contacto en Holded no tiene email registrado.
+*Solución:* Vuelve al editor del Zap → bloque de acción → verifica que el campo `Email` de ActiveCampaign está mapeado al campo de email de Holded. Asegúrate también de que los contactos que creas en Holded siempre llevan email.
+
+---
+
+**Zapier no encuentra la aplicación Holded**
+*Síntoma:* Al buscar "Holded" en el buscador de aplicaciones de Zapier, no aparece ningún resultado.
+*Causa:* Holded no siempre aparece en el directorio principal de Zapier. En algunos casos solo está disponible como integración de acceso privado o a través del enlace directo.
+*Solución:* Busca `"Holded"` en el buscador de Zapier usando el enlace directo: `zapier.com/apps/holded/integrations`. Si sigue sin aparecer, usa Make (make.com) como alternativa — tiene integración con Holded disponible sin problemas.
+
+---
+
+**El Zap se activa pero el contacto no aparece en la lista correcta**
+*Síntoma:* El contacto llega a ActiveCampaign pero no está en la lista que configuraste — aparece en "All Contacts" sin lista asignada.
+*Causa:* El campo "List" en el Paso 7 quedó vacío o apuntaba a una lista que luego fue eliminada o renombrada.
+*Solución:* Edita el Zap → bloque de acción → verifica que el campo "List" tiene seleccionada una lista activa de ActiveCampaign. Guarda y publica de nuevo.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Una automatización activa que copia cada nuevo contacto de Holded directamente en ActiveCampaign, sin intervención manual.
+- Los contactos asignados a una lista en ActiveCampaign, listos para recibir cualquier campaña o secuencia automatizada que tengas configurada.
+- El mapeo de campos completo: nombre, apellidos, email y empresa viajan de Holded a ActiveCampaign sin que tengas que exportar ni importar nada.
+
+El siguiente paso lógico es crear en ActiveCampaign una **secuencia de bienvenida** para los contactos que entran por esta vía — un email automático que se envía cuando alguien se añade a la lista `"Clientes Holded"`. Si ya tienes ActiveCampaign contratado, puedes configurarlo desde **"Automations"** → **"New Automation"** → disparador: **"Contact is added to list"**.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en ActiveCampaign, puedes probarla gratis durante 14 días sin tarjeta de crédito:
+
+<AffiliateLink programSlug="activecampaign" articleSlug="como-conectar-activecampaign-con-holded" label="Probar ActiveCampaign gratis 14 días" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Funciona esta integración sin Zapier?
+No hay integración nativa entre Holded y ActiveCampaign, así que necesitas un conector intermedio. Zapier es la opción más sencilla. Make (antes Integromat) es una alternativa con plan gratuito más generoso para volúmenes bajos.
+
+### ¿Puedo sincronizar contactos que ya tenía en Holded antes de crear el Zap?
+No automáticamente. El Zap solo detecta contactos nuevos a partir del momento en que lo activas. Para los contactos existentes, la opción más rápida es exportarlos de Holded en CSV e importarlos manualmente en ActiveCampaign desde **"Contacts"** → **"Import"**.
+
+### ¿Es suficiente el plan gratuito de Zapier para esto?
+Depende del volumen. El plan gratuito de Zapier permite 100 tareas al mes — es decir, 100 contactos nuevos sincronizados. Si tu empresa incorpora más de 100 contactos nuevos al mes en Holded, necesitarás un plan de pago de Zapier. Consulta los precios actualizados en zapier.com.
+
+### ¿Esta integración cumple el GDPR?
+La integración en sí no afecta al cumplimiento GDPR — lo que importa es que tengas la base legal correcta para enviar emails a esos contactos (consentimiento o interés legítimo). Asegúrate de que los contactos de Holded han dado su consentimiento explícito antes de añadirlos a listas de email marketing. ActiveCampaign firma DPA bajo GDPR; consulta su política de privacidad para adaptarla a tus obligaciones con la AEPD.
+
+### ¿El Zap funciona también al revés — de ActiveCampaign a Holded?
+Sí, puedes crear un segundo Zap con los disparadores invertidos. Por ejemplo: cuando alguien rellena un formulario en ActiveCampaign, se crea el contacto automáticamente en Holded. El proceso de configuración es el mismo, cambiando el rol de cada herramienta en el editor de Zapier.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
