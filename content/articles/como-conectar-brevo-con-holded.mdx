@@ -1,0 +1,184 @@
+---
+title: "Cómo conectar Brevo con Holded: guía paso a paso"
+slug: "como-conectar-brevo-con-holded"
+category: "email-marketing"
+description: "Guía paso a paso para conectar Brevo con Holded y sincronizar tus contactos automáticamente. Sin conocimientos técnicos. Resultado en menos de 30 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["brevo"]
+keywords:
+  primary: "como conectar brevo con holded"
+  secondary:
+    - "integración brevo holded"
+    - "sincronizar contactos holded brevo"
+    - "brevo holded zapier"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás los contactos de Holded sincronizándose automáticamente con Brevo. Cada cliente nuevo que entres en Holded aparecerá en tu lista de email marketing sin que tengas que exportar ni importar nada.
+
+El proceso completo lleva entre 20 y 30 minutos. No necesitas saber programar.
+
+<Callout type="info">
+**Brevo y Holded no tienen integración nativa directa.** La conexión se hace a través de Zapier o Make (antes Integromat). En esta guía usamos Zapier porque tiene un plan gratuito suficiente para la mayoría de pymes con menos de 100 contactos nuevos al mes.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Brevo:** El plan gratuito es suficiente para configurar la integración. Puedes empezar con el free y actualizar si necesitas más envíos. Si aún no tienes cuenta:
+
+  <AffiliateLink programSlug="brevo" articleSlug="como-conectar-brevo-con-holded" label="Crear cuenta gratuita en Brevo" />
+
+- **Cuenta en Holded:** Necesitas acceso de administrador. No funciona con permisos de solo lectura.
+- **Cuenta en Zapier:** El plan gratuito incluye hasta 100 tareas/mes y 5 Zaps activos — suficiente para este caso de uso si tu volumen de contactos nuevos es moderado.
+- **Una lista creada en Brevo:** Antes de empezar, ten preparada al menos una lista de destino en Brevo (por ejemplo, "Clientes Holded"). Si no la tienes, créala en 2 minutos desde el panel de Brevo antes de seguir.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes usar un formulario web y seguir instrucciones en pantalla, puedes hacer esto.
+
+---
+
+## Pasos
+
+### Paso 1: Obtén tu clave API de Brevo
+
+**Qué hacer:** Entra en tu cuenta de Brevo. En la esquina superior derecha, haz clic en tu nombre de usuario y selecciona `"SMTP & API"` en el menú desplegable. Dentro de esa pantalla, ve a la pestaña `"API Keys"` y haz clic en `"Generate a new API key"`. Dale un nombre descriptivo (por ejemplo, `"Zapier-Holded"`) y guarda la clave que aparece — solo se muestra una vez.
+
+**Por qué:** Zapier necesita esta clave para autenticarse con tu cuenta de Brevo y añadir contactos en tu nombre.
+
+**Qué verás:** Una cadena de texto larga que empieza por `xkeysib-`. Cópiala y guárdala en un sitio seguro (un bloc de notas, no en el chat).
+
+---
+
+### Paso 2: Obtén tu clave API de Holded
+
+**Qué hacer:** En Holded, ve a `"Ajustes"` (el icono de engranaje en el menú lateral izquierdo). Dentro de ajustes, busca la sección `"Integraciones"` y después `"API"`. Haz clic en `"Generar API Key"` si aún no tienes una creada.
+
+**Por qué:** Zapier también necesita acceder a Holded para leer los contactos o facturas nuevas que quieras sincronizar.
+
+**Qué verás:** Una clave similar a la de Brevo. Cópiala y guárdala junto a la anterior.
+
+---
+
+### Paso 3: Crea un Zap nuevo en Zapier
+
+**Qué hacer:** Entra en [zapier.com](https://zapier.com) con tu cuenta. Haz clic en `"Create Zap"` (botón naranja en la esquina superior izquierda). Se abrirá el editor de Zaps en pantalla completa.
+
+**Por qué:** Un Zap es la automatización que conecta las dos herramientas. Define qué evento en Holded (el disparador) provoca qué acción en Brevo (el resultado).
+
+**Qué verás:** Un editor con dos bloques vacíos: `"Trigger"` (disparador) y `"Action"` (acción). Empezarás rellenando el disparador.
+
+---
+
+### Paso 4: Configura el disparador — nuevo contacto en Holded
+
+**Qué hacer:** En el bloque `"Trigger"`, busca `"Holded"` en el buscador de aplicaciones. Selecciónalo. En el desplegable `"Event"`, elige `"New Contact"` (nuevo contacto). Haz clic en `"Sign in to Holded"` y pega la clave API de Holded que copiaste en el paso 2.
+
+A continuación, haz clic en `"Test trigger"`. Zapier buscará contactos recientes en tu Holded para confirmar que la conexión funciona.
+
+**Por qué:** El disparador le dice a Zapier que vigile tu Holded y reaccione cada vez que se crea un contacto nuevo.
+
+**Qué verás:** Si la conexión es correcta, Zapier mostrará uno o varios contactos de prueba con sus datos (nombre, email, etc.). Si ves un error de autenticación, revisa que la clave API de Holded esté completa y sin espacios al principio o al final.
+
+<Callout type="warning">
+**Ojo:** Zapier solo detecta contactos *nuevos* a partir del momento en que el Zap esté activo. Los contactos que ya existen en Holded no se sincronizan automáticamente. Para los contactos existentes, tendrás que hacer una importación manual desde Brevo (exporta un CSV de Holded e impórtalo en Brevo).
+</Callout>
+
+---
+
+### Paso 5: Configura la acción — añadir contacto en Brevo
+
+**Qué hacer:** En el bloque `"Action"`, busca `"Brevo"` en el buscador. Selecciónalo. En el desplegable `"Event"`, elige `"Add or Update Contact"`. Haz clic en `"Sign in to Brevo"` y pega la clave API de Brevo del paso 1.
+
+Ahora mapea los campos: en `"Email"` selecciona el campo de email que Zapier detectó en Holded (aparecerá como `"Contact Email"` o similar en el desplegable). En `"List IDs"` selecciona la lista de Brevo donde quieres que lleguen los contactos (la que preparaste antes de empezar).
+
+Opcionalmente, mapea también `"First Name"` y `"Last Name"` si quieres personalizar los emails por nombre.
+
+**Por qué:** Esta acción es lo que Zapier hace en Brevo cada vez que detecta un contacto nuevo en Holded.
+
+**Qué verás:** Un formulario de mapeo con campos de Holded a la izquierda y campos de Brevo a la derecha. Si los emails de prueba del paso anterior tenían datos, los verás ya rellenados.
+
+---
+
+### Paso 6: Prueba el Zap y actívalo
+
+**Qué hacer:** Haz clic en `"Test action"`. Zapier intentará crear un contacto de prueba en Brevo con los datos del contacto de muestra. Después, entra en Brevo y comprueba en tu lista que el contacto ha aparecido. Si todo está correcto, vuelve a Zapier y haz clic en `"Publish Zap"` (o `"Turn on Zap"`, según la versión de la interfaz).
+
+**Por qué:** La prueba confirma que el mapeo de campos es correcto antes de que el Zap procese contactos reales.
+
+**Qué verás:** En Brevo, dentro de `"Contactos"` → tu lista, aparecerá el contacto de prueba con el email, nombre y apellidos mapeados. El Zap en Zapier pasará a estado `"On"` con un indicador verde.
+
+---
+
+## Errores comunes
+
+**La clave API de Holded da error de autenticación en Zapier**
+*Síntoma:* Zapier muestra `"Authentication failed"` al conectar Holded.
+*Causa:* La clave API se ha copiado con un espacio en blanco al principio o al final, o ha caducado si la regeneraste desde Holded.
+*Solución:* Ve a Holded → Ajustes → API, genera una clave nueva y pégala directamente desde el portapapeles sin espacios. En Zapier, desconecta la cuenta de Holded y vuelve a conectarla con la clave nueva.
+
+---
+
+**El contacto llega a Brevo sin email o con el campo vacío**
+*Síntoma:* El contacto aparece en la lista de Brevo pero sin dirección de email.
+*Causa:* En Holded, el contacto de prueba no tenía email guardado, o el mapeo apunta al campo equivocado.
+*Solución:* En el editor del Zap, vuelve al paso de acción y revisa el campo `"Email"`. Asegúrate de que está mapeado a `"Contact Email"` (o el campo equivalente que muestra Zapier desde Holded), no a otro campo de texto.
+
+---
+
+**El Zap se desactiva solo después de unos días**
+*Síntoma:* Zapier envía un email avisando de que el Zap se ha pausado por errores repetidos.
+*Causa:* El plan gratuito de Zapier tiene límite de 100 tareas/mes. Si lo superas, el Zap se pausa automáticamente.
+*Solución:* Revisa en Zapier → `"Task History"` cuántas tareas has consumido. Si superas el límite con frecuencia, considera actualizar al plan Starter de Zapier (aprox. 20 $/mes — verifica precio actual en zapier.com) o migrar la integración a Make, que tiene un plan gratuito con 1.000 operaciones/mes.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Sincronización automática activa:** Cada nuevo contacto que crees en Holded aparecerá en tu lista de Brevo en cuestión de minutos, sin intervención manual.
+- **Datos mapeados correctamente:** Nombre, apellidos y email del contacto llegan a Brevo listos para usar en campañas personalizadas.
+- **Base para automatizaciones:** Con los contactos llegando solos a Brevo, puedes crear una secuencia de bienvenida automática que se active en cuanto el contacto entra en la lista.
+
+El siguiente paso lógico es crear en Brevo una automatización de bienvenida para los contactos que llegan desde Holded — puedes segmentarlos por la lista de destino y enviarles una secuencia diferente a la de contactos captados por formulario web.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Brevo, puedes empezar gratis sin tarjeta de crédito:
+
+<AffiliateLink programSlug="brevo" articleSlug="como-conectar-brevo-con-holded" label="Probar Brevo gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Puedo hacer esta integración sin Zapier?
+
+Sí. Puedes usar Make (antes Integromat), que tiene un plan gratuito con 1.000 operaciones/mes — más generoso que Zapier para volúmenes bajos. El proceso es similar: creas un escenario con Holded como módulo de entrada y Brevo como módulo de salida. Si tu volumen de contactos nuevos supera los 100 al mes, Make es la alternativa más económica.
+
+### ¿Los contactos que ya tengo en Holded se sincronizan también?
+
+No. Zapier solo procesa los contactos nuevos a partir del momento en que activas el Zap. Para los contactos existentes, la única forma es exportar un archivo CSV desde Holded e importarlo manualmente en Brevo desde `"Contactos"` → `"Importar contactos"`.
+
+### ¿Cuánto cuesta esta integración en total?
+
+Depende de tu volumen. Si creas menos de 100 contactos nuevos al mes en Holded, el plan gratuito de Zapier es suficiente y el coste adicional es cero (solo pagas Brevo y Holded, que ya tienes). Por encima de eso, Zapier Starter cuesta aprox. 20 $/mes — consulta el precio actualizado en zapier.com, ya que cambia con frecuencia y cobra en dólares.
+
+### ¿La integración cumple con el GDPR?
+
+La integración en sí transfiere datos entre Holded (empresa española, servidores en la UE) y Brevo (empresa francesa, servidores en la UE, con DPA disponible). Si ya tienes base legal para enviar emails a tus contactos de Holded (consentimiento o relación contractual), la sincronización no añade nuevos problemas de cumplimiento. Aun así, revisa que tu política de privacidad mencione el uso de Brevo como encargado del tratamiento y firma el DPA con Brevo desde su panel.
+
+### ¿Qué pasa si un contacto se actualiza en Holded? ¿Se actualiza también en Brevo?
+
+Depende de cómo configures el disparador en Zapier. El evento `"New Contact"` solo se activa con contactos nuevos. Si quieres sincronizar también las actualizaciones, necesitas añadir un segundo Zap con el evento `"Updated Contact"` como disparador y la misma acción `"Add or Update Contact"` en Brevo. Esto consume el doble de tareas en Zapier.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
