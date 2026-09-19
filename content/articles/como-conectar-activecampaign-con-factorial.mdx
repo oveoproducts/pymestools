@@ -1,0 +1,210 @@
+---
+title: "Cómo conectar ActiveCampaign con Factorial: guía paso a paso"
+slug: "como-conectar-activecampaign-con-factorial"
+category: "email-marketing"
+description: "Guía paso a paso para conectar ActiveCampaign con Factorial y sincronizar empleados en listas de email automáticamente. Sin conocimientos técnicos, en menos de 45 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-31T00:00:00Z"
+tools: ["activecampaign"]
+keywords:
+  primary: "como conectar activecampaign con factorial"
+  secondary:
+    - "integración activecampaign factorial"
+    - "sincronizar empleados activecampaign"
+    - "automatizar rrhh email marketing"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás ActiveCampaign y Factorial conectados: cada vez que des de alta un empleado en Factorial, ese contacto aparecerá automáticamente en una lista de ActiveCampaign. Sin exportar Excel, sin copiar emails a mano.
+
+El proceso completo lleva entre 30 y 45 minutos, dependiendo de si usas Zapier o la API directa. No necesitas saber programar para la opción con Zapier, que es la que cubre esta guía.
+
+<Callout type="info">
+**No existe integración nativa directa.** ActiveCampaign y Factorial no tienen conector oficial entre ellos. La forma más práctica para una pyme es usar Zapier como intermediario. Te explicamos cómo hacerlo paso a paso.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en ActiveCampaign:** Esta funcionalidad requiere el plan **Starter** o superior (el plan gratuito/trial de 14 días es suficiente para configurar y probar la integración). Precios consultados en enero 2025 — verifica en la web del proveedor.
+- **Cuenta en Factorial:** Cualquier plan de pago de Factorial da acceso a la API. Si estás en el trial, revisa que tienes acceso a la sección "Integraciones" del menú de administración.
+- **Cuenta en Zapier:** El plan gratuito de Zapier permite crear este flujo si no superas las 100 tareas/mes. Con 8 empleados y altas esporádicas, es suficiente. Si tienes más movimiento de personal, puede que necesites el plan de pago.
+- **Acceso de administrador en ambas herramientas:** No funciona con cuentas de usuario estándar. Necesitas credenciales de administrador para generar las claves API.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes copiar y pegar texto, y encontrar un menú de configuración, es suficiente. El único momento "técnico" es copiar una clave API — te decimos exactamente dónde encontrarla.
+
+---
+
+## Pasos
+
+### Paso 1: Genera la clave API de Factorial
+
+**Qué hacer:** Entra en Factorial con tu cuenta de administrador. En el menú lateral izquierdo, baja hasta la sección de configuración — el icono de engranaje. Dentro, busca el apartado **"Integraciones"** o **"API"** (el nombre exacto puede variar según la versión de tu plan). Haz clic en **"Generar token de API"** o **"Nuevo token"**. Dale un nombre descriptivo, como `"Zapier - ActiveCampaign"`, para identificarlo después. Copia el token que aparece en pantalla.
+
+**Por qué:** Esta clave es la que permite a Zapier leer los datos de Factorial — sin ella, Zapier no puede acceder a la información de tus empleados.
+
+**Qué verás:** Una cadena de letras y números, normalmente larga. Guárdala en un bloc de notas temporal — solo se muestra una vez en algunos planes. Si la pierdes, tendrás que generar una nueva.
+
+---
+
+### Paso 2: Consigue la clave API de ActiveCampaign
+
+**Qué hacer:** Entra en ActiveCampaign. En la esquina inferior izquierda, haz clic en el icono de tu perfil o en **"Ajustes"** (Settings). En el menú que se abre, selecciona **"Desarrolladores"** (Developer). Verás tu **URL de cuenta** y tu **clave API** (API Key). Copia ambos valores — los necesitas los dos para conectar Zapier.
+
+**Por qué:** Zapier necesita tanto la URL como la clave para saber a qué cuenta de ActiveCampaign enviar los datos. Dos empresas pueden tener el mismo email pero URLs distintas.
+
+**Qué verás:** La URL tiene un formato como `https://tunombre.api-us1.com`. La clave API es una cadena alfanumérica larga. Cópialas en el mismo bloc de notas donde guardaste el token de Factorial.
+
+---
+
+### Paso 3: Crea el Zap en Zapier
+
+**Qué hacer:** Entra en Zapier (zapier.com) y haz clic en **"Create Zap"** (Crear Zap) en la esquina superior izquierda. Se abre el editor de flujos. En el primer bloque — el **"Trigger"** (disparador) — busca **"Factorial"** en el buscador de apps. Selecciónalo y elige el evento **"New Employee"** (nuevo empleado). Si Factorial no aparece en la búsqueda, prueba con **"Factorial HR"**.
+
+**Por qué:** El Trigger es lo que pone en marcha la automatización. Cada vez que se crea un empleado nuevo en Factorial, Zapier detecta ese evento y ejecuta el resto del flujo.
+
+**Qué verás:** Zapier te pedirá conectar tu cuenta de Factorial. Selecciona **"Connect a new account"** y pega el token de API que generaste en el Paso 1.
+
+---
+
+### Paso 4: Conecta Factorial y elige el evento de prueba
+
+**Qué hacer:** Una vez conectada la cuenta de Factorial, Zapier te pedirá que hagas una prueba del trigger — haz clic en **"Test trigger"**. Zapier buscará un empleado reciente en Factorial para confirmar que la conexión funciona. Si tienes empleados dados de alta, debería aparecer uno en pantalla con sus datos (nombre, email, departamento).
+
+**Por qué:** Esta prueba confirma que Zapier puede leer correctamente los datos de Factorial antes de configurar la acción en ActiveCampaign.
+
+**Qué verás:** Una tarjeta con los datos de un empleado real de Factorial — nombre, email y otros campos según tu configuración. Si ves esto, la conexión es correcta.
+
+<Callout type="warning">
+**Si no aparece ningún empleado en la prueba:** Zapier solo puede leer empleados creados recientemente. Si todos tus empleados llevan meses dados de alta, crea un empleado de prueba temporal en Factorial (puedes borrarlo después), repite el test y luego elimínalo.
+</Callout>
+
+---
+
+### Paso 5: Configura la acción en ActiveCampaign
+
+**Qué hacer:** En el segundo bloque del Zap — la **"Action"** (acción) — busca **"ActiveCampaign"** y selecciónalo. Como evento, elige **"Add/Update Contact"** (Añadir o actualizar contacto). Zapier te pedirá conectar tu cuenta de ActiveCampaign: introduce la URL de tu cuenta y la clave API del Paso 2.
+
+**Por qué:** Esta acción es lo que ocurre en ActiveCampaign cada vez que Factorial detecta un empleado nuevo. "Add/Update Contact" es el evento más útil porque crea el contacto si no existe, o actualiza sus datos si ya está en la lista.
+
+**Qué verás:** Un formulario de mapeo de campos — aquí indicas qué datos de Factorial van a qué campos de ActiveCampaign.
+
+---
+
+### Paso 6: Mapea los campos entre Factorial y ActiveCampaign
+
+**Qué hacer:** En el formulario de mapeo, conecta los campos de Factorial con los de ActiveCampaign. Como mínimo, configura:
+
+- **Email:** haz clic en el campo "Email" de ActiveCampaign y selecciona el campo de email de Factorial en el desplegable.
+- **Nombre:** conecta el campo "First Name" de ActiveCampaign con el nombre del empleado en Factorial.
+- **Apellidos:** conecta "Last Name" con el apellido correspondiente.
+
+Si quieres, también puedes mapear el departamento o el cargo a campos personalizados de ActiveCampaign — útil para segmentar comunicaciones internas por equipo.
+
+**Por qué:** Sin este mapeo, Zapier no sabe qué información de Factorial tiene que pasar a ActiveCampaign. El campo email es obligatorio — sin él, ActiveCampaign no puede crear el contacto.
+
+**Qué verás:** Cada campo de ActiveCampaign mostrará el valor de Factorial que le has asignado. Por ejemplo, junto a "Email" verás el email del empleado de prueba que usaste en el Paso 4.
+
+---
+
+### Paso 7: Añade el contacto a una lista de ActiveCampaign
+
+**Qué hacer:** Después del bloque de "Add/Update Contact", añade un segundo paso de acción. Haz clic en el botón **"+"** bajo la acción anterior. Selecciona de nuevo **"ActiveCampaign"** y esta vez elige el evento **"Add Contact to List"** (añadir contacto a lista). Selecciona la lista a la que quieres que vayan los empleados de Factorial — por ejemplo, una lista llamada `"Comunicaciones internas"` o `"Equipo"`.
+
+**Por qué:** El paso anterior crea el contacto, pero no lo asigna a ninguna lista. Sin este segundo paso, el contacto existe en ActiveCampaign pero no recibirá ningún email de campaña.
+
+**Qué verás:** Un campo donde seleccionas la lista de destino desde un desplegable con tus listas actuales de ActiveCampaign.
+
+---
+
+### Paso 8: Prueba el flujo completo y actívalo
+
+**Qué hacer:** Haz clic en **"Test step"** en el último bloque para ejecutar el flujo con los datos de prueba. Si todo va bien, verás un mensaje de confirmación verde. Comprueba en ActiveCampaign que el contacto de prueba ha aparecido en la lista correcta. Si está todo correcto, haz clic en **"Publish Zap"** (Publicar Zap) para activarlo.
+
+**Por qué:** Sin activar el Zap, el flujo existe pero no se ejecuta. Publicarlo lo pone en marcha — a partir de ese momento, cada nuevo empleado en Factorial llegará automáticamente a ActiveCampaign.
+
+**Qué verás:** El Zap aparecerá en tu panel de Zapier con el estado **"On"** (activo) en color verde.
+
+---
+
+## Errores comunes
+
+**La prueba del trigger en Zapier no encuentra ningún empleado de Factorial**
+
+*Síntoma:* Zapier muestra el mensaje "We couldn't find any records" al hacer el test del trigger.
+
+*Causa:* Zapier solo detecta empleados creados recientemente (normalmente en los últimos 30 días). Si todos tus empleados llevan más tiempo dados de alta, no aparece ninguno en el test.
+
+*Solución:* Crea un empleado de prueba temporal en Factorial con un email real (puede ser el tuyo propio). Vuelve a Zapier y repite el test. Una vez completada la configuración y publicado el Zap, elimina el empleado de prueba en Factorial.
+
+---
+
+**El contacto se crea en ActiveCampaign pero sin email — o con email vacío**
+
+*Síntoma:* El contacto aparece en ActiveCampaign pero el campo email está en blanco.
+
+*Causa:* En el mapeo del Paso 6 no se ha conectado correctamente el campo de email de Factorial. Factorial puede tener varios campos de email según la configuración — el corporativo, el personal, etc.
+
+*Solución:* Vuelve al editor del Zap, entra en la acción "Add/Update Contact" y revisa el campo Email. En el desplegable de Factorial, selecciona explícitamente el campo que corresponde al email corporativo del empleado. Guarda y vuelve a probar.
+
+---
+
+**El Zap se activa pero el contacto no aparece en la lista correcta**
+
+*Síntoma:* El contacto existe en ActiveCampaign como contacto general, pero no está en la lista que configuraste.
+
+*Causa:* El segundo paso del Zap ("Add Contact to List") puede haberse configurado incorrectamente, o el contacto se creó antes de que ese paso se añadiera.
+
+*Solución:* Comprueba en el historial de Zapier (sección "Zap History") que los dos pasos del Zap se ejecutaron correctamente. Si el segundo paso muestra un error, revisa que la lista de ActiveCampaign sigue existiendo y tiene el nombre correcto. Si la lista la renombraste después de configurar el Zap, Zapier puede estar buscando la lista antigua.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Un flujo automático que detecta cada nuevo empleado dado de alta en Factorial y lo añade como contacto en ActiveCampaign.
+- El contacto queda asignado a la lista que hayas elegido, listo para recibir campañas de comunicación interna.
+- Zero intervención manual: no hay que exportar archivos CSV ni copiar emails a mano cada vez que alguien se incorpora al equipo.
+
+El siguiente paso lógico es crear en ActiveCampaign una automatización de bienvenida para nuevos empleados — una secuencia de emails que se envíe automáticamente cuando alguien entra en esa lista, con información de onboarding, accesos o bienvenida del equipo.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en ActiveCampaign, aquí tienes el acceso al trial de 14 días:
+
+<AffiliateLink programSlug="activecampaign" articleSlug="como-conectar-activecampaign-con-factorial" label="Probar ActiveCampaign gratis 14 días" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Puedo conectar ActiveCampaign con Factorial sin usar Zapier?
+
+Sí, pero requiere conocimientos técnicos. Tanto Factorial como ActiveCampaign tienen APIs REST documentadas. Un desarrollador puede crear una integración directa usando webhooks de Factorial que llamen a la API de ActiveCampaign. Para la mayoría de pymes, Zapier es la opción más rápida y sin mantenimiento.
+
+### ¿Esta integración funciona también cuando se da de baja a un empleado?
+
+Con la configuración de esta guía, no. El trigger configurado solo detecta empleados nuevos. Para gestionar bajas (por ejemplo, eliminar o etiquetar el contacto en ActiveCampaign cuando alguien deja la empresa), necesitas crear un segundo Zap con el trigger "Employee Updated" o "Employee Terminated" en Factorial, si tu plan lo incluye.
+
+### ¿Cuántas tareas de Zapier consume este flujo al mes?
+
+Cada alta de empleado consume 2 tareas en Zapier: una por el trigger y otra por cada acción (crear contacto + añadir a lista = 2 acciones, total 3 tareas por empleado). Con el plan gratuito de Zapier (100 tareas/mes), puedes procesar unas 33 altas nuevas al mes antes de alcanzar el límite.
+
+### ¿Los datos de empleados que pasan por Zapier cumplen con el GDPR?
+
+Zapier tiene acuerdo de procesamiento de datos (DPA) disponible bajo GDPR. Sin embargo, los datos pueden procesarse en servidores fuera de la UE. Para cumplir con la LOPDGDD, revisa el DPA de Zapier con tu responsable de protección de datos antes de activar flujos que incluyan datos personales de empleados. Tanto ActiveCampaign como Factorial también tienen sus propios DPAs disponibles para firmar.
+
+### ¿Puedo hacer esto de forma gratuita con el plan free de ActiveCampaign?
+
+ActiveCampaign eliminó su plan gratuito permanente. Actualmente ofrece un trial de 14 días. Para mantener la integración activa de forma permanente necesitas un plan de pago. Precios consultados en enero 2025 — verifica en la web del proveedor.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
