@@ -1,0 +1,179 @@
+---
+title: "Cómo conectar HubSpot con Factorial: guía paso a paso"
+slug: "como-conectar-hubspot-con-factorial"
+category: "crm"
+description: "Guía paso a paso para conectar HubSpot con Factorial y sincronizar datos de RRHH con tu CRM. Sin conocimientos técnicos, en menos de 45 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-27T00:00:00Z"
+tools: ["hubspot"]
+keywords:
+  primary: "como conectar hubspot con factorial"
+  secondary:
+    - "integracion hubspot factorial"
+    - "sincronizar factorial hubspot"
+    - "hubspot factorial zapier"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás HubSpot y Factorial intercambiando datos automáticamente. Cuando un empleado nuevo entra en Factorial, puedes crear o actualizar su perfil en HubSpot sin copiar nada a mano. El proceso completo lleva entre 30 y 45 minutos.
+
+<Callout type="info">
+HubSpot y Factorial **no tienen integración nativa directa**. La conexión se hace a través de Zapier o Make (antes Integromat). Necesitarás cuenta en una de estas dos herramientas — te explicamos las dos opciones.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en HubSpot:** funciona desde el plan gratuito para la mayoría de casos. Si quieres sincronizar datos de contactos con propiedades personalizadas, necesitas al menos el plan **Starter** (desde 15 $/mes + IVA, aprox. 14 €/mes + IVA — verifica precio actual en hubspot.com).
+- **Cuenta en Factorial:** cualquier plan de pago incluye acceso a la API. El plan gratuito de Factorial **no permite** acceso a la API — necesitas al menos el plan **Básico**.
+- **Cuenta en Zapier o Make:** Zapier tiene un plan gratuito con hasta 100 tareas/mes. Make también tiene plan gratuito con 1.000 operaciones/mes. Para empezar, el gratuito de cualquiera de los dos es suficiente.
+- **Claves de API de Factorial:** las genera el administrador de tu cuenta desde la configuración. Te explicamos dónde en el Paso 1.
+- **Nivel técnico necesario:** no necesitas saber programar. Si sabes usar formularios web y copiar texto, puedes hacer esto. El único momento algo técnico es copiar la clave de API — y es literalmente copiar y pegar.
+
+---
+
+## Pasos
+
+### Paso 1: Obtén la clave de API de Factorial
+
+**Qué hacer:** Entra en tu cuenta de Factorial. En la esquina superior derecha, haz clic en tu avatar o nombre de empresa. Selecciona "Ajustes" en el menú desplegable. Dentro de Ajustes, busca la sección "Integraciones" o "API" en el menú lateral izquierdo. Haz clic en "Generar token de API" o "Crear nueva clave". Copia el token que aparece — es una cadena larga de letras y números.
+
+**Por qué:** Esta clave es la que autoriza a Zapier o Make a leer y escribir datos en tu cuenta de Factorial. Sin ella, la integración no puede autenticarse.
+
+**Qué verás:** Aparece un campo de texto con el token generado, habitualmente con un botón "Copiar". Guarda este token en un lugar seguro (un bloc de notas, por ejemplo) — no te lo vuelven a mostrar completo si cierras la ventana.
+
+**Nota:** Si no ves la sección de API en Ajustes, puede que tu usuario no tenga permisos de administrador. Pide al administrador de la cuenta que genere el token.
+
+---
+
+### Paso 2: Conecta tu cuenta de HubSpot en Zapier (o Make)
+
+**Qué hacer:** Entra en [zapier.com](https://zapier.com) con tu cuenta. En el menú lateral, haz clic en "Apps" y busca "HubSpot". Haz clic en "Connect" y sigue el proceso de autorización — te pedirá que inicies sesión en HubSpot y que aceptes los permisos. Cuando termine, verás HubSpot listado como "Connected" en tu panel de Zapier.
+
+**Por qué:** Zapier necesita autorización explícita de HubSpot para poder crear, leer o modificar contactos en tu CRM. Este paso es la forma oficial de conceder ese permiso — no se comparte tu contraseña con nadie.
+
+**Qué verás:** Una pantalla de confirmación de HubSpot que dice algo como "Has autorizado Zapier a acceder a tu cuenta". Después, vuelves automáticamente a Zapier con HubSpot ya conectado.
+
+---
+
+### Paso 3: Conecta Factorial en Zapier con la clave de API
+
+**Qué hacer:** En Zapier, ve de nuevo a "Apps" y busca "Factorial". Haz clic en "Connect". Zapier te pedirá la clave de API que generaste en el Paso 1 — pégala en el campo "API Key" y haz clic en "Yes, Continue".
+
+**Por qué:** A diferencia de HubSpot (que usa OAuth), Factorial se autentica mediante clave de API directa. Es más simple, pero requiere que hayas guardado el token del Paso 1.
+
+**Qué verás:** Si la clave es correcta, aparece un mensaje de confirmación y Factorial queda listado como "Connected". Si hay un error, Zapier te indica "Invalid API Key" — vuelve al Paso 1 y regenera un token nuevo.
+
+---
+
+### Paso 4: Crea el Zap — elige el activador (trigger)
+
+**Qué hacer:** Haz clic en "Create Zap" en el panel de Zapier. En el primer bloque ("Trigger"), selecciona "Factorial" como app. En el campo "Event", elige el evento que quieres usar como disparador. Los más útiles para una pyme son:
+- `"New Employee"` — se activa cuando se crea un empleado nuevo en Factorial
+- `"Employee Updated"` — se activa cuando se modifica algún dato de un empleado
+
+Selecciona la cuenta de Factorial que conectaste en el Paso 3 y haz clic en "Continue".
+
+**Por qué:** El trigger define cuándo se ejecuta la automatización. Si eliges "New Employee", cada vez que des de alta a alguien en Factorial, el Zap se activará automáticamente.
+
+**Qué verás:** Zapier muestra un ejemplo de los datos que llegan desde Factorial — nombre, apellidos, email, departamento, fecha de incorporación, etc. Confirma que los datos tienen sentido y haz clic en "Continue".
+
+---
+
+### Paso 5: Configura la acción en HubSpot
+
+**Qué hacer:** En el segundo bloque ("Action"), selecciona "HubSpot" como app. En "Event", elige la acción que quieres realizar:
+- `"Create Contact"` — crea un contacto nuevo en HubSpot con los datos del empleado
+- `"Create or Update Contact"` — si el contacto ya existe (por email), lo actualiza; si no, lo crea
+
+Selecciona tu cuenta de HubSpot. En la pantalla siguiente, mapea los campos: arrastra o selecciona qué dato de Factorial va a qué campo de HubSpot. Por ejemplo: el campo "Email" de Factorial → campo "Email" de HubSpot. El campo "First Name" de Factorial → "First Name" de HubSpot.
+
+**Por qué:** Este paso define qué información se copia y dónde. Sin el mapeo de campos, Zapier no sabe qué datos trasladar.
+
+**Qué verás:** Un formulario con los campos de HubSpot a la izquierda y un desplegable a la derecha donde eliges el dato de Factorial correspondiente. Cuando el mapeo está completo, haz clic en "Continue".
+
+---
+
+### Paso 6: Prueba el Zap y actívalo
+
+**Qué hacer:** Zapier ofrece un botón "Test & Review" antes de publicar el Zap. Haz clic en él. Zapier usará el empleado de ejemplo del Paso 4 para ejecutar la acción en HubSpot. Abre HubSpot en otra pestaña y comprueba que el contacto se ha creado correctamente en "Contactos". Si todo está bien, vuelve a Zapier y haz clic en "Publish Zap".
+
+**Por qué:** Probar antes de activar evita que se creen contactos duplicados o con datos incorrectos en HubSpot si hay algún error en el mapeo.
+
+**Qué verás:** En HubSpot, el contacto de prueba aparece en la lista de contactos con los campos que mapeaste. Si falta algún campo o está vacío, vuelve al Paso 5 y revisa el mapeo. Una vez publicado, el estado del Zap cambia a "On" (verde) en tu panel de Zapier.
+
+---
+
+## Errores comunes
+
+**"Invalid API Key" al conectar Factorial**
+*Síntoma:* Zapier muestra el mensaje "Invalid API Key" después de pegar el token de Factorial.
+*Causa:* El token se copió con un espacio en blanco al principio o al final, o el token caducó porque se regeneró desde Factorial después de copiarlo.
+*Solución:* Vuelve a Factorial, genera un token nuevo, cópialo haciendo clic en el botón "Copiar" (no lo selecciones manualmente para evitar espacios), y pégalo en Zapier.
+
+---
+
+**El contacto se crea en HubSpot pero sin el email**
+*Síntoma:* El contacto aparece en HubSpot con nombre y apellidos, pero el campo de email está vacío.
+*Causa:* En el mapeo del Paso 5, el campo "Email" de Factorial no se vinculó correctamente al campo "Email" de HubSpot. O el empleado en Factorial no tiene email registrado.
+*Solución:* Edita el Zap, ve al Paso 5 y comprueba que el campo "Email" de HubSpot tiene seleccionado el dato de Factorial correspondiente (normalmente llamado `email` o `email_address`). Si el empleado no tiene email en Factorial, añádeselo antes de volver a probar.
+
+---
+
+**El Zap se activa pero no hace nada (0 tareas ejecutadas)**
+*Síntoma:* El Zap aparece como activo pero en el historial no hay tareas ejecutadas, aunque se han creado empleados nuevos en Factorial.
+*Causa:* El plan gratuito de Zapier solo comprueba los triggers cada 15 minutos. Si el empleado se creó hace menos tiempo, el Zap aún no se ha ejecutado. También puede ser que el trigger esté mal configurado.
+*Solución:* Espera 15 minutos y comprueba el historial de nuevo. Si sigue sin ejecutarse, entra en el Zap, haz clic en "Test Trigger" en el Paso 4 y verifica que Factorial devuelve datos. Si devuelve datos pero el Zap no actúa, revisa el mapeo del Paso 5.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Una automatización activa que crea (o actualiza) un contacto en HubSpot cada vez que das de alta un empleado en Factorial.
+- Los datos básicos del empleado (nombre, apellidos, email, departamento) sincronizados automáticamente entre los dos sistemas.
+- Cero trabajo manual de copiar fichas de empleados entre plataformas.
+
+El siguiente paso lógico es crear un segundo Zap en sentido contrario: cuando se cierra un deal en HubSpot, crear automáticamente una tarea en Factorial para el responsable del cliente. O configurar notificaciones en Slack cuando el Zap detecta un nuevo empleado. Ambos flujos usan exactamente la misma estructura que acabas de aprender.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en HubSpot, puedes empezar con el plan gratuito — es suficiente para probar esta integración antes de decidir si necesitas un plan de pago:
+
+<AffiliateLink programSlug="hubspot" articleSlug="como-conectar-hubspot-con-factorial" label="Probar HubSpot gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Puedo hacer esta integración sin Zapier?
+
+Sí. Make (antes Integromat) es una alternativa directa a Zapier con plan gratuito más generoso (1.000 operaciones/mes frente a las 100 tareas de Zapier). La lógica es idéntica: trigger en Factorial, acción en HubSpot. Si ya usas Make para otras automatizaciones, úsalo — no merece la pena tener las dos herramientas.
+
+### ¿Funciona esta integración con el plan gratuito de HubSpot?
+
+Para crear y actualizar contactos básicos, sí. El plan gratuito de HubSpot permite gestionar contactos sin límite. Si quieres sincronizar propiedades personalizadas (campos que no son nombre, email, teléfono) necesitas al menos el plan **Starter** — verifica las condiciones actuales en hubspot.com.
+
+### ¿Qué pasa si un empleado ya existe como contacto en HubSpot?
+
+Depende de cómo configures la acción en el Paso 5. Si eliges `"Create or Update Contact"`, Zapier busca el contacto por email y lo actualiza si ya existe. Si eliges `"Create Contact"`, se crea un duplicado. Para evitar duplicados, usa siempre `"Create or Update Contact"` y asegúrate de que el email de Factorial está mapeado al email de HubSpot.
+
+### ¿Esta integración cumple con el GDPR?
+
+La integración en sí no incumple el GDPR, pero sí hay que tener en cuenta dos cosas. Primero: estás transfiriendo datos de empleados (personas físicas) entre sistemas — asegúrate de que tu política interna de protección de datos lo contempla. Segundo: tanto Zapier como Make tienen sus propios DPA disponibles — fírmalos desde el panel de tu cuenta si aún no lo has hecho. Para dudas específicas sobre LOPDGDD, consulta con tu asesor de protección de datos.
+
+### ¿Cuánto cuesta hacer esta integración?
+
+El coste depende del volumen. Si das de alta menos de 5-6 empleados al mes, el plan gratuito de Zapier (100 tareas/mes) es suficiente. Si tienes más movimiento o quieres añadir más Zaps, el plan **Starter** de Zapier cuesta 19,99 $/mes (aprox. 18 €/mes según cambio — verifica en zapier.com). El plan gratuito de Make cubre hasta 1.000 operaciones/mes, lo que en la mayoría de pymes de menos de 20 personas es más que suficiente.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
