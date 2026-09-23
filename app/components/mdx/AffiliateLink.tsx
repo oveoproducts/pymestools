@@ -15,6 +15,7 @@ const WEBSITE_URLS: Record<string, string> = {
   'zoho-crm': 'https://www.zoho.com/es-xl/crm/',
   mailrelay: 'https://mailrelay.com/es/',
   factorial: 'https://factorialhr.es/',
+  nucleo360: 'https://nucleo360.com/',
   make: 'https://www.make.com/en',
   sesame: 'https://www.sesamehr.es/',
   mailchimp: 'https://mailchimp.com/',
