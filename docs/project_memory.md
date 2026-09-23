@@ -100,6 +100,18 @@ _(vacío)_
 - [ ] Configurar Resend para notificaciones del pipeline (falta clave real)
 - [ ] Aplicar a programas de afiliado (NO antes de tener tráfico)
 - [ ] Configurar Railway para pipeline continuo (falta API token)
+- [ ] Investigar "Power CM Software" antes de darse de alta (contacto entrante,
+      2026-09-24): un "Creator Network" de afiliados (cualquiera publica una
+      app), no un fabricante de software con producto propio. No aparece en
+      G2/Trustpilot/Capterra ni prensa — el único rastro fuera de su propia
+      web es un PR comunitario en GitHub añadiéndolo a un listado de programas
+      de afiliados. El correo de contacto tampoco nombra ningún producto
+      concreto, solo "varios de nuestro catálogo" — patrón de envío masivo.
+      Antes de registrarse: verificar equipo real (LinkedIn, no solo la web),
+      qué apps concretas encajarían, y referencias de otros partners que
+      hayan cobrado de verdad. Registro:
+      https://partners.powercm-software.com/auth?mode=up ·
+      condiciones: https://partners.powercm-software.com/terms
 
 ---
 
