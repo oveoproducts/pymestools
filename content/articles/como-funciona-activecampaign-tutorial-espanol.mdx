@@ -1,0 +1,192 @@
+---
+title: "Cómo funciona ActiveCampaign: tutorial en español paso a paso"
+slug: "como-funciona-activecampaign-tutorial-espanol"
+category: "email-marketing"
+description: "Guía paso a paso para entender y configurar ActiveCampaign desde cero. Tu primera automatización funcionando en menos de 45 minutos, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["activecampaign"]
+keywords:
+  primary: "como funciona activecampaign tutorial español"
+  secondary:
+    - "activecampaign tutorial español"
+    - "activecampaign primeros pasos"
+    - "activecampaign automatizaciones pymes"
+    - "configurar activecampaign desde cero"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía tendrás ActiveCampaign configurado con tu primera lista de contactos, un email de bienvenida automático y una automatización básica funcionando. Sin tocar una línea de código. Si tienes los textos preparados, el proceso completo lleva menos de 45 minutos.
+
+Esto está disponible desde el plan **Starter** de ActiveCampaign — el más básico de pago. No hay plan gratuito permanente, pero sí trial de 14 días con todas las funciones.
+
+<Callout type="warning">
+**Ojo con el precio antes de empezar:** ActiveCampaign cobra por número de contactos, no por emails enviados. Con 500 contactos el precio es uno; con 5.000, se multiplica considerablemente. Verifica el coste real para tu base de datos antes de comprometerte. Precios consultados en enero 2025 — verifica siempre en activecampaign.com.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en ActiveCampaign:** El trial de 14 días es suficiente para seguir toda esta guía. No necesitas introducir tarjeta para empezar.
+- **Una lista de contactos:** Puede ser un Excel o CSV con nombre y email. Aunque solo sean 5 contactos de prueba, los necesitas para ver cómo funciona todo.
+- **Un texto de bienvenida preparado:** El asunto y el cuerpo del email que recibirá alguien al suscribirse. Sin esto, el paso 4 se atasca.
+- **Acceso desde ordenador:** El panel de ActiveCampaign funciona en el navegador. La app móvil es útil para consultar, pero no para configurar automatizaciones.
+- **Nivel técnico necesario:** No hace falta saber programar. Si sabes usar el correo electrónico y has creado algún documento en Word, tienes nivel suficiente.
+
+---
+
+## Pasos
+
+### Paso 1: Crea tu cuenta y elige el idioma del panel
+
+**Qué hacer:** Ve a activecampaign.com y haz clic en "Try it free". Rellena el formulario con tu email y nombre de empresa. Una vez dentro, ve a la esquina superior derecha, haz clic en tu nombre o icono de perfil, selecciona "My Profile" y busca la opción de idioma. Cambia a **"Spanish"**.
+
+**Por qué:** El panel de ActiveCampaign está disponible en español, pero no siempre se activa por defecto. Trabajar en español evita confusiones con los nombres de los menús — especialmente en automatizaciones, donde cada término importa.
+
+**Qué verás:** El menú lateral izquierdo cambiará a español. Verás opciones como "Contactos", "Campañas", "Automatizaciones" y "Formularios". Si algo sigue en inglés, recarga la página.
+
+---
+
+### Paso 2: Importa tus primeros contactos
+
+**Qué hacer:** En el menú lateral, haz clic en "Contactos" y luego en el botón azul "Importar". Selecciona "Importar desde archivo". Sube tu CSV o Excel. ActiveCampaign te pedirá que asocies cada columna de tu archivo con un campo: asocia la columna de emails con "Email" y la de nombres con "Nombre". Haz clic en "Siguiente" y confirma la importación.
+
+**Por qué:** Sin contactos en el sistema, no puedes probar nada. Aunque sea una lista pequeña de prueba, necesitas datos reales para verificar que los emails llegan y las automatizaciones se activan.
+
+**Qué verás:** Una barra de progreso durante la importación. Al terminar, aparecerá un resumen: cuántos contactos se han importado correctamente y si hubo algún error (normalmente emails con formato incorrecto).
+
+**Nota:** Durante la importación, ActiveCampaign te preguntará si quieres asignar estos contactos a una **lista**. Crea una lista nueva en ese momento — llámala algo descriptivo como "Clientes 2025" o "Leads web". Las listas son la forma principal de organizar contactos en ActiveCampaign.
+
+---
+
+### Paso 3: Crea tu primera lista (si no la creaste en el paso anterior)
+
+**Qué hacer:** Ve a "Contactos" → "Listas" en el menú lateral. Haz clic en "Nueva lista". Dale un nombre, una descripción corta y una dirección postal (obligatoria por normativa anti-spam). Guarda.
+
+**Por qué:** En ActiveCampaign, las automatizaciones y campañas siempre se envían a una lista o a un segmento de ella. Sin lista, no puedes enviar nada.
+
+**Qué verás:** La lista nueva aparece en el panel con 0 contactos si la creaste aquí, o con los contactos importados si la asignaste durante la importación del paso anterior.
+
+<Callout type="info">
+**🇪🇸 Cumplimiento GDPR/LOPDGDD:** ActiveCampaign firma un DPA (Data Processing Agreement) bajo GDPR. Los datos pueden almacenarse en servidores fuera de la UE — revisa su política de privacidad y adapta tu DPA con la AEPD si tienes contactos de personas físicas en España. Es tu responsabilidad, no la de ActiveCampaign.
+</Callout>
+
+---
+
+### Paso 4: Crea un email de bienvenida como campaña
+
+**Qué hacer:** Ve a "Campañas" en el menú lateral y haz clic en "Nueva campaña". Selecciona el tipo **"Estándar"**. Ponle un nombre interno (solo lo ves tú) y selecciona la lista que creaste. En la siguiente pantalla, elige una plantilla — empieza con una plantilla simple de una columna. En el editor, sustituye el texto de ejemplo por tu mensaje de bienvenida. Cuando termines, haz clic en "Siguiente" para revisar el asunto, el nombre del remitente y el email de respuesta. Guarda como borrador.
+
+**Por qué:** Antes de crear automatizaciones, es útil tener al menos un email diseñado y guardado. Las automatizaciones llaman a emails existentes — no se crean desde cero dentro de la automatización.
+
+**Qué verás:** El editor visual de ActiveCampaign: un área central con bloques de texto e imagen que puedes arrastrar. A la derecha, opciones de estilo. En la parte superior, los pasos del proceso numerados.
+
+---
+
+### Paso 5: Crea tu primera automatización de bienvenida
+
+**Qué hacer:** Ve a "Automatizaciones" en el menú lateral. Haz clic en "Nueva automatización". Selecciona la opción **"Empezar desde cero"**. Se abrirá el constructor visual. Lo primero que te pide es el **activador** — el evento que pone en marcha la automatización. Selecciona **"Se suscribe a una lista"** y elige la lista que creaste. Haz clic en "Añadir inicio".
+
+**Por qué:** El activador es la condición que decide cuándo entra un contacto en la automatización. "Se suscribe a una lista" es el más habitual para bienvenidas — cada vez que alguien nuevo entre en tu lista, recibirá la secuencia automáticamente.
+
+**Qué verás:** Un lienzo en blanco con el bloque de activador en la parte superior. A partir de aquí, vas añadiendo acciones debajo.
+
+---
+
+### Paso 6: Añade el envío del email de bienvenida
+
+**Qué hacer:** Debajo del bloque de activador, haz clic en el botón **"+"** (añadir acción). Selecciona **"Enviar un email"**. En el desplegable, elige el email de bienvenida que creaste en el paso 4. Confirma.
+
+Añade un segundo bloque **"+"** → **"Esperar"** → **"1 día"**. Después, otro **"+"** → **"Enviar un email"** si quieres una secuencia de seguimiento. Si por ahora solo quieres un email, no añadas más bloques.
+
+**Por qué:** La lógica de "Enviar → Esperar → Enviar" es la base de cualquier secuencia de nurturing. El bloque de espera evita que el contacto reciba todos los emails a la vez.
+
+**Qué verás:** Un flujo visual con bloques conectados de arriba a abajo. Cada bloque tiene un icono y el nombre de la acción. El conjunto forma un diagrama que puedes leer de un vistazo.
+
+---
+
+### Paso 7: Activa la automatización
+
+**Qué hacer:** En la esquina superior derecha del constructor, verás un selector con estado **"Inactiva"**. Cámbialo a **"Activa"**. ActiveCampaign te pedirá confirmación. Acepta.
+
+**Por qué:** Las automatizaciones se guardan en modo inactivo para que puedas configurarlas sin que se disparen accidentalmente. Solo empieza a funcionar cuando la activas manualmente.
+
+**Qué verás:** El selector cambia a verde con el texto "Activa". A partir de ese momento, cualquier contacto nuevo que entre en la lista recibirá el email de bienvenida automáticamente.
+
+---
+
+## Errores comunes
+
+**El email de bienvenida no llega en las pruebas**
+*Síntoma:* Añades un contacto de prueba a la lista y no recibes ningún email.
+*Causa:* La automatización sigue en estado "Inactiva", o el contacto de prueba ya estaba en la lista antes de activar la automatización — los contactos existentes no se procesan de nuevo.
+*Solución:* Verifica que el selector en la automatización está en verde ("Activa"). Para probar, elimina el contacto de la lista, espera 1 minuto y vuelve a añadirlo.
+
+---
+
+**El CSV no se importa correctamente**
+*Síntoma:* ActiveCampaign importa 0 contactos o da error en todas las filas.
+*Causa:* El archivo CSV tiene la primera fila como cabecera con nombres de columnas que incluyen caracteres especiales (tildes, ñ), o el archivo está guardado con codificación incorrecta.
+*Solución:* Abre el CSV en Excel, guárdalo de nuevo como "CSV UTF-8 (delimitado por comas)". Esa codificación es la que acepta ActiveCampaign sin problemas.
+
+---
+
+**Los emails van a la carpeta de spam en las pruebas**
+*Síntoma:* El email llega, pero directamente a la carpeta de correo no deseado.
+*Causa:* El dominio de envío no tiene SPF ni DKIM configurados. ActiveCampaign te permite enviar desde cualquier email, pero sin esos registros DNS, los proveedores de correo desconfían.
+*Solución:* En ActiveCampaign, ve a "Configuración" → "Avanzado" → "Autenticación de dominio". Sigue las instrucciones para añadir los registros SPF y DKIM en tu proveedor de dominio (OVH, Nominalia, GoDaddy, etc.). Si no tienes acceso al DNS, pídele a tu informático que lo haga — es un paso de 10 minutos.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Una lista de contactos activa en ActiveCampaign con tus primeros contactos importados.
+- Un email de bienvenida diseñado y listo para enviar.
+- Una automatización activa que envía ese email a cada nuevo contacto que entre en la lista, sin que tengas que hacer nada manualmente.
+
+El siguiente paso lógico es crear un **formulario de captación** en ActiveCampaign para conectar tu web con la lista — así los leads que lleguen desde tu web entran directamente en la automatización. También puedes explorar la segmentación por etiquetas para enviar emails diferentes según el comportamiento de cada contacto.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en ActiveCampaign, aquí tienes el acceso al trial de 14 días:
+
+<AffiliateLink programSlug="activecampaign" articleSlug="como-funciona-activecampaign-tutorial-espanol" label="Probar ActiveCampaign gratis 14 días" />
+
+Si necesitas captar contactos desde tu web antes de conectarlos con ActiveCampaign, **Elementor** (para WordPress) o **Typeform** tienen integraciones nativas. Pero si tu web ya usa un formulario de contacto básico, ActiveCampaign también tiene su propio constructor de formularios integrado — no necesitas herramienta externa para empezar.
+
+---
+
+## Preguntas frecuentes
+
+### ¿ActiveCampaign está en español?
+
+Sí. El panel de administración, el editor de emails y la mayoría de la documentación están disponibles en español. El soporte por chat también atiende en español, aunque en horario de oficina americano — las respuestas en español pueden tardar más que en inglés.
+
+### ¿Puedo usar ActiveCampaign gratis?
+
+No hay plan gratuito permanente. Hay un trial de 14 días con acceso completo a todas las funciones, sin necesidad de tarjeta de crédito. Pasados los 14 días, necesitas contratar un plan de pago para seguir accediendo. No publican el precio en todos los mercados por igual — hay que solicitar presupuesto o verlo directamente en su web según el número de contactos.
+
+### ¿Cuántos contactos puedo tener en ActiveCampaign?
+
+Los planes se escalan por número de contactos: existen rangos de 500, 1.000, 2.500, 5.000 contactos y más. El precio sube con cada tramo. Si tienes, por ejemplo, 1.200 contactos, pagas el tramo de 2.500 — no puedes quedarte en el límite exacto. Revisa los tramos actuales en activecampaign.com antes de contratar.
+
+### ¿Es complicado conectar ActiveCampaign con mi web?
+
+Depende de cómo está hecha tu web. Si usas WordPress, hay un plugin oficial que lo conecta en pocos minutos. Si usas Wix, Shopify o Squarespace, también hay integración nativa. Para webs a medida, la conexión se hace mediante API o a través de Zapier — ahí sí necesitas ayuda técnica.
+
+### ¿ActiveCampaign cumple con el GDPR y la normativa española?
+
+ActiveCampaign cumple GDPR y ofrece un DPA para firmar. Sin embargo, los datos pueden almacenarse en servidores fuera de la UE. Si tratas datos de personas físicas en España, revisa su política de privacidad y consulta con tu asesor si necesitas adaptar tu registro de actividades de tratamiento ante la AEPD.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
