@@ -136,6 +136,7 @@ Ver `docs/LESSONS_LEARNED.md` para el detalle completo. Resumen crítico:
 - GitHub repo: `[COMPLETAR]`
 - Resend API key: `[COMPLETAR — en .env.local]`
 - Anthropic API key: `[COMPLETAR — en .env.local]`
+- LinkedIn (perfil de empresa, creado 2026-09-28): https://www.linkedin.com/in/pymestools-pymestools-43a45943b — usar este enlace cuando un programa de afiliados pida "perfil de LinkedIn" o "redes sociales". Cuenta de la empresa (individual, no "business" — ver nota en la revisión de sept. 2026 sobre por qué).
 
 ---
 
