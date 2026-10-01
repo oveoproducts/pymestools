@@ -112,6 +112,15 @@ _(vacío)_
       hayan cobrado de verdad. Registro:
       https://partners.powercm-software.com/auth?mode=up ·
       condiciones: https://partners.powercm-software.com/terms
+- [ ] HubSpot afiliados: **rechazado dos veces** (2026-09, 2026-09-30). La
+      segunda respuesta (Mary Rose Gadayan, HubSpot Affiliate Team) ya da
+      criterio concreto y verificable, no genérico:
+      - Tráfico mínimo 1.000 visitas/mes (lo miden con Ahrefs y Similarweb)
+      - Contenido con enfoque B2B claro — ya lo cumplimos
+      - Publicación/actualización regular, últimos 3 meses — ya lo cumplimos
+      El bloqueo real es casi seguro el tráfico mínimo. No reintentar hasta
+      verificar en GSC/GA4 que superamos las 1.000 visitas/mes — una tercera
+      denegación por el mismo motivo es peor señal que esperar.
 
 ---
 
