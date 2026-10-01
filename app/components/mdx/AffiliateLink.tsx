@@ -32,6 +32,7 @@ const WEBSITE_URLS: Record<string, string> = {
   n8n: 'https://n8n.io/',
   salesforce: 'https://www.salesforce.com/es/',
   'hubspot-crm': 'https://www.hubspot.es/products/crm',
+  hubspot: 'https://www.hubspot.es/products/crm',
   copper: 'https://www.copper.com/',
   factusol: 'https://www.factusol.com/',
   kenjo: 'https://www.kenjo.io/es',
