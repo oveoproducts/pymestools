@@ -148,11 +148,11 @@ function generateKeywordCandidates(program: AffiliateProgram): KeywordCandidate[
 function deriveCategory(program: AffiliateProgram): string {
   const slug = program.slug.toLowerCase()
   if (['getresponse', 'brevo', 'activecampaign'].includes(slug)) return 'email-marketing'
-  if (['hubspot'].includes(slug)) return 'crm'
+  if (['hubspot', 'zoho-crm', 'pipedrive'].includes(slug)) return 'crm'
   if (['semrush'].includes(slug)) return 'seo'
   if (['hostinger'].includes(slug)) return 'hosting'
   if (['notion'].includes(slug)) return 'productividad'
-  return 'herramientas-pymes'
+  return 'comparativas'
 }
 
 // ---------------------------------------------------------------------------

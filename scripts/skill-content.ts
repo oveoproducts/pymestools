@@ -162,7 +162,7 @@ Devuelve SOLO el bloque MDX completo. Sin texto fuera del MDX.`
 
   const dynamicText = `Escribe un artículo MDX completo para la keyword: "${keyword.keyword}"
 
-Categoría: ${keyword.category ?? 'herramientas-pymes'}
+Categoría: ${keyword.category ?? 'comparativas'}
 Slug: ${slug}
 Tipo: ${articleType}
 Intención de búsqueda: ${keyword.search_intent ?? 'commercial'}
@@ -296,7 +296,7 @@ async function insertArticle(
   const insert: ArticleInsert = {
     title: keyword.keyword, // TODO: extract from MDX frontmatter
     slug,
-    category: keyword.category ?? 'herramientas-pymes',
+    category: keyword.category ?? 'comparativas',
     type: articleType,
     keyword_id: keyword.id,
     status: 'draft',
