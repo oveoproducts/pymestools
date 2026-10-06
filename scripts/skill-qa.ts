@@ -225,7 +225,7 @@ Formato:
   const userPrompt = `Evalúa este artículo:
 Título: ${articleTitle}
 
-${mdx.slice(0, 4000)}${mdx.length > 4000 ? '\n[...truncado para revisión...]' : ''}`
+${mdx.slice(0, 40000)}${mdx.length > 40000 ? '\n[...truncado para revisión...]' : ''}`
 
   const message = await anthropic.messages.create({
     model: 'claude-sonnet-4-5',
