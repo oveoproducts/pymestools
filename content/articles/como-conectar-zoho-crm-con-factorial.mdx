@@ -1,0 +1,214 @@
+---
+title: "Cómo conectar Zoho CRM con Factorial: guía paso a paso"
+slug: "como-conectar-zoho-crm-con-factorial"
+category: "crm"
+description: "Guía paso a paso para conectar Zoho CRM con Factorial y sincronizar datos de empleados y clientes. Resultado en menos de 45 minutos, sin conocimientos técnicos avanzados."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-31T00:00:00Z"
+tools: ["zoho-crm"]
+keywords:
+  primary: "como conectar zoho crm con factorial"
+  secondary:
+    - "integracion zoho crm factorial"
+    - "sincronizar zoho factorial"
+    - "zoho crm factorial zapier"
+    - "automatizacion crm rrhh pymes españa"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Zoho CRM y Factorial intercambiando datos automáticamente. Los contactos comerciales que cierren una venta podrán, por ejemplo, generar una tarea en Factorial para que RRHH les asigne un gestor de cuenta o procese un contrato — sin que nadie tenga que copiar datos a mano.
+
+El proceso lleva unos 40 minutos la primera vez. Una vez configurado, funciona solo.
+
+<Callout type="warning">
+**Antes de empezar:** Zoho CRM y Factorial no tienen integración nativa directa a día de hoy. La conexión se hace a través de una plataforma de automatización intermedia — Zapier o Make (antes Integromat). Necesitarás una cuenta en una de las dos. Te explicamos cuál elegir según tu caso.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Zoho CRM:** El plan gratuito de Zoho CRM es suficiente para probar la integración. Para uso en producción, necesitas al menos el plan **Standard** (14 €/usuario/mes + IVA) que incluye acceso completo a la API. Precios consultados en enero 2025 — verifica en zoho.com/crm/zohocrm-pricing.html.
+- **Cuenta en Factorial:** Cualquier plan de pago de Factorial da acceso a la API. Si solo tienes el plan gratuito, no podrás usar la integración por API — necesitas al menos el plan **Starter**. Confirma en factorialhr.com/es/precios.
+- **Cuenta en Zapier o Make:** Zapier tiene plan gratuito con 100 tareas/mes (suficiente para empezar). Make tiene plan gratuito con 1.000 operaciones/mes. Te explicamos la diferencia en el Paso 1.
+- **Acceso de administrador** en ambas herramientas — no funciona con usuarios de solo lectura.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes seguir instrucciones en una interfaz web y copiar y pegar texto, es suficiente. El único momento algo más técnico es cuando generates las claves API — está documentado paso a paso aquí.
+
+---
+
+## Pasos
+
+### Paso 1: Elige tu plataforma de automatización (Zapier o Make)
+
+**Qué hacer:** Decide si usarás Zapier o Make como puente entre Zoho CRM y Factorial. Ambas tienen plan gratuito suficiente para empezar.
+
+**Por qué:** Sin esta plataforma intermedia no hay forma de conectar las dos herramientas sin programar. Zapier es más sencillo de configurar; Make es más potente y barato si tienes muchas automatizaciones.
+
+**Qué verás:** No hay nada que ver en pantalla todavía — es una decisión previa.
+
+Usa **Zapier** si:
+- Eres nuevo en automatizaciones y quieres algo visual y guiado
+- Tienes pocas integraciones (menos de 5 "Zaps" activos)
+
+Usa **Make** si:
+- Ya has usado herramientas similares antes
+- Quieres pagar menos a largo plazo con mayor volumen de tareas
+
+Para este tutorial usamos **Zapier** como referencia, pero el proceso en Make es equivalente.
+
+---
+
+### Paso 2: Obtén tu clave API de Zoho CRM
+
+**Qué hacer:** Entra en tu cuenta de Zoho CRM. Ve al icono de tu perfil en la esquina superior derecha y haz clic en `"Mi perfil"`. En el menú lateral busca `"Preferencias del desarrollador"` → `"API"`. Allí verás tu **Clave de API** (o "Auth Token"). Cópiala y guárdala en un lugar seguro.
+
+Si usas Zoho CRM en sus versiones más recientes (CRM Plus o posteriores a 2021), el acceso API funciona mediante **OAuth 2.0** en lugar de una clave simple. En ese caso, ve a `"Configuración"` → `"Desarrolladores"` → `"Clientes OAuth"` y crea un nuevo cliente del tipo `"Basado en servidor"`. Guarda el **Client ID** y el **Client Secret** que te genera.
+
+**Por qué:** Zapier necesita esta clave para identificarse ante Zoho CRM y leer o escribir datos en tu cuenta. Sin ella, la conexión no es posible.
+
+**Qué verás:** Una cadena larga de caracteres alfanuméricos — eso es tu clave. Si ves un error de permisos, tu usuario no tiene nivel de administrador.
+
+---
+
+### Paso 3: Obtén tu clave API de Factorial
+
+**Qué hacer:** Entra en Factorial con tu cuenta de administrador. Ve a `"Configuración"` en el menú principal (icono de engranaje, abajo a la izquierda). Dentro de Configuración, busca la sección `"Integraciones"` → `"API"`. Haz clic en `"Generar nueva clave de API"`. Dale un nombre descriptivo (por ejemplo: `"Zapier Zoho CRM"`). Copia la clave que aparece — **solo se muestra una vez**.
+
+**Por qué:** Igual que con Zoho, Factorial necesita verificar que Zapier tiene permiso para acceder a tus datos de RRHH.
+
+**Qué verás:** Una clave del tipo `"fct_live_XXXXXXXXXXXXXXXX"`. Si no ves la sección API en Configuración, tu plan de Factorial no incluye acceso a la API — contacta con su soporte para confirmar.
+
+<Callout type="warning">
+**Guarda la clave en ese momento.** Factorial no la vuelve a mostrar después de cerrar esa ventana. Si la pierdes, tendrás que generar una nueva y actualizar la conexión en Zapier.
+</Callout>
+
+---
+
+### Paso 4: Crea la conexión en Zapier
+
+**Qué hacer:** Entra en zapier.com y haz clic en `"Create"` → `"Zaps"`. En el editor de Zaps, el primer bloque es el **Trigger** (activador) y el segundo es la **Action** (acción).
+
+Para el **Trigger**, busca `"Zoho CRM"` en el buscador de aplicaciones. Selecciónalo y elige el evento que quieres que dispare la automatización. El más común para conectar con Factorial es `"New or Updated Contact"` (nuevo contacto o contacto actualizado) o `"Deal Stage Changed"` (cuando un trato cambia de fase).
+
+Zapier te pedirá conectar tu cuenta de Zoho CRM. Haz clic en `"Sign in to Zoho CRM"` e introduce la clave API o sigue el flujo OAuth según el tipo de clave que generaste en el Paso 2.
+
+**Por qué:** El Trigger define cuándo se va a ejecutar la automatización. Tienes que pensar qué evento en Zoho CRM debe provocar una acción en Factorial.
+
+**Qué verás:** Una pantalla con opciones de configuración del trigger y, si la conexión es correcta, un mensaje `"Connected"` en verde junto al nombre de tu cuenta de Zoho.
+
+---
+
+### Paso 5: Configura la Action en Factorial
+
+**Qué hacer:** En el segundo bloque del Zap (la Action), busca `"Factorial"` en el buscador de aplicaciones.
+
+Si Factorial no aparece en Zapier como integración nativa, selecciona `"Webhooks by Zapier"` como Action y usa la URL del webhook de Factorial. Esta URL la encuentras en Factorial en `"Configuración"` → `"Integraciones"` → `"Webhooks"` → `"Añadir webhook"`.
+
+Elige la acción que quieres ejecutar en Factorial. Las opciones más habituales son crear un empleado, actualizar datos de un contacto existente, o lanzar una tarea de RRHH.
+
+Conecta tu cuenta de Factorial pegando la clave API que generaste en el Paso 3.
+
+**Por qué:** La Action es lo que Factorial hace cuando Zoho CRM dispara el evento. Sin configurar esto, el Zap no tiene ningún efecto práctico.
+
+**Qué verás:** Los campos que puedes rellenar con datos que vienen de Zoho CRM. Por ejemplo, el campo `"Nombre"` de Factorial puedes mapearlo con el campo `"First Name"` que llega desde Zoho. Esto se hace arrastrando o seleccionando los campos en el editor visual.
+
+---
+
+### Paso 6: Prueba el Zap antes de activarlo
+
+**Qué hacer:** Zapier tiene un botón `"Test step"` en cada bloque. Úsalo para verificar que:
+
+1. Zoho CRM devuelve datos reales de tu cuenta (verás un contacto o trato de muestra)
+2. Factorial recibe esos datos y los procesa correctamente (verás una confirmación de éxito)
+
+Si la prueba falla, Zapier te muestra el mensaje de error exacto. Los más comunes los explicamos en la sección siguiente.
+
+Una vez que ambos pasos muestran `"Test successful"`, haz clic en `"Publish"` para activar el Zap.
+
+**Por qué:** Activar un Zap sin probarlo primero puede crear registros incorrectos o duplicados en Factorial. La prueba cuesta 30 segundos y evita problemas.
+
+**Qué verás:** Una pantalla con el Zap en estado `"On"` (activo) y un resumen de cuándo se ejecutará. Desde ese momento, la integración funciona automáticamente.
+
+---
+
+## Errores comunes
+
+**La conexión con Zoho CRM falla con error "Invalid API Key"**
+
+*Síntoma:* Zapier muestra un error en rojo al intentar conectar Zoho CRM.
+
+*Causa:* La clave API que has pegado tiene un espacio al principio o al final, o tu cuenta de Zoho usa OAuth 2.0 y has intentado usar una clave simple.
+
+*Solución:* Vuelve al Paso 2 y regenera la clave. Al copiarla, usa `Ctrl+A` para seleccionar todo el texto del campo antes de copiar, para asegurarte de no dejar caracteres ocultos. Si tu cuenta usa OAuth, asegúrate de seleccionar el tipo de conexión correcto en Zapier cuando te lo pide.
+
+---
+
+**Factorial no aparece como aplicación en Zapier**
+
+*Síntoma:* Buscas "Factorial" en Zapier y no aparece ningún resultado o aparece una versión desactualizada.
+
+*Causa:* La integración nativa de Factorial en Zapier es reciente y puede no estar disponible en todos los planes de Zapier.
+
+*Solución:* Usa `"Webhooks by Zapier"` como Action alternativa (está disponible en el plan gratuito de Zapier). En Factorial, genera la URL de webhook desde `"Configuración"` → `"Integraciones"` → `"Webhooks"` y pégala en Zapier. El comportamiento es el mismo, aunque la configuración es algo más manual.
+
+---
+
+**Los datos llegan a Factorial pero en campos incorrectos**
+
+*Síntoma:* Se crea el registro en Factorial pero el nombre aparece en el campo de email, o los campos están vacíos.
+
+*Causa:* El mapeo de campos en el Paso 5 no está configurado correctamente.
+
+*Solución:* Vuelve al editor del Zap, haz clic en la Action de Factorial y revisa cada campo. Asegúrate de que cada campo de Factorial está mapeado con el campo correspondiente de Zoho CRM — no con texto estático. Usa siempre las variables dinámicas (aparecen con un icono de rayo en Zapier) en lugar de escribir el valor directamente.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Una integración activa entre Zoho CRM y Factorial que se ejecuta automáticamente cuando ocurre el evento que has configurado.
+- Datos sincronizados entre tu CRM y tu herramienta de RRHH sin intervención manual — se acabó el copiar contactos de una herramienta a otra.
+- El siguiente paso lógico es crear un segundo Zap en dirección inversa: que los cambios en Factorial (por ejemplo, un nuevo empleado) actualicen un registro en Zoho CRM. El proceso es el mismo intercambiando el Trigger y la Action.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Zoho CRM o quieres probar sus funcionalidades antes de configurar la integración:
+
+<AffiliateLink programSlug="zoho-crm" articleSlug="como-conectar-zoho-crm-con-factorial" label="Probar Zoho CRM gratis" />
+
+Zoho CRM tiene un plan gratuito para hasta 3 usuarios que incluye acceso a la API básica — suficiente para configurar y probar esta integración con Factorial antes de comprometerte con un plan de pago.
+
+---
+
+## Preguntas frecuentes
+
+### ¿Se puede conectar Zoho CRM con Factorial sin usar Zapier?
+
+Sí, pero requiere programación. Ambas herramientas tienen API REST documentada públicamente. Si tienes un desarrollador en el equipo, puede construir la integración directamente sin plataformas intermedias. Para la mayoría de pymes, Zapier o Make es la opción más práctica sin coste de desarrollo.
+
+### ¿Cuánto cuesta mantener esta integración en marcha?
+
+Depende del volumen. El plan gratuito de Zapier incluye 100 tareas al mes — si la integración se dispara más de 100 veces al mes, necesitarás el plan Starter de Zapier (unos 19,99 $/mes, sin IVA). Para volúmenes altos, Make es más económico. El coste de Zoho CRM y Factorial va aparte.
+
+### ¿Es seguro pasar datos de empleados y clientes por Zapier?
+
+Zapier cumple con GDPR y tiene disponible un DPA (Data Processing Agreement) para firmar. Los datos se transmiten cifrados. Dicho esto, si tu empresa tiene políticas estrictas de datos, consulta con tu DPO antes de configurar la integración, ya que los datos pasan por servidores de Zapier antes de llegar a Factorial.
+
+### ¿Qué pasa si Zoho CRM o Factorial cambian su interfaz?
+
+La integración vía API es más estable que las integraciones por scraping de pantalla — no se rompe por cambios visuales. Solo se ve afectada si alguno de los dos proveedores cambia o elimina un endpoint de su API, lo cual es poco frecuente y suelen anunciarlo con antelación. Zapier avisa por email si un Zap deja de funcionar.
+
+### ¿Puedo hacer esto con el plan gratuito de Zoho CRM?
+
+El plan gratuito de Zoho CRM tiene acceso a la API, pero con limitaciones de llamadas diarias. Para una pyme con menos de 50 operaciones al día, el gratuito es suficiente para probar. En producción real, el plan Standard (14 €/usuario/mes + IVA) es más estable para integraciones continuas. Precios verificados en enero 2025.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
