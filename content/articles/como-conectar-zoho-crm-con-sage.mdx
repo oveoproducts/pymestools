@@ -1,0 +1,193 @@
+---
+title: "Cómo conectar Zoho CRM con Sage: guía paso a paso"
+slug: "como-conectar-zoho-crm-con-sage"
+category: "crm"
+description: "Guía paso a paso para conectar Zoho CRM con Sage y sincronizar clientes, facturas y oportunidades sin duplicar datos. Resultado en menos de 1 hora, sin conocimientos técnicos avanzados."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00Z"
+tools: ["zoho-crm"]
+keywords:
+  primary: "como conectar zoho crm con sage"
+  secondary:
+    - "integracion zoho crm sage"
+    - "sincronizar zoho crm con sage contabilidad"
+    - "zoho crm sage 50 integracion"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Zoho CRM conectado con Sage para que los clientes que cierras en el CRM aparezcan automáticamente en contabilidad — sin copiar datos a mano ni cuadrar hojas de Excel.
+
+El proceso completo lleva entre 45 minutos y 1 hora la primera vez. Una vez configurado, funciona solo.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Zoho CRM:** Se necesita el plan **Standard o superior** (desde 14 €/usuario/mes + IVA). El plan gratuito no incluye acceso a la API ni al marketplace de integraciones. Puedes usar el trial de 15 días del plan Professional para probar.
+- **Sage 50 o Sage 200:** La integración más documentada es con **Sage 50** (la versión de escritorio habitual en pymes españolas). Sage Business Cloud Accounting tiene un camino diferente — lo indicamos en los pasos.
+- **Acceso de administrador en ambas herramientas:** Necesitas permisos de admin tanto en Zoho CRM como en Sage. Si eres el dueño de la empresa, probablemente ya los tienes.
+- **Una de estas dos opciones para conectarlos:** (1) La extensión oficial de Zoho para Sage, disponible en Zoho Marketplace, o (2) una herramienta de integración intermedia como Zoho Flow o Make. En esta guía usamos la opción del Marketplace oficial — es la más sencilla.
+- **Nivel técnico necesario:** No necesitas programar nada. Si sabes instalar una extensión en Chrome y rellenar un formulario de configuración, es suficiente. La parte más técnica es la conexión de credenciales de API — lo explicamos en el Paso 3.
+
+<Callout type="info">
+**🇪🇸 Nota sobre Sage en España:** La versión más común en pymes españolas es Sage 50cloud o Sage 50 de escritorio. Si usas **Sage Business Cloud** (la versión online más reciente), el proceso de conexión varía ligeramente — te lo indicamos en los pasos donde sea relevante.
+</Callout>
+
+---
+
+## Pasos
+
+### Paso 1: Accede al Marketplace de Zoho CRM
+
+**Qué hacer:** Entra en tu cuenta de Zoho CRM. En el menú superior derecho, haz clic en el icono de cuadrícula (llamado "Zoho Apps" o "App Switcher"). Selecciona "Marketplace" en el listado. También puedes ir directamente a `marketplace.zoho.com` desde el navegador.
+
+**Por qué:** El Marketplace de Zoho es donde están las extensiones oficiales y verificadas. Instalar la integración desde aquí garantiza que las actualizaciones se apliquen automáticamente y que no entres en conflicto con otras configuraciones.
+
+**Qué verás:** Una página con categorías de integraciones (Contabilidad, ERP, Email, etc.). Usa el buscador y escribe "Sage" para filtrar resultados.
+
+---
+
+### Paso 2: Instala la extensión de Sage para Zoho CRM
+
+**Qué hacer:** En los resultados de búsqueda, busca la extensión **"Sage Business Cloud Accounting for Zoho CRM"** o **"Sage 50 Integration"** según tu versión. Haz clic en "Instalar" (o "Get Extension"). El sistema te pedirá confirmar los permisos de acceso que la extensión necesita — revísalos y haz clic en "Autorizar".
+
+**Por qué:** Esta extensión crea el puente entre las dos plataformas. Sin ella, tendrías que configurar la integración mediante código o herramientas de terceros, lo que es significativamente más complejo.
+
+**Qué verás:** Una pantalla de confirmación que indica que la extensión se ha instalado correctamente. Aparecerá un nuevo apartado en el menú de configuración de Zoho CRM llamado "Sage" o "Integraciones de Contabilidad".
+
+<Callout type="warning">
+⚠️ **Si usas Sage 50 de escritorio (no la versión cloud):** La integración directa desde el Marketplace no está disponible para todas las versiones de escritorio. En ese caso, el Paso 2 se salta y debes ir directamente al Paso 3 usando **Zoho Flow** o **Make** como intermediario. Te lo explicamos allí.
+</Callout>
+
+---
+
+### Paso 3: Conecta tu cuenta de Sage introduciendo las credenciales de API
+
+**Qué hacer:** Ve a **Configuración → Integraciones → Sage** dentro de Zoho CRM. Haz clic en "Conectar cuenta de Sage". El sistema te pedirá:
+- Tu **Client ID** y **Client Secret** de Sage (se obtienen desde el portal de desarrolladores de Sage en `developer.sage.com` → "Mis aplicaciones")
+- La **URL de tu instancia de Sage** si usas la versión cloud
+
+Si usas **Sage 50 de escritorio**, necesitas usar **Zoho Flow** como puente: ve a `flow.zoho.com`, crea un flujo nuevo, y en el selector de aplicaciones elige "Sage 50" y "Zoho CRM". Zoho Flow tiene un asistente visual que te guía sin escribir código.
+
+**Por qué:** La API es el canal seguro por el que las dos plataformas se intercambian datos. Sin estas credenciales, ninguna herramienta puede leer ni escribir datos en Sage en tu nombre.
+
+**Qué verás:** Un mensaje de "Conexión establecida correctamente" con un indicador verde. Si aparece un error, revisa la sección de errores comunes más abajo.
+
+---
+
+### Paso 4: Configura qué datos se sincronizan y en qué dirección
+
+**Qué hacer:** Una vez conectadas las cuentas, aparece el panel de configuración de sincronización. Define:
+- **Clientes:** Si los clientes de Zoho CRM se copian a Sage (dirección: CRM → Sage) o al revés, o en ambas direcciones.
+- **Facturas:** Si las facturas creadas en Sage aparecen en el historial del cliente en Zoho CRM.
+- **Oportunidades cerradas:** Si al marcar una oportunidad como "Cerrada ganada" en Zoho CRM se genera automáticamente un registro en Sage.
+
+Activa solo lo que necesitas. Sincronizar todo en ambas direcciones desde el primer día genera duplicidades.
+
+**Por qué:** Definir la dirección del flujo evita que un cambio en Sage sobreescriba datos que has introducido manualmente en el CRM, o viceversa.
+
+**Qué verás:** Un resumen de las reglas de sincronización activas con un botón "Guardar configuración". Después de guardarlo, el sistema realiza una sincronización inicial de prueba con los últimos 10 registros.
+
+---
+
+### Paso 5: Realiza una sincronización de prueba y verifica los resultados
+
+**Qué hacer:** Haz clic en "Sincronizar ahora" (o "Test Sync") en el panel de configuración. Coge un cliente concreto que exista en ambas plataformas y comprueba manualmente que los datos coinciden: nombre, CIF/NIF, dirección fiscal y email de contacto.
+
+**Por qué:** La configuración inicial puede traer diferencias de formato (por ejemplo, cómo está guardado el NIF o si los nombres tienen acentos). Mejor detectarlo ahora con 1 registro que después con 500.
+
+**Qué verás:** Un log de sincronización con el número de registros procesados, cuántos se han creado, cuántos se han actualizado y si ha habido errores. Si todo va bien, el log muestra 0 errores.
+
+---
+
+### Paso 6: Configura la frecuencia de sincronización automática
+
+**Qué hacer:** En el panel de configuración de la integración, busca la opción "Frecuencia de sincronización" o "Sync Schedule". Elige entre sincronización en tiempo real (inmediata al guardar cambios), cada hora, o una vez al día. Para la mayoría de pymes, **sincronización horaria** es suficiente y menos propensa a conflictos.
+
+**Por qué:** La sincronización en tiempo real consume más recursos y puede ralentizar Zoho CRM si tienes muchos registros. La sincronización diaria puede dejar datos desactualizados si trabajas con el equipo comercial y contabilidad al mismo tiempo.
+
+**Qué verás:** La configuración guardada con la próxima fecha y hora de sincronización programada visible en el panel.
+
+---
+
+## Errores comunes
+
+**"Error de autenticación" al introducir las credenciales de Sage**
+
+*Síntoma:* Después del Paso 3, aparece un mensaje de error que dice "Authentication failed" o "Invalid credentials".
+
+*Causa:* El Client ID y Client Secret de Sage tienen una validez limitada o se han copiado con espacios en blanco al principio o al final.
+
+*Solución:* Vuelve al portal de desarrolladores de Sage (`developer.sage.com`), regenera las credenciales y cópialas de nuevo sin seleccionar espacios en blanco. Usa el campo de pegado de texto plano de Zoho CRM para evitar caracteres ocultos.
+
+---
+
+**Registros duplicados de clientes después de la primera sincronización**
+
+*Síntoma:* Aparecen clientes repetidos en Zoho CRM o en Sage — el mismo cliente con dos fichas distintas.
+
+*Causa:* El campo de identificación único (normalmente el CIF/NIF o el email) no está mapeado igual en las dos plataformas. Sage guarda el CIF en un campo y Zoho CRM lo tiene en otro, por lo que el sistema los interpreta como clientes distintos.
+
+*Solución:* Antes de hacer la sincronización masiva, ve a "Configuración de campos" en el panel de la integración y asegúrate de que el campo "CIF/NIF" de Sage está mapeado con el campo equivalente en Zoho CRM (suele llamarse "Tax ID" o "NIF"). Elimina los duplicados generados manualmente o usa la función "Fusionar registros" de Zoho CRM.
+
+---
+
+**La integración funciona pero Sage 50 de escritorio no actualiza los datos**
+
+*Síntoma:* La conexión aparece como activa en Zoho CRM, pero los cambios no llegan a Sage 50 (versión local de escritorio).
+
+*Causa:* Sage 50 de escritorio requiere que el ordenador donde está instalado esté encendido y con conexión a internet en el momento de la sincronización. Si el PC está apagado o en standby, la sincronización falla silenciosamente.
+
+*Solución:* Configura la sincronización para que ocurra en horario de oficina (ej: de 9:00 a 18:00), o considera migrar a **Sage 50cloud** para que la sincronización funcione en la nube sin depender de un PC concreto.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Zoho CRM y Sage conectados** con sincronización automática de clientes según la frecuencia que hayas elegido.
+- **Los clientes cerrados en el CRM** llegan a Sage sin que nadie tenga que exportar ni copiar nada.
+- **Un log de sincronización** que puedes revisar cuando algo no cuadre, sin necesidad de llamar al soporte técnico.
+
+El siguiente paso lógico es configurar en Zoho CRM los campos personalizados que necesitas para tu equipo comercial — como el canal de captación o el tipo de cliente — para que esa información también viaje a Sage correctamente.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Zoho CRM, puedes probar el plan Professional durante 15 días sin coste:
+
+<AffiliateLink programSlug="zoho-crm" articleSlug="como-conectar-zoho-crm-con-sage" label="Probar Zoho CRM gratis 15 días" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Funciona esta integración con Sage 50 de escritorio o solo con Sage Business Cloud?
+
+Funciona con ambas versiones, pero de forma diferente. Con **Sage Business Cloud** (versión online), la integración es directa desde el Marketplace de Zoho. Con **Sage 50 de escritorio**, necesitas una herramienta intermedia como Zoho Flow o Make, y el ordenador donde está Sage debe estar encendido durante las sincronizaciones.
+
+### ¿Se pueden sincronizar las facturas de Sage con Zoho CRM, o solo los clientes?
+
+Depende del plan de Zoho CRM y de cómo configures la integración. Es posible sincronizar clientes, facturas, pagos y oportunidades. Lo más habitual en pymes es sincronizar clientes en ambas direcciones y facturas solo de Sage hacia Zoho CRM (para que el comercial vea el historial de compra sin entrar en Sage).
+
+### ¿Qué pasa si modifico un cliente en los dos sitios a la vez?
+
+La integración aplica la regla de "última modificación gana" por defecto. Si tú editas el email de un cliente en Zoho CRM y alguien del equipo de contabilidad lo edita en Sage al mismo tiempo, el cambio que llegue primero al servidor de sincronización será el que prevalezca. Para evitar conflictos, define claramente qué equipo es el responsable de mantener cada tipo de dato.
+
+### ¿Hay alguna forma gratuita de conectar Zoho CRM con Sage?
+
+Si usas el plan gratuito de Zoho CRM, no tienes acceso a la API ni al Marketplace. La opción más económica con acceso real a la integración es el plan **Standard de Zoho CRM** (desde 14 €/usuario/mes + IVA). No existe una forma oficial y gratuita de conectar las dos plataformas — las soluciones "gratuitas" de terceros suelen tener límites de registros o sincronizaciones muy restrictivos.
+
+### ¿Cuánto tiempo tarda en sincronizarse un cambio nuevo?
+
+Depende de la frecuencia que hayas configurado en el Paso 6. Con sincronización horaria, un cliente nuevo en Zoho CRM aparecerá en Sage en un máximo de 60 minutos. Con sincronización en tiempo real, el retraso es de segundos. Para la mayoría de pymes, la sincronización horaria es más que suficiente.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
