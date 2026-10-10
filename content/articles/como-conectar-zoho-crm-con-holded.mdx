@@ -1,0 +1,193 @@
+---
+title: "Cómo conectar Zoho CRM con Holded: guía paso a paso"
+slug: "como-conectar-zoho-crm-con-holded"
+category: "crm"
+description: "Guía paso a paso para conectar Zoho CRM con Holded y sincronizar contactos, facturas y datos de ventas. Sin conocimientos técnicos, en menos de 45 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-27T00:00:00Z"
+tools: ["zoho-crm"]
+keywords:
+  primary: "como conectar zoho crm con holded"
+  secondary:
+    - "integracion zoho crm holded"
+    - "sincronizar zoho crm holded"
+    - "zoho crm holded zapier"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Zoho CRM y Holded hablando entre sí: cuando cierres un trato en Zoho, los datos del cliente se sincronizarán con Holded para que puedas facturar sin copiar nada a mano. El proceso completo lleva unos 40 minutos si tienes las cuentas ya creadas.
+
+<Callout type="info">
+**Integración nativa vs. Zapier:** Zoho CRM y Holded no tienen integración nativa directa en este momento. La conexión se hace a través de Zapier (o Make, antes Integromat). Esta guía usa Zapier porque es la opción más accesible sin conocimientos técnicos. Si ya usas Make, la lógica es idéntica aunque la interfaz cambia.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Zoho CRM:** Funciona desde el plan gratuito para probar la conexión, pero para uso real necesitarás el plan Standard (14 €/mes/usuario + IVA). Si aún no tienes cuenta, puedes usar el trial gratuito de 15 días del plan Professional.
+- **Cuenta en Holded:** Cualquier plan de Holded con el módulo de facturación activado. El plan Básico (desde 14 €/mes + IVA) es suficiente.
+- **Cuenta en Zapier:** El plan gratuito de Zapier permite crear hasta 5 automatizaciones (Zaps) con 100 tareas/mes — suficiente para empezar. Para volúmenes mayores necesitarás el plan Starter (19,99 $/mes, aprox. 18 €/mes según cambio a enero 2025).
+- **Acceso de administrador:** Tanto en Zoho CRM como en Holded. La conexión no funciona con cuentas de usuario sin permisos de administración.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes rellenar un formulario y seguir instrucciones en pantalla, es suficiente. La parte más técnica es autorizar los permisos de acceso entre plataformas — te explicamos exactamente qué aceptar.
+
+---
+
+## Pasos
+
+### Paso 1: Crea una cuenta en Zapier y entra al editor
+
+**Qué hacer:** Ve a zapier.com y crea una cuenta gratuita si aún no tienes una. Una vez dentro, haz clic en el botón naranja `"Create"` en la esquina superior izquierda, y luego selecciona `"Zaps"` en el menú desplegable. Se abrirá el editor visual de Zapier.
+
+**Por qué:** Zapier actúa como intermediario entre Zoho CRM y Holded. Es quien escucha los eventos de un lado y los traduce al otro.
+
+**Qué verás:** Una pantalla con dos bloques vacíos: `"Trigger"` (el evento que activa la automatización) y `"Action"` (lo que ocurre como consecuencia). Toda la configuración se hace aquí.
+
+---
+
+### Paso 2: Configura el Trigger — elige Zoho CRM como origen
+
+**Qué hacer:** Haz clic en el bloque `"Trigger"`. En el buscador que aparece, escribe `"Zoho CRM"` y selecciónalo de la lista. En el campo `"Event"`, elige el evento que quieres usar como disparador.
+
+Para la integración más útil — crear un cliente en Holded cuando cierras un trato en Zoho — elige el evento `"New or Updated Module Entry"` y en el campo `"Module"` selecciona `"Deals"`. Así, cada vez que un trato cambie de fase en Zoho, Zapier lo detectará.
+
+**Por qué:** El trigger define cuándo se ejecuta la automatización. Empezar por los tratos (Deals) es lo más práctico para una pyme: se crea el cliente en Holded justo cuando ya sabes que vas a facturarle.
+
+**Qué verás:** Zapier te pedirá conectar tu cuenta de Zoho CRM. Haz clic en `"Sign in to Zoho CRM"` — se abrirá una ventana emergente donde autorizarás el acceso. Acepta todos los permisos que pida. Después verás un botón `"Test trigger"` para verificar que la conexión funciona.
+
+<Callout type="warning">
+**Ojo con los permisos de Zoho:** Durante la autorización, Zoho pedirá acceso de lectura y escritura a tus módulos. Para que la sincronización funcione, tienes que aceptar todos los permisos que aparezcan. Si rechazas alguno, el Zap fallará sin un mensaje de error claro.
+</Callout>
+
+---
+
+### Paso 3: Filtra por fase del trato (opcional pero recomendado)
+
+**Qué hacer:** Después del bloque de Trigger, haz clic en el símbolo `"+"` para añadir un paso intermedio. Selecciona `"Filter"` de la lista. En la condición, configura: `"Stage"` → `"(Text) Exactly matches"` → escribe el nombre exacto de la fase de cierre que usas en Zoho (por ejemplo, `"Closed Won"` o el nombre personalizado que tengas).
+
+**Por qué:** Sin este filtro, Zapier creará un contacto en Holded cada vez que muevas un trato a cualquier fase — incluyendo los descartados. El filtro asegura que solo se crean clientes en Holded cuando el trato está realmente cerrado y ganado.
+
+**Qué verás:** Un bloque verde con la condición configurada. Zapier mostrará si el último registro de prueba pasa o no pasa el filtro, para que confirmes que está bien.
+
+---
+
+### Paso 4: Configura la Action — crea el contacto en Holded
+
+**Qué hacer:** Haz clic en el bloque `"Action"`. Busca `"Holded"` en el buscador. Selecciónalo y en el campo `"Event"` elige `"Create Contact"`.
+
+Zapier te pedirá conectar tu cuenta de Holded. Haz clic en `"Sign in to Holded"` — necesitarás la **API Key de Holded**, que encuentras en Holded bajo `Ajustes` → `Integraciones` → `API`. Copia la clave y pégala en Zapier.
+
+**Por qué:** La API Key es la forma en que Holded verifica que Zapier tiene permiso para crear registros en tu cuenta.
+
+**Qué verás:** Una vez conectado, aparecerán los campos del contacto de Holded (nombre, email, teléfono, etc.). Aquí mapeas los datos del trato de Zoho a los campos de Holded.
+
+---
+
+### Paso 5: Mapea los campos entre Zoho y Holded
+
+**Qué hacer:** En cada campo de Holded, haz clic en el área de texto y verás un icono de relámpago `"/"`. Úsalo para insertar datos dinámicos del trato de Zoho. Los mapeos más útiles para una pyme:
+
+- **Name** → `Contact Name` de Zoho (o `Account Name` si es empresa)
+- **Email** → `Email` de Zoho
+- **Phone** → `Phone` de Zoho
+- **Tax ID (NIF/CIF)** → si tienes un campo personalizado en Zoho para el NIF, mapealo aquí. Si no, déjalo vacío y complétalo manualmente en Holded.
+
+**Por qué:** Sin mapear los campos, Holded creará contactos vacíos — inútiles para facturar.
+
+**Qué verás:** Cada campo mostrará el valor del último trato de Zoho que Zapier encontró durante la prueba, así puedes confirmar que los datos son correctos antes de activar el Zap.
+
+---
+
+### Paso 6: Prueba y activa el Zap
+
+**Qué hacer:** Haz clic en `"Test step"` en el bloque de Action. Zapier enviará un contacto de prueba a Holded. Ve a Holded → `Contactos` y comprueba que el contacto ha aparecido con los datos correctos.
+
+Si todo está bien, haz clic en `"Publish"` en la esquina superior derecha. El Zap quedará activo.
+
+**Por qué:** La prueba es el único momento donde puedes detectar errores de mapeo antes de que afecten a datos reales.
+
+**Qué verás:** En Holded aparecerá un contacto nuevo con los datos del trato de prueba de Zoho. Si el nombre o el email están en blanco, vuelve al Paso 5 y revisa el mapeo.
+
+---
+
+## Errores comunes
+
+**El Zap se activa pero no aparece nada en Holded**
+
+*Síntoma:* Zapier marca el Zap como ejecutado correctamente, pero el contacto no aparece en Holded.
+
+*Causa:* La API Key de Holded expiró o se regeneró después de conectar Zapier. Holded permite regenerar la clave desde Ajustes, y cuando lo haces, la conexión antigua deja de funcionar.
+
+*Solución:* Ve a Holded → `Ajustes` → `Integraciones` → `API`, copia la clave actual. En Zapier, ve a `My Apps` → busca `Holded` → reconecta la cuenta con la nueva clave. Vuelve a probar el Zap.
+
+---
+
+**Zapier no encuentra tratos de Zoho al hacer el Test**
+
+*Síntoma:* Al hacer clic en `"Test trigger"`, Zapier dice que no encuentra registros (`"We couldn't find any records"`).
+
+*Causa:* El módulo de Zoho seleccionado no tiene registros recientes (últimas 24-48 horas) o los permisos del usuario conectado no incluyen ese módulo.
+
+*Solución:* Crea un trato de prueba en Zoho CRM con los datos básicos (nombre, fase, email) y vuelve a hacer el test. Si sigue fallando, comprueba que el usuario de Zoho conectado a Zapier tiene permisos de lectura sobre el módulo Deals.
+
+---
+
+**El contacto se duplica en Holded cada vez que se modifica el trato**
+
+*Síntoma:* El mismo cliente aparece dos o tres veces en Holded con datos ligeramente distintos.
+
+*Causa:* El trigger `"New or Updated Module Entry"` se activa con cualquier cambio en el trato — no solo cuando cambia la fase. Si editas el trato varias veces antes de cerrarlo, y no tienes el filtro de fase activo (Paso 3), se crea un contacto cada vez.
+
+*Solución:* Asegúrate de tener el filtro del Paso 3 activo. Si ya tienes duplicados en Holded, los puedes fusionar desde `Contactos` → selecciona los duplicados → `Combinar contactos`.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Un Zap activo que detecta cuándo cierras un trato en Zoho CRM y crea automáticamente el contacto en Holded.
+- Los datos básicos del cliente (nombre, email, teléfono) sincronizados sin copiar nada a mano.
+- Un filtro que asegura que solo los tratos ganados llegan a Holded — no los descartados ni los que están en negociación.
+
+El siguiente paso lógico es crear un segundo Zap en sentido inverso: cuando generas una factura en Holded, que actualice el campo de facturación en el trato de Zoho. Así tienes el historial completo en ambas plataformas.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Zoho CRM, puedes empezar con el trial gratuito de 15 días del plan Professional — sin tarjeta de crédito:
+
+<AffiliateLink programSlug="zoho-crm" articleSlug="como-conectar-zoho-crm-con-holded" label="Probar Zoho CRM gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Se puede conectar Zoho CRM con Holded sin Zapier?
+
+No hay integración nativa directa entre las dos plataformas a fecha de enero 2025. Zapier es la opción más sencilla sin conocimientos técnicos. Si tienes un desarrollador, también puedes usar las APIs públicas de ambas herramientas para construir una integración a medida — Zoho y Holded documentan sus APIs en abierto.
+
+### ¿Cuánto cuesta mantener esta integración en marcha?
+
+Depende del volumen. El plan gratuito de Zapier cubre hasta 100 tareas al mes — suficiente si cierras menos de 100 tratos mensuales. Si superas ese límite, necesitarás el plan Starter de Zapier (19,99 $/mes, aprox. 18 €/mes a enero 2025 + IVA). Zoho CRM y Holded no cobran extra por usar su API.
+
+### ¿Funciona esta integración si uso el plan gratuito de Zoho CRM?
+
+Sí, el plan gratuito de Zoho CRM permite el acceso por API, así que Zapier puede conectarse sin problema. La limitación del gratuito es de 3 usuarios y funcionalidades reducidas, no de integraciones.
+
+### ¿Qué pasa si el Zap falla y no se crea el contacto en Holded?
+
+Zapier guarda el historial de ejecuciones fallidas en `Zap History`. Puedes revisar el error, corregirlo y volver a ejecutar manualmente esa tarea concreta sin perder el registro. También puedes activar las notificaciones de error en Zapier para que te avise por email cuando algo falle.
+
+### ¿Puedo sincronizar también las facturas de Holded hacia Zoho CRM?
+
+Sí, el proceso es el mismo pero en sentido inverso: el trigger sería un evento de Holded (por ejemplo, `"New Invoice"`) y la action actualizaría un campo del trato o contacto en Zoho CRM. Necesitarás un segundo Zap separado para eso.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
