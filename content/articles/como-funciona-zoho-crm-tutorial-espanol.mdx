@@ -1,0 +1,222 @@
+---
+title: "Cómo funciona Zoho CRM: guía paso a paso en español"
+slug: "como-funciona-zoho-crm-tutorial-espanol"
+category: "crm"
+description: "Guía paso a paso para empezar a usar Zoho CRM en español. Configura tu pipeline, añade contactos y crea tu primer flujo en menos de 45 minutos, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2025-01-30T00:00:00.000Z"
+tools: ["zoho-crm"]
+keywords:
+  primary: "cómo funciona zoho crm tutorial español"
+  secondary:
+    - "zoho crm en español para pymes"
+    - "cómo configurar zoho crm paso a paso"
+    - "zoho crm guía principiantes"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "8 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Zoho CRM configurado con tu pipeline de ventas, los primeros contactos cargados y una automatización básica funcionando. Sin tocar ningún código. El proceso completo lleva entre 30 y 45 minutos si tienes a mano los datos de tus clientes actuales.
+
+Esto está disponible desde el plan **Free** de Zoho CRM (hasta 3 usuarios), aunque algunas automatizaciones avanzadas requieren el plan **Standard** (desde 14 €/usuario/mes + IVA, según la web oficial — verifica precio en zoho.com/es-es/crm).
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Zoho CRM:** El plan gratuito (hasta 3 usuarios) es suficiente para seguir esta guía completa. Puedes registrarte en zoho.com/es-es/crm sin tarjeta de crédito.
+- **Listado de tus clientes o prospectos actuales:** Un Excel o CSV con nombre, email y teléfono es suficiente. No necesitas nada más para empezar.
+- **Acceso desde el navegador del ordenador:** La configuración inicial no funciona bien desde la app móvil — hazlo desde el escritorio y luego gestiona el día a día desde el móvil si quieres.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes moverte por el correo electrónico y has usado alguna vez un Excel, tienes todo lo necesario.
+
+{/* TODO: captura del dashboard principal de Zoho CRM — vista de inicio tras primer login */}
+
+---
+
+## Pasos
+
+### Paso 1: Crea tu cuenta y elige el idioma español
+
+**Qué hacer:** Ve a zoho.com/es-es/crm y haz clic en `"Empieza gratis"`. Rellena el formulario con tu nombre, email y una contraseña. Al entrar por primera vez, Zoho te lanzará un asistente de configuración. En la pantalla inicial, haz clic en el icono de tu perfil (arriba a la derecha) → `"Configuración"` → `"Idioma y región"`. Selecciona **Español (España)** como idioma y **Euro (€)** como moneda. Guarda los cambios.
+
+**Por qué:** Zoho CRM por defecto puede mostrarse en inglés dependiendo de tu geolocalización. Forzar el español desde el principio evita confusión con los menús en el resto de la guía.
+
+**Qué verás:** Toda la interfaz — menús, etiquetas, botones — pasa a mostrarse en español. Si alguna sección menor sigue en inglés, es normal: la traducción de Zoho al español es muy completa pero no al 100 %.
+
+---
+
+### Paso 2: Configura tu pipeline de ventas
+
+**Qué hacer:** En el menú superior, haz clic en `"Negociaciones"` (en inglés aparecería como "Deals"). Luego ve a `"Configuración"` (el icono de engranaje arriba a la derecha) → `"Módulos y campos"` → `"Negociaciones"` → `"Etapas de ventas"`. Aquí verás las etapas predeterminadas de Zoho (Calificación, Propuesta, etc.). Edítalas para que coincidan con tu proceso real. Un ejemplo típico para una pyme de servicios B2B:
+
+- Primer contacto
+- Propuesta enviada
+- Negociación
+- Cerrado ganado
+- Cerrado perdido
+
+Haz clic en `"Guardar"` cuando termines.
+
+**Por qué:** El pipeline es el núcleo de Zoho CRM. Si las etapas no reflejan tu proceso real, el CRM se convierte en un registro inútil en lugar de una herramienta de gestión.
+
+**Qué verás:** En la vista `"Negociaciones"` → `"Vista Kanban"`, aparecerán las columnas con las etapas que acabas de crear. Vacías de momento, pero listas.
+
+{/* TODO: captura de la vista Kanban de Negociaciones con etapas personalizadas */}
+
+---
+
+### Paso 3: Importa tus contactos desde Excel o CSV
+
+**Qué hacer:** En el menú superior, haz clic en `"Contactos"`. Arriba a la derecha verás el botón `"Importar"`. Selecciona `"Desde archivo"` y sube tu Excel o CSV. Zoho te mostrará una pantalla de mapeo de columnas: asegúrate de que la columna "Nombre" de tu archivo corresponde al campo `"Nombre"` de Zoho, el email al campo `"Email"`, y el teléfono al campo `"Teléfono"`. Haz clic en `"Siguiente"` y luego en `"Importar"`.
+
+**Por qué:** Importar masivamente desde el principio ahorra horas de entrada manual. Zoho admite hasta 1.000 registros por importación en el plan gratuito.
+
+**Qué verás:** Una barra de progreso y, al finalizar, un resumen con los registros importados correctamente y los que han dado error (normalmente por emails duplicados o campos vacíos). Los contactos ya aparecen en el módulo `"Contactos"`.
+
+**Nota:** Si tu archivo tiene columnas en inglés (Name, Email, Phone), Zoho las reconoce automáticamente en la mayoría de los casos. Si no, el mapeo manual tarda menos de 2 minutos.
+
+---
+
+### Paso 4: Crea tu primera negociación (oportunidad de venta)
+
+**Qué hacer:** Ve a `"Negociaciones"` y haz clic en `"+ Nueva negociación"` (arriba a la derecha). Rellena:
+
+- **Nombre de la negociación:** algo descriptivo, como `"Proyecto web — Talleres Martínez"`
+- **Importe:** el valor estimado del contrato
+- **Fecha de cierre:** una fecha realista
+- **Etapa:** selecciona la etapa en la que está ahora mismo
+- **Contacto relacionado:** busca el contacto que acabas de importar
+
+Haz clic en `"Guardar"`.
+
+**Por qué:** Las negociaciones son la unidad central de trabajo en cualquier CRM. Cada oportunidad de venta es una negociación con un valor, una etapa y un responsable.
+
+**Qué verás:** La negociación aparece en la columna correspondiente de tu Kanban. Puedes arrastrarla entre columnas cuando avance en el proceso.
+
+---
+
+### Paso 5: Configura una automatización básica de seguimiento
+
+**Qué hacer:** Ve al icono de `"Configuración"` (engranaje) → `"Automatización"` → `"Reglas de flujo de trabajo"` → `"+ Nueva regla"`. Configura lo siguiente:
+
+- **Módulo:** Negociaciones
+- **Nombre de la regla:** `"Recordatorio de seguimiento"`
+- **Cuándo ejecutar la regla:** `"Cuando se crea un registro"`
+- **Condición:** `"Etapa es igual a Primer contacto"`
+- **Acción:** `"Crear tarea"` → Título: `"Llamar en 48h"`, Asignada a: tu usuario, Fecha de vencimiento: 2 días después
+
+Haz clic en `"Guardar"`.
+
+**Por qué:** Esta automatización crea una tarea de recordatorio automáticamente cada vez que añades un nuevo prospecto en "Primer contacto". Sin esto, el seguimiento depende de tu memoria — y eso falla.
+
+**Qué verás:** A partir de ahora, cada vez que crees una negociación en la etapa "Primer contacto", aparecerá automáticamente una tarea asignada a ti en el módulo `"Actividades"`.
+
+**Nota:** Las reglas de flujo de trabajo están disponibles en todos los planes, incluyendo el gratuito. Las automatizaciones más complejas (cadencias de email, por ejemplo) requieren el plan **Standard** o superior.
+
+<Callout type="info">
+**🇪🇸 Soporte en español:** Zoho CRM tiene interfaz completamente en español y soporte técnico en español vía chat y email. La documentación oficial en español está disponible en zoho.com/es-es/crm/resources. Para una pyme española, esto marca la diferencia frente a otras herramientas que solo tienen soporte en inglés.
+</Callout>
+
+---
+
+### Paso 6: Activa las notificaciones por email
+
+**Qué hacer:** Ve a `"Configuración"` → `"Personal"` → `"Notificaciones por email"`. Activa al menos estas dos:
+
+- **Tarea asignada a mí:** para recibir aviso cuando una automatización te cree una tarea
+- **Negociación modificada:** para que te avisen si alguien de tu equipo actualiza una oportunidad
+
+Guarda los cambios.
+
+**Por qué:** Sin notificaciones, el CRM solo funciona si lo abres activamente. Con ellas, el sistema te avisa cuando hay algo que hacer — que es como funciona un CRM de verdad.
+
+**Qué verás:** Recibirás un email de prueba de Zoho confirmando que las notificaciones están activas.
+
+---
+
+## Errores comunes
+
+**Los contactos importados aparecen duplicados**
+
+*Síntoma:* En el módulo `"Contactos"` ves el mismo nombre dos o tres veces, con datos distintos.
+
+*Causa:* El archivo tenía el mismo email en dos filas con nombres ligeramente distintos (mayúsculas, tilde, abreviatura), y Zoho no los reconoció como el mismo registro.
+
+*Solución:* Ve a `"Contactos"` → botón `"Deduplicar"` (arriba a la derecha en el menú de opciones `"⋮"`). Zoho busca duplicados por email y te permite fusionarlos manualmente eligiendo qué datos conservar de cada registro.
+
+---
+
+**La automatización se creó pero no genera tareas**
+
+*Síntoma:* Creas una negociación en "Primer contacto" y no aparece ninguna tarea en `"Actividades"`.
+
+*Causa:* La regla de flujo de trabajo tiene la condición mal configurada, o se guardó en estado `"Inactivo"`.
+
+*Solución:* Ve a `"Configuración"` → `"Automatización"` → `"Reglas de flujo de trabajo"`. Localiza tu regla y comprueba que el interruptor de la derecha está en verde (activo). Si está gris, actívala. Revisa también que la condición `"Etapa"` usa exactamente el mismo nombre que creaste en el pipeline — Zoho distingue mayúsculas.
+
+---
+
+**El pipeline no aparece en vista Kanban**
+
+*Síntoma:* Al ir a `"Negociaciones"`, solo ves una lista de registros, sin columnas.
+
+*Causa:* Estás en la vista `"Lista"` en lugar de la vista `"Kanban"`.
+
+*Solución:* Arriba a la derecha del módulo `"Negociaciones"`, busca los iconos de vista (cuadrícula, lista, Kanban). Haz clic en el icono de columnas (el que parece un tablero). Zoho recordará tu preferencia para la próxima vez.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Un pipeline de ventas personalizado** con las etapas que reflejan tu proceso real, no el genérico de Zoho.
+- **Tus contactos importados** y accesibles desde cualquier dispositivo, sin depender de un Excel local.
+- **Tu primera negociación creada** y visible en el Kanban para hacer seguimiento visual.
+- **Una automatización activa** que te crea tareas de recordatorio sin que tengas que acordarte.
+- **Notificaciones por email** para que el CRM te avise, y no al revés.
+
+El siguiente paso lógico es conectar tu email corporativo a Zoho CRM para registrar automáticamente los correos con clientes sin copiar y pegar nada — lo explicamos en detalle en nuestra guía de integración de Gmail y Outlook con Zoho CRM.
+
+<Callout type="warning">
+**⚠️ GDPR y LOPDGDD:** Zoho CRM firma un DPA (Data Processing Agreement) bajo GDPR, disponible en su web. Los datos de clientes europeos se pueden almacenar en servidores europeos — actívalo en `"Configuración"` → `"Cumplimiento del RGPD"`. Si tu empresa gestiona datos de contactos de clientes españoles, debes tener este DPA firmado para cumplir con la AEPD. Zoho facilita este proceso desde el propio panel.
+</Callout>
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Zoho CRM, aquí tienes el acceso directo al plan gratuito:
+
+<AffiliateLink programSlug="zoho-crm" articleSlug="como-funciona-zoho-crm-tutorial-espanol" label="Probar Zoho CRM gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Zoho CRM está completamente en español?
+
+La interfaz está traducida al español de España y es muy completa. Algunos módulos secundarios o configuraciones avanzadas pueden aparecer en inglés puntualmente, pero el día a día — contactos, negociaciones, pipeline, tareas — está en español. El soporte técnico también atiende en español vía chat y email.
+
+### ¿Puedo usar Zoho CRM gratis indefinidamente?
+
+Sí. El plan gratuito de Zoho CRM no tiene límite de tiempo, admite hasta 3 usuarios y cubre las funciones básicas de esta guía: contactos, negociaciones, pipeline y automatizaciones simples. Cuando necesites más usuarios, informes avanzados o integraciones con email, tendrás que pasar al plan Standard. Verifica el precio actualizado en zoho.com/es-es/crm/zohocrm-pricing.html — no publican precio aquí porque cambia con frecuencia.
+
+### ¿Puedo migrar mis datos de Holded o Sage a Zoho CRM?
+
+Zoho CRM no tiene integración nativa directa con Holded ni con Sage 50. La forma más práctica es exportar tus contactos y cuentas desde esas herramientas en formato CSV e importarlos a Zoho siguiendo el Paso 3 de esta guía. Para datos más complejos (historial de pedidos, facturas), necesitarías una integración vía Zapier o Zoho Flow.
+
+### ¿Es Zoho CRM apto para una empresa con 8–15 empleados?
+
+Sí, es uno de los CRM más utilizados en pymes españolas de ese tamaño. Escala bien desde el plan gratuito (3 usuarios) hasta planes con usuarios ilimitados. Su punto fuerte es que crece contigo: empiezas con lo básico y añades módulos (email marketing, helpdesk, RRHH) del ecosistema Zoho sin cambiar de plataforma.
+
+### ¿Qué pasa si cancelo el plan de pago? ¿Pierdo los datos?
+
+No. Si bajas al plan gratuito, conservas todos tus datos pero pierdes acceso a las funciones de pago (automatizaciones avanzadas, informes, usuarios adicionales). Zoho no elimina registros al hacer downgrade. Aun así, antes de cancelar, exporta una copia de seguridad completa desde `"Configuración"` → `"Exportación de datos"`.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: enero 2025.*
