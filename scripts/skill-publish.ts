@@ -18,6 +18,9 @@
 
 import 'dotenv/config'
 import { fileURLToPath } from 'node:url'
+import { existsSync } from 'node:fs'
+import { mkdir, writeFile } from 'node:fs/promises'
+import path from 'node:path'
 import simpleGit, { type SimpleGit } from 'simple-git'
 import { supabase } from '../lib/db/client'
 import { readArticleBody } from '../lib/content-store'
@@ -129,6 +132,13 @@ async function gitCommitAndPush(article: ArticleRow): Promise<void> {
   const git: SimpleGit = simpleGit(process.cwd())
 
   const filePath = `content/articles/${article.slug}.mdx`
+  if (!existsSync(filePath)) {
+    // El cuerpo vive en Supabase; el repo necesita el fichero para el build.
+    const body = await readArticleBody(article.slug)
+    await mkdir(path.dirname(filePath), { recursive: true })
+    await writeFile(filePath, body, 'utf8')
+    console.log(`  Materialised ${filePath} from Supabase`)
+  }
   console.log(`  Adding ${filePath} to git…`)
   await git.add(filePath)
 
