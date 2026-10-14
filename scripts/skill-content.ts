@@ -166,7 +166,8 @@ Categoría: ${keyword.category ?? 'comparativas'}
 Slug: ${slug}
 Tipo: ${articleType}
 Intención de búsqueda: ${keyword.search_intent ?? 'commercial'}
-Herramientas afiliadas: ${affiliateNames.length > 0 ? affiliateNames.join(', ') : 'ninguna específica'}`
+Herramientas afiliadas: ${affiliateNames.length > 0 ? affiliateNames.join(', ') : 'ninguna específica'}
+Fecha de hoy: ${new Date().toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}. Úsala en "Última revisión"; no uses otra fecha.`
 
   return { staticText, dynamicText }
 }
