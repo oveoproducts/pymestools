@@ -149,6 +149,7 @@ function deriveCategory(program: AffiliateProgram): string {
   const slug = program.slug.toLowerCase()
   if (['getresponse', 'brevo', 'activecampaign'].includes(slug)) return 'email-marketing'
   if (['hubspot', 'zoho-crm', 'pipedrive'].includes(slug)) return 'crm'
+  if (['make', 'tidio'].includes(slug)) return 'automatizacion'
   if (['semrush'].includes(slug)) return 'seo'
   if (['hostinger'].includes(slug)) return 'hosting'
   if (['notion'].includes(slug)) return 'productividad'
