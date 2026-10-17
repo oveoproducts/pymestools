@@ -167,7 +167,7 @@ Slug: ${slug}
 Tipo: ${articleType}
 Intención de búsqueda: ${keyword.search_intent ?? 'commercial'}
 Herramientas afiliadas: ${affiliateNames.length > 0 ? affiliateNames.join(', ') : 'ninguna específica'}
-Fecha de hoy: ${new Date().toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}. Úsala en "Última revisión"; no uses otra fecha.`
+Fecha de hoy: ${new Date().toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}. Úsala en "Última revisión". El año de los títulos y meta títulos es el actual; no uses 2025 ni otro año.`
 
   return { staticText, dynamicText }
 }
