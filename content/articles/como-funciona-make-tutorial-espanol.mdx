@@ -1,0 +1,219 @@
+---
+title: "Cómo funciona Make: tutorial en español paso a paso"
+slug: "como-funciona-make-tutorial-espanol"
+category: "automatizacion"
+description: "Tutorial en español para entender cómo funciona Make y crear tu primera automatización. Resultado en menos de 30 minutos, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-10-01T00:00:00Z"
+tools: ["make"]
+keywords:
+  primary: "cómo funciona make tutorial español"
+  secondary:
+    - "make automatizacion tutorial"
+    - "make tutorial paso a paso"
+    - "make integromat español"
+    - "crear escenario make"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás tu primer **escenario** de Make configurado y activo: una automatización real que conecta dos aplicaciones y ejecuta una acción de forma automática, sin que tengas que hacer nada manualmente.
+
+El proceso completo lleva entre 20 y 30 minutos si es la primera vez que usas la plataforma. No necesitas saber programar.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Make:** el plan gratuito es suficiente para seguir este tutorial — incluye 1.000 operaciones al mes y escenarios activos ilimitados. Regístrate en make.com.
+- **Dos aplicaciones que ya usas:** por ejemplo, Google Sheets y Gmail, o un formulario web y una hoja de cálculo. Make conecta más de 1.500 aplicaciones.
+- **Acceso desde un navegador de escritorio:** la configuración de escenarios no funciona bien desde el móvil — usa un ordenador o portátil.
+- **Nivel técnico necesario:** no necesitas saber programar. Si sabes usar Google Drive o cualquier herramienta en la nube, tienes suficiente. Algunos módulos avanzados requieren entender conceptos básicos de datos (campos, variables), pero no para este tutorial.
+
+---
+
+## Qué es un escenario en Make (y por qué importa saberlo antes)
+
+Make trabaja con **escenarios**. Un escenario es una automatización visual formada por módulos conectados entre sí.
+
+Cada módulo es una aplicación o una acción. El primero se llama **trigger** (disparador): es el evento que pone en marcha todo. Los siguientes son **acciones**: lo que Make hace automáticamente cuando el trigger ocurre.
+
+Ejemplo concreto: cuando alguien rellena un formulario de tu web (trigger), Make crea automáticamente una fila en tu Google Sheets con sus datos (acción). Sin que toques nada.
+
+---
+
+## Pasos
+
+### Paso 1: Crea tu cuenta y entra al panel principal
+
+**Qué hacer:** Ve a [make.com](https://make.com) y regístrate con tu email o con tu cuenta de Google. Una vez dentro, verás el panel principal con el menú lateral izquierdo. Haz clic en `"Scenarios"` (Escenarios) en el menú lateral.
+
+**Por qué:** Todos los escenarios — tanto los que creas como las plantillas — viven en esta sección. Es tu espacio de trabajo principal.
+
+**Qué verás:** Una pantalla vacía o con ejemplos de plantillas si es tu primera vez. En la esquina superior derecha hay un botón azul: `"Create a new scenario"`.
+
+{/* TODO: captura del panel principal de Make con el menú lateral visible */}
+
+---
+
+### Paso 2: Crea un escenario nuevo
+
+**Qué hacer:** Haz clic en `"Create a new scenario"`. Se abrirá el **editor visual** de Make: una pantalla oscura con un gran círculo en el centro y un icono de interrogación. Ese círculo es tu primer módulo — el trigger.
+
+**Por qué:** El editor funciona como un lienzo en blanco. Cada elemento que añades aparece visualmente conectado al anterior, lo que te permite ver de un vistazo qué hace tu automatización.
+
+**Qué verás:** El editor vacío con el módulo inicial parpadeando en el centro. Debajo del editor hay una barra con los controles: `"Run once"`, `"Schedule"`, y el botón para guardar.
+
+---
+
+### Paso 3: Elige el trigger (el disparador de la automatización)
+
+**Qué hacer:** Haz clic en el círculo central del editor. Se abrirá un buscador de aplicaciones. Escribe el nombre de la aplicación que quieres usar como disparador — por ejemplo, `"Google Sheets"`. Selecciona la aplicación y luego elige el tipo de evento: para este tutorial, selecciona `"Watch New Rows"` (vigilar filas nuevas).
+
+**Por qué:** El trigger define *cuándo* se ejecuta tu automatización. Make comprueba periódicamente si ha ocurrido el evento que configuraste — en el plan gratuito, cada 15 minutos.
+
+**Qué verás:** Un panel lateral derecho con las opciones de configuración del módulo. Te pedirá que conectes tu cuenta de Google si es la primera vez.
+
+**Nota:** Si quieres usar otra aplicación como trigger, el proceso es idéntico — solo cambia el nombre que escribes en el buscador.
+
+---
+
+### Paso 4: Conecta tu cuenta de la aplicación
+
+**Qué hacer:** En el panel lateral del módulo, haz clic en `"Add"` junto al campo `"Connection"`. Make abrirá una ventana emergente para que inicies sesión en la aplicación elegida (en este caso, Google). Acepta los permisos que solicita.
+
+**Por qué:** Make necesita acceso autorizado a tus aplicaciones para leer y escribir datos en tu nombre. Esta conexión se guarda y puedes reutilizarla en otros escenarios.
+
+**Qué verás:** Una vez autorizado, el campo `"Connection"` mostrará tu cuenta conectada (ej: `"tu@email.com"`). Debajo aparecerán los campos para elegir el documento y la hoja concreta.
+
+<Callout type="warning">
+**Permisos de Google:** Make solicita permisos amplios sobre Google Drive. Si prefieres limitarlos, puedes revisar y revocar accesos en cualquier momento desde [myaccount.google.com/permissions](https://myaccount.google.com/permissions). Make cumple GDPR y dispone de DPA firmable — consulta su política de privacidad si gestionas datos de clientes.
+</Callout>
+
+---
+
+### Paso 5: Configura el trigger con tu hoja de cálculo
+
+**Qué hacer:** En el campo `"Spreadsheet"`, selecciona el documento de Google Sheets que quieres vigilar. En el campo `"Sheet"`, elige la pestaña concreta. Deja el campo `"Limit"` en 1 para empezar. Haz clic en `"OK"`.
+
+**Por qué:** Estás diciéndole a Make exactamente qué documento tiene que vigilar. El campo `"Limit"` controla cuántas filas nuevas procesa por ejecución.
+
+**Qué verás:** El módulo del trigger ahora muestra el icono de Google Sheets con un check. Está configurado y listo.
+
+---
+
+### Paso 6: Añade el módulo de acción
+
+**Qué hacer:** Haz clic en el icono `"+"` que aparece a la derecha del módulo de trigger en el editor. Se abrirá de nuevo el buscador de aplicaciones. Escribe la aplicación donde quieres que Make haga algo — por ejemplo, `"Gmail"`. Selecciona la acción `"Send an Email"`.
+
+**Por qué:** Este segundo módulo es lo que Make hace automáticamente cada vez que detecta una fila nueva en tu hoja. Puedes encadenar tantos módulos como necesites.
+
+**Qué verás:** Un segundo módulo aparece en el editor, conectado al primero con una línea. El panel lateral muestra los campos del email: destinatario, asunto, cuerpo.
+
+---
+
+### Paso 7: Configura la acción con datos dinámicos
+
+**Qué hacer:** En el campo `"To"` del email, haz clic dentro del campo y luego en el icono de mapa que aparece (parece un engranaje pequeño). Selecciona el campo de email que viene del trigger — por ejemplo, `"Email"` de la columna de tu hoja. Escribe el asunto y el cuerpo del email. Haz clic en `"OK"`.
+
+**Por qué:** Los datos dinámicos son lo que hace útil Make: en vez de enviar siempre el mismo email a la misma persona, cada ejecución usa los datos de la fila nueva (nombre, email, lo que sea). Esto es la base de cualquier automatización real.
+
+**Qué verás:** Los campos con datos dinámicos aparecen con un fondo de color diferente, indicando que vienen del módulo anterior.
+
+---
+
+### Paso 8: Prueba el escenario con "Run once"
+
+**Qué hacer:** Antes de activar el escenario, pruébalo. Añade manualmente una fila nueva en tu Google Sheets. Vuelve a Make y haz clic en el botón `"Run once"` en la barra inferior del editor.
+
+**Por qué:** `"Run once"` ejecuta el escenario una sola vez de forma manual, sin activarlo de forma recurrente. Te permite verificar que todo funciona antes de dejarlo en marcha.
+
+**Qué verás:** Cada módulo muestra un indicador de color: verde si ha funcionado, rojo si ha habido un error. Haz clic sobre cualquier módulo para ver exactamente qué datos ha procesado.
+
+---
+
+### Paso 9: Activa el escenario
+
+**Qué hacer:** Si la prueba ha funcionado, haz clic en el interruptor situado en la esquina inferior izquierda del editor — está en posición `"OFF"` por defecto. Pásalo a `"ON"`. Guarda el escenario con `"Save"`.
+
+**Por qué:** Un escenario en `"OFF"` no se ejecuta automáticamente. Solo cuando lo activas empieza a funcionar según la programación que hayas configurado.
+
+**Qué verás:** El interruptor cambia a azul. El escenario aparece ahora en tu lista de escenarios con el estado `"Active"`.
+
+---
+
+## Errores comunes
+
+**El trigger no detecta filas nuevas**
+*Síntoma:* Ejecutas el escenario manualmente y el módulo de Google Sheets muestra "0 bundles" procesados.
+*Causa:* Make busca filas añadidas *después* de configurar el trigger, no las anteriores. Si añadiste la fila antes de hacer el primer `"Run once"`, Make no la detecta como nueva.
+*Solución:* Añade una fila nueva en tu hoja *después* de haber guardado el trigger en Make, y vuelve a ejecutar `"Run once"`.
+
+---
+
+**Error de conexión al autorizar Google**
+*Síntoma:* La ventana de autorización se cierra pero el campo `"Connection"` sigue vacío o muestra un error en rojo.
+*Causa:* El navegador ha bloqueado la ventana emergente de autorización de Google.
+*Solución:* Permite las ventanas emergentes de make.com en la configuración de tu navegador e intenta conectar de nuevo desde el campo `"Connection"` → `"Add"`.
+
+---
+
+**El escenario consume operaciones más rápido de lo esperado**
+*Síntoma:* El contador de operaciones del plan gratuito baja rápido aunque el escenario parezca sencillo.
+*Causa:* Cada módulo que se ejecuta consume una operación. Un escenario con 3 módulos que se ejecuta 100 veces consume 300 operaciones, no 100.
+*Solución:* Añade filtros entre módulos (el icono de embudo entre dos módulos) para que la acción solo se ejecute cuando se cumpla una condición concreta. Así evitas ejecuciones innecesarias.
+
+<Callout type="tip">
+**Operaciones en el plan gratuito:** Make incluye 1.000 operaciones/mes en el plan gratuito. Con un escenario de 2 módulos que se ejecuta cuando llegan leads, 1.000 operaciones equivalen a 500 ejecuciones — suficiente para empezar. Si necesitas más, el plan Core cuesta desde 9 $/mes (aprox. 8,30 €/mes según cambio a octubre 2026) + IVA. Verifica siempre el precio actual en make.com.
+</Callout>
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Un escenario activo en Make que vigila tu Google Sheets y envía un email automáticamente cada vez que aparece una fila nueva.
+- Una automatización real funcionando sin que tengas que hacer nada manualmente.
+- Una primera conexión guardada con Google que puedes reutilizar en cualquier otro escenario.
+
+El siguiente paso lógico es añadir más módulos a este mismo escenario — por ejemplo, crear también una tarea en tu CRM cada vez que llega un lead nuevo. La lógica es exactamente la misma: un módulo más conectado al final de la cadena.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Make, aquí tienes el acceso directo al plan gratuito:
+
+<AffiliateLink programSlug="make" articleSlug="como-funciona-make-tutorial-espanol" label="Probar Make gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Make está en español?
+
+La interfaz de Make está principalmente en inglés. Existe una versión parcialmente traducida al español, pero los menús principales del editor de escenarios están en inglés. La documentación oficial (Make Academy) también está mayoritariamente en inglés, aunque hay tutoriales en español publicados por la comunidad. Para Carlos, esto puede ser un freno — si prefieres una herramienta con interfaz completamente en español, considera que la curva de aprendizaje inicial con Make tarda unos pocos días en superarse.
+
+### ¿Make es gratis?
+
+Sí, existe un plan gratuito real con 1.000 operaciones al mes, sin límite de escenarios activos ni de conexiones. Es suficiente para automatizaciones sencillas en una pyme pequeña. El plan de pago más básico (Core) añade más operaciones y ejecuciones más frecuentes — no publican el precio en todos los mercados de la misma forma, así que consulta make.com para el precio actualizado en euros.
+
+### ¿Cuál es la diferencia entre Make e Integromat?
+
+Son la misma herramienta. Integromat era el nombre original; en 2022 la plataforma pasó a llamarse Make. Si encuentras tutoriales con el nombre Integromat, las instrucciones siguen siendo válidas en su mayoría, aunque algunos elementos de la interfaz han cambiado de nombre.
+
+### ¿Puedo usar Make para conectar mi software de facturación español?
+
+Depende del software. Make tiene módulos nativos para herramientas como Holded o Factorial. Para software más específico del mercado español sin módulo nativo, puedes usar el módulo genérico `"HTTP"` si la herramienta tiene API, aunque eso requiere conocimientos técnicos básicos. Consulta el directorio de aplicaciones de Make antes de suscribirte a un plan de pago.
+
+### ¿Qué pasa si supero las 1.000 operaciones del plan gratuito?
+
+Make pausa el escenario hasta el siguiente ciclo mensual — no te cobra nada extra de forma automática. Recibirás un email de aviso cuando te acerques al límite. Si necesitas más operaciones de forma puntual, puedes comprar operaciones adicionales sin cambiar de plan.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: octubre 2026.*
