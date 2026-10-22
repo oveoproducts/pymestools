@@ -112,6 +112,12 @@ _(vacío)_
       hayan cobrado de verdad. Registro:
       https://partners.powercm-software.com/auth?mode=up ·
       condiciones: https://partners.powercm-software.com/terms
+- [ ] Afiliados en espera (2026-10-22): Hostinger (solicitud 14/09 sin respuesta),
+      Semrush (cuenta Impact sin confirmar), Pipedrive (PartnerStack, pendiente
+      desde 26/09) y Quipu (alta enviada, sin aprobar). Hostinger/Semrush/
+      ActiveCampaign están inactivos en `affiliate_programs`: reactivar solo con
+      enlace personal del panel. Activos con enlace real: GetResponse, Zoho CRM,
+      Make, Tidio.
 - [ ] HubSpot afiliados: **rechazado dos veces** (2026-09, 2026-09-30). La
       segunda respuesta (Mary Rose Gadayan, HubSpot Affiliate Team) ya da
       criterio concreto y verificable, no genérico:
