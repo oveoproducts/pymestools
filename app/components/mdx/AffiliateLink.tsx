@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/db/client'
+import { WEBSITE_URLS } from '@/lib/website-urls'
 
 interface Props {
   programSlug: string
@@ -6,46 +7,6 @@ interface Props {
   label: string
 }
 
-// Official website fallback URLs for programs not yet registered as affiliates
-const WEBSITE_URLS: Record<string, string> = {
-  holded: 'https://www.holded.com/es',
-  zapier: 'https://zapier.com/',
-  anfix: 'https://anfix.com/',
-  pipedrive: 'https://www.pipedrive.com/es',
-  'zoho-crm': 'https://www.zoho.com/es-xl/crm/',
-  mailrelay: 'https://mailrelay.com/es/',
-  factorial: 'https://factorialhr.es/',
-  nucleo360: 'https://nucleo360.com/',
-  make: 'https://www.make.com/en',
-  sesame: 'https://www.sesamehr.es/',
-  mailchimp: 'https://mailchimp.com/',
-  acumbamail: 'https://acumbamail.com/',
-  freshsales: 'https://www.freshworks.com/es/crm/',
-  contasimple: 'https://contasimple.com/',
-  sage: 'https://www.sage.com/es-es/',
-  'sage-50': 'https://www.sage.com/es-es/productos/sage-50/',
-  'sage-hr': 'https://www.sage.com/es-es/productos/sage-hr/',
-  clickup: 'https://clickup.com/',
-  bizneo: 'https://www.bizneo.com/',
-  asana: 'https://asana.com/',
-  trello: 'https://trello.com/',
-  n8n: 'https://n8n.io/',
-  salesforce: 'https://www.salesforce.com/es/',
-  'hubspot-crm': 'https://www.hubspot.es/products/crm',
-  hubspot: 'https://www.hubspot.es/products/crm',
-  activecampaign: 'https://www.activecampaign.com/',
-  hostinger: 'https://www.hostinger.com/es',
-  semrush: 'https://es.semrush.com/',
-  copper: 'https://www.copper.com/',
-  factusol: 'https://www.factusol.com/',
-  kenjo: 'https://www.kenjo.io/es',
-  'monday-crm': 'https://monday.com/crm/',
-  'power-automate': 'https://powerautomate.microsoft.com/es-es/',
-  klaviyo: 'https://www.klaviyo.com/',
-  personio: 'https://www.personio.es/',
-  quipu: 'https://getquipu.com/es/',
-  odoo: 'https://www.odoo.com/es_ES/',
-}
 
 export async function AffiliateLink({ programSlug, articleSlug, label }: Props) {
   const { data: program } = await supabase

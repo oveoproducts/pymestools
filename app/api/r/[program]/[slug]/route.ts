@@ -1,12 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/db/client'
 import brand from '@/data/brand.json'
+import { isBot } from '@/lib/bot-detect'
+import { WEBSITE_URLS } from '@/lib/website-urls'
 
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ program: string; slug: string }> },
 ) {
   const { program: programSlug, slug: articleSlug } = await params
+
+  // Bots and unidentified clients go to the merchant's plain site: they must
+  // not hit the tracked affiliate link (fake clicks with no conversions can get
+  // an affiliate account flagged) nor inflate our own click log.
+  if (isBot(req.headers.get('user-agent'))) {
+    return NextResponse.redirect(WEBSITE_URLS[programSlug] ?? brand.siteUrl, {
+      status: 302,
+      headers: { 'Cache-Control': 'no-store' },
+    })
+  }
 
   // affiliate_programs uses a boolean `active` column — the previous
   // `.eq('status', 'active')` matched a column that doesn't exist, so the
@@ -40,5 +52,8 @@ export async function GET(
     })
   })()
 
-  return NextResponse.redirect(program.affiliate_url, { status: 302 })
+  return NextResponse.redirect(program.affiliate_url, {
+    status: 302,
+    headers: { 'Cache-Control': 'no-store' },
+  })
 }
