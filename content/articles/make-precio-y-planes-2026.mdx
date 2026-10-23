@@ -5,7 +5,7 @@ category: "automatizacion"
 description: "Análisis honesto de los precios y planes de Make para pymes españolas en 2026: qué incluye cada plan, para quién vale la pena y para quién no."
 type: "review"
 publishedAt: null
-updatedAt: "2026-10-01T00:00:00Z"
+updatedAt: "2026-10-23T00:00:00Z"
 tools: ["make"]
 keywords:
   primary: "make precio y planes 2026"
@@ -27,11 +27,11 @@ Tienes procesos repetitivos que tu equipo hace a mano todos los días: pasar dat
 ## Resumen rápido
 
 - **Para quién:** Pymes de 3–50 empleados que quieren automatizar procesos entre apps sin programar, y tienen alguien en el equipo con ganas de trastear.
-- **Lo mejor:** El plan gratuito es real y funcional. El precio por operaciones es mucho más bajo que Zapier para volúmenes medios.
+- **Lo mejor:** El plan gratuito es real y funcional, y los planes de pago parten de 9 $/mes por 10.000 créditos (pago anual).
 - **Lo peor:** La curva de aprendizaje es pronunciada. Si nadie en tu equipo tiene paciencia para aprender la lógica de los escenarios, acabarás pagando y no usando.
-- **Precio desde:** 9 $/mes + IVA (aprox. 8,30 €/mes según tipo de cambio a octubre 2026) — ver tabla completa abajo.
-- **Permanencia:** Sin permanencia en planes mensuales. El plan anual tiene descuento pero sin penalización si cancelas.
-- **Soporte en español:** Solo interfaz parcial. El soporte y la documentación oficial están en inglés.
+- **Precio desde:** 9 $/mes pagando por años (10,59 $ pagando mes a mes) por 10.000 créditos al mes, sin IVA — ver tabla completa abajo.
+- **Permanencia:** puedes cancelar cuando quieras; el plan de pago sigue hasta el final del periodo ya pagado y después tu cuenta pasa al plan gratuito.
+- **Soporte en español:** no hemos podido verificar el idioma del soporte ni de toda la documentación; compruébalo en su web.
 - **Veredicto:** Una de las mejores opciones de automatización para pymes que quieren hacer más con menos. Pero no es para equipos sin ningún perfil técnico.
 
 <AffiliateLink programSlug="make" articleSlug="make-precio-y-planes-2026" label="Probar Make gratis" />
@@ -72,13 +72,13 @@ Si la app que necesitas no tiene módulo nativo, puedes usar el módulo HTTP par
 
 ### Operaciones como unidad de precio
 
-El modelo de precios de Make no se basa en el número de automatizaciones, sino en **operaciones** — cada acción que ejecuta un módulo dentro de un escenario cuenta como una operación. Un escenario con 5 módulos que se ejecuta 100 veces al mes consume 500 operaciones.
+Make ya no habla de operaciones: la unidad de facturación son los **créditos**. Cada acción que ejecuta un módulo dentro de un escenario consume normalmente 1 crédito (algunas funciones de IA consumen más; el router y los módulos de gestión de errores no consumen). Un escenario con 5 módulos que se ejecuta 100 veces al mes consume unos 500 créditos.
 
-Esto es importante para calcular qué plan necesitas. Un uso medio para una pyme pequeña (10–15 automatizaciones activas, ejecución diaria) suele situarse entre 10.000 y 50.000 operaciones al mes.
+Para calcular qué plan necesitas, cuenta los módulos de tus escenarios y las veces que se ejecutan al mes. Si te quedas sin créditos, los escenarios dejan de ejecutarse hasta que añades más.
 
 ### Programación y ejecución
 
-Puedes definir con qué frecuencia se ejecuta cada escenario: cada minuto, cada hora, cada día, o activado por un evento externo (webhook). En los planes de entrada, el intervalo mínimo es de 15 minutos. Para tiempo real necesitas el plan Core o superior.
+Puedes definir con qué frecuencia se ejecuta cada escenario: cada minuto, cada hora, cada día, o activado por un evento externo (webhook). En el plan gratuito, el intervalo mínimo entre ejecuciones es de 15 minutos; desde Core puedes programar escenarios al minuto.
 
 ### Historial y depuración
 
@@ -91,36 +91,36 @@ Make guarda el historial de ejecuciones y muestra exactamente en qué módulo fa
 {/* TODO: captura de la página de precios oficial de Make */}
 
 <Callout type="warning">
-**Ojo con el modelo de precios:** Make cobra por operaciones, no por automatizaciones. Antes de elegir plan, calcula cuántas operaciones mensuales necesitas. Un escenario con 4 módulos que se ejecuta 500 veces al mes = 2.000 operaciones.
+**Ojo con el modelo de precios:** Make cobra por créditos, no por automatizaciones. Antes de elegir plan, calcula cuántos créditos necesitas al mes. Un escenario con 4 módulos que se ejecuta 500 veces al mes consume unos 2.000 créditos.
 </Callout>
 
-| Plan | Precio | Operaciones/mes | Escenarios activos | Intervalo mínimo | Trial |
-|------|--------|-----------------|-------------------|-----------------|-------|
-| Free | 0 € | 1.000 | Ilimitados | 15 min | — |
-| Core | 9 $/mes + IVA (aprox. 8,30 €/mes) | 10.000 | Ilimitados | 1 min | — |
-| Pro | 16 $/mes + IVA (aprox. 14,80 €/mes) | 10.000 | Ilimitados | 1 min | — |
-| Teams | 29 $/mes + IVA (aprox. 26,80 €/mes) | 10.000 | Ilimitados | 1 min | — |
-| Enterprise | No publican el precio — hay que solicitar demo/presupuesto. | Personalizado | Ilimitados | 1 min | — |
+| Plan | Precio (sin IVA) | Créditos/mes | Escenarios activos | Intervalo mínimo | Qué añade |
+|------|------------------|--------------|--------------------|------------------|-----------|
+| Free | 0 $ | 1.000 | Limitados | 15 min | Constructor visual, routers y filtros, soporte |
+| Core | 9 $/mes pagando por años (10,59 $ pagando mes a mes) | 10.000 | Ilimitados | Al minuto | Escenarios ilimitados, programación al minuto, API de Make, mayores límites de transferencia de datos |
+| Pro | 16 $/mes por años (18,82 $ mensual) | 10.000 | Ilimitados | Al minuto | Todo lo de Core, más ejecución prioritaria, variables personalizadas y búsqueda de texto completo en el historial |
+| Teams | 29 $/mes por años (34,12 $ mensual) | 10.000 | Ilimitados | Al minuto | Todo lo de Pro, más equipos y roles y plantillas compartidas |
+| Enterprise | A medida | A medida | Ilimitados | Al minuto | Soporte 24/7 y funciones de seguridad avanzadas |
 
-*Precios consultados en octubre 2026. Los planes Core, Pro y Teams permiten ampliar operaciones adicionales por coste extra. Verifica siempre en la web del proveedor: make.com/en/pricing*
+*Precios comprobados en make.com/pricing en octubre de 2026, para 10.000 créditos al mes y sin IVA. Cambian con los créditos que elijas: con pago anual, Core cuesta 0,90 $ por cada 1.000 créditos, Pro 1,60 $ y Teams 2,90 $.*
 
-**IVA:** Los precios anteriores no incluyen IVA. Make cobra en dólares — el tipo de cambio varía. La conversión aproximada indicada es orientativa a octubre 2026.
+**IVA y moneda:** los precios están en dólares y no incluyen IVA; en España se suma el 21 %. El importe en euros depende del tipo de cambio.
 
-**Facturación anual:** Existe opción de pago anual con descuento aproximado del 20% respecto al mensual. Sin penalización si cancelas antes de renovar.
+**Facturación anual:** la web anuncia un 15 % de ahorro al pagar por años (Core: 9 $ frente a 10,59 $ al mes).
 
-**Permanencia:** Sin compromiso en planes mensuales. Cancelas cuando quieres y el acceso dura hasta fin del periodo pagado.
+**Permanencia:** puedes cancelar cuando quieras; el plan de pago dura hasta el final del periodo pagado y después pasas al plan gratuito.
 
 <Callout type="info">
-**¿Qué plan necesita una pyme como la de Carlos?** Con 8 empleados y automatizaciones básicas (formularios → CRM, notificaciones, sincronización de datos), el plan **Core** suele ser suficiente en la mayoría de casos. El plan **Pro** añade funciones como historial de ejecución extendido y prioridad en la cola — útil si tus automatizaciones son críticas para el negocio.
+**¿Qué plan necesita una pyme como la de Carlos?** Con 8 empleados y automatizaciones básicas (formularios → CRM, notificaciones, sincronización de datos), el plan **Core** suele ser suficiente en la mayoría de casos. El plan **Pro** añade ejecución prioritaria, variables personalizadas y búsqueda de texto completo en el historial — útil si tus automatizaciones son críticas para el negocio.
 </Callout>
 
 ---
 
 ## ✅ Lo que nos gusta
 
-**Plan gratuito sin caducidad:** Las 1.000 operaciones mensuales del plan gratuito no tienen fecha de expiración. Para una pyme que quiere probar antes de pagar, es suficiente para validar si Make encaja con su flujo de trabajo real.
+**Plan gratuito sin caducidad:** los 1.000 créditos del plan gratuito se renuevan cada mes. Para una pyme que quiere probar antes de pagar, es suficiente para validar si Make encaja con su flujo de trabajo real.
 
-**Precio muy competitivo frente a Zapier:** El plan Core de Make (aprox. 8,30 €/mes) ofrece 10.000 operaciones. El equivalente en Zapier cuesta considerablemente más para un volumen similar. Si ya usas Zapier y el precio te duele, Make merece una mirada seria.
+**Precio de entrada bajo:** el plan Core cuesta 9 $/mes (pago anual) por 10.000 créditos. Zapier mide el uso de otra forma, así que compara su plan equivalente en su web antes de decidir.
 
 **Lógica condicional real sin código:** Make permite construir flujos con rutas, filtros, iteradores y funciones de transformación de datos. Para una pyme que tiene procesos con "si pasa X haz Y, si no haz Z", esto marca la diferencia frente a herramientas más simples.
 
@@ -128,7 +128,7 @@ Make guarda el historial de ejecuciones y muestra exactamente en qué módulo fa
 
 ## ❌ Lo que no nos gusta
 
-**Curva de aprendizaje real:** Make no es intuitivo desde el primer día. El concepto de operaciones, módulos, webhooks y mapeo de datos requiere dedicarle tiempo. Si en tu empresa nadie tiene ese tiempo o ganas, el riesgo es pagar una suscripción y no usarla.
+**Curva de aprendizaje real:** Make no es intuitivo desde el primer día. El concepto de créditos, módulos, webhooks y mapeo de datos requiere dedicarle tiempo. Si en tu empresa nadie tiene ese tiempo o ganas, el riesgo es pagar una suscripción y no usarla.
 
 **Soporte y documentación solo en inglés:** La interfaz tiene traducción parcial al español, pero la documentación oficial, el foro de comunidad y el soporte están en inglés. Si necesitas resolver un problema técnico, te toca buscar en inglés o depender de tutoriales de terceros en YouTube.
 
@@ -160,15 +160,15 @@ Si encajas en el perfil — procesos repetitivos, varias apps conectadas, alguie
 
 ### ¿Make tiene plan gratuito permanente?
 
-Sí. El plan gratuito de Make ofrece 1.000 operaciones al mes sin fecha de caducidad. No requiere tarjeta de crédito para registrarse. Es suficiente para probar automatizaciones básicas o para casos de uso con volumen muy bajo.
+Sí. El plan gratuito de Make incluye 1.000 créditos al mes. Es suficiente para probar automatizaciones básicas o para casos de uso de volumen muy bajo.
 
 ### ¿Cuánto cuesta Make en euros para una pyme española?
 
-Make cobra en dólares. El plan Core parte de 9 $/mes, que a octubre 2026 equivale a aproximadamente 8,30 €/mes, más IVA (21% en España para servicios digitales B2B). El tipo de cambio varía, por lo que el coste real en euros puede fluctuar ligeramente cada mes.
+El plan Core parte de 9 $/mes pagando por años (10,59 $ pagando mes a mes) por 10.000 créditos, más IVA si eres empresa en España. Make muestra los precios en dólares, así que el importe en euros depende del tipo de cambio.
 
 ### ¿Make es más barato que Zapier?
 
-En la mayoría de casos, sí. Para un volumen equivalente de automatizaciones, Make suele costar entre un 40% y un 60% menos que Zapier. La diferencia se amplía cuanto mayor es el volumen de operaciones. El trade-off es que Make es más complejo de configurar.
+No lo hemos comparado con precios actuales de Zapier. Make cobra por créditos (la mayoría de acciones consumen 1) y Zapier por tareas, así que compara el volumen de tu caso en las dos webs.
 
 ### ¿Necesito saber programar para usar Make?
 

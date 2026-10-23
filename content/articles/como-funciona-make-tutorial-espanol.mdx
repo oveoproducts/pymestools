@@ -5,7 +5,7 @@ category: "automatizacion"
 description: "Tutorial en español para entender cómo funciona Make y crear tu primera automatización. Resultado en menos de 30 minutos, sin conocimientos técnicos."
 type: "how-to"
 publishedAt: null
-updatedAt: "2026-10-01T00:00:00Z"
+updatedAt: "2026-10-23T00:00:00Z"
 tools: ["make"]
 keywords:
   primary: "cómo funciona make tutorial español"
@@ -28,7 +28,7 @@ El proceso completo lleva entre 20 y 30 minutos si es la primera vez que usas la
 
 ## Lo que necesitas
 
-- **Cuenta en Make:** el plan gratuito es suficiente para seguir este tutorial — incluye 1.000 operaciones al mes y escenarios activos ilimitados. Regístrate en make.com.
+- **Cuenta en Make:** el plan gratuito es suficiente para seguir este tutorial: incluye 1.000 créditos al mes. Regístrate en make.com.
 - **Dos aplicaciones que ya usas:** por ejemplo, Google Sheets y Gmail, o un formulario web y una hoja de cálculo. Make conecta más de 1.500 aplicaciones.
 - **Acceso desde un navegador de escritorio:** la configuración de escenarios no funciona bien desde el móvil — usa un ordenador o portátil.
 - **Nivel técnico necesario:** no necesitas saber programar. Si sabes usar Google Drive o cualquier herramienta en la nube, tienes suficiente. Algunos módulos avanzados requieren entender conceptos básicos de datos (campos, variables), pero no para este tutorial.
@@ -161,13 +161,13 @@ Ejemplo concreto: cuando alguien rellena un formulario de tu web (trigger), Make
 
 ---
 
-**El escenario consume operaciones más rápido de lo esperado**
-*Síntoma:* El contador de operaciones del plan gratuito baja rápido aunque el escenario parezca sencillo.
-*Causa:* Cada módulo que se ejecuta consume una operación. Un escenario con 3 módulos que se ejecuta 100 veces consume 300 operaciones, no 100.
+**El escenario consume créditos más rápido de lo esperado**
+*Síntoma:* El contador de créditos del plan gratuito baja rápido aunque el escenario parezca sencillo.
+*Causa:* Cada módulo que se ejecuta consume normalmente 1 crédito. Un escenario con 3 módulos que se ejecuta 100 veces consume unos 300 créditos, no 100.
 *Solución:* Añade filtros entre módulos (el icono de embudo entre dos módulos) para que la acción solo se ejecute cuando se cumpla una condición concreta. Así evitas ejecuciones innecesarias.
 
 <Callout type="tip">
-**Operaciones en el plan gratuito:** Make incluye 1.000 operaciones/mes en el plan gratuito. Con un escenario de 2 módulos que se ejecuta cuando llegan leads, 1.000 operaciones equivalen a 500 ejecuciones — suficiente para empezar. Si necesitas más, el plan Core cuesta desde 9 $/mes (aprox. 8,30 €/mes según cambio a octubre 2026) + IVA. Verifica siempre el precio actual en make.com.
+**Créditos en el plan gratuito:** Make incluye 1.000 créditos al mes en el plan gratuito. Con un escenario de 2 módulos que se ejecuta cuando llegan leads, 1.000 créditos equivalen a unas 500 ejecuciones — suficiente para empezar. Si necesitas más, el plan Core cuesta 9 $/mes pagando por años (10,59 $ mensual) por 10.000 créditos, más IVA. Verifica siempre el precio actual en make.com.
 </Callout>
 
 ---
@@ -200,7 +200,7 @@ La interfaz de Make está principalmente en inglés. Existe una versión parcial
 
 ### ¿Make es gratis?
 
-Sí, existe un plan gratuito real con 1.000 operaciones al mes, sin límite de escenarios activos ni de conexiones. Es suficiente para automatizaciones sencillas en una pyme pequeña. El plan de pago más básico (Core) añade más operaciones y ejecuciones más frecuentes — no publican el precio en todos los mercados de la misma forma, así que consulta make.com para el precio actualizado en euros.
+Sí, existe un plan gratuito real con 1.000 créditos al mes. Es suficiente para automatizaciones sencillas. Los planes de pago empiezan en Core (9 $/mes con pago anual por 10.000 créditos) y añaden escenarios activos ilimitados y ejecución al minuto; el plan gratuito limita el número de escenarios activos y ejecuta como mínimo cada 15 minutos.
 
 ### ¿Cuál es la diferencia entre Make e Integromat?
 
@@ -208,11 +208,11 @@ Son la misma herramienta. Integromat era el nombre original; en 2022 la platafor
 
 ### ¿Puedo usar Make para conectar mi software de facturación español?
 
-Depende del software. Make tiene módulos nativos para herramientas como Holded o Factorial. Para software más específico del mercado español sin módulo nativo, puedes usar el módulo genérico `"HTTP"` si la herramienta tiene API, aunque eso requiere conocimientos técnicos básicos. Consulta el directorio de aplicaciones de Make antes de suscribirte a un plan de pago.
+Depende del software. Comprueba en el directorio de aplicaciones de Make si tu herramienta tiene módulo nativo. Para software sin módulo, puedes usar el módulo genérico `"HTTP"` si la herramienta tiene API, aunque eso requiere conocimientos técnicos básicos. Hazlo antes de suscribirte a un plan de pago.
 
-### ¿Qué pasa si supero las 1.000 operaciones del plan gratuito?
+### ¿Qué pasa si supero los 1.000 créditos del plan gratuito?
 
-Make pausa el escenario hasta el siguiente ciclo mensual — no te cobra nada extra de forma automática. Recibirás un email de aviso cuando te acerques al límite. Si necesitas más operaciones de forma puntual, puedes comprar operaciones adicionales sin cambiar de plan.
+Tus escenarios dejan de ejecutarse hasta que añades créditos. Los webhooks entrantes se ponen en cola mientras tanto. Puedes subir de plan o comprar créditos extra en paquetes de 1.000 o 10.000 y, en Core, Pro y Teams, activar la compra automática.
 
 
 ## Sigue leyendo
