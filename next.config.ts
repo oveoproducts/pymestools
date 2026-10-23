@@ -43,6 +43,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/email-marketing/alternativas-activecampaign',
+        destination: '/email-marketing/alternativas-a-activecampaign-en-espanol',
+        permanent: true,
+      },
+      {
         source: '/email-marketing/activecampaign-review-espanol-pymes',
         destination: '/email-marketing/review-activecampaign',
         permanent: true,
