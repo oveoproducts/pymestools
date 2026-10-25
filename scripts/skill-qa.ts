@@ -23,6 +23,7 @@ import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import Anthropic from '@anthropic-ai/sdk'
+import matter from 'gray-matter'
 import { supabase } from '../lib/db/client'
 import { readArticleBody } from '../lib/content-store'
 
@@ -251,6 +252,33 @@ ${mdx.slice(0, 40000)}${mdx.length > 40000 ? '\n[...truncado para revisión...]'
   }
 }
 
+
+// ---------------------------------------------------------------------------
+// Price gate — amounts of money must be checked against the vendor's own site
+// ---------------------------------------------------------------------------
+
+const PRICE_MAX_AGE_DAYS = 90
+const AMOUNT_PATTERN = /(?:\d{1,3}(?:\.\d{3})*|\d+)(?:,\d{1,2})?\s?(?:€|\$|USD|EUR|euros?)|[€$]\s?\d/gi
+
+/**
+ * Returns a reason string when the article quotes prices that nobody has
+ * verified, or null when it is fine. An article is verified when its
+ * frontmatter carries `prices_verified: YYYY-MM-DD` no older than 90 days.
+ * The model writes plausible but wrong prices (wrong currency, retired plan
+ * names, trial lengths), and Tier 2 cannot see the vendor's site.
+ */
+export function needsPriceVerification(mdx: string): string | null {
+  const { data, content } = matter(mdx)
+  const verified = data.prices_verified ? new Date(String(data.prices_verified)) : null
+  if (verified && !Number.isNaN(verified.getTime())) {
+    const ageDays = (Date.now() - verified.getTime()) / 86_400_000
+    if (ageDays <= PRICE_MAX_AGE_DAYS) return null
+  }
+  const amounts = content.match(AMOUNT_PATTERN) ?? []
+  if (amounts.length < 3) return null
+  return `${amounts.length} importes sin verificar contra la web oficial (añade prices_verified al frontmatter tras comprobarlos)`
+}
+
 // ---------------------------------------------------------------------------
 // Public entry point
 // ---------------------------------------------------------------------------
@@ -326,20 +354,33 @@ export async function runQA(options: QAOptions): Promise<QAResult> {
     console.log(`  Tier 2: score ${tier2.score}/10 — ${tier2.passed ? '✅ PASSED' : '❌ FAILED'}`)
     console.log(`  Feedback: ${tier2.feedback}`)
 
-    const newStatus = tier2.passed ? 'seo_review' : 'awaiting_human'
+    const priceHold = tier2.passed ? needsPriceVerification(mdx) : null
+    const newStatus = tier2.passed && !priceHold ? 'seo_review' : 'awaiting_human'
 
     await supabase
       .from('articles')
       .update({
         status: newStatus,
         quality_score: tier2.score,
-        quality_feedback: tier2.feedback,
+        quality_feedback: priceHold ? `PRICE_CHECK: ${priceHold}. ${tier2.feedback}` : tier2.feedback,
         updated_at: new Date().toISOString(),
       })
       .eq('id', article.id)
 
     if (options.queueItemId) {
-      await updateQueueItem(options.queueItemId, { status: newStatus })
+      await updateQueueItem(
+        options.queueItemId,
+        priceHold ? { status: newStatus, error_message: `PRICE_CHECK: ${priceHold}` } : { status: newStatus },
+      )
+    }
+
+    if (priceHold) {
+      // A hold is not a failure: the article is good and waits for a price check.
+      const durationMs = Date.now() - startedAt
+      const message = `QA passed (${tier2.score}/10) but held for price verification → awaiting_human`
+      await logAgent('qa:review', 'completed', durationMs, tier2.score, message)
+      console.log(`\n⏸️  ${message}`)
+      return { success: true, articleId: article.id, score: tier2.score, issues: tier1.issues, message }
     }
 
     const durationMs = Date.now() - startedAt

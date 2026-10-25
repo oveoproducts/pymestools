@@ -56,6 +56,28 @@ siguiente, revienta con ENOENT. El disco es sólo caché para el build.
 | título, categoría, tipo, herramientas, cuerpo | MDX |
 | `meta_title`, `meta_description` | MDX si está, si no lo de Supabase |
 
+## Puerta de precios (PRICE_CHECK)
+
+**4. Un artículo con importes de dinero no se publica sin verificar.**
+El modelo escribe precios verosímiles pero erróneos: moneda equivocada, planes
+que ya no existen, pruebas de 30 días que son de 14. El QA de nivel 2 no ve la
+web del proveedor, así que no lo detecta. En `skill-qa.ts`, un artículo que pasa
+el QA pero cita 3 o más importes y no lleva `prices_verified: AAAA-MM-DD` (de los
+últimos 90 días) en el frontmatter queda en `awaiting_human` con
+`PRICE_CHECK` en `quality_feedback` y en `error_message`. No cuenta como fallo:
+la cola sigue y el job no sale en rojo.
+
+Para liberar un artículo retenido, comprueba sus precios en la web oficial,
+corrige el texto y ejecuta:
+
+```bash
+npx tsx --env-file=.env.local scripts/release-price-checked.ts <slug>
+```
+
+Eso sella `prices_verified` y lo manda a `seo_review`; el pipeline lo publica en
+su siguiente ejecución. Para ver lo pendiente: artículos en `awaiting_human` cuyo
+`quality_feedback` empieza por `PRICE_CHECK`.
+
 ## Alertas
 
 `lib/notify.ts` manda por Resend. **Requiere `NOTIFICATION_EMAIL`**; sin esa

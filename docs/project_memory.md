@@ -30,7 +30,7 @@ Leer este archivo al inicio de cada sesión nueva.
 5. **Comisiones recurrentes primero** — el Research prioriza `commission_type = 'recurring'`
 6. **Verificación de programas mensual** — el Analytics verifica que los links siguen activos
 7. **Sin intervención humana en el contenido** — humano define estrategia, el sistema ejecuta
-8. **Precios siempre verificados** — nunca inventados, siempre con fecha y estado IVA
+8. **Precios siempre verificados** — nunca inventados, siempre con fecha y estado IVA. Desde 2026-10-23 el QA retiene (PRICE_CHECK) todo artículo con importes sin `prices_verified`; ver docs/OPERATIONS.md
 9. **QA antes de publicar, no después** — lección aprendida de IAInmobiliaria
 10. **brand.json es la fuente única de branding** — nunca hardcodear "PymesTools" en código
 
