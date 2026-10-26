@@ -35,6 +35,7 @@ export function Footer() {
               <li><Link href="/crm/review-hubspot-crm" className="hover:text-gray-700">Review HubSpot CRM</Link></li>
               <li><Link href="/email-marketing/alternativas-mailchimp" className="hover:text-gray-700">Alternativas a Mailchimp</Link></li>
               <li><Link href="/facturacion/review-holded" className="hover:text-gray-700">Review Holded</Link></li>
+              <li><Link href="/precios-software-pymes" className="hover:text-gray-700">Precios verificados</Link></li>
             </ul>
           </div>
           <div>

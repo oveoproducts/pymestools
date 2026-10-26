@@ -61,8 +61,8 @@ export function NewsletterBanner() {
           <div className="flex items-start gap-3">
             <span className="text-2xl">📬</span>
             <div>
-              <p className="font-semibold text-gray-900 text-sm">Revisa tu bandeja de entrada</p>
-              <p className="text-gray-500 text-xs mt-1">Te hemos enviado un email de confirmación.</p>
+              <p className="font-semibold text-gray-900 text-sm">¡Apuntado!</p>
+              <p className="text-gray-500 text-xs mt-1">Te avisaremos cuando publiquemos comparativas y precios nuevos.</p>
             </div>
             <button onClick={dismiss} className="ml-auto text-gray-300 hover:text-gray-500" aria-label="Cerrar">✕</button>
           </div>
