@@ -1,0 +1,213 @@
+---
+title: "Cómo crear un chatbot para tu web con Tidio: guía paso a paso"
+slug: "como-crear-un-chatbot-para-tu-web-con-tidio"
+category: "automatizacion"
+description: "Guía paso a paso para crear un chatbot con Tidio en tu web. Resultado en menos de 30 minutos, sin conocimientos técnicos ni código."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-10-01T00:00:00Z"
+tools: ["tidio"]
+keywords:
+  primary: "como crear un chatbot para tu web con tidio"
+  secondary:
+    - "tidio chatbot configuracion"
+    - "chatbot web pyme españa"
+    - "tidio tutorial español"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "6 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás un chatbot activo en tu web que responde automáticamente a las preguntas más frecuentes de tus visitantes — fuera de tu horario de oficina, sin que tú ni tu equipo tengáis que hacer nada.
+
+El proceso completo lleva menos de 30 minutos si tienes claros los mensajes que quieres que envíe. Funciona con el plan gratuito de Tidio.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Tidio:** El plan gratuito es suficiente para este tutorial. Puedes crear la cuenta en tidio.com sin tarjeta de crédito.
+- **Acceso al código de tu web:** Necesitas poder pegar un fragmento de JavaScript en tu web. Si usas WordPress, Shopify o Wix, hay plugin o integración directa — no hace falta tocar código.
+- **Los textos del chatbot preparados:** Decide antes qué preguntas quiere responder el bot (horario, precio, contacto, etc.). Si los tienes escritos, el proceso es mucho más rápido.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes copiar y pegar texto y moverte por un panel de administración, es suficiente.
+
+---
+
+## Pasos
+
+### Paso 1: Crea tu cuenta y accede al panel de Tidio
+
+**Qué hacer:** Ve a tidio.com y haz clic en `"Get started free"`. Regístrate con tu email de empresa. Una vez dentro, llegarás al panel principal de Tidio — el `"Dashboard"`.
+
+**Por qué:** Tidio guarda toda la configuración del chatbot en la nube. No hay nada que instalar en tu ordenador.
+
+**Qué verás:** Una pantalla de bienvenida con un asistente de configuración inicial. Puedes seguirlo o cerrarlo — en este tutorial vamos a la configuración directamente.
+
+---
+
+### Paso 2: Instala el widget de Tidio en tu web
+
+**Qué hacer:** En el menú lateral izquierdo, haz clic en `"Settings"` y luego en `"Installation"`. Tidio te mostrará tres opciones: instalar mediante código JavaScript, mediante plugin de WordPress o mediante integración directa con Shopify o Wix.
+
+- **Si usas WordPress:** Instala el plugin oficial de Tidio desde el repositorio de WordPress. Busca "Tidio" en `"Plugins > Añadir nuevo"`, instálalo y actívalo. El widget aparecerá automáticamente.
+- **Si usas otra plataforma:** Copia el fragmento de código JavaScript que aparece en pantalla y pégalo en el `<head>` de tu web, antes del cierre `</head>`.
+
+**Por qué:** Sin instalar el widget, el chatbot no aparece en tu web. Este paso conecta Tidio con tu dominio.
+
+**Qué verás:** Una vez instalado, si vuelves al panel de Tidio verás el estado de conexión como `"Connected"` junto a tu dominio.
+
+<Callout type="tip">
+Si tu web la gestiona una agencia o un técnico externo, envíale directamente el fragmento de código de la pantalla de instalación. Es un copia-pega de 2 líneas — no necesita explicaciones técnicas.
+</Callout>
+
+---
+
+### Paso 3: Accede al editor de chatbots
+
+**Qué hacer:** En el menú lateral, haz clic en `"Automation"`. Verás dos pestañas: `"Chatbots"` y `"Flows"`. Haz clic en `"Chatbots"` y luego en el botón azul `"Create chatbot"`.
+
+**Por qué:** Tidio separa los chatbots automatizados (respuestas sin operador humano) de los flujos más complejos. Para empezar, los chatbots son lo más sencillo.
+
+**Qué verás:** Una galería de plantillas predefinidas. Hay plantillas para "Responder preguntas frecuentes", "Captar leads", "Soporte postventa", entre otras.
+
+---
+
+### Paso 4: Elige una plantilla o empieza desde cero
+
+**Qué hacer:** Para una pyme que quiere responder preguntas frecuentes, la plantilla `"Answer FAQs"` es el punto de partida más rápido. Haz clic en ella y luego en `"Use template"`.
+
+Si prefieres construirlo tú desde el principio, selecciona `"Start from scratch"` — aunque para un primer chatbot, la plantilla ahorra tiempo.
+
+**Por qué:** La plantilla ya tiene la estructura básica de árbol de decisión montada. Solo tienes que cambiar los textos por los tuyos.
+
+**Qué verás:** El editor visual de flujos de Tidio — un lienzo con bloques conectados por flechas. Cada bloque es un mensaje o una acción del bot.
+
+{/* TODO: captura del editor visual de flujos de Tidio */}
+
+---
+
+### Paso 5: Edita los mensajes del chatbot
+
+**Qué hacer:** Haz clic en cualquier bloque del flujo para editarlo. Los bloques de tipo `"Chat message"` son los mensajes que el bot enviará al visitante. Los bloques de tipo `"Button"` son las opciones que verá el usuario para responder.
+
+Cambia los textos por los de tu empresa: mensaje de bienvenida, opciones del menú (ej: "Ver horario", "Contactar con ventas", "Enviar un email"), y las respuestas a cada opción.
+
+Para añadir un bloque nuevo, haz clic en el botón `"+"` que aparece al final de cualquier rama del flujo.
+
+**Por qué:** El chatbot solo puede responder lo que tú le has escrito. Cuanto más concretos sean los textos, más útil será para tus visitantes.
+
+**Qué verás:** Cada vez que editas un bloque, los cambios se muestran en tiempo real en la previsualización del chat que aparece a la derecha del editor.
+
+<Callout type="warning">
+⚠️ **No prometas cosas que el bot no puede cumplir.** Si escribes "Te responderemos en 1 hora", asegúrate de que alguien de tu equipo revisa las conversaciones. Un chatbot que promete y no cumple genera más desconfianza que no tener chatbot.
+</Callout>
+
+---
+
+### Paso 6: Configura el activador del chatbot
+
+**Qué hacer:** Al inicio del flujo verás un bloque `"Trigger"` (activador). Haz clic en él para configurar cuándo se activa el bot. Las opciones más útiles para una pyme son:
+
+- `"Visitor opens a chat"` — el bot arranca cuando el visitante hace clic en el icono del chat.
+- `"Visitor is on a page for X seconds"` — el bot se activa si el visitante lleva más de X segundos en una página concreta (útil en páginas de precios o de contacto).
+
+Para empezar, selecciona `"Visitor opens a chat"`. Es la opción más limpia y no interrumpe a quien no quiere interactuar.
+
+**Por qué:** El activador controla cuándo aparece el bot. Un bot que salta solo a los 5 segundos de entrar puede ser intrusivo — depende del tipo de web y del público.
+
+**Qué verás:** El bloque `"Trigger"` se actualiza con la condición que hayas elegido.
+
+---
+
+### Paso 7: Guarda, prueba y activa el chatbot
+
+**Qué hacer:** Haz clic en `"Save"` en la esquina superior derecha del editor. Después, activa el chatbot con el interruptor que aparece junto a su nombre en la lista de chatbots (`"Active"` / `"Inactive"`).
+
+Para probar que funciona, abre tu web en otra pestaña y haz clic en el icono del chat que debería aparecer en la esquina inferior derecha.
+
+**Por qué:** Un chatbot guardado pero inactivo no aparece en la web. El interruptor es el paso final.
+
+**Qué verás:** El icono de chat de Tidio en tu web. Al hacer clic, el flujo que has configurado se inicia exactamente como lo verá un visitante real.
+
+**Nota:** Si el widget no aparece en tu web tras activar el bot, espera 2–3 minutos y recarga la página. A veces la caché tarda un momento en actualizarse.
+
+---
+
+## Errores comunes
+
+**El widget de chat no aparece en la web después de instalarlo**
+
+*Síntoma:* Has pegado el código o instalado el plugin, pero el icono del chat no se ve en tu web.
+
+*Causa:* El código no se ha cargado correctamente, o la caché de la web o del navegador está sirviendo una versión antigua de la página.
+
+*Solución:* Primero, vacía la caché del navegador y recarga (`Ctrl + Shift + R` en Windows, `Cmd + Shift + R` en Mac). Si usas WordPress con un plugin de caché (WP Rocket, W3 Total Cache), limpia también esa caché desde el panel de WordPress. Si sigue sin aparecer, ve a `Settings > Installation` en Tidio y verifica que el estado de conexión muestra `"Connected"`.
+
+---
+
+**El chatbot arranca pero no sigue el flujo que he configurado**
+
+*Síntoma:* El bot saluda, pero cuando el visitante hace clic en una opción, no pasa nada o aparece un mensaje genérico.
+
+*Causa:* Las ramas del flujo tienen bloques sin conectar, o hay un bloque `"Default message"` que intercepta la respuesta antes de llegar al siguiente paso.
+
+*Solución:* Vuelve al editor del chatbot. Revisa que todos los bloques de tipo `"Button"` tienen una flecha que los conecta con el siguiente bloque. Un bloque sin conexión de salida es un callejón sin salida para el bot. También revisa si hay un bloque `"Default message"` activo que no debería estar ahí.
+
+---
+
+**El chatbot se activa solo en móvil pero no en escritorio (o al revés)**
+
+*Síntoma:* El chat aparece en un dispositivo pero no en el otro.
+
+*Causa:* En la configuración del widget puede estar activado el filtro por tipo de dispositivo.
+
+*Solución:* Ve a `Settings > Widgets` en el panel de Tidio. Busca la opción `"Display on"` y comprueba que está configurado para mostrarse en `"All devices"`.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Un chatbot activo en tu web que responde automáticamente a las preguntas más frecuentes de tus visitantes, las 24 horas.
+- Un flujo de conversación configurado con tus textos, tu horario y tu información de contacto — sin que tú ni tu equipo tengáis que estar pendientes.
+- Las conversaciones del chatbot quedan registradas en el panel de Tidio para que puedas revisarlas y mejorar las respuestas con el tiempo.
+
+El siguiente paso lógico es configurar las notificaciones para que recibas un aviso por email cuando alguien solicite hablar con una persona real. Lo encontrarás en `Settings > Notifications` dentro del panel de Tidio.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Tidio, aquí tienes el acceso directo:
+
+<AffiliateLink programSlug="tidio" articleSlug="como-crear-un-chatbot-para-tu-web-con-tidio" label="Probar Tidio gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Tidio es gratis para una pyme pequeña?
+
+Sí. El plan gratuito de Tidio incluye chatbots básicos y hasta 50 conversaciones al mes con visitantes. Para una pyme con tráfico moderado, suele ser suficiente para empezar. Si superas ese límite o necesitas automatizaciones más avanzadas, los planes de pago arrancan en torno a los 29 $/mes — consulta el precio actualizado directamente en tidio.com, ya que puede variar.
+
+### ¿Funciona Tidio en español?
+
+La interfaz del panel de administración está en inglés. El chatbot que ven tus visitantes puede estar completamente en español — tú escribes los mensajes, así que el idioma es el que tú elijas. El soporte de Tidio atiende principalmente en inglés; la documentación oficial también está en inglés.
+
+### ¿Puedo conectar Tidio con WhatsApp o email?
+
+El plan de pago de Tidio incluye integración con canales adicionales. En el plan gratuito, el chatbot funciona solo en el widget de tu web. Las integraciones con herramientas externas como Mailchimp, HubSpot o Zapier están disponibles en todos los planes, incluido el gratuito.
+
+### ¿Qué pasa cuando un visitante quiere hablar con una persona real?
+
+Puedes añadir un bloque `"Transfer to operator"` en cualquier punto del flujo. Cuando el visitante llega a ese bloque, la conversación pasa al chat en vivo de Tidio y tu equipo recibe una notificación. Si no hay nadie disponible, Tidio puede dejar un mensaje al visitante para que deje su email.
+
+### ¿Es Tidio compatible con GDPR?
+
+Tidio firma un DPA (Data Processing Agreement) bajo GDPR. Los datos de las conversaciones pueden almacenarse en servidores fuera de la UE dependiendo de la configuración — consulta su política de privacidad actualizada y adapta el texto de tu aviso de cookies si implementas el widget en una web con visitantes europeos.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: octubre 2026.*
