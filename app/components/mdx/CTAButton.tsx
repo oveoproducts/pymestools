@@ -18,7 +18,7 @@ export function CTAButton({ href, children, affiliate }: CTAButtonProps) {
     <a
       href={href}
       target="_blank"
-      rel="nofollow noopener"
+      rel={affiliate ? 'sponsored nofollow noopener' : 'nofollow noopener'}
       data-affiliate={affiliate}
       onClick={handleClick}
       className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors no-underline text-sm"

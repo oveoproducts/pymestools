@@ -50,7 +50,7 @@ export async function AffiliateLink({ programSlug, articleSlug, label }: Props) 
         </div>
         <a
           href={url}
-          rel="nofollow noopener noreferrer"
+          rel={isAffiliate ? 'sponsored nofollow noopener noreferrer' : 'nofollow noopener noreferrer'}
           target="_blank"
           data-affiliate={programSlug}
           className="shrink-0 inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 font-bold text-sm transition-all no-underline shadow-md hover:shadow-lg active:scale-95
