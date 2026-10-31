@@ -14,6 +14,7 @@ import {
 } from '@/lib/db/articles'
 import { ScrollDepthTracker } from '@/app/components/ScrollDepthTracker'
 import { ArticleCard } from '@/app/components/ArticleCard'
+import { InmoRobotCard } from '@/app/components/InmoRobotCard'
 import {
   CTAButton,
   Callout,
@@ -468,6 +469,8 @@ export default async function ArticlePage({ params }: PageProps) {
         ) : (
           <p className="text-gray-500 italic">Contenido no disponible.</p>
         )}
+
+        {article.slug.includes('inmobiliari') && <InmoRobotCard />}
       </div>
 
       {/* Related articles */}
