@@ -1,0 +1,119 @@
+---
+title: "Prompts de ChatGPT para administración y facturación de autónomos: 7"
+slug: "prompts-chatgpt-administracion-facturacion-autonomos"
+category: "prompts"
+description: "7 prompts de ChatGPT para la administración de un autónomo o pyme: reclamar impagos, pedir documentación, consultas a la gestoría y presupuestos, con avisos legales."
+type: "how-to"
+publishedAt: "2026-11-02T09:00:00.000Z"
+updatedAt: "2026-11-02T09:00:00.000Z"
+tools: ["quipu"]
+keywords:
+  primary: "prompts chatgpt autónomos"
+  secondary:
+    - "chatgpt para autónomos"
+    - "chatgpt facturación"
+    - "reclamar factura impagada email"
+    - "prompts administración pymes"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "8 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para autónomos: administración (2026)"
+meta_description: "7 prompts de ChatGPT para autónomos y pymes: reclamar impagos, pedir documentos, consultas a la gestoría y presupuestos. Qué no delegar nunca."
+---
+
+La administración de un autónomo está llena de textos que no aportan valor pero hay que escribir: el recordatorio de una factura, el correo a la gestoría, la petición de documentos a un cliente. Ahí un asistente de IA ahorra tiempo de verdad. Donde no debe tocar es en las cifras, los plazos legales y los impuestos.
+
+Esta lista separa las dos cosas. Los prompts sirven para redactar; el cálculo y el cumplimiento se quedan en tu programa de facturación y con tu gestoría. Para la fórmula general, mira la [guía principal de prompts](/prompts/prompts-chatgpt-para-pymes).
+
+## Resumen rápido
+
+- **Sí:** redactar recordatorios, resumir hilos con la gestoría, preparar preguntas, estructurar presupuestos.
+- **No:** calcular impuestos, decidir qué deducir, redactar contratos definitivos o citar artículos de ley.
+- **Datos:** nunca pegues importes ni datos reales de facturas. Usa cifras ficticias o marcadores.
+- **Facturas:** ChatGPT no emite facturas válidas. Para eso necesitas un programa que cumpla con la normativa.
+
+<Callout type="warning">
+Un asistente de IA puede equivocarse con normas fiscales y laborales, que cambian. Sirve para preparar el borrador o las preguntas; la respuesta la da tu gestoría o la fuente oficial.
+</Callout>
+
+## Cobros
+
+<PromptBox
+  title="1. Tres emails para reclamar una factura impagada"
+  prompt={`Redacta tres emails para reclamar una factura impagada a un cliente habitual desde hace [TIEMPO]. Factura nº [Nº], importe [IMPORTE ORIENTATIVO], vencida el [FECHA]. 1) Recordatorio amable a los 7 días de vencimiento. 2) Segundo aviso firme a los 21 días. 3) Último aviso antes de pasar la reclamación a un tercero. Máximo 80 palabras cada uno. No cites artículos de ley, no menciones intereses concretos y no amenaces con acciones judiciales.`}
+  check="Si quieres añadir intereses o una reclamación formal, consúltalo con tu gestoría o un abogado antes."
+  toolName="Quipu"
+  toolHref="/facturacion/quipu-review-espanol-pymes"
+  toolNote="para ver qué facturas están vencidas sin llevarlo en una hoja de cálculo"
+/>
+
+<PromptBox
+  title="2. Condiciones de pago claras en un presupuesto"
+  prompt={`Redacta el apartado de condiciones de pago de un presupuesto de [SERVICIO]. Condiciones reales: [PORCENTAJE POR ADELANTADO], el resto a [DÍAS] días, por transferencia a [FORMA DE PAGO]. Precios con "+ IVA". Frases claras y cortas, sin lenguaje jurídico. Añade una frase sobre qué ocurre si el cliente pide cambios fuera del alcance.`}
+  check="Que no contradiga tus condiciones habituales ni lo que consta en tu contrato. No es un texto legal."
+/>
+
+## Gestoría y documentación
+
+<PromptBox
+  title="3. Pedir documentación a un cliente sin perseguirlo"
+  prompt={`Soy [PROFESIÓN]. Necesito que un cliente me envíe [DOCUMENTOS: por ejemplo datos de facturación, contrato firmado] antes del [FECHA]. Redacta un email de 70 palabras amable y claro: qué necesito, para qué lo necesito, cómo enviarlo y la fecha límite. Añade una versión corta para WhatsApp.`}
+  check="Que la fecha límite y el canal de envío son los correctos."
+/>
+
+<PromptBox
+  title="4. Preparar una consulta a la gestoría"
+  prompt={`Voy a escribir a mi gestoría con una duda sobre [TEMA, por ejemplo: cómo facturar a un cliente de otro país de la UE]. Mi situación: soy [AUTÓNOMO/SOCIEDAD], me dedico a [ACTIVIDAD]. Ayúdame a redactar un email claro con: la situación en 3 frases, las preguntas concretas que debo hacer (máximo 5) y los documentos que debería adjuntar. No respondas a la duda: ayúdame solo a plantearla bien.`}
+  check="Que preguntas lo que de verdad necesitas saber. Cuanto más concreta, mejor la respuesta."
+/>
+
+<PromptBox
+  title="5. Resumir un hilo largo con la gestoría"
+  prompt={`Te pego un hilo de emails con mi gestoría, con datos personales cambiados por marcadores: [PEGA EL HILO]. Resúmelo en: 1) decisiones tomadas, 2) lo que me piden a mí y para cuándo, 3) lo que queda pendiente de ellos, 4) dudas que debería aclarar. Si algo no está claro, escribe "REVISAR" en lugar de suponer.`}
+  check="Compara las fechas con el hilo original. Un plazo mal resumido puede salirte caro."
+/>
+
+## Organización
+
+<PromptBox
+  title="6. Checklist de cierre de trimestre (para revisar con tu gestoría)"
+  prompt={`Hazme una lista de comprobaciones internas para cerrar un trimestre siendo [AUTÓNOMO/PYME] de [ACTIVIDAD]: facturas emitidas y recibidas pendientes de registrar, gastos sin justificante, cobros pendientes y documentación que suele pedir una gestoría. No incluyas fechas ni modelos tributarios concretos: indícame que debo preguntarle esas fechas a mi gestoría.`}
+  check="Es una lista de orden interno, no un calendario fiscal. Las fechas y modelos los confirma tu gestoría."
+/>
+
+<PromptBox
+  title="7. Describir un servicio para el concepto de una factura"
+  prompt={`Redacta tres versiones del concepto de una factura para este trabajo: [DESCRIPCIÓN REAL DEL TRABAJO]. Que sean claras y específicas para que el cliente entienda qué paga, sin jerga y de máximo 25 palabras cada una. No añadas importes ni datos fiscales.`}
+  check="Que el concepto describe exactamente lo que se hizo y coincide con el presupuesto."
+/>
+
+## ¿Qué pasa con VERI*FACTU?
+
+Si facturas desde un Excel o desde un programa que no te ha hablado de VERI*FACTU, conviene que lo revises ya. Según lo aprobado a finales de 2025, las empresas sujetas al Impuesto sobre Sociedades deben usar un sistema adaptado desde el **1 de enero de 2027** y los autónomos desde el **1 de julio de 2027**. ChatGPT no emite facturas válidas ni cumple este requisito: lo hace tu programa de facturación.
+
+Tenemos una [guía de VERI*FACTU para pymes](/facturacion/verifactu-pymes-espana), el [análisis de Quipu](/facturacion/quipu-review-espanol-pymes) y la [comparativa de software de facturación](/facturacion/mejores-software-facturacion-pymes).
+
+<AffiliateLink programSlug="quipu" articleSlug="prompts-chatgpt-administracion-facturacion-autonomos" label="Ver Quipu" />
+
+## Preguntas frecuentes
+
+### ¿Puede ChatGPT hacerme las facturas?
+
+No de forma válida. Puede redactar el concepto o un correo, pero una factura debe emitirse con un programa que cumpla la normativa de facturación.
+
+### ¿Puedo preguntarle qué gastos puedo deducir?
+
+Puedes pedirle que te explique conceptos, pero no decidas con su respuesta. Las deducciones dependen de tu actividad y de normas que cambian; consúltalo con tu gestoría.
+
+### ¿Es seguro pegar facturas reales?
+
+Mejor no. Usa cifras y datos ficticios, o marcadores, y completa lo real fuera del asistente.
+
+### ¿Sirve para redactar contratos?
+
+Para estructurar un borrador o preparar preguntas, sí. Para firmarlo, no: un abogado debe revisarlo.
+
+---
+
+*Este artículo no contiene asesoramiento fiscal ni legal. Los prompts son borradores que debe revisar un profesional. Última revisión: noviembre 2026.*

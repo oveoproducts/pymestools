@@ -1,0 +1,229 @@
+---
+title: "Prompts de ChatGPT para pymes y autónomos: 12 listos para copiar"
+slug: "prompts-chatgpt-para-pymes"
+category: "prompts"
+description: "Cómo escribir buenos prompts de ChatGPT para tu pyme y 12 ejemplos en español para ventas, clientes, marketing y administración, con qué revisar y qué herramienta usar."
+type: "how-to"
+publishedAt: "2026-11-02T09:00:00.000Z"
+updatedAt: "2026-11-02T09:00:00.000Z"
+tools: []
+keywords:
+  primary: "prompts chatgpt para pymes"
+  secondary:
+    - "prompts chatgpt autónomos"
+    - "chatgpt para pymes"
+    - "cómo escribir un prompt"
+    - "prompts para empresas en español"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "9 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para pymes: 12 listos para copiar"
+meta_description: "Prompts de ChatGPT en español para pymes y autónomos: ventas, clientes, marketing y administración. Cómo escribirlos, qué revisar y qué datos no pegar."
+---
+
+Abres ChatGPT, escribes "hazme un email para un cliente" y te sale un texto genérico que no enviarías a un cliente. El problema casi nunca es la herramienta: es lo poco que le has contado. Con el contexto adecuado, el mismo asistente te redacta un borrador que solo tienes que retocar.
+
+Esta guía tiene dos partes: una fórmula corta para escribir prompts que funcionan, y 12 prompts listos para copiar para tareas reales de una pyme en España. Cada uno indica qué debes revisar antes de usar la respuesta y, cuando existe una herramienta que hace mejor ese trabajo, cuál.
+
+<Callout type="info">
+**Cómo lo hemos escrito:** los prompts son ejemplos que puedes adaptar, no recetas mágicas. Las respuestas de un asistente de IA cambian de una vez a otra y pueden contener errores, así que revisa siempre el resultado antes de enviarlo o publicarlo.
+</Callout>
+
+## Resumen rápido
+
+- **La fórmula:** rol + contexto + tarea + formato + límites. Cinco frases bastan.
+- **Lo que más mejora el resultado:** darle datos reales de tu negocio (sector, ciudad, tipo de cliente, tono) y pedirle un formato concreto.
+- **Lo que no debes pegar:** datos personales de clientes, importes de facturas reales, contraseñas o contratos completos. Usa marcadores como [CLIENTE].
+- **Lo que no debes delegar:** asesoramiento fiscal o legal. Sirve para borradores que revisa un profesional.
+- **Cuándo no basta ChatGPT:** si necesitas que la tarea se repita sola (seguimientos, facturas, chatbot), hace falta una herramienta. Lo señalamos en cada prompt.
+
+## La fórmula de cinco partes
+
+Un prompt flojo: "Escribe un email de seguimiento".
+
+Un prompt útil responde a cinco preguntas:
+
+1. **Rol:** quién es el asistente. "Eres el responsable comercial de una asesoría de 6 personas en Valencia."
+2. **Contexto:** qué ha pasado. "Enviamos un presupuesto hace 5 días y el cliente no ha respondido."
+3. **Tarea:** qué quieres exactamente. "Redacta un email de seguimiento."
+4. **Formato:** cómo lo quieres. "Máximo 90 palabras, asunto incluido, sin saludos exagerados."
+5. **Límites:** qué evitar. "No presiones, no inventes descuentos, tutea al cliente."
+
+Si el resultado no te convence, no empieces de cero. Dile qué falla: "demasiado formal", "recorta a la mitad", "dame tres versiones con distinto tono".
+
+<PromptBox
+  title="Plantilla base (cópiala y rellena los corchetes)"
+  prompt={`Eres [ROL, por ejemplo: responsable comercial de una gestoría de 6 personas en Valencia].
+
+Contexto: [QUÉ HA PASADO, con datos concretos pero sin nombres reales].
+
+Tarea: [QUÉ QUIERES QUE HAGA].
+
+Formato: [LONGITUD, ESTRUCTURA, TONO].
+
+Límites: [QUÉ EVITAR]. Si te falta información para hacerlo bien, pregúntame antes de escribir.`}
+  check="La última frase hace que el asistente pregunte en vez de inventar datos que no le has dado."
+/>
+
+## Antes de pegar nada: qué datos no compartir
+
+Lo que escribes en un asistente de IA sale de tu ordenador. Antes de enviarlo, sustituye:
+
+- Nombres, DNI/NIE, teléfonos y emails de clientes por marcadores ([CLIENTE], [IMPORTE]).
+- Importes y datos de facturas reales por cifras aproximadas o ficticias.
+- Contraseñas, claves de API o accesos, siempre.
+
+Si tu empresa trata datos de terceros, la política de privacidad de la herramienta que uses y tu obligación de proteger esos datos importan más que cualquier prompt. Ante la duda, anonimiza.
+
+## 12 prompts para tareas de una pyme
+
+### Ventas
+
+<PromptBox
+  title="1. Seguimiento de un presupuesto sin respuesta"
+  prompt={`Eres el responsable comercial de [TU EMPRESA, sector y ciudad]. Hace [N] días enviamos un presupuesto de [SERVICIO] a un cliente y no ha contestado. Redacta un email de seguimiento de máximo 90 palabras. Tono cercano, tutea, sin presionar y sin inventar descuentos ni plazos. Incluye una pregunta fácil de responder con una palabra. Dame asunto y cuerpo.`}
+  check="Que el plazo y el servicio que menciona son correctos, y que el tono encaja con cómo hablas tú con tus clientes."
+  toolName="Zoho CRM"
+  toolHref="/crm/review-zoho-crm"
+  toolNote="para registrar cada presupuesto y programar tareas de seguimiento en vez de acordarte tú"
+/>
+
+<PromptBox
+  title="2. Preparar una reunión con un cliente nuevo"
+  prompt={`Voy a reunirme con [CARGO] de una empresa de [SECTOR, TAMAÑO] que nos pidió información sobre [SERVICIO]. Prepárame: 1) diez preguntas para entender su problema real antes de ofrecer nada, 2) tres objeciones probables sobre precio o plazos y una respuesta honesta a cada una, 3) una frase para cerrar la reunión con un siguiente paso concreto. No inventes datos sobre su empresa.`}
+  check="Las objeciones deben ser las que oyes de verdad. Cambia las que no encajen con tu mercado."
+/>
+
+Para convertir esos seguimientos en un proceso, un CRM es el paso lógico. En nuestra [guía de los mejores CRM para pymes](/crm/mejores-crm-pymes-espana) comparamos las opciones, y el [análisis de HubSpot CRM](/crm/review-hubspot-crm) y el de [Zoho CRM](/crm/review-zoho-crm) detallan qué incluye cada plan gratuito.
+
+### Atención al cliente
+
+<PromptBox
+  title="3. Responder a una queja sin ponerse a la defensiva"
+  prompt={`Eres el responsable de atención al cliente de [TU NEGOCIO]. Un cliente escribe esto: "[PEGA LA QUEJA SIN NOMBRES NI DATOS PERSONALES]". Los hechos son: [QUÉ PASÓ REALMENTE]. Redacta una respuesta de máximo 120 palabras que reconozca el problema, no culpe al cliente, diga qué vamos a hacer y cuándo, y no prometa nada que no esté en los hechos. Tono profesional y humano.`}
+  check="Que no promete compensaciones ni plazos que no puedas cumplir."
+/>
+
+<PromptBox
+  title="4. Convertir tus preguntas frecuentes en respuestas claras"
+  prompt={`Estas son las preguntas que más me hacen los clientes de [TU NEGOCIO]: [LISTA DE 8-10 PREGUNTAS]. Datos reales que debes usar: [HORARIOS, PLAZOS, POLÍTICA DE DEVOLUCIONES, ETC.]. Redacta una respuesta de 2-3 frases para cada pregunta, en español de España, sin tecnicismos. Si una pregunta no se puede contestar con los datos que te doy, marca "FALTA DATO" en vez de inventar.`}
+  check="Revisa cada respuesta contra tus condiciones reales. Es el prompt donde más se cuelan datos inventados."
+  toolName="Tidio"
+  toolHref="/automatizacion/tidio-review-espanol-pymes"
+  toolNote="esas respuestas pueden servir de base para un chatbot que atienda fuera de horario"
+/>
+
+### Marketing
+
+<PromptBox
+  title="5. Asuntos de email para una newsletter"
+  prompt={`Soy [TU NEGOCIO] y envío una newsletter a [TIPO DE CLIENTE]. El tema de este envío es [TEMA]. Dame 10 asuntos de menos de 50 caracteres: 4 que despierten curiosidad sin ser engañosos, 3 que dejen claro el beneficio y 3 que usen una cifra. Evita mayúsculas, signos de exclamación seguidos y promesas que no pueda cumplir.`}
+  check="Que ningún asunto prometa algo que el email no cumple: dañan la confianza y la entregabilidad."
+  toolName="GetResponse"
+  toolHref="/email-marketing/review-getresponse"
+  toolNote="para probar dos asuntos a la vez y ver cuál se abre más"
+/>
+
+<PromptBox
+  title="6. Una semana de contenido para redes"
+  prompt={`Soy [TU NEGOCIO] en [CIUDAD]. Mis clientes son [TIPO DE CLIENTE] y mi tono es [CERCANO / TÉCNICO / DIRECTO]. Planifica 5 publicaciones para LinkedIn o Instagram de esta semana. Para cada una: idea, primera línea que enganche, texto de máximo 80 palabras y llamada a la acción suave. Usa solo hechos de mi negocio que te doy aquí: [3-4 DATOS REALES, casos o novedades]. No inventes cifras ni testimonios.`}
+  check="Cualquier cifra o testimonio que aparezca tiene que venir de lo que tú le diste."
+/>
+
+### Administración
+
+<PromptBox
+  title="7. Reclamar una factura impagada con tacto"
+  prompt={`Redacta tres versiones de un email para reclamar una factura impagada: 1) primer recordatorio amable (vencida hace 7 días), 2) segundo aviso firme (vencida hace 21 días), 3) aviso formal antes de pasarlo a reclamación. Datos: factura nº [Nº], importe [IMPORTE], vencimiento [FECHA], cliente habitual desde hace [TIEMPO]. Máximo 80 palabras cada una. No amenaces con acciones legales concretas ni cites artículos de ley.`}
+  check="No cites plazos legales ni intereses de demora sin consultarlo con tu gestoría."
+  toolName="Quipu"
+  toolHref="/facturacion/quipu-review-espanol-pymes"
+  toolNote="para ver de un vistazo qué facturas están vencidas, en lugar de llevarlo en una hoja de cálculo"
+/>
+
+<PromptBox
+  title="8. Resumir una conversación larga con la gestoría"
+  prompt={`Te pego un hilo de emails entre mi gestoría y yo, con los datos personales cambiados por marcadores: [PEGA EL HILO]. Resúmelo en: 1) qué se decidió, 2) qué me han pedido a mí y para cuándo, 3) qué queda pendiente de la gestoría, 4) dudas que debería preguntarles. Si algo no queda claro en el hilo, dilo en vez de suponer.`}
+  check="Contrasta las fechas límite con el hilo original: si fallas una, el resumen no te sirve de nada."
+/>
+
+### Gestión interna
+
+<PromptBox
+  title="9. Procedimiento paso a paso para tu equipo"
+  prompt={`Explícame cómo documentar un procedimiento interno de [TAREA, por ejemplo: dar de alta a un cliente nuevo] en una pyme de [N] personas. Con estos datos de cómo lo hacemos hoy: [DESCRIBE LOS PASOS COMO LOS HACES]. Conviértelos en una lista numerada de máximo 10 pasos, con quién lo hace en cada uno y qué comprobación evita errores. Señala los pasos que parezcan ambiguos.`}
+  check="Que refleja cómo se hace de verdad, no cómo debería hacerse en teoría."
+/>
+
+<PromptBox
+  title="10. Descripción de un puesto de trabajo"
+  prompt={`Redacta una oferta de empleo para [PUESTO] en [CIUDAD], una pyme de [SECTOR] con [N] empleados. Condiciones reales que debes incluir: [JORNADA, MODALIDAD, SALARIO O RANGO, CONVENIO]. Estructura: qué harás, qué buscamos, qué ofrecemos. Máximo 250 palabras, lenguaje inclusivo sin dobles formas, sin clichés como "equipo dinámico". No añadas ventajas que no te haya dado.`}
+  check="Salario y condiciones: que sean exactamente los reales. Si dudas de qué debe constar en una oferta, pregunta a tu gestoría laboral."
+/>
+
+### Para decidir mejor
+
+<PromptBox
+  title="11. Comparar dos herramientas con tus criterios"
+  prompt={`Necesito elegir entre [HERRAMIENTA A] y [HERRAMIENTA B] para una pyme de [N] personas en España que [QUÉ NECESITA]. Mi presupuesto es [PRESUPUESTO] y lo más importante para mí es [PRIORIDAD]. Dame una tabla con los criterios que deberían importarme, y dime qué datos concretos debo comprobar en la web de cada proveedor antes de decidir (precios con y sin IVA, permanencia, soporte en español). No des precios de memoria.`}
+  check="Los precios y funciones cambian: comprueba todo en la web oficial. Pedir qué comprobar es más fiable que pedir los datos."
+  toolName="Comparativas"
+  toolHref="/comparativas"
+  toolNote="ya hemos hecho ese trabajo con precios verificados"
+/>
+
+<PromptBox
+  title="12. Explicar una novedad normativa sin jerga"
+  prompt={`Soy autónomo en [SECTOR]. Explícame en lenguaje llano qué es [NORMA O CONCEPTO, por ejemplo: VERI*FACTU] y qué preguntas debo hacerle a mi gestoría. No me digas qué debo hacer yo ni calcules plazos o sanciones: dime solo qué conceptos debo entender y qué documentos o datos debería tener a mano.`}
+  check="Es una explicación, no asesoramiento. Las fechas y obligaciones se confirman en la fuente oficial o con tu gestoría."
+  toolName="Guía de VERI*FACTU"
+  toolHref="/facturacion/verifactu-pymes-espana"
+  toolNote="con las fechas vigentes y qué programas lo cubren"
+/>
+
+## ¿Cuándo ChatGPT no basta?
+
+Un prompt resuelve una tarea una vez. Si la misma tarea se repite cada semana, lo que necesitas es una herramienta que la haga sola:
+
+| Tarea que repites | Qué hace ChatGPT | Qué hace una herramienta |
+|---|---|---|
+| Seguimiento de presupuestos | Redacta el email | Registra cada oportunidad y programa tareas de seguimiento ([CRM](/crm/mejores-crm-pymes-espana)) |
+| Responder preguntas frecuentes | Redacta las respuestas | Las contesta en tu web a cualquier hora ([chatbot](/automatizacion/como-crear-un-chatbot-para-tu-web-con-tidio)) |
+| Controlar cobros | Redacta el recordatorio | Muestra qué facturas están vencidas ([facturación](/facturacion/mejores-software-facturacion-pymes)) |
+| Pasar datos de una app a otra | Explica cómo | Lo hace automáticamente ([automatización](/automatizacion/review-make)) |
+
+<AffiliateLink programSlug="make" articleSlug="prompts-chatgpt-para-pymes" label="Probar Make gratis" />
+
+## Guías por área
+
+- [Prompts de ChatGPT para ventas](/prompts/prompts-chatgpt-ventas-pymes)
+- [Prompts de ChatGPT para atención al cliente](/prompts/prompts-chatgpt-atencion-cliente-pymes)
+- [Prompts de ChatGPT para administración y facturación](/prompts/prompts-chatgpt-administracion-facturacion-autonomos)
+- [Prompts de ChatGPT para email marketing](/prompts/prompts-chatgpt-email-marketing-pymes)
+
+## Preguntas frecuentes
+
+### ¿Hace falta pagar para usar estos prompts?
+
+No. Son texto que puedes pegar en cualquier asistente de IA conversacional. Las versiones de pago de algunos asistentes dan más capacidad, pero los prompts de esta guía no la requieren.
+
+### ¿Puedo pegar datos de clientes en ChatGPT?
+
+Mejor no. Sustituye nombres, DNI, emails e importes reales por marcadores. Si tratas datos personales de terceros, revisa la política de privacidad de la herramienta que uses antes de compartirlos.
+
+### ¿Por qué me da respuestas genéricas?
+
+Casi siempre por falta de contexto. Añade sector, ciudad, tipo de cliente, tono, longitud y qué debe evitar. Y pídele que pregunte lo que le falte antes de escribir.
+
+### ¿Puedo usar ChatGPT para temas fiscales o legales?
+
+Para entender un concepto o preparar preguntas a tu gestoría, sí. Para decidir qué hacer o calcular obligaciones, no: puede equivocarse con normas que cambian y su respuesta no sustituye a un profesional.
+
+### ¿Cómo sé si una respuesta tiene datos inventados?
+
+Contrasta cada cifra, fecha y nombre propio con una fuente fiable. Pide siempre que marque "FALTA DATO" en lugar de suponer, como hacen los prompts de esta guía.
+
+---
+
+*Los prompts son ejemplos para adaptar; el resultado depende del asistente que uses y de cómo lo configures. Este artículo no contiene asesoramiento fiscal ni legal. Última revisión: noviembre 2026.*

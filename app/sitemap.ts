@@ -14,6 +14,7 @@ const CATEGORIES = [
   'seo',
   'productividad',
   'hosting',
+  'prompts',
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

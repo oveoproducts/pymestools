@@ -22,6 +22,7 @@ import {
   ScoreCard,
   PriceTable,
   ProsCons,
+  PromptBox,
 } from '@/app/components/mdx'
 import { AffiliateLink } from '@/app/components/mdx/AffiliateLink'
 
@@ -36,6 +37,7 @@ const VALID_CATEGORIES = [
   'seo',
   'productividad',
   'hosting',
+  'prompts',
 ] as const
 
 type ValidCategory = (typeof VALID_CATEGORIES)[number]
@@ -51,6 +53,7 @@ const CATEGORY_LABELS: Record<ValidCategory, string> = {
   seo: 'SEO',
   productividad: 'Productividad',
   hosting: 'Hosting',
+  prompts: 'Prompts para pymes',
 }
 
 const MDX_COMPONENTS = {
@@ -59,6 +62,7 @@ const MDX_COMPONENTS = {
   ScoreCard,
   PriceTable,
   ProsCons,
+  PromptBox,
   AffiliateLink,
 }
 

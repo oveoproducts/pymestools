@@ -1,0 +1,120 @@
+---
+title: "Prompts de ChatGPT para atención al cliente: 7 para pymes"
+slug: "prompts-chatgpt-atencion-cliente-pymes"
+category: "prompts"
+description: "7 prompts de ChatGPT en español para atención al cliente de una pyme: quejas, preguntas frecuentes, reseñas negativas, retrasos y guion para un chatbot."
+type: "how-to"
+publishedAt: "2026-11-02T09:00:00.000Z"
+updatedAt: "2026-11-02T09:00:00.000Z"
+tools: ["tidio"]
+keywords:
+  primary: "prompts chatgpt atención al cliente"
+  secondary:
+    - "chatgpt atención al cliente pymes"
+    - "responder reseñas negativas chatgpt"
+    - "plantillas respuesta clientes"
+    - "guion chatbot pyme"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para atención al cliente: 7 (2026)"
+meta_description: "7 prompts de ChatGPT en español para atención al cliente: quejas, reseñas negativas, retrasos y preguntas frecuentes, con qué revisar antes de enviar."
+---
+
+Atender bien a un cliente enfadado exige tiempo y calma, justo lo que no sobra en una pyme. Un asistente de IA te da un borrador sereno en segundos, pero es fácil que prometa de más o invente una política que no tienes. Por eso cada prompt de esta lista obliga al asistente a usar solo los hechos que tú le das.
+
+Para la fórmula general, consulta la [guía principal de prompts para pymes](/prompts/prompts-chatgpt-para-pymes).
+
+## Resumen rápido
+
+- **Regla de oro:** dale los hechos reales y prohíbele inventar compensaciones, plazos o políticas.
+- **Lo que ahorra tiempo:** quejas, reseñas negativas y respuestas a preguntas repetidas.
+- **Lo que no debe hacer solo:** decidir reembolsos, admitir culpas legales ni contestar sin que lo leas.
+- **Si las mismas preguntas se repiten a diario:** un chatbot las responde a cualquier hora; el prompt 6 te prepara el guion.
+
+<Callout type="warning">
+Quita nombres, teléfonos, números de pedido y direcciones antes de pegar un mensaje de cliente. Usa [CLIENTE] y [PEDIDO].
+</Callout>
+
+## Quejas y reseñas
+
+<PromptBox
+  title="1. Responder a una queja por email"
+  prompt={`Eres el responsable de atención al cliente de [TU NEGOCIO]. El cliente escribe: "[PEGA LA QUEJA ANONIMIZADA]". Los hechos reales son: [QUÉ PASÓ]. Lo que podemos ofrecer es: [SOLUCIÓN QUE SÍ ESTÁS DISPUESTO A DAR]. Redacta una respuesta de máximo 120 palabras que reconozca el problema sin excusas, explique qué haremos y cuándo, y no prometa nada fuera de esa solución. Tono profesional y humano.`}
+  check="Que no ofrece más de lo que has autorizado. Es el fallo más habitual."
+/>
+
+<PromptBox
+  title="2. Responder a una reseña negativa en Google"
+  prompt={`Un cliente ha dejado esta reseña de 2 estrellas en Google sobre [TU NEGOCIO]: "[PEGA LA RESEÑA]". Hechos: [LO QUE SABES DEL CASO]. Redacta una respuesta pública de máximo 70 palabras: agradece el comentario, reconoce lo que sea cierto, no entra en discusión, no revela datos del cliente y ofrece un canal privado para resolverlo. No pongas excusas ni culpes al cliente.`}
+  check="Que no revele información del cliente ni del pedido: la respuesta la leen todos."
+/>
+
+<PromptBox
+  title="3. Avisar de un retraso antes de que pregunten"
+  prompt={`Redacta un mensaje breve para avisar a clientes de que [PRODUCTO O SERVICIO] se retrasa. Hechos: el retraso es de [TIEMPO] por [CAUSA REAL]. La nueva fecha estimada es [FECHA]. Qué pueden hacer si no les sirve: [OPCIONES REALES]. Máximo 90 palabras, sin dramatizar y sin culpar a terceros.`}
+  check="Que la nueva fecha sea realista. Un segundo retraso hace más daño que el primero."
+/>
+
+## Preguntas frecuentes y chatbot
+
+<PromptBox
+  title="4. Convertir tus preguntas repetidas en respuestas claras"
+  prompt={`Estas son las preguntas que más recibo de clientes de [TU NEGOCIO]: [LISTA DE 8-10]. Datos reales que debes usar: [HORARIOS, PLAZOS, DEVOLUCIONES, FORMAS DE PAGO, ZONAS DE ENVÍO]. Redacta una respuesta de 2-3 frases a cada una, en español de España. Si una pregunta no se puede responder con esos datos, escribe "FALTA DATO" en lugar de inventar.`}
+  check="Contrasta cada respuesta con tus condiciones reales. Aquí se cuelan los datos inventados."
+/>
+
+<PromptBox
+  title="5. Mensaje fuera de horario"
+  prompt={`Redacta un mensaje automático de máximo 40 palabras para cuando un cliente nos escribe fuera de horario. Nuestro horario es [HORARIO], respondemos en [PLAZO REAL] y para urgencias pueden [OPCIÓN REAL]. Cercano, sin promesas de inmediatez.`}
+  check="Que el plazo de respuesta sea el que realmente cumples."
+  toolName="Tidio"
+  toolHref="/automatizacion/tidio-review-espanol-pymes"
+  toolNote="envía este tipo de mensajes automáticos desde el chat de tu web"
+/>
+
+<PromptBox
+  title="6. Guion de un chatbot para tu web"
+  prompt={`Diseña el guion de un chatbot para la web de [TU NEGOCIO, sector]. Debe poder resolver estas 5 consultas: [LAS 5 MÁS FRECUENTES]. Para cada una dame: mensaje de entrada, respuesta, y botón o pregunta de seguimiento. Añade un mensaje para cuando no entienda la pregunta que derive a una persona por [CANAL REAL]. Frases cortas, tono [CERCANO/FORMAL]. No inventes datos que no te doy.`}
+  check="Prueba el flujo tú mismo como si fueras un cliente antes de activarlo."
+  toolName="Cómo crear un chatbot con Tidio"
+  toolHref="/automatizacion/como-crear-un-chatbot-para-tu-web-con-tidio"
+  toolNote="guía paso a paso, funciona con el plan gratuito"
+/>
+
+<AffiliateLink programSlug="tidio" articleSlug="prompts-chatgpt-atencion-cliente-pymes" label="Probar Tidio gratis" />
+
+## Cuando no puedes aceptar un encargo
+
+<PromptBox
+  title="7. Decir que no a un cliente sin cerrar la puerta"
+  prompt={`Un cliente me pide [PETICIÓN] y no puedo aceptarlo porque [MOTIVO REAL: capacidad, fuera de mi servicio, plazo]. Redacta una respuesta de máximo 80 palabras que diga que no con claridad, explique el motivo en una frase, sin disculpas excesivas, y proponga una alternativa útil: [ALTERNATIVA REAL, por ejemplo derivar a otro profesional o aplazar]. No prometas nada incierto.`}
+  check="Que la alternativa exista y puedas darla. Si no, mejor cerrar con un 'no' amable."
+/>
+
+## ¿Y si recibes más consultas de las que puedes escribir?
+
+Cuando las mismas preguntas se repiten, un chatbot las contesta a cualquier hora y tú solo atiendes lo que se sale del guion. Tenemos el [análisis de Tidio](/automatizacion/tidio-review-espanol-pymes), sus [precios y planes](/automatizacion/tidio-precio-y-planes-2026) y las [alternativas a Tidio](/automatizacion/alternativas-a-tidio-en-espanol) si quieres comparar.
+
+## Preguntas frecuentes
+
+### ¿Puedo contestar a mis clientes directamente con lo que escribe ChatGPT?
+
+No sin leerlo. Es un borrador. Revisa que no prometa nada que no puedas cumplir y que los datos sean exactos.
+
+### ¿Puede ChatGPT atender a los clientes por mí en mi web?
+
+No por sí solo: necesitas una herramienta de chat que lo integre en tu web. Los prompts sirven para preparar los textos y guiones que esa herramienta usará.
+
+### ¿Cómo evito que invente políticas de devolución?
+
+Dale tus condiciones reales en el prompt y pídele que escriba "FALTA DATO" cuando no pueda responder con ellas.
+
+### ¿Qué hago con las reseñas falsas?
+
+Responder con un asistente no las soluciona. Puedes denunciarlas a la plataforma y contestar con hechos y sin entrar en discusión.
+
+---
+
+*Los prompts son ejemplos para adaptar y no sustituyen el criterio de quien atiende al cliente. Última revisión: noviembre 2026.*

@@ -25,6 +25,7 @@ export function Footer() {
               <li><Link href="/seo" className="hover:text-gray-700">SEO</Link></li>
               <li><Link href="/productividad" className="hover:text-gray-700">Productividad</Link></li>
               <li><Link href="/hosting" className="hover:text-gray-700">Hosting</Link></li>
+              <li><Link href="/prompts" className="hover:text-gray-700">Prompts para pymes</Link></li>
               <li><Link href="/articulos" className="hover:text-gray-700 font-medium">Todos los artículos →</Link></li>
             </ul>
           </div>

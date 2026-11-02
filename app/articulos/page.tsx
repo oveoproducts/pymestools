@@ -16,6 +16,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   seo: 'SEO',
   productividad: 'Productividad',
   hosting: 'Hosting',
+  prompts: 'Prompts para pymes',
 }
 
 export const metadata: Metadata = {

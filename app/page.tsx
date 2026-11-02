@@ -32,6 +32,7 @@ const CATEGORIES = [
   { slug: 'recursos-humanos',  label: 'RRHH',             description: 'Nóminas, vacaciones y equipos',           icon: '👥', color: 'bg-teal-50 border-teal-200 hover:border-teal-400' },
   { slug: 'gestion-proyectos', label: 'Gestión Proyectos',description: 'Organiza proyectos y equipos',            icon: '📋', color: 'bg-amber-50 border-amber-200 hover:border-amber-400' },
   { slug: 'comparativas',      label: 'Comparativas',     description: 'A vs B: elige la mejor opción',           icon: '⚖️', color: 'bg-red-50 border-red-200 hover:border-red-400' },
+  { slug: 'prompts',           label: 'Prompts ChatGPT',  description: 'Prompts listos para copiar y usar',        icon: '💬', color: 'bg-indigo-50 border-indigo-200 hover:border-indigo-400' },
 ]
 
 const FEATURED_TOOLS = [

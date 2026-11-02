@@ -57,3 +57,18 @@ export function trackNewsletterSignup(source: string): void {
     // never throw from analytics
   }
 }
+
+export function trackPromptCopy(promptTitle: string, pageSlug: string): void {
+  try {
+    if (typeof window === 'undefined') return
+    if (typeof window.gtag !== 'function') return
+
+    window.gtag('event', 'prompt_copy', {
+      event_category: 'engagement',
+      event_label: promptTitle,
+      page_slug: pageSlug,
+    })
+  } catch {
+    // never throw from analytics
+  }
+}

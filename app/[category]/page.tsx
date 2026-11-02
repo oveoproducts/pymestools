@@ -15,6 +15,7 @@ const VALID_CATEGORIES = [
   'seo',
   'productividad',
   'hosting',
+  'prompts',
 ] as const
 
 type ValidCategory = (typeof VALID_CATEGORIES)[number]
@@ -30,6 +31,7 @@ const CATEGORY_LABELS: Record<ValidCategory, string> = {
   seo: 'SEO',
   productividad: 'Productividad',
   hosting: 'Hosting',
+  prompts: 'Prompts para pymes',
 }
 
 const CATEGORY_DESCRIPTIONS: Record<ValidCategory, string> = {
@@ -51,6 +53,8 @@ const CATEGORY_DESCRIPTIONS: Record<ValidCategory, string> = {
     'Reviews y comparativas de herramientas de productividad para pymes en España.',
   hosting:
     'Guías y comparativas de hosting y alojamiento web para pymes españolas.',
+  prompts:
+    'Prompts de ChatGPT para pymes y autónomos: ventas, atención al cliente, marketing y administración.',
 }
 
 interface PageProps {
