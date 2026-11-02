@@ -48,6 +48,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/crm/zoho-crm-review-espanol-pymes',
+        destination: '/crm/review-zoho-crm',
+        permanent: true,
+      },
+      {
         source: '/email-marketing/activecampaign-review-espanol-pymes',
         destination: '/email-marketing/review-activecampaign',
         permanent: true,

@@ -42,6 +42,9 @@ const FEATURED_TOOLS = [
   { name: 'Pipedrive',       slug: 'crm/review-pipedrive',                    badge: 'Mejor para ventas',    color: 'bg-purple-100 text-purple-800' },
   { name: 'GetResponse',     slug: 'email-marketing/review-getresponse',       badge: 'Mejor precio',         color: 'bg-teal-100 text-teal-800' },
   { name: 'Factorial',       slug: 'recursos-humanos/review-factorial',        badge: 'Mejor RRHH',           color: 'bg-amber-100 text-amber-800' },
+  { name: 'Zoho CRM',        slug: 'crm/review-zoho-crm',                     badge: 'Mejor calidad-precio', color: 'bg-sky-100 text-sky-800' },
+  { name: 'Acumbamail',      slug: 'email-marketing/review-acumbamail',        badge: 'Con plan gratis',      color: 'bg-pink-100 text-pink-800' },
+  { name: 'Quipu',           slug: 'facturacion/quipu-review-espanol-pymes',   badge: 'Para autónomos',       color: 'bg-lime-100 text-lime-800' },
 ]
 
 export default async function HomePage() {

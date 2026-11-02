@@ -37,6 +37,8 @@ export function Footer() {
               <li><Link href="/email-marketing/alternativas-mailchimp" className="hover:text-gray-700">Alternativas a Mailchimp</Link></li>
               <li><Link href="/facturacion/review-holded" className="hover:text-gray-700">Review Holded</Link></li>
               <li><Link href="/precios-software-pymes" className="hover:text-gray-700">Precios verificados</Link></li>
+              <li><Link href="/facturacion/verifactu-pymes-espana" className="hover:text-gray-700">Guía de VERI*FACTU</Link></li>
+              <li><Link href="/crm/review-zoho-crm" className="hover:text-gray-700">Review Zoho CRM</Link></li>
             </ul>
           </div>
           <div>
