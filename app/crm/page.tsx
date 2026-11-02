@@ -5,14 +5,14 @@ import { getArticlesByCategory } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
 
 export const metadata: Metadata = {
-  title: 'Mejores CRM para pymes en España 2026',
+  title: 'CRM para pymes en España: guías, comparativas y análisis (2026)',
   description:
-    'HubSpot, Zoho CRM, Pipedrive y más: comparativa de CRM para pymes españolas. Precios en euros, planes gratuitos y cuál elegir según tu tamaño.',
+    'Todo sobre CRM para pymes españolas: análisis de HubSpot, Zoho CRM, Pipedrive y más, comparativas y guías. Si buscas la selección rápida, mira nuestra guía de los mejores CRM.',
   alternates: { canonical: `${brand.siteUrl}/crm` },
   openGraph: {
-    title: 'Mejores CRM para pymes en España 2026',
+    title: 'CRM para pymes en España: guías, comparativas y análisis (2026)',
     description:
-      'HubSpot, Zoho CRM, Pipedrive y más: comparativa de CRM para pymes españolas. Precios en euros, planes gratuitos y cuál elegir.',
+      'Análisis de HubSpot, Zoho CRM, Pipedrive y más, comparativas y guías de CRM para pymes españolas.',
     url: `${brand.siteUrl}/crm`,
     siteName: brand.siteName,
     type: 'website',
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mejores CRM para pymes en España 2026',
-    description: 'HubSpot, Zoho CRM, Pipedrive y más. Planes gratuitos, precios en euros y cuál elegir.',
+    title: 'CRM para pymes en España: guías, comparativas y análisis (2026)',
+    description: 'Análisis de HubSpot, Zoho CRM, Pipedrive y más, comparativas y guías de CRM.',
     images: [`${brand.siteUrl}/api/og?title=CRM+para+Pymes&type=category`],
   },
 }
@@ -34,7 +34,7 @@ const TOP_TOOLS = [
     badgeColor: 'bg-green-100 text-green-800',
     price: 'Gratis',
     score: '8.2',
-    why: 'Plan gratuito real con contactos ilimitados. El más fácil de empezar.',
+    why: 'Plan gratuito real. El más fácil de empezar.',
   },
   {
     name: 'Zoho CRM',
@@ -59,9 +59,9 @@ const TOP_TOOLS = [
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Mejores CRM para pymes en España 2026',
+  name: 'CRM para pymes en España: guías, comparativas y análisis (2026)',
   description:
-    'Comparativa de los mejores CRM para pymes españolas: precios, planes gratuitos y cuál elegir.',
+    'Análisis, comparativas y guías de CRM para pymes españolas.',
   url: `${brand.siteUrl}/crm`,
   publisher: {
     '@type': 'Organization',
@@ -79,7 +79,7 @@ const JSON_LD_FAQ = {
       name: '¿Cuál es el mejor CRM gratuito para pymes en España?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'HubSpot CRM tiene el mejor plan gratuito del mercado: contactos ilimitados, pipeline de ventas visual y sin límite de tiempo. Freshsales también ofrece un plan gratuito con usuarios ilimitados.',
+        text: 'HubSpot y Zoho CRM tienen plan gratuito: HubSpot hasta 2 usuarios y Zoho CRM hasta 3 usuarios, según sus webs oficiales a octubre de 2026. Para un equipo muy pequeño, cualquiera de los dos sirve para ordenar contactos y pipeline.',
       },
     },
     {
@@ -87,7 +87,7 @@ const JSON_LD_FAQ = {
       name: '¿Qué CRM es más barato para una pyme española?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Zoho CRM Standard arranca en 14 €/usuario/mes (facturación anual), igual que Pipedrive Essential. HubSpot tiene plan gratuito, pero el primer plan de pago sube a ~18 €/mes. Para listas muy pequeñas, el free de HubSpot es la opción más barata.',
+        text: 'Según sus webs oficiales a octubre de 2026, Zoho CRM Standard cuesta 14 € por usuario y mes con facturación anual (20 € en mensual) y HubSpot Starter 7 € por licencia y mes, con una oferta limitada. Los dos tienen plan gratuito. Compara el coste con tu número de usuarios en cada análisis.',
       },
     },
     {
@@ -95,7 +95,7 @@ const JSON_LD_FAQ = {
       name: '¿Los CRM cumplen con el GDPR y la LOPDGDD española?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sí, los principales CRM (HubSpot, Zoho, Pipedrive, Salesforce) firman DPA bajo GDPR. Zoho y Pipedrive ofrecen servidores en la UE en todos los planes. Consulta con tu delegado de protección de datos si gestionas datos sensibles.',
+        text: 'Los principales CRM ofrecen un acuerdo de tratamiento de datos (DPA). Comprueba en la documentación legal de cada proveedor si hay servidores en la UE y DPA para tu plan, y consulta con tu delegado de protección de datos si gestionas datos sensibles.',
       },
     },
   ],
@@ -103,9 +103,9 @@ const JSON_LD_FAQ = {
 
 export default async function CRMPage() {
   const articles = await getArticlesByCategory('crm')
-  const reviews = articles.filter((a) => a.type === 'review').slice(0, 3)
-  const comparativas = articles.filter((a) => a.type === 'comparison').slice(0, 3)
-  const guias = articles.filter((a) => a.type === 'how-to' || a.type === 'top-list').slice(0, 3)
+  const reviews = articles.filter((a) => a.type === 'review').slice(0, 6)
+  const comparativas = articles.filter((a) => a.type === 'comparison').slice(0, 6)
+  const guias = articles.filter((a) => a.type === 'how-to' || a.type === 'top-list').slice(0, 6)
 
   return (
     <>
@@ -126,12 +126,18 @@ export default async function CRMPage() {
             Software CRM para pymes
           </p>
           <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-4">
-            Los mejores CRM para pymes en España (2026)
+            CRM para pymes en España: guías, comparativas y análisis
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
             Si llevas los clientes en Excel y se te escapan seguimientos, necesitas un CRM. Hemos analizado
             más de 10 herramientas para encontrar las que mejor funcionan para empresas de 2 a 50 personas
             en España: soporte en español, precios en euros y sin pagar por funciones que no vas a usar.
+          </p>
+          <p className="mt-4 text-sm text-gray-700">
+            ¿Quieres la selección rápida?{' '}
+            <Link href="/crm/mejores-crm-pymes-espana" className="font-semibold text-blue-600 hover:underline">
+              Mira la guía de los 5 mejores CRM para pymes →
+            </Link>
           </p>
         </header>
 
@@ -187,17 +193,16 @@ export default async function CRMPage() {
                   <th className="px-4 py-3 font-semibold text-gray-700 border-b border-gray-200">CRM</th>
                   <th className="px-4 py-3 font-semibold text-gray-700 border-b border-gray-200">Plan gratuito</th>
                   <th className="px-4 py-3 font-semibold text-gray-700 border-b border-gray-200">Precio entrada</th>
-                  <th className="px-4 py-3 font-semibold text-gray-700 border-b border-gray-200">Precio en euros</th>
-                  <th className="px-4 py-3 font-semibold text-gray-700 border-b border-gray-200">Mejor para</th>
+                                    <th className="px-4 py-3 font-semibold text-gray-700 border-b border-gray-200">Mejor para</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { name: 'HubSpot CRM', slug: 'review-hubspot-crm', free: '✅ Sin límite', price: '~18 €/mes', eur: '❌ Cobra en $', for: 'Empezar gratis' },
-                  { name: 'Zoho CRM', slug: 'review-zoho-crm', free: '✅ 3 usuarios', price: '14 €/usuario/mes', eur: '✅ Sí', for: 'Máx. funciones/€' },
-                  { name: 'Pipedrive', slug: 'review-pipedrive', free: '❌ Solo 14 días', price: '14 €/usuario/mes', eur: '✅ Sí', for: 'Equipos comerciales' },
-                  { name: 'Freshsales', slug: 'review-freshsales', free: '✅ Usuarios ilimitados', price: '15 €/usuario/mes', eur: '✅ Sí', for: 'Alternativa a HubSpot' },
-                  { name: 'Salesforce Starter', slug: 'review-salesforce-pymes', free: '❌ Solo 30 días', price: '25 €/usuario/mes', eur: '✅ Sí', for: 'Crecer sin migrar' },
+                  { name: 'HubSpot CRM', slug: 'review-hubspot-crm', free: '✅ Hasta 2 usuarios', price: '7 €/licencia/mes (Starter, oferta limitada)', for: 'Empezar gratis' },
+                  { name: 'Zoho CRM', slug: 'review-zoho-crm', free: '✅ Hasta 3 usuarios', price: '14 €/usuario/mes (Standard, anual)', for: 'Máx. funciones/€' },
+                  { name: 'Pipedrive', slug: 'review-pipedrive', free: 'Ver análisis', price: 'Ver análisis', for: 'Equipos comerciales' },
+                  { name: 'Freshsales', slug: 'review-freshsales', free: 'Ver análisis', price: 'Ver análisis', for: 'Alternativa a HubSpot' },
+                  { name: 'Salesforce Starter', slug: 'review-salesforce-pymes', free: 'Ver análisis', price: 'Ver análisis', for: 'Crecer sin migrar' },
                 ].map((row) => (
                   <tr key={row.slug} className="border-b border-gray-100 hover:bg-gray-50">
                     <td className="px-4 py-3 font-medium">
@@ -205,14 +210,13 @@ export default async function CRMPage() {
                     </td>
                     <td className="px-4 py-3 text-gray-600">{row.free}</td>
                     <td className="px-4 py-3 text-gray-600">{row.price}</td>
-                    <td className="px-4 py-3 text-gray-600">{row.eur}</td>
                     <td className="px-4 py-3 text-gray-600">{row.for}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-gray-400 mt-2">Precios en facturación anual, junio 2026. Verifica en la web de cada proveedor.</p>
+          <p className="text-xs text-gray-400 mt-2">Precios de HubSpot y Zoho CRM verificados en sus webs oficiales en octubre de 2026. El resto, en su análisis. Verifica siempre en la web del proveedor.</p>
         </section>
 
         {/* How to choose */}

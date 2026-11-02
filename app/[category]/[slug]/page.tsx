@@ -15,6 +15,7 @@ import {
 import { ScrollDepthTracker } from '@/app/components/ScrollDepthTracker'
 import { ArticleCard } from '@/app/components/ArticleCard'
 import { InmoRobotCard } from '@/app/components/InmoRobotCard'
+import { NOINDEX_SLUGS } from '@/lib/seo/noindex'
 import {
   CTAButton,
   Callout,
@@ -94,6 +95,7 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical: canonicalUrl },
+    robots: NOINDEX_SLUGS.has(slug) ? { index: false, follow: true } : undefined,
     openGraph: {
       title,
       description,

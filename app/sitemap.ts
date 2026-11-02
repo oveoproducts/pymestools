@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import brand from '@/data/brand.json'
 import { getPublishedArticles } from '@/lib/db/articles'
+import { NOINDEX_SLUGS } from '@/lib/seo/noindex'
 
 const CATEGORIES = [
   'email-marketing',
@@ -46,7 +47,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  const articlePages: MetadataRoute.Sitemap = articles.map((article) => ({
+  const articlePages: MetadataRoute.Sitemap = articles
+    .filter((article) => !NOINDEX_SLUGS.has(article.slug))
+    .map((article) => ({
     url: `${brand.siteUrl}/${article.category}/${article.slug}`,
     lastModified: article.updated_at
       ? new Date(article.updated_at)
