@@ -45,10 +45,24 @@ exec(`open "${authUrl}"`)
 const server = createServer(async (req, res) => {
   if (!req.url?.startsWith('/callback')) return
 
-  const code = new URL(req.url, 'http://localhost:4242').searchParams.get('code')
+  const url = new URL(req.url, 'http://localhost:4242')
+  const error = url.searchParams.get('error')
+  const code = url.searchParams.get('code')
+
+  if (error) {
+    const msg = `Error de Google: ${error} — ${url.searchParams.get('error_description') ?? 'sin descripción'}`
+    console.error(`\n❌  ${msg}`)
+    res.end(`<pre>${msg}</pre>`)
+    server.close()
+    process.exit(1)
+  }
+
   if (!code) {
-    res.end('Error: no se recibió el código de autorización.')
-    return
+    const msg = `No se recibió el código. Parámetros recibidos: ${url.search}`
+    console.error(`\n❌  ${msg}`)
+    res.end(`<pre>${msg}</pre>`)
+    server.close()
+    process.exit(1)
   }
 
   try {
