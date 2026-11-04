@@ -83,7 +83,22 @@ jobs:
           if [ -n "$(git status --porcelain content/articles)" ]; then
             git add content/articles
             git commit -m "content: persist in-progress articles [skip ci]"
-            git push
+            # main moves while the loop runs (human pushes, other workflows).
+            # A bare `git push` then fails with "fetch first" and turns a
+            # successful run red, so rebase onto the remote and retry.
+            pushed=0
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                pushed=1
+                break
+              fi
+              echo "::warning::push rejected (attempt $attempt) — retrying"
+              sleep $((attempt * 5))
+            done
+            if [ "$pushed" -ne 1 ]; then
+              echo "::error::could not push persisted articles after 3 attempts"
+              exit 1
+            fi
           fi
 
       # Runs even when the step above failed — this is what turns a silent
