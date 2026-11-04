@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# one-off local scripts (untracked ones only; already-tracked _ scripts stay tracked)
+scripts/_*.ts
