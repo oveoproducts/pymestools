@@ -1,0 +1,267 @@
+---
+title: "Mejor Make para ecommerce: 5 automatizaciones clave para pymes españolas (2026)"
+slug: "mejor-make-para-ecommerce"
+category: "automatizacion"
+description: "Descubre cómo usar Make en tu ecommerce español: las 5 automatizaciones más útiles para pymes, precios verificados, límites reales y para quién tiene sentido."
+type: "top-list"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00.000Z"
+tools: ["make"]
+keywords:
+  primary: "mejor make para ecommerce"
+  secondary:
+    - "make automatizaciones ecommerce españa"
+    - "make vs zapier ecommerce pymes"
+    - "automatizar tienda online make"
+    - "make integraciones shopify woocommerce"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "11 min"
+qualityScore: null
+---
+
+Gestionar un ecommerce con 8 empleados significa hacer malabarismos: pedidos que entran, facturas que hay que emitir, stock que actualizar, clientes que avisar. La mayoría de las herramientas de automatización del mercado están pensadas para equipos técnicos de startups americanas, con precios en dólares y documentación solo en inglés. Make es distinta — y en este artículo explicamos exactamente qué automatizaciones tienen más sentido para una tienda online española de tamaño medio.
+
+{/* TODO: captura del dashboard de Make — vista de escenarios activos */}
+
+---
+
+## Cómo hemos seleccionado estas automatizaciones
+
+No es una lista de "cosas guays que puedes hacer con Make". Es una selección de flujos que tienen sentido para un ecommerce español con menos de 50 empleados. Los criterios:
+
+1. **Ahorro de tiempo real y medible:** Solo incluimos automatizaciones que eliminan una tarea repetitiva concreta — no "mejoras de proceso" abstractas. Si no puedes decir "esto me ahorraba 3 horas a la semana", no está en la lista.
+
+2. **Integración con herramientas que ya usan las pymes españolas:** WooCommerce, Shopify, Holded, Acumbamail, Mailrelay, Sage. No incluimos flujos que requieren herramientas de 500 €/mes adicionales para funcionar.
+
+3. **Montables sin equipo técnico dedicado:** Make tiene curva de aprendizaje, pero cada flujo de esta lista puede configurarlo alguien con ganas de aprender, sin necesidad de contratar a un desarrollador.
+
+4. **Viables en el plan de pago más básico de Make:** Hemos comprobado que cada automatización cabe dentro de las operaciones y límites del plan Core. Las que requieren plan Team o superior están marcadas.
+
+5. **Compatibles con GDPR/LOPDGDD:** Si el flujo maneja datos de clientes (emails, pedidos, direcciones), hemos verificado que Make tiene DPA firmable bajo GDPR y que los datos pueden procesarse con servidores europeos.
+
+---
+
+## Resumen rápido
+
+| Automatización | Dificultad | Ops/mes aprox. | Plan mínimo | Tiempo de setup |
+|----------------|------------|----------------|-------------|-----------------|
+| Pedido → factura en Holded | Media | 300–1.000 | Core | 2–3 horas |
+| Stock bajo → alerta por email/WhatsApp | Baja | 100–500 | Free | 1 hora |
+| Carrito abandonado → secuencia email | Alta | 500–2.000 | Core | 4–6 horas |
+| Reseña nueva → respuesta + notificación interna | Baja | 100–300 | Free | 1–2 horas |
+| Pedido entregado → encuesta de satisfacción | Media | 300–1.000 | Core | 2–3 horas |
+
+*Operaciones estimadas para una tienda con 100–300 pedidos/mes. Precios de Make consultados en noviembre 2026. Verifica siempre en make.com. Precios sin IVA.*
+
+<Callout type="info">
+**¿Qué es una "operación" en Make?** Cada acción dentro de un escenario cuenta como una operación. Un flujo de "pedido → factura" puede consumir 4–6 operaciones por pedido. Con 300 pedidos/mes, eso son entre 1.200 y 1.800 operaciones — el plan Free (1.000 ops/mes) se queda corto. El plan Core da 10.000 ops/mes.
+</Callout>
+
+---
+
+## Las 5 mejores automatizaciones de Make para ecommerce
+
+### 1. Pedido nuevo → factura automática en Holded
+
+Si tienes el ecommerce en WooCommerce o Shopify y la contabilidad en Holded, esta es la automatización que más tiempo ahorra en una tienda española. Cada pedido que entra genera automáticamente la factura correspondiente en Holded, con los datos del cliente, los productos y el IVA correcto.
+
+**Lo mejor:** Elimina la entrada manual de facturas — el error más frecuente y el que más tiempo cuesta corregir.
+
+**Lo peor:** Configurar bien el IVA (21%, 10%, 4%) requiere cuidado — si los productos no están etiquetados correctamente en WooCommerce, la factura sale mal.
+
+**Precio Make:** Desde 9 $/mes + IVA (plan Core, aprox. 8,50 €/mes + IVA según cambio noviembre 2026). Verifica el precio actual en make.com.
+
+**Pros:**
+- Integración nativa: Make tiene conectores oficiales para WooCommerce, Shopify y Holded — no hace falta código.
+- Compatible con pedidos multiproducto: el escenario puede desglosar líneas de pedido individuales en la factura.
+- Funciona también para abonos y cancelaciones si configuras el escenario de devolución.
+
+**Contras:**
+- Holded requiere plan de pago con API activa — comprueba que tu plan de Holded lo incluye antes de montar el escenario.
+- Si cambias la estructura de tu tienda (nuevos tipos de producto, nuevas tarifas de IVA), hay que revisar el escenario manualmente.
+
+**Ideal para:** Tiendas con más de 50 pedidos/mes que hoy emiten facturas a mano o exportan CSV a contabilidad.
+
+<AffiliateLink programSlug="make" articleSlug="mejor-make-para-ecommerce" label="Ver planes de Make" />
+
+---
+
+### 2. Stock bajo → alerta por email o WhatsApp
+
+Cuando un producto llega a un umbral de stock (por ejemplo, menos de 5 unidades), Make puede enviar automáticamente un aviso a tu proveedor, a tu equipo de compras, o a tu propio WhatsApp.
+
+**Lo mejor:** Funciona en el plan gratuito de Make si tu tienda no supera ~200 chequeos al mes — sin coste adicional.
+
+**Lo peor:** WooCommerce no emite un evento en tiempo real cuando baja el stock; hay que configurar el escenario para que haga comprobaciones periódicas (polling), lo que consume más operaciones.
+
+**Precio Make:** Montable en el plan Free (1.000 ops/mes, sin coste) si el volumen es bajo.
+
+**Pros:**
+- Se puede conectar con WhatsApp Business vía Twilio o 360dialog — no requiere abrir el ordenador para ver el aviso.
+- Permite configurar distintos umbrales por producto o categoría.
+- El setup es uno de los más sencillos de esta lista: 3–4 módulos en el escenario.
+
+**Contras:**
+- Para Shopify funciona mejor porque tiene webhooks nativos de inventario — para WooCommerce el polling cada X minutos consume operaciones.
+- WhatsApp Business tiene coste por mensaje en Twilio (aprox. 0,05–0,07 € por mensaje según volumen) — no es gratis aunque Make sí lo sea.
+
+**Ideal para:** Tiendas con productos de alta rotación o SKUs críticos donde una rotura de stock tiene coste directo en ventas perdidas.
+
+---
+
+### 3. Carrito abandonado → secuencia de emails automatizada
+
+Esta es la automatización de más impacto económico en ecommerce, y también la más compleja de montar bien. El flujo detecta un carrito abandonado en WooCommerce/Shopify, espera X horas, y lanza una secuencia de 2–3 emails personalizados a través de Acumbamail o Mailrelay.
+
+**Lo mejor:** Las herramientas de email españolas (Acumbamail, Mailrelay) tienen conectores en Make — puedes cumplir LOPDGDD sin salir del ecosistema español.
+
+**Lo peor:** Shopify nativo ya incluye emails de carrito abandonado en sus planes de pago — antes de montar esto en Make, comprueba si tu plan de Shopify ya lo hace.
+
+**Precio Make:** Plan Core necesario si superas 1.000 operaciones/mes — 9 $/mes + IVA (aprox. 8,50 €/mes + IVA, cambio noviembre 2026).
+
+**Pros:**
+- Personalización completa del contenido y timing — no depende de las plantillas del ecommerce.
+- Funciona con Acumbamail y Mailrelay, herramientas con servidores en España y soporte en castellano.
+- Se puede combinar con descuentos automáticos generados en WooCommerce para incluirlos en el email.
+
+**Contras:**
+- El setup requiere entre 4 y 6 horas para alguien sin experiencia previa en Make — es el más complejo de esta lista.
+- Necesita que el cliente haya dejado su email antes de abandonar — no captura abandonos de visitantes anónimos.
+- Hay que revisar el flujo LOPDGDD con tu DPO o asesor: el retargeting por email tiene requisitos concretos de consentimiento en España.
+
+**Ideal para:** Tiendas con tasa de abandono de carrito superior al 60% (la media del sector en España) y que hoy no tienen ninguna automatización de recuperación.
+
+<AffiliateLink programSlug="make" articleSlug="mejor-make-para-ecommerce" label="Probar Make gratis" />
+
+---
+
+### 4. Reseña nueva → notificación interna + respuesta preparada
+
+Cuando un cliente deja una reseña en Google, Trustpilot o en la propia tienda, Make puede notificar al equipo por Slack o email, y preparar un borrador de respuesta en un Google Doc o Notion para que alguien lo revise antes de publicar.
+
+**Lo mejor:** Ninguna reseña — especialmente las negativas — se pierde entre el ruido del día a día.
+
+**Lo peor:** Make no puede responder automáticamente en nombre de la tienda sin revisión humana — y no debería hacerlo. Este flujo es de notificación y preparación, no de respuesta automática.
+
+**Precio Make:** Montable en el plan Free si el volumen de reseñas es bajo (menos de 50/mes).
+
+**Pros:**
+- Funciona con Google My Business (vía conector de Gmail + Sheets), Trustpilot y sistemas de reseñas propios.
+- La notificación puede incluir la puntuación, el texto y un enlace directo para responder — sin buscar nada.
+- Setup sencillo: 1–2 horas para alguien que ya conoce Make mínimamente.
+
+**Contras:**
+- Google My Business no tiene API directa en Make — hay que usar soluciones intermedias (Sheets + Apps Script o un conector de terceros) que añaden complejidad.
+- Trustpilot requiere plan de pago en Trustpilot para acceder a la API de reseñas.
+
+**Ideal para:** Tiendas donde la reputación online es un factor de venta importante y el equipo hoy pierde reseñas sin contestar.
+
+---
+
+### 5. Pedido entregado → encuesta de satisfacción automática
+
+Cuando el pedido marca "entregado" en el sistema de envíos (Correos, MRW, GLS vía sus APIs o vía Zapier/Make), el escenario espera 48 horas y envía automáticamente un email con enlace a una encuesta corta en Typeform o Google Forms.
+
+**Lo mejor:** Las respuestas se consolidan automáticamente en un Google Sheet — sin trabajo manual de recopilación.
+
+**Lo peor:** Los carriers españoles (Correos, MRW) tienen APIs con documentación escasa y soporte técnico limitado — conectarlos directamente a Make puede requerir un desarrollador. La alternativa es usar el webhook del ecommerce cuando cambia el estado del pedido.
+
+**Precio Make:** Plan Core recomendado si la tienda supera 100 pedidos/mes.
+
+**Pros:**
+- Typeform y Google Forms tienen conectores nativos en Make — sin código.
+- El timing postentrega (48h) mejora significativamente la tasa de respuesta frente al email inmediato.
+- Se puede ramificar: si la puntuación es baja, abre un ticket en el sistema de soporte automáticamente.
+
+**Contras:**
+- Usar Google Forms en lugar de Typeform limita la personalización — pero evita el coste adicional de Typeform.
+- Si el carrier no reporta "entregado" correctamente (pasa más de lo que debería en España), el trigger falla y el email no se envía.
+
+**Ideal para:** Tiendas que quieren datos de satisfacción reales sin contratar una plataforma de CX dedicada.
+
+<AffiliateLink programSlug="make" articleSlug="mejor-make-para-ecommerce" label="Ver Make gratis" />
+
+---
+
+## 💶 Precios de Make — lo que necesitas saber
+
+Make tiene un plan gratuito real: 1.000 operaciones/mes, escenarios ilimitados. Para una tienda pequeña que quiere empezar, es suficiente para las automatizaciones 2 y 4 de esta lista.
+
+| Plan | Precio | Operaciones/mes | Interval |
+|------|--------|-----------------|----------|
+| Free | 0 € | 1.000 | Cada 15 min mínimo |
+| Core | 9 $/mes (aprox. 8,50 €/mes + IVA, nov. 2026) | 10.000 | Cada 1 min |
+| Pro | 16 $/mes (aprox. 15 €/mes + IVA, nov. 2026) | 10.000 + funciones avanzadas | Cada 1 min |
+
+*Precios consultados en noviembre 2026 en make.com. Make cobra en dólares — el equivalente en euros varía con el tipo de cambio. Verifica siempre en la web oficial. Precios sin IVA.*
+
+<Callout type="warning">
+**Make cobra por operaciones, no por escenarios.** Una tienda con 5 automatizaciones activas y 200 pedidos/mes puede consumir fácilmente 8.000–12.000 operaciones/mes. Haz el cálculo antes de asumir que el plan Free es suficiente — el salto a Core son 9 $/mes, pero si te quedas sin operaciones a mitad de mes, los escenarios se paran.
+</Callout>
+
+---
+
+## 🇪🇸 Make y la normativa española
+
+Make firma DPA (Data Processing Agreement) bajo GDPR. Puedes solicitarlo desde el panel de tu cuenta — es un proceso estándar y sin coste adicional.
+
+Los datos se procesan en servidores de la UE por defecto si eliges la región EU al crear tu cuenta. Comprueba este ajuste antes de conectar datos de clientes españoles.
+
+Para cumplir con la LOPDGDD, el DPA de Make es el punto de partida, pero necesitas también revisar los subencargados de tratamiento que usa Make (están listados en su política de privacidad). Si tu asesor de protección de datos te pide un listado, está disponible en su web oficial.
+
+---
+
+## ¿Cómo elegir por dónde empezar?
+
+No montes las 5 automatizaciones a la vez. Aquí tienes el orden lógico según tu situación:
+
+**Si acabas de empezar con Make y nunca has automatizado nada:**
+Empieza con la alerta de stock bajo (automatización 2). Es la más sencilla, entra en el plan gratuito, y te enseña cómo funciona Make sin riesgo si algo sale mal.
+
+**Si tu mayor problema es el tiempo que pierdes en administración:**
+La facturación automática en Holded (automatización 1) es la que más horas libera por semana. Si emites facturas a mano para cada pedido, esto se amortiza en el primer mes.
+
+**Si quieres impacto directo en ventas:**
+El carrito abandonado (automatización 3) tiene el mayor retorno potencial, pero es el más complejo de configurar bien. Recomendable cuando ya tienes experiencia básica con Make.
+
+**Si ya usas Acumbamail o Mailrelay y quieres sacarles más partido:**
+Combina el carrito abandonado con la encuesta postentrega — usas el mismo canal de email para dos momentos clave del ciclo de vida del cliente.
+
+---
+
+## Conclusión
+
+Make es una de las pocas herramientas de automatización que tiene sentido real para un ecommerce español de tamaño medio: precio accesible, conectores para herramientas españolas como Holded, Acumbamail y Mailrelay, y cumplimiento GDPR con DPA firmable. El plan gratuito permite empezar sin riesgo.
+
+La recomendación más segura para la mayoría: empieza con la alerta de stock o la facturación automática, aprende cómo funciona Make con un flujo real, y escala después. No intentes automatizar todo de golpe.
+
+Si en 2027 se extiende la obligatoriedad de Verifactu a más tipos de software de gestión, la integración Make + Holded ganará relevancia — Holded ya está trabajando en compatibilidad y conectar ambos te posiciona bien para ese cambio.
+
+---
+
+## Preguntas frecuentes
+
+### ¿Make tiene plan gratuito para ecommerce?
+
+Sí. Make ofrece 1.000 operaciones/mes sin coste y sin tarjeta de crédito. Para una tienda pequeña con pocas automatizaciones simples (como alertas de stock), puede ser suficiente. Para flujos de facturación o carrito abandonado con más de 100 pedidos/mes, necesitarás el plan Core (9 $/mes aproximadamente).
+
+### ¿Make funciona con WooCommerce y Shopify?
+
+Sí, tiene conectores nativos para ambas plataformas. WooCommerce requiere instalar el plugin de Make en WordPress para habilitar los webhooks. Shopify funciona directamente desde el panel de Make sin instalación adicional.
+
+### ¿Make cumple con la LOPDGDD para ecommerce español?
+
+Make firma DPA bajo GDPR y permite procesar datos en servidores europeos. Es un punto de partida válido para cumplir con la LOPDGDD, pero necesitas revisar también los subencargados de tratamiento que usa Make y adaptar tu política de privacidad. Consulta con tu asesor de protección de datos antes de conectar bases de datos de clientes.
+
+### ¿Es mejor Make o Zapier para un ecommerce español?
+
+Para pymes españolas, Make suele salir más barato a igual funcionalidad: el plan Core de Make incluye 10.000 operaciones/mes por unos 8–9 €, mientras que Zapier tiene precios más elevados para funciones equivalentes. Además, Make tiene más flexibilidad en la lógica de los flujos. Zapier tiene una interfaz más sencilla si el equipo no es técnico en absoluto.
+
+### ¿Cuánto tiempo lleva montar una automatización en Make?
+
+Depende de la complejidad. Una alerta de stock puede estar lista en 1 hora. La facturación automática con Holded, en 2–3 horas. El flujo de carrito abandonado con secuencia de emails, entre 4 y 6 horas la primera vez. Make tiene documentación en inglés principalmente — la curva de aprendizaje inicial existe, pero los flujos básicos son accesibles sin ser programador.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
