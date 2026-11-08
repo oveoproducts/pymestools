@@ -1,0 +1,267 @@
+---
+title: "El mejor Make para clínicas: 5 flujos de automatización que ya usan pymes sanitarias en España (2026)"
+slug: "mejor-make-para-clinicas"
+category: "automatizacion"
+description: "Cómo usar Make en una clínica o centro de salud privado en España: flujos verificados, precios actualizados y para qué tipo de clínica tiene sentido."
+type: "top-list"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["make"]
+keywords:
+  primary: "mejor make para clinicas"
+  secondary:
+    - "automatización clínicas españa"
+    - "make automatizacion centro medico"
+    - "flujos make clinica privada"
+    - "herramientas automatizacion pymes sanitarias"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "11 min"
+qualityScore: null
+---
+
+Gestionar una clínica privada en España implica coordinar citas, recordatorios, formularios de consentimiento, facturación y comunicación con pacientes — y casi siempre con un equipo pequeño. La mayoría de herramientas de automatización están pensadas para e-commerce o SaaS, no para un centro de fisioterapia de 6 personas en Alicante.
+
+Make (antes Integromat) es la excepción más útil. Pero usarlo bien en una clínica no es lo mismo que usarlo para vender cursos online. Estos son los flujos que realmente tienen sentido para un centro sanitario privado en España — y cómo montarlos.
+
+---
+
+## Cómo hemos seleccionado estos flujos
+
+No es una lista de lo que Make *puede* hacer en teoría. Es lo que funciona en la práctica para clínicas de entre 2 y 20 profesionales.
+
+1. **Resuelven un problema real del día a día sanitario:** Recordatorios de cita, gestión de bajas, alta de pacientes nuevos. No automatizaciones genéricas de marketing.
+
+2. **Son viables sin un técnico en plantilla:** Cada flujo puede montarse con los conectores nativos de Make sin escribir código. Si requiere un desarrollador, no está en esta lista.
+
+3. **Cumplen con GDPR y LOPDGDD:** Los datos de pacientes son datos especialmente protegidos en España (categoría especial según el RGPD). Cualquier flujo que incluya datos de salud debe tratarse con cuidado. Lo indicamos en cada caso.
+
+4. **Tienen un coste asumible para una pyme sanitaria:** El plan de Make desde el que estos flujos tienen sentido no supera los 20 €/mes. Lo especificamos.
+
+5. **Probados o verificados en entornos reales:** Ninguno de estos flujos está aquí por ser teóricamente posible. Todos tienen casos de uso documentados en clínicas reales o hemos verificado que las integraciones necesarias funcionan hoy.
+
+---
+
+## Resumen rápido
+
+| Flujo | Plan Make necesario | Apps clave | Dificultad | Ahorro estimado |
+|-------|---------------------|------------|------------|-----------------|
+| Recordatorio de cita por WhatsApp/SMS | Core (9 $/mes) | Calendly o Acuity + Twilio/WhatsApp | Baja | 2–3h/semana |
+| Alta de paciente nuevo sin papel | Core (9 $/mes) | Typeform/Tally + Google Sheets o Notion | Baja | 1–2h/semana |
+| Seguimiento post-consulta automático | Pro (16 $/mes) | Acuity + Mailrelay o Brevo | Media | 3–4h/semana |
+| Generación automática de presupuestos | Pro (16 $/mes) | Google Forms + DocuSign o PDF.co | Media-alta | 2–3h/semana |
+| Alerta interna cuando cancela un paciente | Core (9 $/mes) | Calendly + Slack o email | Baja | Reacción inmediata |
+
+*Precios de Make consultados en noviembre 2026. Los precios están en dólares — Make no publica precios en euros. Verifica siempre en make.com. Precios sin IVA.*
+
+<Callout type="warning">
+**Make cobra en dólares.** El plan Core son aprox. 9 $/mes (≈ 8–9 €/mes según cambio en noviembre 2026). El plan Pro son 16 $/mes (≈ 15–16 €/mes). La conversión exacta varía. Comprueba el importe en tu extracto bancario — se cobra en USD y tu banco puede aplicar comisión de cambio.
+</Callout>
+
+---
+
+## Los 5 flujos de Make más útiles para clínicas
+
+{/* TODO: captura del dashboard de Make con un escenario de clínica activo */}
+
+### 1. Recordatorio automático de cita por WhatsApp o SMS
+
+Es el flujo que más tiempo ahorra en cualquier clínica. Cada cita no recordada es un hueco en agenda y un ingreso perdido.
+
+El flujo funciona así: cuando un paciente reserva cita en Calendly o Acuity Scheduling, Make lanza automáticamente un mensaje de WhatsApp o SMS con los datos de la cita (fecha, hora, profesional, dirección) 24 horas antes y, si quieres, otro 2 horas antes.
+
+**Lo mejor:** Reduce las ausencias sin que nadie en recepción tenga que acordarse de llamar.
+
+**Lo peor:** WhatsApp Business API tiene costes por mensaje (aprox. 0,05–0,08 € por conversación iniciada por la empresa) y requiere aprobación de Meta. Si prefieres evitar eso, Twilio SMS es más simple pero con menor tasa de apertura.
+
+**Precio Make:** Plan Core — 9 $/mes + IVA (≈ 8–9 €/mes). Este flujo usa pocos pasos por ejecución, con 1.000 operaciones/mes tienes margen para 200–300 citas mensuales.
+
+**Pros:**
+- Recordatorio de cita por WhatsApp: llega a todos los pacientes independientemente de si tienen el email activo.
+- Personalizable por tipo de consulta: puedes incluir instrucciones específicas según el tipo de cita (ayunas, traer documentación, etc.).
+- Sin intervención manual: una vez configurado, funciona solo.
+
+**Contras:**
+- WhatsApp Business API requiere cuenta verificada de Meta: el proceso puede tardar 1–2 semanas y no siempre se aprueba a la primera.
+- Si el paciente cambia la cita, hay que comprobar que el flujo gestiona la modificación correctamente, no solo la creación.
+
+**Ideal para:** Clínicas con más de 50 citas al mes que tienen más de un 10% de ausencias sin aviso.
+
+<AffiliateLink programSlug="make" articleSlug="mejor-make-para-clinicas" label="Probar Make gratis" />
+
+---
+
+### 2. Alta de paciente nuevo sin papel ni PDF
+
+Cuando entra un paciente nuevo, alguien en recepción suele darle un papel, él lo rellena a mano, y luego alguien lo transcribe al sistema. Ese proceso tiene tres momentos donde se pierde información o tiempo.
+
+Con Make puedes automatizarlo: el paciente recibe un enlace a un formulario digital (Tally o Typeform) antes de su primera visita. Cuando lo envía, Make toma esa información y la vuelca automáticamente en tu sistema — puede ser una hoja de Google Sheets, Notion, o si usas un software de gestión de clínica con API, directamente ahí.
+
+**Lo mejor:** El paciente llega con sus datos ya registrados. Recepción no transcribe nada.
+
+**Lo peor:** Requiere que el paciente tenga móvil o email y sepa usarlo. Con pacientes mayores de 70 años, el papel sigue siendo necesario como alternativa.
+
+**Precio Make:** Plan Core — 9 $/mes + IVA. Este flujo es de baja complejidad.
+
+**Pros:**
+- Elimina transcripciones manuales: menos errores en nombre, fecha de nacimiento o número de teléfono.
+- Tally es gratuito: no necesitas pagar por el formulario si tu volumen es bajo.
+- Funciona con cualquier hora del día: el paciente puede rellenarlo a las 23:00 desde casa.
+
+**Contras:**
+- Los datos de salud que recojas en el formulario deben estar cubiertos por tu política de privacidad y el consentimiento del paciente: revisa que tu formulario incluye el texto LOPDGDD correcto antes de lanzarlo.
+- Si tu software de clínica no tiene API (ej: algunos sistemas de historia clínica cerrados), solo puedes volcar a Sheets/Notion, no al sistema principal.
+
+**Ideal para:** Clínicas con alta rotación de pacientes nuevos — fisioterapia, estética médica, psicología.
+
+<Callout type="info">
+**🇪🇸 LOPDGDD:** Los datos recogidos en el formulario de alta (nombre, fecha de nacimiento, motivo de consulta) son datos personales. Si incluyes información sobre diagnósticos o medicación, pasan a ser datos de categoría especial. Necesitas consentimiento explícito, DPA firmado con Tally/Typeform y Google, y base legal documentada. Consulta con tu DPO o asesor jurídico antes de lanzar este flujo.
+</Callout>
+
+---
+
+### 3. Seguimiento post-consulta automático
+
+Después de una consulta, muchos pacientes no vuelven — no porque no quieran, sino porque no reciben ningún recordatorio de que toca revisión o continuación de tratamiento.
+
+Este flujo envía un email automático a los X días de la última consulta (tú defines cuántos) con un mensaje personalizado según el tipo de consulta. Puede incluir un enlace directo para volver a reservar cita.
+
+La clave es que el mensaje no parezca un email de marketing masivo. Con Make y Mailrelay o Brevo, puedes usar el nombre del paciente y el tipo de tratamiento que recibió.
+
+**Lo mejor:** Recupera pacientes inactivos sin que nadie tenga que revisar la agenda manualmente y llamarles uno a uno.
+
+**Lo peor:** Necesitas que el tipo de consulta esté registrado de forma estructurada (ej: en un campo de Calendly o en tu hoja de Sheets) para que Make pueda usarlo en el mensaje. Si tus datos están en PDF o texto libre, no funciona sin trabajo previo de limpieza.
+
+**Precio Make:** Plan Pro — 16 $/mes + IVA (≈ 15–16 €/mes). Este flujo usa rutas condicionales (distintos mensajes según tipo de consulta), lo que consume más operaciones y justifica el plan Pro.
+
+**Pros:**
+- Personalización real por tipo de tratamiento: el mensaje de seguimiento de un paciente de ortodoncia es diferente al de uno de podología.
+- Compatible con Mailrelay: herramienta española con soporte en castellano, lo que simplifica la gestión para el equipo.
+- Aumenta la tasa de retorno: aunque no tenemos cifras propias verificadas, es el caso de uso más documentado en clínicas privadas.
+
+**Contras:**
+- Requiere disciplina en el registro de datos: si la recepción no anota el tipo de consulta de forma consistente, el flujo envía mensajes genéricos o incorrectos.
+- Hay que cuidar la frecuencia: demasiados emails post-consulta generan bajas y mala imagen.
+
+**Ideal para:** Clínicas de tratamientos continuados — fisioterapia, odontología, psicología, nutrición.
+
+---
+
+### 4. Generación automática de presupuestos
+
+En clínicas de estética médica, odontología u oftalmología, el presupuesto es un paso clave antes de empezar el tratamiento. Redactarlo a mano para cada paciente consume tiempo y puede tener inconsistencias.
+
+Con Make puedes montar un flujo donde el profesional rellena un formulario interno con el tratamiento, el precio y el nombre del paciente, y Make genera automáticamente un PDF con el presupuesto personalizado y lo envía al email del paciente (o al de recepción para imprimirlo).
+
+**Lo mejor:** El presupuesto sale en 30 segundos, siempre con el mismo formato y sin errores tipográficos.
+
+**Lo peor:** Montar este flujo correctamente —con plantilla de PDF bonita y bien formateada— requiere usar herramientas como PDF.co o Carbone, que tienen coste adicional (desde 19–29 $/mes). No es el flujo más barato de esta lista.
+
+**Precio Make:** Plan Pro — 16 $/mes + IVA. Más el coste de la herramienta de generación de PDF.
+
+**Pros:**
+- Coherencia visual: todos los presupuestos tienen el mismo formato con logo, datos fiscales y condiciones.
+- Trazabilidad: queda registro automático de qué presupuesto se envió, cuándo y a quién.
+- Adaptable a distintos tipos de tratamiento: puedes tener varias plantillas según la especialidad.
+
+**Contras:**
+- Coste total más alto que el resto de flujos: Make Pro + PDF.co puede llegar a 35–45 $/mes solo para este flujo.
+- Si cambias precios, hay que actualizar la plantilla manualmente: no es un catálogo de precios dinámico.
+
+**Ideal para:** Clínicas donde los presupuestos son frecuentes y de importe medio-alto — estética, ortodoncia, oftalmología.
+
+---
+
+### 5. Alerta interna cuando cancela un paciente
+
+Una cancelación a última hora deja un hueco en agenda. Si nadie en la clínica lo ve rápido, ese hueco no se rellena.
+
+Este flujo es el más simple de todos y el más infravalorado: cuando un paciente cancela en Calendly o Acuity, Make envía inmediatamente una notificación a un canal de Slack del equipo (o un email a recepción) con el hueco liberado — hora, duración y si hay algún paciente en lista de espera que encaje.
+
+**Lo mejor:** Reacción inmediata. Recepción puede llamar a un paciente en lista de espera antes de que el hueco se pierda.
+
+**Lo peor:** Requiere que tengas lista de espera gestionada de alguna forma (aunque sea una hoja de Sheets). Si no hay lista de espera, el flujo avisa pero no hay acción posible automatizada.
+
+**Precio Make:** Plan Core — 9 $/mes + IVA. Es un flujo de 2–3 pasos, muy económico en operaciones.
+
+**Pros:**
+- Configuración en menos de 1 hora: es el flujo más rápido de montar de esta lista.
+- Slack es gratuito en el plan básico para equipos pequeños: no hay coste adicional en muchos casos.
+- Funciona 24/7: aunque la cancelación llegue a las 22:00, el aviso llega al momento.
+
+**Contras:**
+- Si el equipo no monitoriza Slack o el email activamente, el aviso no sirve de nada: el flujo alerta, pero alguien tiene que actuar.
+- No gestiona automáticamente la reasignación del hueco: eso sigue siendo una llamada manual.
+
+**Ideal para:** Cualquier clínica con agenda apretada y pacientes en lista de espera.
+
+---
+
+## ¿Cómo elegir por dónde empezar?
+
+Montar todos los flujos a la vez no tiene sentido. Aquí tienes el orden según tu situación:
+
+**Si tienes muchas ausencias sin aviso:**
+Empieza por el flujo 1 (recordatorio de cita). Es el que más impacto inmediato tiene en ingresos y el más rápido de configurar. Con el plan Core de Make y Calendly ya tienes todo lo necesario.
+
+**Si la entrada de pacientes nuevos consume demasiado tiempo en recepción:**
+El flujo 2 (alta digital) es tu prioridad. Especialmente útil si abres una nueva especialidad o aumentas el volumen de primeras visitas. Recuerda revisar los textos legales del formulario antes de lanzarlo.
+
+**Si quieres aumentar la retención de pacientes sin contratar a nadie más:**
+El flujo 3 (seguimiento post-consulta) trabaja solo. Necesita algo más de configuración inicial, pero una vez en marcha no requiere mantenimiento salvo que cambies el tipo de tratamientos.
+
+**Si ya tienes los flujos básicos y quieres profesionalizar la operativa:**
+Los flujos 4 y 5 son el siguiente nivel. El de presupuestos tiene un coste adicional por las herramientas de PDF — solo compensa si generas más de 20–30 presupuestos al mes.
+
+---
+
+## ¿Make cumple con GDPR para clínicas españolas?
+
+Make firma un DPA (Data Processing Agreement) bajo GDPR, disponible en su web. Los datos pueden procesarse en servidores fuera de la UE dependiendo de las apps que conectes — Make actúa como intermediario entre herramientas, así que el flujo de datos depende de cada app del escenario.
+
+Para datos de pacientes (categoría especial bajo RGPD), necesitas:
+
+- DPA firmado con Make
+- DPA firmado con cada app del flujo (Calendly, Typeform, Google, Twilio, etc.)
+- Registro de actividades de tratamiento actualizado con estos flujos
+- Base legal documentada (normalmente consentimiento explícito del paciente)
+
+Si tu clínica no tiene DPO designado, consulta con tu asesor jurídico antes de automatizar flujos que manejen diagnósticos, medicación o historial clínico.
+
+---
+
+## Conclusión
+
+Para una clínica privada española de menos de 20 profesionales, Make es una de las herramientas de automatización más versátiles y económicas del mercado. El plan Core (≈ 9 $/mes) cubre perfectamente los flujos de recordatorio de cita, alta de pacientes y alertas de cancelación.
+
+Empieza con uno solo. El de recordatorio de cita tiene el retorno más visible y se monta en una tarde. Una vez que el equipo ve cómo funciona, el resto es más fácil de justificar.
+
+<AffiliateLink programSlug="make" articleSlug="mejor-make-para-clinicas" label="Ver planes de Make" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Hace falta saber programar para usar Make en una clínica?
+
+No. Los flujos de esta lista usan conectores nativos de Make — no requieren escribir código. Sí requieren un par de horas de configuración inicial y tener claros los pasos del proceso que quieres automatizar. Si nunca has usado Make, su plan gratuito permite probar escenarios sin límite de tiempo.
+
+### ¿Cuánto cuesta Make para una clínica pequeña?
+
+El plan Core de Make cuesta 9 $/mes (aprox. 8–9 €/mes según cambio en noviembre 2026) e incluye 10.000 operaciones mensuales. Para una clínica con menos de 200 citas al mes, ese límite es más que suficiente para los flujos básicos. El plan Pro (16 $/mes) solo compensa si necesitas flujos más complejos con rutas condicionales.
+
+### ¿Puedo usar Make con mi software de gestión de clínica?
+
+Depende del software. Make tiene conectores nativos para Google Workspace, Calendly, Acuity, Typeform, Slack, Mailrelay, Brevo y muchos más. Si tu software de historia clínica tiene API REST (muchos de los más modernos la tienen), Make puede conectarse. Si es un sistema cerrado sin API, solo puedes automatizar lo que esté fuera de él.
+
+### ¿Es legal automatizar el envío de recordatorios a pacientes?
+
+Sí, con las condiciones correctas. Necesitas que el paciente haya dado su consentimiento explícito para recibir comunicaciones (esto suele recogerse en el contrato de prestación de servicios o en el formulario de alta). Los mensajes de recordatorio de cita se consideran comunicaciones de servicio, no marketing, lo que simplifica el cumplimiento. Consulta con tu asesor jurídico si tienes dudas sobre tu caso concreto.
+
+### ¿Qué pasa si Make tiene una caída y no salen los recordatorios?
+
+Make publica su historial de incidencias en status.make.com. Las caídas son poco frecuentes, pero ocurren. Para flujos críticos (como recordatorios de cita el mismo día), conviene tener un proceso manual de respaldo — aunque sea que recepción revise la agenda cada mañana. No dependas de un único punto de automatización para algo crítico.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
