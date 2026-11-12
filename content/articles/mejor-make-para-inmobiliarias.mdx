@@ -1,0 +1,282 @@
+---
+title: "El mejor uso de Make para inmobiliarias en España (2026)"
+slug: "mejor-make-para-inmobiliarias"
+category: "automatizacion"
+description: "Cómo usar Make para automatizar una agencia inmobiliaria española: los flujos más útiles, precios verificados y para quién tiene sentido (y para quién no)."
+type: "top-list"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["make"]
+keywords:
+  primary: "mejor make para inmobiliarias"
+  secondary:
+    - "automatizacion inmobiliaria make"
+    - "make crm inmobiliaria espana"
+    - "automatizar agencia inmobiliaria"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "11 min"
+qualityScore: null
+---
+
+Si buscas "Make para inmobiliarias" probablemente ya sabes que Make es una herramienta de automatización — lo que no tienes claro es si lo que ves en tutoriales de YouTube aplica a una agencia española con 3 o 4 agentes, un CRM inmobiliario y el portal de Idealista o Fotocasa en el centro de todo.
+
+Esta guía responde exactamente eso: qué flujos de Make tienen sentido real para una agencia inmobiliaria española, cuánto cuesta, y cuándo Make no es la respuesta correcta.
+
+---
+
+## Cómo hemos seleccionado los flujos de esta guía
+
+No todos los usos de Make tienen el mismo valor para una inmobiliaria. Para incluir un caso de uso en esta lista, debe cumplir estos criterios:
+
+1. **Ahorro de tiempo demostrable:** El flujo elimina una tarea repetitiva que un agente hace manualmente varias veces a la semana. Si el tiempo ahorrado no compensa el tiempo de configuración, no lo incluimos.
+
+2. **Compatible con herramientas habituales en España:** Los flujos funcionan con portales españoles (Idealista, Fotocasa, Habitaclia), CRM inmobiliarios con API, o herramientas generalistas disponibles en español (Google Workspace, WhatsApp Business, Holded).
+
+3. **Configurable sin programación:** Make permite construir flujos visuales sin código. Los flujos de esta guía son configurables por alguien que no es desarrollador, aunque requieren paciencia y un par de tardes.
+
+4. **Precio razonable para una pyme:** Hemos excluido flujos que solo tienen sentido con el plan más caro de Make o que requieren integraciones de pago adicionales que disparan el coste mensual.
+
+5. **Sin trampa contractual oculta:** Make tiene planes mensuales cancelables. Lo mencionamos porque no todos los competidores lo permiten — es un punto a favor real.
+
+---
+
+## Resumen rápido
+
+| Caso de uso | Dificultad | Tiempo de setup | Valor para la agencia |
+|-------------|------------|-----------------|----------------------|
+| Notificación automática al lead nuevo | Baja | 1–2 horas | Alto — nadie espera |
+| Sincronización CRM ↔ portal inmobiliario | Media-alta | 4–8 horas | Alto — elimina doble entrada |
+| Seguimiento automático de leads fríos | Media | 2–4 horas | Alto — ventas que se pierden sin él |
+| Informe semanal de actividad al propietario | Baja | 1–2 horas | Medio — fidelización de captación |
+| Publicación automática en redes sociales | Baja | 2–3 horas | Medio — depende del volumen |
+
+*Flujos analizados en noviembre 2026. Los precios de Make se verifican más abajo.*
+
+---
+
+{/* TODO: captura del dashboard de Make — vista del constructor de flujos con un escenario inmobiliario */}
+
+## 💶 Precios de Make para inmobiliarias
+
+Make tiene cuatro planes. Para una agencia pequeña, los relevantes son estos:
+
+| Plan | Precio | Operaciones/mes | Lo que cubre |
+|------|--------|-----------------|--------------|
+| Free | 0 €/mes | 1.000 | Pruebas — no llega para uso real |
+| Core | 9 $/mes (aprox. 8,50 €/mes + IVA) | 10.000 | Una agencia pequeña con pocos flujos |
+| Pro | 16 $/mes (aprox. 15 €/mes + IVA) | 10.000 + más velocidad | Agencia con flujos activos y leads frecuentes |
+| Teams | 29 $/mes (aprox. 27 €/mes + IVA) | 10.000 + colaboración | Varias personas editando escenarios |
+
+<Callout type="warning">
+**Make cobra en dólares.** Los precios en euros son aproximados según el cambio de noviembre 2026. El cargo real en tu tarjeta puede variar. Verifica el precio exacto en [make.com](https://make.com) antes de contratar.
+</Callout>
+
+**¿Qué plan necesita una inmobiliaria pequeña?**
+
+Con 3–4 agentes y los flujos de esta guía activos, el plan Core (9 $/mes) suele ser suficiente si no tienes muchos leads diarios. Si publicas más de 50 propiedades al mes o recibes más de 20 leads al día, el Pro es más seguro.
+
+*Precios consultados en noviembre 2026. Verifica siempre en make.com. Precios sin IVA español.*
+
+---
+
+## Los 5 mejores usos de Make para inmobiliarias
+
+### 1. Notificación inmediata al lead nuevo
+
+Cuando alguien rellena el formulario de contacto en Idealista, Fotocasa o tu web, Make puede enviarte un WhatsApp, un email o un mensaje de Slack en menos de un minuto. Sin Make, ese lead espera hasta que alguien abre el correo.
+
+**Lo mejor:** El tiempo de respuesta es el factor número uno en conversión de leads inmobiliarios. Responder en menos de 5 minutos multiplica por 9 las posibilidades de contactar al lead (según estudios del sector — no es Make quien lo dice, es una constante en ventas B2C).
+
+**Lo peor:** Idealista y Fotocasa no tienen integración nativa en Make. Necesitas configurar un webhook o usar el módulo de email para parsear las notificaciones que te mandan — no es difícil, pero requiere una tarde de setup.
+
+**Precio:** Plan Core de Make (9 $/mes) es suficiente para este flujo solo.
+
+**Pros:**
+- Notificación: llega al móvil del agente en segundos, no en horas.
+- Multi-canal: puedes notificar por WhatsApp Business, Telegram, email o SMS simultáneamente.
+- Registro automático: el lead se guarda en Google Sheets o en tu CRM sin intervención manual.
+
+**Contras:**
+- Sin API oficial de Idealista: el flujo depende de parsear emails de notificación, que pueden cambiar de formato sin aviso.
+- WhatsApp Business API: requiere una cuenta verificada — si no la tienes, necesitas un proveedor como Twilio (coste adicional).
+
+**Ideal para:** Agencias que reciben leads de portales y tardan más de 30 minutos en responder de media.
+
+<AffiliateLink programSlug="make" articleSlug="mejor-make-para-inmobiliarias" label="Probar Make gratis" />
+
+---
+
+### 2. Sincronización entre tu CRM y los portales inmobiliarios
+
+Si cuando captas una propiedad tienes que introducir los datos en tu CRM, luego en Idealista, luego en Fotocasa — estás haciendo la misma tarea tres veces. Make puede actuar como puente entre tu CRM y los portales que tengan API o soporte de exportación XML.
+
+**Lo mejor:** Elimina la doble entrada de datos, que es la fuente de errores más frecuente en agencias pequeñas. Un precio mal copiado o una foto que no se sube a un portal puede costar una visita.
+
+**Lo peor:** No todos los CRM inmobiliarios tienen API bien documentada. Si usas un CRM cerrado sin integración con Make (hay varios en el mercado español), este flujo no es viable sin desarrollo a medida.
+
+**Precio:** Plan Core puede ser suficiente; si el volumen de propiedades es alto, el Pro da más margen de operaciones.
+
+**Pros:**
+- Actualización en tiempo real: si cambias el precio en el CRM, el cambio se propaga automáticamente.
+- Compatible con CRM con API REST: Witei, Inmovilla o cualquier herramienta que exponga una API funciona con Make.
+- Reduce errores: un solo punto de entrada de datos elimina inconsistencias entre portales.
+
+**Contras:**
+- Curva de setup alta: este es el flujo más complejo de los cinco. Si no te manejas con JSON básico, necesitarás ayuda.
+- Idealista no tiene API pública de publicación: puedes automatizar la notificación de leads, pero no la publicación de anuncios desde Make.
+
+**Ideal para:** Agencias con más de 20 propiedades activas y que gestionan varios portales en paralelo.
+
+---
+
+### 3. Seguimiento automático de leads fríos
+
+Un lead que no responde al primer contacto no está muerto — solo está ocupado. Make puede programar una secuencia de seguimiento: un email a los 2 días, otro a los 5, un recordatorio al agente a los 10. Sin Make, ese seguimiento depende de que el agente lo recuerde.
+
+**Lo mejor:** Es el flujo con mayor impacto en ventas para agencias pequeñas. Los leads "fríos" que se trabajan sistemáticamente convierten a tasas muy superiores a los que se abandonan tras el primer contacto fallido.
+
+**Lo peor:** Make no es un CRM. Este flujo gestiona el tiempo entre pasos, pero el contenido de los emails y el criterio de cuándo un lead está "frío" lo tienes que definir tú. Sin esa lógica previa, el flujo no sirve.
+
+**Precio:** Plan Core — este flujo consume pocas operaciones.
+
+**Pros:**
+- Secuencias personalizadas: puedes ramificar según si el lead abrió el email o no, usando datos de tu herramienta de email.
+- Sin olvidos: el sistema actúa igual el lunes que el viernes, con o sin que el agente esté de guardia.
+- Integración con Gmail o cualquier SMTP: no necesitas una herramienta de email marketing específica.
+
+**Contras:**
+- Sin inteligencia sobre el contenido: Make envía lo que le digas, pero no adapta el mensaje según el comportamiento del lead más allá de lo que tú programes.
+- Gestión de bajas: si el lead responde "no me interesa", necesitas un paso manual o una lógica adicional para sacarlo de la secuencia.
+
+**Ideal para:** Agencias que generan muchos leads pero tienen baja tasa de conversión por falta de seguimiento sistemático.
+
+<AffiliateLink programSlug="make" articleSlug="mejor-make-para-inmobiliarias" label="Ver planes de Make" />
+
+---
+
+### 4. Informe semanal automático al propietario
+
+Captar un mandato exclusivo implica mantener al propietario informado. Make puede generar y enviar cada semana un email con el número de visitas al anuncio, las solicitudes de visita recibidas y el estado del proceso — datos que sacas de tu CRM o de las estadísticas del portal.
+
+**Lo mejor:** Es el flujo más valorado en fidelización de captaciones. Un propietario que recibe información sin pedirla tiene mucha menos tentación de cancelar el mandato.
+
+**Lo peor:** Idealista y Fotocasa no permiten extraer estadísticas automáticamente por API. Si los datos de visitas al anuncio están solo en la web del portal, tendrás que introducirlos manualmente o buscar una solución alternativa.
+
+**Precio:** Plan Core — es un flujo de bajo consumo de operaciones.
+
+**Pros:**
+- Profesionalidad percibida: el propietario recibe un informe con tu logo y los datos clave sin que nadie lo prepare manualmente.
+- Configurable por propiedad: cada propietario recibe su informe con sus datos específicos.
+- Se integra con Google Sheets: si llevas el seguimiento en una hoja de cálculo, Make puede leerla y construir el informe desde ahí.
+
+**Contras:**
+- Datos manuales si el portal no tiene API: si tienes que introducir las visitas a mano en una hoja, el flujo solo automatiza el envío, no la recopilación.
+- Diseño del email limitado: Make envía emails, pero no tiene editor visual de plantillas — necesitas usar HTML básico o integrar con una herramienta de email.
+
+**Ideal para:** Agencias con mandatos exclusivos que quieren diferenciarse por el servicio postventa de captación.
+
+---
+
+### 5. Publicación automática en redes sociales al nuevo inmueble
+
+Cuando das de alta una propiedad en tu CRM o en una hoja de Google, Make puede publicar automáticamente en Instagram, Facebook o LinkedIn con la foto principal, el precio y un texto predefinido.
+
+**Lo mejor:** Elimina la tarea de acordarse de publicar en redes cada vez que entra un inmueble nuevo. Para agencias que publican 5–10 propiedades al mes, es un ahorro real de tiempo.
+
+**Lo peor:** Las publicaciones generadas automáticamente tienden a ser genéricas. Si tu diferencial en redes es el contenido cuidado, este flujo puede ir en tu contra.
+
+**Precio:** Plan Core — bajo consumo de operaciones.
+
+**Pros:**
+- Inmediato: la propiedad aparece en redes el mismo día que se da de alta, no cuando alguien se acuerda.
+- Compatible con Meta (Instagram y Facebook): Make tiene módulos nativos para ambas plataformas.
+- Personalizable: puedes incluir precio, zona, número de habitaciones y URL del anuncio en el texto automático.
+
+**Contras:**
+- Instagram no permite publicación directa por API sin cuenta de empresa verificada: si tu cuenta es personal, este flujo no funciona.
+- Sin adaptación al tono: el texto es una plantilla. Si quieres copy creativo por propiedad, necesitas revisión manual o integrar Make con un modelo de IA (lo que añade coste y complejidad).
+
+**Ideal para:** Agencias activas en redes que quieren consistencia de publicación sin dedicar tiempo a ello.
+
+<AffiliateLink programSlug="make" articleSlug="mejor-make-para-inmobiliarias" label="Probar Make gratis" />
+
+---
+
+## 🤔 ¿Para quién NO es Make?
+
+Make no es para todo el mundo. Sé honesto contigo antes de empezar:
+
+**Si nunca has usado herramientas de automatización**, el aprendizaje inicial de Make puede frustrar. No es difícil, pero tampoco es inmediato. Espera invertir 2–4 tardes antes de tener tu primer flujo funcionando con confianza.
+
+**Si tu CRM inmobiliario es cerrado y sin API**, muchos de los flujos de esta guía no son viables o lo son a medias. Antes de contratar Make, confirma que tu CRM permite integraciones externas.
+
+**Si buscas algo que funcione "out of the box" sin configuración**, Make no es eso. Necesitas construir tus flujos desde cero o adaptar plantillas. Si quieres automatización preconfigurada para inmobiliarias, herramientas verticales como Follow Up Boss o algunas funciones de Witei pueden ser más directas.
+
+**Si tu volumen de leads es muy bajo** (menos de 10 al mes), el tiempo de setup de Make probablemente no se amortiza. Con ese volumen, una gestión manual ordenada funciona igual de bien.
+
+---
+
+## ¿Cómo elegir por dónde empezar?
+
+No hace falta configurar los cinco flujos a la vez. Aquí tienes el orden lógico según tu situación:
+
+**Si tu mayor problema es la velocidad de respuesta a leads:**
+Empieza por el flujo de notificación inmediata (nº 1). Es el más rápido de configurar y el que tiene impacto más directo en conversión. Una tarde y está funcionando.
+
+**Si tu mayor problema es la gestión manual de propiedades:**
+El flujo de sincronización CRM ↔ portal (nº 2) es el que más tiempo ahorra a largo plazo, pero también el más complejo. Valora si tu CRM tiene API antes de lanzarte.
+
+**Si tienes buena captación pero baja conversión:**
+El seguimiento automático de leads fríos (nº 3) es donde probablemente estás perdiendo ventas. Es un flujo de impacto alto con complejidad media.
+
+**Si quieres diferenciarte en la relación con propietarios:**
+El informe semanal automático (nº 4) es el flujo más infravalorado. No convierte leads, pero retiene mandatos — que para una agencia pequeña es igual de importante.
+
+---
+
+## 🇪🇸 Make y la normativa española
+
+Make cumple GDPR y tiene un DPA (Data Processing Agreement) disponible para firmar, necesario si procesas datos de contactos de tus leads.
+
+Los datos pueden procesarse en servidores fuera de la UE dependiendo de los servicios que conectes. Para cumplir con la LOPDGDD y tu obligación ante la AEPD, revisa el DPA de Make y asegúrate de que las transferencias internacionales están cubiertas en tu política de privacidad.
+
+Make no tiene soporte telefónico en español. La documentación oficial está en inglés, aunque hay una comunidad activa en castellano en foros y grupos de Facebook. Para una agencia pequeña que no tiene un técnico interno, esto puede ser un freno real si necesitas ayuda urgente.
+
+---
+
+## Conclusión
+
+Para una inmobiliaria española de tamaño pequeño o mediano, Make tiene sentido real si empiezas por los flujos de notificación de leads y seguimiento automático. Son los que más rápido se amortizan y los más accesibles de configurar.
+
+El plan Core (9 $/mes) es suficiente para empezar — el plan gratuito permite probar, pero con 1.000 operaciones al mes no llega para uso profesional. Prueba el gratuito para validar que el flujo funciona antes de pagar.
+
+Si tu CRM no tiene API o no tienes ninguna experiencia previa con herramientas de automatización, valora primero si el tiempo de aprendizaje encaja con tu agenda antes de comprometerte.
+
+---
+
+## Preguntas frecuentes
+
+### ¿Hace falta saber programar para usar Make en una inmobiliaria?
+
+No hace falta programar, pero sí entender la lógica de "si pasa X, haz Y". Make es visual y no requiere escribir código, pero los flujos más útiles para inmobiliarias (sincronización con CRM, seguimiento de leads) requieren configurar módulos con cierta lógica. Espera dedicar varias horas al aprendizaje inicial.
+
+### ¿Puedo conectar Make con Idealista o Fotocasa directamente?
+
+No de forma nativa. Idealista y Fotocasa no tienen API pública para publicación o extracción de datos. Lo que sí puedes hacer es usar Make para procesar las notificaciones de leads que estos portales envían por email. Es un workaround funcional, pero no es una integración directa.
+
+### ¿Cuánto cuesta realmente Make para una agencia inmobiliaria pequeña?
+
+El plan Core cuesta 9 $/mes (aproximadamente 8,50 €/mes + IVA según el cambio de noviembre 2026). Para una agencia con pocos flujos activos y menos de 20 leads diarios, suele ser suficiente. Si añades flujos de alto volumen, el plan Pro (16 $/mes) da más margen. Verifica el precio actual en make.com — Make cobra en dólares y el importe en euros varía con el tipo de cambio.
+
+### ¿Hay alternativas a Make más sencillas para inmobiliarias?
+
+Zapier es más sencillo de usar que Make pero también más caro para el mismo número de tareas. Si buscas algo específico para inmobiliarias, algunas plataformas CRM como Witei incluyen automatizaciones básicas sin necesidad de herramientas externas. Make tiene más potencia y flexibilidad, pero requiere más tiempo de configuración.
+
+### ¿Make cumple con la protección de datos española (LOPDGDD)?
+
+Make cumple GDPR y ofrece un DPA para firmar. Para cumplir con la LOPDGDD en España, necesitas revisar qué datos de tus leads pasan por los flujos de Make y asegurarte de que tu política de privacidad cubre el uso de herramientas de procesamiento de datos como esta. La AEPD no requiere que el proveedor esté en España, pero sí que el tratamiento esté documentado correctamente.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
