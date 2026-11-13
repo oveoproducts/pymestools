@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import brand from '@/data/brand.json'
+import { brandedTitle } from '@/lib/seo/meta-title'
 import { getArticlesByCategory } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
 
 export const metadata: Metadata = {
-  title: 'CRM para pymes en España: guías, comparativas y análisis (2026)',
+  title: brandedTitle('CRM para pymes en España: guías y comparativas (2026)'),
   description:
     'Todo sobre CRM para pymes españolas: análisis de HubSpot, Zoho CRM, Pipedrive y más, comparativas y guías. Si buscas la selección rápida, mira nuestra guía de los mejores CRM.',
   alternates: { canonical: `${brand.siteUrl}/crm` },
   openGraph: {
-    title: 'CRM para pymes en España: guías, comparativas y análisis (2026)',
+    title: 'CRM para pymes en España: guías y comparativas (2026)',
     description:
       'Análisis de HubSpot, Zoho CRM, Pipedrive y más, comparativas y guías de CRM para pymes españolas.',
     url: `${brand.siteUrl}/crm`,
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CRM para pymes en España: guías, comparativas y análisis (2026)',
+    title: 'CRM para pymes en España: guías y comparativas (2026)',
     description: 'Análisis de HubSpot, Zoho CRM, Pipedrive y más, comparativas y guías de CRM.',
     images: [`${brand.siteUrl}/api/og?title=CRM+para+Pymes&type=category`],
   },
@@ -59,7 +60,7 @@ const TOP_TOOLS = [
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'CRM para pymes en España: guías, comparativas y análisis (2026)',
+  name: 'CRM para pymes en España: guías y comparativas (2026)',
   description:
     'Análisis, comparativas y guías de CRM para pymes españolas.',
   url: `${brand.siteUrl}/crm`,

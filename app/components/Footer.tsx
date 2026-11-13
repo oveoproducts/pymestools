@@ -45,6 +45,7 @@ export function Footer() {
             <p className="font-semibold text-gray-900 text-sm mb-2">Legal</p>
             <ul className="space-y-1 text-xs text-gray-500">
               <li><Link href="/sobre-nosotros" className="hover:text-gray-700">Sobre nosotros</Link></li>
+              <li><Link href="/como-verificamos-los-precios" className="hover:text-gray-700">Cómo verificamos los precios</Link></li>
               <li><Link href="/privacidad" className="hover:text-gray-700">Privacidad</Link></li>
               <li><Link href="/aviso-legal" className="hover:text-gray-700">Aviso legal</Link></li>
               <li><Link href="/cookies" className="hover:text-gray-700">Cookies</Link></li>

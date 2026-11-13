@@ -70,3 +70,15 @@ export function buildMetaTitle(title: string, year = String(new Date().getFullYe
 
   return truncateAtWord(clean, META_TITLE_MAX)
 }
+
+const BRAND_SUFFIX = ' | PymesTools'
+
+/**
+ * Value for Next's `metadata.title`. The root layout template appends
+ * " | PymesTools", which pushed 158 of 208 rendered <title>s past 60
+ * characters (Google truncates them). Keep the brand only when the whole title
+ * still fits; otherwise render the title on its own via `absolute`.
+ */
+export function brandedTitle(title: string): string | { absolute: string } {
+  return title.length + BRAND_SUFFIX.length <= META_TITLE_MAX ? title : { absolute: title }
+}

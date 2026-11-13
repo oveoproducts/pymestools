@@ -7,6 +7,7 @@ import matter from 'gray-matter'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import brand from '@/data/brand.json'
+import { brandedTitle } from '@/lib/seo/meta-title'
 import {
   getArticleBySlug,
   getPublishedArticles,
@@ -96,7 +97,7 @@ export async function generateMetadata({
   const ogImageUrl = `${brand.siteUrl}/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&type=${encodeURIComponent(article.type)}`
 
   return {
-    title,
+    title: brandedTitle(title),
     description,
     alternates: { canonical: canonicalUrl },
     robots: NOINDEX_SLUGS.has(slug) ? { index: false, follow: true } : undefined,
@@ -138,6 +139,16 @@ function getMdxScore(slug: string): number | null {
   const raw = fs.readFileSync(filePath, 'utf-8')
   const { data } = matter(raw)
   return typeof data.score === 'number' ? data.score : null
+}
+
+function getPricesVerified(slug: string): string | null {
+  const filePath = path.join(process.cwd(), 'content', 'articles', `${slug}.mdx`)
+  if (!fs.existsSync(filePath)) return null
+  const { data } = matter(fs.readFileSync(filePath, 'utf-8'))
+  const v = data.prices_verified
+  if (!v) return null
+  const d = v instanceof Date ? v : new Date(String(v))
+  return Number.isNaN(d.getTime()) ? null : d.toISOString().slice(0, 10)
 }
 
 function formatDate(dateString: string | null): string {
@@ -199,6 +210,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const mdxContent = getMdxContent(slug)
   const articleScore = getMdxScore(slug)
+  const pricesVerified = getPricesVerified(slug)
 
   const relatedArticles = await getRelatedArticles(article, 3)
 
@@ -445,6 +457,19 @@ export default async function ArticlePage({ params }: PageProps) {
                 </time>
               )}
           </div>
+
+          {pricesVerified && (
+            <p className="mt-3 inline-flex items-center gap-2 rounded-lg bg-green-50 px-3 py-1.5 text-sm text-green-800">
+              <span aria-hidden="true">✓</span>
+              <span>
+                Precios verificados el{' '}
+                <time dateTime={pricesVerified}>{formatDate(pricesVerified)}</time> en las webs oficiales.{' '}
+                <Link href="/como-verificamos-los-precios" className="underline">
+                  Cómo lo hacemos
+                </Link>
+              </span>
+            </p>
+          )}
         </header>
 
         {/* MDX content */}

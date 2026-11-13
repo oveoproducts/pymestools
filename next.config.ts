@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/gestion-proyectos/review-notion-pymes',
-        destination: '/productividad/notion-review-espanol-pymes',
+        destination: '/productividad/notion-opiniones-2026',
         permanent: true,
       },
       {
@@ -55,6 +55,32 @@ const nextConfig: NextConfig = {
       {
         source: '/email-marketing/activecampaign-review-espanol-pymes',
         destination: '/email-marketing/review-activecampaign',
+        permanent: true,
+      },
+      // Auditoría SEO 2026-11-13: duplicados de intención con casi 0 impresiones.
+      {
+        source: '/crm/zoho-crm-opiniones-2026',
+        destination: '/crm/review-zoho-crm',
+        permanent: true,
+      },
+      {
+        source: '/crm/alternativas-zoho-crm',
+        destination: '/crm/alternativas-a-zoho-crm-en-espanol',
+        permanent: true,
+      },
+      {
+        source: '/crm/hubspot-crm-gratis-guia',
+        destination: '/crm/hubspot-gratis-pymes-espana',
+        permanent: true,
+      },
+      {
+        source: '/productividad/notion-review-espanol-pymes',
+        destination: '/productividad/notion-opiniones-2026',
+        permanent: true,
+      },
+      {
+        source: '/email-marketing/alternativas-a-getresponse-en-espanol',
+        destination: '/email-marketing/alternativas-getresponse',
         permanent: true,
       },
     ]

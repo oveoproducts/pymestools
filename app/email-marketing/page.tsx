@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import brand from '@/data/brand.json'
+import { brandedTitle } from '@/lib/seo/meta-title'
 import { getArticlesByCategory } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
 
 export const metadata: Metadata = {
-  title: 'Email marketing para pymes en España 2026',
+  title: brandedTitle('Email marketing para pymes en España 2026'),
   description:
     'Brevo, Mailchimp, Mailrelay y más: comparativa de email marketing para pymes españolas. Planes gratuitos, precios en euros y cuál elegir.',
   alternates: { canonical: `${brand.siteUrl}/email-marketing` },

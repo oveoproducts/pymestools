@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import brand from '@/data/brand.json'
+import { brandedTitle } from '@/lib/seo/meta-title'
 import { getArticlesByCategory } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
 
 export const metadata: Metadata = {
-  title: 'Software de RRHH para pymes en España 2026',
+  title: brandedTitle('Software de RRHH para pymes en España 2026'),
   description:
     'Factorial, Sesame, Kenjo y más: comparativa de software de RRHH para pymes españolas. Control horario obligatorio, nóminas y gestión de equipos.',
   alternates: { canonical: `${brand.siteUrl}/recursos-humanos` },

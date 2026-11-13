@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import brand from '@/data/brand.json'
+import { brandedTitle } from '@/lib/seo/meta-title'
 import { getArticlesByCategory } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
 
 export const metadata: Metadata = {
-  title: 'Gestión de proyectos para pymes en España 2026',
+  title: brandedTitle('Gestión de proyectos para pymes en España 2026'),
   description:
     'Notion, ClickUp, Asana y Trello: comparativa de herramientas de gestión de proyectos para pymes españolas. Cuál elegir según el tamaño de tu equipo.',
   alternates: { canonical: `${brand.siteUrl}/gestion-proyectos` },
@@ -215,7 +216,7 @@ export default async function GestionProyectosPage() {
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               { if: 'Equipo pequeño (2-5 personas) con procesos simples', choose: 'Trello (gratis)', href: '/gestion-proyectos/review-trello' },
-              { if: 'Quieres la herramienta más versátil como wiki + proyectos', choose: 'Notion', href: '/gestion-proyectos/review-notion-pymes' },
+              { if: 'Quieres la herramienta más versátil como wiki + proyectos', choose: 'Notion', href: '/productividad/notion-opiniones-2026' },
               { if: 'Necesitas la solución más completa con más funcionalidades', choose: 'ClickUp', href: '/gestion-proyectos/review-clickup' },
               { if: 'Equipo mediano que ya usa Google Workspace', choose: 'Asana', href: '/gestion-proyectos/review-asana' },
             ].map((item) => (

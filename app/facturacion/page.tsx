@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import brand from '@/data/brand.json'
+import { brandedTitle } from '@/lib/seo/meta-title'
 import { getArticlesByCategory } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
 
 export const metadata: Metadata = {
-  title: 'Software de facturación para pymes en España 2026',
+  title: brandedTitle('Software de facturación para pymes en España 2026'),
   description:
     'Holded, Sage 50, Anfix y más: comparativa de software de facturación para pymes españolas. Verifactu, precios en euros y cuál elegir.',
   alternates: { canonical: `${brand.siteUrl}/facturacion` },

@@ -1,17 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import brand from '@/data/brand.json'
+import { brandedTitle } from '@/lib/seo/meta-title'
 import { getArticlesByCategory } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
 
 export const revalidate = 3600
 
-const TITLE = 'Prompts de ChatGPT para pymes y autónomos: biblioteca en español'
+const TITLE = 'Prompts de ChatGPT para pymes: biblioteca en español'
 const DESCRIPTION =
   'Prompts de ChatGPT listos para copiar, pensados para pymes y autónomos en España: ventas, atención al cliente, marketing y administración, con las herramientas que los completan.'
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: brandedTitle(TITLE),
   description: DESCRIPTION,
   alternates: { canonical: `${brand.siteUrl}/prompts` },
   openGraph: {

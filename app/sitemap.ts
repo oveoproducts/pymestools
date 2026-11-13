@@ -34,6 +34,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
+      url: `${brand.siteUrl}/como-verificamos-los-precios`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
       url: `${brand.siteUrl}/precios-software-pymes`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
