@@ -1,0 +1,199 @@
+---
+title: "Cómo conectar Tidio con Sage: guía paso a paso"
+slug: "como-conectar-tidio-con-sage"
+category: "automatizacion"
+description: "Guía paso a paso para conectar Tidio con Sage y sincronizar datos de clientes entre tu chat en vivo y tu software de gestión. Sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["tidio"]
+keywords:
+  primary: "como conectar tidio con sage"
+  secondary:
+    - "tidio sage integracion"
+    - "tidio zapier sage"
+    - "conectar chat en vivo con sage"
+    - "tidio pymes españa"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Tidio conectado con Sage para que los datos de tus clientes que chatan en tu web pasen automáticamente a tu gestión comercial. Sin teclear nada a mano. El proceso completo lleva entre 30 y 45 minutos si ya tienes ambas cuentas activas.
+
+<Callout type="warning">
+**Importante antes de empezar:** Tidio no tiene integración nativa directa con Sage 50 ni con Sage 200. La conexión se hace a través de Zapier o Make (antes Integromat). Necesitarás una cuenta en una de estas plataformas de automatización — te explicamos cuál es la opción más económica según tu caso.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Tidio:** Esta integración funciona desde el plan **Communicator** (de pago). El plan gratuito no incluye acceso a la API de Tidio, que es lo que permite la conexión. Puedes usar el trial de 7 días del plan de pago para probar todo el proceso.
+- **Sage 50 o Sage 200 con acceso API activado:** Necesitas que tu instalación de Sage tenga habilitado el acceso vía API. Si tienes Sage en la nube (Sage Business Cloud), esto ya está disponible. Si es Sage instalado localmente, consulta con tu proveedor de Sage.
+- **Cuenta en Zapier o Make:** Para el puente entre ambas herramientas. Zapier tiene un plan gratuito con 100 tareas/mes — suficiente para probar. Make tiene un plan gratuito con 1.000 operaciones/mes. Para un volumen real de pymes, la mayoría necesita el plan de pago más básico de alguno de los dos.
+- **API Key de Tidio:** La encontrarás en el panel de Tidio. Te indicamos dónde en el Paso 1.
+- **Nivel técnico necesario:** No necesitas programar. Sí necesitas sentirte cómodo navegando por paneles de configuración en inglés — Zapier y Make no tienen interfaz completa en español.
+
+---
+
+## Pasos
+
+### Paso 1: Obtén tu API Key de Tidio
+
+**Qué hacer:** Entra en tu panel de Tidio en app.tidio.com. En el menú lateral izquierdo, haz clic en el icono de tu perfil (abajo del todo) y selecciona `"Settings"`. Dentro de Settings, busca la sección `"Developer"` → `"API Keys"`. Haz clic en `"Generate new key"` y copia la clave que aparece.
+
+**Por qué:** Esta API Key es la credencial que permite a Zapier o Make acceder a los datos de tus conversaciones de Tidio de forma segura.
+
+**Qué verás:** Una cadena de caracteres larga (entre 32 y 64 caracteres). Guárdala en un lugar seguro — solo se muestra una vez completa. Si la pierdes, tendrás que generar una nueva.
+
+**Nota:** Si no ves la sección `"Developer"` en Settings, tu cuenta está en el plan gratuito y no tiene acceso a la API. Necesitas activar el trial del plan Communicator antes de continuar.
+
+---
+
+### Paso 2: Consigue las credenciales de API de Sage
+
+**Qué hacer:** El proceso varía según tu versión de Sage.
+
+- **Sage Business Cloud (versión en la nube):** Accede a tu panel en accounting.sageone.com. Ve a `"Configuración"` → `"API"` → `"Aplicaciones conectadas"`. Haz clic en `"Añadir aplicación"` y sigue los pasos para obtener tu Client ID y Client Secret.
+- **Sage 50 o Sage 200 local:** Necesitas activar el módulo de API con tu proveedor de Sage. Si no lo tienes activo, llama a tu partner de Sage — ellos lo habilitan. No es un proceso que puedas hacer tú solo desde el programa.
+
+**Por qué:** Zapier necesita estas credenciales para escribir y leer datos en Sage con tu permiso explícito.
+
+**Qué verás:** Un Client ID y un Client Secret (dos cadenas de caracteres). Guárdalas junto a la API Key de Tidio.
+
+---
+
+### Paso 3: Crea una cuenta en Zapier (si no tienes)
+
+**Qué hacer:** Ve a zapier.com y crea una cuenta gratuita con tu email de empresa. No hace falta tarjeta para empezar.
+
+**Por qué:** Zapier es el intermediario que escucha lo que pasa en Tidio y lo traslada a Sage automáticamente.
+
+**Qué verás:** El dashboard de Zapier, en inglés. En el centro verás el botón `"+ Create"` para crear tu primer Zap (así llaman a las automatizaciones).
+
+**Nota:** Si ya usas Make en tu empresa para otras automatizaciones, puedes usar Make en su lugar. El proceso es similar pero los menús tienen nombres distintos. Esta guía sigue el flujo de Zapier por ser el más habitual entre pymes españolas sin equipo técnico.
+
+---
+
+### Paso 4: Conecta Tidio como origen (trigger)
+
+**Qué hacer:** En Zapier, haz clic en `"+ Create"` → `"Zaps"`. Se abre el editor de Zaps. En el primer bloque (`"Trigger"`), busca `"Tidio"` en la barra de búsqueda. Selecciona Tidio y elige el evento que quieres usar como disparador. El más útil para pymes es `"New Conversation"` (nueva conversación iniciada) o `"New Contact"` (nuevo contacto registrado en el chat).
+
+Haz clic en `"Sign in to Tidio"` y cuando te pida las credenciales, pega la API Key que copiaste en el Paso 1.
+
+**Por qué:** El trigger define cuándo se activa la automatización — en este caso, cada vez que alguien inicia un chat o deja sus datos en Tidio.
+
+**Qué verás:** Zapier confirmará la conexión con un mensaje `"Connected to Tidio"` en verde. Después te pedirá que hagas una prueba — haz clic en `"Test trigger"`. Si la conexión funciona, verás datos de ejemplo de tu último contacto en Tidio.
+
+---
+
+### Paso 5: Conecta Sage como destino (action)
+
+**Qué hacer:** En el segundo bloque del Zap (`"Action"`), busca `"Sage"` en la barra de búsqueda. Selecciona la versión de Sage que usas (Sage Business Cloud Accounting es la más habitual en la lista). Elige la acción: lo más común es `"Create Contact"` (crear contacto) o `"Find or Create Contact"` (buscar primero para no duplicar — recomendamos esta).
+
+Haz clic en `"Sign in to Sage"` y sigue el flujo de autorización OAuth que aparece — te pedirá que entres con tu usuario y contraseña de Sage para dar permiso a Zapier.
+
+**Por qué:** Esta acción le dice a Zapier qué hacer en Sage cada vez que el trigger se activa — en este caso, crear o actualizar el contacto.
+
+**Qué verás:** Un formulario de mapeo de campos. Aquí defines qué dato de Tidio va a qué campo de Sage: el nombre del contacto, su email, su empresa, su teléfono. Arrastra los campos de Tidio a los campos correspondientes de Sage.
+
+<Callout type="tip">
+**Consejo para el mapeo:** El campo más importante es el email — úsalo como identificador principal. Si mapeas el email correctamente, Sage no creará duplicados aunque el mismo cliente chate varias veces.
+</Callout>
+
+---
+
+### Paso 6: Prueba el Zap completo
+
+**Qué hacer:** Una vez configurado el mapeo, haz clic en `"Test action"`. Zapier intentará crear un contacto de prueba en Sage con los datos de ejemplo del Paso 4.
+
+**Por qué:** Es mejor detectar errores ahora que cuando llegue un cliente real.
+
+**Qué verás:** Si todo va bien, verás el mensaje `"Test was successful"` y podrás ir a Sage a verificar que el contacto de prueba se ha creado correctamente. Si hay un error, Zapier te mostrará el motivo en rojo.
+
+---
+
+### Paso 7: Activa el Zap
+
+**Qué hacer:** Si la prueba ha ido bien, haz clic en `"Publish Zap"` (arriba a la derecha). El Zap queda activo y en color verde en tu dashboard de Zapier.
+
+**Por qué:** Hasta que no activas el Zap, no funciona — los pasos anteriores son solo configuración.
+
+**Qué verás:** En tu dashboard de Zapier, el nuevo Zap aparece con el estado `"On"` en verde. A partir de ahora, cada nuevo contacto o conversación en Tidio que cumpla el trigger creará o actualizará un contacto en Sage automáticamente.
+
+---
+
+## Errores comunes
+
+**El Zap se activa pero no crea el contacto en Sage**
+
+*Síntoma:* Zapier muestra `"Task successful"` pero el contacto no aparece en Sage.
+
+*Causa:* El campo de email está vacío en los datos de Tidio. Sage rechaza contactos sin email si lo tienes configurado como campo obligatorio.
+
+*Solución:* Ve a tu widget de Tidio y activa la opción `"Pre-chat survey"` para pedir el email antes de iniciar el chat. En Tidio: `"Settings"` → `"Channels"` → `"Live Chat"` → `"Pre-chat survey"` → activa el campo de email como obligatorio.
+
+---
+
+**Zapier dice "Authentication error" al conectar Tidio**
+
+*Síntoma:* Al pegar la API Key de Tidio en Zapier, aparece un error de autenticación.
+
+*Causa:* O la API Key se ha copiado con espacios extra, o el plan de Tidio no tiene acceso a la API.
+
+*Solución:* Verifica que la API Key se ha copiado sin espacios al principio ni al final. Si el problema persiste, genera una nueva API Key en Tidio (Paso 1) y vuelve a conectar desde Zapier: en tu cuenta de Zapier, ve a `"My Apps"` → busca Tidio → `"Reconnect"`.
+
+---
+
+**Los contactos se duplican en Sage**
+
+*Síntoma:* Cada vez que el mismo cliente chatea, se crea un contacto nuevo en Sage en lugar de actualizar el existente.
+
+*Causa:* En el Paso 5 se eligió `"Create Contact"` en lugar de `"Find or Create Contact"`.
+
+*Solución:* Edita el Zap → en la Action, cambia el evento de `"Create Contact"` a `"Find or Create Contact"`. Guarda y vuelve a publicar el Zap.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Una conexión activa entre Tidio y Sage que funciona sin intervención manual.
+- Cada nuevo contacto que chatea en tu web y deja su email aparece automáticamente como contacto en Sage, con su nombre, email y empresa.
+- Tu equipo comercial tiene acceso inmediato a los leads del chat sin esperar a que nadie los copie a mano.
+
+El siguiente paso lógico es configurar en Tidio un bot de bienvenida que pregunte el nombre, email y empresa antes de pasar con un agente — así el mapeo de datos al Paso 5 siempre tiene campos completos para Sage.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Tidio, aquí tienes el acceso directo con el trial del plan de pago:
+
+<AffiliateLink programSlug="tidio" articleSlug="como-conectar-tidio-con-sage" label="Probar Tidio gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Tidio tiene integración nativa con Sage sin usar Zapier?
+No, a fecha de noviembre de 2026 Tidio no ofrece integración directa con ninguna versión de Sage. La única forma de conectarlos es a través de una herramienta intermedia como Zapier o Make. Es el método oficial que recomienda la propia documentación de Tidio para ERP y software de gestión.
+
+### ¿Puedo hacer esto con el plan gratuito de Tidio?
+No. El plan gratuito de Tidio no incluye acceso a la API, que es imprescindible para que Zapier pueda leer los datos de tus conversaciones. Necesitas el plan Communicator o superior. Puedes activar el trial de 7 días para probar el proceso completo antes de decidir.
+
+### ¿Cuánto me va a costar Zapier para esto?
+Depende del volumen de conversaciones. Si recibes menos de 100 chats con datos de contacto al mes, el plan gratuito de Zapier (100 tareas/mes) puede ser suficiente. Con más volumen, el plan Starter de Zapier cuesta 19,99 $/mes (aprox. 18 €/mes según cambio a noviembre de 2026) + IVA — verifica el precio actual en zapier.com.
+
+### ¿Los datos que pasan por Zapier cumplen el GDPR?
+Zapier tiene sede en EE.UU. pero firma un DPA (Data Processing Agreement) bajo el GDPR y utiliza las cláusulas contractuales estándar de la UE para transferencias internacionales. Para cumplir con la LOPDGDD, debes incluir a Zapier en tu registro de actividades de tratamiento como encargado del tratamiento y firmar el DPA disponible en su web. Consulta con tu asesor de protección de datos si tienes dudas sobre tu caso concreto.
+
+### ¿Funciona igual con Sage 200 que con Sage 50?
+El proceso es el mismo, pero Sage 200 tiene más campos disponibles en la API (como líneas de negocio o agente comercial asignado), lo que permite un mapeo más completo. Con Sage 50, los campos disponibles son más básicos: nombre, email, empresa y teléfono. En cualquier caso, el flujo en Zapier es idéntico.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre de 2026.*

@@ -1,0 +1,199 @@
+---
+title: "Cómo conectar Tidio con Factorial: guía paso a paso"
+slug: "como-conectar-tidio-con-factorial"
+category: "automatizacion"
+description: "Guía paso a paso para conectar Tidio con Factorial mediante Zapier o Make. Resultado en menos de 45 minutos, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["tidio"]
+keywords:
+  primary: "como conectar tidio con factorial"
+  secondary:
+    - "tidio factorial integracion"
+    - "automatizar tidio factorial zapier"
+    - "conectar chat tidio con rrhh factorial"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Tidio y Factorial conectados de forma que los eventos del chat — una consulta de un candidato, un mensaje de un empleado — disparen acciones automáticas en Factorial sin que tengas que copiar nada a mano.
+
+El proceso completo lleva entre 30 y 45 minutos. No hace falta tocar código.
+
+<Callout type="info">
+**Tidio y Factorial no tienen integración nativa.** La conexión se hace a través de una herramienta de automatización intermedia: Zapier o Make. Esta guía usa Zapier, pero los pasos son equivalentes en Make.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Tidio:** El plan gratuito es suficiente para activar las integraciones básicas con Zapier. Las automatizaciones avanzadas (por ejemplo, disparar acciones cuando un bot de Tidio cierra una conversación) requieren el plan **Tidio+** desde 29 $/mes + IVA. Puedes usar el trial de 7 días para probar.
+- **Cuenta en Factorial:** Necesitas acceso de administrador. No funciona con un perfil de empleado estándar.
+- **Cuenta en Zapier:** El plan gratuito permite crear hasta 5 Zaps con tareas básicas. Si quieres más flujos o pasos múltiples, necesitarás el plan Starter (desde 19,99 $/mes + IVA aproximadamente — verifica precio actual en zapier.com).
+- **API Key de Tidio:** La encontrarás en el panel de Tidio. Te indicamos dónde en el Paso 1.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes rellenar un formulario online y copiar y pegar texto, es suficiente.
+
+---
+
+## Pasos
+
+### Paso 1: Obtén tu API Key de Tidio
+
+**Qué hacer:** Entra en tu panel de Tidio en app.tidio.com. En el menú lateral izquierdo, haz clic en el icono de ajustes (rueda dentada). Dentro de ajustes, selecciona `"Integrations"` y busca la sección `"Developer"` o `"API"`. Ahí encontrarás tu API Key pública. Cópiala en un bloc de notas — la necesitarás en el Paso 3.
+
+**Por qué:** Zapier necesita esta clave para identificar tu cuenta de Tidio y escuchar los eventos que ocurren en tu chat.
+
+**Qué verás:** Una cadena de letras y números de unos 32 caracteres. Si no ves esta sección, tu plan puede no incluir acceso a la API — comprueba que tienes activado al menos el trial de Tidio+.
+
+---
+
+### Paso 2: Genera un token de acceso en Factorial
+
+**Qué hacer:** Entra en tu panel de Factorial en app.factorialhr.com. Ve a `"Ajustes"` en el menú superior derecho (el icono de tu avatar). Dentro de ajustes, busca `"Integraciones"` o `"API"`. Haz clic en `"Crear token de acceso"`, asígnale un nombre descriptivo (por ejemplo, `"Zapier-Tidio"`) y guarda el token que se genera. Cópialo también en tu bloc de notas.
+
+**Por qué:** Este token es lo que autoriza a Zapier a leer y escribir datos en Factorial en nombre de tu empresa.
+
+**Qué verás:** Una ventana con el token generado. Factorial solo te lo muestra una vez — si lo pierdes, tendrás que crear uno nuevo.
+
+<Callout type="warning">
+**No compartas este token.** Quien lo tenga puede acceder a los datos de RRHH de tu empresa en Factorial. Trátalo como una contraseña.
+</Callout>
+
+---
+
+### Paso 3: Crea una cuenta en Zapier y conecta Tidio
+
+**Qué hacer:** Entra en zapier.com y crea tu cuenta gratuita si no la tienes. Una vez dentro, haz clic en `"Create Zap"`. En el campo de búsqueda del primer bloque (`"Trigger"`), escribe `"Tidio"` y selecciona la aplicación. Zapier te pedirá conectar tu cuenta de Tidio — pega la API Key que copiaste en el Paso 1 cuando te la solicite.
+
+**Por qué:** El trigger es el evento que pone en marcha la automatización. Tidio es quien "dispara" el Zap cuando algo ocurre en el chat.
+
+**Qué verás:** Zapier confirmará la conexión con un mensaje en verde: `"Connection successful"`. Si no aparece, revisa que la API Key es correcta y que tu plan de Tidio incluye acceso a API.
+
+---
+
+### Paso 4: Elige el evento de Tidio que activará el flujo
+
+**Qué hacer:** Con Tidio conectado, Zapier te mostrará una lista de eventos disponibles. Los más útiles para conectar con Factorial son:
+
+- `"New Conversation"` — se activa cuando alguien abre un chat nuevo
+- `"Conversation Closed"` — cuando se cierra una conversación
+- `"New Contact"` — cuando Tidio registra un nuevo contacto
+
+Selecciona el evento que encaje con tu caso de uso. Para este ejemplo, usaremos `"New Contact"` — útil si captas candidatos o nuevos empleados a través del chat.
+
+**Por qué:** El evento determina en qué momento Factorial recibirá la información. Elegir el momento equivocado genera ruido innecesario.
+
+**Qué verás:** Zapier te pedirá que hagas una prueba del trigger (`"Test trigger"`). Abre tu propio chat de Tidio en otra pestaña y envía un mensaje para generar un evento de prueba — Zapier lo capturará y te mostrará los datos del contacto.
+
+---
+
+### Paso 5: Conecta Factorial como acción del Zap
+
+**Qué hacer:** En el bloque de acción (`"Action"`), busca `"Factorial"` en el campo de búsqueda. Si Factorial no aparece directamente en Zapier, selecciona `"Webhooks by Zapier"` como alternativa — Factorial tiene una API REST documentada que acepta llamadas de webhook. Conecta tu cuenta de Factorial pegando el token de acceso del Paso 2.
+
+**Por qué:** La acción es lo que Zapier hace en Factorial cuando Tidio dispara el evento. Puede ser crear un empleado, añadir un candidato, o registrar una nota.
+
+**Qué verás:** Si usas la integración nativa de Factorial, verás una lista de acciones disponibles (`"Create Employee"`, `"Create Applicant"`, etc.). Si usas Webhooks, deberás introducir manualmente la URL del endpoint de la API de Factorial.
+
+**Nota:** La disponibilidad de Factorial como aplicación nativa en Zapier puede variar. Si no aparece, consulta la documentación de la API de Factorial en developers.factorialhr.com para usar la opción de Webhooks.
+
+---
+
+### Paso 6: Mapea los campos de Tidio a Factorial
+
+**Qué hacer:** Zapier te mostrará los campos de Factorial que puedes rellenar (nombre, email, teléfono, etc.). En cada campo, haz clic en el icono de insertar variable y selecciona el dato correspondiente que vino del trigger de Tidio. Por ejemplo:
+
+- Campo `"Nombre"` de Factorial → dato `"Contact Name"` de Tidio
+- Campo `"Email"` de Factorial → dato `"Contact Email"` de Tidio
+
+**Por qué:** Sin este mapeo, Factorial recibiría campos vacíos. Cada campo de Factorial necesita saber de dónde viene el dato.
+
+**Qué verás:** Los campos muestran el nombre de la variable entre llaves, como `{Contact Name}`. Es correcto — Zapier los sustituirá por los valores reales cuando el Zap se ejecute.
+
+---
+
+### Paso 7: Prueba y activa el Zap
+
+**Qué hacer:** Haz clic en `"Test action"` para que Zapier haga una prueba real: tomará los datos del evento de prueba del Paso 4 y los enviará a Factorial. Entra en Factorial para confirmar que el registro se ha creado correctamente. Si todo está bien, haz clic en `"Publish Zap"` para activarlo.
+
+**Por qué:** La prueba evita activar un Zap roto que falle en silencio durante semanas sin que te des cuenta.
+
+**Qué verás:** Zapier mostrará `"Zap published"` y el estado del Zap cambiará a `"On"` (en verde). En Factorial verás el nuevo registro creado con los datos del contacto de prueba.
+
+---
+
+## Errores comunes
+
+**El trigger de Tidio no captura eventos en la prueba**
+*Síntoma:* Zapier muestra `"We couldn't find any [Event] in your Tidio account"` al hacer el test del trigger.
+*Causa:* No hay eventos recientes del tipo seleccionado en Tidio — Zapier busca eventos de las últimas horas.
+*Solución:* Abre tu chat de Tidio en otra pestaña (o pídele a un compañero que lo haga), envía un mensaje o regístrate como nuevo contacto, y vuelve a hacer clic en `"Test trigger"` en Zapier.
+
+---
+
+**Factorial devuelve un error 401 (no autorizado)**
+*Síntoma:* Zapier muestra `"Error 401: Unauthorized"` al probar la acción con Factorial.
+*Causa:* El token de Factorial es incorrecto, ha caducado, o se ha copiado con un espacio en blanco al principio o al final.
+*Solución:* Vuelve a Factorial, genera un nuevo token de acceso (Ajustes → API → Crear token), y pégalo de nuevo en Zapier con cuidado de no incluir espacios extra.
+
+---
+
+**Los campos llegan vacíos a Factorial**
+*Síntoma:* El registro se crea en Factorial pero los campos de nombre, email, etc. aparecen en blanco.
+*Causa:* El mapeo del Paso 6 no se completó correctamente — los campos de Factorial quedaron con texto fijo en lugar de variables de Tidio.
+*Solución:* Edita el Zap, ve al paso de acción, y en cada campo comprueba que ves la variable `{Contact Name}` u otras entre llaves — no texto estático. Si ves texto fijo, haz clic en el campo y selecciona la variable correcta del menú desplegable.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Un Zap activo que escucha eventos en tu chat de Tidio y crea registros automáticamente en Factorial.
+- Cada nuevo contacto que entre por Tidio (candidato, empleado, cliente interno) llega a Factorial sin que tengas que copiarlo a mano.
+- Una base para construir flujos más complejos: por ejemplo, enviar un email de bienvenida desde Factorial cuando se crea el registro, o notificar a tu equipo de RRHH por Slack.
+
+El siguiente paso lógico es añadir filtros al Zap para que solo se creen registros en Factorial cuando el contacto cumpla ciertas condiciones — por ejemplo, que haya escrito la palabra "trabajo" o "candidatura" en el chat.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Tidio, aquí tienes el acceso directo:
+
+<AffiliateLink programSlug="tidio" articleSlug="como-conectar-tidio-con-factorial" label="Probar Tidio gratis" />
+
+{/* TODO: captura del panel de integraciones de Tidio con la API Key visible */}
+{/* TODO: captura del flujo de Zapier con Tidio como trigger y Factorial como acción */}
+
+---
+
+## Preguntas frecuentes
+
+### ¿Tidio y Factorial tienen integración directa sin Zapier?
+
+No, a noviembre de 2026 no existe integración nativa entre Tidio y Factorial. La conexión siempre requiere una herramienta intermedia como Zapier o Make. Es posible también hacer la integración mediante código usando las APIs de ambas herramientas, pero eso requiere un desarrollador.
+
+### ¿Funciona esto con el plan gratuito de Tidio?
+
+Depende del evento que uses como trigger. Algunos eventos básicos están disponibles en el plan gratuito, pero el acceso completo a la API de Tidio requiere el plan Tidio+ (desde 29 $/mes + IVA — verifica precio actual en tidio.com). El plan gratuito de Zapier sí es suficiente para un Zap simple de 2 pasos.
+
+### ¿Es seguro conectar Factorial con Zapier? ¿Cumple GDPR?
+
+Zapier cumple con GDPR y ofrece un DPA (Data Processing Agreement) disponible para firmar, necesario si procesas datos de empleados o candidatos. Los datos pasan por servidores de Zapier (EE.UU.) bajo el marco EU-U.S. Data Privacy Framework. Consulta con tu responsable de protección de datos antes de automatizar flujos con datos personales de empleados, especialmente si debes cumplir con la LOPDGDD española.
+
+### ¿Puedo usar Make en lugar de Zapier para esta integración?
+
+Sí. Make (antes Integromat) tiene módulos tanto para Tidio como para Factorial y el proceso es equivalente. Make tiene un plan gratuito algo más generoso que Zapier en número de operaciones mensuales. La lógica de mapeo de campos es la misma.
+
+### ¿Qué pasa si el Zap falla y no llegan datos a Factorial?
+
+Zapier registra todos los errores en el historial del Zap (`"Zap History"` en el panel). Puedes configurar notificaciones por email para que te avise cuando un Zap falla. Los registros que fallaron se pueden reintentar manualmente desde el historial sin necesidad de reconfigurar nada.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
