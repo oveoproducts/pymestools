@@ -2,17 +2,18 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import brand from '@/data/brand.json'
 import { PRICE_TOOLS } from '@/lib/price-observatory'
+import { brandedTitle } from '@/lib/seo/meta-title'
 
 const URL = `${brand.siteUrl}/precios-software-pymes`
 
 export const metadata: Metadata = {
-  title: 'Precios de software para pymes: tabla verificada (2026)',
+  title: brandedTitle('Precios de software para pymes: tabla verificada (2026)'),
   description:
     'Precios de CRM, email marketing, SEO y automatización comprobados en la web oficial de cada proveedor, con fecha de verificación y enlace a la fuente.',
   alternates: { canonical: URL },
 }
 
-const CATEGORIES = ['CRM', 'Email marketing', 'SEO', 'Automatización', 'Chatbots'] as const
+const CATEGORIES = ['CRM', 'Email marketing', 'Facturación', 'Productividad', 'SEO', 'Automatización', 'Chatbots'] as const
 
 function fmt(iso: string) {
   return new Date(iso).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
@@ -41,7 +42,8 @@ export default function PreciosSoftwarePymesPage() {
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
             Cada cifra de esta tabla la hemos mirado en la web oficial del proveedor y lleva su fecha de
-            verificación y el enlace a la fuente. Última actualización: {fmt(latest)}.
+            verificación y el enlace a la fuente. Última actualización: {fmt(latest)}. Tienes el detalle de
+            cómo lo hacemos en <Link href="/como-verificamos-los-precios" className="text-blue-600 hover:underline">cómo verificamos los precios</Link>.
           </p>
           <p className="mt-3 text-sm text-gray-500">
             Precio por usuario y mes salvo que se indique otra cosa. «Anual» es el precio mensual con
