@@ -1,0 +1,131 @@
+---
+title: "Prompts de ChatGPT para marketing y reseñas: 8 para pymes"
+slug: "prompts-chatgpt-marketing-resenas-redes-pymes"
+category: "prompts"
+description: "8 prompts de ChatGPT en español para el marketing de una pyme local: responder reseñas de Google, publicaciones, ficha de empresa, textos web y calendario de contenidos."
+type: "how-to"
+publishedAt: "2026-11-14T09:30:00.000Z"
+updatedAt: "2026-11-14T09:30:00.000Z"
+tools: ["semrush"]
+keywords:
+  primary: "prompts chatgpt marketing"
+  secondary:
+    - "responder reseñas google chatgpt"
+    - "prompts redes sociales pymes"
+    - "chatgpt para publicaciones instagram negocio"
+    - "chatgpt texto web pyme"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "8 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para marketing y reseñas: 8 para pymes"
+meta_description: "8 prompts de ChatGPT para el marketing de pymes locales: reseñas de Google, publicaciones, textos web y calendario, con qué revisar antes de publicar."
+---
+
+El marketing de una pyme local se reduce a unas pocas tareas que se repiten: contestar reseñas, publicar en redes, mantener la ficha de Google y tener una web que explique bien lo que haces. Un asistente de IA te ahorra el borrador de cada una. Lo que no sabe es lo que hace único a tu negocio, y sin eso todos los textos suenan igual.
+
+Estos 8 prompts parten de situaciones reales de negocio local en España. Para la fórmula que usan todos, mira antes la [guía principal de prompts para pymes](/prompts/prompts-chatgpt-para-pymes). Si lo que buscas son correos, tienes una [guía aparte de email marketing](/prompts/prompts-chatgpt-email-marketing-pymes).
+
+## Resumen rápido
+
+- **Lo que mejor funciona:** respuestas a reseñas, borradores de publicaciones y textos cortos con tu información real.
+- **Lo que decide la calidad:** los datos concretos que le des (qué vendes, a quién, en qué se diferencia, cómo hablas).
+- **Lo que no debes hacer:** publicar sin leer, inventar reseñas o testimonios, o prometer resultados que no puedes cumplir.
+- **Sobre las reseñas:** nunca las escribas tú ni pidas a un asistente que las fabrique. Solo sirve para ayudarte a responder las reales.
+
+<Callout type="warning">
+No pegues datos personales de clientes en el prompt (nombres completos, teléfonos, pedidos). Para las reseñas, copia el texto sin el nombre y sustitúyelo por [CLIENTE].
+</Callout>
+
+## Reseñas y reputación
+
+<PromptBox
+  title="1. Responder a una reseña positiva sin sonar a plantilla"
+  prompt={`Soy [TU CARGO] de [TU NEGOCIO: tipo, ciudad]. Un cliente ha dejado esta reseña de 5 estrellas: "[TEXTO DE LA RESEÑA SIN EL NOMBRE]". Escribe una respuesta de máximo 50 palabras que agradezca algo concreto de lo que menciona, use un tono cercano y no repita la misma estructura que "gracias por tu opinión". No prometas nada que no haya dicho yo, no ofrezcas descuentos y no uses emojis.`}
+  check="Que menciones algo concreto de la reseña. Las respuestas idénticas se notan y no aportan nada."
+/>
+
+<PromptBox
+  title="2. Responder a una reseña negativa"
+  prompt={`Mi negocio [TIPO, CIUDAD] ha recibido esta reseña de 2 estrellas: "[TEXTO SIN EL NOMBRE]". Los hechos reales, por lo que sé, son: [LO QUE REALMENTE PASÓ, SIN DAR DATOS PERSONALES]. Redacta una respuesta pública de máximo 90 palabras que: reconozca lo que sea cierto, no discuta ni culpe al cliente, explique en una frase qué haremos distinto si procede y ofrezca continuar la conversación en privado por [CANAL]. Tono tranquilo y profesional. No inventes explicaciones ni admitas cosas que no han ocurrido.`}
+  check="Que lo que reconoces sea cierto y que no reveles datos del cliente. Una respuesta pública la leen todos los futuros clientes."
+/>
+
+## Redes sociales
+
+<PromptBox
+  title="3. Tres ideas de publicación a partir de algo real"
+  prompt={`Soy [NEGOCIO: tipo, ciudad]. Esta semana ha pasado esto en mi negocio: [HECHO REAL: un trabajo terminado, una novedad, una pregunta frecuente de clientes]. Dame 3 ideas de publicación para [RED SOCIAL] a partir de ello, cada una con: gancho de la primera línea, mensaje central en 2 frases y una llamada a la acción suave. Evita las frases hechas del tipo "descubre cómo" y no inventes datos ni testimonios.`}
+  check="Que cada idea parta de algo que realmente ha ocurrido. Lo auténtico rinde más que lo genérico."
+/>
+
+<PromptBox
+  title="4. Calendario de contenidos de un mes"
+  prompt={`Soy [NEGOCIO: tipo, ciudad, cliente habitual]. Quiero publicar [N] veces por semana en [RED SOCIAL]. Propón un calendario de 4 semanas en tabla con: semana, tema, formato (foto, vídeo corto, texto) y objetivo (informar, mostrar el trabajo, resolver una duda). Los temas deben salir de: [LISTA DE PREGUNTAS QUE OS HACEN LOS CLIENTES, SERVICIOS Y TEMPORADAS REALES]. Máximo 2 publicaciones promocionales a la semana.`}
+  check="Que el calendario sea realista para el tiempo que tienes. Es mejor publicar menos y mantenerlo."
+/>
+
+## Web y ficha de empresa
+
+<PromptBox
+  title="5. Descripción de la ficha de Google (Perfil de Empresa)"
+  prompt={`Redacta la descripción de mi ficha de Google en máximo 700 caracteres para [NEGOCIO: tipo, ciudad, barrio]. Datos reales: servicios [LISTA], a quién atendemos [CLIENTE], horario [HORARIO], qué nos diferencia [DIFERENCIA REAL]. Escríbela en tercera persona, con los servicios principales en las primeras líneas y sin palabras como "el mejor", "líder" o "calidad". No incluyas teléfonos, enlaces ni precios.`}
+  check="Que no prometas nada que no sea cierto. Las normas de Google para las fichas penalizan las descripciones engañosas."
+/>
+
+<PromptBox
+  title="6. Texto de 'Quiénes somos'"
+  prompt={`Redacta el texto de "Quiénes somos" de mi web en 150 palabras. Datos: somos [QUIÉNES, CUÁNTOS], empezamos en [AÑO], trabajamos con [TIPO DE CLIENTE] en [ZONA], lo que mejor hacemos es [ESPECIALIDAD] y nos diferencia [DIFERENCIA REAL]. Primera persona del plural, tono cercano, sin tópicos como "pasión por" ni "equipo de profesionales". Incluye una frase con un hecho verificable (años, número de proyectos reales o certificación real) solo si te lo he dado.`}
+  check="Que cada afirmación pueda demostrarse. Si no puedes demostrarla, quítala."
+/>
+
+<PromptBox
+  title="7. Descripción de un producto o servicio"
+  prompt={`Redacta la descripción de [PRODUCTO/SERVICIO] para mi web en 80-100 palabras. Datos reales: para quién es [CLIENTE], qué problema resuelve [PROBLEMA], qué incluye [LISTA], qué no incluye [LÍMITES], plazo o precio orientativo [DATO]. Primero el beneficio, después lo que incluye. Sin superlativos, sin "solución integral" y sin prometer resultados.`}
+  check="Que 'qué no incluye' esté claro. Evita malentendidos y reclamaciones."
+/>
+
+<PromptBox
+  title="8. Título y descripción para buscadores de una página"
+  prompt={`Para una página sobre [TEMA] de mi negocio [TIPO, CIUDAD], propón 3 opciones de título (máximo 60 caracteres) y de meta descripción (máximo 150 caracteres). La palabra principal es "[PALABRA CLAVE]" y debe aparecer cerca del principio. Cada título debe ser distinto y contar algo concreto que esté en la página: [LO QUE REALMENTE CONTIENE]. Sin mayúsculas innecesarias y sin prometer lo que la página no ofrece.`}
+  check="Contar los caracteres antes de pegarlos: un título largo se corta en Google."
+  toolName="Semrush"
+  toolHref="/seo/como-funciona-semrush-tutorial-espanol"
+  toolNote="para ver qué buscan realmente tus clientes antes de elegir la palabra clave, en lugar de adivinarla"
+/>
+
+## Cuándo un prompt no basta
+
+| Tarea que repites | Qué hace ChatGPT | Qué hace una herramienta |
+|---|---|---|
+| Elegir qué buscan tus clientes | Sugiere ideas (sin datos de búsqueda reales) | Mide volumen y competencia ([SEO](/seo/como-funciona-semrush-tutorial-espanol)) |
+| Enviar correos a tus clientes | Redacta el texto | Los envía y mide resultados ([email marketing](/email-marketing/mejores-email-marketing-pymes-espana)) |
+| Seguir a cada cliente potencial | Redacta el mensaje | Guarda el historial y las tareas ([CRM](/crm/mejores-crm-pymes-espana)) |
+
+## Guías de la serie
+
+- [Prompts de ChatGPT para pymes: la guía principal](/prompts/prompts-chatgpt-para-pymes)
+- [Prompts de ChatGPT para email marketing](/prompts/prompts-chatgpt-email-marketing-pymes)
+- [Prompts de ChatGPT para atención al cliente](/prompts/prompts-chatgpt-atencion-cliente-pymes)
+
+## Preguntas frecuentes
+
+### ¿Puedo pedir a ChatGPT que escriba reseñas para mi negocio?
+
+No. Publicar reseñas falsas incumple las normas de las plataformas y puede ser publicidad engañosa. Úsalo solo para ayudarte a responder las reseñas reales.
+
+### ¿Cómo evito que mis publicaciones suenen a robot?
+
+Dale hechos reales de tu negocio, una muestra de cómo escribes y pídele que evite las frases hechas. Después, léelo en voz alta y cambia lo que tú no dirías.
+
+### ¿Sirven estos prompts para cualquier red social?
+
+Sí, cambiando la red en el prompt. Cada red tiene su formato y su público, y conviene que revises la longitud y el tono antes de publicar.
+
+### ¿ChatGPT me da las palabras clave que buscan mis clientes?
+
+Te da ideas, pero no datos de búsqueda reales. Para saber cuánta gente busca algo, usa una herramienta de SEO o la propia Search Console de tu web.
+
+---
+
+*Los prompts son ejemplos para adaptar; el resultado depende del asistente que uses y de los datos que le des. Este artículo no contiene asesoramiento legal. Última revisión: noviembre 2026.*

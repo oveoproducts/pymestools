@@ -1,0 +1,127 @@
+---
+title: "Prompts de ChatGPT para recursos humanos: 7 para pymes"
+slug: "prompts-chatgpt-recursos-humanos-pymes"
+category: "prompts"
+description: "7 prompts de ChatGPT en español para RR. HH. de una pyme: ofertas de empleo, entrevistas, onboarding, comunicados internos y feedback, con qué revisar antes de usarlos."
+type: "how-to"
+publishedAt: "2026-11-14T09:00:00.000Z"
+updatedAt: "2026-11-14T09:00:00.000Z"
+tools: ["factorial"]
+keywords:
+  primary: "prompts chatgpt recursos humanos"
+  secondary:
+    - "chatgpt para recursos humanos"
+    - "prompts oferta de empleo chatgpt"
+    - "preguntas de entrevista chatgpt"
+    - "chatgpt onboarding empleados"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para RR. HH.: 7 para pymes (2026)"
+meta_description: "7 prompts de ChatGPT para RR. HH. en pymes: oferta de empleo, entrevista, onboarding, comunicados y feedback, con qué revisar antes de usarlos."
+---
+
+En una pyme, recursos humanos suele ser una persona que además hace otras cosas: redacta la oferta, prepara la entrevista, recibe al nuevo empleado y escribe el comunicado cuando cambia algo. Un asistente de IA te ahorra el primer borrador de todo eso, pero no puede decidir por ti ni conoce tu convenio, tus contratos ni a tu equipo.
+
+Estos 7 prompts cubren las tareas de RR. HH. que más se repiten. Para la fórmula de cinco partes que usan todos, mira antes la [guía principal de prompts para pymes](/prompts/prompts-chatgpt-para-pymes).
+
+## Resumen rápido
+
+- **Para qué sirve:** borradores de ofertas, guiones de entrevista, planes de bienvenida y comunicados. Texto, no decisiones.
+- **Para qué no sirve:** interpretar tu convenio colectivo, redactar contratos o decidir despidos y sanciones. Eso lo revisa un asesor laboral.
+- **Datos de personas:** no pegues nombres, DNI, salarios ni datos de salud de empleados o candidatos. Usa [CANDIDATO], [EMPLEADO] y [PUESTO].
+- **Selección sin sesgos:** pide criterios basados en el puesto y revisa que ninguna pregunta se refiera a edad, estado civil, embarazo, origen o salud.
+
+<Callout type="warning">
+Los datos de empleados y candidatos son datos personales. No los pegues en un asistente de IA: sustitúyelos por marcadores y rellena los reales al final, en tu documento.
+</Callout>
+
+## Atraer y seleccionar
+
+<PromptBox
+  title="1. Oferta de empleo clara y sin tópicos"
+  prompt={`Eres responsable de personas en [TIPO DE EMPRESA: sector, ciudad, tamaño]. Redacta una oferta de empleo para el puesto de [PUESTO]. Datos reales: funciones principales [3-5 FUNCIONES], requisitos imprescindibles [LISTA CORTA], requisitos valorables [LISTA CORTA], jornada [JORNADA], ubicación y modalidad [PRESENCIAL/HÍBRIDO/REMOTO], rango salarial [RANGO REAL O "A CONVENIR"]. Estructura: qué harás, qué buscamos, qué ofrecemos, cómo aplicar. Máximo 250 palabras, lenguaje inclusivo sin dobles formas, sin frases como "dinámico equipo joven" ni "proactivo". No inventes beneficios que no te haya dado.`}
+  check="Que cada beneficio y cada requisito sea cierto y necesario. Un requisito innecesario deja fuera a buenos candidatos."
+/>
+
+<PromptBox
+  title="2. Guion de entrevista estructurada"
+  prompt={`Prepara un guion de entrevista de 30 minutos para el puesto de [PUESTO] en una empresa de [SECTOR]. Quiero 8 preguntas ordenadas: 2 de experiencia relevante, 3 de situaciones reales del puesto (con un escenario concreto de [SITUACIÓN TÍPICA DEL PUESTO]), 2 de cómo trabaja con otras personas y 1 de lo que busca en su próximo puesto. Para cada pregunta, indica qué señales buscar en una buena respuesta. Todas las preguntas deben ir sobre el trabajo: nada sobre edad, estado civil, hijos, embarazo, salud, origen ni creencias.`}
+  check="Hacer las mismas preguntas a todos los candidatos. Es lo que permite compararlos de forma justa."
+/>
+
+<PromptBox
+  title="3. Respuesta a un candidato que no continúa"
+  prompt={`Redacta un email de máximo 90 palabras para [CANDIDATO], que llegó a la fase de [FASE] para el puesto de [PUESTO] y no continúa en el proceso. Tono respetuoso y directo, agradece el tiempo dedicado, no des un motivo que no te haya indicado y ofrece guardar su perfil solo si [SÍ/NO] vamos a hacerlo. Sin frases hechas del tipo "valoramos su perfil pero".`}
+  check="Que no prometas contactar de nuevo si no lo vas a hacer, y que el motivo, si lo das, sea real."
+/>
+
+## Incorporar y acompañar
+
+<PromptBox
+  title="4. Plan de la primera semana de un nuevo empleado"
+  prompt={`Una persona se incorpora como [PUESTO] a una empresa de [SECTOR] de [N] personas. Diseña un plan de su primera semana, día a día, con: qué ve y a quién conoce, qué tareas hace (pequeñas y con resultado visible), qué accesos y herramientas necesita ([HERRAMIENTAS QUE USÁIS]) y una reunión de cierre el viernes. Formato: tabla con día, mañana y tarde. Deja una columna "responsable" para que la rellene yo. No inventes procesos internos que no te haya descrito.`}
+  check="Que los accesos y las tareas se corresponden con tu empresa real, y que alguien concreto sea responsable de cada día."
+  toolName="Factorial"
+  toolHref="/recursos-humanos/review-factorial"
+  toolNote="un software de RR. HH. guarda la ficha, los documentos y las vacaciones; el prompt solo redacta el plan"
+/>
+
+<PromptBox
+  title="5. Comunicado interno de un cambio"
+  prompt={`Tengo que comunicar a toda la plantilla de [N] personas este cambio: [CAMBIO: por ejemplo, nuevo horario de verano, nueva herramienta, cambio de turnos]. Datos reales: desde [FECHA], afecta a [A QUIÉN], el motivo es [MOTIVO REAL], y quien responde dudas es [PERSONA]. Redacta el comunicado en máximo 150 palabras: qué cambia, desde cuándo, por qué y a quién preguntar. Tono claro y respetuoso, sin eufemismos ni frases corporativas. Si el cambio afecta a condiciones de trabajo, añade al final la frase "[REVISAR CON ASESORÍA LABORAL]".`}
+  check="Que un cambio de condiciones de trabajo lo valide tu asesoría laboral antes de comunicarlo. El comunicado no sustituye ese trámite."
+/>
+
+## Feedback y evaluación
+
+<PromptBox
+  title="6. Preparar una conversación de feedback"
+  prompt={`Voy a tener una conversación de feedback con [EMPLEADO] sobre [SITUACIÓN CONCRETA Y OBSERVABLE: por ejemplo, retrasos reiterados en las entregas de los viernes]. Ayúdame a prepararla con: 1) cómo describir el hecho sin juzgar a la persona, 2) 3 preguntas abiertas para entender su punto de vista, 3) cómo proponer un acuerdo concreto con fecha y 4) qué evitar decir. Sé específico y breve. No des consejos legales ni sobre medidas disciplinarias.`}
+  check="Que lo que describes sean hechos concretos y comprobables. Esta conversación no es un procedimiento disciplinario."
+/>
+
+<PromptBox
+  title="7. Resumen de una evaluación anual (borrador)"
+  prompt={`Con estas notas sobre [EMPLEADO] durante el año: [NOTAS CON HECHOS Y RESULTADOS, SIN DATOS PERSONALES SENSIBLES], redacta un borrador de evaluación de 200 palabras con: logros, áreas de mejora y dos objetivos para el próximo año con indicador medible. Usa solo lo que hay en las notas: si falta información, escribe "FALTA DATO" en lugar de suponerla. Tono constructivo y concreto.`}
+  check="Que cada afirmación tenga detrás un hecho que puedas explicar, y que la persona evaluada pueda leerla sin sorpresas."
+/>
+
+## Cuándo un prompt no basta
+
+Un prompt te da un texto. Cuando lo que se repite es la gestión (vacaciones, fichajes, documentos, nóminas), necesitas un sistema que lo guarde y lo calcule:
+
+| Tarea que repites | Qué hace ChatGPT | Qué hace una herramienta |
+|---|---|---|
+| Registro de la jornada | Redacta la política interna | Registra las horas y genera los informes ([control horario](/recursos-humanos/control-horario-pymes)) |
+| Nóminas | Explica conceptos para preparar preguntas | Las prepara y las envía ([guía de nóminas](/recursos-humanos/como-gestionar-nominas-pymes)) |
+| Vacaciones y ausencias | Redacta el aviso a la plantilla | Gestiona solicitudes y calendario ([Factorial](/recursos-humanos/review-factorial)) |
+
+## Guías de la serie
+
+- [Prompts de ChatGPT para pymes: la guía principal](/prompts/prompts-chatgpt-para-pymes)
+- [Prompts de ChatGPT para ventas](/prompts/prompts-chatgpt-ventas-pymes)
+- [Prompts de ChatGPT para administración y facturación](/prompts/prompts-chatgpt-administracion-facturacion-autonomos)
+
+## Preguntas frecuentes
+
+### ¿Puedo usar ChatGPT para filtrar currículums?
+
+Para resumir un currículum con datos anonimizados, sí. Para decidir quién pasa y quién no, no: puede reproducir sesgos y no debes entregar datos personales de candidatos sin base legal ni conocer cómo los trata la herramienta. Decide tú con criterios del puesto escritos de antemano.
+
+### ¿Puede ChatGPT redactar un contrato de trabajo?
+
+No debes usarlo como contrato. Puede ayudarte a preparar las preguntas para tu asesoría laboral, pero el texto contractual y el encaje con tu convenio los revisa un profesional.
+
+### ¿Qué datos de empleados no debo pegar?
+
+Nombres completos, DNI/NIE, salarios individuales, datos de salud, bajas, sanciones y cualquier dato personal. Usa marcadores y rellena los reales al final.
+
+### ¿Cómo evito que la oferta de empleo sea discriminatoria?
+
+Pide lenguaje inclusivo, limita los requisitos a lo imprescindible y revisa que no aparezcan referencias a edad, sexo, estado civil, origen o aspecto físico. Léela como si fueras un candidato que no encaja en el tópico.
+
+---
+
+*Los prompts son ejemplos para adaptar; el resultado depende del asistente que uses. Este artículo no contiene asesoramiento laboral ni jurídico: consulta a tu asesoría laboral para contratos, convenio y obligaciones. Última revisión: noviembre 2026.*

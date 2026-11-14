@@ -1,0 +1,129 @@
+---
+title: "Prompts de ChatGPT para operaciones y reuniones: 7 para pymes"
+slug: "prompts-chatgpt-operaciones-reuniones-pymes"
+category: "prompts"
+description: "7 prompts de ChatGPT en español para el día a día de una pyme: actas de reunión, procedimientos, checklists, resúmenes, prioridades semanales y planes de proyecto."
+type: "how-to"
+publishedAt: "2026-11-14T10:00:00.000Z"
+updatedAt: "2026-11-14T10:00:00.000Z"
+tools: ["notion", "make"]
+keywords:
+  primary: "prompts chatgpt reuniones"
+  secondary:
+    - "chatgpt acta de reunión"
+    - "prompts chatgpt procedimientos"
+    - "chatgpt checklist pyme"
+    - "chatgpt gestión de proyectos"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para operaciones y reuniones (2026)"
+meta_description: "7 prompts de ChatGPT para pymes: actas de reunión, procedimientos, checklists, resúmenes y planes de proyecto, con qué revisar antes de usarlos."
+---
+
+En una pyme pequeña, la operativa vive en la cabeza de dos o tres personas. Las reuniones terminan sin acta, los procedimientos están en un chat y cada proyecto se planifica de cero. Un asistente de IA te ayuda a poner por escrito lo que ya sabes: estructura, orden y primer borrador. No sabe cómo funciona tu empresa, así que lo que escribe vale lo que valga la información que le des.
+
+Estos 7 prompts sirven para organizar la operativa del día a día. Para la fórmula de cinco partes que usan todos, mira antes la [guía principal de prompts para pymes](/prompts/prompts-chatgpt-para-pymes).
+
+## Resumen rápido
+
+- **Lo que mejor funciona:** convertir notas desordenadas en actas, procedimientos y listas. Ordena, no inventa.
+- **Lo que debes darle:** las notas reales, tal cual, aunque estén sueltas.
+- **Lo que no debes hacer:** pegar actas con datos confidenciales de clientes, o dar por bueno un procedimiento sin que lo pruebe quien lo va a usar.
+- **Cuando el proceso crece:** una herramienta de proyectos mantiene el estado y los plazos; ChatGPT solo ayuda a redactar.
+
+<Callout type="warning">
+No pegues contratos, datos de clientes ni información financiera sensible. Resume y sustituye nombres e importes por marcadores como [CLIENTE] e [IMPORTE].
+</Callout>
+
+## Reuniones
+
+<PromptBox
+  title="1. Acta de reunión a partir de tus notas"
+  prompt={`Estas son mis notas desordenadas de una reunión de [TIPO DE REUNIÓN] con [PARTICIPANTES POR ROL]: [NOTAS]. Conviértelas en un acta con: decisiones tomadas, tareas (qué, quién, para cuándo), dudas abiertas y próximo paso. Usa solo lo que hay en las notas. Si falta el responsable o la fecha de una tarea, escribe "FALTA RESPONSABLE" o "FALTA FECHA" en lugar de suponerlo. Máximo una página.`}
+  check="Que cada tarea tenga persona y fecha real. Un acta sin responsables no cambia nada."
+/>
+
+<PromptBox
+  title="2. Orden del día de una reunión de 45 minutos"
+  prompt={`Voy a reunir al equipo [PARTICIPANTES POR ROL] durante 45 minutos para decidir [DECISIÓN CONCRETA]. Temas que tenemos pendientes: [LISTA]. Prepara un orden del día con tiempos por punto, qué hay que decidir en cada uno y qué información debe traer cada persona antes. Deja los últimos 5 minutos para repasar tareas. Si un tema no necesita reunión y se resuelve por escrito, indícalo.`}
+  check="Que cada punto termine en una decisión o en una tarea. Si no, probablemente no necesita reunión."
+/>
+
+## Procedimientos y listas
+
+<PromptBox
+  title="3. Procedimiento paso a paso de una tarea"
+  prompt={`Voy a describirte cómo hacemos [TAREA REPETITIVA: por ejemplo, dar de alta a un cliente nuevo] en mi empresa: [DESCRIPCIÓN TAL COMO LA CUENTAS, DESORDENADA SI QUIERES]. Conviértela en un procedimiento con: objetivo, quién lo hace, herramientas necesarias, pasos numerados (una acción por paso), qué comprobar al terminar y errores frecuentes. No añadas pasos que no te haya descrito; si algo no está claro, hazme preguntas antes de escribir.`}
+  check="Que lo pruebe una persona que no conozca la tarea. Si se atasca, falta un paso."
+  toolName="Notion"
+  toolHref="/productividad/notion-opiniones-2026"
+  toolNote="para guardar los procedimientos en un sitio que todo el equipo encuentre, en lugar de repartirlos por correos y chats"
+/>
+
+<PromptBox
+  title="4. Checklist de cierre de un servicio o proyecto"
+  prompt={`Haz una checklist de cierre para [TIPO DE SERVICIO O PROYECTO] en una empresa de [SECTOR]. Agrúpala en: entregables, documentación para el cliente, facturación y cobro, comunicación y lecciones aprendidas. Cada punto debe ser una acción comprobable (verbo + resultado). Máximo 15 puntos. Marca con [REVISAR] los que dependan de una obligación legal o contractual de mi sector.`}
+  check="Que los puntos marcados [REVISAR] los valide tu gestoría o asesor. No los des por buenos."
+/>
+
+## Información y prioridades
+
+<PromptBox
+  title="5. Resumen de un documento largo"
+  prompt={`Resume el siguiente texto en 8 líneas para una persona que no lo ha leído: [TEXTO SIN DATOS CONFIDENCIALES]. Estructura: de qué trata, 3 puntos clave, qué decisiones o acciones se piden y qué fechas o plazos aparecen. Si algo no está en el texto, no lo añadas. Al final, lista las dudas que quedan abiertas.`}
+  check="Contrastar fechas, cifras y nombres con el documento original antes de actuar sobre el resumen."
+/>
+
+<PromptBox
+  title="6. Prioridades de la semana"
+  prompt={`Esta es mi lista de tareas de la semana: [LISTA]. Tengo [HORAS] disponibles y estas fechas límite fijas: [FECHAS]. Ayúdame a ordenarla en: lo que debo hacer yo sí o sí, lo que puedo delegar (y a quién por rol), lo que puedo aplazar y lo que puedo eliminar. Explica el criterio en una frase por tarea. Si el total no cabe en mis horas, dímelo claramente.`}
+  check="Que lo que propone delegar tenga a alguien disponible de verdad. El prompt no conoce tu equipo."
+/>
+
+## Proyectos
+
+<PromptBox
+  title="7. Plan de un proyecto pequeño"
+  prompt={`Necesito planificar este proyecto: [OBJETIVO CONCRETO], con fecha final [FECHA], equipo [PERSONAS POR ROL] y presupuesto [IMPORTE ORIENTATIVO]. Propón un plan por fases con: tareas, responsable, duración estimada, dependencias y riesgos principales con una acción para cada uno. Formato tabla. Marca con [ESTIMAR] las duraciones que no puedas deducir de mis datos: no las inventes.`}
+  check="Las duraciones las tienes que validar tú o quien va a ejecutar la tarea. Una estimación inventada es peor que ninguna."
+/>
+
+## Cuándo un prompt no basta
+
+| Tarea que repites | Qué hace ChatGPT | Qué hace una herramienta |
+|---|---|---|
+| Seguir el estado de las tareas | Ordena y redacta la lista | Muestra quién hace qué y los plazos ([gestión de proyectos](/gestion-proyectos/mejores-herramientas-gestion-proyectos-pymes)) |
+| Guardar procedimientos | Los redacta | Los guarda y los mantiene al día ([Notion](/productividad/notion-opiniones-2026)) |
+| Pasar datos entre aplicaciones | Explica cómo | Lo hace automáticamente ([Make](/automatizacion/como-funciona-make-tutorial-espanol)) |
+
+<AffiliateLink programSlug="make" articleSlug="prompts-chatgpt-operaciones-reuniones-pymes" label="Probar Make gratis" />
+
+## Guías de la serie
+
+- [Prompts de ChatGPT para pymes: la guía principal](/prompts/prompts-chatgpt-para-pymes)
+- [Prompts de ChatGPT para recursos humanos](/prompts/prompts-chatgpt-recursos-humanos-pymes)
+- [Prompts de ChatGPT para administración y facturación](/prompts/prompts-chatgpt-administracion-facturacion-autonomos)
+
+## Preguntas frecuentes
+
+### ¿Puede ChatGPT escuchar y resumir una reunión?
+
+Depende de la herramienta que uses y de si permite subir audio o transcripciones. Antes de grabar a nadie, avisa a los participantes y revisa qué hace la herramienta con los datos. Con el texto de tus notas, los prompts de esta guía funcionan en cualquier asistente.
+
+### ¿Cuántas reuniones puedo evitar con un acta bien hecha?
+
+No hay una cifra fiable. Un acta con tareas y responsables evita las reuniones de seguimiento que solo sirven para recordar qué se decidió.
+
+### ¿Cómo evito que invente pasos en un procedimiento?
+
+Dile que use solo lo que le cuentas y que te pregunte cuando falte algo. Después, que lo pruebe una persona que no conozca la tarea.
+
+### ¿Es seguro pegar información de mi empresa?
+
+Depende de la herramienta y de la configuración de privacidad. Evita pegar datos confidenciales o personales de clientes y revisa la política de la herramienta antes de compartir información sensible.
+
+---
+
+*Los prompts son ejemplos para adaptar; el resultado depende del asistente que uses y de la información que le des. Este artículo no contiene asesoramiento legal ni fiscal. Última revisión: noviembre 2026.*
