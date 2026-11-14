@@ -1,0 +1,124 @@
+---
+title: "Prompts de ChatGPT para restaurantes y bares: 7 prompts"
+slug: "prompts-chatgpt-restaurantes-hosteleria"
+category: "prompts"
+description: "7 prompts de ChatGPT en español para restaurantes, bares y cafeterías: reseñas, carta, reservas, cancelaciones, turnos y redes, con qué revisar y qué nunca delegar (alérgenos)."
+type: "how-to"
+publishedAt: "2026-11-14T11:00:00.000Z"
+updatedAt: "2026-11-14T11:00:00.000Z"
+tools: []
+keywords:
+  primary: "prompts chatgpt restaurantes"
+  secondary:
+    - "chatgpt para hostelería"
+    - "responder reseñas restaurante chatgpt"
+    - "chatgpt carta restaurante"
+    - "chatgpt redes sociales bar"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para restaurantes y bares (2026)"
+meta_description: "7 prompts de ChatGPT para hostelería: reseñas, carta, reservas, no-shows y redes sociales, con avisos sobre alérgenos y qué revisar antes de publicar."
+---
+
+En un restaurante o un bar, el tiempo escasea justo cuando más se escribe: contestar reseñas de Google, responder reservas por WhatsApp, poner al día la carta, avisar del cierre por vacaciones. Un asistente de IA te da el primer borrador de todo eso en segundos. Lo que no puede hacer es saber qué lleva cada plato ni cómo es tu local.
+
+Estos 7 prompts parten de situaciones reales de hostelería en España. La fórmula que usan todos está explicada en la [guía principal de prompts para pymes](/prompts/prompts-chatgpt-para-pymes), y las reseñas tienen más ejemplos en la guía de [marketing y reseñas](/prompts/prompts-chatgpt-marketing-resenas-redes-pymes).
+
+## Resumen rápido
+
+- **Para qué sirve:** reseñas, textos de carta, mensajes de reserva, avisos a clientes y publicaciones.
+- **Lo que nunca debes delegar:** la información de alérgenos de cada plato. Es una obligación legal y la responsabilidad es tuya.
+- **Lo que decide la calidad:** los datos reales que le des (cocina, tipo de cliente, tono del local).
+- **Reseñas:** responde a las reales, nunca fabriques ninguna.
+
+<Callout type="warning">
+La información sobre alérgenos que ofreces a tus clientes debe salir de tus fichas técnicas y de tus proveedores, no de un asistente de IA. Un error aquí puede ser grave. Utiliza la IA para redactar, nunca para decidir qué contiene un plato.
+</Callout>
+
+## Reseñas y reputación
+
+<PromptBox
+  title="1. Responder a una reseña positiva de un cliente habitual"
+  prompt={`Soy [CARGO] de [LOCAL: tipo de cocina, barrio, ciudad]. Un cliente ha dejado esta reseña de 5 estrellas: "[TEXTO SIN EL NOMBRE]". Escribe una respuesta de máximo 45 palabras que agradezca algo concreto que menciona (un plato, el trato, el ambiente), con el tono de un local cercano. Sin emojis, sin "esperamos verte pronto" repetido en todas, sin ofrecer descuentos.`}
+  check="Que menciones algo concreto de la reseña. Si usas la misma frase siempre, se nota."
+/>
+
+<PromptBox
+  title="2. Responder a una queja sobre el servicio o la espera"
+  prompt={`Mi restaurante [TIPO, CIUDAD] ha recibido esta reseña de 2 estrellas: "[TEXTO SIN EL NOMBRE]". Lo que ocurrió realmente, según mi equipo, fue: [HECHOS REALES, POR EJEMPLO: ESE DÍA HUBO DOS BAJAS EN SALA]. Redacta una respuesta pública de máximo 80 palabras: reconoce lo que sea cierto, no discute con el cliente ni lo culpa, explica en una frase qué vamos a hacer distinto si procede e invita a escribir a [CANAL] para solucionarlo. Tono sereno. No inventes excusas ni admitas cosas que no han ocurrido.`}
+  check="Que lo reconocido sea verdad y no reveles datos del cliente. La respuesta la leerán todos los futuros comensales."
+/>
+
+## Carta y producto
+
+<PromptBox
+  title="3. Descripciones de platos para la carta"
+  prompt={`Redacta la descripción corta (máximo 20 palabras por plato) para estos platos de mi carta: [LISTA DE PLATOS CON SUS INGREDIENTES PRINCIPALES, TAL COMO LOS TIENES EN LA FICHA]. Estilo: sencillo y apetecible, sin adjetivos huecos como "exquisito" o "delicioso", destacando el producto y la técnica si la hay. Usa solo los ingredientes que te doy y no añadas ninguno. No incluyas información de alérgenos: eso lo gestiono yo.`}
+  check="Compara cada descripción con tu ficha técnica. Si aparece un ingrediente que no está en ella, quítalo."
+/>
+
+<PromptBox
+  title="4. Menú del día de la semana, con coherencia"
+  prompt={`Tengo estos productos de temporada y existencias esta semana: [LISTA]. Propón un menú del día de lunes a viernes (primero, segundo y postre por día) con platos variados: nunca el mismo producto principal dos días seguidos, al menos una opción vegetariana al día y un coste de materia prima razonable por plato. Marca con [CALCULAR COSTE] el precio estimado de cada plato: no inventes cifras. Pensado para cocina de [N] personas.`}
+  check="Que la cocina pueda ejecutarlo en la práctica y que calcules tú los costes con tus precios reales."
+/>
+
+## Reservas y operativa
+
+<PromptBox
+  title="5. Respuestas tipo a reservas por WhatsApp o email"
+  prompt={`Prepara 5 plantillas de respuesta para mi restaurante [TIPO] a: 1) reserva confirmada, 2) no hay mesa a la hora pedida (ofrece dos alternativas), 3) grupo de más de [N] personas (pide datos y condiciones), 4) cambio de hora, 5) cancelación. Máximo 40 palabras cada una, tono amable y directo. Variables entre corchetes: [NOMBRE], [FECHA], [HORA], [PERSONAS]. Para el caso 3 incluye "[CONDICIONES QUE APLICAMOS]" para que yo las complete.`}
+  check="Que las condiciones de grupos y cancelaciones sean las que de verdad aplicas."
+/>
+
+<PromptBox
+  title="6. Política de cancelaciones y no-shows (borrador)"
+  prompt={`Redacta una política de cancelación de reservas para [TIPO DE LOCAL] con estas reglas reales: [REGLAS: por ejemplo, avisar con X horas de antelación; para grupos de más de N personas se pide señal]. Quiero un texto de máximo 120 palabras, claro y amable, para la web y para incluir en la confirmación de reserva. No incluyas cifras ni cobros que no te haya indicado.`}
+  check="Si vas a cobrar una señal o una penalización, que lo revise tu asesoría. Debe estar claro antes de reservar."
+/>
+
+## Redes sociales
+
+<PromptBox
+  title="7. Publicación a partir de algo real del día"
+  prompt={`Soy [LOCAL: tipo, barrio, ciudad]. Hoy ha pasado esto en mi local: [HECHO REAL: llegó producto de temporada, plato nuevo, evento, cambio de horario]. Dame 2 versiones de publicación para [INSTAGRAM/FACEBOOK] de máximo 60 palabras, con gancho en la primera línea y una llamada a la acción suave (reservar o venir). Sin frases hechas como "te esperamos con los brazos abiertos". No inventes datos, premios ni ofertas.`}
+  check="Que el hecho sea cierto y el horario o la reserva que mencionas, correctos."
+/>
+
+## Cuándo un prompt no basta
+
+| Tarea que repites | Qué hace ChatGPT | Qué hace una herramienta |
+|---|---|---|
+| Contestar las mismas dudas de la web | Redacta las respuestas | Las contesta a cualquier hora ([chatbot](/automatizacion/como-crear-un-chatbot-para-tu-web-con-tidio)) |
+| Llevar el control de ventas | Redacta el resumen | Registra cobros y facturas ([facturación](/facturacion/mejores-software-facturacion-pymes)) |
+| Tener la web del local | Redacta los textos | Aloja y mantiene la web ([hosting](/hosting/mejor-hostinger-para-pymes)) |
+
+## Guías de la serie
+
+- [Prompts de ChatGPT para pymes: la guía principal](/prompts/prompts-chatgpt-para-pymes)
+- [Prompts de ChatGPT para marketing y reseñas](/prompts/prompts-chatgpt-marketing-resenas-redes-pymes)
+- [Prompts de ChatGPT para atención al cliente](/prompts/prompts-chatgpt-atencion-cliente-pymes)
+
+## Preguntas frecuentes
+
+### ¿Puedo pedirle a ChatGPT que me diga los alérgenos de un plato?
+
+No. Debes obtenerlos de las fichas técnicas y de la información de tus proveedores y ofrecerlos a tus clientes de forma fiable. Una respuesta de IA puede equivocarse, y el error lo pagan tus clientes y tú.
+
+### ¿Sirve para traducir la carta a otros idiomas?
+
+Sirve para un primer borrador, pero conviene que lo revise alguien que hable bien el idioma. Los nombres de platos y los términos gastronómicos son donde más se equivoca.
+
+### ¿Cómo evito que las respuestas a reseñas suenen todas iguales?
+
+Menciona siempre algo concreto de la reseña, pide que no repita estructuras y lee cada respuesta antes de publicarla.
+
+### ¿Puedo usarlo para comunicar vacaciones o cierres?
+
+Sí. Dale las fechas reales y el canal donde lo vas a publicar, y pídele versiones cortas para la puerta, la web y las redes.
+
+---
+
+*Los prompts son ejemplos para adaptar; el resultado depende del asistente que uses. Este artículo no contiene asesoramiento legal ni sanitario: la información de alérgenos y las obligaciones de tu actividad debes consultarlas con tu asesoría y con las autoridades competentes. Última revisión: noviembre 2026.*

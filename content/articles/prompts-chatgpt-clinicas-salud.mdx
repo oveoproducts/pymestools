@@ -1,0 +1,114 @@
+---
+title: "Prompts de ChatGPT para clínicas y centros de salud: 6 prompts"
+slug: "prompts-chatgpt-clinicas-salud"
+category: "prompts"
+description: "6 prompts de ChatGPT en español para clínicas, fisioterapia y centros de bienestar: citas, cancelaciones, textos de servicios, reseñas y encuestas, con avisos sobre datos de salud."
+type: "how-to"
+publishedAt: "2026-11-14T12:00:00.000Z"
+updatedAt: "2026-11-14T12:00:00.000Z"
+tools: []
+keywords:
+  primary: "prompts chatgpt clínicas"
+  secondary:
+    - "chatgpt para clínica dental"
+    - "chatgpt para fisioterapeutas"
+    - "chatgpt recordatorio de cita paciente"
+    - "chatgpt reseñas clínica"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "6 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para clínicas y centros de salud (2026)"
+meta_description: "6 prompts de ChatGPT para clínicas: recordatorios de cita, cancelaciones, textos de servicios, reseñas y encuestas, con avisos sobre datos de salud."
+---
+
+En una clínica pequeña (dental, fisioterapia, psicología, estética, podología), la recepción hace de todo: recordatorios de cita, cancelaciones, dudas de pacientes y respuestas a reseñas. Un asistente de IA acelera esos textos, pero aquí hay una línea roja: los datos de salud son una categoría especial en la normativa de protección de datos, y publicar un texto con promesas sanitarias tiene sus reglas.
+
+Estos 6 prompts evitan ambas cosas: no necesitan ningún dato de pacientes y no prometen resultados. La fórmula común está en la [guía principal de prompts para pymes](/prompts/prompts-chatgpt-para-pymes), y las reseñas tienen más ejemplos en la guía de [marketing y reseñas](/prompts/prompts-chatgpt-marketing-resenas-redes-pymes).
+
+## Resumen rápido
+
+- **Para qué sirve:** recordatorios, políticas de citas, textos de servicios y respuestas a reseñas.
+- **Lo que nunca debes pegar:** nombres de pacientes, diagnósticos, tratamientos o cualquier dato de salud, ni siquiera "anonimizado a medias".
+- **Lo que nunca debes publicar:** promesas de curación o resultados garantizados. La publicidad sanitaria está regulada.
+- **Textos clínicos:** el consentimiento informado y la información al paciente los redacta y revisa un profesional.
+
+<Callout type="warning">
+No pegues datos de pacientes en un asistente de IA, ni siquiera por comodidad. Los datos de salud tienen una protección reforzada. Usa solo texto genérico y marcadores como [PACIENTE] o [FECHA], y rellena los datos reales en tu sistema de gestión.
+</Callout>
+
+## Citas y recepción
+
+<PromptBox
+  title="1. Recordatorio de cita por WhatsApp o SMS"
+  prompt={`Redacta 3 versiones de recordatorio de cita para [TIPO DE CLÍNICA] de máximo 35 palabras: una breve, una más cálida y una que pida confirmar o cancelar. Variables: [NOMBRE], [FECHA], [HORA], [PROFESIONAL]. Incluye la dirección [DIRECCIÓN] y cómo cancelar o cambiar la cita. No menciones el motivo de la visita ni ningún dato de salud.`}
+  check="Que el mensaje no revele el motivo de la cita. Basta con la fecha, la hora y el lugar."
+/>
+
+<PromptBox
+  title="2. Política de cancelación y ausencias (borrador)"
+  prompt={`Redacta la política de cancelación de citas de mi [TIPO DE CLÍNICA] en máximo 130 palabras, con estas reglas reales: aviso con [HORAS] de antelación, qué ocurre si no se avisa [CONSECUENCIA REAL], y cómo cambiar la cita [CÓMO]. Tono amable y claro, pensado para mostrarse en la web y al reservar. No incluyas cobros o penalizaciones que no te haya indicado.`}
+  check="Si aplicas algún cobro por ausencia, hazlo revisar por tu asesoría y que figure antes de reservar."
+/>
+
+<PromptBox
+  title="3. Respuestas a preguntas frecuentes de recepción"
+  prompt={`Redacta respuestas de máximo 45 palabras a estas preguntas frecuentes de pacientes de mi [TIPO DE CLÍNICA]: [LISTA: horarios, cómo pedir cita, formas de pago, qué traer a la primera visita, parking]. Datos reales: [DATOS]. Tono cercano y claro. No des información clínica ni consejos médicos: si la pregunta es clínica, la respuesta debe derivar a una consulta con el profesional.`}
+  check="Que ninguna respuesta dé indicaciones clínicas. Para eso está el profesional."
+/>
+
+## Comunicación y reputación
+
+<PromptBox
+  title="4. Texto de un servicio sin promesas sanitarias"
+  prompt={`Redacta la descripción web de este servicio de mi [TIPO DE CLÍNICA]: [SERVICIO]. Datos reales: en qué consiste [DESCRIPCIÓN], quién lo realiza [PROFESIONAL Y TITULACIÓN], duración [DURACIÓN], para quién puede ser adecuado [PERFIL]. Máximo 120 palabras, lenguaje claro, sin prometer curación, resultados ni plazos, sin comparaciones con otras clínicas y sin "el mejor". Termina con una invitación a pedir una primera valoración.`}
+  check="Que un profesional de la clínica revise el texto y que cumpla las normas de publicidad sanitaria de tu comunidad."
+/>
+
+<PromptBox
+  title="5. Responder a una reseña sin revelar nada del paciente"
+  prompt={`Mi clínica ha recibido esta reseña: "[TEXTO SIN EL NOMBRE]". Redacta una respuesta pública de máximo 60 palabras que agradezca el comentario, no confirme ni niegue que la persona es paciente, no mencione ningún tratamiento ni dato de salud y ofrezca continuar la conversación en privado por [CANAL]. Tono sereno. Si la reseña es negativa, no te defiendas con detalles del caso.`}
+  check="Que la respuesta no confirme que esa persona es paciente. Hacerlo ya puede revelar un dato de salud."
+/>
+
+<PromptBox
+  title="6. Encuesta breve de satisfacción"
+  prompt={`Diseña una encuesta de satisfacción de 5 preguntas para pacientes de mi [TIPO DE CLÍNICA]: puntualidad, trato, claridad de las explicaciones, facilidad para pedir cita y una pregunta abierta para sugerencias. Escala del 1 al 5 y un texto de introducción de 30 palabras que explique que es anónima y para qué la usamos. No preguntes datos de salud, diagnósticos ni datos personales.`}
+  check="Que la encuesta sea de verdad anónima y que informes del tratamiento de los datos que recojas."
+/>
+
+## Cuándo un prompt no basta
+
+| Tarea que repites | Qué hace ChatGPT | Qué hace una herramienta |
+|---|---|---|
+| Agenda y recordatorios automáticos | Redacta el texto | Envía el recordatorio y gestiona la agenda (software de citas con tratamiento de datos de salud adecuado) |
+| Tener la web de la clínica | Redacta los textos | Aloja y mantiene la web ([hosting para clínicas](/hosting/mejor-hostinger-para-clinicas)) |
+| Facturar a pacientes | Redacta los conceptos | Emite las facturas ([facturación](/facturacion/mejores-software-facturacion-pymes)) |
+
+## Guías de la serie
+
+- [Prompts de ChatGPT para pymes: la guía principal](/prompts/prompts-chatgpt-para-pymes)
+- [Prompts de ChatGPT para atención al cliente](/prompts/prompts-chatgpt-atencion-cliente-pymes)
+- [Prompts de ChatGPT para marketing y reseñas](/prompts/prompts-chatgpt-marketing-resenas-redes-pymes)
+
+## Preguntas frecuentes
+
+### ¿Puedo usar ChatGPT con datos de mis pacientes?
+
+No. Los datos de salud tienen una protección especial y no debes introducirlos en asistentes de IA. Usa solo texto genérico y marcadores.
+
+### ¿Puedo pedir que redacte un consentimiento informado?
+
+No lo uses como documento final. El consentimiento informado lo redacta y valida un profesional y, si procede, tu asesoría jurídica.
+
+### ¿Puedo publicar antes y después de un tratamiento?
+
+Eso tiene reglas específicas de publicidad sanitaria y de protección de datos. Consúltalo con tu colegio profesional y tu asesoría antes de publicar.
+
+### ¿Sirve para contestar consultas clínicas de pacientes?
+
+No. Una respuesta clínica debe darla un profesional. Usa el asistente solo para redactar comunicaciones administrativas.
+
+---
+
+*Los prompts son ejemplos para adaptar; el resultado depende del asistente que uses. Este artículo no contiene asesoramiento sanitario ni jurídico: consulta tus obligaciones con tu colegio profesional y tu asesoría. Última revisión: noviembre 2026.*

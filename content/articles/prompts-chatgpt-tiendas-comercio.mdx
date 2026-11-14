@@ -1,0 +1,129 @@
+---
+title: "Prompts de ChatGPT para tiendas y ecommerce: 7 prompts"
+slug: "prompts-chatgpt-tiendas-comercio"
+category: "prompts"
+description: "7 prompts de ChatGPT en español para tiendas físicas y online: fichas de producto, devoluciones, incidencias de envío, carrito abandonado, campañas de temporada y FAQ."
+type: "how-to"
+publishedAt: "2026-11-14T11:15:00.000Z"
+updatedAt: "2026-11-14T11:15:00.000Z"
+tools: ["tidio"]
+keywords:
+  primary: "prompts chatgpt ecommerce"
+  secondary:
+    - "chatgpt descripciones de producto"
+    - "chatgpt para tienda online"
+    - "chatgpt carrito abandonado"
+    - "chatgpt para comercio local"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "8 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para tiendas y ecommerce (2026)"
+meta_description: "7 prompts de ChatGPT para tiendas y ecommerce: fichas de producto, devoluciones, envíos, carrito abandonado y campañas, con qué revisar antes de publicar."
+---
+
+En una tienda, física u online, se escribe mucho y casi siempre lo mismo: fichas de producto, respuestas a "¿dónde está mi pedido?", políticas de devolución, correos de temporada. Un asistente de IA te da el borrador, pero necesita tus datos reales: qué vendes, qué prometes y qué no.
+
+Estos 7 prompts parten de situaciones reales de comercio en España. La fórmula común está en la [guía principal de prompts para pymes](/prompts/prompts-chatgpt-para-pymes), y los correos tienen más ejemplos en la guía de [email marketing](/prompts/prompts-chatgpt-email-marketing-pymes).
+
+## Resumen rápido
+
+- **Para qué sirve:** fichas de producto, respuestas a clientes, correos de recuperación y campañas.
+- **Lo que decide la calidad:** las características reales del producto y tus condiciones reales de envío y devolución.
+- **Lo que nunca debes dejar que invente:** medidas, materiales, compatibilidades, plazos de entrega y garantías.
+- **Condiciones legales:** las políticas de devolución y garantía debe revisarlas tu asesoría.
+
+<Callout type="warning">
+Una ficha con una medida, material o compatibilidad inventados genera devoluciones y reclamaciones. Dale siempre los datos del fabricante y pide que escriba "FALTA DATO" si algo no está.
+</Callout>
+
+## Producto
+
+<PromptBox
+  title="1. Ficha de producto con datos reales"
+  prompt={`Redacta la descripción de este producto para mi tienda online de [TIPO DE TIENDA]: [NOMBRE]. Datos del fabricante (no añadas nada que no esté aquí): [MATERIALES, MEDIDAS, COLORES, USO, CUIDADOS]. Estructura: una frase de beneficio, 3 viñetas de características y una línea de a quién va dirigido. Máximo 90 palabras, sin superlativos ni "calidad premium". Si falta algún dato importante (medidas, material), escribe "FALTA DATO" en lugar de suponerlo.`}
+  check="Compara cada cifra y material con la hoja del fabricante antes de publicar."
+/>
+
+<PromptBox
+  title="2. Variaciones de una ficha para distintas tallas o colores"
+  prompt={`Tengo esta ficha base: [FICHA]. El producto existe en estas variantes: [LISTA DE VARIANTES CON LA ÚNICA DIFERENCIA REAL DE CADA UNA]. Genera el texto de cada variante cambiando solo lo que realmente es distinto, sin repetir frases enteras entre variantes ni inventar diferencias. Si dos variantes solo cambian de color, que el texto lo diga con una sola frase.`}
+  check="Que no aparezcan diferencias que no existen. Evita también textos casi idénticos en decenas de páginas."
+/>
+
+## Pedidos, envíos y devoluciones
+
+<PromptBox
+  title="3. Respuesta a un pedido retrasado"
+  prompt={`Un cliente pregunta por su pedido [NÚMERO], que debía llegar el [FECHA] y no ha llegado. Según el transportista [TRANSPORTISTA], el estado actual es [ESTADO REAL]. Redacta una respuesta de máximo 90 palabras: reconoce el retraso, cuenta el estado real sin inventar plazos, indica qué vamos a hacer ([ACCIÓN REAL: reclamar al transportista, reenviar, reembolsar]) y cuándo le escribiremos de nuevo. Tono cercano, sin tecnicismos.`}
+  check="Que no prometas una fecha que no controlas, y que la acción sea una que de verdad vas a hacer."
+/>
+
+<PromptBox
+  title="4. Texto de la política de devoluciones"
+  prompt={`Redacta la política de devoluciones de mi tienda online [TIPO] en lenguaje claro, máximo 200 palabras, con estas condiciones reales: plazo [PLAZO QUE APLICAS], estado en que debe estar el producto [ESTADO], quién paga el envío de la devolución [QUIÉN], cómo se devuelve el dinero y en cuánto tiempo [PLAZO]. Estructura con pasos numerados. No añadas condiciones que no te haya dado ni cites artículos de ninguna ley.`}
+  check="Hazlo revisar con tu asesoría: en las compras a distancia a consumidores existe un derecho legal de desistimiento y tu política no puede limitarlo."
+/>
+
+## Recuperación y campañas
+
+<PromptBox
+  title="5. Email de carrito abandonado (secuencia de dos)"
+  prompt={`Escribe una secuencia de 2 emails para clientes que dejaron productos en el carrito de mi tienda [TIPO]. Email 1, a las 2 horas: recordatorio útil con el producto [PRODUCTO] y la ayuda disponible. Email 2, a las 48 horas: resolver dudas típicas ([DUDAS REALES: tallas, envío, devoluciones]) sin presionar. Máximo 90 palabras cada uno, asunto de menos de 45 caracteres. No inventes escasez ("quedan pocas unidades") ni descuentos que no vaya a dar.`}
+  check="Que solo envíes estos correos a quien te ha dado su consentimiento para recibir comunicaciones, según tu política de privacidad."
+/>
+
+<PromptBox
+  title="6. Campaña de temporada (rebajas, Black Friday, Navidad)"
+  prompt={`Planifica una campaña de [CAMPAÑA] para mi tienda [TIPO, CLIENTE HABITUAL] entre [FECHA INICIO] y [FECHA FIN]. Oferta real: [OFERTA CONCRETA Y LÍMITES]. Dame un calendario con: qué se comunica cada día o semana, canal (email, redes, web), mensaje en una frase y una acción medible. Máximo 3 comunicaciones por semana por canal. No inventes descuentos, plazos ni urgencia que no sean reales.`}
+  check="Que la oferta y su fecha límite sean las reales. Los descuentos deben cumplir la normativa de precios de tu actividad."
+/>
+
+## Atención al cliente
+
+<PromptBox
+  title="7. FAQ de la tienda a partir de tus consultas reales"
+  prompt={`Estas son las preguntas que más me hacen los clientes: [LISTA DE 8-10 PREGUNTAS REALES]. Mis condiciones son: envío [CONDICIONES REALES], plazos [PLAZOS], devoluciones [CONDICIONES], pago [MÉTODOS]. Redacta las respuestas de la sección de preguntas frecuentes de mi web: máximo 50 palabras cada una, tono claro, sin jerga. Usa solo mis condiciones y marca "FALTA DATO" si algo no está definido.`}
+  check="Que cada respuesta coincida con lo que realmente aplica tu equipo. Una FAQ que no se cumple provoca reclamaciones."
+  toolName="Tidio"
+  toolHref="/automatizacion/como-crear-un-chatbot-para-tu-web-con-tidio"
+  toolNote="un chatbot responde esas preguntas en tu web a cualquier hora, usando las respuestas que tú apruebes"
+/>
+
+<AffiliateLink programSlug="tidio" articleSlug="prompts-chatgpt-tiendas-comercio" label="Probar Tidio gratis" />
+
+## Cuándo un prompt no basta
+
+| Tarea que repites | Qué hace ChatGPT | Qué hace una herramienta |
+|---|---|---|
+| Responder las mismas dudas | Redacta las respuestas | Las contesta en tu web a cualquier hora ([chatbot](/automatizacion/como-crear-un-chatbot-para-tu-web-con-tidio)) |
+| Enviar el correo de carrito abandonado | Redacta el texto | Lo envía automáticamente en el momento oportuno ([email marketing](/email-marketing/mejores-email-marketing-pymes-espana)) |
+| Alojar la tienda | Redacta los textos | Aloja y mantiene la web ([hosting para ecommerce](/hosting/mejor-hostinger-para-ecommerce)) |
+
+## Guías de la serie
+
+- [Prompts de ChatGPT para pymes: la guía principal](/prompts/prompts-chatgpt-para-pymes)
+- [Prompts de ChatGPT para atención al cliente](/prompts/prompts-chatgpt-atencion-cliente-pymes)
+- [Prompts de ChatGPT para marketing y reseñas](/prompts/prompts-chatgpt-marketing-resenas-redes-pymes)
+
+## Preguntas frecuentes
+
+### ¿Puedo generar cientos de fichas de producto de golpe?
+
+Puedes, pero no conviene publicarlas sin revisar. Las fichas casi idénticas entre sí aportan poco a tus clientes y a Google. Dedica más tiempo a tus productos principales y deja datos reales en el resto.
+
+### ¿ChatGPT puede decirme los plazos de envío?
+
+No. No conoce a tu transportista ni tu stock. Dale tus plazos reales y pídele que no añada ninguno.
+
+### ¿Es obligatorio tener una política de devoluciones?
+
+En las ventas a consumidores existen obligaciones sobre la información previa y el desistimiento. Consulta con tu asesoría qué debe figurar en tu caso: este artículo no es asesoramiento legal.
+
+### ¿Puedo pegar los datos de mis clientes para que personalice el mensaje?
+
+Mejor no. Usa marcadores como [NOMBRE] y [PEDIDO] y rellénalos en tu herramienta de correo.
+
+---
+
+*Los prompts son ejemplos para adaptar; el resultado depende del asistente que uses. Este artículo contiene un enlace de afiliado: si contratas a través de él, recibimos una comisión sin coste adicional para ti. No contiene asesoramiento legal. Última revisión: noviembre 2026.*

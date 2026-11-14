@@ -1,0 +1,125 @@
+---
+title: "Prompts de ChatGPT para inmobiliarias: 7 prompts"
+slug: "prompts-chatgpt-inmobiliarias"
+category: "prompts"
+description: "7 prompts de ChatGPT en español para inmobiliarias y agentes: anuncios, captación de propietarios, calificar compradores, seguimiento de visitas y objeciones, con qué verificar."
+type: "how-to"
+publishedAt: "2026-11-14T11:30:00.000Z"
+updatedAt: "2026-11-14T11:30:00.000Z"
+tools: ["zoho-crm"]
+keywords:
+  primary: "prompts chatgpt inmobiliarias"
+  secondary:
+    - "chatgpt anuncio inmueble"
+    - "chatgpt para agentes inmobiliarios"
+    - "chatgpt captación propietarios"
+    - "chatgpt seguimiento compradores"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para inmobiliarias (2026)"
+meta_description: "7 prompts de ChatGPT para inmobiliarias: anuncios, captación de propietarios, calificar compradores y seguimiento de visitas, con qué verificar antes de enviar."
+---
+
+Una inmobiliaria vive de escribir bien y rápido: el anuncio, el mensaje al propietario, el seguimiento tras la visita, la respuesta cuando el comprador dice "me parece caro". Un asistente de IA acelera el borrador, pero en este sector el riesgo está en lo que dice de más: una característica inventada en un anuncio puede acabar en una reclamación.
+
+Estos 7 prompts parten de situaciones reales del día a día de una agencia en España. La fórmula común está en la [guía principal de prompts para pymes](/prompts/prompts-chatgpt-para-pymes), y los de seguimiento tienen más ejemplos en la guía de [prompts para ventas](/prompts/prompts-chatgpt-ventas-pymes).
+
+## Resumen rápido
+
+- **Para qué sirve:** anuncios, mensajes a propietarios y compradores, resúmenes de visitas y guiones de llamada.
+- **Lo que nunca debe inventar:** superficie, estado, orientación, gastos, cargas, certificados ni precio.
+- **Obligaciones del anuncio:** consulta con tu asesoría o colegio profesional qué datos debe incluir un anuncio en tu comunidad, por ejemplo la calificación energética.
+- **Datos personales:** no pegues nombres, DNI ni datos de propietarios o compradores. Usa [PROPIETARIO] y [COMPRADOR].
+
+<Callout type="warning">
+Un anuncio con datos inexactos puede dar lugar a reclamaciones. Escribe cada anuncio con la ficha del inmueble delante y verifica cada cifra y cada característica antes de publicar.
+</Callout>
+
+## Anuncios y captación
+
+<PromptBox
+  title="1. Anuncio de un inmueble con datos reales"
+  prompt={`Redacta un anuncio para un [TIPO DE INMUEBLE] en [ZONA, CIUDAD]. Datos verificados (no añadas nada más): superficie [M2 ÚTILES/CONSTRUIDOS], habitaciones [N], baños [N], planta [N] con/sin ascensor, estado [ESTADO REAL], orientación [ORIENTACIÓN], extras [EXTRAS REALES], precio [PRECIO]. Estructura: titular de menos de 70 caracteres, 3 frases de descripción y una lista corta de puntos fuertes. Sin superlativos ni expresiones como "oportunidad única" o "no te lo pierdas". Si falta algún dato importante, escribe "FALTA DATO".`}
+  check="Compara cada dato con la ficha y la nota simple. Verifica además los datos obligatorios en anuncios que exija tu comunidad."
+/>
+
+<PromptBox
+  title="2. Primer mensaje a un propietario que quiere vender"
+  prompt={`Soy [CARGO] de una inmobiliaria en [ZONA]. Voy a escribir a un propietario de un inmueble en [ZONA] que parece estar vendiéndolo por su cuenta. Redacta un mensaje de máximo 90 palabras: respetuoso, sin dar a entender que su anuncio es malo, que explique en una frase qué hacemos distinto ([DIFERENCIA REAL: por ejemplo, gestión de visitas, tasación con datos de la zona]) y proponga una conversación de 15 minutos. Sin presión ni promesas de plazos de venta.`}
+  check="Que no prometas un precio ni un plazo de venta que no puedas garantizar. Y que cumplas la normativa de comunicaciones comerciales."
+/>
+
+<PromptBox
+  title="3. Explicar la valoración de un inmueble al propietario"
+  prompt={`Voy a presentar a un propietario una valoración de su [TIPO DE INMUEBLE] en [ZONA]. Datos que he reunido: [INMUEBLES COMPARABLES CON PRECIO Y SUPERFICIE, SIN DATOS PERSONALES], rango recomendado [RANGO], motivos del rango [MOTIVOS REALES]. Redacta un guion de 5 puntos para explicarlo en la reunión con lenguaje claro: de dónde sale el rango, qué lo sube, qué lo baja y qué pasa si se sale del rango. No inventes comparables ni cifras que no te haya dado.`}
+  check="Que los comparables sean reales y verificables. Es lo primero que el propietario cuestionará."
+/>
+
+## Compradores y visitas
+
+<PromptBox
+  title="4. Preguntas para calificar a un comprador"
+  prompt={`Prepara un guion de 8 preguntas para la primera llamada con una persona que quiere comprar vivienda en [ZONA]. Quiero saber: qué busca, para cuándo, si vende otra vivienda antes, cómo piensa financiarlo (sin pedir datos económicos personales detallados), qué es imprescindible y qué descartaría. Preguntas abiertas, tono amable, y una última pregunta para acordar el siguiente paso. Evita preguntas que puedan resultar discriminatorias.`}
+  check="Que no pidas datos personales innecesarios. Basta saber su situación general para orientarlo."
+  toolName="Zoho CRM"
+  toolHref="/crm/mejor-zoho-crm-para-inmobiliarias"
+  toolNote="un CRM guarda las respuestas de cada comprador y recuerda cuándo volver a llamar; el prompt solo redacta el guion"
+/>
+
+<PromptBox
+  title="5. Seguimiento tras una visita"
+  prompt={`Hoy [COMPRADOR] ha visitado [INMUEBLE]. Lo que comentó: [COMENTARIOS REALES: le gustó X, le preocupó Y]. Redacta un mensaje de seguimiento de máximo 80 palabras para enviar mañana: agradece la visita, responde a lo que le preocupó con información real que te doy ([INFORMACIÓN REAL]) y propone un siguiente paso concreto. Sin presionar y sin decir que hay otras personas interesadas, salvo que sea cierto.`}
+  check="Que no inventes competencia por el inmueble ni plazos. Lo cierto es lo único que sostiene tu credibilidad."
+/>
+
+<PromptBox
+  title="6. Respuesta a 'el precio es alto'"
+  prompt={`Un comprador me dice que el precio de [INMUEBLE] es alto. Tengo estos datos reales: precio [PRECIO], comparables de la zona [COMPARABLES REALES], estado y extras [DATOS]. Dame 3 respuestas de máximo 60 palabras: una que pregunte con qué lo compara, otra que explique el valor con datos y otra que sugiera, si el propietario está abierto, una oferta razonada por escrito. No inventes comparables ni digas que el propietario aceptará una oferta si no me lo ha dicho.`}
+  check="Que no negocies en nombre del propietario sin su autorización."
+/>
+
+<PromptBox
+  title="7. Resumen de una semana de actividad para el propietario"
+  prompt={`Redacta un informe corto para un propietario sobre la semana de comercialización de [INMUEBLE]: visitas [N], consultas [N], comentarios recurrentes [COMENTARIOS REALES], y recomendación [SUGERENCIA REAL: ajustar precio, mejorar fotos, esperar]. Máximo 150 palabras, tono honesto y constructivo, con una acción propuesta para la semana siguiente. No exageres el interés ni escondas los comentarios negativos.`}
+  check="Que los números sean los de tu registro de actividad. La confianza del propietario depende de que sean ciertos."
+/>
+
+<AffiliateLink programSlug="zoho-crm" articleSlug="prompts-chatgpt-inmobiliarias" label="Probar Zoho CRM gratis" />
+
+## Cuándo un prompt no basta
+
+| Tarea que repites | Qué hace ChatGPT | Qué hace una herramienta |
+|---|---|---|
+| Seguimiento de compradores | Redacta los mensajes | Guarda el historial y programa las tareas ([CRM](/crm/mejor-zoho-crm-para-inmobiliarias)) |
+| Facturar comisiones | Redacta el concepto | Emite las facturas con tus datos fiscales ([facturación](/facturacion/mejores-software-facturacion-pymes)) |
+| Contestar consultas de la web | Redacta las respuestas | Las atiende a cualquier hora ([chatbot](/automatizacion/como-crear-un-chatbot-para-tu-web-con-tidio)) |
+
+## Guías de la serie
+
+- [Prompts de ChatGPT para pymes: la guía principal](/prompts/prompts-chatgpt-para-pymes)
+- [Prompts de ChatGPT para ventas](/prompts/prompts-chatgpt-ventas-pymes)
+- [Zoho CRM para inmobiliarias](/crm/mejor-zoho-crm-para-inmobiliarias)
+
+## Preguntas frecuentes
+
+### ¿Puedo usar ChatGPT para tasar un inmueble?
+
+No como herramienta de tasación. No conoce el mercado concreto de tu zona ni los precios reales de venta. Úsalo para explicar y presentar una valoración que hayas hecho con datos fiables.
+
+### ¿Puedo pegar la ficha completa del inmueble con la dirección?
+
+Evita datos que identifiquen al propietario. Con la zona, la tipología y las características basta para el anuncio.
+
+### ¿Qué hago con las fotos y la descripción de un barrio?
+
+Para la descripción del barrio, dale datos reales (transporte, servicios, comercios) y pídele que no añada ninguno. Verifica cada uno antes de publicarlo.
+
+### ¿Cómo evito que el anuncio suene a todos los demás?
+
+Dale detalles concretos del inmueble (la luz de las mañanas, la distribución, la calle) y pídele que evite las expresiones hechas.
+
+---
+
+*Los prompts son ejemplos para adaptar; el resultado depende del asistente que uses. Este artículo contiene un enlace de afiliado: si contratas a través de él, recibimos una comisión sin coste adicional para ti. No contiene asesoramiento legal: consulta las obligaciones de tu actividad con tu asesoría o colegio profesional. Última revisión: noviembre 2026.*

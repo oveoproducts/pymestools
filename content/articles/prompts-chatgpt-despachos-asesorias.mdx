@@ -1,0 +1,127 @@
+---
+title: "Prompts de ChatGPT para despachos y asesorías: 7 prompts"
+slug: "prompts-chatgpt-despachos-asesorias"
+category: "prompts"
+description: "7 prompts de ChatGPT en español para gestorías, asesorías y despachos: pedir documentación, explicar conceptos a clientes, honorarios, onboarding y reclamar pagos, con qué revisar."
+type: "how-to"
+publishedAt: "2026-11-14T11:45:00.000Z"
+updatedAt: "2026-11-14T11:45:00.000Z"
+tools: ["zoho-crm"]
+keywords:
+  primary: "prompts chatgpt asesorías"
+  secondary:
+    - "chatgpt para gestorías"
+    - "chatgpt para despachos profesionales"
+    - "chatgpt pedir documentación clientes"
+    - "chatgpt honorarios asesoría"
+status: "published"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+meta_title: "Prompts de ChatGPT para despachos y asesorías (2026)"
+meta_description: "7 prompts de ChatGPT para gestorías y despachos: pedir documentación, explicar conceptos, honorarios, onboarding de clientes y cobros, con qué revisar."
+---
+
+Un despacho o una asesoría pasa media vida pidiendo cosas a sus clientes: documentación, justificantes, firmas, datos que faltan. Y la otra mitad, explicando con paciencia por qué hace falta. Un asistente de IA redacta el primer borrador de esos mensajes en segundos, pero en este sector las reglas son estrictas: el secreto profesional y la protección de datos mandan sobre cualquier comodidad.
+
+Estos 7 prompts son para la comunicación y la organización del despacho, no para el criterio profesional. La fórmula común está en la [guía principal de prompts para pymes](/prompts/prompts-chatgpt-para-pymes), y los de facturación y administración tienen su [guía propia](/prompts/prompts-chatgpt-administracion-facturacion-autonomos).
+
+## Resumen rápido
+
+- **Para qué sirve:** pedir documentación, explicar conceptos de forma sencilla, redactar propuestas de honorarios y preparar la bienvenida de clientes nuevos.
+- **Para qué no sirve:** decidir criterios fiscales, laborales o jurídicos, ni calcular obligaciones de un cliente. Eso es tu trabajo y tu responsabilidad.
+- **Datos de clientes:** nunca pegues datos identificables ni documentos reales. Usa [CLIENTE], [NIF] y [IMPORTE].
+- **Todo lo que salga firmado por el despacho** lo revisa un profesional antes de enviarse.
+
+<Callout type="warning">
+Los datos de tus clientes están protegidos por el secreto profesional y por la normativa de protección de datos. No los pegues en un asistente de IA. Trabaja con casos ficticios o con marcadores y completa los datos reales en tu sistema.
+</Callout>
+
+## Comunicación con clientes
+
+<PromptBox
+  title="1. Email para pedir documentación pendiente"
+  prompt={`Soy [CARGO] de un despacho de [TIPO: gestoría, asesoría laboral, abogados] en [CIUDAD]. Redacta un email de máximo 120 palabras para pedir a un cliente [TIPO DE CLIENTE: autónomo, pyme] esta documentación: [LISTA CONCRETA]. Necesitamos recibirla antes de [FECHA] porque [MOTIVO REAL]. Tono cordial, con la lista numerada, una frase que explique por qué es necesaria y cómo enviarla de forma segura por [CANAL SEGURO]. No amenaces con consecuencias que no consten.`}
+  check="Que el motivo y la fecha sean ciertos y que el canal que indicas sea seguro para documentos sensibles."
+/>
+
+<PromptBox
+  title="2. Explicar un concepto a un cliente sin formación"
+  prompt={`Explica en lenguaje claro, en máximo 120 palabras y a una persona sin conocimientos técnicos, este concepto: [CONCEPTO: por ejemplo, la diferencia entre factura rectificativa y abono]. Usa un ejemplo cotidiano, evita términos técnicos sin explicar y termina con la pregunta que el cliente suele hacer después. Esto es solo un borrador de apoyo: no incluyas plazos, importes ni artículos de ninguna norma.`}
+  check="Que un profesional del despacho valide la explicación y añada los plazos y condiciones vigentes."
+/>
+
+<PromptBox
+  title="3. Recordatorio de un trámite próximo a varios clientes"
+  prompt={`Redacta una plantilla de aviso para clientes de [TIPO] sobre este trámite: [TRÁMITE] con vencimiento [FECHA CONFIRMADA POR NOSOTROS]. Quiero tres versiones: email breve de 70 palabras, mensaje de WhatsApp de 40 palabras y una versión para la web o redes de 50 palabras. Incluye qué debe hacer el cliente, hasta cuándo y cómo contactar con nosotros. No cites cifras ni artículos: los añadiré yo tras revisarlos.`}
+  check="Confirma la fecha y las condiciones del trámite en la fuente oficial antes de enviar el aviso."
+/>
+
+## Honorarios y relación
+
+<PromptBox
+  title="4. Propuesta de honorarios clara"
+  prompt={`Estructura una propuesta de honorarios para [TIPO DE CLIENTE] con estos servicios incluidos: [LISTA]. Honorarios [IMPORTE] [PERIODICIDAD] más IVA. Qué no está incluido: [LISTA]. Plazo de aceptación [PLAZO]. Redacta: resumen de qué hacemos y qué no, cuota, cómo se facturan los servicios adicionales y condiciones de baja. Lenguaje claro, máximo una página, sin promesas de resultado.`}
+  check="Que las condiciones y el alcance coincidan con tu hoja de encargo profesional real."
+/>
+
+<PromptBox
+  title="5. Reclamar un pago atrasado con tacto"
+  prompt={`Un cliente tiene pendiente el pago de la factura [Nº] de [IMPORTE] con vencimiento [FECHA]. Es un cliente [HISTORIAL: habitual, con buena relación]. Redacta tres versiones de recordatorio de máximo 70 palabras: 1) cordial, 2) más firme con plazo y 3) último aviso antes de [ACCIÓN REAL QUE VAS A TOMAR]. No amenaces con acciones que no vayas a emprender ni cites leyes.`}
+  check="Que la acción que anuncias en el último aviso sea real. Una amenaza vacía te resta credibilidad."
+/>
+
+## Organización
+
+<PromptBox
+  title="6. Proceso de alta de un cliente nuevo"
+  prompt={`Diseña el proceso de alta de un cliente nuevo para un despacho de [TIPO] con [N] personas. Pasos: primera reunión, encargo profesional firmado, documentación a solicitar, datos de contacto y firma de consentimientos, y confirmación de bienvenida. Para cada paso indica quién lo hace (por rol), el plazo y la plantilla que haría falta. Marca con [REVISAR CON PROTECCIÓN DE DATOS] los puntos que afecten al tratamiento de datos de clientes.`}
+  check="Que el consentimiento y la información de protección de datos los revise tu responsable de privacidad o tu asesor."
+  toolName="Zoho CRM"
+  toolHref="/crm/zoho-crm-para-despachos-y-asesorias"
+  toolNote="un CRM registra cada cliente, sus tareas y los plazos; el prompt solo diseña el proceso"
+/>
+
+<PromptBox
+  title="7. Agenda de una reunión anual con un cliente"
+  prompt={`Prepara una agenda de 45 minutos para la reunión anual con un cliente de [TIPO: autónomo, pyme] del despacho. Temas: repaso del año con los datos que yo aporte ([DATOS ANONIMIZADOS O ESTIMADOS]), plazos y obligaciones del próximo año (los rellenaré yo tras revisarlos), dudas del cliente y próximos pasos. Incluye 3 preguntas para que el cliente piense antes de la reunión. No inventes cifras ni plazos.`}
+  check="Que las cifras y obligaciones que cuentes en la reunión las hayas verificado tú."
+/>
+
+<AffiliateLink programSlug="zoho-crm" articleSlug="prompts-chatgpt-despachos-asesorias" label="Probar Zoho CRM gratis" />
+
+## Cuándo un prompt no basta
+
+| Tarea que repites | Qué hace ChatGPT | Qué hace una herramienta |
+|---|---|---|
+| Seguir a cada cliente y sus plazos | Redacta los avisos | Registra clientes, tareas y vencimientos ([CRM](/crm/zoho-crm-para-despachos-y-asesorias)) |
+| Facturar los honorarios | Redacta el concepto | Emite y controla las facturas ([facturación](/facturacion/mejores-software-facturacion-pymes)) |
+| Contestar consultas frecuentes | Redacta las respuestas | Las atiende en tu web ([chatbot](/automatizacion/como-crear-un-chatbot-para-tu-web-con-tidio)) |
+
+## Guías de la serie
+
+- [Prompts de ChatGPT para pymes: la guía principal](/prompts/prompts-chatgpt-para-pymes)
+- [Prompts de ChatGPT para administración y facturación](/prompts/prompts-chatgpt-administracion-facturacion-autonomos)
+- [Zoho CRM para despachos y asesorías](/crm/zoho-crm-para-despachos-y-asesorias)
+
+## Preguntas frecuentes
+
+### ¿Puedo usar ChatGPT con datos de mis clientes?
+
+No con datos identificables. El secreto profesional y la protección de datos te obligan a mantenerlos bajo control. Trabaja con marcadores y con casos ficticios.
+
+### ¿Puede sustituir a un profesional?
+
+No. Sirve para redactar borradores de comunicaciones y organizar tareas, no para dar criterio fiscal, laboral o jurídico. El criterio es del profesional y su responsabilidad también.
+
+### ¿Cómo lo uso para explicar normas que cambian?
+
+Dale el texto oficial vigente y pídele que lo reformule en lenguaje sencillo, sin añadir nada. Si no le das la fuente, puede darte información desactualizada.
+
+### ¿Qué hago con las plantillas que me genera?
+
+Guárdalas en tu sistema, revísalas una vez y úsalas como base. Revísalas de nuevo cuando cambien las normas.
+
+---
+
+*Los prompts son ejemplos para adaptar; el resultado depende del asistente que uses. Este artículo contiene un enlace de afiliado: si contratas a través de él, recibimos una comisión sin coste adicional para ti. No contiene asesoramiento fiscal, laboral ni jurídico. Última revisión: noviembre 2026.*

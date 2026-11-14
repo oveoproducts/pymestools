@@ -36,6 +36,14 @@ const AREAS = [
   { icon: '🗂️', label: 'Operaciones y reuniones', text: 'Actas, procedimientos, checklists y planes de proyecto.', slug: 'prompts-chatgpt-operaciones-reuniones-pymes' },
 ]
 
+const SECTORS = [
+  { icon: '🍽️', label: 'Restaurantes y bares', text: 'Reseñas, carta, reservas y cancelaciones (sin delegar alérgenos).', slug: 'prompts-chatgpt-restaurantes-hosteleria' },
+  { icon: '🛍️', label: 'Tiendas y ecommerce', text: 'Fichas de producto, devoluciones, envíos y carrito abandonado.', slug: 'prompts-chatgpt-tiendas-comercio' },
+  { icon: '🏠', label: 'Inmobiliarias', text: 'Anuncios, captación, compradores y seguimiento de visitas.', slug: 'prompts-chatgpt-inmobiliarias' },
+  { icon: '⚖️', label: 'Despachos y asesorías', text: 'Documentación, explicaciones a clientes, honorarios y altas.', slug: 'prompts-chatgpt-despachos-asesorias' },
+  { icon: '🩺', label: 'Clínicas y salud', text: 'Citas, cancelaciones y reseñas, sin datos de pacientes.', slug: 'prompts-chatgpt-clinicas-salud' },
+]
+
 const FORMULA = [
   { n: '1', t: 'Rol', d: 'Quién es el asistente: "responsable comercial de una asesoría de 6 personas".' },
   { n: '2', t: 'Contexto', d: 'Qué ha pasado, con datos reales y sin nombres de clientes.' },
@@ -129,6 +137,21 @@ export default async function PromptsHubPage() {
               <div key={area.slug}>{card}</div>
             )
           })}
+        </div>
+      </section>
+
+      <section aria-labelledby="sectores" className="mb-12">
+        <h2 id="sectores" className="text-xl font-bold text-gray-900 mb-4">Prompts por sector</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {SECTORS.filter((x) => bySlug.has(x.slug)).map((x) => (
+            <Link key={x.slug} href={`/prompts/${x.slug}`} className="no-underline">
+              <div className="h-full rounded-xl border border-gray-200 bg-white p-5 transition-colors hover:border-blue-400">
+                <p className="text-2xl mb-1">{x.icon}</p>
+                <p className="font-semibold text-gray-900">{x.label}</p>
+                <p className="mt-1 text-sm text-gray-600">{x.text}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
