@@ -1,0 +1,190 @@
+---
+title: "Cómo conectar Make con Factorial: guía paso a paso"
+slug: "como-conectar-make-con-factorial"
+category: "automatizacion"
+description: "Guía paso a paso para conectar Make con Factorial y automatizar tareas de RRHH sin tocar código. Resultado en menos de 30 minutos, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["make", "factorial"]
+keywords:
+  primary: "como conectar make con factorial"
+  secondary:
+    - "make factorial integracion"
+    - "automatizar factorial make"
+    - "make factorial webhook"
+    - "automatizacion rrhh pymes espana"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Make conectado con Factorial y un escenario activo que ejecuta una acción automática en Factorial cuando ocurre algo en otra herramienta — o al revés. Sin código. El proceso completo lleva entre 20 y 30 minutos si tienes las cuentas preparadas.
+
+Esto es especialmente útil si usas Factorial para gestionar empleados y quieres que eventos de otras herramientas (un formulario, tu CRM, una hoja de cálculo) actualicen datos en Factorial automáticamente.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Make:** El plan gratuito es suficiente para empezar — incluye 1.000 operaciones/mes. Para automatizaciones con volumen real, el plan Core (desde 9 $/mes + IVA; aprox. 8,50 €/mes + IVA según cambio de noviembre 2026) es suficiente para la mayoría de pymes. Puedes usar el trial de 30 días del plan Pro si quieres probar funciones avanzadas.
+- **Cuenta en Factorial:** Necesitas acceso de administrador. El módulo de API de Factorial está disponible en planes de pago — verifica con tu plan actual que tienes acceso a "Configuración de integraciones".
+- **Clave API de Factorial:** La generaremos en el Paso 1. Sin ella, Make no puede hablar con Factorial.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes copiar y pegar texto y navegar por menús, es suficiente. El único paso que puede parecer técnico es pegar la clave API — lo hacemos juntos.
+
+<Callout type="warning">
+**Ojo con el plan de Factorial:** La API de Factorial no está disponible en todos los planes. Si al llegar al Paso 1 no ves la opción "API" en Configuración, contacta con soporte de Factorial para confirmar si tu plan la incluye. No publican el precio de la API por separado — hay que solicitarlo.
+</Callout>
+
+---
+
+## Pasos
+
+### Paso 1: Obtén tu clave API de Factorial
+
+**Qué hacer:** Entra en Factorial con tu cuenta de administrador. En el menú lateral izquierdo, ve a "Configuración" (el icono de engranaje). Dentro de Configuración, busca la sección "Integraciones" o "API". Haz clic en "Generar nuevo token" o "Crear clave API". Ponle un nombre descriptivo — por ejemplo, `Make-Automatizacion` — y guarda la clave que aparece en pantalla.
+
+**Por qué:** Esta clave es la contraseña que Make usará para comunicarse con tu cuenta de Factorial. Sin ella, Make no puede leer ni escribir datos en Factorial.
+
+**Qué verás:** Una cadena de texto larga (tipo `fat_live_xxxxxxxxxxxx`). **Cópiala ahora** y guárdala en un lugar seguro — Factorial no te la vuelve a mostrar completa. Si la pierdes, tendrás que generar una nueva.
+
+**Nota:** Si no encuentras la sección de API, puede que tu plan de Factorial no la incluya. Contacta con su soporte 🇪🇸 — atienden en español por chat y email.
+
+---
+
+### Paso 2: Crea un escenario nuevo en Make
+
+**Qué hacer:** Entra en tu cuenta de Make (make.com). En el panel principal, haz clic en "Create a new scenario" (en español de la interfaz: "Crear un nuevo escenario"). Verás un lienzo en blanco con un círculo en el centro. Haz clic en ese círculo para elegir la primera aplicación del escenario.
+
+**Por qué:** Un escenario en Make es el flujo de automatización. Aquí defines qué desencadena la acción (trigger) y qué ocurre después (acción).
+
+**Qué verás:** Un buscador de aplicaciones. Escribe "Factorial" en el buscador para ver si Make tiene módulo nativo de Factorial.
+
+**Nota:** A fecha de noviembre 2026, Make no tiene un módulo nativo oficial para Factorial en su catálogo estándar. La conexión se hace a través del módulo "HTTP" de Make, que permite llamadas directas a la API de Factorial. Es el método que usamos en esta guía. <!-- VERIFICAR: comprobar si Make ha añadido módulo nativo de Factorial tras actualizaciones recientes -->
+
+---
+
+### Paso 3: Añade el módulo HTTP como trigger o acción
+
+**Qué hacer:** En el buscador de aplicaciones, escribe "HTTP" y selecciona la aplicación "HTTP". Dentro de HTTP, elige el módulo "Make a request" (Hacer una solicitud). Este módulo te permite enviar peticiones directamente a la API de Factorial.
+
+**Por qué:** Al no haber módulo nativo, HTTP es el puente universal. Funciona con cualquier API que use autenticación por token — exactamente como Factorial.
+
+**Qué verás:** Un formulario con campos: URL, Method, Headers, Body. Lo rellenamos en el paso siguiente.
+
+---
+
+### Paso 4: Configura la conexión con la API de Factorial
+
+**Qué hacer:** Rellena el formulario del módulo HTTP con estos datos:
+
+- **URL:** La URL del endpoint de Factorial que quieres usar. Por ejemplo, para listar empleados: `https://api.factorialhr.com/api/v1/employees`. Consulta la [documentación oficial de la API de Factorial](https://apidoc.factorialhr.com) para ver todos los endpoints disponibles.
+- **Method:** `GET` para leer datos, `POST` para crear registros, `PATCH` para actualizar.
+- **Headers:** Haz clic en "Add item" y añade:
+  - **Name:** `Authorization`
+  - **Value:** `Bearer [pega aquí tu clave API de Factorial]`
+- **Body type:** Déjalo en "Empty" si es una consulta GET. Para POST o PATCH, selecciona "JSON (application/json)" y escribe los datos que quieres enviar.
+
+Haz clic en "OK" para guardar el módulo.
+
+**Por qué:** La cabecera `Authorization: Bearer [token]` es la forma estándar que usa Factorial para verificar que la petición viene de alguien autorizado.
+
+**Qué verás:** El módulo HTTP aparece en el lienzo con una marca de verificación verde si la configuración está completa.
+
+<Callout type="tip">
+**Consejo:** Antes de conectar con datos reales, haz clic en "Run once" (Ejecutar una vez) con un endpoint simple como `GET /employees`. Si Make devuelve datos de tus empleados en Factorial, la conexión está funcionando correctamente.
+</Callout>
+
+---
+
+### Paso 5: Añade el trigger o la segunda acción del escenario
+
+**Qué hacer:** Ahora define qué desencadena o qué sigue a la llamada a Factorial. Haz clic en el `+` del lienzo para añadir otro módulo. Dependiendo de tu caso de uso:
+
+- **Si quieres que algo en otra herramienta actualice Factorial:** El trigger es la herramienta externa (Google Sheets, tu CRM, un formulario Typeform) y la acción es el módulo HTTP a Factorial.
+- **Si quieres que un evento en Factorial desencadene algo:** El trigger es el módulo HTTP a Factorial (consulta periódica) y la acción es la herramienta externa.
+
+Conecta los módulos arrastrando desde el punto de salida de uno al punto de entrada del otro.
+
+**Por qué:** Un escenario con un solo módulo no hace nada útil. Necesitas al menos un trigger y una acción para que la automatización tenga sentido.
+
+**Qué verás:** Dos o más módulos conectados por una línea en el lienzo.
+
+---
+
+### Paso 6: Activa el escenario
+
+**Qué hacer:** Cuando hayas probado el escenario con "Run once" y veas que funciona correctamente, activa el interruptor que aparece en la parte inferior izquierda del editor — cambia de "OFF" a "ON". Establece la frecuencia de ejecución (cada 15 minutos, cada hora, una vez al día) según lo que necesites.
+
+**Por qué:** Hasta que el escenario esté en ON, Make no lo ejecuta automáticamente. Solo puedes lanzarlo de forma manual con "Run once".
+
+**Qué verás:** El indicador del escenario pasa a verde y aparece la próxima fecha de ejecución programada.
+
+---
+
+## Errores comunes
+
+**El módulo HTTP devuelve error 401 (Unauthorized)**
+*Síntoma:* Make ejecuta el escenario pero devuelve un error rojo con código 401.
+*Causa:* La clave API de Factorial es incorrecta, ha caducado, o el formato de la cabecera Authorization está mal escrito.
+*Solución:* Vuelve al módulo HTTP, comprueba que el valor del header es exactamente `Bearer ` seguido de tu token (con el espacio después de Bearer). Si el token es antiguo, genera uno nuevo en Factorial y actualiza el módulo.
+
+---
+
+**El endpoint de Factorial devuelve error 403 (Forbidden)**
+*Síntoma:* La autenticación funciona pero Make recibe un 403 al intentar acceder a ciertos datos.
+*Causa:* El token de API de Factorial tiene permisos limitados, o el plan de Factorial no permite el acceso a ese endpoint concreto.
+*Solución:* Entra en Factorial, revisa los permisos asociados al token en "Configuración > API". Si el problema persiste, contacta con soporte de Factorial para confirmar qué endpoints están disponibles en tu plan.
+
+---
+
+**El escenario se activa pero Factorial no muestra los cambios**
+*Síntoma:* Make confirma que el escenario se ejecutó correctamente (sin errores), pero los datos en Factorial no han cambiado.
+*Causa:* El método HTTP es incorrecto (usaste GET cuando debías usar POST o PATCH) o el formato del Body JSON tiene un error.
+*Solución:* Revisa el historial de ejecución en Make — haz clic en el escenario y luego en "History". Abre la ejecución fallida y mira el detalle del módulo HTTP: verás exactamente qué envió Make y qué respondió Factorial. Corrige el método y el Body según la [documentación de la API de Factorial](https://apidoc.factorialhr.com).
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Una conexión funcional entre Make y Factorial usando autenticación por token API.
+- Un escenario activo que ejecuta automáticamente una acción en Factorial según el trigger que hayas configurado.
+- La base para construir automatizaciones más complejas: altas de empleados desde un formulario, sincronización de vacaciones con tu calendario, notificaciones automáticas al equipo cuando cambia un dato en RRHH.
+
+El siguiente paso lógico es crear un segundo escenario para un caso de uso concreto de tu empresa — por ejemplo, que cuando un empleado firme un contrato en tu gestor documental, Make actualice automáticamente su estado en Factorial.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Make, aquí tienes el acceso directo:
+
+<AffiliateLink programSlug="make" articleSlug="como-conectar-make-con-factorial" label="Probar Make gratis" />
+
+{/* TODO: captura del lienzo de Make con el módulo HTTP conectado a Factorial */}
+
+---
+
+## Preguntas frecuentes
+
+### ¿Hace falta saber programar para conectar Make con Factorial?
+No. Esta guía no requiere escribir código. Solo necesitas copiar la clave API de Factorial y pegarla en el módulo HTTP de Make. Si en algún paso te atascas, el soporte de Make tiene documentación en español y chat de ayuda.
+
+### ¿Factorial tiene módulo nativo en Make?
+A fecha de noviembre 2026, Factorial no tiene un módulo oficial en el catálogo de Make. La conexión se hace a través del módulo HTTP genérico, que funciona perfectamente con la API de Factorial. Revisa el catálogo de Make periódicamente — añaden módulos nuevos con frecuencia.
+
+### ¿Cuántas operaciones consume esta integración en Make?
+Cada llamada al módulo HTTP cuenta como 1 operación en Make. Si tu escenario tiene 3 módulos y se ejecuta 100 veces al mes, consume 300 operaciones. El plan gratuito de Make incluye 1.000 operaciones/mes — suficiente para empezar con volúmenes bajos.
+
+### ¿Es seguro usar la API de Factorial para automatizar datos de empleados?
+Sí, siempre que gestiones la clave API correctamente: no la compartas, no la incluyas en documentos públicos y, si crees que se ha comprometido, regenera una nueva desde Factorial. Tanto Make como Factorial cumplen con el GDPR. Revisa el DPA de Make y la política de privacidad de Factorial para adaptar tu registro de tratamientos según la LOPDGDD y tu DPA con la AEPD.
+
+### ¿Puedo hacer esto sin pagar, usando los planes gratuitos de Make y Factorial?
+El plan gratuito de Make es suficiente para las primeras pruebas. El acceso a la API de Factorial depende de tu plan — no todos lo incluyen. Si Factorial no muestra la opción de API en tu configuración, necesitarás un plan superior o contactar con su equipo comercial para confirmarlo.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
