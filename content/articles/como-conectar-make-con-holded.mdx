@@ -1,0 +1,183 @@
+---
+title: "Cómo conectar Make con Holded: guía paso a paso"
+slug: "como-conectar-make-con-holded"
+category: "automatizacion"
+description: "Guía paso a paso para conectar Make con Holded y automatizar tareas entre ambas plataformas. Resultado en menos de 30 minutos, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["make", "holded"]
+keywords:
+  primary: "como conectar make con holded"
+  secondary:
+    - "make holded integracion"
+    - "automatizar holded make"
+    - "make holded api"
+    - "holded automatizacion sin codigo"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, Make y Holded estarán conectados y podrás lanzar tu primer escenario automatizado: por ejemplo, crear un contacto en Holded cada vez que alguien rellene un formulario, o generar una factura automáticamente cuando cierres una venta.
+
+El proceso completo lleva entre 20 y 30 minutos si tienes los datos de acceso a mano.
+
+<Callout type="info">
+Holded no tiene módulo nativo en Make (a noviembre de 2026). La conexión se hace a través de la **API REST de Holded** usando el módulo HTTP de Make. No necesitas saber programar — en esta guía te explicamos cada paso.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Make:** El plan gratuito es suficiente para hacer la conexión y probar el primer escenario. Si necesitas más de 1.000 operaciones al mes, necesitarás el plan Core (desde 9 $/mes — aprox. 8,30 €/mes según cambio a noviembre 2026, + IVA). Puedes usar el trial de 30 días del plan Pro para probar sin limitaciones.
+- **Cuenta en Holded:** Cualquier plan de pago de Holded te da acceso a la API. No está disponible en el plan gratuito de Holded — necesitas al menos el plan Basic.
+- **Clave API de Holded:** La generarás en el paso 1. Tarda menos de 2 minutos.
+- **Acceso desde ordenador:** La configuración de escenarios en Make no está pensada para móvil — hazlo desde el navegador de escritorio.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes copiar y pegar texto y navegar por menús, es suficiente. El único momento técnico es introducir una URL de API — lo verás exactamente cómo hacerlo.
+
+---
+
+## Pasos
+
+### Paso 1: Obtén tu clave API de Holded
+
+**Qué hacer:** Entra en tu cuenta de Holded. En el menú lateral izquierdo, haz clic en el icono de engranaje (Configuración). Dentro de Configuración, busca la sección **"Integraciones"** y luego **"API"**. Verás un botón **"Generar clave API"**. Haz clic, copia la clave que aparece y guárdala en un lugar seguro — solo se muestra una vez.
+
+**Por qué:** Esta clave es la que autoriza a Make a hablar con Holded en tu nombre. Sin ella, Make no puede acceder a tus datos.
+
+**Qué verás:** Una cadena de texto larga (mezcla de letras y números). Algo parecido a `a1b2c3d4e5f6...`. Cópiala entera.
+
+<Callout type="warning">
+La clave API de Holded tiene acceso completo a tu cuenta: contactos, facturas, productos y más. No la compartas por email ni la pongas en documentos compartidos. Trátala como una contraseña.
+</Callout>
+
+---
+
+### Paso 2: Crea un escenario nuevo en Make
+
+**Qué hacer:** Entra en tu cuenta de Make (make.com). En el panel principal, haz clic en **"Create a new scenario"** (el botón azul con el símbolo +). Se abrirá el editor de escenarios — una pantalla en blanco con un círculo en el centro con un signo de interrogación.
+
+**Por qué:** Un escenario es el flujo de automatización en Make. Todo lo que configures a partir de ahora vive dentro de este escenario.
+
+**Qué verás:** El editor visual de Make con un módulo vacío esperando que elijas el activador (trigger) del escenario.
+
+---
+
+### Paso 3: Elige el activador del escenario
+
+**Qué hacer:** Haz clic en el círculo central con el signo de interrogación. Se abrirá una barra de búsqueda de módulos. Para conectar con Holded vía API usarás el módulo **"HTTP"** — escríbelo en la barra y selecciónalo. Dentro de HTTP, elige **"Make a request"** (Hacer una solicitud).
+
+**Por qué:** Como Holded no tiene módulo propio en Make, el módulo HTTP actúa como puente directo a su API REST. Es la forma estándar de conectar cualquier herramienta con API con Make.
+
+**Qué verás:** Un panel de configuración del módulo HTTP se abrirá en el lado derecho de la pantalla, con campos como URL, Method, Headers y Body.
+
+**Nota:** Si tu escenario empieza con otro activador (por ejemplo, un formulario de Typeform o una fila nueva en Google Sheets), añade ese módulo primero como trigger y luego añade el módulo HTTP de Holded como acción posterior. En esta guía usamos HTTP como primer módulo para simplificar el ejemplo.
+
+---
+
+### Paso 4: Configura la conexión HTTP con la API de Holded
+
+**Qué hacer:** En el panel de configuración del módulo HTTP, rellena los campos así:
+
+- **URL:** `https://api.holded.com/api/[endpoint]` — reemplaza `[endpoint]` según lo que quieras hacer. Por ejemplo, para listar contactos: `https://api.holded.com/api/contacts/v1/contacts`. Consulta la [documentación oficial de la API de Holded](https://developers.holded.com) para ver todos los endpoints disponibles.
+- **Method:** Selecciona `GET` si quieres obtener datos, o `POST` si quieres crear algo (un contacto, una factura, etc.).
+- **Headers:** Haz clic en **"Add item"** y añade una cabecera con estos valores exactos:
+  - Key: `key`
+  - Value: [pega aquí la clave API que copiaste en el Paso 1]
+
+Deja el resto de campos como están si solo quieres hacer una consulta básica.
+
+**Por qué:** La API de Holded usa autenticación por cabecera (header). No tiene usuario/contraseña — solo la clave API que pusiste en el campo `key`. Sin esa cabecera, Holded devuelve un error de autenticación.
+
+**Qué verás:** El formulario con la URL y el header rellenos. Todavía no hagas clic en "OK" — primero haz la prueba del siguiente paso.
+
+---
+
+### Paso 5: Prueba la conexión
+
+**Qué hacer:** En la parte inferior del panel de configuración del módulo HTTP, haz clic en **"Run once"** (o bien cierra el panel con OK y luego pulsa el botón "Run once" en la parte inferior de la pantalla del editor). Make ejecutará el módulo una sola vez y mostrará el resultado.
+
+**Por qué:** Antes de construir el resto del escenario, conviene confirmar que la conexión funciona. Si hay un error en la clave API o en la URL, lo verás aquí antes de perder tiempo.
+
+**Qué verás:** Si la conexión funciona, aparecerá una burbuja verde sobre el módulo con un número (el número de registros devueltos). Si haces clic en esa burbuja, verás los datos de Holded en formato JSON — tus contactos, facturas o lo que hayas consultado. Si hay un error, aparece una burbuja roja con el mensaje de error.
+
+---
+
+### Paso 6: Añade el resto del escenario y activa
+
+**Qué hacer:** Una vez confirmada la conexión, haz clic en el borde derecho del módulo HTTP para añadir el siguiente paso de tu automatización. Por ejemplo: un módulo de Gmail para enviar un email, un módulo de Google Sheets para guardar los datos, o un segundo módulo HTTP para escribir de vuelta en Holded.
+
+Cuando el escenario esté completo, haz clic en **"Save"** (el icono de disco en la esquina inferior izquierda) y luego actívalo con el interruptor **"Scheduling"** en la parte inferior de la pantalla — cámbialo a "On".
+
+**Por qué:** Un escenario guardado pero no activado no se ejecuta automáticamente. El interruptor de Scheduling es lo que lo pone en marcha.
+
+**Qué verás:** El interruptor se pondrá en azul y verás la opción de elegir con qué frecuencia se ejecuta el escenario (cada 15 minutos, cada hora, una vez al día, etc.).
+
+---
+
+## Errores comunes
+
+**La API devuelve error 401 (Unauthorized)**
+*Síntoma:* La burbuja del módulo HTTP aparece en rojo con el mensaje "401 Unauthorized" o "Invalid API key".
+*Causa:* La clave API no se está enviando correctamente. O se copió mal, o el nombre del header no es exactamente `key` (Holded es sensible a mayúsculas).
+*Solución:* Vuelve al módulo HTTP, abre los Headers y verifica que el campo Key es exactamente `key` (en minúscula) y que el valor es la clave API completa sin espacios al principio ni al final.
+
+---
+
+**La URL del endpoint da error 404**
+*Síntoma:* Error "404 Not Found" al ejecutar el módulo.
+*Causa:* La URL del endpoint de Holded es incorrecta — falta una barra, hay una palabra mal escrita, o el endpoint ha cambiado en una versión más nueva de la API.
+*Solución:* Ve a [developers.holded.com](https://developers.holded.com) y copia la URL del endpoint directamente desde la documentación oficial. No la escribas de memoria.
+
+---
+
+**El escenario se activa pero no hace nada**
+*Síntoma:* El escenario aparece como activo, pero los datos de Holded no llegan al siguiente módulo.
+*Causa:* El método HTTP es `GET` pero la API no devuelve datos en el body — o el escenario no tiene un módulo de procesamiento de datos después del HTTP.
+*Solución:* Tras el módulo HTTP, añade un módulo **"JSON > Parse JSON"** para que Make interprete la respuesta de Holded y puedas usar los datos en pasos posteriores. Sin ese módulo intermedio, los datos llegan como texto sin estructura.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Make conectado a Holded a través de la API REST con autenticación por clave.
+- Un escenario activo que puede leer o escribir datos en Holded automáticamente.
+- La base para construir cualquier automatización entre Holded y el resto de herramientas que uses: formularios, hojas de cálculo, email, CRM, o lo que necesites.
+
+El siguiente paso lógico es mapear los campos de datos — por ejemplo, que el nombre del contacto de un formulario vaya al campo "Nombre" de Holded, y el email al campo "Email". Eso se configura en los módulos posteriores al HTTP dentro del mismo escenario de Make.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Make, aquí tienes el acceso directo. El plan gratuito es suficiente para empezar:
+
+<AffiliateLink programSlug="make" articleSlug="como-conectar-make-con-holded" label="Probar Make gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Holded tiene módulo oficial en Make?
+No, a noviembre de 2026 Holded no tiene módulo nativo en Make. La conexión se hace con el módulo HTTP de Make y la API REST de Holded. No es más complicado — solo requiere un paso extra para configurar la autenticación por clave API.
+
+### ¿Necesito saber programar para conectar Make con Holded?
+No. No tienes que escribir código. El módulo HTTP de Make es un formulario visual donde introduces la URL y la clave API. Lo único que necesitas es saber dónde copiar los datos, que es exactamente lo que explica esta guía.
+
+### ¿El plan gratuito de Holded permite usar la API?
+No. La API de Holded solo está disponible en planes de pago. Consulta los precios actuales en holded.com — no publicamos el precio aquí porque cambian con frecuencia.
+
+### ¿Qué puedo automatizar entre Make y Holded?
+Todo lo que la API de Holded permita: crear y actualizar contactos, generar facturas, consultar productos, registrar pagos, etc. Consulta la documentación de la API en developers.holded.com para ver la lista completa de endpoints disponibles.
+
+### ¿Es seguro poner mi clave API de Holded en Make?
+Make almacena las credenciales de forma cifrada y cumple con GDPR. Aun así, genera una clave API exclusiva para Make — así, si alguna vez necesitas revocarla, no afecta a otras integraciones que tengas con Holded.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*

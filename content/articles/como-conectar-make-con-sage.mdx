@@ -1,0 +1,205 @@
+---
+title: "Cómo conectar Make con Sage: guía paso a paso"
+slug: "como-conectar-make-con-sage"
+category: "automatizacion"
+description: "Guía paso a paso para conectar Make con Sage y automatizar tareas entre ambas herramientas. Resultado en menos de 45 minutos, sin conocimientos técnicos de programación."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["make"]
+keywords:
+  primary: "como conectar make con sage"
+  secondary:
+    - "make sage integracion"
+    - "automatizar sage make"
+    - "make sage 50 conector"
+    - "integrar sage con make automatizacion"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Make conectado con Sage y una automatización activa que mueve datos entre ambas herramientas sin que tengas que intervenir manualmente. El proceso completo lleva entre 30 y 45 minutos si tienes los accesos preparados.
+
+Ten en cuenta que la conexión real entre Make y Sage depende de qué versión de Sage usas. Te explicamos las dos opciones principales: **Sage Business Cloud** (con API disponible) y **Sage 50** (sin API nativa, conexión vía webhooks o herramientas intermedias).
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Make:** El plan gratuito incluye 1.000 operaciones/mes, suficiente para probar esta integración. Para uso continuado en producción, necesitarás el plan Core (9 $/mes, aprox. 8,30 €/mes + IVA según cambio noviembre 2026). Precios consultados en noviembre 2026 — verifica siempre en make.com.
+- **Versión de Sage compatible:** Sage Business Cloud (antes Sage One) tiene API REST y es la que conecta directamente con Make. Sage 50 no tiene conector nativo — más abajo te explicamos la alternativa.
+- **Credenciales de API de Sage:** Necesitas el Client ID y Client Secret de tu aplicación en el portal de desarrolladores de Sage. Te explicamos cómo obtenerlos en el Paso 1.
+- **Acceso de administrador en Sage:** No puedes crear la conexión con una cuenta de usuario estándar.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes copiar y pegar texto y seguir menús, es suficiente. El único momento que puede resultar más técnico es al crear la aplicación en el portal de Sage, pero lo detallamos paso a paso.
+
+<Callout type="warning">
+**Si usas Sage 50:** Make no tiene un módulo nativo para Sage 50. La integración requiere exportar datos desde Sage 50 a un fichero CSV o usar un intermediario como una base de datos. Si este es tu caso, salta directamente al Paso 2b.
+</Callout>
+
+---
+
+## Pasos
+
+### Paso 1: Crea tu aplicación en el portal de desarrolladores de Sage
+
+**Qué hacer:** Accede a `developer.sage.com` e inicia sesión con tu cuenta de administrador de Sage Business Cloud. Ve a "My Applications" y haz clic en "Create App". Rellena los campos: nombre de la aplicación (pon algo reconocible, como "Make Integration"), URL de callback (por ahora escribe `https://www.make.com/oauth/cb/oauth2` — es la URL estándar de Make para OAuth) y selecciona los ámbitos de acceso que necesitas (normalmente "accounting" para facturas y clientes).
+
+**Por qué:** Sage requiere que registres cada aplicación externa antes de darle acceso a tus datos. Es su mecanismo de seguridad. Sin este paso, Make no puede autenticarse.
+
+**Qué verás:** Después de guardar, Sage te mostrará el **Client ID** y el **Client Secret** de tu aplicación. Cópialos ahora — los necesitarás en el Paso 3. El Client Secret solo se muestra una vez.
+
+---
+
+### Paso 2: Crea un escenario nuevo en Make
+
+**Qué hacer:** Entra en tu cuenta de Make en `make.com`. En el panel principal, haz clic en "Create a new scenario". Se abrirá el editor visual de escenarios con un módulo vacío en el centro (un círculo con un signo `+`). Haz clic en ese círculo para elegir la primera aplicación de tu flujo.
+
+**Por qué:** Todo en Make funciona con escenarios: secuencias de módulos conectados que se ejecutan en orden. Antes de conectar Sage, necesitas el escenario donde va a vivir la automatización.
+
+**Qué verás:** El editor visual se abre con un lienzo en blanco y la barra lateral izquierda con el buscador de aplicaciones.
+
+**Nota:** Si usas Sage 50 (sin API), en este paso elige un módulo de tipo "Webhooks" o "CSV" como punto de entrada en lugar de Sage. Continúa con el Paso 2b al terminar.
+
+---
+
+### Paso 2b (solo Sage 50): Configura la entrada de datos vía fichero o webhook
+
+**Qué hacer:** Si tu versión es Sage 50, el flujo de trabajo es distinto. Desde Sage 50, exporta periódicamente tus datos (clientes, facturas) en formato CSV desde el menú "Archivo → Exportar datos". En Make, en lugar del módulo de Sage, usa el módulo "Watch CSV files" apuntando a una carpeta de Google Drive o Dropbox donde deposites esas exportaciones. Make procesará cada fila como un registro individual.
+
+**Por qué:** Sage 50 no expone una API REST en tiempo real. La única forma de conectarlo con Make sin software adicional es mediante ficheros intermedios.
+
+**Qué verás:** Make leerá el CSV fila a fila y pasará los datos al siguiente módulo del escenario, igual que si viniera de una API.
+
+---
+
+### Paso 3: Añade el módulo de Sage en Make y conéctalo
+
+**Qué hacer:** En el buscador de aplicaciones de Make, escribe "Sage" y selecciona **"Sage Business Cloud Accounting"**. Elige la acción que quieres realizar: por ejemplo, "Watch Invoices" (para activar el escenario cuando llega una nueva factura) o "Create Contact" (para crear clientes en Sage desde otro sistema). Haz clic en "Add" para añadir el módulo. Se abrirá el asistente de conexión — haz clic en "Add" junto al campo "Connection".
+
+En la ventana de conexión, introduce:
+- **Client ID** y **Client Secret** que copiaste en el Paso 1.
+- El entorno de Sage: selecciona "Production" si es tu cuenta real, o "Sandbox" si quieres probar sin tocar datos reales.
+
+Haz clic en "Save" y luego en "Authorize" para ir a la pantalla de autenticación de Sage. Inicia sesión con tu cuenta de administrador de Sage y acepta los permisos.
+
+**Por qué:** Make necesita tu autorización explícita para acceder a los datos de Sage. El proceso OAuth garantiza que tus credenciales de Sage nunca se almacenan en Make directamente.
+
+**Qué verás:** Si la autenticación funciona correctamente, Make te redirige al editor del escenario y el módulo de Sage muestra el nombre de tu empresa junto a la conexión. Ya están vinculados.
+
+---
+
+### Paso 4: Configura la acción concreta del módulo
+
+**Qué hacer:** Con el módulo de Sage ya conectado, configura los campos de la acción que elegiste. Por ejemplo, si elegiste "Create Contact", verás campos como "Name", "Email", "Phone". Puedes rellenarlos con valores fijos o, más útil, mapearlos desde el módulo anterior del escenario (ej: datos que vienen de un formulario de tu web o de tu CRM).
+
+Para mapear un campo, haz clic dentro del campo de texto — aparecerá el panel de mapeo con los datos disponibles del módulo anterior. Selecciona el campo que corresponda.
+
+**Por qué:** El mapeo es el núcleo de la automatización: le dices a Make qué dato de entrada va a qué campo de Sage. Sin esto, Make no sabe qué información enviar.
+
+**Qué verás:** Los campos mapeados muestran etiquetas de color (en azul o naranja) en lugar de texto plano. Eso confirma que el valor es dinámico, no fijo.
+
+---
+
+### Paso 5: Haz una ejecución de prueba
+
+**Qué hacer:** Antes de activar el escenario, haz clic en "Run once" (botón azul en la parte inferior del editor). Make ejecutará el escenario una sola vez con datos reales. Revisa el resultado haciendo clic sobre cada módulo — verás exactamente qué datos entran y qué datos salen.
+
+**Por qué:** Es mucho mejor detectar errores aquí que cuando el escenario está activo y procesando datos en producción.
+
+**Qué verás:** Cada módulo muestra un indicador verde (éxito) o rojo (error) con el detalle de la operación. Si Sage devuelve un error, el texto del error aparece en el panel derecho.
+
+---
+
+### Paso 6: Activa el escenario
+
+**Qué hacer:** Si la prueba ha funcionado correctamente, activa el escenario con el interruptor "Scheduling" en la parte inferior izquierda del editor. Elige la frecuencia de ejecución: cada 15 minutos, cada hora, cada día... Haz clic en "Save" para guardar y el escenario quedará activo.
+
+**Por qué:** Un escenario en Make solo se ejecuta automáticamente cuando está activo y tiene una programación definida. Sin este paso, solo corre manualmente.
+
+**Qué verás:** El escenario aparece en tu panel de Make con el estado "Active" (en verde) y la próxima ejecución programada.
+
+---
+
+## Errores comunes
+
+**El módulo de Sage devuelve "Invalid credentials" aunque el Client ID y Secret son correctos**
+
+*Síntoma:* Make muestra un error en rojo en el módulo de Sage con el texto "Invalid credentials" o "Unauthorized".
+
+*Causa:* El Client Secret de Sage solo se muestra una vez en el portal de desarrolladores. Si cerraste la ventana antes de copiarlo, el que tienes guardado puede estar incompleto o ser de una versión anterior.
+
+*Solución:* Vuelve a `developer.sage.com`, accede a tu aplicación y haz clic en "Regenerate Secret". Copia el nuevo Client Secret y actualiza la conexión en Make desde "Connections" en el menú lateral.
+
+---
+
+**El escenario se activa pero no encuentra registros nuevos en Sage**
+
+*Síntoma:* Make ejecuta el escenario sin errores, pero el módulo de Sage muestra "0 bundles" procesados.
+
+*Causa:* El módulo "Watch Invoices" o "Watch Contacts" solo detecta registros creados **después** del momento en que se configuró el escenario. Los registros anteriores no se procesan.
+
+*Solución:* Si necesitas procesar registros históricos, usa el módulo "Search Invoices" o "Search Contacts" con un filtro de fecha en lugar del módulo "Watch". Esto te permite definir desde qué fecha buscar.
+
+---
+
+**La URL de callback no es válida al crear la app en Sage**
+
+*Síntoma:* Sage muestra un error al guardar la aplicación indicando que la "Redirect URI" no es válida.
+
+*Causa:* La URL de callback de Make debe introducirse exactamente como la requiere Sage, sin espacios ni caracteres adicionales.
+
+*Solución:* Usa exactamente esta URL: `https://www.make.com/oauth/cb/oauth2`. Si tu cuenta de Make está en un servidor regional europeo, prueba con `https://eu1.make.com/oauth/cb/oauth2`.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Make conectado con Sage Business Cloud** mediante autenticación OAuth segura.
+- **Un escenario activo** que se ejecuta automáticamente según la frecuencia que hayas configurado.
+- **Datos moviéndose entre Sage y el resto de tus herramientas** sin intervención manual: por ejemplo, nuevos contactos creándose en Sage cuando alguien rellena un formulario de tu web, o facturas enviándose a tu hoja de cálculo en cuanto se generan.
+
+El siguiente paso lógico es añadir un segundo módulo al escenario para hacer algo útil con esos datos: enviar una notificación por email, crear una tarea en tu gestor de proyectos, o actualizar tu CRM. Make tiene conectores para más de 1.500 aplicaciones — el escenario que acabas de crear es la base.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Make, puedes empezar con el plan gratuito (1.000 operaciones/mes) sin introducir tarjeta de crédito:
+
+<AffiliateLink programSlug="make" articleSlug="como-conectar-make-con-sage" label="Probar Make gratis" />
+
+{/* TODO: captura del editor de escenarios de Make con el módulo de Sage configurado */}
+
+{/* TODO: captura de la página de creación de aplicación en developer.sage.com */}
+
+---
+
+## Preguntas frecuentes
+
+### ¿Make tiene un conector oficial para Sage 50?
+
+No. Make tiene un módulo oficial para **Sage Business Cloud Accounting** (la versión en la nube), pero no para Sage 50 (la versión de escritorio). Si usas Sage 50, la integración requiere exportar datos en CSV o usar una base de datos como intermediaria, tal como explicamos en el Paso 2b.
+
+### ¿Es seguro dar acceso a Make a los datos de Sage?
+
+Sí, siempre que uses el flujo OAuth oficial que describe esta guía. Make nunca almacena tu contraseña de Sage. El acceso se gestiona mediante tokens que puedes revocar en cualquier momento desde el portal de desarrolladores de Sage, en "My Applications → Revocar acceso".
+
+### ¿Cuántas operaciones consume esta integración en Make?
+
+Cada registro procesado cuenta como una operación. Si tu escenario procesa 10 facturas nuevas cada vez que se ejecuta y se ejecuta 4 veces al día, son 40 operaciones diarias. El plan gratuito (1.000 operaciones/mes) aguanta un uso moderado. Si procesas volúmenes altos, el plan Core (9 $/mes, aprox. 8,30 €/mes + IVA) incluye 10.000 operaciones. Precios consultados en noviembre 2026 — verifica en make.com.
+
+### ¿Puedo conectar Make con Sage sin saber programar?
+
+Sí. El editor visual de Make está diseñado para configurar flujos sin código. El único paso que puede resultar algo técnico es crear la aplicación en el portal de Sage para obtener las credenciales de API, pero es un proceso de rellenar un formulario, no de programar.
+
+### ¿Esta integración cumple con el GDPR si proceso datos de clientes?
+
+Make firma un DPA (Data Processing Agreement) bajo GDPR. Tiene servidores en la UE (puedes seleccionar la región europea al crear tu cuenta). Por su parte, Sage Business Cloud también cumple GDPR. Si procesas datos personales de clientes a través de esta integración, revisa el DPA de Make y adáptalo a tu registro de actividades de tratamiento según la LOPDGDD. La AEPD tiene guías específicas para este tipo de integraciones B2B.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
