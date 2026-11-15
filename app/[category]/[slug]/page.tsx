@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { SurveyPromo } from '@/app/components/SurveyPromo'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkGfm from 'remark-gfm'
 import fs from 'fs'
@@ -502,6 +503,7 @@ export default async function ArticlePage({ params }: PageProps) {
         )}
 
         {article.slug.includes('inmobiliari') && <InmoRobotCard />}
+        {category === 'prompts' && <SurveyPromo className="mt-10" />}
       </div>
 
       {/* Related articles */}

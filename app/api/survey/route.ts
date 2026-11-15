@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { supabase } from '@/lib/db/client'
 import { isBot } from '@/lib/bot-detect'
 import { SURVEY_ID, validateAnswers } from '@/lib/survey'
@@ -32,5 +33,6 @@ export async function POST(req: NextRequest) {
     console.error('[survey] insert failed:', error.message)
     return NextResponse.json({ error: 'No hemos podido guardar tus respuestas. Inténtalo más tarde.' }, { status: 500 })
   }
+  revalidatePath('/encuesta-ia-pymes')
   return NextResponse.json({ ok: true })
 }

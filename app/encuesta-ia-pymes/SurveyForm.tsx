@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { QUESTIONS, MAX_MULTI } from '@/lib/survey'
 import { trackSurveyComplete } from '@/lib/analytics'
 
 export function SurveyForm() {
+  const router = useRouter()
   const started = useRef(0)
   const [answers, setAnswers] = useState<Record<string, string | string[]>>({})
   const [website, setWebsite] = useState('')
@@ -54,6 +56,8 @@ export function SurveyForm() {
       }
       trackSurveyComplete('ia-pymes-2026')
       setStatus('done')
+      router.refresh()
+      document.getElementById('resultados')?.scrollIntoView({ behavior: 'smooth' })
     } catch {
       setError('Error de conexión. Inténtalo de nuevo.')
       setStatus('error')
@@ -65,8 +69,7 @@ export function SurveyForm() {
       <div className="rounded-xl border border-green-200 bg-green-50 p-6">
         <p className="font-semibold text-gray-900">¡Gracias por contestar!</p>
         <p className="mt-1 text-gray-700 text-sm">
-          Publicaremos los resultados en esta misma página cuando tengamos suficientes respuestas.
-          Mientras, puedes llevarte la <Link className="text-blue-700 underline" href="/prompts/descargar">biblioteca de 97 prompts</Link> gratis.
+          Tu respuesta ya cuenta en los resultados de arriba. Mientras, puedes llevarte la <Link className="text-blue-700 underline" href="/prompts/descargar">biblioteca de 97 prompts</Link> gratis.
         </p>
       </div>
     )

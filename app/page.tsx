@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import brand from '@/data/brand.json'
 import { getPublishedArticles, getArticlesByCategory } from '@/lib/db/articles'
 import { ArticleCard } from '@/app/components/ArticleCard'
+import { SurveyPromo } from '@/app/components/SurveyPromo'
 
 export const metadata: Metadata = {
   title: { absolute: 'PymesTools — Software para pymes en España' },
@@ -105,6 +106,12 @@ export default async function HomePage() {
               <p className="text-xs text-gray-500 mt-0.5">datos actualizados</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
+          <SurveyPromo />
         </div>
       </section>
 
