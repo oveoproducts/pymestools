@@ -39,6 +39,8 @@ export default function PrivacidadPage() {
         <h2>Datos que recogemos</h2>
         <ul>
           <li><strong>Newsletter:</strong> email para envío de comunicaciones. Tratamiento basado en consentimiento.</li>
+          <li><strong>Descargas:</strong> si descargas la biblioteca de prompts, tu email se guarda como en la newsletter, con casilla de consentimiento expreso.</li>
+          <li><strong>Encuestas:</strong> las encuestas son anónimas: guardamos solo las respuestas a las preguntas de opción, sin email ni texto libre, y no las asociamos a tu IP.</li>
           <li><strong>Analytics:</strong> datos de uso anónimos (páginas visitadas, tiempo de lectura) mediante Google Analytics 4. Sin datos personales identificables.</li>
           <li><strong>Logs de servidor:</strong> IP y user agent con fines de seguridad. Conservados 30 días.</li>
         </ul>

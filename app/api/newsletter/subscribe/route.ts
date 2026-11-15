@@ -4,7 +4,7 @@ import { supabase } from '@/lib/db/client'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
 export async function POST(req: NextRequest) {
-  let body: { email?: unknown; source?: unknown }
+  let body: { email?: unknown; source?: unknown; consent?: unknown }
   try {
     body = await req.json()
   } catch {
@@ -17,6 +17,11 @@ export async function POST(req: NextRequest) {
   }
 
   const source = typeof body.source === 'string' ? body.source.slice(0, 40) : 'banner'
+
+  // Las descargas piden consentimiento expreso (casilla), no solo el aviso del banner.
+  if (source.startsWith('descarga') && body.consent !== true) {
+    return NextResponse.json({ error: 'Marca la casilla de consentimiento para continuar.' }, { status: 400 })
+  }
 
   // Upsert on the unique email so a repeat signup is a silent success rather
   // than an error that tells a visitor whether an address is already on file.

@@ -175,6 +175,21 @@ export default async function PromptsHubPage() {
         </ol>
       </section>
 
+      <section aria-labelledby="descargas" className="mb-12 rounded-xl border border-blue-200 bg-blue-50 p-6">
+        <h2 id="descargas" className="text-xl font-bold text-gray-900 mb-2">Llévate la biblioteca completa</h2>
+        <p className="text-gray-700 mb-4 max-w-2xl">
+          Los 97 prompts en PDF imprimible y en hoja de cálculo, con la fórmula y un checklist para revisar cada respuesta.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/prompts/descargar" className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white no-underline hover:bg-blue-700">
+            Descargar gratis
+          </Link>
+          <Link href="/encuesta-ia-pymes" className="rounded-lg border border-blue-300 bg-white px-4 py-2 text-sm font-semibold text-blue-700 no-underline hover:border-blue-500">
+            Encuesta: ¿cómo usan la IA las pymes?
+          </Link>
+        </div>
+      </section>
+
       <section aria-labelledby="guias" className="mb-12">
         <h2 id="guias" className="text-xl font-bold text-gray-900 mb-4">Todas las guías de prompts</h2>
         {articles.length === 0 ? (

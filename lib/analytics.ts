@@ -72,3 +72,23 @@ export function trackPromptCopy(promptTitle: string, pageSlug: string): void {
     // never throw from analytics
   }
 }
+
+export function trackSurveyComplete(survey: string): void {
+  try {
+    if (typeof window === 'undefined') return
+    if (typeof window.gtag !== 'function') return
+    window.gtag('event', 'survey_complete', { event_category: 'engagement', event_label: survey })
+  } catch {
+    // never throw from analytics
+  }
+}
+
+export function trackDownload(file: string): void {
+  try {
+    if (typeof window === 'undefined') return
+    if (typeof window.gtag !== 'function') return
+    window.gtag('event', 'file_download', { event_category: 'engagement', event_label: file })
+  } catch {
+    // never throw from analytics
+  }
+}

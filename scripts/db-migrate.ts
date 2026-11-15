@@ -212,6 +212,19 @@ const migrations: Array<{ label: string; sql: string }> = [
       ALTER TABLE articles ADD COLUMN IF NOT EXISTS content_mdx text;
     `,
   },
+  {
+    label: 'survey_responses (encuestas anónimas)',
+    sql: `
+      CREATE TABLE IF NOT EXISTS survey_responses (
+        id          uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+        survey      text        NOT NULL,
+        answers     jsonb       NOT NULL,
+        created_at  timestamptz NOT NULL DEFAULT now()
+      );
+      CREATE INDEX IF NOT EXISTS survey_responses_survey_idx ON survey_responses (survey, created_at);
+      ALTER TABLE survey_responses ENABLE ROW LEVEL SECURITY;
+    `,
+  },
 ]
 // ---------------------------------------------------------------------------
 // Main
