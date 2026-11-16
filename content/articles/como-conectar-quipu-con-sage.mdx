@@ -1,0 +1,195 @@
+---
+title: "Cómo conectar Quipu con Sage: guía paso a paso"
+slug: "como-conectar-quipu-con-sage"
+category: "facturacion"
+description: "Guía paso a paso para conectar Quipu con Sage y evitar dobles entradas manuales. Resultado en menos de 30 minutos, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["quipu"]
+keywords:
+  primary: "como conectar quipu con sage"
+  secondary:
+    - "integracion quipu sage"
+    - "exportar facturas quipu a sage"
+    - "quipu sage contabilidad"
+    - "sincronizar quipu sage 50"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás las facturas emitidas en Quipu exportadas a Sage sin volver a teclear nada a mano. El proceso completo lleva entre 20 y 30 minutos la primera vez. Las siguientes, menos de 5.
+
+<Callout type="warning">
+**Antes de empezar:** Quipu y Sage no tienen una integración nativa en tiempo real (no se sincronizan automáticamente de forma bidireccional). Lo que sí permite Quipu es exportar facturas en formato compatible con Sage para que tu gestor o tú mismo las importéis desde la contabilidad. Si buscas una sincronización automática en tiempo real, te contamos al final qué opciones existen.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Quipu:** Funciona desde el plan Autónomos en adelante. Si usas Quipu Solo (el plan básico), también puedes exportar, pero tendrás menos filtros disponibles. Puedes probarlo con el trial de 15 días.
+- **Sage 50 o Sage Contabilidad:** Esta guía es válida para ambas versiones. Si usas Sage 200 o Sage X3, el proceso de importación es diferente — consulta con tu gestor.
+- **Acceso de administrador en Quipu:** No funciona desde cuentas de usuario con permisos restringidos.
+- **Las facturas ya creadas en Quipu:** Necesitas al menos una factura emitida o recibida para hacer la exportación de prueba.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes descargar un archivo y abrirlo en Sage, es suficiente.
+
+---
+
+## Pasos
+
+### Paso 1: Accede al módulo de exportación de Quipu
+
+**Qué hacer:** Entra en tu cuenta de Quipu y ve al menú lateral izquierdo. Haz clic en "Facturas emitidas" o "Facturas recibidas", según lo que quieras exportar. En la parte superior derecha de la lista de facturas, verás el botón "Exportar". Haz clic en él.
+
+**Por qué:** Quipu centraliza toda la exportación desde la vista de facturas. Es el único punto desde donde puedes generar el archivo que luego importarás en Sage.
+
+**Qué verás:** Se abre un desplegable con varias opciones de formato: Excel, PDF, y según tu plan, también formatos contables específicos.
+
+---
+
+### Paso 2: Elige el formato de exportación compatible con Sage
+
+**Qué hacer:** En el desplegable de exportación, selecciona "Formato contable" o "Exportar para gestor". El formato que necesitas para Sage es **CSV estructurado** o, si tu versión de Sage lo admite, el archivo en formato **XBRL o Excel contable**. Si ves la opción "Sage" directamente en el listado, selecciónala.
+
+**Por qué:** Sage no importa cualquier Excel. Necesita un archivo con columnas en un orden específico. El formato contable de Quipu ya respeta esa estructura, lo que evita errores al importar.
+
+**Qué verás:** Quipu te pedirá que selecciones el rango de fechas de las facturas que quieres exportar.
+
+<Callout type="info">
+**Si no ves la opción "Sage" en el desplegable:** Quipu la ha añadido progresivamente según el plan. Si no aparece, exporta en formato CSV estándar y pide a tu gestor que lo adapte. O contacta al soporte de Quipu en español — atienden por chat y por teléfono.
+</Callout>
+
+---
+
+### Paso 3: Filtra el rango de fechas y descarga el archivo
+
+**Qué hacer:** Selecciona el periodo que quieres exportar — habitualmente el mes o trimestre en curso. Haz clic en "Generar exportación" o "Descargar". Quipu procesará el archivo y te lo descargará automáticamente en tu carpeta de descargas.
+
+**Por qué:** Exportar por periodos (mensual o trimestral) facilita la conciliación en Sage y evita duplicados si ya importaste periodos anteriores.
+
+**Qué verás:** Un archivo `.csv` o `.xlsx` en tu carpeta de descargas con el nombre del tipo `quipu_facturas_emitidas_[periodo].csv`.
+
+---
+
+### Paso 4: Abre Sage y accede al módulo de importación
+
+**Qué hacer:** Abre Sage 50 o Sage Contabilidad en tu ordenador. Ve al menú superior "Archivo" → "Importar" → "Importar asientos" o "Importar facturas" (el nombre exacto varía según la versión). Si tienes Sage con tu gestor, pásale el archivo directamente — él hará este paso.
+
+**Por qué:** Sage necesita que el archivo entre por el módulo de importación, no que se abra manualmente como un Excel. Si lo abres como Excel, los datos no entran en la base de datos contable.
+
+**Qué verás:** Un asistente de importación que te pide seleccionar el archivo y el tipo de datos que contiene.
+
+---
+
+### Paso 5: Mapea las columnas y confirma la importación
+
+**Qué hacer:** El asistente de Sage te mostrará las columnas del archivo de Quipu y te pedirá que las asignes a los campos de Sage (fecha, NIF, base imponible, IVA, etc.). Si el formato exportado desde Quipu ya es compatible con Sage, el mapeo se hace automáticamente. Revisa que los campos estén bien asignados y haz clic en "Importar" o "Finalizar".
+
+**Por qué:** Un mapeo incorrecto provoca que los importes de IVA o las fechas entren en los campos equivocados, generando asientos contables erróneos que son difíciles de corregir después.
+
+**Qué verás:** Sage te muestra un resumen con el número de registros importados y los posibles errores detectados. Si todo está bien, verás "X facturas importadas correctamente".
+
+**Nota:** Si Sage detecta facturas con NIF ya existente en el mismo periodo, te avisará de posibles duplicados. Revisa antes de confirmar.
+
+---
+
+### Paso 6: Verifica los asientos en Sage
+
+**Qué hacer:** Tras la importación, ve a "Diario" o "Libro de facturas" en Sage y comprueba que las facturas importadas aparecen con los importes correctos, el IVA bien desglosado y las fechas en orden. Busca una o dos facturas al azar y compáralas con las originales en Quipu.
+
+**Por qué:** La verificación manual es el último filtro antes de que tu gestor cierre el periodo. Un error en esta fase es fácil de detectar y corregir; después del cierre, mucho menos.
+
+**Qué verás:** Los asientos de las facturas en el libro diario de Sage, con la fecha, el concepto, la base imponible y el IVA correctamente separados.
+
+---
+
+## 🇪🇸 Nota sobre Verifactu
+
+Si facturas con Quipu desde 2025, el software ya genera facturas bajo los requisitos de **Verifactu** (obligatorio para software de facturación en España). Al exportar a Sage, los datos estructurados de Verifactu no se trasladan al formato contable, pero sí quedan registrados en Quipu como sistema de origen. Consulta con tu gestor si necesitas conservar también el hash de verificación para auditorías.
+
+---
+
+## Errores comunes
+
+**El archivo importado en Sage tiene los importes de IVA en cero**
+
+*Síntoma:* Las facturas importadas aparecen en Sage con la base imponible correcta pero el IVA en 0,00 €.
+
+*Causa:* El mapeo de columnas en el asistente de Sage asignó la columna de IVA a un campo vacío o incorrecto.
+
+*Solución:* Elimina los asientos importados (Sage permite deshacer importaciones recientes desde "Archivo" → "Deshacer última importación"). Vuelve a importar el archivo y en el paso de mapeo asigna manualmente la columna "cuota_iva" al campo "IVA repercutido" de Sage.
+
+---
+
+**Sage dice que el archivo no tiene el formato correcto**
+
+*Síntoma:* Al seleccionar el archivo en el asistente de Sage, aparece el mensaje "Formato de archivo no reconocido" o "No se puede leer el archivo".
+
+*Causa:* El archivo CSV exportado desde Quipu usa punto y coma (`;`) como separador de columnas, pero Sage espera coma (`,`), o viceversa. También puede ocurrir si el archivo se abrió con Excel antes de importarlo, lo que puede alterar el formato de las fechas.
+
+*Solución:* Abre el archivo con un editor de texto simple (el Bloc de notas de Windows vale), comprueba qué separador usa y ajústalo si es necesario. No abras nunca el CSV con Excel antes de importarlo a Sage.
+
+---
+
+**Aparecen facturas duplicadas en Sage**
+
+*Síntoma:* Después de importar, el libro de facturas muestra algunas facturas dos veces.
+
+*Causa:* Ya existían esas facturas en Sage (introducidas manualmente o importadas en un periodo anterior) y la importación no detectó el duplicado automáticamente.
+
+*Solución:* Compara el número de factura entre Sage y Quipu. Elimina manualmente el duplicado en Sage. Para evitar que vuelva a ocurrir, usa siempre el mismo rango de fechas sin solaparte con exportaciones anteriores.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Las facturas del periodo seleccionado importadas en Sage con los importes, fechas y NIF correctos.
+- El IVA desglosado en los asientos contables, listo para la declaración trimestral.
+- Un flujo repetible: cada mes o trimestre repites los pasos 1–3 en Quipu y pasas el archivo a Sage (o a tu gestor) en menos de 5 minutos.
+
+El siguiente paso lógico es configurar en Quipu las cuentas contables de cada cliente para que el mapeo en Sage sea aún más rápido. Pregunta a tu gestor qué plan de cuentas usa en Sage y replícalo en la configuración de Quipu.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Quipu o estás evaluando si es la herramienta adecuada para tu pyme, aquí tienes el acceso directo:
+
+<AffiliateLink programSlug="quipu" articleSlug="como-conectar-quipu-con-sage" label="Probar Quipu gratis 15 días" />
+
+{/* TODO: captura del módulo de exportación de Quipu con el desplegable de formatos visible */}
+
+{/* TODO: captura del asistente de importación de Sage con el mapeo de columnas */}
+
+---
+
+## Preguntas frecuentes
+
+### ¿Quipu y Sage se sincronizan automáticamente en tiempo real?
+
+No. No existe una integración nativa bidireccional entre Quipu y Sage. El flujo es siempre manual: exportas desde Quipu e importas en Sage. Si necesitas sincronización automática, tendrías que usar una herramienta de integración intermedia como Zapier o Make, o valorar si Holded (que sí tiene exportación contable más automatizada) se adapta mejor a tu caso.
+
+### ¿Puedo hacer esto sin que intervenga mi gestor?
+
+Sí, si tienes acceso a Sage instalado en tu ordenador o en la nube. Los pasos de exportación (en Quipu) los hace cualquier usuario con permisos de administrador. La importación en Sage la puede hacer cualquier persona con acceso al software. Dicho esto, la primera vez conviene hacerlo con tu gestor para verificar que el mapeo de columnas es correcto.
+
+### ¿Funciona esta guía con Sage 200 o Sage XRT?
+
+Esta guía está pensada para Sage 50 y Sage Contabilidad. En Sage 200 el proceso de importación es diferente y más flexible, pero también más técnico. Si usas Sage 200, consulta directamente con tu gestor o con el soporte de Sage.
+
+### ¿Qué pasa con las facturas rectificativas o abonos en Quipu?
+
+Las facturas rectificativas se exportan igual que las facturas normales. Quipu las identifica con un signo negativo en el importe. Al importarlas en Sage, aparecerán como asientos de abono si el mapeo está bien configurado. Verifica que el campo "tipo de documento" se mapea correctamente durante la importación.
+
+### ¿El plan gratuito de Quipu permite exportar facturas?
+
+No publican el precio ni los detalles exactos de cada plan en la web de forma permanente — hay que solicitar demo o consultar directamente. Lo que sí se indica es que la exportación contable está disponible desde los planes de pago. Con el trial de 15 días sí puedes probar la exportación completa.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
