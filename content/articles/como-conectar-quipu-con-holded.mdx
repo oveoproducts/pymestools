@@ -1,0 +1,192 @@
+---
+title: "Cómo conectar Quipu con Holded: guía paso a paso"
+slug: "como-conectar-quipu-con-holded"
+category: "facturacion"
+description: "Guía paso a paso para conectar Quipu con Holded mediante Zapier o exportación manual. Resultado en menos de 1 hora, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["quipu"]
+keywords:
+  primary: "como conectar quipu con holded"
+  secondary:
+    - "integracion quipu holded"
+    - "sincronizar quipu holded"
+    - "exportar facturas quipu a holded"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "6 min"
+qualityScore: null
+---
+
+{/* TODO: captura del dashboard de Quipu — panel de exportación o configuración de API */}
+
+Quipu y Holded no tienen integración nativa directa. Pero hay dos formas de hacer que convivan: exportación manual de datos o automatización vía Zapier. Al terminar esta guía sabrás exactamente cuál te conviene y tendrás el flujo configurado.
+
+El proceso completo — sea cual sea la opción — lleva menos de una hora si tienes los accesos preparados.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Quipu:** Cualquier plan de pago (Autónomo o Pymes). La exportación de datos no está disponible en la versión gratuita limitada.
+- **Cuenta en Holded:** Cualquier plan activo con acceso al módulo de facturación o contabilidad.
+- **Acceso a la API de Holded:** Lo necesitas si vas por la ruta de Zapier. Se genera desde el panel de Holded — te explicamos dónde.
+- **Cuenta en Zapier (opcional):** Solo si quieres automatizar la sincronización en tiempo real. El plan gratuito de Zapier puede ser suficiente para un volumen bajo (menos de 100 tareas/mes).
+- **Nivel técnico necesario:** No necesitas programar. Si sabes manejar los menús de Quipu y Holded, puedes hacerlo. La ruta de Zapier requiere configurar un "Zap" — es más sencillo de lo que parece, lo hacemos paso a paso.
+
+<Callout type="info">
+**¿Cuál ruta elegir?** Si facturas menos de 50 documentos al mes, la exportación manual (Ruta A) es más rápida de configurar. Si facturas más o quieres que todo fluya solo, Zapier (Ruta B) merece el tiempo de configuración.
+</Callout>
+
+---
+
+## Pasos — Ruta A: Exportación manual de Quipu a Holded
+
+Esta es la opción sin complicaciones. Exportas desde Quipu y subes a Holded. Sin automatización, pero sin dependencias externas.
+
+### Paso 1: Exporta tus facturas desde Quipu
+
+**Qué hacer:** Entra en Quipu y ve al apartado "Ingresos" o "Gastos" según lo que quieras mover. En la parte superior derecha verás el botón "Exportar". Haz clic y elige el formato **CSV** o **Excel** — Holded acepta ambos para importación.
+
+**Por qué:** Holded necesita los datos en un formato estructurado para reconocer cada campo (fecha, importe, cliente, número de factura). El CSV de Quipu viene con las columnas en el orden correcto para la mayoría de las importaciones.
+
+**Qué verás:** Se descargará un archivo `.csv` o `.xlsx` en tu ordenador. Ábrelo rápidamente para confirmar que las columnas tienen datos — a veces un filtro activo en Quipu puede vaciar el export sin que te des cuenta.
+
+---
+
+### Paso 2: Prepara el archivo para Holded
+
+**Qué hacer:** Abre el archivo descargado y comprueba que las columnas coincidan con las que Holded espera: fecha, número de documento, nombre del cliente/proveedor, base imponible, IVA e importe total. Si alguna columna tiene un nombre diferente, renómbrala antes de subir.
+
+**Por qué:** Holded es estricto con el nombre de las columnas en la importación masiva. Si una columna se llama "Total con IVA" en lugar de "Total", el sistema puede no mapearla correctamente.
+
+**Qué verás:** Un archivo ordenado donde cada fila es una factura. Si algo parece raro (celdas vacías en la columna de importe, fechas en formato incorrecto), corrígelo antes de continuar.
+
+---
+
+### Paso 3: Importa el archivo en Holded
+
+**Qué hacer:** En Holded, ve a "Ventas" → "Facturas" (o "Compras" → "Facturas recibidas" si estás importando gastos). Busca el botón "Importar" en la esquina superior derecha. Sube el archivo CSV y sigue el asistente de mapeo de columnas que aparece en pantalla.
+
+**Por qué:** El asistente de Holded te permite indicarle qué columna de tu archivo corresponde a qué campo del sistema. Así no importa exactamente cómo se llamen las columnas en tu CSV.
+
+**Qué verás:** Holded muestra una vista previa con las primeras filas del archivo ya mapeadas. Si el mapeo es correcto, verás los datos de cada factura en las columnas adecuadas. Haz clic en "Confirmar importación" para terminar.
+
+---
+
+## Pasos — Ruta B: Automatización con Zapier
+
+Con Zapier, cada vez que creas una factura en Quipu, se crea automáticamente un registro en Holded. Sin exportaciones manuales.
+
+### Paso 4: Genera tu API Key en Holded
+
+**Qué hacer:** En Holded, ve a "Configuración" (el icono de engranaje) → "Integraciones" → "API". Haz clic en "Generar nueva API Key". Copia la clave que aparece y guárdala en un lugar seguro — solo se muestra una vez.
+
+**Por qué:** Zapier necesita esta clave para autenticarse con Holded y crear registros en tu nombre. Sin ella no puede acceder a tu cuenta.
+
+**Qué verás:** Una cadena de caracteres alfanuméricos. Es tu clave de API. No la compartas con nadie.
+
+---
+
+### Paso 5: Crea el Zap en Zapier
+
+**Qué hacer:** Entra en Zapier y haz clic en "Create Zap". En el campo de "Trigger" (disparador), busca "Quipu" y selecciona el evento "New Invoice" (nueva factura emitida). Conecta tu cuenta de Quipu siguiendo el proceso de autenticación que Zapier propone — te pedirá tus credenciales de Quipu o una API key de Quipu.
+
+**Por qué:** El disparador es lo que "escucha" a Quipu. Cada vez que creas una factura, Zapier lo detecta y ejecuta la siguiente acción.
+
+**Qué verás:** Zapier confirmará la conexión con Quipu y te pedirá que hagas una prueba del disparador — para eso necesita que haya al menos una factura reciente en tu cuenta de Quipu.
+
+<Callout type="warning">
+**Consulta si Quipu tiene integración nativa en Zapier en el momento de configurar.** Las integraciones de Zapier cambian. Si no encuentras "Quipu" como aplicación en Zapier, tendrás que usar el disparador "Webhooks by Zapier" junto con la API de Quipu — es un paso más técnico. En ese caso, contacta con el soporte de Quipu para que te faciliten el endpoint correcto.
+</Callout>
+
+---
+
+### Paso 6: Configura la acción en Holded
+
+**Qué hacer:** En el campo "Action" del Zap, busca "Holded" y selecciona "Create Invoice" (crear factura). Pega la API Key de Holded cuando Zapier la solicite. Luego mapea los campos: indica qué dato de Quipu va a qué campo de Holded (fecha → fecha, cliente → cliente, importe → importe, etc.).
+
+**Por qué:** El mapeo de campos es lo que garantiza que los datos lleguen al sitio correcto en Holded. Un mapeo mal hecho puede meter el importe total en el campo de IVA, por ejemplo.
+
+**Qué verás:** Zapier muestra un resumen del mapeo. Haz clic en "Test action" para crear una factura de prueba en Holded y confirmar que todo llega bien. Si la prueba es correcta, activa el Zap con el botón "Publish".
+
+---
+
+## Errores comunes
+
+**El CSV de Quipu se importa pero las fechas aparecen en formato incorrecto en Holded**
+
+*Síntoma:* Las facturas importadas tienen la fecha como "01-11-2026" pero Holded las muestra como inválidas o las sitúa en fechas erróneas.
+
+*Causa:* Holded espera las fechas en formato ISO (`2026-11-01`), y Quipu puede exportarlas en formato español (`01/11/2026`).
+
+*Solución:* Antes de importar, abre el CSV en Excel o Google Sheets, selecciona la columna de fechas y aplica el formato `AAAA-MM-DD`. Guarda el archivo y vuelve a importar.
+
+---
+
+**Zapier no encuentra facturas recientes de Quipu al hacer la prueba del disparador**
+
+*Síntoma:* Zapier muestra el mensaje "We couldn't find any recent [trigger] in your app" al intentar probar el Zap.
+
+*Causa:* Zapier necesita al menos una factura creada en las últimas 24 horas para hacer la prueba. Si no la hay, el test falla aunque la conexión sea correcta.
+
+*Solución:* Crea una factura de prueba en Quipu (puedes borrarla después) y vuelve a ejecutar el test en Zapier. Con eso debería detectarla.
+
+---
+
+**Las facturas importadas en Holded aparecen sin cliente asignado**
+
+*Síntoma:* Las facturas llegan a Holded pero el campo "Cliente" aparece vacío.
+
+*Causa:* El nombre del cliente en el CSV o en el mapeo de Zapier no coincide exactamente con ningún contacto existente en Holded, y el sistema no sabe a quién asignarlo.
+
+*Solución:* Antes de importar, comprueba que los nombres de clientes en Quipu coinciden exactamente con los de Holded (incluidas mayúsculas y sin espacios extra). Si vas por Zapier, puedes añadir un paso intermedio "Find or Create Contact" para que Holded cree el contacto si no existe.
+
+---
+
+## Resultado final
+
+Si has seguido los pasos, ahora tienes:
+
+- **Ruta A:** Un proceso claro para exportar facturas de Quipu e importarlas en Holded en menos de 10 minutos, con el mapeo de columnas resuelto.
+- **Ruta B:** Un Zap activo que sincroniza automáticamente las nuevas facturas de Quipu con Holded, sin que tengas que intervenir.
+- En ambos casos: los datos de Quipu disponibles en Holded para tu contabilidad o para compartir con tu gestor.
+
+El siguiente paso lógico es configurar también la sincronización de **gastos y facturas recibidas** — el proceso es el mismo, pero usando los módulos de "Compras" en Holded y "Gastos" en Quipu.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Quipu o quieres ver sus opciones de exportación e integración antes de decidir:
+
+<AffiliateLink programSlug="quipu" articleSlug="como-conectar-quipu-con-holded" label="Probar Quipu gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Quipu y Holded tienen integración directa sin Zapier?
+
+A fecha de noviembre de 2026, Quipu y Holded no ofrecen integración nativa entre ellos. Las opciones disponibles son la exportación/importación manual de CSV o la automatización vía Zapier u otras herramientas de integración como Make (antes Integromat). Verifica en las webs de ambos si esto ha cambiado, ya que los proveedores actualizan sus integraciones con frecuencia.
+
+### ¿Puedo usar el plan gratuito de Quipu para exportar datos?
+
+La exportación de datos en Quipu requiere un plan de pago. El plan gratuito tiene funcionalidades muy limitadas y no incluye exportación masiva de facturas. Si estás evaluando Quipu, el trial de pago te permite comprobar esta funcionalidad antes de comprometerte.
+
+### ¿Se pueden sincronizar los contactos de clientes entre Quipu y Holded?
+
+Sí, con la misma lógica. Quipu permite exportar el listado de clientes en CSV, y Holded tiene un importador de contactos. Si usas Zapier, puedes añadir un paso de creación de contactos antes del de facturas para mantener ambas libretas sincronizadas.
+
+### ¿Esto cumple con la normativa de facturación española (Verifactu)?
+
+La obligación de Verifactu afecta al software de facturación, no a las exportaciones o integraciones entre herramientas. Quipu y Holded, por separado, deben cumplir con Verifactu en sus módulos de facturación. Si tienes dudas sobre el cumplimiento de alguno de los dos, consulta directamente con el proveedor — es una pregunta que merece una respuesta por escrito.
+
+### ¿Qué pasa si tengo muchas facturas? ¿El CSV tiene límite?
+
+Holded no publica un límite oficial de filas por importación, pero en la práctica los archivos muy grandes (más de 1.000 filas) pueden dar errores de tiempo de espera. Si tienes un volumen alto, importa en bloques de 200-300 facturas para evitar problemas.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
