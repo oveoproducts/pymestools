@@ -1,0 +1,192 @@
+---
+title: "Cómo conectar Quipu con Factorial: guía paso a paso"
+slug: "como-conectar-quipu-con-factorial"
+category: "facturacion"
+description: "Guía paso a paso para conectar Quipu con Factorial y sincronizar empleados, nóminas y facturas sin exportar ficheros a mano. Resultado en menos de 30 minutos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["quipu"]
+keywords:
+  primary: "como conectar quipu con factorial"
+  secondary:
+    - "integracion quipu factorial"
+    - "sincronizar nominas quipu factorial"
+    - "quipu factorial api"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "6 min"
+qualityScore: null
+---
+
+Al terminar esta guía, Quipu y Factorial estarán sincronizados: los datos de tus empleados y los importes de nómina pasarán automáticamente de Factorial a Quipu, sin exportar ni un solo Excel. El proceso completo lleva menos de 30 minutos si tienes las credenciales a mano.
+
+<Callout type="warning">
+**Antes de empezar:** Esta integración requiere el plan de pago de Quipu (desde el plan Autónomos Pro o Pymes) y un plan de Factorial que incluya acceso a la API. Verifica tu plan actual antes de seguir — en el plan gratuito de Quipu no está disponible el acceso a integraciones externas.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta activa en Quipu:** Plan Pymes o superior. Si estás en el plan básico, necesitarás hacer upgrade. Puedes comprobarlo en `Configuración → Mi suscripción`.
+- **Cuenta activa en Factorial:** Plan Growth o superior para acceder a la API. El plan Core no incluye integraciones de terceros.
+- **Permisos de administrador en ambas herramientas:** No funciona con cuentas de usuario estándar. Necesitas acceso de administrador o propietario.
+- **Clave API de Factorial:** La generarás en el paso 2 — tardan menos de 2 minutos en activarse.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes copiar y pegar texto y navegar por los menús de configuración, es suficiente.
+
+---
+
+## Pasos
+
+### Paso 1: Accede al panel de integraciones de Quipu
+
+**Qué hacer:** Entra en tu cuenta de Quipu y, desde el menú lateral izquierdo, ve a `Configuración`. Dentro de Configuración, busca la sección `Integraciones`. Verás un listado de las integraciones disponibles — busca la tarjeta de **Factorial** y haz clic en `Conectar`.
+
+**Por qué:** Quipu necesita saber que vas a vincular una cuenta externa. Este paso abre el flujo de autorización entre las dos plataformas.
+
+**Qué verás:** Una pantalla con el logo de Factorial, una breve descripción de qué datos se van a sincronizar y un formulario que te pedirá tu clave API de Factorial. No la tienes aún — pasa al paso 2.
+
+---
+
+### Paso 2: Genera tu clave API en Factorial
+
+**Qué hacer:** Abre Factorial en otra pestaña del navegador. Ve a `Configuración` (icono de engranaje en la esquina superior derecha) → `Integraciones` → `API`. Haz clic en `Generar nueva clave API`. Ponle un nombre descriptivo — por ejemplo, `Quipu-integración-noviembre2026` — y haz clic en `Crear`.
+
+**Por qué:** La clave API es el identificador seguro que permite a Quipu leer los datos de Factorial sin que tengas que dar tu usuario y contraseña. Es una práctica estándar y segura.
+
+**Qué verás:** Factorial te mostrará la clave generada una sola vez — es una cadena de caracteres larga, del tipo `fct_live_xxxxxxxxxxxxxx`. **Cópiala ahora y guárdala en un lugar seguro** (un gestor de contraseñas, por ejemplo). Si cierras esta pantalla sin copiarla, tendrás que generar una nueva.
+
+<Callout type="warning">
+**No compartas esta clave API.** Quien tenga esta clave tiene acceso de lectura a los datos de tu empresa en Factorial. Si en algún momento crees que se ha filtrado, elimínala desde el mismo panel y genera una nueva.
+</Callout>
+
+---
+
+### Paso 3: Introduce la clave API en Quipu
+
+**Qué hacer:** Vuelve a la pestaña de Quipu donde dejaste abierta la pantalla de conexión con Factorial. Pega la clave API que acabas de copiar en el campo `API Key de Factorial`. Haz clic en `Verificar y conectar`.
+
+**Por qué:** Quipu comprueba en este momento que la clave es válida y que tiene acceso a tu cuenta de Factorial antes de continuar. Si la clave tiene un error o corresponde a una cuenta diferente, el sistema lo detecta aquí.
+
+**Qué verás:** Si la conexión es correcta, aparece un mensaje de confirmación en verde: `"Conexión establecida correctamente"` y el logo de Factorial aparece marcado con un tick verde en el listado de integraciones. Si aparece un error rojo, ve a la sección de Errores comunes más abajo.
+
+---
+
+### Paso 4: Configura qué datos se sincronizan
+
+**Qué hacer:** Después de verificar la conexión, Quipu te lleva automáticamente a la pantalla de configuración de la sincronización. Aquí puedes seleccionar qué datos quieres importar desde Factorial:
+
+- **Empleados:** Nombre, NIF, datos de contrato.
+- **Nóminas:** Importes brutos, retenciones, coste empresa — mes a mes.
+- **Ausencias y vacaciones:** Días de baja, festivos, vacaciones aprobadas.
+
+Activa los que necesites con los interruptores correspondientes. Si solo gestionas la facturación en Quipu y las nóminas las lleva tu gestoría, puedes dejar activado únicamente `Empleados` y `Nóminas`.
+
+**Por qué:** No tienes por qué sincronizar todo. Importar datos que no usas genera ruido en Quipu y puede confundir a tu gestoría si tiene acceso al panel.
+
+**Qué verás:** Un resumen de los datos que se van a sincronizar y la frecuencia de actualización (normalmente automática cada 24 horas). Haz clic en `Guardar configuración`.
+
+---
+
+### Paso 5: Lanza la primera sincronización manual
+
+**Qué hacer:** Una vez guardada la configuración, verás un botón `Sincronizar ahora` en la parte superior de la pantalla de integración. Haz clic en él para lanzar la primera importación de datos desde Factorial a Quipu.
+
+**Por qué:** La sincronización automática funciona cada 24 horas, pero la primera vez conviene hacerla manualmente para verificar que los datos llegan correctamente antes de dar la integración por buena.
+
+**Qué verás:** Una barra de progreso o un indicador giratorio durante unos segundos. Al terminar, aparece un resumen: `"X empleados importados, Y nóminas sincronizadas"`. Ve a `Empleados` en el menú principal de Quipu para confirmar que los registros están ahí.
+
+---
+
+### Paso 6: Verifica los datos en Quipu
+
+**Qué hacer:** Desde el menú lateral de Quipu, ve a `Empleados` y comprueba que el número de trabajadores coincide con el que tienes en Factorial. Después, ve a `Gastos → Nóminas` y revisa que los importes del último mes coinciden con los de Factorial.
+
+**Por qué:** Es el paso de validación. Una integración puede conectarse sin errores pero sincronizar datos con un desfase de un mes o con un empleado de menos si hay algún filtro activo en Factorial.
+
+**Qué verás:** El listado de empleados y nóminas importadas. Si algo no cuadra, el problema más habitual es que en Factorial hay empleados en estado `"Inactivo"` que no se exportan por defecto — ve a Errores comunes para solucionarlo.
+
+---
+
+## Errores comunes
+
+**La conexión falla al verificar la clave API**
+
+*Síntoma:* Quipu muestra un mensaje rojo del tipo `"No se ha podido verificar la conexión. Revisa tu clave API."`
+
+*Causa:* Lo más habitual es que se hayan copiado espacios en blanco al principio o al final de la clave al pegarla. También puede ocurrir que la clave se haya generado en un entorno de prueba (`sandbox`) en lugar del entorno de producción.
+
+*Solución:* Vuelve a Factorial, elimina la clave API que creaste y genera una nueva. Al copiarla, usa `Ctrl+A` para seleccionar solo el texto del campo antes de copiar. Asegúrate de que en Factorial estás en el entorno de producción (en la barra superior no debe aparecer el texto `"Sandbox"`).
+
+---
+
+**Los empleados aparecen en Quipu pero las nóminas no**
+
+*Síntoma:* En `Empleados` de Quipu ves el listado correcto, pero en `Gastos → Nóminas` no aparece ningún registro del último mes.
+
+*Causa:* Las nóminas en Factorial pueden tener estados diferentes: `Borrador`, `Calculada` o `Cerrada`. Quipu solo importa nóminas en estado `Cerrada`. Si tu gestión de nóminas en Factorial está en `Borrador` o `Calculada`, no se sincronizarán.
+
+*Solución:* En Factorial, ve a `Nóminas` y cierra las nóminas del mes que quieres importar. Después, vuelve a Quipu y lanza una sincronización manual desde `Configuración → Integraciones → Factorial → Sincronizar ahora`.
+
+---
+
+**Faltan empleados en la sincronización**
+
+*Síntoma:* Tienes 8 empleados en Factorial pero en Quipu solo aparecen 6.
+
+*Causa:* Factorial aplica por defecto un filtro que solo exporta empleados con estado `Activo`. Los empleados con baja, en excedencia o marcados como `Inactivo` no se incluyen en la exportación estándar.
+
+*Solución:* En la pantalla de configuración de la integración en Quipu, busca la opción `Incluir empleados inactivos` y actívala si necesitas tener el historial completo. Si solo necesitas los empleados activos, esto es el comportamiento correcto y no hay nada que corregir.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Quipu y Factorial sincronizados** — los datos de empleados y nóminas se actualizan automáticamente cada 24 horas sin que tengas que hacer nada.
+- **Sin exportaciones manuales** — no más ficheros Excel intermedios entre tu software de RRHH y tu software de facturación.
+- **Histórico importado** — las nóminas de los meses anteriores disponibles en Quipu para que tu gestoría las consulte directamente.
+
+El siguiente paso lógico es configurar en Quipu las **reglas de contabilización automática de nóminas**, para que cada mes los asientos contables se generen solos cuando llegan los datos de Factorial. Está disponible en `Configuración → Contabilidad → Reglas automáticas`.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Quipu o quieres ver si tu plan actual incluye integraciones, aquí tienes el acceso directo:
+
+<AffiliateLink programSlug="quipu" articleSlug="como-conectar-quipu-con-factorial" label="Probar Quipu gratis" />
+
+{/* TODO: captura de la pantalla de integraciones de Quipu con Factorial visible */}
+
+{/* TODO: captura del panel de generación de API key en Factorial */}
+
+---
+
+## Preguntas frecuentes
+
+### ¿La integración entre Quipu y Factorial es gratuita?
+
+La integración en sí no tiene coste adicional, pero requiere planes de pago en ambas plataformas. En Quipu necesitas el plan Pymes o superior; en Factorial, el plan Growth o superior. Si estás en planes básicos o gratuitos, no tendrás acceso a la sección de integraciones.
+
+### ¿Cada cuánto se sincronizan los datos entre Quipu y Factorial?
+
+La sincronización automática se ejecuta cada 24 horas. Si necesitas actualizar los datos en el momento, puedes lanzar una sincronización manual desde `Configuración → Integraciones → Factorial → Sincronizar ahora` en el panel de Quipu.
+
+### ¿Puedo conectar Quipu con Factorial si uso otra asesoría o gestoría?
+
+Sí. La integración funciona independientemente de si tienes gestoría o gestionas la contabilidad internamente. Si tu gestoría también tiene acceso a tu cuenta de Quipu, verá los datos de nóminas sincronizados directamente — no necesitas enviarles nada por email.
+
+### ¿Qué pasa si desconecto la integración?
+
+Los datos que ya se han sincronizado permanecen en Quipu — no se borran al desconectar. Solo deja de haber sincronización automática hacia adelante. Puedes reconectar en cualquier momento siguiendo los mismos pasos de esta guía.
+
+### ¿Funciona esta integración con el plan de autónomo de Quipu?
+
+Depende de la versión del plan. El plan Autónomos Pro de Quipu incluye integraciones, pero el plan Autónomos básico no. Comprueba en `Configuración → Mi suscripción` si aparece la sección `Integraciones` en tu panel — si no aparece, necesitas hacer upgrade.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
