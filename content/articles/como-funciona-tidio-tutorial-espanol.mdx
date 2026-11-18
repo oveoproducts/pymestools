@@ -1,0 +1,181 @@
+---
+title: "Cómo funciona Tidio: tutorial en español paso a paso"
+slug: "como-funciona-tidio-tutorial-espanol"
+category: "automatizacion"
+description: "Guía paso a paso para configurar Tidio en tu web y atender clientes automáticamente. Resultado en menos de 30 minutos, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["tidio"]
+keywords:
+  primary: "cómo funciona tidio tutorial español"
+  secondary:
+    - "tidio configuración español"
+    - "tidio chat automatizacion pyme"
+    - "tidio tutorial paso a paso"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Tidio instalado en tu web con un chat en directo activo y al menos un mensaje automático de bienvenida funcionando. Cuando tú o tu equipo no estéis disponibles, Tidio seguirá respondiendo preguntas básicas de forma autónoma.
+
+El proceso completo lleva entre 20 y 30 minutos si ya tienes acceso a tu web.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Tidio:** El plan gratuito es suficiente para seguir esta guía completa. Incluye chat en directo y hasta 50 conversaciones con el bot al mes. Puedes registrarte en tidio.com sin tarjeta de crédito.
+- **Acceso a tu web:** Necesitas poder añadir un fragmento de código HTML o tener acceso al administrador de WordPress/Shopify/Wix. Si tu web la lleva una agencia, pídeles que instalen el widget antes de continuar.
+- **Un email de empresa activo:** Para recibir las notificaciones de conversaciones perdidas cuando no estés conectado.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes copiar y pegar, es suficiente para la instalación. La configuración del bot usa un editor visual tipo arrastrar y soltar.
+
+---
+
+## Pasos
+
+### Paso 1: Crea tu cuenta y accede al panel
+
+**Qué hacer:** Ve a tidio.com y haz clic en `"Get started free"`. Introduce tu email de empresa, crea una contraseña y selecciona el tipo de negocio. Tidio te preguntará si vendes online, ofreces servicios o usas la herramienta para soporte interno — elige la opción que mejor encaje. Confirma el email y accede al panel principal.
+
+**Por qué:** Esta selección inicial configura las plantillas de bot que Tidio te sugerirá después. Si eliges mal, puedes cambiarlo más adelante, pero te ahorra un paso si lo haces bien desde el principio.
+
+**Qué verás:** Un panel de bienvenida con un asistente de configuración guiada (en inglés por defecto). En el menú lateral izquierdo verás las secciones principales: `"Conversations"`, `"Automation"`, `"Contacts"` y `"Settings"`.
+
+<Callout type="info">
+**Interfaz en inglés:** A fecha de noviembre de 2026, el panel de administración de Tidio está principalmente en inglés. El widget de chat que ven tus clientes sí se puede configurar en español — lo hacemos en el Paso 3. Si la interfaz en inglés es un problema para tu equipo, valora alternativas como Crisp, que tiene el panel parcialmente en español.
+</Callout>
+
+---
+
+### Paso 2: Instala el widget en tu web
+
+**Qué hacer:** En el asistente de configuración inicial, Tidio te muestra las opciones de instalación. Las más comunes para pymes españolas:
+
+- **WordPress:** Busca el plugin oficial `"Tidio Live Chat"` en el repositorio de WordPress, instálalo y actívalo. Te pedirá que introduzcas tu clave de API, que encuentras en `"Settings"` → `"Developer"` dentro del panel de Tidio.
+- **Shopify:** Ve a la Shopify App Store, busca `"Tidio"` e instala la app directamente. Se conecta sola.
+- **Cualquier otra web (HTML):** En `"Settings"` → `"Channels"` → `"Live Chat"` encontrarás un fragmento de código JavaScript. Cópialo y pégalo justo antes de la etiqueta `</body>` de tu web.
+
+**Por qué:** Sin este paso, Tidio no aparece en tu web. El resto de la configuración no tiene efecto hasta que el widget esté instalado y activo.
+
+**Qué verás:** Una vez instalado, verás un indicador verde junto a `"Website"` en el panel de Tidio. Si abres tu web en otra pestaña, el icono del chat aparecerá en la esquina inferior derecha.
+
+<Callout type="warning">
+**Si usas caché en tu WordPress:** Después de instalar el plugin, vacía la caché (con WP Rocket, W3 Total Cache o el que uses). Si no lo haces, el widget puede tardar horas en aparecer o no aparecer para todos los visitantes.
+</Callout>
+
+---
+
+### Paso 3: Configura el idioma y el aspecto del chat
+
+**Qué hacer:** Ve a `"Settings"` → `"Channels"` → `"Live Chat"` → `"Customization"`. Aquí puedes:
+
+1. Cambiar el color del widget para que coincida con tu marca.
+2. Personalizar el texto del saludo inicial — cámbialo a español: por ejemplo, `"¡Hola! ¿En qué podemos ayudarte?"`.
+3. En `"Language"` selecciona `"Spanish"` para que todos los textos del widget que ven tus clientes estén en español.
+4. Añade el nombre y foto (o logo) del agente que aparece por defecto.
+
+**Por qué:** Un widget en español genera más confianza en clientes españoles. El texto por defecto en inglés puede hacer que muchos visitantes lo ignoren directamente.
+
+**Qué verás:** Una previsualización en tiempo real del widget en el lado derecho de la pantalla. Cada cambio que hagas se refleja al momento en la previsualización.
+
+---
+
+### Paso 4: Crea tu primer mensaje automático de bienvenida
+
+**Qué hacer:** Ve a `"Automation"` en el menú lateral. Haz clic en `"Create automation"`. Tidio te ofrece dos opciones: partir de una plantilla o empezar desde cero. Para tu primera automatización, elige la plantilla `"Welcome message"` (mensaje de bienvenida).
+
+Verás el editor visual de flujos. El flujo por defecto tiene tres bloques:
+1. **Trigger** (activador): `"Visitor opens the chat"` — se activa cuando alguien abre el widget.
+2. **Action** (acción): `"Send a message"` — el mensaje que se envía automáticamente.
+3. **Condition** (condición) opcional: puedes añadir que solo se active en determinadas páginas o en horario fuera de oficina.
+
+Haz clic en el bloque `"Send a message"` y escribe tu texto de bienvenida en español. Cuando termines, haz clic en `"Save and publish"`.
+
+**Por qué:** Este es el primer contacto automático con un visitante. Un mensaje bien redactado puede multiplicar las conversaciones que conviertes en clientes.
+
+**Qué verás:** El flujo aparece en la lista de automatizaciones con estado `"Active"` (en verde). Puedes abrirlo en otra pestaña y probar que se activa correctamente.
+
+---
+
+### Paso 5: Configura las notificaciones para no perderte mensajes
+
+**Qué hacer:** Ve a `"Settings"` → `"Notifications"`. Activa las siguientes opciones:
+
+- `"New conversation started"` — para recibir un aviso cuando alguien inicia un chat.
+- `"New message received"` — para los mensajes en conversaciones ya abiertas.
+- `"Missed conversation"` — para los chats que se quedaron sin respuesta.
+
+Puedes recibir estas notificaciones por email y, si instalas la app móvil de Tidio (disponible para iOS y Android), también como notificaciones push en tu móvil.
+
+**Por qué:** Sin las notificaciones activas, es fácil perder mensajes de clientes durante horas. Para una pyme con pocos recursos de soporte, esto es crítico.
+
+**Qué verás:** Un resumen de las notificaciones activas. Tidio enviará un email de prueba si haces clic en `"Send test notification"`.
+
+---
+
+## Errores comunes
+
+**El widget no aparece en la web después de instalar el plugin de WordPress**
+*Síntoma:* Tidio aparece como activo en el panel, pero al abrir la web no hay icono de chat.
+*Causa:* La caché del sitio está sirviendo una versión antigua de las páginas sin el código del widget.
+*Solución:* Vacía la caché desde el plugin que uses (WP Rocket, LiteSpeed Cache, etc.) y recarga la web con Ctrl+Shift+R para forzar la recarga sin caché en el navegador. Si el problema persiste, verifica en `"Settings"` → `"Developer"` que la clave de API instalada en el plugin coincide con la que muestra Tidio.
+
+---
+
+**La automatización de bienvenida no se activa**
+*Síntoma:* Abres el chat en la web y no aparece ningún mensaje automático.
+*Causa:* El flujo está en estado `"Inactive"` o el activador tiene condiciones que no se están cumpliendo (por ejemplo, solo activado en páginas concretas que no estás visitando).
+*Solución:* Ve a `"Automation"`, abre el flujo y verifica que el interruptor de activación (arriba a la derecha) está en verde. Revisa también las condiciones del trigger para asegurarte de que se aplica a todas las páginas.
+
+---
+
+**Los mensajes llegan en inglés aunque configuré el idioma en español**
+*Síntoma:* El texto del widget y los mensajes automáticos aparecen en inglés para los visitantes.
+*Causa:* El idioma del widget se configura en `"Customization"`, pero los textos de los flujos de automatización hay que traducirlos manualmente en cada bloque.
+*Solución:* Entra en cada automatización activa, abre los bloques `"Send a message"` y reescribe el texto directamente en español. El cambio de idioma global no traduce los textos que tú has escrito en los flujos.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Un widget de chat instalado en tu web**, visible para los visitantes en la esquina inferior derecha, con texto en español y el aspecto de tu marca.
+- **Un mensaje automático de bienvenida** que se activa cuando alguien abre el chat, sin que tengas que estar conectado.
+- **Notificaciones configuradas** para que no pierdas ningún mensaje, tanto en el email como en el móvil.
+
+El siguiente paso lógico es crear un flujo de respuesta automática para las preguntas más habituales de tus clientes (precio, horario, cómo contactar). Tidio tiene una funcionalidad llamada `"Flows"` para esto, que permite construir árboles de respuesta sin escribir código.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Tidio, aquí tienes el acceso directo al plan gratuito:
+
+<AffiliateLink programSlug="tidio" articleSlug="como-funciona-tidio-tutorial-espanol" label="Probar Tidio gratis" />
+
+---
+
+## Preguntas frecuentes
+
+### ¿Tidio funciona en español?
+El widget que ven tus clientes se puede configurar completamente en español. El panel de administración está principalmente en inglés, aunque la interfaz es suficientemente visual para manejarse sin nivel avanzado de inglés. Los flujos de automatización los escribes tú directamente en el idioma que quieras.
+
+### ¿Tidio es gratis?
+Sí, existe un plan gratuito que incluye chat en directo ilimitado y hasta 50 conversaciones con el bot al mes. Para pymes pequeñas con tráfico moderado, el plan gratuito suele ser suficiente para empezar. Los planes de pago añaden más conversaciones de bot, integración con Messenger, Instagram y funciones avanzadas de análisis. No publican el precio en euros de forma fija — hay que consultarlo en su web, ya que cobran en dólares y los precios varían.
+
+### ¿Puedo usar Tidio sin saber programar?
+Sí. La instalación en WordPress y Shopify no requiere tocar código. Para otras plataformas necesitas copiar y pegar un fragmento de JavaScript en el HTML de tu web — algo que cualquier agencia o desarrollador puede hacer en menos de 5 minutos si no quieres hacerlo tú.
+
+### ¿Tidio cumple con el GDPR?
+Tidio firma un DPA (Data Processing Agreement) bajo el RGPD. Los datos de los visitantes del chat se procesan en servidores dentro de la UE. Revisa su política de privacidad actualizada y formaliza el DPA con tu gestor de datos para cumplir también con la LOPDGDD española. Si gestionas datos de ciudadanos de la UE, este paso es obligatorio.
+
+### ¿Qué pasa con los mensajes que llegan cuando no estoy conectado?
+Tidio guarda todos los mensajes en la sección `"Conversations"` del panel. Si tienes las notificaciones por email activadas, recibirás un aviso con el mensaje. Puedes responder desde el panel web o desde la app móvil cuando vuelvas a estar disponible. También puedes configurar un flujo automático que informe al visitante de tu horario y recoja su email para responderle más tarde.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
