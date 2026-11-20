@@ -1,0 +1,186 @@
+---
+title: "Cómo conectar Tidio con Holded: guía paso a paso"
+slug: "como-conectar-tidio-con-holded"
+category: "automatizacion"
+description: "Guía paso a paso para conectar Tidio con Holded usando Zapier o Make. Resultado en menos de 45 minutos, sin conocimientos técnicos."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["tidio"]
+keywords:
+  primary: "como conectar tidio con holded"
+  secondary:
+    - "tidio holded integracion"
+    - "automatizar chat tidio holded"
+    - "sincronizar contactos tidio holded"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "7 min"
+qualityScore: null
+---
+
+Al terminar esta guía, tendrás Tidio conectado con Holded: cada vez que un visitante de tu web rellene el formulario del chat, sus datos se crearán automáticamente como contacto en Holded. Sin copiar y pegar, sin importar listas manualmente.
+
+El proceso lleva entre 30 y 45 minutos. Necesitarás una cuenta en Tidio, una en Holded, y una cuenta gratuita en Zapier o Make para hacer de puente entre las dos.
+
+<Callout type="info">
+**Tidio y Holded no tienen integración nativa directa.** La conexión se hace a través de una herramienta de automatización intermedia: Zapier o Make. Esta guía cubre ambas opciones. Elige la que ya uses o la que tengas más a mano.
+</Callout>
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Tidio:** El plan gratuito es suficiente para esta integración. Las automatizaciones de Tidio que disparan eventos externos están disponibles desde el plan gratuito si usas Zapier como intermediario.
+- **Cuenta en Holded:** Cualquier plan de Holded tiene acceso a la API, que es lo que usa Zapier para crear contactos.
+- **Cuenta en Zapier o Make:** Zapier tiene un plan gratuito con 100 tareas/mes — suficiente para empezar. Make también tiene plan gratuito con 1.000 operaciones/mes. No necesitas el plan de pago en ninguno de los dos para esta conexión básica.
+- **Clave API de Holded:** La generarás en el paso 2. No es complicado, pero es obligatorio tenerla antes de configurar nada en Zapier.
+- **Nivel técnico necesario:** No necesitas saber programar. Si sabes moverte por paneles de administración y seguir instrucciones, es suficiente.
+
+---
+
+## Pasos
+
+### Paso 1: Activa el trigger de Tidio en Zapier
+
+**Qué hacer:** Entra en [zapier.com](https://zapier.com) y haz clic en `"Create Zap"`. En el campo de búsqueda del primer bloque (`"Trigger"`), escribe `"Tidio"` y selecciona la aplicación. Como evento, elige `"New Contact"` — esto se activará cada vez que alguien rellene el formulario de pre-chat o se registre como contacto en Tidio.
+
+**Por qué:** Zapier necesita saber qué evento en Tidio va a disparar la acción en Holded. `"New Contact"` es el más útil para una pyme: captura los datos del visitante en el momento en que se identifica en el chat.
+
+**Qué verás:** Zapier te pedirá que conectes tu cuenta de Tidio. Haz clic en `"Sign in to Tidio"` y autoriza la conexión desde tu cuenta. Después, Zapier mostrará una pantalla de confirmación con `"Account connected"` en verde.
+
+---
+
+### Paso 2: Genera tu clave API en Holded
+
+**Qué hacer:** Abre Holded en otra pestaña. Ve al menú superior derecho, haz clic en tu nombre de empresa → `"Configuración"` → `"API"`. Verás el apartado `"API Key"`. Si ya tienes una clave generada, cópiala. Si no, haz clic en `"Generar nueva API Key"` y cópiala inmediatamente — Holded solo la muestra una vez completa.
+
+**Por qué:** Zapier necesita esta clave para autenticarse con Holded y crear contactos en tu cuenta. Sin ella, la conexión no es posible.
+
+**Qué verás:** Una cadena larga de caracteres (alfanumérica) que es tu clave API. Guárdala en un lugar seguro — un gestor de contraseñas o un documento privado — antes de continuar.
+
+<Callout type="warning">
+**No compartas tu API Key de Holded.** Quien tenga esa clave puede acceder a tus datos de clientes, facturas y contactos. Si alguna vez sospechas que se ha filtrado, ve a Configuración → API y regenera una nueva clave inmediatamente.
+</Callout>
+
+---
+
+### Paso 3: Configura Holded como acción en Zapier
+
+**Qué hacer:** Vuelve a Zapier. En el bloque de acción (`"Action"`), busca `"Holded"` y selecciónalo. Como evento, elige `"Create Contact"`. Haz clic en `"Sign in to Holded"` y pega la API Key que acabas de copiar en el campo correspondiente. Zapier confirmará la conexión con un mensaje `"Success"`.
+
+**Por qué:** Este paso le dice a Zapier qué tiene que hacer en Holded cada vez que Tidio detecte un nuevo contacto: crearlo en tu base de datos de Holded.
+
+**Qué verás:** Zapier mostrará un formulario con los campos del contacto de Holded: nombre, email, teléfono, etc. Estos campos los rellenarás en el siguiente paso con los datos que vienen de Tidio.
+
+---
+
+### Paso 4: Mapea los campos entre Tidio y Holded
+
+**Qué hacer:** En el formulario de configuración del contacto de Holded, haz clic en cada campo y selecciona el dato correspondiente de Tidio. El mapeo básico es:
+- Campo `"Name"` de Holded → `"Contact Name"` de Tidio
+- Campo `"Email"` de Holded → `"Contact Email"` de Tidio
+- Campo `"Phone"` de Holded → `"Contact Phone"` de Tidio (si lo tienes configurado en el formulario de pre-chat)
+
+Deja en blanco los campos de Holded que Tidio no puede proporcionar.
+
+**Por qué:** Sin este mapeo, Zapier no sabría qué información de Tidio corresponde a qué campo en Holded. Es el paso que conecta los datos reales de los dos sistemas.
+
+**Qué verás:** Cada campo rellenado mostrará una etiqueta en azul con el nombre del dato de Tidio, por ejemplo `"Contact Email from Step 1"`. Eso confirma que el mapeo está hecho correctamente.
+
+**Nota:** Si el formulario de pre-chat de Tidio no pide teléfono, ese campo llegará vacío a Holded. Puedes activar el campo de teléfono en Tidio en `Ajustes → Formulario de pre-chat → Campos`.
+
+---
+
+### Paso 5: Prueba el Zap antes de activarlo
+
+**Qué hacer:** Haz clic en `"Test step"` en el bloque de acción de Holded. Zapier usará el último contacto real registrado en Tidio para hacer una prueba y crear un contacto de verdad en Holded. Después, abre Holded → `"Contactos"` y comprueba que el contacto aparece con los datos correctos.
+
+**Por qué:** Es mucho mejor detectar errores de mapeo ahora que descubrirlos después de que el Zap haya creado 50 contactos con el nombre en el campo de email.
+
+**Qué verás:** Zapier mostrará `"Test was successful"` con un resumen de los datos enviados a Holded. En Holded, el nuevo contacto aparecerá en la lista con los campos correctamente rellenados.
+
+---
+
+### Paso 6: Activa el Zap
+
+**Qué hacer:** Haz clic en el botón `"Publish"` (en la esquina superior derecha de Zapier). El Zap cambiará de estado `"Draft"` a `"On"`. A partir de este momento, cada nuevo contacto en Tidio se creará automáticamente en Holded.
+
+**Por qué:** Un Zap en estado `"Draft"` no hace nada — necesita estar publicado para funcionar en tiempo real.
+
+**Qué verás:** El estado del Zap en el panel principal de Zapier aparecerá con un indicador verde y el texto `"On"`.
+
+---
+
+## Errores comunes
+
+**El test de Zapier falla con "Authentication error" en Holded**
+
+*Síntoma:* Zapier muestra un mensaje de error rojo con `"Could not authenticate with Holded"` al intentar conectar la cuenta.
+
+*Causa:* La API Key se copió mal (con espacios al principio o al final) o se regeneró en Holded después de pegarla en Zapier.
+
+*Solución:* Ve a Holded → Configuración → API, copia la clave de nuevo (selecciónala toda con Ctrl+A o Cmd+A antes de copiar), y vuelve a Zapier para reconectar la cuenta desde cero. Borra la conexión anterior en `"Connected Accounts"` antes de añadir la nueva.
+
+---
+
+**Los contactos se crean en Holded pero sin nombre — solo con email**
+
+*Síntoma:* En Holded aparecen contactos nuevos, pero el campo de nombre está vacío o muestra solo la dirección de email.
+
+*Causa:* El formulario de pre-chat de Tidio no tiene activado el campo de nombre, o está configurado como opcional y el visitante lo dejó en blanco.
+
+*Solución:* En Tidio, ve a `Ajustes → Formulario de pre-chat` y marca el campo `"Nombre"` como obligatorio. Para los contactos ya creados sin nombre, tendrás que editarlos manualmente en Holded o dejarlos así si no son leads importantes.
+
+---
+
+**El Zap está "On" pero no se crean contactos en Holded**
+
+*Síntoma:* Tienes conversaciones nuevas en Tidio, pero en Holded no aparece ningún contacto nuevo.
+
+*Causa:* El trigger `"New Contact"` de Tidio en Zapier solo se activa cuando el visitante rellena el formulario de pre-chat. Si el chat está configurado sin formulario (el visitante entra directamente sin identificarse), no se genera ningún evento.
+
+*Solución:* En Tidio, ve a `Ajustes → Formulario de pre-chat` y activa la opción `"Requerir formulario antes del chat"`. Alternativamente, usa el trigger `"New Message"` en Zapier en lugar de `"New Contact"` — aunque captura menos datos del visitante.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- **Una automatización activa** que crea contactos en Holded cada vez que alguien se identifica en el chat de Tidio en tu web.
+- **Datos sincronizados automáticamente:** nombre, email y teléfono del visitante pasan a Holded sin intervención manual.
+- **El siguiente paso lógico:** con los contactos ya en Holded, puedes asignarles etiquetas automáticamente en Zapier para segmentarlos (por ejemplo, `"Lead web"`) y filtrarlos fácilmente en tus listas de Holded.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Tidio, aquí tienes el acceso directo:
+
+<AffiliateLink programSlug="tidio" articleSlug="como-conectar-tidio-con-holded" label="Probar Tidio gratis" />
+
+Para automatizaciones más complejas entre Tidio, Holded y otras herramientas de tu pila (como Mailrelay o Factorial), Make tiene un plan gratuito más generoso que Zapier en número de operaciones y permite flujos con múltiples pasos sin coste adicional.
+
+---
+
+## Preguntas frecuentes
+
+### ¿Tidio y Holded tienen integración nativa o hace falta Zapier?
+No tienen integración nativa directa. La conexión siempre requiere un intermediario como Zapier o Make. Es un proceso de una sola configuración — una vez hecho, funciona de forma autónoma.
+
+### ¿Funciona esto con el plan gratuito de Tidio?
+Sí. El trigger `"New Contact"` de Tidio está disponible en el plan gratuito cuando se usa a través de Zapier. No necesitas contratar ningún plan de pago de Tidio solo para esta integración.
+
+### ¿Qué pasa si el mismo contacto ya existe en Holded?
+Zapier creará un contacto duplicado — no comprueba si el email ya existe en Holded antes de crear uno nuevo. Para evitarlo, puedes usar Make en lugar de Zapier, que permite añadir un paso de búsqueda previa (`"Search Contact"`) antes de crear.
+
+### ¿Puedo conectar Tidio con Holded sin usar Zapier ni Make?
+Solo si tienes conocimientos de desarrollo y quieres usar las APIs directamente de ambas plataformas. Para una pyme sin equipo técnico, Zapier o Make son la opción práctica.
+
+### ¿Esta integración cumple con el GDPR?
+Zapier y Make cumplen con GDPR y tienen DPA disponibles. Tidio y Holded también cumplen GDPR. Verifica que en tu aviso de privacidad web indicas que los datos del chat pueden transferirse a tu CRM — es un requisito de la LOPDGDD si tus visitantes son personas físicas.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
