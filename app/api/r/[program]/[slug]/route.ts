@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse, after } from 'next/server'
 import { supabase } from '@/lib/db/client'
 import brand from '@/data/brand.json'
 import { isBot } from '@/lib/bot-detect'
@@ -35,22 +35,25 @@ export async function GET(
     return NextResponse.redirect(brand.siteUrl, { status: 302 })
   }
 
-  // Best-effort, non-blocking click log. Resolve the article by slug so the
-  // click is attributed to a page; skip silently if anything is missing.
-  void (async () => {
+  // Click log. It runs inside after() so the serverless function stays alive
+  // until the insert finishes: a bare `void (async () => …)()` is frozen as soon
+  // as the redirect is sent, which silently dropped most clicks (PartnerStack
+  // counted ~4x more clicks than this log).
+  after(async () => {
     const { data: article } = await supabase
       .from('articles')
       .select('id')
       .eq('slug', articleSlug)
       .maybeSingle()
-    await supabase.from('affiliate_links').insert({
+    const { error } = await supabase.from('affiliate_links').insert({
       program_id: program.id,
       article_id: article?.id ?? null,
       url: program.affiliate_url,
       anchor_text: articleSlug,
       clicks: 1,
     })
-  })()
+    if (error) console.error('[affiliate-click] insert failed:', error.message)
+  })
 
   return NextResponse.redirect(program.affiliate_url, {
     status: 302,

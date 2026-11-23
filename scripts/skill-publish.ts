@@ -110,10 +110,27 @@ async function validateArticle(article: ArticleRow): Promise<ValidationResult> {
   // Body must be retrievable — from Supabase or, failing that, from disk.
   // Checking the filesystem alone wrongly blocks an article whose body was
   // drafted on another machine and only ever persisted to the database.
+  let body: string | null = null
   try {
-    await readArticleBody(article.slug)
+    body = await readArticleBody(article.slug)
   } catch {
     errors.push(`No MDX body found for "${article.slug}" (neither Supabase nor disk)`)
+  }
+
+  // The body must compile as MDX. A single invalid article breaks the whole
+  // Vercel build (15 Nov 2026: an HTML comment `<!-- … -->` took the site's
+  // deploys down). Fail here, before git push, instead of in production.
+  if (body !== null) {
+    const outsideCode = body.replace(/```[\s\S]*?```/g, '').replace(/`[^`\n]*`/g, '')
+    if (/<!--/.test(outsideCode)) {
+      errors.push('MDX contains an HTML comment (<!-- -->), which MDX does not support; remove it')
+    }
+    try {
+      const { compile } = await import('@mdx-js/mdx')
+      await compile(body.replace(/^---\n[\s\S]*?\n---\n/, ''))
+    } catch (e) {
+      errors.push(`MDX does not compile: ${e instanceof Error ? e.message.split('\n')[0] : String(e)}`)
+    }
   }
 
   // Status must be ready_to_publish

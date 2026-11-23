@@ -59,9 +59,9 @@ Esto es especialmente útil si usas Factorial para gestionar empleados y quieres
 
 **Por qué:** Un escenario en Make es el flujo de automatización. Aquí defines qué desencadena la acción (trigger) y qué ocurre después (acción).
 
-**Qué verás:** Un buscador de aplicaciones. Escribe "Factorial" en el buscador para ver si Make tiene módulo nativo de Factorial.
+**Qué verás:** Un buscador de aplicaciones. Si escribes "Factorial", verás que Make tiene una aplicación de Factorial con módulos propios (por ejemplo para listar, crear o actualizar empleados). Se conecta con credenciales OAuth de Factorial y puede ser la opción más cómoda para esas acciones.
 
-**Nota:** A fecha de noviembre 2026, Make no tiene un módulo nativo oficial para Factorial en su catálogo estándar. La conexión se hace a través del módulo "HTTP" de Make, que permite llamadas directas a la API de Factorial. Es el método que usamos en esta guía.
+**Nota:** En esta guía usamos el módulo genérico "HTTP" de Make, que llama directamente a la API de Factorial con una clave. Es útil cuando necesitas un endpoint que los módulos de Factorial no cubren, o si prefieres controlar la petición. Si solo necesitas las acciones que ya ofrece la aplicación de Factorial en Make, puedes usarla en lugar de HTTP; comprueba en el catálogo de Make qué módulos incluye en cada momento.
 
 ---
 
@@ -69,7 +69,7 @@ Esto es especialmente útil si usas Factorial para gestionar empleados y quieres
 
 **Qué hacer:** En el buscador de aplicaciones, escribe "HTTP" y selecciona la aplicación "HTTP". Dentro de HTTP, elige el módulo "Make a request" (Hacer una solicitud). Este módulo te permite enviar peticiones directamente a la API de Factorial.
 
-**Por qué:** Al no haber módulo nativo, HTTP es el puente universal. Funciona con cualquier API que use autenticación por token — exactamente como Factorial.
+**Por qué:** HTTP es el puente universal: funciona con cualquier API que use autenticación por token, como la de Factorial, incluso para operaciones que los módulos de Factorial no cubren.
 
 **Qué verás:** Un formulario con campos: URL, Method, Headers, Body. Lo rellenamos en el paso siguiente.
 
@@ -174,7 +174,7 @@ Si aún no tienes cuenta en Make, aquí tienes el acceso directo:
 No. Esta guía no requiere escribir código. Solo necesitas copiar la clave API de Factorial y pegarla en el módulo HTTP de Make. Si en algún paso te atascas, el soporte de Make tiene documentación en español y chat de ayuda.
 
 ### ¿Factorial tiene módulo nativo en Make?
-A fecha de noviembre 2026, Factorial no tiene un módulo oficial en el catálogo de Make. La conexión se hace a través del módulo HTTP genérico, que funciona perfectamente con la API de Factorial. Revisa el catálogo de Make periódicamente — añaden módulos nuevos con frecuencia.
+Sí. Make tiene una aplicación de Factorial con módulos para empleados y otras operaciones, que se conecta con credenciales OAuth. Esta guía usa el módulo HTTP genérico porque sirve para cualquier endpoint de la API de Factorial, pero si te basta con las acciones de la aplicación nativa, puedes usarla. Consulta el catálogo de Make para ver los módulos disponibles.
 
 ### ¿Cuántas operaciones consume esta integración en Make?
 Cada llamada al módulo HTTP cuenta como 1 operación en Make. Si tu escenario tiene 3 módulos y se ejecuta 100 veces al mes, consume 300 operaciones. El plan gratuito de Make incluye 1.000 operaciones/mes — suficiente para empezar con volúmenes bajos.
