@@ -28,6 +28,41 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/email-marketing/como-conectar-getresponse-con-factorial',
+        destination: '/email-marketing',
+        permanent: true,
+      },
+      {
+        source: '/email-marketing/como-conectar-activecampaign-con-factorial',
+        destination: '/email-marketing',
+        permanent: true,
+      },
+      {
+        source: '/hosting/como-conectar-hostinger-con-factorial',
+        destination: '/hosting',
+        permanent: true,
+      },
+      {
+        source: '/crm/como-conectar-hubspot-con-factorial',
+        destination: '/crm',
+        permanent: true,
+      },
+      {
+        source: '/crm/como-conectar-zoho-crm-con-factorial',
+        destination: '/crm',
+        permanent: true,
+      },
+      {
+        source: '/automatizacion/como-conectar-tidio-con-factorial',
+        destination: '/automatizacion',
+        permanent: true,
+      },
+      {
+        source: '/productividad/como-conectar-notion-con-factorial',
+        destination: '/productividad',
+        permanent: true,
+      },
+      {
         source: '/email-marketing/review-brevo',
         destination: '/email-marketing/brevo-review-espanol-pymes',
         permanent: true,
