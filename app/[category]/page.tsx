@@ -118,7 +118,7 @@ const HUBS: Partial<Record<ValidCategory, HubContent>> = {
   productividad: {
     title: 'Notion y herramientas de productividad para pymes',
     description:
-      'Guías sobre Notion y sus alternativas para pymes españolas: precios y planes, qué incluye el plan gratuito y cómo conectarlo con Holded o Factorial.',
+      'Guías sobre Notion y sus alternativas para pymes españolas: precios y planes, qué incluye el plan gratuito y cómo conectarlo con Holded.',
     h1: 'Notion y herramientas de productividad para pymes',
     intro: (
       <>
