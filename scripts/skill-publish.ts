@@ -125,6 +125,14 @@ async function validateArticle(article: ArticleRow): Promise<ValidationResult> {
     if (/<!--/.test(outsideCode)) {
       errors.push('MDX contains an HTML comment (<!-- -->), which MDX does not support; remove it')
     }
+    // The frontmatter must be valid YAML too: an unquoted `meta_title: A: B`
+    // broke the 24 Nov 2026 build even though the MDX body compiled fine.
+    try {
+      const matter = (await import('gray-matter')).default
+      matter(body)
+    } catch (e) {
+      errors.push(`Frontmatter is not valid YAML: ${e instanceof Error ? e.message.split('\n')[0] : String(e)}`)
+    }
     try {
       const { compile } = await import('@mdx-js/mdx')
       await compile(body.replace(/^---\n[\s\S]*?\n---\n/, ''))
