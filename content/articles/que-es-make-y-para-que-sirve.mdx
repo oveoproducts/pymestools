@@ -1,0 +1,221 @@
+---
+title: "Qué es Make y para qué sirve: guía para pymes españolas"
+slug: "que-es-make-y-para-que-sirve"
+category: "automatizacion"
+description: "Qué es Make, cómo funciona y para qué sirve en una pyme española. Con ejemplos reales, sin jerga técnica, y los límites que nadie te cuenta."
+type: "how-to"
+publishedAt: null
+updatedAt: "2026-11-01T00:00:00Z"
+tools: ["make"]
+keywords:
+  primary: "qué es make y para qué sirve"
+  secondary:
+    - "make automatizacion pymes"
+    - "make vs zapier español"
+    - "herramientas automatizacion pymes españa"
+status: "draft"
+author: "Equipo PymesTools"
+readingTime: "6 min"
+qualityScore: null
+---
+
+{/* TODO: captura del dashboard — vista del editor de escenarios de Make */}
+
+Al terminar de leer esto, sabrás exactamente qué hace Make, si tiene sentido para una empresa como la tuya, y qué puedes automatizar desde el primer mes. Sin código, sin consultores, sin instalaciones.
+
+Si alguna vez has pensado "ojalá esto se hiciera solo", Make es probablemente la respuesta. O no — también te lo contamos.
+
+---
+
+## Lo que necesitas
+
+- **Cuenta en Make:** Puedes empezar con el plan gratuito (1.000 operaciones/mes). Para lo que cubre esta guía, es suficiente para hacer pruebas reales.
+- **Una tarea repetitiva concreta:** No hace falta tenerlo todo claro. Con un proceso en mente ya puedes empezar.
+- **Acceso a las herramientas que ya usas:** Make conecta apps, así que necesitarás acceso (usuario y contraseña) a las que quieras conectar — Gmail, Google Sheets, Holded, o lo que uses.
+- **Nivel técnico necesario:** No necesitas programar. Si sabes usar Excel y arrastrar bloques en pantalla, puedes usar Make sin ayuda externa.
+
+---
+
+## Pasos
+
+### Paso 1: Entiende qué es Make en una frase
+
+Make es una herramienta que conecta aplicaciones entre sí y automatiza tareas repetitivas, visualmente, sin escribir código.
+
+**Qué hacer:** Antes de crear nada, piensa en una tarea concreta que haces cada semana de forma manual. Algo del tipo: "cuando entra un formulario de contacto en mi web, lo copio en un Excel y le mando un email de confirmación". Eso es exactamente lo que Make automatiza.
+
+**Por qué:** Make no es una app que uses directamente para trabajar — es la capa que conecta las apps que ya usas. Sin tener claro qué quieres conectar, no hay por dónde empezar.
+
+**Qué verás:** Nada todavía en pantalla. Esto es trabajo mental previo. Apunta la tarea en un papel si hace falta.
+
+---
+
+### Paso 2: Crea una cuenta gratuita en Make
+
+**Qué hacer:** Ve a make.com y haz clic en `"Get started free"`. El registro se hace con email o con cuenta de Google. No pide tarjeta de crédito para el plan gratuito.
+
+**Por qué:** El plan gratuito da 1.000 operaciones al mes, que es suficiente para probar 3–4 automatizaciones básicas con un volumen pequeño. Si tu empresa tiene 8 personas y gestionas decenas de contactos al mes, con el gratuito puedes evaluar Make antes de pagar.
+
+**Qué verás:** Al entrar, Make te muestra el panel principal con un botón grande `"Create a new scenario"`. Un escenario es lo que Make llama a cada automatización.
+
+<Callout type="info">
+La interfaz de Make está en inglés. Los menús, botones y opciones aparecen en inglés aunque el navegador esté en español. Si tu equipo no lee inglés con soltura, es un freno real — tenlo en cuenta antes de implantarlo en toda la empresa.
+</Callout>
+
+---
+
+### Paso 3: Comprende los tres conceptos clave
+
+**Qué hacer:** Antes de tocar nada, interioriza estos tres términos que Make usa constantemente:
+
+- **Escenario:** la automatización completa. El flujo de inicio a fin.
+- **Módulo:** cada paso dentro del escenario. Un módulo es una acción concreta — "recibir un email", "añadir una fila en un Excel", "enviar un mensaje por WhatsApp".
+- **Operación:** cada vez que un módulo se ejecuta. El plan gratuito incluye 1.000 operaciones al mes. Si tu automatización tiene 3 módulos y se activa 100 veces al mes, consume 300 operaciones.
+
+**Por qué:** El límite de operaciones es lo que determina cuánto pagas. Muchos usuarios del plan gratuito se quedan sin operaciones antes de fin de mes sin entender por qué — porque no contaban los módulos por separado.
+
+**Qué verás:** Nada en pantalla. Estos conceptos los verás reflejados en la interfaz en cuanto empieces a construir un escenario.
+
+<Callout type="warning">
+**Ojo con las operaciones:** Make cuenta cada módulo ejecutado, no cada escenario. Una automatización de 5 módulos que se activa 500 veces al mes consume 2.500 operaciones — más del doble del límite gratuito. Calcula antes de escalar.
+</Callout>
+
+---
+
+### Paso 4: Crea tu primer escenario
+
+**Qué hacer:** Haz clic en `"Create a new scenario"`. Verás un círculo en el centro de la pantalla — es tu primer módulo vacío. Haz clic en él y busca la app con la que quieres empezar (por ejemplo, `"Gmail"` o `"Google Sheets"`).
+
+El primer módulo siempre es el **activador** (en Make se llama `"trigger"`): la condición que pone en marcha todo lo demás. Por ejemplo: "cuando llegue un email con asunto [Pedido]" o "cuando se añada una fila nueva en este Google Sheet".
+
+**Por qué:** Sin activador no hay automatización. Make necesita saber qué evento dispara el flujo.
+
+**Qué verás:** Al seleccionar la app, Make te pedirá que conectes tu cuenta — se hace con OAuth (es decir, haces clic en `"Authorize"` y te lleva a la pantalla de login de la app). Una vez conectada, verás las opciones de trigger disponibles para esa app.
+
+---
+
+### Paso 5: Añade los módulos siguientes
+
+**Qué hacer:** Haz clic en el `"+"` que aparece a la derecha del primer módulo. Elige la app de destino y la acción que quieres ejecutar — por ejemplo, `"Add a row"` en Google Sheets o `"Send an email"` en Gmail.
+
+Repite este proceso para cada paso de tu automatización. Puedes encadenar tantos módulos como necesites, aunque para empezar, 2–3 es suficiente.
+
+**Por qué:** Cada módulo recibe los datos del anterior. Puedes usar el contenido de un email para rellenar una celda de Excel, o el nombre de un formulario para personalizar un mensaje automático.
+
+**Qué verás:** Un diagrama visual con círculos conectados por líneas. Cada círculo es un módulo. Puedes hacer clic en cualquiera para editarlo o ver qué datos pasan por él.
+
+---
+
+### Paso 6: Prueba el escenario antes de activarlo
+
+**Qué hacer:** Haz clic en `"Run once"` (esquina inferior izquierda). Make ejecuta el escenario una vez con datos reales y te muestra qué ha pasado en cada módulo — qué datos ha recibido, qué ha enviado, si ha habido algún error.
+
+**Por qué:** Es el paso que más se salta la gente — y el más importante. Un escenario mal configurado puede duplicar filas, enviar emails de prueba a clientes reales, o no ejecutarse sin que sepas por qué.
+
+**Qué verás:** Cada módulo se ilumina en verde (éxito) o rojo (error). Si hay error, Make te muestra el mensaje exacto y en qué módulo ha fallado. Esto hace que depurar sea muy rápido comparado con otras herramientas.
+
+---
+
+### Paso 7: Activa el escenario
+
+**Qué hacer:** Una vez que el test funciona, activa el escenario con el interruptor que aparece en la parte inferior del editor — pasa de `"OFF"` a `"ON"`. Desde ese momento, Make lo ejecuta automáticamente cada vez que se cumple la condición del trigger.
+
+**Por qué:** Un escenario en modo `"OFF"` no hace nada. Muchos usuarios crean escenarios perfectos que nunca llegan a funcionar porque se olvidan de activarlos.
+
+**Qué verás:** El interruptor cambia a azul. En el panel principal, el escenario aparece con estado `"Active"`.
+
+---
+
+## Errores comunes
+
+**El escenario se activa pero no hace nada**
+*Síntoma:* Make muestra que el escenario se ha ejecutado, pero no ves ningún cambio en la app de destino.
+*Causa:* El trigger no encontró datos nuevos que procesar — por ejemplo, estaba buscando emails con un asunto concreto y no había ninguno con esa condición en el momento de la ejecución.
+*Solución:* Haz clic en `"Run once"` manualmente mientras existe un dato real que cumple la condición. Así confirmas que el flujo funciona antes de esperar a que se active solo.
+
+---
+
+**"No connection found" al conectar una app**
+*Síntoma:* Make te dice que no hay ninguna conexión autorizada para la app que intentas usar.
+*Causa:* No has completado el proceso de autorización OAuth, o la conexión ha caducado (ocurre con algunas apps después de varios meses).
+*Solución:* Ve a `"Connections"` en el menú lateral izquierdo, busca la app afectada y haz clic en `"Reauthorize"`. Sigue el flujo de login de la app hasta el final.
+
+---
+
+**Se acaban las operaciones antes de fin de mes**
+*Síntoma:* Make deja de ejecutar escenarios y recibes un email de aviso de límite alcanzado.
+*Causa:* Has subestimado cuántas veces se activa el escenario, o el escenario tiene más módulos de los que pensabas.
+*Solución:* Revisa el historial de ejecuciones en cada escenario (`"History"`) para ver cuántas operaciones consume de media. Si necesitas más, el plan Core (precio verificado en make.com — ver nota de precios más abajo) añade operaciones y funciones avanzadas.
+
+---
+
+## Resultado final
+
+Si has seguido todos los pasos, ahora tienes:
+
+- Una cuenta en Make configurada y conectada a tus apps.
+- Un escenario activo que ejecuta una tarea repetitiva de forma automática, sin intervención manual.
+- Claridad sobre cómo funciona el modelo de operaciones y qué plan necesitas según tu volumen real.
+
+El siguiente paso lógico es añadir filtros al escenario — condiciones que hacen que el flujo solo se ejecute si se cumple una regla concreta. Por ejemplo: "solo envía el email si el importe del pedido supera 500 €". Make llama a esto `"Filters"` y se añaden haciendo clic en la línea que conecta dos módulos.
+
+---
+
+## 💶 Una nota sobre precios
+
+**Precios no verificados en esta edición.** Los precios de Make cambian con frecuencia y dependen del número de operaciones y del ciclo de facturación (mensual vs. anual). Consulta siempre los precios actuales en [make.com/en/pricing](https://make.com/en/pricing) antes de contratar.
+
+Lo que sí puedes confirmar allí:
+- Si el plan gratuito es suficiente para tu volumen actual.
+- Si los planes de pago se cobran en dólares (y por tanto llevarán conversión a euros en tu tarjeta).
+- Si existe contrato de permanencia o si es mes a mes.
+
+Todos los planes de pago van **+ IVA**. Verifica si Make aplica IVA español en la factura antes de comparar precios con herramientas europeas que sí lo incluyen.
+
+---
+
+## 🇪🇸 Make en España: lo que importa
+
+**Interfaz:** Solo en inglés. No hay versión en español.
+
+**Soporte:** Por ticket y documentación. No hay soporte telefónico ni chat en español. La documentación oficial está en inglés — hay comunidad activa en foros, pero también en inglés mayoritariamente.
+
+**GDPR / LOPDGDD:** Make firma un DPA (Data Processing Agreement) bajo GDPR. Los datos pueden procesarse en servidores fuera de la UE dependiendo de las apps que conectes. Revisa la política de privacidad de Make y pide el DPA si gestionas datos de contactos de clientes — lo necesitarás para tu documentación ante la AEPD.
+
+---
+
+## Herramientas que facilitan esto
+
+Si aún no tienes cuenta en Make, aquí tienes el acceso directo:
+
+<AffiliateLink programSlug="make" articleSlug="que-es-make-y-para-que-sirve" label="Probar Make gratis" />
+
+Si usas Holded para facturación o CRM, Make tiene una integración nativa que permite automatizar la creación de facturas, el seguimiento de presupuestos o la sincronización de contactos. No necesitas exportar Excel manualmente.
+
+---
+
+## Preguntas frecuentes
+
+### ¿Make es gratis?
+
+Sí, existe un plan gratuito con 1.000 operaciones al mes. Es suficiente para probar 3–4 automatizaciones básicas con un volumen bajo. Si tu empresa procesa decenas de formularios o pedidos al día, necesitarás un plan de pago. Consulta los límites actuales en make.com/en/pricing.
+
+### ¿En qué se diferencia Make de Zapier?
+
+Make es visualmente más potente — permite crear flujos con ramificaciones, bucles y filtros complejos que Zapier no hace igual de bien en sus planes básicos. Zapier tiene interfaz en español y es más sencillo para automatizaciones simples. Make suele ser más barato para el mismo volumen de operaciones, pero la curva de aprendizaje es algo mayor.
+
+### ¿Necesito saber programar para usar Make?
+
+No. Make está diseñado para usarse visualmente, arrastrando módulos. Para automatizaciones básicas y medias, no se toca código. Para casos muy avanzados (transformaciones de datos complejas), Make tiene un módulo de funciones con sintaxis propia, pero es opcional.
+
+### ¿Puedo conectar Make con Holded o con Sage?
+
+Con Holded sí — Make tiene integración nativa. Con Sage depende de la versión: Sage tiene API en sus versiones cloud, pero la integración puede requerir un conector intermediario como un webhook. Verifica en el catálogo de apps de Make antes de dar por hecho que funciona.
+
+### ¿Qué pasa si Make tiene un error y el escenario falla?
+
+Make notifica por email cuando un escenario falla. También guarda el historial de ejecuciones con el detalle del error. Puedes configurar Make para que reintente automáticamente o para que te avise antes de descartar los datos. No es infalible — si una app de destino está caída, Make no puede hacer nada.
+
+---
+
+*Este artículo contiene enlaces de afiliado. Si contratas a través de ellos, recibimos una comisión sin coste adicional para ti. Solo incluimos herramientas que hemos analizado a fondo. Cumplimos con LOPDGDD en la gestión de datos. Última revisión: noviembre 2026.*
