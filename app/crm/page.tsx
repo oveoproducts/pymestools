@@ -182,6 +182,10 @@ export default async function CRMPage() {
             gestionas más de 20-30 oportunidades simultáneas. Por debajo de eso, una hoja de cálculo bien
             organizada puede ser suficiente.
           </p>
+          <p className="text-gray-700 leading-relaxed mt-4">
+            ¿Cuánto costaría con tu equipo? Calcúlalo en la{' '}
+            <Link href="/calculadora-coste-crm" className="text-blue-600 hover:underline">calculadora de coste de un CRM</Link>.
+          </p>
         </section>
 
         {/* Quick comparison table */}

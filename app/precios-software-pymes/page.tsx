@@ -45,6 +45,10 @@ export default function PreciosSoftwarePymesPage() {
             verificación y el enlace a la fuente. Última actualización: {fmt(latest)}. Tienes el detalle de
             cómo lo hacemos en <Link href="/como-verificamos-los-precios" className="text-blue-600 hover:underline">cómo verificamos los precios</Link>.
           </p>
+          <p className="mt-3 text-sm text-gray-600">
+            ¿Cuánto costaría con tu equipo? Prueba la{' '}
+            <Link href="/calculadora-coste-crm" className="text-blue-600 hover:underline">calculadora de coste de un CRM</Link>.
+          </p>
           <p className="mt-3 text-sm text-gray-500">
             Precio por usuario y mes salvo que se indique otra cosa. «Anual» es el precio mensual con
             facturación anual. Los proveedores cambian precios y promociones con frecuencia: confirma el
