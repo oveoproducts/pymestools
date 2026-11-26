@@ -20,7 +20,7 @@ export interface PriceTool {
 // Al verificar uno de nuevo, actualiza `checked`; no dejes cifras sin fecha.
 export const PRICE_TOOLS: PriceTool[] = [
   {
-    tool: 'Zoho CRM', category: 'CRM', checked: '2026-10-17', source: 'https://www.zoho.com/es-xl/crm/zohocrm-pricing.html',
+    tool: 'Zoho CRM', category: 'CRM', checked: '2026-11-26', source: 'https://www.zoho.com/es-xl/crm/zohocrm-pricing.html',
     article: { href: '/crm/zoho-crm-precio-y-planes-2026', label: 'Precios y planes de Zoho CRM' },
     rows: [
       { plan: 'Gratis', annual: '0 €', note: 'Hasta 3 usuarios' },
@@ -98,7 +98,7 @@ export const PRICE_TOOLS: PriceTool[] = [
     ],
   },
   {
-    tool: 'Make', category: 'Automatización', checked: '2026-10-17', source: 'https://www.make.com/en/pricing',
+    tool: 'Make', category: 'Automatización', checked: '2026-11-26', source: 'https://www.make.com/en/pricing',
     article: { href: '/automatizacion/review-make', label: 'Review de Make' },
     rows: [
       { plan: 'Core', annual: '9 $', monthly: '10,59 $', note: '10.000 créditos al mes' },
