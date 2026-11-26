@@ -50,7 +50,7 @@ export const PRICE_TOOLS: PriceTool[] = [
     ],
   },
   {
-    tool: 'Semrush', category: 'SEO', checked: '2026-10-26', source: 'https://es.semrush.com/pricing/seo-ai-search/',
+    tool: 'Semrush', category: 'SEO', checked: '2026-11-26', source: 'https://es.semrush.com/pricing/seo-ai-search/',
     article: { href: '/seo/alternativas-a-semrush-en-espanol', label: 'Alternativas a Semrush' },
     rows: [
       { plan: 'SEO', annual: '112,52 €', monthly: '134 €' },
@@ -59,15 +59,16 @@ export const PRICE_TOOLS: PriceTool[] = [
     ],
   },
   {
-    tool: 'Ahrefs', category: 'SEO', checked: '2026-10-26', source: 'https://ahrefs.com/pricing',
+    tool: 'Ahrefs', category: 'SEO', checked: '2026-11-26', source: 'https://ahrefs.com/pricing',
     rows: [
+      { plan: 'Starter', monthly: '27 €', note: 'Plan de entrada que aparece en su web de precios; Lite es el siguiente' },
       { plan: 'Lite', monthly: '119 €' },
       { plan: 'Standard', monthly: '229 €' },
       { plan: 'Advanced', monthly: '419 €' },
     ],
   },
   {
-    tool: 'SISTRIX', category: 'SEO', checked: '2026-10-26', source: 'https://www.sistrix.es/precios/',
+    tool: 'SISTRIX', category: 'SEO', checked: '2026-11-26', source: 'https://www.sistrix.es/precios/',
     rows: [
       { plan: 'Start', monthly: '119 € + IVA' },
       { plan: 'Plus', monthly: '239 € + IVA' },
@@ -75,14 +76,14 @@ export const PRICE_TOOLS: PriceTool[] = [
     ],
   },
   {
-    tool: 'SE Ranking', category: 'SEO', checked: '2026-10-26', source: 'https://seranking.com/es/subscription.html',
+    tool: 'SE Ranking', category: 'SEO', checked: '2026-11-26', source: 'https://seranking.com/es/subscription.html',
     rows: [
       { plan: 'Core', annual: '87,20 €', monthly: '109 €' },
       { plan: 'Growth', annual: '188 €', monthly: '235 €' },
     ],
   },
   {
-    tool: 'Mangools', category: 'SEO', checked: '2026-10-26', source: 'https://mangools.com/plans-and-pricing',
+    tool: 'Mangools', category: 'SEO', checked: '2026-11-26', source: 'https://mangools.com/plans-and-pricing',
     rows: [
       { plan: 'Basic', annual: '37,70 €', monthly: '61 €' },
       { plan: 'Premium', annual: '52,70 €', monthly: '81 €' },
@@ -90,7 +91,7 @@ export const PRICE_TOOLS: PriceTool[] = [
     ],
   },
   {
-    tool: 'Ubersuggest', category: 'SEO', checked: '2026-10-26', source: 'https://ubersuggest.com/en/pricing',
+    tool: 'Ubersuggest', category: 'SEO', checked: '2026-11-26', source: 'https://ubersuggest.com/en/pricing',
     rows: [
       { plan: 'Individual', monthly: '29 €', note: 'También licencia de por vida: 290 €' },
       { plan: 'Business', monthly: '49 €', note: 'Licencia de por vida: 490 €' },
