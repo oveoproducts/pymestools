@@ -225,6 +225,12 @@ const migrations: Array<{ label: string; sql: string }> = [
       ALTER TABLE survey_responses ENABLE ROW LEVEL SECURITY;
     `,
   },
+  {
+    label: 'affiliate_links.meta (diagnóstico de clics sospechosos)',
+    sql: `
+      ALTER TABLE affiliate_links ADD COLUMN IF NOT EXISTS meta jsonb;
+    `,
+  },
 ]
 // ---------------------------------------------------------------------------
 // Main

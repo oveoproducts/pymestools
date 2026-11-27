@@ -39,6 +39,22 @@ export async function GET(
   // until the insert finishes: a bare `void (async () => …)()` is frozen as soon
   // as the redirect is sent, which silently dropped most clicks (PartnerStack
   // counted ~4x more clicks than this log).
+  // Diagnostic only (no behaviour change): enough to tell real clicks from
+  // crawlers that look like browsers. No IP address and no cookies are stored.
+  const meta = {
+    ua: (req.headers.get('user-agent') ?? '').slice(0, 160),
+    sfu: req.headers.get('sec-fetch-user'), // "?1" only on user-activated navigations
+    sfd: req.headers.get('sec-fetch-dest'),
+    sfs: req.headers.get('sec-fetch-site'),
+    ref: (() => {
+      try {
+        return req.headers.get('referer') ? new URL(req.headers.get('referer')!).origin : null
+      } catch {
+        return null
+      }
+    })(),
+  }
+
   after(async () => {
     const { data: article } = await supabase
       .from('articles')
@@ -51,6 +67,7 @@ export async function GET(
       url: program.affiliate_url,
       anchor_text: articleSlug,
       clicks: 1,
+      meta,
     })
     if (error) console.error('[affiliate-click] insert failed:', error.message)
   })
